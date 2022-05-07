@@ -1,0 +1,20 @@
+{
+  "name": "nwscript-lsp-client",
+  "description": "NWScript LSP Client. ",
+  "license": "MIT",
+  "version": "1.0.0",
+  "author": {
+    "name": "Philippe Chabot"
+  },
+  "publisher": "PhilippeChab",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "vscode": "^1.66.0"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^7.0.0"
+  }
+}

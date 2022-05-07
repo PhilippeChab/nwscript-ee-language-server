@@ -1,0 +1,21 @@
+{
+  "name": "nwscript-lsp-server",
+  "description": "NWScript LSP Server. ",
+  "license": "MIT",
+  "version": "1.0.0",
+  "author": {
+    "name": "Philippe Chabot"
+  },
+  "publisher": "PhilippeChab",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "vscode": "^1.66.0"
+  },
+  "dependencies": {
+    "vscode-languageserver": "^7.0.0",
+    "vscode-languageserver-textdocument": "^1.0.4"
+  }
+}

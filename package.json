@@ -1,0 +1,71 @@
+{
+  "name": "nwscript-ee-language-server",
+  "displayName": "nwscript-ee-language-server",
+  "description": "A language server for the NWScript language.",
+  "icon": "NWN.png",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "version": "1.3.1",
+  "author": {
+    "name": "Philippe Chabot"
+  },
+  "publisher": "PhilippeChab",
+  "engines": {
+    "vscode": "^1.66.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "NWScript",
+    "Neverwinter Script",
+    "Neverwinter Nights",
+    "Neverwinter Nights: EE"
+  ],
+  "activationEvents": [
+    "onLanguage:nwscript"
+  ],
+  "main": "./client/out/extension",
+  "contributes": {
+    "languages": [
+      {
+        "id": "nwscript",
+        "aliases": [
+          "Neverwinter Script",
+          "nwscript"
+        ],
+        "extensions": [
+          ".nss"
+        ],
+        "configuration": "./syntaxes/language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "nwscript",
+        "scopeName": "source.nss",
+        "path": "./syntaxes/nwscript.tmLanguage"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn package",
+    "compile": "tsc -b",
+    "watch": "tsc -b -w",
+    "package": "yarn compile",
+    "lint": "eslint ./client/src ./server/src --ext .ts",
+    "postinstall": "cd client && yarn install && cd ../server && yarn install && cd .."
+  },
+  "devDependencies": {
+    "@types/node": "14.x",
+    "@types/vscode": "^1.66.0",
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
+    "eslint": "^8.14.0",
+    "prettier": "^2.6.2",
+    "typescript": "^4.6.4"
+  }
+}

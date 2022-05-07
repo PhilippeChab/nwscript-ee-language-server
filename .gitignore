@@ -1,0 +1,5 @@
+out
+dist
+node_modules
+tsconfig.tsbuildinfo
+*.vsix

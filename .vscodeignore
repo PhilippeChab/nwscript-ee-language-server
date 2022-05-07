@@ -1,0 +1,8 @@
+.vscode/**
+node_modules/**
+src/**
+.gitignore
+.yarnrc
+webpack.config.js
+**/tsconfig.json
+**/.eslintrc.json
