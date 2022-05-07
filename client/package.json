@@ -9,12 +9,15 @@
   "publisher": "PhilippeChab",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/PhilippeChab/nwscript-ee-language-server"
   },
   "engines": {
-    "vscode": "^1.66.0"
+    "vscode": "^1.66.2"
   },
   "dependencies": {
     "vscode-languageclient": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.66.2"
   }
 }
