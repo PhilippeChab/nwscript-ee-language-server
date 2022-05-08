@@ -34,7 +34,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(action|effect|event|float|int|itemproperty|location|object|string|talent|vector|void|json)\b</string>
+			<string>\b(action|effect|event|float|int|itemproperty|location|object|string|talent|vector|void|json|struct|sqlquery|cassowary)\b</string>
 			<key>name</key>
 			<string>storage.type.nss</string>
 		</dict>

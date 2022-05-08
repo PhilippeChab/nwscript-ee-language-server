@@ -13,14 +13,14 @@ import {
   InitializeResult,
 } from "vscode-languageserver/node";
 
-import { TextDocument } from "vscode-languageserver-textdocument";
 import CompletionItemsProvider from "./completionItemsProvider/CompletionItemsProvider";
-import { URI } from "vscode-uri";
-import * as vscode from "vscode-uri";
+import { TextDocument } from "vscode-languageserver-textdocument";
+import { WorkspaceFilesManager } from "./workspaceFiles";
+import { DocumentsCollection } from "./documents";
 
-// Create a connection for the server, using Node's IPC as a transport.
-// Also include all preview / proposed LSP features.
-const connection = createConnection(ProposedFeatures.all);
+export const connection = createConnection(ProposedFeatures.all);
+export let workspaceFilesManager: WorkspaceFilesManager;
+export let documentsCollection: DocumentsCollection;
 
 // Create a simple text document manager.
 const documents = new TextDocuments(TextDocument);
@@ -31,6 +31,8 @@ let hasDiagnosticRelatedInformationCapability = false;
 
 connection.onInitialize((params: InitializeParams) => {
   const capabilities = params.capabilities;
+
+  workspaceFilesManager = new WorkspaceFilesManager(params.rootPath!);
 
   // Does the client support the `workspace/configuration` request?
   // If not, we fall back using global settings.
@@ -79,11 +81,10 @@ connection.onCompletion((params) => {
   // The pass parameter contains the position of the text document in
   // which code complete got requested. For the example we ignore this
   // info and always provide the same completion items.
-  connection.console.info(params.textDocument.uri);
-  connection.console.info(URI.file(params.textDocument.uri).toString());
-  const completionItems = CompletionItemsProvider.buildItems(URI.file(params.textDocument.uri));
 
-  return completionItems.concat([
+  documentsCollection = new DocumentsCollection().initialize();
+
+  return [
     {
       label: "TypeScript",
       kind: CompletionItemKind.Text,
@@ -94,12 +95,14 @@ connection.onCompletion((params) => {
       kind: CompletionItemKind.Text,
       data: 2,
     },
-  ]);
+  ];
 });
 
 // This handler resolves additional information for the item selected in
 // the completion list.
-//connection.onCompletionResolve((item: CompletionItem): CompletionItem => {});
+connection.onCompletionResolve((item: CompletionItem): CompletionItem => {
+  return item;
+});
 
 // Make the text document manager listen on the connection
 // for open, change and close text document events
