@@ -51,6 +51,12 @@
         <string>constant.language.nss</string>
       </dict>
       <dict>
+        <key>match</key>
+        <string>\b[A-Z_]+\b</string>
+        <key>name</key>
+        <string>constant.language.nss</string>
+      </dict>
+      <dict>
         <key>include</key>
         <string>#operators</string>
       </dict>
@@ -1295,7 +1301,7 @@ U[a-fA-F0-9]{,8} )</string>
             <string>meta.function.definition.parameters.nss</string>
             <key>begin</key>
             <string>(?x)
-(?!(?:while|for|do|if|else|switch|enumerate|return)\s*\()
+(?!(?:while|for|do|if|else|switch|return)\s*\()
 (
 (?:[A-Za-z_][A-Za-z0-9_]*+|::)++  # actual name
 |
