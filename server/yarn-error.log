@@ -1,8 +1,8 @@
 Arguments: 
-  /home/philippe_chab/.nvm/versions/node/v18.1.0/bin/node /usr/share/yarn/bin/yarn.js install
+  /home/philippe_chab/.nvm/versions/node/v18.1.0/bin/node /usr/share/yarn/bin/yarn.js add --dev @types/vscode-oniguruma
 
 PATH: 
-  /tmp/yarn--1651984779962-0.016200614487447362:/mnt/c/Users/phili/Documents/NWNDev/nwscript-ee-language-server/node_modules/.bin:/home/philippe_chab/.config/yarn/link/node_modules/.bin:/home/philippe_chab/.nvm/versions/node/v18.1.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/home/philippe_chab/.nvm/versions/node/v18.1.0/lib/node_modules/npm/bin/node-gyp-bin:/home/philippe_chab/.nvm/versions/node/v18.1.0/bin/node_modules/npm/bin/node-gyp-bin:/home/philippe_chab/.nimble/bin:/home/philippe_chab/.nvm/versions/node/v18.1.0/bin:/home/philippe_chab/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/ProgramData/Oracle/Java/javapath:/mnt/c/program files (x86)/intel/icls client/:/mnt/c/program files/intel/icls client/:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/system32/wbem:/mnt/c/windows/system32/windowspowershell/v1.0/:/mnt/c/program files (x86)/intel/intel(r) management engine components/dal:/mnt/c/program files/intel/intel(r) management engine components/dal:/mnt/c/program files (x86)/intel/intel(r) management engine components/ipt:/mnt/c/program files/intel/intel(r) management engine components/ipt:/mnt/c/windows/system32/config/systemprofile/.dnx/bin:/mnt/c/program files/microsoft dnx/dnvm/:/mnt/c/program files/git/cmd:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Intel/WiFi/bin/:/mnt/c/Program Files/Common Files/Intel/WirelessCommon/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/:/mnt/c/Program Files (x86)/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/R/R-4.0.2/bin:/mnt/c/Program Files/LLVM/bin:/mnt/c/Program Files (x86)/MMH5.5 Manual:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Users/phili/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/phili/AppData/Local/.meteor:/mnt/c/Program Files (x86)/Python36/Scripts:/mnt/c/Program Files (x86)/Python36:/mnt/c/Users/phili/AppData/Local/hyper/app-3.0.2/resources/bin:/mnt/c/Users/phili/AppData/Roaming/nvm:/mnt/c/Program Files/nodejs:/mnt/c/Users/phili/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/phili/AppData/Local/GitHub/PortableGit_f02737a78695063deace08e96d5042710d3e32db/cmd/git.exe:/mnt/c/Users/phili/.dotnet/tools:/mnt/c/Users/phili/.nimble/bin:/snap/bin:/home/philippe_chab/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/home/philippe_chab/.antigen/bundles/lukechilds/zsh-nvm:/home/philippe_chab/.yarn/bin
+  /home/philippe_chab/.nimble/bin:/home/philippe_chab/.nvm/versions/node/v18.1.0/bin:/home/philippe_chab/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/ProgramData/Oracle/Java/javapath:/mnt/c/program files (x86)/intel/icls client/:/mnt/c/program files/intel/icls client/:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/system32/wbem:/mnt/c/windows/system32/windowspowershell/v1.0/:/mnt/c/program files (x86)/intel/intel(r) management engine components/dal:/mnt/c/program files/intel/intel(r) management engine components/dal:/mnt/c/program files (x86)/intel/intel(r) management engine components/ipt:/mnt/c/program files/intel/intel(r) management engine components/ipt:/mnt/c/windows/system32/config/systemprofile/.dnx/bin:/mnt/c/program files/microsoft dnx/dnvm/:/mnt/c/program files/git/cmd:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Intel/WiFi/bin/:/mnt/c/Program Files/Common Files/Intel/WirelessCommon/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/:/mnt/c/Program Files (x86)/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/R/R-4.0.2/bin:/mnt/c/Program Files/LLVM/bin:/mnt/c/Program Files (x86)/MMH5.5 Manual:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Users/phili/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/phili/AppData/Local/.meteor:/mnt/c/Program Files (x86)/Python36/Scripts:/mnt/c/Program Files (x86)/Python36:/mnt/c/Users/phili/AppData/Local/hyper/app-3.0.2/resources/bin:/mnt/c/Users/phili/AppData/Roaming/nvm:/mnt/c/Program Files/nodejs:/mnt/c/Users/phili/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/phili/AppData/Local/GitHub/PortableGit_f02737a78695063deace08e96d5042710d3e32db/cmd/git.exe:/mnt/c/Users/phili/.dotnet/tools:/mnt/c/Users/phili/.nimble/bin:/snap/bin:/home/philippe_chab/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/home/philippe_chab/.antigen/bundles/lukechilds/zsh-nvm:/home/philippe_chab/.yarn/bin
 
 Yarn version: 
   1.22.5
@@ -14,12 +14,17 @@ Platform:
   linux x64
 
 Trace: 
-  SyntaxError: /mnt/c/Users/phili/Documents/NWNDev/nwscript-ee-language-server/server/package.json: Unexpected token } in JSON at position 463
-      at JSON.parse (<anonymous>)
-      at /usr/share/yarn/lib/cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (/usr/share/yarn/lib/cli.js:310:30)
-      at /usr/share/yarn/lib/cli.js:321:13
+  Error: https://registry.yarnpkg.com/@types%2fvscode-oniguruma: Not found
+      at params.callback [as _callback] (/usr/share/yarn/lib/cli.js:66988:18)
+      at self.callback (/usr/share/yarn/lib/cli.js:140749:22)
+      at Request.emit (node:events:527:28)
+      at Request.<anonymous> (/usr/share/yarn/lib/cli.js:141721:10)
+      at Request.emit (node:events:527:28)
+      at IncomingMessage.<anonymous> (/usr/share/yarn/lib/cli.js:141643:12)
+      at Object.onceWrapper (node:events:641:28)
+      at IncomingMessage.emit (node:events:539:35)
+      at endReadableNT (node:internal/streams/readable:1344:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
 
 npm manifest: 
   {
@@ -39,8 +44,14 @@ npm manifest:
       "node": "*"
     },
     "dependencies": {
+      "glob": "^8.0.1",
       "vscode-languageserver": "^7.0.0",
       "vscode-languageserver-textdocument": "^1.0.4",
+      "vscode-oniguruma": "^1.6.2",
+      "vscode-textmate": "^7.0.1"
+    },
+    "devDependencies": {
+      "@types/glob": "^7.2.0"
     }
   }
 
@@ -51,11 +62,6 @@ Lockfile:
   # THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.
   # yarn lockfile v1
   
-  
-  "@types/async@^3.2.13":
-    version "3.2.13"
-    resolved "https://registry.yarnpkg.com/@types/async/-/async-3.2.13.tgz#ec023074c70180d17cbc9117ddc3cec2f3894ea4"
-    integrity sha512-7Q3awrhnvm89OzfsmqeqRQh8mh+8Pxfgq1UvSAn2nWQ5y/F3+NrbIF0RbkWq8+5dY99ozgap2b3DNBNwjLVOxw==
   
   "@types/glob@^7.2.0":
     version "7.2.0"
@@ -74,11 +80,6 @@ Lockfile:
     version "17.0.31"
     resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.31.tgz#a5bb84ecfa27eec5e1c802c6bbf8139bdb163a5d"
     integrity sha512-AR0x5HbXGqkEx9CadRH3EBYx/VkiUgZIhP4wvPn/+5KIsgpNoyFaRlVe0Zlx9gRtg8fA06a9tskE2MSN7TcG4Q==
-  
-  async@^3.2.3:
-    version "3.2.3"
-    resolved "https://registry.yarnpkg.com/async/-/async-3.2.3.tgz#ac53dafd3f4720ee9e8a160628f18ea91df196c9"
-    integrity sha512-spZRyzKL5l5BZQrr/6m/SqFdBN0q3OCI0f9rjfBzCMBIP4p75P620rR3gTmaksNOhmzgdxcaxdNfMy6anrbM0g==
   
   balanced-match@^1.0.0:
     version "1.0.2"
@@ -171,10 +172,15 @@ Lockfile:
     dependencies:
       vscode-languageserver-protocol "3.16.0"
   
-  vscode-uri@^3.0.3:
-    version "3.0.3"
-    resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-3.0.3.tgz#a95c1ce2e6f41b7549f86279d19f47951e4f4d84"
-    integrity sha512-EcswR2S8bpR7fD0YPeS7r2xXExrScVMxg4MedACaWHEtx9ftCF/qHG1xGkolzTPcEmjTavCQgbVzHUIdTMzFGA==
+  vscode-oniguruma@^1.6.2:
+    version "1.6.2"
+    resolved "https://registry.yarnpkg.com/vscode-oniguruma/-/vscode-oniguruma-1.6.2.tgz#aeb9771a2f1dbfc9083c8a7fdd9cccaa3f386607"
+    integrity sha512-KH8+KKov5eS/9WhofZR8M8dMHWN2gTxjMsG4jd04YhpbPR91fUj7rYQ2/XjeHCJWbg7X++ApRIU9NUwM2vTvLA==
+  
+  vscode-textmate@^7.0.1:
+    version "7.0.1"
+    resolved "https://registry.yarnpkg.com/vscode-textmate/-/vscode-textmate-7.0.1.tgz#8118a32b02735dccd14f893b495fa5389ad7de79"
+    integrity sha512-zQ5U/nuXAAMsh691FtV0wPz89nSkHbs+IQV8FDk+wew9BlSDhf4UmWGlWJfTR2Ti6xZv87Tj5fENzKf6Qk7aLw==
   
   wrappy@1:
     version "1.0.2"

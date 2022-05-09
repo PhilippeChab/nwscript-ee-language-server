@@ -77,12 +77,12 @@ documents.onDidChangeContent((change) => {});
 connection.onDidChangeWatchedFiles((change) => {});
 
 // This handler provides the initial list of the completion items.
-connection.onCompletion((params) => {
+connection.onCompletion(async (params) => {
   // The pass parameter contains the position of the text document in
   // which code complete got requested. For the example we ignore this
   // info and always provide the same completion items.
 
-  documentsCollection = new DocumentsCollection().initialize();
+  documentsCollection = await new DocumentsCollection().initialize();
 
   return [
     {

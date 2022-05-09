@@ -14,12 +14,21 @@
   "engines": {
     "node": "*"
   },
+  "scripts": {
+    "postinstall": "patch-package"
+  },
   "dependencies": {
+    "async": "^3.2.3",
     "glob": "^8.0.1",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
     "vscode-languageserver": "^7.0.0",
-    "vscode-languageserver-textdocument": "^1.0.4"
+    "vscode-languageserver-textdocument": "^1.0.4",
+    "vscode-oniguruma": "^1.6.1",
+    "vscode-textmate": "^7.0.1"
   },
   "devDependencies": {
+    "@types/async": "^3.2.13",
     "@types/glob": "^7.2.0"
   }
 }

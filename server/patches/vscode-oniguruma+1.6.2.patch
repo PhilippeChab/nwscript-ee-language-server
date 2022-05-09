@@ -1,0 +1,51 @@
+diff --git a/node_modules/vscode-oniguruma/.gitattributes b/node_modules/vscode-oniguruma/.gitattributes
+old mode 100644
+new mode 100755
+diff --git a/node_modules/vscode-oniguruma/.github/workflows/ci.yml b/node_modules/vscode-oniguruma/.github/workflows/ci.yml
+old mode 100644
+new mode 100755
+diff --git a/node_modules/vscode-oniguruma/LICENSE.txt b/node_modules/vscode-oniguruma/LICENSE.txt
+old mode 100644
+new mode 100755
+diff --git a/node_modules/vscode-oniguruma/NOTICES.txt b/node_modules/vscode-oniguruma/NOTICES.txt
+old mode 100644
+new mode 100755
+diff --git a/node_modules/vscode-oniguruma/README.md b/node_modules/vscode-oniguruma/README.md
+old mode 100644
+new mode 100755
+diff --git a/node_modules/vscode-oniguruma/main.d.ts b/node_modules/vscode-oniguruma/main.d.ts
+old mode 100644
+new mode 100755
+index e0f40be..c9dc6f8
+--- a/node_modules/vscode-oniguruma/main.d.ts
++++ b/node_modules/vscode-oniguruma/main.d.ts
+@@ -3,7 +3,7 @@
+  *--------------------------------------------------------*/
+ 
+ export interface WebAssemblyInstantiator {
+-	(importObject: Record<string, Record<string, WebAssembly.ImportValue>> | undefined): Promise<WebAssembly.WebAssemblyInstantiatedSource>;
++	(importObject: any): Promise<any>;
+ }
+ interface ICommonOptions {
+ 	print?(str: string): void;
+@@ -12,12 +12,12 @@ interface IInstantiatorOptions extends ICommonOptions {
+ 	instantiator: WebAssemblyInstantiator;
+ }
+ interface IDataOptions extends ICommonOptions {
+-	data: ArrayBuffer | Response;
++	data: any;
+ }
+ export type IOptions = IInstantiatorOptions | IDataOptions;
+ 
+ export function loadWASM(options: IOptions): Promise<void>;
+-export function loadWASM(data: ArrayBuffer | Response): Promise<void>;
++export function loadWASM(data: any): Promise<void>;
+ export function createOnigString(str: string): OnigString;
+ export function createOnigScanner(patterns: string[]): OnigScanner;
+ export function setDefaultDebugCall(defaultDebugCall: boolean): void;
+diff --git a/node_modules/vscode-oniguruma/release/main.js b/node_modules/vscode-oniguruma/release/main.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/vscode-oniguruma/release/onig.wasm b/node_modules/vscode-oniguruma/release/onig.wasm
+old mode 100644
+new mode 100755

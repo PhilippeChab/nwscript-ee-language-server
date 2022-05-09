@@ -4,3 +4,4 @@ node_modules
 tsconfig.tsbuildinfo
 *.vsix
 test/
+server/src/tokenizer/Tokeniser.js

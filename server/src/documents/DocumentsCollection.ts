@@ -1,17 +1,20 @@
+import { each } from "async";
 import { CompletionItem } from "vscode-languageserver";
 
 import { connection, workspaceFilesManager } from "../server";
+import Tokeniser from "../tokenizer/Tokenizer";
 import { Dictionnary } from "../utils";
 import { WorkspaceFilesSystem } from "../workspaceFiles";
 import Document from "./Document";
 
 export default class DocumentsCollection extends Dictionnary<string, Document> {
-  initialize = () => {
+  initialize = async () => {
     const filePaths = workspaceFilesManager.getAllFilePaths();
 
-    filePaths.forEach((filePath) => {
-      const fileContent = WorkspaceFilesSystem.readFile(filePath);
+    await each(filePaths, async (filePath) => {
+      const fileContent = WorkspaceFilesSystem.readFileSync(filePath).toString();
 
+      const tokens = await Tokeniser(fileContent);
       const includes = WorkspaceFilesSystem.getFileIncludes(fileContent);
 
       // TODO: Get definitions

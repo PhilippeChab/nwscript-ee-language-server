@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { readFileSync, readFile } from "fs";
 import { fileURLToPath } from "url";
 import { basename } from "path";
 
@@ -9,8 +9,14 @@ export default class WorkspaceFilesSystem {
     return fileURLToPath(uri);
   };
 
-  static readFile = (filePath: string) => {
-    return readFileSync(filePath).toString();
+  static readFileSync = (filePath: string) => {
+    return readFileSync(filePath);
+  };
+
+  static readFileAsync = async (path: string) => {
+    return new Promise((resolve, reject) => {
+      readFile(path, (error, data) => (error ? reject(error) : resolve(data)));
+    });
   };
 
   static getFileIncludes = (fileContent: string) => {
