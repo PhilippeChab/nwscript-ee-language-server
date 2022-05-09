@@ -14,7 +14,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     await each(filePaths, async (filePath) => {
       const fileContent = WorkspaceFilesSystem.readFileSync(filePath).toString();
 
-      const tokens = await Tokeniser(fileContent);
+      // const tokens = await Tokeniser(fileContent);
       const includes = WorkspaceFilesSystem.getFileIncludes(fileContent);
 
       // TODO: Get definitions

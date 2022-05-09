@@ -47,7 +47,7 @@
       {
         "language": "nwscript",
         "scopeName": "source.nss",
-        "path": "./syntaxes/nwscript.tmLanguage.plist"
+        "path": "./syntaxes/new.nwscript.tmLanguage"
       }
     ]
   },
