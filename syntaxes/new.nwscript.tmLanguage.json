@@ -29,7 +29,7 @@
       "name": "storage.modifier.nss"
     },
     {
-      "match": "\\b[A-Z_]+\\b",
+      "match": "\\b[A-Z0-9]{2,}(_[a-zA-Z0-9]+)*\\b",
       "name": "constant.language.nss"
     },
     {
@@ -177,12 +177,23 @@
     },
     {
       "include": "#dot-access"
+    },
+    {
+      "match": "\\b[a-zA-Z_][a-zA-Z_0-9]*\\b(?!\\s*\\()",
+      "name": "variable.other.probably.nss"
     }
   ],
   "repository": {
     "dot-access": {
-      "match": "\\.[a-zA-Z_][a-zA-Z_0-9]*\\b(?!\\s*\\()",
-      "name": "variable.other.dot-access.nss"
+      "match": "(\\.)([a-zA-Z_][a-zA-Z_0-9]*\\b(?!\\s*\\())",
+      "captures": {
+        "1": {
+          "name": "punctuation.separator.dot-access.nss"
+        },
+        "2": {
+          "name": "variable.other.object.access.nss"
+        }
+      }
     },
     "backslash_escapes": {
       "match": "(?x)\\\\ (\n\\\\\t\t\t |\n[abefnprtv'\"?]   |\n[0-3][0-7]{,2}\t |\n[4-7]\\d?\t\t|\nx[a-fA-F0-9]{,2} |\nu[a-fA-F0-9]{,4} |\nU[a-fA-F0-9]{,8} )",
@@ -847,6 +858,9 @@
           "patterns": [
             {
               "include": "#probably_a_parameter"
+            },
+            {
+              "include": "#probably_a_default_parameter"
             },
             {
               "include": "#function-innards"
@@ -1586,7 +1600,7 @@
           "name": "punctuation.section.parens.end.bracket.round.nss"
         },
         {
-          "begin": "(?x)\n(?!(?:while|for|do|if|else|switch|catch|enumerate|return|typeid|alignof|alignas|sizeof|[cr]?iterate|and|and_eq|bitand|bitor|compl|not|not_eq|or|or_eq|typeid|xor|xor_eq|alignof|alignas|asm|__asm__|auto|bool|_Bool|char|_Complex|double|enum|float|_Imaginary|int|long|short|signed|struct|typedef|union|unsigned|void)\\s*\\()\n(?=\n  (?:[A-Za-z_][A-Za-z0-9_]*+|::)++\\s*\\(  # actual name\n  |\n  (?:(?<=operator)(?:[-*&<>=+!]+|\\(\\)|\\[\\]))\\s*\\(\n)",
+          "begin": "(?x)\n(?!(?:while|for|do|if|else|switch|return|void)\\s*\\()\n(?=\n  (?:[A-Za-z_][A-Za-z0-9_]*+|::)++\\s*\\(  # actual name\n  |\n  (?:(?<=operator)(?:[-*&<>=+!]+|\\(\\)|\\[\\]))\\s*\\(\n)",
           "end": "(?<=\\))(?!\\w)|(?<!\\\\)(?=\\s*\\n)",
           "name": "meta.function.nss",
           "patterns": [
@@ -1667,7 +1681,7 @@
           "include": "#operators"
         },
         {
-          "begin": "(?x)\n(?!(?:while|for|do|if|else|switch|catch|enumerate|return|typeid|alignof|alignas|sizeof|[cr]?iterate|and|and_eq|bitand|bitor|compl|not|not_eq|or|or_eq|typeid|xor|xor_eq|alignof|alignas)\\s*\\()\n(\n(?:[A-Za-z_][A-Za-z0-9_]*+|::)++  # actual name\n|\n(?:(?<=operator)(?:[-*&<>=+!]+|\\(\\)|\\[\\]))\n)\n\\s*(\\()",
+          "begin": "(?x)\n(?!(?:while|for|do|if|else|switch|return)\\s*\\()\n(\n(?:[A-Za-z_][A-Za-z0-9_]*+|::)++  # actual name\n|\n(?:(?<=operator)(?:[-*&<>=+!]+|\\(\\)|\\[\\]))\n)\n\\s*(\\()",
           "beginCaptures": {
             "1": {
               "name": "entity.name.function.nss"
@@ -2378,11 +2392,26 @@
         }
       }
     },
+    "probably_a_default_parameter": {
+      "match": "(\\b[a-zA-Z_][a-zA-Z_0-9]*\\b) (=) ",
+      "captures": {
+        "1": {
+          "name": "variable.parameter.probably.nss"
+        },
+        "2": {
+          "name": "keyword.operator.assignment.nss"
+        }
+      }
+    },
     "storage_types": {
       "patterns": [
         {
-          "match": "\\b(action|effect|event|float|int|itemproperty|location|object|string|talent|vector|void|json|struct|sqlquery|cassowary)\\b",
+          "match": "\\b(action|effect|event|float|int|itemproperty|location|object|string|talent|vector|void|json|sqlquery|cassowary)\\b",
           "name": "storage.type.built-in.nss"
+        },
+        {
+          "match": "\\b(struct)\\b \\b([a-zA-Z_][a-zA-Z0-9_]*\\b(?!\\s*\\())",
+          "name": "storage.type.struct-defined.nss"
         }
       ]
     },

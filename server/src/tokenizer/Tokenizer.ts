@@ -1,7 +1,8 @@
 import { join } from "path";
-import { Registry, parseRawGrammar, INITIAL, ITokenizeLineResult } from "vscode-textmate";
+import { Registry, parseRawGrammar, INITIAL, ITokenizeLineResult, IGrammar, IToken } from "vscode-textmate";
 import { loadWASM, OnigScanner, OnigString } from "vscode-oniguruma";
 import { WorkspaceFilesSystem } from "../workspaceFiles";
+import { Sign } from "crypto";
 //import { connection } from "../server";
 
 const wasmBin = WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "onig.wasm")).buffer;
@@ -17,49 +18,69 @@ const vscodeOnigurumaLib = loadWASM(wasmBin).then(() => {
   };
 });
 
-const registry = new Registry({
-  onigLib: vscodeOnigurumaLib,
-  loadGrammar: (scopeName) => {
-    return new Promise((resolve, reject) => {
-      if (scopeName === "source.nss") {
-        return WorkspaceFilesSystem.readFileAsync(join(__dirname, "..", "..", "..", "syntaxes", "new.nwscript.tmLanguage")).then(
-          (data) => resolve(parseRawGrammar((data as Buffer).toString()))
-        );
-      }
+type Token = { meta: IToken; content: string };
 
-      reject(`Unknown scope name: ${scopeName}`);
+export default class Tokenizer {
+  registry: Registry;
+  grammar: IGrammar | null = null;
+
+  constructor() {
+    this.registry = new Registry({
+      onigLib: vscodeOnigurumaLib,
+      loadGrammar: (scopeName) => {
+        return new Promise((resolve, reject) => {
+          if (scopeName === "source.nss") {
+            return WorkspaceFilesSystem.readFileAsync(
+              join(__dirname, "..", "..", "..", "syntaxes", "new.nwscript.tmLanguage")
+            ).then((data) => resolve(parseRawGrammar((data as Buffer).toString())));
+          }
+
+          reject(`Unknown scope name: ${scopeName}`);
+        });
+      },
     });
-  },
-});
-
-export default async (content: string) => {
-  const grammar = await registry.loadGrammar("source.nss");
-
-  const result: ITokenizeLineResult[] = [];
-
-  let ruleStack = INITIAL;
-  for (let i = 0; i < content.length; i++) {
-    const line = content[i];
-    const lineTokens = grammar?.tokenizeLine(line, ruleStack);
-    result[i] = lineTokens!;
-
-    //connection.console.info(`\nTokenizing line: ${line}`);
-    if (lineTokens) {
-      for (let j = 0; j < lineTokens.tokens.length; j++) {
-        const token = lineTokens.tokens[j];
-        // connection.console.info(
-        //   ` - token from ${token.startIndex} to ${token.endIndex} ` +
-        //     `(${line.substring(token.startIndex, token.endIndex)}) ` +
-        //     `with scopes ${token.scopes.join(", ")}`
-        // );
-      }
-
-      ruleStack = lineTokens?.ruleStack;
-    }
   }
 
-  return result;
-};
+  loadGrammar = async () => {
+    this.grammar = await this.registry.loadGrammar("source.nss");
+
+    return this;
+  };
+
+  tokenizeContent = (content: string) => {
+    let ruleStack = INITIAL;
+    let lines = content.split(/\r?\n/);
+
+    return lines.map((line) => {
+      const lineTokens = this.grammar?.tokenizeLine(line, ruleStack);
+
+      if (lineTokens) {
+        ruleStack = lineTokens.ruleStack;
+        return lineTokens.tokens.map((token) => {
+          return { meta: token, content: line.substring(token.startIndex, token.endIndex) };
+        });
+      } else {
+        return [];
+      }
+    });
+  };
+
+  retrieveConstants = (tokens: Token[][]) => {
+    const constants: string[] = [];
+
+    tokens.forEach((tokensLine) => {
+      tokensLine.forEach((token) => {
+        if (token.meta.scopes.includes("constant.language.nss")) {
+          if (!constants.includes(token.content)) {
+            constants.push(token.content);
+          }
+        }
+      });
+    });
+
+    return constants;
+  };
+}
 
 /* OUTPUT:
 

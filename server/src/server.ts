@@ -29,10 +29,11 @@ let hasConfigurationCapability = false;
 let hasWorkspaceFolderCapability = false;
 let hasDiagnosticRelatedInformationCapability = false;
 
-connection.onInitialize((params: InitializeParams) => {
+connection.onInitialize(async (params: InitializeParams) => {
   const capabilities = params.capabilities;
 
   workspaceFilesManager = new WorkspaceFilesManager(params.rootPath!);
+  documentsCollection = await new DocumentsCollection().initialize();
 
   // Does the client support the `workspace/configuration` request?
   // If not, we fall back using global settings.
@@ -82,20 +83,7 @@ connection.onCompletion(async (params) => {
   // which code complete got requested. For the example we ignore this
   // info and always provide the same completion items.
 
-  documentsCollection = await new DocumentsCollection().initialize();
-
-  return [
-    {
-      label: "TypeScript",
-      kind: CompletionItemKind.Text,
-      data: 1,
-    },
-    {
-      label: "JavaScript",
-      kind: CompletionItemKind.Text,
-      data: 2,
-    },
-  ];
+  return documentsCollection.getCompletionItems(params.textDocument.uri);
 });
 
 // This handler resolves additional information for the item selected in
