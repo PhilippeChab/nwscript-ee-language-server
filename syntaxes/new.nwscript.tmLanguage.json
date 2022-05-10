@@ -180,7 +180,7 @@
     },
     {
       "match": "\\b[a-zA-Z_][a-zA-Z_0-9]*\\b(?!\\s*\\()",
-      "name": "variable.other.probably.nss"
+      "name": "variable.language.nss"
     }
   ],
   "repository": {
@@ -191,7 +191,7 @@
           "name": "punctuation.separator.dot-access.nss"
         },
         "2": {
-          "name": "variable.other.object.access.nss"
+          "name": "entity.other.attribute-name.nss"
         }
       }
     },
@@ -2388,7 +2388,7 @@
       "match": "(?<=(?:[a-zA-Z_0-9] |[&*>\\]\\)]))\\s*([a-zA-Z_]\\w*)\\s*(?=(?:\\[\\]\\s*)?(?:,|\\)))",
       "captures": {
         "1": {
-          "name": "variable.parameter.probably.nss"
+          "name": "variable.parameter.nss"
         }
       }
     },
@@ -2396,7 +2396,7 @@
       "match": "(\\b[a-zA-Z_][a-zA-Z_0-9]*\\b) (=) ",
       "captures": {
         "1": {
-          "name": "variable.parameter.probably.nss"
+          "name": "variable.parameter.nss"
         },
         "2": {
           "name": "keyword.operator.assignment.nss"
