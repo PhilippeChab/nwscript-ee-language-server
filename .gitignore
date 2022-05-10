@@ -5,3 +5,5 @@ tsconfig.tsbuildinfo
 *.vsix
 test/
 server/src/tokenizer/Tokeniser.js
+yarn-error.log
+.DS_Store
