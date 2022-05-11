@@ -1,9 +1,9 @@
 import { join } from "path";
-import { Registry, parseRawGrammar, INITIAL, ITokenizeLineResult, IGrammar, IToken } from "vscode-textmate";
+import { Registry, parseRawGrammar, INITIAL, IGrammar, IToken } from "vscode-textmate";
 import { loadWASM, OnigScanner, OnigString } from "vscode-oniguruma";
 import { WorkspaceFilesSystem } from "../workspaceFiles";
-import { Sign } from "crypto";
-//import { connection } from "../server";
+import { CompletionItem, CompletionItemKind } from "vscode-languageserver";
+import { connection, logger } from "../server";
 
 const wasmBin = WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "onig.wasm")).buffer;
 
@@ -20,9 +20,18 @@ const vscodeOnigurumaLib = loadWASM(wasmBin).then(() => {
 
 type Token = { meta: IToken; content: string };
 
+const INCLUDE_SCOPE = "meta.preprocessor.include.nss";
+const FUNCTION_SCOPE = "meta.function.nss";
+const BLOCK_SCOPE = "meta.block.nss";
+
+const TERMINATOR_STATEMENT = "punctuation.terminator.statement.nss";
+
+const CONSTANT_DECLARATION_SCOPE = "constant.language.nss";
+const FUNCTION_DECLARACTION_SCOPE = "entity.name.function.nss";
+
 export default class Tokenizer {
-  registry: Registry;
-  grammar: IGrammar | null = null;
+  private readonly registry: Registry;
+  private grammar: IGrammar | null = null;
 
   constructor() {
     this.registry = new Registry({
@@ -65,20 +74,49 @@ export default class Tokenizer {
     });
   };
 
-  retrieveConstants = (tokens: Token[][]) => {
-    const constants: string[] = [];
+  retrieveGlobalDefinitions = (content: string) => {
+    const tokens: Token[][] = this.tokenizeContent(content);
+    const definitions: { items: CompletionItem[]; children: string[] } = { items: [], children: [] };
 
     tokens.forEach((tokensLine) => {
-      tokensLine.forEach((token) => {
-        if (token.meta.scopes.includes("constant.language.nss")) {
-          if (!constants.includes(token.content)) {
-            constants.push(token.content);
-          }
+      for (let index = 0; index < tokensLine.length; index++) {
+        const token = tokensLine[index];
+
+        // CHILD
+        if (token.meta.scopes.includes(INCLUDE_SCOPE)) {
+          definitions.children.push(tokensLine.at(-2)?.content!);
+          break;
         }
-      });
+
+        // CONSTANT
+        if (
+          token.meta.scopes.includes(CONSTANT_DECLARATION_SCOPE) &&
+          !token.meta.scopes.includes(FUNCTION_SCOPE) &&
+          !token.meta.scopes.includes(BLOCK_SCOPE)
+        ) {
+          definitions.items.push({
+            label: token.content,
+            kind: CompletionItemKind.Constant,
+          });
+          break;
+        }
+
+        // FUNCTION
+        if (
+          token.meta.scopes.includes(FUNCTION_DECLARACTION_SCOPE) &&
+          tokensLine[tokensLine.length - 1].meta.scopes.includes(TERMINATOR_STATEMENT) &&
+          !token.meta.scopes.includes(BLOCK_SCOPE)
+        ) {
+          definitions.items.push({
+            label: token.content,
+            kind: CompletionItemKind.Function,
+          });
+          break;
+        }
+      }
     });
 
-    return constants;
+    return definitions;
   };
 }
 

@@ -1,14 +1,15 @@
 import { CompletionItem } from "vscode-languageserver/node";
 
-import { documentsCollection } from "../server";
+import { completionItemsProvider } from "../server";
 import { WorkspaceFilesSystem } from "../workspaceFiles";
 
+type Definitions = { globalItems: CompletionItem[]; localItems: CompletionItem[] };
 export default class Document {
   readonly path: string;
   readonly children: string[];
-  readonly definitions: CompletionItem[];
+  readonly definitions: Definitions;
 
-  constructor(path: string, children: string[], definitions: CompletionItem[]) {
+  constructor(path: string, children: string[], definitions: Definitions) {
     this.path = path;
     this.children = children;
     this.definitions = definitions;
@@ -18,14 +19,14 @@ export default class Document {
     return WorkspaceFilesSystem.getFileBasename(this.path);
   };
 
-  getDefinitions = (computedChildren: string[] = []): CompletionItem[] => {
-    return this.definitions.concat(
+  getGlobalDefinitions = (computedChildren: string[] = []): CompletionItem[] => {
+    return this.definitions.globalItems.concat(
       this.children.flatMap((child) => {
         // Cycling children or/and duplicates
         if (computedChildren.includes(child)) {
           return [];
         } else {
-          return documentsCollection.get(child).getDefinitions(computedChildren.concat(this.children));
+          return completionItemsProvider.getGlobalCompletionItemsFromDocumentKey(child, computedChildren.concat(this.children));
         }
       })
     );

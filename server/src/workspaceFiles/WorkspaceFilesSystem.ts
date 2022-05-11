@@ -19,11 +19,7 @@ export default class WorkspaceFilesSystem {
     });
   };
 
-  static getFileIncludes = (fileContent: string) => {
-    return fileContent.match(/#include (["'])(?:(?=(\\?))\2.)*?\1/gm)?.map((include) => include.split(" ")[1].slice(1, -1)) || [];
-  };
-
   static getFileBasename = (filePath: string) => {
-    return basename(filePath, FILES_EXTENSION);
+    return basename(filePath, FILES_EXTENSION).slice(0, -1);
   };
 }

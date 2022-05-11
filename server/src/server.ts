@@ -13,14 +13,16 @@ import {
   InitializeResult,
 } from "vscode-languageserver/node";
 
-import CompletionItemsProvider from "./completionItemsProvider/CompletionItemsProvider";
+import { CompletionItemsProvider } from "./completionItemsProvider";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { WorkspaceFilesManager } from "./workspaceFiles";
 import { DocumentsCollection } from "./documents";
+import { Logger } from "./logger";
 
 export const connection = createConnection(ProposedFeatures.all);
 export let workspaceFilesManager: WorkspaceFilesManager;
-export let documentsCollection: DocumentsCollection;
+export let completionItemsProvider: CompletionItemsProvider;
+export let logger: Logger;
 
 // Create a simple text document manager.
 const documents = new TextDocuments(TextDocument);
@@ -33,7 +35,8 @@ connection.onInitialize(async (params: InitializeParams) => {
   const capabilities = params.capabilities;
 
   workspaceFilesManager = new WorkspaceFilesManager(params.rootPath!);
-  documentsCollection = await new DocumentsCollection().initialize();
+  logger = new Logger(connection.console);
+  completionItemsProvider = new CompletionItemsProvider(await new DocumentsCollection().initialize());
 
   // Does the client support the `workspace/configuration` request?
   // If not, we fall back using global settings.
@@ -78,12 +81,12 @@ documents.onDidChangeContent((change) => {});
 connection.onDidChangeWatchedFiles((change) => {});
 
 // This handler provides the initial list of the completion items.
-connection.onCompletion(async (params) => {
+connection.onCompletion((params) => {
   // The pass parameter contains the position of the text document in
   // which code complete got requested. For the example we ignore this
   // info and always provide the same completion items.
 
-  return documentsCollection.getCompletionItems(params.textDocument.uri);
+  return completionItemsProvider.getGlobalCompletionItemsFromUri(params.textDocument.uri);
 });
 
 // This handler resolves additional information for the item selected in
