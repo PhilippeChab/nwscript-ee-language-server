@@ -9,3 +9,4 @@ webpack.config.js
 **/.eslintrc.json
 test/**
 server/resources/nwscript.nss
+server/scripts

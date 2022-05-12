@@ -5,15 +5,7 @@ import { WorkspaceFilesSystem } from "../workspaceFiles";
 
 type Definitions = { globalItems: CompletionItem[]; localItems: CompletionItem[] };
 export default class Document {
-  readonly path: string;
-  readonly children: string[];
-  readonly definitions: Definitions;
-
-  constructor(path: string, children: string[], definitions: Definitions) {
-    this.path = path;
-    this.children = children;
-    this.definitions = definitions;
-  }
+  constructor(readonly path: string, readonly children: string[], readonly definitions: Definitions) {}
 
   getKey() {
     return WorkspaceFilesSystem.getFileBasename(this.path);
