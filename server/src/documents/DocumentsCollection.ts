@@ -14,6 +14,12 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       logger.info(`Document path: ${document.path}`);
       logger.info(`Document children:`);
       document.children.forEach((child, index) => logger.info(`${index}. ${child}`));
+      logger.info(`Document structures:`);
+      document.structures.forEach((child, index) =>
+        logger.info(
+          `${index}. ${child.name}: ${Object.entries(child.properties).map((property) => `(${property[1]}) ${property[0]}`)}`
+        )
+      );
       logger.info(`Document definitions:`);
       document.definitions.globalItems.forEach((definition, index) => logger.info(`${index}. ${definition.label}`));
       logger.info("------------");
@@ -33,7 +39,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
 
       const globalDefinitions = tokenizer.retrieveGlobalDefinitions(fileContent);
 
-      const document = new Document(filePath, globalDefinitions.children, {
+      const document = new Document(filePath, globalDefinitions.children, globalDefinitions.structures, {
         globalItems: globalDefinitions.items,
         localItems: [],
       });

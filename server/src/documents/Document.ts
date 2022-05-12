@@ -4,8 +4,15 @@ import { completionItemsProvider } from "../server";
 import { WorkspaceFilesSystem } from "../workspaceFiles";
 
 type Definitions = { globalItems: CompletionItem[]; localItems: CompletionItem[] };
+export type Structure = { name: string; properties: Record<string, string> };
+
 export default class Document {
-  constructor(readonly path: string, readonly children: string[], readonly definitions: Definitions) {}
+  constructor(
+    readonly path: string,
+    readonly children: string[],
+    readonly structures: Structure[],
+    readonly definitions: Definitions
+  ) {}
 
   getKey() {
     return WorkspaceFilesSystem.getFileBasename(this.path);
