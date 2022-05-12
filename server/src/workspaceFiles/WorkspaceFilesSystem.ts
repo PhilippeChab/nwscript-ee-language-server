@@ -5,21 +5,21 @@ import { basename } from "path";
 import { FILES_EXTENSION } from ".";
 
 export default class WorkspaceFilesSystem {
-  static fileUriToPath = (uri: string) => {
+  static fileUriToPath(uri: string) {
     return fileURLToPath(uri);
-  };
+  }
 
-  static readFileSync = (filePath: string) => {
+  static readFileSync(filePath: string) {
     return readFileSync(filePath);
-  };
+  }
 
-  static readFileAsync = async (path: string) => {
+  static async readFileAsync(path: string) {
     return new Promise((resolve, reject) => {
       readFile(path, (error, data) => (error ? reject(error) : resolve(data)));
     });
-  };
+  }
 
-  static getFileBasename = (filePath: string) => {
+  static getFileBasename(filePath: string) {
     return basename(filePath, FILES_EXTENSION).slice(0, -1);
-  };
+  }
 }

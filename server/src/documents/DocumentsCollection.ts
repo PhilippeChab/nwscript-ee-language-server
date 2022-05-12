@@ -1,13 +1,30 @@
 import { each } from "async";
 
-import { connection, logger, workspaceFilesManager } from "../server";
+import { logger, workspaceFilesManager } from "../server";
 import { Tokenizer } from "../tokenizer";
 import { Dictionnary } from "../utils";
 import { WorkspaceFilesSystem } from "../workspaceFiles";
 import Document from "./Document";
 
 export default class DocumentsCollection extends Dictionnary<string, Document> {
-  initialize = async () => {
+  private debug() {
+    this.forEach((document) => {
+      logger.info("------------");
+      logger.info(`Document key: ${document.getKey()}`);
+      logger.info(`Document path: ${document.path}`);
+      logger.info(`Document children:`);
+      document.children.forEach((child, index) => logger.info(`${index}. ${child}`));
+      logger.info(`Document definitions:`);
+      document.definitions.globalItems.forEach((definition, index) => logger.info(`${index}. ${definition.label}`));
+      logger.info("------------");
+    });
+  }
+
+  private addDocument(document: Document) {
+    this.add(document.getKey(), document);
+  }
+
+  async initialize() {
     const filePaths = workspaceFilesManager.getAllFilePaths();
     const tokenizer = await new Tokenizer().loadGrammar();
 
@@ -27,25 +44,6 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       }
     });
 
-    this.debug();
-
     return this;
-  };
-
-  private addDocument = (document: Document) => {
-    this.add(document.getKey(), document);
-  };
-
-  private debug = () => {
-    this.forEach((document) => {
-      logger.info("------------");
-      logger.info(`Document key: ${document.getKey()}`);
-      logger.info(`Document path: ${document.path}`);
-      logger.info(`Document children:`);
-      document.children.forEach((child, index) => logger.info(`${index}. ${child}`));
-      logger.info(`Document definitions:`);
-      document.definitions.globalItems.forEach((definition, index) => logger.info(`${index}. ${definition.label}`));
-      logger.info("------------");
-    });
-  };
+  }
 }

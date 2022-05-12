@@ -34,8 +34,8 @@ let hasDiagnosticRelatedInformationCapability = false;
 connection.onInitialize(async (params: InitializeParams) => {
   const capabilities = params.capabilities;
 
-  workspaceFilesManager = new WorkspaceFilesManager(params.rootPath!);
   logger = new Logger(connection.console);
+  workspaceFilesManager = new WorkspaceFilesManager(params.rootPath!);
   completionItemsProvider = new CompletionItemsProvider(await new DocumentsCollection().initialize());
 
   // Does the client support the `workspace/configuration` request?

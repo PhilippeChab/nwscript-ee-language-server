@@ -1,18 +1,26 @@
-import { WorkspaceFilesSystem } from "../workspaceFiles";
+import { CompletionItem } from "vscode-languageserver";
+import { join } from "path";
 
+import { WorkspaceFilesSystem } from "../workspaceFiles";
 import type { DocumentsCollection } from "../documents";
 
 export default class CompletionItemsProvider {
-  constructor(private readonly documentsCollection: DocumentsCollection) {}
+  private readonly standardLibDefinitions: CompletionItem[] = [];
 
-  getGlobalCompletionItemsFromUri = (uri: string) => {
+  constructor(private readonly documentsCollection: DocumentsCollection) {
+    this.standardLibDefinitions = JSON.parse(
+      WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "standardLibDefinitions.json")).toString()
+    ).items as CompletionItem[];
+  }
+
+  getGlobalCompletionItemsFromUri(uri: string) {
     const path = WorkspaceFilesSystem.fileUriToPath(uri);
     const documentKey = WorkspaceFilesSystem.getFileBasename(path);
 
-    return this.documentsCollection.get(documentKey).getGlobalDefinitions();
-  };
+    return this.standardLibDefinitions.concat(this.documentsCollection.get(documentKey).getGlobalDefinitions());
+  }
 
-  getGlobalCompletionItemsFromDocumentKey = (documentKey: string, computedChildren: string[]) => {
+  getGlobalCompletionItemsFromDocumentKey(documentKey: string, computedChildren: string[]) {
     return this.documentsCollection.get(documentKey).getGlobalDefinitions(computedChildren);
-  };
+  }
 }

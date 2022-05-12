@@ -8,3 +8,4 @@ webpack.config.js
 **/tsconfig.json
 **/.eslintrc.json
 test/**
+server/resources/nwscript.nss

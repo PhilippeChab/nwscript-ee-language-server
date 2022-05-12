@@ -15,11 +15,11 @@ export default class Document {
     this.definitions = definitions;
   }
 
-  getKey = () => {
+  getKey() {
     return WorkspaceFilesSystem.getFileBasename(this.path);
-  };
+  }
 
-  getGlobalDefinitions = (computedChildren: string[] = []): CompletionItem[] => {
+  getGlobalDefinitions(computedChildren: string[] = []): CompletionItem[] {
     return this.definitions.globalItems.concat(
       this.children.flatMap((child) => {
         // Cycling children or/and duplicates
@@ -30,5 +30,5 @@ export default class Document {
         }
       })
     );
-  };
+  }
 }
