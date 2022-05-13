@@ -1,11 +1,12 @@
 import { join } from "path";
-import { Registry, parseRawGrammar, INITIAL, IGrammar, IToken } from "vscode-textmate";
+import { Registry, INITIAL, parseRawGrammar } from "vscode-textmate";
 import { loadWASM, OnigScanner, OnigString } from "vscode-oniguruma";
 import { CompletionItem, CompletionItemKind } from "vscode-languageserver";
+import type { IGrammar, IToken } from "vscode-textmate";
 
-import { WorkspaceFilesSystem } from "../workspaceFiles";
-import { Structure } from "../documents/Document";
-import { Position } from "vscode-languageserver-textdocument";
+import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
+import type { Structure } from "../Documents/Document";
+import type { Position } from "vscode-languageserver-textdocument";
 
 const wasmBin = WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "onig.wasm")).buffer;
 

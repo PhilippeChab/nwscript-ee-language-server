@@ -1,12 +1,13 @@
 import { each } from "async";
 
-import { logger, tokenizer, workspaceFilesManager } from "../server";
-import { Dictionnary } from "../utils";
-import { WorkspaceFilesSystem } from "../workspaceFiles";
+import type { Logger } from "../Logger";
+import type { Tokenizer } from "../Tokenizer";
+import { Dictionnary } from "../Utils";
+import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import Document from "./Document";
 
 export default class DocumentsCollection extends Dictionnary<string, Document> {
-  private debug() {
+  private debug(logger: Logger) {
     this.forEach((document) => {
       logger.info("------------");
       logger.info(`Document key: ${document.getKey()}`);
@@ -29,8 +30,8 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     this.add(document.getKey(), document);
   }
 
-  async initialize() {
-    const filePaths = workspaceFilesManager.getAllFilePaths();
+  async initialize(workspaceFilesSystem: WorkspaceFilesSystem, tokenizer: Tokenizer) {
+    const filePaths = workspaceFilesSystem.getAllFilePaths();
     await each(filePaths, async (filePath) => {
       const fileContent = WorkspaceFilesSystem.readFileSync(filePath).toString();
 

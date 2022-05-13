@@ -1,7 +1,6 @@
-import { CompletionItem } from "vscode-languageserver/node";
+import type { CompletionItem } from "vscode-languageserver/node";
 
-import { completionItemsProvider } from "../server";
-import { WorkspaceFilesSystem } from "../workspaceFiles";
+import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 
 type Definitions = { globalItems: CompletionItem[]; localItems: CompletionItem[] };
 export type Structure = { label: string; properties: Record<string, string> };
@@ -16,26 +15,5 @@ export default class Document {
 
   getKey() {
     return WorkspaceFilesSystem.getFileBasename(this.path);
-  }
-
-  getGlobalDefinitions(computedChildren: string[] = []): CompletionItem[] {
-    return this.definitions.globalItems.concat(
-      this.children.flatMap((child) => {
-        // Cycling children or/and duplicates
-        if (computedChildren.includes(child)) {
-          return [];
-        } else {
-          return completionItemsProvider.getGlobalCompletionItemsFromDocumentKey(child, computedChildren.concat(this.children));
-        }
-      })
-    );
-  }
-
-  getStructures(): Structure[] {
-    return this.structures.concat(
-      this.children.flatMap((child) => {
-        return completionItemsProvider.getStructuresFromDocumentKey(child);
-      })
-    );
   }
 }
