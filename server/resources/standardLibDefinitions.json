@@ -51,6 +51,16 @@
             "detail": "(constant) int NUM_INVENTORY_SLOTS = 18;"
         },
         {
+            "label": "TRUE",
+            "kind": 21,
+            "detail": "(constant) int TRUE  = 1;"
+        },
+        {
+            "label": "FALSE",
+            "kind": 21,
+            "detail": "(constant) int FALSE = 0;"
+        },
+        {
             "label": "DIRECTION_EAST",
             "kind": 21,
             "detail": "(constant) float DIRECTION_EAST  = 0.0;"
@@ -69,6 +79,11 @@
             "label": "DIRECTION_SOUTH",
             "kind": 21,
             "detail": "(constant) float DIRECTION_SOUTH = 270.0;"
+        },
+        {
+            "label": "PI",
+            "kind": 21,
+            "detail": "(constant) float PI\t\t\t  = 3.141592;"
         },
         {
             "label": "ATTITUDE_NEUTRAL",
@@ -35026,5 +35041,6 @@
             "detail": "(method) int Get2DARowCount(string s2DA);"
         }
     ],
-    "children": []
+    "children": [],
+    "structures": []
 }
