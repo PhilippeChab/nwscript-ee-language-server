@@ -1,4 +1,4 @@
-import type { Connection, TextDocumentIdentifier } from "vscode-languageserver";
+import type { Connection, Disposable, TextDocumentChangeEvent } from "vscode-languageserver";
 import { TextDocuments } from "vscode-languageserver";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
@@ -9,10 +9,12 @@ export default class DocumentManager {
     this.documents = new TextDocuments(TextDocument);
   }
 
-  public get(id: TextDocumentIdentifier | string) {
-    const docId = typeof id === "string" ? id : id.uri;
+  public onDidSave(cb: (e: TextDocumentChangeEvent<TextDocument>) => any, thisArgs?: any, disposables?: Disposable[]) {
+    this.documents.onDidSave(cb);
+  }
 
-    return this.documents.get(docId);
+  public get(uri: string) {
+    return this.documents.get(uri);
   }
 
   public listen(connection: Connection) {

@@ -32,11 +32,12 @@ export default class ServerManger {
     this.documentsCollection = await new DocumentsCollection().initialize(this.workspaceFilesSystem, this.tokenizer);
 
     this.registerInitializeProviders();
+    this.registerLiveDocumentsEvents();
 
     return this;
   }
 
-  get capabilities(): InitializeResult {
+  public get capabilities(): InitializeResult {
     return {
       capabilities: {
         textDocumentSync: TextDocumentSyncKind.Incremental,
@@ -60,5 +61,13 @@ export default class ServerManger {
     if (this.tokenizer && this.documentsCollection) {
       CompletionItemsProvider.register(this);
     }
+  }
+
+  private registerLiveDocumentsEvents() {
+    this.liveDocumentsManager.onDidSave((event) => {
+      if (this.tokenizer) {
+        this.documentsCollection?.updateDocument(event.document.uri, this.tokenizer);
+      }
+    });
   }
 }

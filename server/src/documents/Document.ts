@@ -13,7 +13,7 @@ export default class Document {
     readonly definitions: Definitions
   ) {}
 
-  getKey() {
+  public getKey() {
     return WorkspaceFilesSystem.getFileBasename(this.path);
   }
 }

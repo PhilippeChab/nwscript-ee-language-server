@@ -70,7 +70,7 @@ export default class Tokenizer {
     return this;
   }
 
-  tokenizeLines(lines: string[], startIndex: number = 0, stopIndex: number = -1) {
+  public tokenizeLines(lines: string[], startIndex: number = 0, stopIndex: number = -1) {
     let ruleStack = INITIAL;
     const tokensLines: Token[][] = [];
     const lastIndex = stopIndex > lines.length || stopIndex === -1 ? lines.length : stopIndex;
@@ -94,11 +94,11 @@ export default class Tokenizer {
     return tokensLines;
   }
 
-  tokenizeContent(content: string, startIndex: number = 0, stopIndex: number = -1) {
+  public tokenizeContent(content: string, startIndex: number = 0, stopIndex: number = -1) {
     return this.tokenizeLines(content.split(/\r?\n/), startIndex, stopIndex);
   }
 
-  retrieveGlobalDefinitions(content: string) {
+  public retrieveGlobalDefinitions(content: string) {
     const tokens: Token[][] = this.tokenizeContent(content);
     const definitions: { items: CompletionItem[]; children: string[]; structures: Structure[] } = {
       items: [],
@@ -180,7 +180,7 @@ export default class Tokenizer {
     return definitions;
   }
 
-  retrieveStructLabel(content: string, position: Position) {
+  public retrieveStructLabel(content: string, position: Position) {
     const lines = content.split(/\r?\n/);
 
     const variableLine = lines[position.line];

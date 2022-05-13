@@ -6,18 +6,24 @@ export default class Dictionnary<K extends string, V> {
   }
 
   protected add(key: K, value: V) {
+    if (!this.exist(key)) {
+      this._dict[key] = value;
+    }
+  }
+
+  protected overwrite(key: K, value: V) {
     this._dict[key] = value;
   }
 
-  get(key: K) {
+  public get(key: K) {
     return this._dict[key];
   }
 
-  exist(key: K) {
+  public exist(key: K) {
     return Boolean(this._dict[key]);
   }
 
-  forEach(cb: (value: V) => void) {
+  public forEach(cb: (value: V) => void) {
     Object.values<V>(this._dict).forEach((value) => cb(value));
   }
 }

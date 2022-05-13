@@ -1,7 +1,7 @@
 import { ServerManager } from "../ServerManager";
 
 export default class Provider {
-  static register(server: ServerManager) {
+  public static register(server: ServerManager) {
     return new this(server);
   }
 

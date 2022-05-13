@@ -75,13 +75,13 @@ export default class CompletionItemsProvider extends Provider {
     const path = WorkspaceFilesSystem.fileUriToPath(uri);
     const documentKey = WorkspaceFilesSystem.getFileBasename(path);
     const document = this.server.documentsCollection?.get(documentKey);
-    const content = WorkspaceFilesSystem.readFileSync(path).toString();
+    const liveDocument = this.server.liveDocumentsManager.get(uri);
 
-    if (!document) {
+    if (!document || !liveDocument) {
       return [];
     }
 
-    const structLabel = this.server.tokenizer?.retrieveStructLabel(content, position);
+    const structLabel = this.server.tokenizer?.retrieveStructLabel(liveDocument.getText(), position);
     return Object.entries(
       document.structures
         .concat(document.children.flatMap((child) => this.getStructuresFromDocumentKey(child)))

@@ -1,4 +1,5 @@
 import { each } from "async";
+import { fileURLToPath } from "url";
 
 import type { Logger } from "../Logger";
 import type { Tokenizer } from "../Tokenizer";
@@ -30,24 +31,32 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     this.add(document.getKey(), document);
   }
 
+  private overwriteDocument(document: Document) {
+    this.overwrite(document.getKey(), document);
+  }
+
+  private initializeDocument(filePath: string, tokenizer: Tokenizer) {
+    const fileContent = WorkspaceFilesSystem.readFileSync(filePath).toString();
+
+    const globalDefinitions = tokenizer.retrieveGlobalDefinitions(fileContent);
+
+    return new Document(filePath, globalDefinitions.children, globalDefinitions.structures, {
+      globalItems: globalDefinitions.items,
+      localItems: [],
+    });
+  }
+
   async initialize(workspaceFilesSystem: WorkspaceFilesSystem, tokenizer: Tokenizer) {
     const filePaths = workspaceFilesSystem.getAllFilePaths();
-    await each(filePaths, async (filePath) => {
-      const fileContent = WorkspaceFilesSystem.readFileSync(filePath).toString();
-
-      const globalDefinitions = tokenizer.retrieveGlobalDefinitions(fileContent);
-
-      const document = new Document(filePath, globalDefinitions.children, globalDefinitions.structures, {
-        globalItems: globalDefinitions.items,
-        localItems: [],
-      });
-
-      // Skipping duplicates, too bad for ya! :D
-      if (!this.exist(document.getKey())) {
-        this.addDocument(document);
-      }
+    filePaths.forEach((filePath) => {
+      this.addDocument(this.initializeDocument(filePath, tokenizer));
     });
 
     return this;
+  }
+
+  public updateDocument(uri: string, tokenizer: Tokenizer) {
+    const filePath = WorkspaceFilesSystem.fileUriToPath(uri);
+    this.overwriteDocument(this.initializeDocument(filePath, tokenizer));
   }
 }
