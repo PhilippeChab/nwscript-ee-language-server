@@ -23,4 +23,8 @@ export default class CompletionItemsProvider {
   getGlobalCompletionItemsFromDocumentKey(documentKey: string, computedChildren: string[]) {
     return this.documentsCollection.get(documentKey).getGlobalDefinitions(computedChildren);
   }
+
+  getLocalCompletionItems(uri: string) {
+    const path = WorkspaceFilesSystem.fileUriToPath(uri);
+  }
 }

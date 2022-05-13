@@ -159,7 +159,7 @@ export default class Tokenizer {
           token.meta.scopes.includes(STRUCT_SCOPE) &&
           (lastToken.meta.scopes.includes(STRUCT_SCOPE) || lastToken.meta.scopes.includes(BLOCK_DECLARACTION_SCOPE))
         ) {
-          currentStruct = { name: tokensLine[0].content.split(" ")[1], properties: {} };
+          currentStruct = { name: tokensLine[2].content, properties: {} };
           break;
         }
       }

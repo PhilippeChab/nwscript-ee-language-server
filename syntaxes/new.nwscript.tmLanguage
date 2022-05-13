@@ -3743,8 +3743,19 @@ U[a-fA-F0-9]{,8} )</string>
           <dict>
             <key>match</key>
             <string>\b(struct)\b \b([a-zA-Z_][a-zA-Z0-9_]*\b(?!\s*\())</string>
-            <key>name</key>
-            <string>storage.type.struct-defined.nss</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.built-in.nss</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.struct-defined.nss</string>
+              </dict>
+            </dict>
           </dict>
         </array>
       </dict>
