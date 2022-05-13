@@ -4,7 +4,7 @@ import { completionItemsProvider } from "../server";
 import { WorkspaceFilesSystem } from "../workspaceFiles";
 
 type Definitions = { globalItems: CompletionItem[]; localItems: CompletionItem[] };
-export type Structure = { name: string; properties: Record<string, string> };
+export type Structure = { label: string; properties: Record<string, string> };
 
 export default class Document {
   constructor(
@@ -27,6 +27,14 @@ export default class Document {
         } else {
           return completionItemsProvider.getGlobalCompletionItemsFromDocumentKey(child, computedChildren.concat(this.children));
         }
+      })
+    );
+  }
+
+  getStructures(): Structure[] {
+    return this.structures.concat(
+      this.children.flatMap((child) => {
+        return completionItemsProvider.getStructuresFromDocumentKey(child);
       })
     );
   }

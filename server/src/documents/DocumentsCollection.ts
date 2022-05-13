@@ -1,7 +1,6 @@
 import { each } from "async";
 
-import { logger, workspaceFilesManager } from "../server";
-import { Tokenizer } from "../tokenizer";
+import { logger, tokenizer, workspaceFilesManager } from "../server";
 import { Dictionnary } from "../utils";
 import { WorkspaceFilesSystem } from "../workspaceFiles";
 import Document from "./Document";
@@ -17,7 +16,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       logger.info(`Document structures:`);
       document.structures.forEach((child, index) =>
         logger.info(
-          `${index}. ${child.name}: ${Object.entries(child.properties).map((property) => `(${property[1]}) ${property[0]}`)}`
+          `${index}. ${child.label}: ${Object.entries(child.properties).map((property) => `(${property[1]}) ${property[0]}`)}`
         )
       );
       logger.info(`Document definitions:`);
@@ -32,8 +31,6 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
 
   async initialize() {
     const filePaths = workspaceFilesManager.getAllFilePaths();
-    const tokenizer = await new Tokenizer().loadGrammar();
-
     await each(filePaths, async (filePath) => {
       const fileContent = WorkspaceFilesSystem.readFileSync(filePath).toString();
 

@@ -5,6 +5,7 @@ import { CompletionItem, CompletionItemKind } from "vscode-languageserver";
 
 import { WorkspaceFilesSystem } from "../workspaceFiles";
 import { Structure } from "../documents/Document";
+import { Position } from "vscode-languageserver-textdocument";
 
 const wasmBin = WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "onig.wasm")).buffer;
 
@@ -68,22 +69,32 @@ export default class Tokenizer {
     return this;
   }
 
-  tokenizeContent(content: string) {
+  tokenizeLines(lines: string[], startIndex: number = 0, stopIndex: number = -1) {
     let ruleStack = INITIAL;
-    let lines = content.split(/\r?\n/);
+    const tokensLines: Token[][] = [];
+    const lastIndex = stopIndex > lines.length || stopIndex === -1 ? lines.length : stopIndex;
 
-    return lines.map((line) => {
+    for (let currentIndex = startIndex; currentIndex < lastIndex; currentIndex++) {
+      const line = lines[currentIndex];
       const lineTokens = this.grammar?.tokenizeLine(line, ruleStack);
 
       if (lineTokens) {
         ruleStack = lineTokens.ruleStack;
-        return lineTokens.tokens.map((token) => {
-          return { meta: token, content: line.substring(token.startIndex, token.endIndex) };
-        });
+        tokensLines.push(
+          lineTokens.tokens.map((token) => {
+            return { meta: token, content: line.substring(token.startIndex, token.endIndex) };
+          })
+        );
       } else {
-        return [];
+        tokensLines.push([]);
       }
-    });
+    }
+
+    return tokensLines;
+  }
+
+  tokenizeContent(content: string, startIndex: number = 0, stopIndex: number = -1) {
+    return this.tokenizeLines(content.split(/\r?\n/), startIndex, stopIndex);
   }
 
   retrieveGlobalDefinitions(content: string) {
@@ -159,12 +170,38 @@ export default class Tokenizer {
           token.meta.scopes.includes(STRUCT_SCOPE) &&
           (lastToken.meta.scopes.includes(STRUCT_SCOPE) || lastToken.meta.scopes.includes(BLOCK_DECLARACTION_SCOPE))
         ) {
-          currentStruct = { name: tokensLine[2].content, properties: {} };
+          currentStruct = { label: tokensLine[2].content, properties: {} };
           break;
         }
       }
     });
 
     return definitions;
+  }
+
+  retrieveStructLabel(content: string, position: Position) {
+    const lines = content.split(/\r?\n/);
+
+    const variableLine = lines[position.line];
+    const variable = variableLine
+      .slice(0, position.character - 1)
+      .split(" ")
+      .at(-1)
+      ?.trim();
+
+    let label;
+    const tokensLines = this.tokenizeLines(lines, 0, position.line);
+
+    for (let currentIndex = position.line - 1; currentIndex > 0; currentIndex--) {
+      const tokens = tokensLines[currentIndex];
+      const variableTypeTokenIndex = tokens.findIndex((token) => token.meta.scopes.includes(STRUCT_SCOPE));
+
+      if (variableTypeTokenIndex !== -1 && tokens[variableTypeTokenIndex + 2].content === variable) {
+        label = tokens[variableTypeTokenIndex].content;
+        break;
+      }
+    }
+
+    return label;
   }
 }

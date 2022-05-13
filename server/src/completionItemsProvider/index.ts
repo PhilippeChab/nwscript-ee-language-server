@@ -1,3 +1,7 @@
 import CompletionItemsProvider from "./CompletionItemsProvider";
 
-export { CompletionItemsProvider };
+enum TriggerCharacters {
+  dot = ".",
+}
+
+export { CompletionItemsProvider, TriggerCharacters };
