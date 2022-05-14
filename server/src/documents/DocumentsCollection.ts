@@ -3,30 +3,12 @@ import { fileURLToPath } from "url";
 
 import type { Logger } from "../Logger";
 import type { Tokenizer } from "../Tokenizer";
+import { TokenizeScope } from "../tokenizer/Tokenizer";
 import { Dictionnary } from "../Utils";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import Document from "./Document";
 
 export default class DocumentsCollection extends Dictionnary<string, Document> {
-  private debug(logger: Logger) {
-    this.forEach((document) => {
-      logger.info("------------");
-      logger.info(`Document key: ${document.getKey()}`);
-      logger.info(`Document path: ${document.path}`);
-      logger.info(`Document children:`);
-      document.children.forEach((child, index) => logger.info(`${index}. ${child}`));
-      logger.info(`Document structures:`);
-      document.structures.forEach((child, index) =>
-        logger.info(
-          `${index}. ${child.type}: ${Object.entries(child.properties).map((property) => `(${property[1]}) ${property[0]}`)}`
-        )
-      );
-      logger.info(`Document definitions:`);
-      document.definitions.globalItems.forEach((definition, index) => logger.info(`${index}. ${definition.label}`));
-      logger.info("------------");
-    });
-  }
-
   private addDocument(document: Document) {
     this.add(document.getKey(), document);
   }
@@ -38,12 +20,9 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
   private initializeDocument(filePath: string, tokenizer: Tokenizer) {
     const fileContent = WorkspaceFilesSystem.readFileSync(filePath).toString();
 
-    const globalDefinitions = tokenizer.retrieveGlobalDefinitions(fileContent);
+    const globalScope = tokenizer.tokenizeContent(fileContent, TokenizeScope.global);
 
-    return new Document(filePath, globalDefinitions.children, globalDefinitions.structures, {
-      globalItems: globalDefinitions.items,
-      localItems: [],
-    });
+    return new Document(filePath, globalScope.children, globalScope.complexTokens, globalScope.structComplexTokens);
   }
 
   async initialize(workspaceFilesSystem: WorkspaceFilesSystem, tokenizer: Tokenizer) {

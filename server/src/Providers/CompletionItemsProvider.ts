@@ -3,34 +3,42 @@ import { Position } from "vscode-languageserver-textdocument";
 import { join } from "path";
 
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
-import { TriggerCharacters } from ".";
 import { ServerManager } from "../ServerManager";
 
 import Provider from "./Provider";
-import { Structure } from "../Documents/Document";
+import { ComplexToken, StructComplexToken } from "../tokenizer/types";
+import { CompletionItemBuilder } from "./Builders/CompletionItemBuilder";
+import { TokenizedScope } from "../tokenizer/Tokenizer";
 
 export default class CompletionItemsProvider extends Provider {
-  private readonly standardLibDefinitions: CompletionItem[] = [];
+  private readonly standardLibDefinitions: ComplexToken[] = [];
 
   constructor(server: ServerManager) {
     super(server);
 
     this.standardLibDefinitions = JSON.parse(
       WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "standardLibDefinitions.json")).toString()
-    ).items as CompletionItem[];
+    ).items as ComplexToken[];
 
     this.server.connection.onCompletion((params) => {
+      const liveDocument = this.server.liveDocumentsManager.get(params.textDocument.uri);
       const path = WorkspaceFilesSystem.fileUriToPath(params.textDocument.uri);
       const documentKey = WorkspaceFilesSystem.getFileBasename(path);
-      if (params.context?.triggerCharacter === TriggerCharacters.dot) {
-        return this.getStructureProperties(params.textDocument.uri, params.position);
+
+      if (liveDocument) {
+        const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local);
+        // if (params.context?.triggerCharacter === TriggerCharacters.dot) {
+        //   return this.getStructureProperties(params.textDocument.uri, params.position);
+        // }
+
+        if (localScope?.structTypeLineCandidates.includes(params.position.line)) {
+          return this.getStructTypes(documentKey);
+        }
       }
 
-      if (this.isStructureCandidate(params.textDocument.uri, params.position)) {
-        return this.getStructureTypes(documentKey);
-      }
-
-      return this.standardLibDefinitions.concat(this.getGlobalCompletionItems(documentKey));
+      return this.standardLibDefinitions
+        .concat(this.getGlobalComplexTokens(documentKey))
+        .map((token) => CompletionItemBuilder.buildItem(token));
     });
 
     this.server.connection.onCompletionResolve((item: CompletionItem) => {
@@ -38,11 +46,11 @@ export default class CompletionItemsProvider extends Provider {
     });
   }
 
-  private getGlobalCompletionItems(documentKey: string, computedChildren: string[] = []): CompletionItem[] {
+  private getGlobalComplexTokens(documentKey: string, computedChildren: string[] = []): ComplexToken[] {
     const document = this.server.documentsCollection?.get(documentKey);
 
     if (document) {
-      return document.definitions.globalItems.concat(
+      return document.complexTokens.concat(
         document.children.flatMap((child) => {
           // Cycling children or/and duplicates
           if (computedChildren.includes(child)) {
@@ -51,7 +59,28 @@ export default class CompletionItemsProvider extends Provider {
             computedChildren.push(child);
           }
 
-          return this.getGlobalCompletionItems(child, computedChildren);
+          return this.getGlobalComplexTokens(child, computedChildren);
+        })
+      );
+    }
+
+    return [];
+  }
+
+  private getGlobalStructComplexTokens(documentKey: string, computedChildren: string[] = []): StructComplexToken[] {
+    const document = this.server.documentsCollection?.get(documentKey);
+
+    if (document) {
+      return document.structComplexTokens.concat(
+        document.children.flatMap((child) => {
+          // Cycling children or/and duplicates
+          if (computedChildren.includes(child)) {
+            return [];
+          } else {
+            computedChildren.push(child);
+          }
+
+          return this.getGlobalStructComplexTokens(child, computedChildren);
         })
       );
     }
@@ -65,61 +94,17 @@ export default class CompletionItemsProvider extends Provider {
     const document = this.server.documentsCollection?.get(documentKey);
     const liveDocument = this.server.liveDocumentsManager.get(uri);
 
-    if (document && liveDocument) {
-      const structType = this.server.tokenizer?.retrieveStructType(liveDocument.getText(), position);
-      const structureCandidates = this.getStructures(documentKey);
-      const properties = structureCandidates.find((struct) => struct.type === structType)?.properties || {};
-      return Object.entries(properties).map((property) => {
-        return {
-          label: property[0],
-          kind: CompletionItemKind.Property,
-          detail: `(property) ${property[1]} ${property[0]};`,
-        };
-      });
-    }
+    // if (document && liveDocument) {
+    //   const structType = this.server.tokenizer?.retrieveStructType(liveDocument.getText(), position);
+    //   const structureCandidates = this.getStructures(documentKey);
+    //   const properties = structureCandidates.find((struct) => struct.data.identifier === structType)?.data.properties || [];
+    //   return properties.map((property) => CompletionItemBuilder.buildItem(property));
+    // }
 
     return [];
   }
 
-  private getStructureTypes(documentKey: string) {
-    return this.getStructures(documentKey).map((structure) => {
-      return {
-        label: structure.type,
-        kind: CompletionItemKind.Struct,
-        defail: `(struct) ${structure.type}`,
-      };
-    });
-  }
-
-  private getStructures(documentKey: string, computedChildren: string[] = []): Structure[] {
-    const document = this.server.documentsCollection?.get(documentKey);
-
-    if (document) {
-      return document.structures.concat(
-        document.children.flatMap((child) => {
-          // Cycling children or/and duplicates
-          if (computedChildren.includes(child)) {
-            return [];
-          } else {
-            computedChildren.push(child);
-          }
-
-          return this.getStructures(child, computedChildren);
-        })
-      );
-    }
-
-    return [];
-  }
-
-  private isStructureCandidate(uri: string, position: Position) {
-    const liveDocument = this.server.liveDocumentsManager.get(uri);
-
-    if (liveDocument) {
-      const content = liveDocument.getText();
-      return this.server.tokenizer?.isStructureCandidate(content, position);
-    }
-
-    return false;
+  private getStructTypes(documentKey: string) {
+    return this.getGlobalStructComplexTokens(documentKey).map((token) => CompletionItemBuilder.buildStructTypeItem(token));
   }
 }
