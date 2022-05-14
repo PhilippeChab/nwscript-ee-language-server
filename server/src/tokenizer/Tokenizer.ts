@@ -7,6 +7,7 @@ import type { IGrammar, IToken } from "vscode-textmate";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import type { Structure } from "../Documents/Document";
 import type { Position } from "vscode-languageserver-textdocument";
+import { Logger } from "../Logger";
 
 const wasmBin = WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "onig.wasm")).buffer;
 
@@ -20,6 +21,10 @@ const vscodeOnigurumaLib = loadWASM(wasmBin).then(() => {
     },
   };
 });
+
+enum Types {
+  struct = "struct",
+}
 
 type Token = { meta: IToken; content: string };
 
@@ -41,7 +46,7 @@ export default class Tokenizer {
   private readonly registry: Registry;
   private grammar: IGrammar | null = null;
 
-  constructor() {
+  constructor(private readonly logger: Logger | null = null) {
     this.registry = new Registry({
       onigLib: vscodeOnigurumaLib,
       loadGrammar: (scopeName) => {
@@ -64,13 +69,11 @@ export default class Tokenizer {
     }, "");
   }
 
-  async loadGrammar() {
-    this.grammar = await this.registry.loadGrammar("source.nss");
-
-    return this;
+  private tokenizeLine(lines: string[], line: number) {
+    return this.tokenizeLines(lines, line, line + 1)[0];
   }
 
-  public tokenizeLines(lines: string[], startIndex: number = 0, stopIndex: number = -1) {
+  private tokenizeLines(lines: string[], startIndex: number = 0, stopIndex: number = -1) {
     let ruleStack = INITIAL;
     const tokensLines: Token[][] = [];
     const lastIndex = stopIndex > lines.length || stopIndex === -1 ? lines.length : stopIndex;
@@ -171,7 +174,7 @@ export default class Tokenizer {
           token.meta.scopes.includes(STRUCT_SCOPE) &&
           (lastToken.meta.scopes.includes(STRUCT_SCOPE) || lastToken.meta.scopes.includes(BLOCK_DECLARACTION_SCOPE))
         ) {
-          currentStruct = { label: tokensLine[2].content, properties: {} };
+          currentStruct = { type: tokensLine[2].content, properties: {} };
           break;
         }
       }
@@ -180,7 +183,7 @@ export default class Tokenizer {
     return definitions;
   }
 
-  public retrieveStructLabel(content: string, position: Position) {
+  public retrieveStructType(content: string, position: Position) {
     const lines = content.split(/\r?\n/);
 
     const variableLine = lines[position.line];
@@ -204,5 +207,19 @@ export default class Tokenizer {
     }
 
     return label;
+  }
+
+  public isStructureCandidate(content: string, position: Position) {
+    const lines = content.split(/\r?\n/);
+    const tokensLine = this.tokenizeLine(lines, position.line);
+    const currentTokenPosition = tokensLine.findIndex((token) => token.meta.endIndex === position.character);
+
+    return currentTokenPosition >= 2 ? tokensLine[currentTokenPosition - 2].content === Types.struct : false;
+  }
+
+  public async loadGrammar() {
+    this.grammar = await this.registry.loadGrammar("source.nss");
+
+    return this;
   }
 }

@@ -1,6 +1,6 @@
 import { writeFileSync, readFileSync } from "fs";
 import { normalize } from "path";
-import { Tokenizer } from "../src/tokenizer";
+import { Tokenizer } from "../src/Tokenizer";
 
 const loadGrammar = async () => {
   const tokenizer = await new Tokenizer().loadGrammar();

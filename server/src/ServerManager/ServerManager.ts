@@ -28,7 +28,7 @@ export default class ServerManger {
    * Initialize should be run during the initialization phase of the client connection
    */
   public async initialize() {
-    this.tokenizer = await new Tokenizer().loadGrammar();
+    this.tokenizer = await new Tokenizer(this.logger).loadGrammar();
     this.documentsCollection = await new DocumentsCollection().initialize(this.workspaceFilesSystem, this.tokenizer);
 
     this.registerInitializeProviders();

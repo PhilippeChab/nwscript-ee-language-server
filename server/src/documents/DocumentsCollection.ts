@@ -18,7 +18,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       logger.info(`Document structures:`);
       document.structures.forEach((child, index) =>
         logger.info(
-          `${index}. ${child.label}: ${Object.entries(child.properties).map((property) => `(${property[1]}) ${property[0]}`)}`
+          `${index}. ${child.type}: ${Object.entries(child.properties).map((property) => `(${property[1]}) ${property[0]}`)}`
         )
       );
       logger.info(`Document definitions:`);
