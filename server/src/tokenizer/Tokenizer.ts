@@ -29,6 +29,7 @@ import type {
   StructComplexToken,
   VariableComplexToken,
 } from "./types";
+import { Position } from "vscode-languageserver-textdocument";
 
 const wasmBin = WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "onig.wasm")).buffer;
 
@@ -343,6 +344,23 @@ export default class Tokenizer {
     } else {
       return this.tokenizeLinesForLocalScope(content.split(/\r?\n/), startIndex, stopIndex);
     }
+  }
+
+  public findActionTargetIdentifier(content: string, position: Position) {
+    let ruleStack = INITIAL;
+
+    const lines = content.split(/\r?\n/);
+    const line = lines[position.line];
+    const tokensArray = this.grammar?.tokenizeLine(line, ruleStack)?.tokens;
+
+    if (tokensArray) {
+      return this.getRawTokenContent(
+        line,
+        tokensArray.find((token) => token.startIndex <= position.character && token.endIndex >= position.character)!
+      );
+    }
+
+    return undefined;
   }
 
   public async loadGrammar() {

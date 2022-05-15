@@ -5,10 +5,11 @@ import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { ServerManager } from "../ServerManager";
 
 import Provider from "./Provider";
-import { ComplexToken, StructComplexToken } from "../Tokenizer/types";
+import { ComplexToken } from "../Tokenizer/types";
 import { CompletionItemBuilder } from "./Builders/CompletionItemBuilder";
 import { LocalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Tokenizer";
 import { TriggerCharacters } from ".";
+import { Document } from "../Documents";
 
 export default class CompletionItemsProvider extends Provider {
   private readonly standardLibDefinitions: ComplexToken[] = [];
@@ -29,16 +30,19 @@ export default class CompletionItemsProvider extends Provider {
       const liveDocument = this.server.liveDocumentsManager.get(uri);
       const path = WorkspaceFilesSystem.fileUriToPath(uri);
       const documentKey = WorkspaceFilesSystem.getFileBasename(path);
+      const document = this.server.documentsCollection?.get(documentKey);
 
-      if (liveDocument) {
-        const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, line);
+      if (document) {
+        if (liveDocument) {
+          const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, line);
 
-        if (localScope) {
-          return this.getLocalScopeCompletionItems(params, documentKey, localScope);
+          if (localScope) {
+            return this.getLocalScopeCompletionItems(params, document, localScope);
+          }
         }
-      }
 
-      return this.getGlobalScopeCompletionItems(documentKey);
+        return this.getGlobalScopeCompletionItems(document);
+      }
     });
 
     this.server.connection.onCompletionResolve((item: CompletionItem) => {
@@ -46,55 +50,13 @@ export default class CompletionItemsProvider extends Provider {
     });
   }
 
-  private getGlobalComplexTokens(documentKey: string, computedChildren: string[] = []): ComplexToken[] {
-    const document = this.server.documentsCollection?.get(documentKey);
-
-    if (document) {
-      return document.complexTokens.concat(
-        document.children.flatMap((child) => {
-          // Cycling children or/and duplicates
-          if (computedChildren.includes(child)) {
-            return [];
-          } else {
-            computedChildren.push(child);
-          }
-
-          return this.getGlobalComplexTokens(child, computedChildren);
-        })
-      );
-    }
-
-    return [];
-  }
-
-  private getGlobalStructComplexTokens(documentKey: string, computedChildren: string[] = []): StructComplexToken[] {
-    const document = this.server.documentsCollection?.get(documentKey);
-
-    if (document) {
-      return document.structComplexTokens.concat(
-        document.children.flatMap((child) => {
-          // Cycling children or/and duplicates
-          if (computedChildren.includes(child)) {
-            return [];
-          } else {
-            computedChildren.push(child);
-          }
-
-          return this.getGlobalStructComplexTokens(child, computedChildren);
-        })
-      );
-    }
-
-    return [];
-  }
-
-  private getGlobalScopeCompletionItems(documentKey: string) {
+  private getGlobalScopeCompletionItems(document: Document) {
     return this.standardLibDefinitions
-      .concat(this.getGlobalComplexTokens(documentKey))
+      .concat(document.getGlobalComplexTokens())
       .map((token) => CompletionItemBuilder.buildItem(token));
   }
 
-  private getLocalScopeCompletionItems(params: CompletionParams, documentKey: string, localScope: LocalScopeTokenizationResult) {
+  private getLocalScopeCompletionItems(params: CompletionParams, document: Document, localScope: LocalScopeTokenizationResult) {
     const {
       context,
       position: { line },
@@ -106,7 +68,8 @@ export default class CompletionItemsProvider extends Provider {
         (token) => token.data.identifier === localScope.structPropertiesCandidate
       )?.data.valueType;
 
-      return this.getGlobalStructComplexTokens(documentKey)
+      return document
+        .getGlobalStructComplexTokens()
         .find((token) => token.data.identifier === structIdentifer)
         ?.data.properties.map((property) => {
           return CompletionItemBuilder.buildStructPropertyItem(property);
@@ -114,17 +77,14 @@ export default class CompletionItemsProvider extends Provider {
     }
 
     if (localScope.structIdentifiersLineCandidate === line) {
-      return this.getGlobalStructComplexTokens(documentKey).map((token) =>
-        CompletionItemBuilder.buildStructIdentifierItem(token)
-      );
+      return document.getGlobalStructComplexTokens().map((token) => CompletionItemBuilder.buildStructIdentifierItem(token));
     }
 
     const functionVariablesCompletionItems = localScope.functionVariablesComplexTokens.map((token) =>
       CompletionItemBuilder.buildItem(token)
     );
     const functionsCompletionItems = localScope.functionsComplexTokens.map((token) => CompletionItemBuilder.buildItem(token));
-    return functionVariablesCompletionItems
-      .concat(functionsCompletionItems)
-      .concat(this.getGlobalScopeCompletionItems(documentKey));
+
+    return functionVariablesCompletionItems.concat(functionsCompletionItems).concat(this.getGlobalScopeCompletionItems(document));
   }
 }

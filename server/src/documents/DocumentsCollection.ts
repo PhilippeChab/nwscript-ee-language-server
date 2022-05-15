@@ -18,7 +18,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
 
     const globalScope = tokenizer.tokenizeContent(fileContent, TokenizedScope.global);
 
-    return new Document(filePath, globalScope.children, globalScope.complexTokens, globalScope.structComplexTokens);
+    return new Document(filePath, globalScope.children, globalScope.complexTokens, globalScope.structComplexTokens, this);
   }
 
   async initialize(workspaceFilesSystem: WorkspaceFilesSystem, tokenizer: Tokenizer) {

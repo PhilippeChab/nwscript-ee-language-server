@@ -2,7 +2,7 @@ import type { Connection, InitializeParams, InitializeResult } from "vscode-lang
 import { TextDocumentSyncKind } from "vscode-languageserver";
 
 import { DocumentsCollection, LiveDocumentsManager } from "../Documents";
-import { CompletionItemsProvider, TriggerCharacters } from "../Providers";
+import { CompletionItemsProvider, GotoDefinitionProvider, TriggerCharacters } from "../Providers";
 import { Tokenizer } from "../Tokenizer";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { Logger } from "../Logger";
@@ -45,6 +45,7 @@ export default class ServerManger {
           resolveProvider: true,
           triggerCharacters: [TriggerCharacters.dot],
         },
+        definitionProvider: true,
       },
     };
   }
@@ -60,6 +61,7 @@ export default class ServerManger {
   private registerInitializeProviders() {
     if (this.tokenizer && this.documentsCollection) {
       CompletionItemsProvider.register(this);
+      GotoDefinitionProvider.register(this);
     }
   }
 
