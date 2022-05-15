@@ -1,5 +1,4 @@
-import { CompletionItem, CompletionItemKind, CompletionParams } from "vscode-languageserver";
-import { Position } from "vscode-languageserver-textdocument";
+import { CompletionItem, CompletionParams } from "vscode-languageserver";
 import { join } from "path";
 
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
@@ -19,7 +18,7 @@ export default class CompletionItemsProvider extends Provider {
 
     this.standardLibDefinitions = JSON.parse(
       WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "standardLibDefinitions.json")).toString()
-    ).items as ComplexToken[];
+    ).complexTokens as ComplexToken[];
 
     this.server.connection.onCompletion((params) => {
       const {
@@ -101,6 +100,7 @@ export default class CompletionItemsProvider extends Provider {
       position: { line },
     } = params;
 
+    console.log(JSON.stringify(localScope, null, 2));
     if (context?.triggerCharacter === TriggerCharacters.dot) {
       const structIdentifer = localScope.functionVariablesComplexTokens.find(
         (token) => token.data.identifier === localScope.structPropertiesCandidate
