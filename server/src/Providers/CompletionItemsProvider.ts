@@ -1,4 +1,4 @@
-import { CompletionItem, CompletionItemKind } from "vscode-languageserver";
+import { CompletionItem, CompletionItemKind, CompletionParams } from "vscode-languageserver";
 import { Position } from "vscode-languageserver-textdocument";
 import { join } from "path";
 
@@ -6,9 +6,10 @@ import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { ServerManager } from "../ServerManager";
 
 import Provider from "./Provider";
-import { ComplexToken, StructComplexToken } from "../tokenizer/types";
+import { ComplexToken, StructComplexToken } from "../Tokenizer/types";
 import { CompletionItemBuilder } from "./Builders/CompletionItemBuilder";
-import { TokenizedScope } from "../tokenizer/Tokenizer";
+import { LocalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Tokenizer";
+import { TriggerCharacters } from ".";
 
 export default class CompletionItemsProvider extends Provider {
   private readonly standardLibDefinitions: ComplexToken[] = [];
@@ -21,24 +22,24 @@ export default class CompletionItemsProvider extends Provider {
     ).items as ComplexToken[];
 
     this.server.connection.onCompletion((params) => {
-      const liveDocument = this.server.liveDocumentsManager.get(params.textDocument.uri);
-      const path = WorkspaceFilesSystem.fileUriToPath(params.textDocument.uri);
+      const {
+        textDocument: { uri },
+        position: { line },
+      } = params;
+
+      const liveDocument = this.server.liveDocumentsManager.get(uri);
+      const path = WorkspaceFilesSystem.fileUriToPath(uri);
       const documentKey = WorkspaceFilesSystem.getFileBasename(path);
 
       if (liveDocument) {
-        const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local);
-        // if (params.context?.triggerCharacter === TriggerCharacters.dot) {
-        //   return this.getStructureProperties(params.textDocument.uri, params.position);
-        // }
+        const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, line);
 
-        if (localScope?.structTypeLineCandidates.includes(params.position.line)) {
-          return this.getStructTypes(documentKey);
+        if (localScope) {
+          return this.getLocalScopeCompletionItems(params, documentKey, localScope);
         }
       }
 
-      return this.standardLibDefinitions
-        .concat(this.getGlobalComplexTokens(documentKey))
-        .map((token) => CompletionItemBuilder.buildItem(token));
+      return this.getGlobalScopeCompletionItems(documentKey);
     });
 
     this.server.connection.onCompletionResolve((item: CompletionItem) => {
@@ -88,23 +89,42 @@ export default class CompletionItemsProvider extends Provider {
     return [];
   }
 
-  private getStructureProperties(uri: string, position: Position) {
-    const path = WorkspaceFilesSystem.fileUriToPath(uri);
-    const documentKey = WorkspaceFilesSystem.getFileBasename(path);
-    const document = this.server.documentsCollection?.get(documentKey);
-    const liveDocument = this.server.liveDocumentsManager.get(uri);
-
-    // if (document && liveDocument) {
-    //   const structType = this.server.tokenizer?.retrieveStructType(liveDocument.getText(), position);
-    //   const structureCandidates = this.getStructures(documentKey);
-    //   const properties = structureCandidates.find((struct) => struct.data.identifier === structType)?.data.properties || [];
-    //   return properties.map((property) => CompletionItemBuilder.buildItem(property));
-    // }
-
-    return [];
+  private getGlobalScopeCompletionItems(documentKey: string) {
+    return this.standardLibDefinitions
+      .concat(this.getGlobalComplexTokens(documentKey))
+      .map((token) => CompletionItemBuilder.buildItem(token));
   }
 
-  private getStructTypes(documentKey: string) {
-    return this.getGlobalStructComplexTokens(documentKey).map((token) => CompletionItemBuilder.buildStructTypeItem(token));
+  private getLocalScopeCompletionItems(params: CompletionParams, documentKey: string, localScope: LocalScopeTokenizationResult) {
+    const {
+      context,
+      position: { line },
+    } = params;
+
+    if (context?.triggerCharacter === TriggerCharacters.dot) {
+      const structIdentifer = localScope.functionVariablesComplexTokens.find(
+        (token) => token.data.identifier === localScope.structPropertiesCandidate
+      )?.data.valueType;
+
+      return this.getGlobalStructComplexTokens(documentKey)
+        .find((token) => token.data.identifier === structIdentifer)
+        ?.data.properties.map((property) => {
+          return CompletionItemBuilder.buildStructPropertyItem(property);
+        });
+    }
+
+    if (localScope.structIdentifiersLineCandidate === line) {
+      return this.getGlobalStructComplexTokens(documentKey).map((token) =>
+        CompletionItemBuilder.buildStructIdentifierItem(token)
+      );
+    }
+
+    const functionVariablesCompletionItems = localScope.functionVariablesComplexTokens.map((token) =>
+      CompletionItemBuilder.buildItem(token)
+    );
+    const functionsCompletionItems = localScope.functionsComplexTokens.map((token) => CompletionItemBuilder.buildItem(token));
+    return functionVariablesCompletionItems
+      .concat(functionsCompletionItems)
+      .concat(this.getGlobalScopeCompletionItems(documentKey));
   }
 }

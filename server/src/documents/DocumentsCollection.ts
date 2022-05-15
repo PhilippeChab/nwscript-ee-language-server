@@ -1,9 +1,5 @@
-import { each } from "async";
-import { fileURLToPath } from "url";
-
-import type { Logger } from "../Logger";
 import type { Tokenizer } from "../Tokenizer";
-import { TokenizeScope } from "../tokenizer/Tokenizer";
+import { TokenizedScope } from "../Tokenizer/Tokenizer";
 import { Dictionnary } from "../Utils";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import Document from "./Document";
@@ -20,7 +16,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
   private initializeDocument(filePath: string, tokenizer: Tokenizer) {
     const fileContent = WorkspaceFilesSystem.readFileSync(filePath).toString();
 
-    const globalScope = tokenizer.tokenizeContent(fileContent, TokenizeScope.global);
+    const globalScope = tokenizer.tokenizeContent(fileContent, TokenizedScope.global);
 
     return new Document(filePath, globalScope.children, globalScope.complexTokens, globalScope.structComplexTokens);
   }

@@ -1,8 +1,22 @@
 import { CompletionItem, CompletionItemKind } from "vscode-languageserver";
-import { ComplexToken, ConstantComplexToken, FunctionComplexToken, StructComplexToken } from "../../tokenizer/types";
+import {
+  ComplexToken,
+  ConstantComplexToken,
+  FunctionComplexToken,
+  LanguageStructProperty,
+  StructComplexToken,
+} from "../../Tokenizer/types";
 
 export class CompletionItemBuilder {
-  public static buildStructTypeItem(token: StructComplexToken): CompletionItem {
+  public static buildStructPropertyItem(property: LanguageStructProperty): CompletionItem {
+    return {
+      label: property.identifier,
+      kind: property.tokenType,
+      detail: `(property) ${property.identifier} :${property.valueType}`,
+    };
+  }
+
+  public static buildStructIdentifierItem(token: StructComplexToken): CompletionItem {
     return {
       label: token.data.identifier,
       kind: token.data.tokenType,
@@ -35,7 +49,7 @@ export class CompletionItemBuilder {
       label: token.data.identifier,
       kind: token.data.tokenType,
       detail: `(method) (${token.data.params.reduce((acc, param, index) => {
-        return `${acc} ${param.identifier} :${param.paramType}${index === token.data.params.length - 1 ? "" : ","}`;
+        return `${acc} ${param.identifier} :${param.valueType}${index === token.data.params.length - 1 ? "" : ","}`;
       }, "")}) :${token.data.returnType}`,
     };
   }

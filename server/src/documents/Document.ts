@@ -1,4 +1,4 @@
-import type { ComplexToken, StructComplexToken } from "../tokenizer/types";
+import type { ComplexToken, StructComplexToken } from "../Tokenizer/types";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 
 export default class Document {

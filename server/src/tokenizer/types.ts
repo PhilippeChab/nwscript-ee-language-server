@@ -3,22 +3,21 @@ import { LanguageTypes } from "./constants";
 
 export type LanguageValueOrRef = string | number;
 
-export type LanguageParam = {
+export type LanguageFunctionParam = {
   identifier: string;
   tokenType: typeof CompletionItemKind.TypeParameter;
-  paramType: LanguageTypes;
+  valueType: LanguageTypes;
 };
 export type LangugeFunction = {
   identifier: string;
   tokenType: typeof CompletionItemKind.Function;
   returnType: LanguageTypes;
-  params: LanguageParam[];
+  params: LanguageFunctionParam[];
 };
 export type LanguageVariable = {
   identifier: string;
   tokenType: typeof CompletionItemKind.Variable;
-  valueType: LanguageTypes;
-  value: LanguageValueOrRef;
+  valueType?: LanguageTypes;
 };
 export type LanguageConstant = {
   identifier: string;
@@ -29,7 +28,7 @@ export type LanguageConstant = {
 export type LanguageStructProperty = {
   identifier: string;
   tokenType: typeof CompletionItemKind.Property;
-  propertyType: LanguageTypes;
+  valueType: LanguageTypes;
 };
 export type LanguageStruct = {
   identifier: string;
@@ -43,6 +42,15 @@ export interface BaseComplexToken {
 export interface ConstantComplexToken extends BaseComplexToken {
   data: LanguageConstant;
 }
+export interface VariableComplexToken extends BaseComplexToken {
+  data: LanguageVariable;
+}
+export interface FunctionParamComplexToken extends BaseComplexToken {
+  data: LanguageFunctionParam;
+}
+export interface FunctionComplexToken extends BaseComplexToken {
+  data: LangugeFunction;
+}
 export interface FunctionComplexToken extends BaseComplexToken {
   data: LangugeFunction;
 }
@@ -50,4 +58,9 @@ export interface StructComplexToken extends BaseComplexToken {
   data: LanguageStruct;
 }
 
-export type ComplexToken = ConstantComplexToken | FunctionComplexToken | StructComplexToken;
+export type ComplexToken =
+  | ConstantComplexToken
+  | VariableComplexToken
+  | FunctionParamComplexToken
+  | FunctionComplexToken
+  | StructComplexToken;
