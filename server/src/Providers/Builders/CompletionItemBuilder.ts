@@ -8,13 +8,14 @@ import type {
   StructComplexToken,
   VariableComplexToken,
 } from "../../Tokenizer/types";
+import Builder from "./Builder";
 
-export class CompletionItemBuilder {
+export default class CompletionItemBuilder extends Builder {
   public static buildStructPropertyItem(property: LanguageStructProperty): CompletionItem {
     return {
       label: property.identifier,
       kind: property.tokenType,
-      detail: `(property) ${property.identifier} :${property.valueType}`,
+      detail: `(property) ${property.identifier}: ${property.valueType}`,
     };
   }
 
@@ -46,7 +47,7 @@ export class CompletionItemBuilder {
     return {
       label: token.data.identifier,
       kind: token.data.tokenType,
-      detail: `(constant) ${token.data.value} :${token.data.valueType}`,
+      detail: `(constant) ${token.data.value}: ${this.prependStruct(token.data.valueType)}${token.data.valueType}`,
     };
   }
 
@@ -54,7 +55,7 @@ export class CompletionItemBuilder {
     return {
       label: token.data.identifier,
       kind: token.data.tokenType,
-      detail: `(variable) ${token.data.identifier} :${token.data.valueType}`,
+      detail: `(variable) ${token.data.identifier}: ${this.prependStruct(token.data.valueType)}${token.data.valueType}`,
     };
   }
 
@@ -62,7 +63,7 @@ export class CompletionItemBuilder {
     return {
       label: token.data.identifier,
       kind: token.data.tokenType,
-      detail: `(param) ${token.data.identifier} :${token.data.valueType}`,
+      detail: `(param) ${token.data.identifier}: ${this.prependStruct(token.data.valueType)}${token.data.valueType}`,
     };
   }
 
@@ -71,8 +72,8 @@ export class CompletionItemBuilder {
       label: token.data.identifier,
       kind: token.data.tokenType,
       detail: `(method) (${token.data.params.reduce((acc, param, index) => {
-        return `${acc} ${param.identifier} :${param.valueType}${index === token.data.params.length - 1 ? "" : ","}`;
-      }, "")}) :${token.data.returnType}`,
+        return `${acc}${param.identifier}: ${param.valueType}${index === token.data.params.length - 1 ? "" : ", "}`;
+      }, "")}): ${this.prependStruct(token.data.returnType)}${token.data.returnType}`,
     };
   }
 

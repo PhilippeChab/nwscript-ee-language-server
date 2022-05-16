@@ -17,7 +17,7 @@ export type LangugeFunction = {
 export type LanguageVariable = {
   identifier: string;
   tokenType: typeof CompletionItemKind.Variable;
-  valueType?: LanguageTypes;
+  valueType: LanguageTypes;
 };
 export type LanguageConstant = {
   identifier: string;

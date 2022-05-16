@@ -4,21 +4,15 @@ import { join } from "path";
 import type { ServerManager } from "../ServerManager";
 import type { ComplexToken } from "../Tokenizer/types";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
-import { CompletionItemBuilder } from "./Builders/CompletionItemBuilder";
+import { CompletionItemBuilder } from "./Builders";
 import { LocalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Tokenizer";
 import { TriggerCharacters } from ".";
 import { Document } from "../Documents";
 import Provider from "./Provider";
 
 export default class CompletionItemsProvider extends Provider {
-  private readonly standardLibDefinitions: ComplexToken[] = [];
-
   constructor(server: ServerManager) {
     super(server);
-
-    this.standardLibDefinitions = JSON.parse(
-      WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "standardLibDefinitions.json")).toString()
-    ).complexTokens as ComplexToken[];
 
     this.server.connection.onCompletion((params) => {
       const {
@@ -80,8 +74,18 @@ export default class CompletionItemsProvider extends Provider {
       return [];
     }
 
-    return this.standardLibDefinitions
+    return this.getStandardLibComplexTokens()
       .concat(document.getGlobalComplexTokens())
       .map((token) => CompletionItemBuilder.buildItem(token));
+  }
+
+  private getStandardLibComplexTokens() {
+    const documentCollection = this.server.documentsCollection;
+
+    if (documentCollection) {
+      return documentCollection.standardLibComplexTokens;
+    }
+
+    return [];
   }
 }

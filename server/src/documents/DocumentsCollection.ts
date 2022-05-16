@@ -1,10 +1,22 @@
+import { join } from "path";
 import type { Tokenizer } from "../Tokenizer";
 import { TokenizedScope } from "../Tokenizer/Tokenizer";
+import type { ComplexToken } from "../Tokenizer/types";
 import { Dictionnary } from "../Utils";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import Document from "./Document";
 
 export default class DocumentsCollection extends Dictionnary<string, Document> {
+  public readonly standardLibComplexTokens: ComplexToken[] = [];
+
+  constructor() {
+    super();
+
+    this.standardLibComplexTokens = JSON.parse(
+      WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "standardLibDefinitions.json")).toString()
+    ).complexTokens as ComplexToken[];
+  }
+
   private addDocument(document: Document) {
     this.add(document.getKey(), document);
   }

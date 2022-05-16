@@ -21,6 +21,7 @@ import {
   TERMINATOR_STATEMENT,
   STRUCT_SCOPE,
   FUNCTION_PARAMETER_SCOPE,
+  ASSIGNATION_STATEMENT,
 } from "./constants";
 import type {
   ComplexToken,
@@ -30,6 +31,7 @@ import type {
   VariableComplexToken,
 } from "./types";
 import { Position } from "vscode-languageserver-textdocument";
+import { map } from "async";
 
 const wasmBin = WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "onig.wasm")).buffer;
 
@@ -95,6 +97,17 @@ export default class Tokenizer {
     const rawContent = this.getRawTokenContent(line, token);
 
     return LanguageTypes[rawContent as keyof typeof LanguageTypes] || rawContent;
+  }
+
+  private getConstantValue(line: string, tokensArray: IToken[]) {
+    const startIndex = tokensArray.findIndex((token) => token.scopes.includes(ASSIGNATION_STATEMENT));
+    const endIndex = tokensArray.length - 1;
+
+    return tokensArray
+      .filter((_, index) => index > startIndex && index < endIndex)
+      .map((token) => this.getRawTokenContent(line, token))
+      .join("")
+      .trim();
   }
 
   private getFunctionParams(line: string, tokensArray: IToken[]) {
@@ -169,11 +182,7 @@ export default class Tokenizer {
                 identifier: this.getRawTokenContent(line, token),
                 tokenType: CompletionItemKind.Constant,
                 valueType: this.getTokenLanguageType(line, tokensArray[index - 2]),
-                value:
-                  line
-                    .split(" ")
-                    .pop()
-                    ?.slice(0, lastToken.scopes.includes(TERMINATOR_STATEMENT) ? -1 : 0) || "",
+                value: this.getConstantValue(line, tokensArray),
               },
             });
             break;
@@ -250,7 +259,7 @@ export default class Tokenizer {
         const lastIndex = tokensArray.length - 1;
         const lastToken = tokensArray[lastIndex];
 
-        if (isLastLine && lastToken.scopes.includes(BLOCK_SCOPE)) {
+        if (isLastLine && (lastToken.scopes.includes(BLOCK_SCOPE) || lastToken.scopes.includes(FUNCTION_SCOPE))) {
           computeFunctionLocals = true;
         }
 
