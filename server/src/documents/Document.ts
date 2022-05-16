@@ -1,6 +1,6 @@
-import type { ComplexToken, StructComplexToken } from "../Tokenizer/types";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
-import DocumentsCollection from "./DocumentsCollection";
+import type { ComplexToken, StructComplexToken } from "../Tokenizer/types";
+import type DocumentsCollection from "./DocumentsCollection";
 
 export type OwnedComplexTokens = { owner: string; tokens: ComplexToken[] };
 export type OwnedStructComplexTokens = { owner: string; tokens: StructComplexToken[] };

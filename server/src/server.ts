@@ -1,6 +1,4 @@
-import { createConnection, TextDocuments, ProposedFeatures, InitializeParams } from "vscode-languageserver/node";
-import { TextDocument } from "vscode-languageserver-textdocument";
-
+import { createConnection, ProposedFeatures, InitializeParams } from "vscode-languageserver/node";
 import { ServerManager } from "./ServerManager";
 
 const connection = createConnection(ProposedFeatures.all);

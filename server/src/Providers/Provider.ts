@@ -1,4 +1,4 @@
-import { ServerManager } from "../ServerManager";
+import type { ServerManager } from "../ServerManager";
 
 export default class Provider {
   public static register(server: ServerManager) {

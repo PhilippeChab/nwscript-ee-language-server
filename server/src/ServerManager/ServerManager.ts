@@ -31,7 +31,7 @@ export default class ServerManger {
     this.tokenizer = await new Tokenizer(this.logger).loadGrammar();
     this.documentsCollection = await new DocumentsCollection().initialize(this.workspaceFilesSystem, this.tokenizer);
 
-    this.registerInitializeProviders();
+    this.registerProviders();
     this.registerLiveDocumentsEvents();
 
     return this;
@@ -58,7 +58,7 @@ export default class ServerManger {
 
   public shutdown() {}
 
-  private registerInitializeProviders() {
+  private registerProviders() {
     if (this.tokenizer && this.documentsCollection) {
       CompletionItemsProvider.register(this);
       GotoDefinitionProvider.register(this);

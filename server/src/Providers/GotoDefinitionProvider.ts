@@ -1,8 +1,7 @@
-import { Location, Range } from "vscode-languageserver";
-import { OwnedComplexTokens } from "../Documents/Document";
-import { ServerManager } from "../ServerManager";
+import type { OwnedComplexTokens } from "../Documents/Document";
+import type { ServerManager } from "../ServerManager";
+import type { ComplexToken } from "../Tokenizer/types";
 import { TokenizedScope } from "../Tokenizer/Tokenizer";
-import { ComplexToken } from "../Tokenizer/types";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import Provider from "./Provider";
 
@@ -21,7 +20,7 @@ export default class GotoDefinitionProvider extends Provider {
       const documentKey = WorkspaceFilesSystem.getFileBasename(path);
       const document = this.server.documentsCollection?.get(documentKey);
 
-      if (liveDocument && document) {
+      if (liveDocument) {
         let token: ComplexToken | undefined;
         let ref: OwnedComplexTokens | undefined;
         const identifier = this.server.tokenizer?.findActionTargetIdentifier(liveDocument.getText(), position);
@@ -29,26 +28,28 @@ export default class GotoDefinitionProvider extends Provider {
         const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
         token = localScope?.functionsComplexTokens.find((token) => token.data.identifier === identifier);
 
-        if (!token) {
-          const tokensWithRef = document.getGlobalStructComplexTokensWithRef();
-          for (let i = 0; i < tokensWithRef.length; i++) {
-            ref = tokensWithRef[i];
+        if (document) {
+          if (!token) {
+            const tokensWithRef = document.getGlobalStructComplexTokensWithRef();
+            for (let i = 0; i < tokensWithRef.length; i++) {
+              ref = tokensWithRef[i];
 
-            token = ref.tokens.find((token) => token.data.identifier === identifier);
-            if (token) {
-              break;
+              token = ref.tokens.find((token) => token.data.identifier === identifier);
+              if (token) {
+                break;
+              }
             }
           }
-        }
 
-        if (!token) {
-          const tokensWithRef = document.getGlobalComplexTokensWithRef();
-          for (let i = 0; i < tokensWithRef.length; i++) {
-            ref = tokensWithRef[i];
+          if (!token) {
+            const tokensWithRef = document.getGlobalComplexTokensWithRef();
+            for (let i = 0; i < tokensWithRef.length; i++) {
+              ref = tokensWithRef[i];
 
-            token = ref.tokens.find((token) => token.data.identifier === identifier);
-            if (token) {
-              break;
+              token = ref.tokens.find((token) => token.data.identifier === identifier);
+              if (token) {
+                break;
+              }
             }
           }
         }

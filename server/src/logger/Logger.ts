@@ -6,4 +6,8 @@ export default class Logger {
   info(text: string) {
     this.console.info(text);
   }
+
+  error(text: string) {
+    this.console.error(text);
+  }
 }

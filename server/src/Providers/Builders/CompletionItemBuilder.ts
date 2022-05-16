@@ -1,5 +1,5 @@
 import { CompletionItem, CompletionItemKind } from "vscode-languageserver";
-import {
+import type {
   ComplexToken,
   ConstantComplexToken,
   FunctionComplexToken,
