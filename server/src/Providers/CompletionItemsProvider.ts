@@ -9,6 +9,7 @@ import { LocalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Token
 import { TriggerCharacters } from ".";
 import { Document } from "../Documents";
 import Provider from "./Provider";
+import { LanguageTypes } from "../Tokenizer/constants";
 
 export default class CompletionItemsProvider extends Provider {
   constructor(server: ServerManager) {
@@ -17,7 +18,7 @@ export default class CompletionItemsProvider extends Provider {
     this.server.connection.onCompletion((params) => {
       const {
         textDocument: { uri },
-        position: { line },
+        position,
       } = params;
 
       const liveDocument = this.server.liveDocumentsManager.get(uri);
@@ -26,27 +27,27 @@ export default class CompletionItemsProvider extends Provider {
       const document = this.server.documentsCollection?.get(documentKey);
 
       if (liveDocument) {
-        const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, line);
+        const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
 
         if (localScope) {
           if (document) {
             if (params.context?.triggerCharacter === TriggerCharacters.dot) {
+              const structVariableIdentifier = this.server.tokenizer?.findLineIdentiferAt(liveDocument.getText(), position, -2);
+
               const structIdentifer = localScope.functionVariablesComplexTokens.find(
-                (token) => token.data.identifier === localScope.structPropertiesCandidate
-              )?.data.valueType;
+                (token) => token.identifier === structVariableIdentifier
+              )?.valueType;
 
               return document
                 .getGlobalStructComplexTokens()
-                .find((token) => token.data.identifier === structIdentifer)
-                ?.data.properties.map((property) => {
-                  return CompletionItemBuilder.buildStructPropertyItem(property);
+                .find((token) => token.identifier === structIdentifer)
+                ?.properties.map((property) => {
+                  return CompletionItemBuilder.buildItem(property);
                 });
             }
 
-            if (localScope.structIdentifiersLineCandidate === line) {
-              return document
-                .getGlobalStructComplexTokens()
-                .map((token) => CompletionItemBuilder.buildStructIdentifierItem(token));
+            if (this.server.tokenizer?.findLineIdentiferAt(liveDocument.getText(), position, -3) === LanguageTypes.struct) {
+              return document.getGlobalStructComplexTokens().map((token) => CompletionItemBuilder.buildItem(token));
             }
           }
 
@@ -70,13 +71,13 @@ export default class CompletionItemsProvider extends Provider {
   }
 
   private getGlobalScopeCompletionItems(document: Document | undefined) {
-    if (!document) {
-      return [];
+    if (document) {
+      return this.getStandardLibComplexTokens()
+        .concat(document.getGlobalComplexTokens())
+        .map((token) => CompletionItemBuilder.buildItem(token));
     }
 
-    return this.getStandardLibComplexTokens()
-      .concat(document.getGlobalComplexTokens())
-      .map((token) => CompletionItemBuilder.buildItem(token));
+    return [];
   }
 
   private getStandardLibComplexTokens() {

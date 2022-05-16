@@ -22,6 +22,7 @@ import {
   STRUCT_SCOPE,
   FUNCTION_PARAMETER_SCOPE,
   ASSIGNATION_STATEMENT,
+  STRUCT_PROPERTY_SCOPE,
 } from "./constants";
 import type {
   ComplexToken,
@@ -31,7 +32,6 @@ import type {
   VariableComplexToken,
 } from "./types";
 import { Position } from "vscode-languageserver-textdocument";
-import { map } from "async";
 
 const wasmBin = WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "onig.wasm")).buffer;
 
@@ -60,8 +60,6 @@ export type GlobalScopeTokenizationResult = {
 export type LocalScopeTokenizationResult = {
   functionsComplexTokens: FunctionComplexToken[];
   functionVariablesComplexTokens: (VariableComplexToken | FunctionParamComplexToken)[];
-  structIdentifiersLineCandidate?: number;
-  structPropertiesCandidate?: string;
 };
 
 export default class Tokenizer {
@@ -110,11 +108,12 @@ export default class Tokenizer {
       .trim();
   }
 
-  private getFunctionParams(line: string, tokensArray: IToken[]) {
+  private getFunctionParams(line: string, lineIndex: number, tokensArray: IToken[]) {
     const functionParamTokens = tokensArray.filter((token) => token.scopes.includes(FUNCTION_PARAMETER_SCOPE));
 
     return functionParamTokens.map((token) => {
       return {
+        position: { line: lineIndex, character: token.startIndex },
         identifier: this.getRawTokenContent(line, token),
         tokenType: CompletionItemKind.TypeParameter,
         valueType: this.getTokenLanguageType(line, tokensArray[this.getTokenIndex(tokensArray, token) - 2]),
@@ -152,7 +151,8 @@ export default class Tokenizer {
               scope.structComplexTokens.push(currentStruct);
               currentStruct = null;
             } else if (lastIndex > 2 && !token.scopes.includes(BLOCK_DECLARACTION_SCOPE)) {
-              currentStruct.data.properties.push({
+              currentStruct.properties.push({
+                position: { line: currentIndex, character: tokensArray[3].startIndex },
                 identifier: this.getRawTokenContent(line, tokensArray[3]),
                 tokenType: CompletionItemKind.Property,
                 valueType: this.getTokenLanguageType(line, tokensArray[1]),
@@ -178,12 +178,10 @@ export default class Tokenizer {
           ) {
             scope.complexTokens.push({
               position: { line: currentIndex, character: token.startIndex },
-              data: {
-                identifier: this.getRawTokenContent(line, token),
-                tokenType: CompletionItemKind.Constant,
-                valueType: this.getTokenLanguageType(line, tokensArray[index - 2]),
-                value: this.getConstantValue(line, tokensArray),
-              },
+              identifier: this.getRawTokenContent(line, token),
+              tokenType: CompletionItemKind.Constant,
+              valueType: this.getTokenLanguageType(line, tokensArray[index - 2]),
+              value: this.getConstantValue(line, tokensArray),
             });
             break;
           }
@@ -196,12 +194,10 @@ export default class Tokenizer {
           ) {
             scope.complexTokens.push({
               position: { line: currentIndex, character: token.startIndex },
-              data: {
-                identifier: this.getRawTokenContent(line, token),
-                tokenType: CompletionItemKind.Function,
-                returnType: this.getTokenLanguageType(line, tokensArray[index - 2]),
-                params: this.getFunctionParams(line, tokensArray),
-              },
+              identifier: this.getRawTokenContent(line, token),
+              tokenType: CompletionItemKind.Function,
+              returnType: this.getTokenLanguageType(line, tokensArray[index - 2]),
+              params: this.getFunctionParams(line, currentIndex, tokensArray),
             });
             break;
           }
@@ -213,11 +209,9 @@ export default class Tokenizer {
           ) {
             currentStruct = {
               position: { line: currentIndex, character: token.startIndex },
-              data: {
-                identifier: this.getRawTokenContent(line, token),
-                tokenType: CompletionItemKind.Struct,
-                properties: [],
-              },
+              identifier: this.getRawTokenContent(line, token),
+              tokenType: CompletionItemKind.Struct,
+              properties: [],
             };
             break;
           }
@@ -266,18 +260,6 @@ export default class Tokenizer {
         for (let index = 0; index < tokensArray.length; index++) {
           const token = tokensArray[index];
 
-          if (isLastLine) {
-            if (lastIndex > 1 && this.getRawTokenContent(line, tokensArray[lastIndex - 2]) === LanguageTypes.struct) {
-              scope.structIdentifiersLineCandidate = currentIndex;
-            } else if (
-              lastIndex > 0 &&
-              this.getRawTokenContent(line, tokensArray[lastIndex]) === TriggerCharacters.dot &&
-              tokensArray[lastIndex - 1].scopes.includes(VARIABLE_SCOPE)
-            ) {
-              scope.structPropertiesCandidate = this.getRawTokenContent(line, tokensArray[lastIndex - 1]);
-            }
-          }
-
           // VARIABLE
           if (
             computeFunctionLocals &&
@@ -287,11 +269,9 @@ export default class Tokenizer {
           ) {
             scope.functionVariablesComplexTokens.push({
               position: { line: currentIndex, character: token.startIndex },
-              data: {
-                identifier: this.getRawTokenContent(line, token),
-                tokenType: CompletionItemKind.Variable,
-                valueType: this.getTokenLanguageType(line, tokensArray[index - 2]),
-              },
+              identifier: this.getRawTokenContent(line, token),
+              tokenType: CompletionItemKind.Variable,
+              valueType: this.getTokenLanguageType(line, tokensArray[index - 2]),
             });
           }
 
@@ -299,11 +279,9 @@ export default class Tokenizer {
           if (computeFunctionLocals && token.scopes.includes(FUNCTION_PARAMETER_SCOPE)) {
             scope.functionVariablesComplexTokens.push({
               position: { line: currentIndex, character: token.startIndex },
-              data: {
-                identifier: this.getRawTokenContent(line, token),
-                tokenType: CompletionItemKind.TypeParameter,
-                valueType: this.getTokenLanguageType(line, tokensArray[index - 2]),
-              },
+              identifier: this.getRawTokenContent(line, token),
+              tokenType: CompletionItemKind.TypeParameter,
+              valueType: this.getTokenLanguageType(line, tokensArray[index - 2]),
             });
           }
 
@@ -315,12 +293,10 @@ export default class Tokenizer {
           ) {
             scope.functionsComplexTokens.push({
               position: { line: currentIndex, character: token.startIndex },
-              data: {
-                identifier: this.getRawTokenContent(line, token),
-                tokenType: CompletionItemKind.Function,
-                returnType: this.getTokenLanguageType(line, tokensArray[index - 2]),
-                params: this.getFunctionParams(line, tokensArray),
-              },
+              identifier: this.getRawTokenContent(line, token),
+              tokenType: CompletionItemKind.Function,
+              returnType: this.getTokenLanguageType(line, tokensArray[index - 2]),
+              params: this.getFunctionParams(line, index, tokensArray),
             });
           }
         }
@@ -355,21 +331,52 @@ export default class Tokenizer {
     }
   }
 
-  public findActionTargetIdentifier(content: string, position: Position) {
+  public findLineIdentiferAt(content: string, position: Position, index: number) {
     let ruleStack = INITIAL;
 
     const lines = content.split(/\r?\n/);
     const line = lines[position.line];
     const tokensArray = this.grammar?.tokenizeLine(line, ruleStack)?.tokens;
+    const arrayLength = tokensArray?.length || 0;
 
-    if (tokensArray) {
-      return this.getRawTokenContent(
-        line,
-        tokensArray.find((token) => token.startIndex <= position.character && token.endIndex >= position.character)!
-      );
+    if ((index > 0 && Math.abs(index) >= arrayLength) || (index < 0 && Math.abs(index) > arrayLength)) {
+      return undefined;
     }
 
-    return undefined;
+    return this.getRawTokenContent(line, tokensArray?.at(index)!);
+  }
+
+  public findActionTarget(content: string, position: Position) {
+    let ruleStack = INITIAL;
+
+    let tokenType = undefined;
+    let structVariableIdentifier = undefined;
+    const lines = content.split(/\r?\n/);
+    const line = lines[position.line];
+    const tokensArray = this.grammar?.tokenizeLine(line, ruleStack)?.tokens;
+
+    if (tokensArray) {
+      const tokenIndex = tokensArray.findIndex(
+        (token) => token.startIndex <= position.character && token.endIndex >= position.character
+      )!;
+
+      if (tokensArray[tokenIndex].scopes.includes(STRUCT_PROPERTY_SCOPE)) {
+        tokenType = CompletionItemKind.Property;
+        structVariableIdentifier = this.getRawTokenContent(line, tokensArray[tokenIndex - 2]);
+      }
+
+      return {
+        tokenType,
+        structVariableIdentifier,
+        identifier: this.getRawTokenContent(line, tokensArray[tokenIndex]),
+      };
+    }
+
+    return {
+      tokenType,
+      structVariableIdentifier,
+      identifier: undefined,
+    };
   }
 
   public async loadGrammar() {

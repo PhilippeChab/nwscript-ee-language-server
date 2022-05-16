@@ -4,38 +4,26 @@ import type {
   ConstantComplexToken,
   FunctionComplexToken,
   FunctionParamComplexToken,
-  LanguageStructProperty,
   StructComplexToken,
+  StructPropertyComplexToken,
   VariableComplexToken,
 } from "../../Tokenizer/types";
 import Builder from "./Builder";
 
 export default class CompletionItemBuilder extends Builder {
-  public static buildStructPropertyItem(property: LanguageStructProperty): CompletionItem {
-    return {
-      label: property.identifier,
-      kind: property.tokenType,
-      detail: `(property) ${property.identifier}: ${property.valueType}`,
-    };
-  }
-
-  public static buildStructIdentifierItem(token: StructComplexToken): CompletionItem {
-    return {
-      label: token.data.identifier,
-      kind: token.data.tokenType,
-      detail: `(struct) ${token.data.identifier}`,
-    };
-  }
-
   public static buildItem(token: ComplexToken): CompletionItem {
     if (this.isConstantToken(token)) {
-      return this.buildConstant(token);
+      return this.buildConstantItem(token);
     } else if (this.isVariable(token)) {
-      return this.buildVariable(token);
+      return this.buildVariableItem(token);
     } else if (this.isFunctionParameter(token)) {
-      return this.buildFunctionParam(token);
+      return this.buildFunctionParamItem(token);
     } else if (this.isFunctionToken(token)) {
-      return this.buildFunction(token);
+      return this.buildFunctionItem(token);
+    } else if (this.isStructPropertyToken(token)) {
+      return this.buildStructPropertyItem(token);
+    } else if (this.isStructToken(token)) {
+      return this.buildStructItem(token);
     } else {
       return {
         label: "",
@@ -43,53 +31,55 @@ export default class CompletionItemBuilder extends Builder {
     }
   }
 
-  private static buildConstant(token: ConstantComplexToken): CompletionItem {
+  private static buildConstantItem(token: ConstantComplexToken): CompletionItem {
     return {
-      label: token.data.identifier,
-      kind: token.data.tokenType,
-      detail: `(constant) ${token.data.value}: ${this.prependStruct(token.data.valueType)}${token.data.valueType}`,
+      label: token.identifier,
+      kind: token.tokenType,
+      detail: `(constant) ${token.value}: ${this.handleLanguageType(token.valueType)}`,
     };
   }
 
-  private static buildVariable(token: VariableComplexToken): CompletionItem {
+  private static buildVariableItem(token: VariableComplexToken): CompletionItem {
     return {
-      label: token.data.identifier,
-      kind: token.data.tokenType,
-      detail: `(variable) ${token.data.identifier}: ${this.prependStruct(token.data.valueType)}${token.data.valueType}`,
+      label: token.identifier,
+      kind: token.tokenType,
+      detail: `(variable) ${token.identifier}: ${this.handleLanguageType(token.valueType)}`,
     };
   }
 
-  private static buildFunctionParam(token: FunctionParamComplexToken): CompletionItem {
+  private static buildFunctionParamItem(token: FunctionParamComplexToken): CompletionItem {
     return {
-      label: token.data.identifier,
-      kind: token.data.tokenType,
-      detail: `(param) ${token.data.identifier}: ${this.prependStruct(token.data.valueType)}${token.data.valueType}`,
+      label: token.identifier,
+      kind: token.tokenType,
+      detail: `(param) ${token.identifier}: ${this.handleLanguageType(token.valueType)}`,
     };
   }
 
-  private static buildFunction(token: FunctionComplexToken): CompletionItem {
+  private static buildFunctionItem(token: FunctionComplexToken): CompletionItem {
     return {
-      label: token.data.identifier,
-      kind: token.data.tokenType,
-      detail: `(method) (${token.data.params.reduce((acc, param, index) => {
-        return `${acc}${param.identifier}: ${param.valueType}${index === token.data.params.length - 1 ? "" : ", "}`;
-      }, "")}): ${this.prependStruct(token.data.returnType)}${token.data.returnType}`,
+      label: token.identifier,
+      kind: token.tokenType,
+      detail: `(method) (${token.params.reduce((acc, param, index) => {
+        return `${acc}${param.identifier}: ${this.handleLanguageType(param.valueType)}${
+          index === token.params.length - 1 ? "" : ", "
+        }`;
+      }, "")}): ${this.handleLanguageType(token.returnType)}`,
     };
   }
 
-  private static isConstantToken(token: ComplexToken): token is ConstantComplexToken {
-    return token.data.tokenType === CompletionItemKind.Constant;
+  private static buildStructPropertyItem(property: StructPropertyComplexToken): CompletionItem {
+    return {
+      label: property.identifier,
+      kind: property.tokenType,
+      detail: `(property) ${property.identifier}: ${this.handleLanguageType(property.valueType)}`,
+    };
   }
 
-  private static isVariable(token: ComplexToken): token is VariableComplexToken {
-    return token.data.tokenType === CompletionItemKind.Variable;
-  }
-
-  private static isFunctionParameter(token: ComplexToken): token is FunctionParamComplexToken {
-    return token.data.tokenType === CompletionItemKind.TypeParameter;
-  }
-
-  private static isFunctionToken(token: ComplexToken): token is FunctionComplexToken {
-    return token.data.tokenType === CompletionItemKind.Function;
+  private static buildStructItem(token: StructComplexToken): CompletionItem {
+    return {
+      label: token.identifier,
+      kind: token.tokenType,
+      detail: `(struct) ${token.identifier}`,
+    };
   }
 }

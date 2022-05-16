@@ -1,4 +1,4 @@
-import { MarkedString, MarkupKind } from "vscode-languageserver";
+import { CompletionItemKind } from "vscode-languageserver";
 import type { ServerManager } from "../ServerManager";
 import type { ComplexToken } from "../Tokenizer/types";
 import { TokenizedScope } from "../Tokenizer/Tokenizer";
@@ -24,29 +24,43 @@ export default class HoverContentProvider extends Provider {
 
       if (liveDocument) {
         let token: ComplexToken | undefined;
-        const identifier = this.server.tokenizer?.findActionTargetIdentifier(liveDocument.getText(), position);
+        const { tokenType, structVariableIdentifier, identifier } = this.server.tokenizer?.findActionTarget(
+          liveDocument.getText(),
+          position
+        )!;
 
         const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
-        token = localScope?.functionsComplexTokens.find((token) => token.data.identifier === identifier);
+        token = localScope?.functionsComplexTokens.find((token) => token.identifier === identifier);
 
         if (!token) {
-          token = localScope?.functionVariablesComplexTokens.find((token) => token.data.identifier === identifier);
+          token = localScope?.functionVariablesComplexTokens.find((token) => token.identifier === identifier);
         }
 
         if (document) {
+          if (tokenType === CompletionItemKind.Property) {
+            const structIdentifer = localScope?.functionVariablesComplexTokens.find(
+              (token) => token.identifier === structVariableIdentifier
+            )?.valueType;
+
+            token = document
+              .getGlobalStructComplexTokens()
+              .find((token) => token.identifier === structIdentifer)
+              ?.properties.find((property) => property.identifier === identifier);
+          }
+
           if (!token) {
             const tokens = document.getGlobalStructComplexTokens();
-            token = tokens.find((token) => token.data.identifier === identifier);
+            token = tokens.find((token) => token.identifier === identifier);
           }
 
           if (!token) {
             const tokens = document.getGlobalComplexTokens();
-            token = tokens.find((token) => token.data.identifier === identifier);
+            token = tokens.find((token) => token.identifier === identifier);
           }
 
           if (!token && this.server.documentsCollection) {
             const tokens = this.server.documentsCollection.standardLibComplexTokens;
-            token = tokens.find((token) => token.data.identifier === identifier);
+            token = tokens.find((token) => token.identifier === identifier);
           }
         }
 

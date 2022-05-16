@@ -1,9 +1,10 @@
-import type { OwnedComplexTokens } from "../Documents/Document";
+import type { OwnedComplexTokens, OwnedStructComplexTokens } from "../Documents/Document";
 import type { ServerManager } from "../ServerManager";
 import type { ComplexToken } from "../Tokenizer/types";
 import { TokenizedScope } from "../Tokenizer/Tokenizer";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import Provider from "./Provider";
+import { CompletionItemKind } from "vscode-languageserver";
 
 export default class GotoDefinitionProvider extends Provider {
   constructor(server: ServerManager) {
@@ -22,19 +23,45 @@ export default class GotoDefinitionProvider extends Provider {
 
       if (liveDocument) {
         let token: ComplexToken | undefined;
-        let ref: OwnedComplexTokens | undefined;
-        const identifier = this.server.tokenizer?.findActionTargetIdentifier(liveDocument.getText(), position);
+        let ref: OwnedComplexTokens | OwnedStructComplexTokens | undefined;
+        const { tokenType, structVariableIdentifier, identifier } = this.server.tokenizer?.findActionTarget(
+          liveDocument.getText(),
+          position
+        )!;
 
         const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
-        token = localScope?.functionsComplexTokens.find((token) => token.data.identifier === identifier);
+        token = localScope?.functionsComplexTokens.find((token) => token.identifier === identifier);
+
+        if (!token) {
+          token = localScope?.functionVariablesComplexTokens.find((token) => token.identifier === identifier);
+        }
 
         if (document) {
+          if (tokenType === CompletionItemKind.Property) {
+            const structIdentifer = localScope?.functionVariablesComplexTokens.find(
+              (token) => token.identifier === structVariableIdentifier
+            )?.valueType;
+
+            const tokensWithRef = document.getGlobalStructComplexTokensWithRef();
+            for (let i = 0; i < tokensWithRef.length; i++) {
+              ref = tokensWithRef[i];
+
+              token = (ref as OwnedStructComplexTokens).tokens
+                .find((token) => token.identifier === structIdentifer)
+                ?.properties.find((property) => property.identifier === identifier);
+
+              if (token) {
+                break;
+              }
+            }
+          }
+
           if (!token) {
             const tokensWithRef = document.getGlobalStructComplexTokensWithRef();
             for (let i = 0; i < tokensWithRef.length; i++) {
               ref = tokensWithRef[i];
 
-              token = ref.tokens.find((token) => token.data.identifier === identifier);
+              token = ref.tokens.find((token) => token.identifier === identifier);
               if (token) {
                 break;
               }
@@ -46,7 +73,7 @@ export default class GotoDefinitionProvider extends Provider {
             for (let i = 0; i < tokensWithRef.length; i++) {
               ref = tokensWithRef[i];
 
-              token = ref.tokens.find((token) => token.data.identifier === identifier);
+              token = ref.tokens.find((token) => token.identifier === identifier);
               if (token) {
                 break;
               }

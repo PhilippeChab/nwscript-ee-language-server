@@ -1,66 +1,47 @@
 import { CompletionItemKind, Position } from "vscode-languageserver";
 import { LanguageTypes } from "./constants";
 
-export type LanguageValueOrRef = string | number;
+type LanguageValueOrRef = string | number;
 
-export type LanguageFunctionParam = {
-  identifier: string;
-  tokenType: typeof CompletionItemKind.TypeParameter;
-  valueType: LanguageTypes;
-};
-export type LangugeFunction = {
-  identifier: string;
-  tokenType: typeof CompletionItemKind.Function;
-  returnType: LanguageTypes;
-  params: LanguageFunctionParam[];
-};
-export type LanguageVariable = {
-  identifier: string;
-  tokenType: typeof CompletionItemKind.Variable;
-  valueType: LanguageTypes;
-};
-export type LanguageConstant = {
-  identifier: string;
+type LanguageConstant = {
   tokenType: typeof CompletionItemKind.Constant;
   valueType: LanguageTypes;
   value: LanguageValueOrRef;
 };
-export type LanguageStructProperty = {
-  identifier: string;
+type LanguageVariable = {
+  tokenType: typeof CompletionItemKind.Variable;
+  valueType: LanguageTypes;
+};
+type LangugeFunction = {
+  tokenType: typeof CompletionItemKind.Function;
+  returnType: LanguageTypes;
+  params: FunctionParamComplexToken[];
+};
+type LanguageFunctionParam = {
+  tokenType: typeof CompletionItemKind.TypeParameter;
+  valueType: LanguageTypes;
+};
+type LanguageStruct = {
+  tokenType: typeof CompletionItemKind.Struct;
+  properties: StructPropertyComplexToken[];
+};
+type LanguageStructProperty = {
   tokenType: typeof CompletionItemKind.Property;
   valueType: LanguageTypes;
 };
-export type LanguageStruct = {
-  identifier: string;
-  tokenType: typeof CompletionItemKind.Struct;
-  properties: LanguageStructProperty[];
-};
+type BaseComplexToken<T> = T & { position: Position; identifier: string };
 
-export interface BaseComplexToken {
-  position: Position;
-}
-export interface ConstantComplexToken extends BaseComplexToken {
-  data: LanguageConstant;
-}
-export interface VariableComplexToken extends BaseComplexToken {
-  data: LanguageVariable;
-}
-export interface FunctionParamComplexToken extends BaseComplexToken {
-  data: LanguageFunctionParam;
-}
-export interface FunctionComplexToken extends BaseComplexToken {
-  data: LangugeFunction;
-}
-export interface FunctionComplexToken extends BaseComplexToken {
-  data: LangugeFunction;
-}
-export interface StructComplexToken extends BaseComplexToken {
-  data: LanguageStruct;
-}
+export type ConstantComplexToken = BaseComplexToken<LanguageConstant>;
+export type VariableComplexToken = BaseComplexToken<LanguageVariable>;
+export type FunctionComplexToken = BaseComplexToken<LangugeFunction>;
+export type FunctionParamComplexToken = BaseComplexToken<LanguageFunctionParam>;
+export type StructComplexToken = BaseComplexToken<LanguageStruct>;
+export type StructPropertyComplexToken = BaseComplexToken<LanguageStructProperty>;
 
 export type ComplexToken =
   | ConstantComplexToken
   | VariableComplexToken
   | FunctionParamComplexToken
   | FunctionComplexToken
-  | StructComplexToken;
+  | StructComplexToken
+  | StructPropertyComplexToken;

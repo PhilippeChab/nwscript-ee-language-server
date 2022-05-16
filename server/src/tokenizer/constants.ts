@@ -23,6 +23,7 @@ export const FUNCTION_SCOPE = "meta.function.nss";
 export const FUNCTION_PARAMETER_SCOPE = "variable.parameter.nss";
 export const BLOCK_SCOPE = "meta.block.nss";
 export const STRUCT_SCOPE = "storage.type.struct-defined.nss";
+export const STRUCT_PROPERTY_SCOPE = "entity.other.attribute-name.nss";
 export const VARIABLE_SCOPE = "variable.language.nss";
 export const CONSTANT_SCOPE = "constant.language.nss";
 export const TYPE_SCOPE = "storage.type.built-in.nss";
