@@ -2,6 +2,9 @@ import type { ComplexToken, StructComplexToken } from "../Tokenizer/types";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import DocumentsCollection from "./DocumentsCollection";
 
+export type OwnedComplexTokens = { owner: string; tokens: ComplexToken[] };
+export type OwnedStructComplexTokens = { owner: string; tokens: StructComplexToken[] };
+
 export default class Document {
   constructor(
     readonly path: string,
@@ -13,6 +16,27 @@ export default class Document {
 
   public getKey() {
     return WorkspaceFilesSystem.getFileBasename(this.path);
+  }
+
+  public getGlobalComplexTokensWithRef(computedChildren: string[] = []): OwnedComplexTokens[] {
+    return [{ owner: this.path, tokens: this.complexTokens }].concat(
+      this.children.flatMap((child) => {
+        // Cycling children or/and duplicates
+        if (computedChildren.includes(child)) {
+          return [];
+        } else {
+          computedChildren.push(child);
+        }
+
+        const childDocument = this.collection.get(child);
+
+        if (!childDocument) {
+          return [];
+        }
+
+        return childDocument.getGlobalComplexTokensWithRef(computedChildren);
+      })
+    );
   }
 
   public getGlobalComplexTokens(computedChildren: string[] = []): ComplexToken[] {
@@ -32,6 +56,27 @@ export default class Document {
         }
 
         return childDocument.getGlobalComplexTokens(computedChildren);
+      })
+    );
+  }
+
+  public getGlobalStructComplexTokensWithRef(computedChildren: string[] = []): OwnedStructComplexTokens[] {
+    return [{ owner: this.path, tokens: this.structComplexTokens }].concat(
+      this.children.flatMap((child) => {
+        // Cycling children or/and duplicates
+        if (computedChildren.includes(child)) {
+          return [];
+        } else {
+          computedChildren.push(child);
+        }
+
+        const childDocument = this.collection.get(child);
+
+        if (!childDocument) {
+          return [];
+        }
+
+        return childDocument.getGlobalStructComplexTokensWithRef(computedChildren);
       })
     );
   }

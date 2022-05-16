@@ -1,5 +1,5 @@
 import { readFileSync, readFile } from "fs";
-import { fileURLToPath } from "url";
+import { fileURLToPath, pathToFileURL } from "url";
 import { basename, join, normalize } from "path";
 
 import { GlobSync } from "glob";
@@ -18,6 +18,10 @@ export default class WorkspaceFilesSystem {
 
   public static fileUriToPath(uri: string) {
     return fileURLToPath(uri);
+  }
+
+  public static filePathToUri(path: string) {
+    return pathToFileURL(path);
   }
 
   public static readFileSync(filePath: string) {
