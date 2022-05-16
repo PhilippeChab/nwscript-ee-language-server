@@ -30,14 +30,17 @@ export default class GotoDefinitionProvider extends Provider {
         )!;
 
         const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
-        token = localScope?.functionsComplexTokens.find((token) => token.identifier === identifier);
 
-        if (!token) {
+        if (!tokenType) {
           token = localScope?.functionVariablesComplexTokens.find((token) => token.identifier === identifier);
         }
 
+        if (!token && tokenType === CompletionItemKind.Function) {
+          token = localScope?.functionsComplexTokens.find((token) => token.identifier === identifier);
+        }
+
         if (document) {
-          if (tokenType === CompletionItemKind.Property) {
+          if (tokenType === CompletionItemKind.Property && structVariableIdentifier) {
             const structIdentifer = localScope?.functionVariablesComplexTokens.find(
               (token) => token.identifier === structVariableIdentifier
             )?.valueType;
@@ -56,7 +59,7 @@ export default class GotoDefinitionProvider extends Provider {
             }
           }
 
-          if (!token) {
+          if (!token && tokenType === CompletionItemKind.Struct) {
             const tokensWithRef = document.getGlobalStructComplexTokensWithRef();
             for (let i = 0; i < tokensWithRef.length; i++) {
               ref = tokensWithRef[i];
@@ -68,7 +71,7 @@ export default class GotoDefinitionProvider extends Provider {
             }
           }
 
-          if (!token) {
+          if (!token && (tokenType === CompletionItemKind.Constant || tokenType === CompletionItemKind.Function)) {
             const tokensWithRef = document.getGlobalComplexTokensWithRef();
             for (let i = 0; i < tokensWithRef.length; i++) {
               ref = tokensWithRef[i];

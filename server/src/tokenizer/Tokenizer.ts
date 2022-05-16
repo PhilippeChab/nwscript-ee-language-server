@@ -359,16 +359,23 @@ export default class Tokenizer {
       const tokenIndex = tokensArray.findIndex(
         (token) => token.startIndex <= position.character && token.endIndex >= position.character
       )!;
+      const token = tokensArray[tokenIndex];
 
-      if (tokensArray[tokenIndex].scopes.includes(STRUCT_PROPERTY_SCOPE)) {
+      if (token.scopes.includes(STRUCT_PROPERTY_SCOPE)) {
         tokenType = CompletionItemKind.Property;
         structVariableIdentifier = this.getRawTokenContent(line, tokensArray[tokenIndex - 2]);
+      } else if (token.scopes.includes(CONSTANT_SCOPE)) {
+        tokenType = CompletionItemKind.Constant;
+      } else if (token.scopes.includes(STRUCT_SCOPE)) {
+        tokenType = CompletionItemKind.Struct;
+      } else if (token.scopes.includes(FUNCTION_DECLARACTION_SCOPE)) {
+        tokenType = CompletionItemKind.Function;
       }
 
       return {
         tokenType,
         structVariableIdentifier,
-        identifier: this.getRawTokenContent(line, tokensArray[tokenIndex]),
+        identifier: this.getRawTokenContent(line, token),
       };
     }
 

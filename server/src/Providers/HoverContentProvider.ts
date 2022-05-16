@@ -30,14 +30,16 @@ export default class HoverContentProvider extends Provider {
         )!;
 
         const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
-        token = localScope?.functionsComplexTokens.find((token) => token.identifier === identifier);
 
-        if (!token) {
+        if (!tokenType) {
           token = localScope?.functionVariablesComplexTokens.find((token) => token.identifier === identifier);
         }
 
+        if (!token && tokenType === CompletionItemKind.Function) {
+          token = localScope?.functionsComplexTokens.find((token) => token.identifier === identifier);
+        }
         if (document) {
-          if (tokenType === CompletionItemKind.Property) {
+          if (tokenType === CompletionItemKind.Property && structVariableIdentifier) {
             const structIdentifer = localScope?.functionVariablesComplexTokens.find(
               (token) => token.identifier === structVariableIdentifier
             )?.valueType;
@@ -48,17 +50,21 @@ export default class HoverContentProvider extends Provider {
               ?.properties.find((property) => property.identifier === identifier);
           }
 
-          if (!token) {
+          if (!token && tokenType === CompletionItemKind.Struct) {
             const tokens = document.getGlobalStructComplexTokens();
             token = tokens.find((token) => token.identifier === identifier);
           }
 
-          if (!token) {
+          if (!token && (tokenType === CompletionItemKind.Constant || tokenType === CompletionItemKind.Function)) {
             const tokens = document.getGlobalComplexTokens();
             token = tokens.find((token) => token.identifier === identifier);
           }
 
-          if (!token && this.server.documentsCollection) {
+          if (
+            !token &&
+            (tokenType === CompletionItemKind.Constant || tokenType === CompletionItemKind.Function) &&
+            this.server.documentsCollection
+          ) {
             const tokens = this.server.documentsCollection.standardLibComplexTokens;
             token = tokens.find((token) => token.identifier === identifier);
           }
