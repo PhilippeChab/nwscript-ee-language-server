@@ -10,3 +10,4 @@ webpack.config.js
 test/**
 server/resources/nwscript.nss
 server/scripts
+images/**

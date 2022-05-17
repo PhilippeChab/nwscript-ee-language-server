@@ -28,6 +28,7 @@
   "activationEvents": [
     "onLanguage:nwscript"
   ],
+  "preview": true,
   "main": "./client/out/extension",
   "contributes": {
     "languages": [
