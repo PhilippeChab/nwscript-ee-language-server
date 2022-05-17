@@ -29,8 +29,8 @@ export default class ServerManger {
    */
   public async initialize() {
     this.tokenizer = await new Tokenizer(this.logger).loadGrammar();
-    this.documentsCollection = await new DocumentsCollection().initialize(this.workspaceFilesSystem, this.tokenizer);
-
+    //this.documentsCollection = await new DocumentsCollection().initialize(this.workspaceFilesSystem, this.tokenizer);
+    this.documentsCollection = new DocumentsCollection();
     this.registerProviders();
     this.registerLiveDocumentsEvents();
 
@@ -55,7 +55,11 @@ export default class ServerManger {
    * Setup should be run after the client connection has been initialized. We can do things here like
    * handle changes to the workspace and query configuration settings
    */
-  public setup() {}
+  public async setup() {
+    if (this.tokenizer) {
+      await this.documentsCollection?.initialize(this.workspaceFilesSystem, this.tokenizer);
+    }
+  }
 
   public shutdown() {}
 
@@ -68,9 +72,9 @@ export default class ServerManger {
   }
 
   private registerLiveDocumentsEvents() {
-    this.liveDocumentsManager.onDidSave((event) => {
+    this.liveDocumentsManager.onDidSave(async (event) => {
       if (this.tokenizer) {
-        this.documentsCollection?.updateDocument(event.document.uri, this.tokenizer);
+        await this.documentsCollection?.updateDocument(event.document.uri, this.tokenizer);
       }
     });
   }

@@ -2,7 +2,7 @@ import { readFileSync, readFile } from "fs";
 import { fileURLToPath, pathToFileURL } from "url";
 import { basename, join, normalize } from "path";
 
-import { GlobSync } from "glob";
+import { GlobSync, Glob } from "glob";
 
 const FILES_EXTENSION = "nss";
 export default class WorkspaceFilesSystem {
@@ -28,7 +28,7 @@ export default class WorkspaceFilesSystem {
     return readFileSync(filePath);
   }
 
-  public static async readFileAsync(filePath: string) {
+  public static async readFileAsync(filePath: string): Promise<Buffer> {
     return new Promise((resolve, reject) => {
       readFile(filePath, (error, data) => (error ? reject(error) : resolve(data)));
     });

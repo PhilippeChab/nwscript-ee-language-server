@@ -29,7 +29,6 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
 
   private initializeDocument(filePath: string, tokenizer: Tokenizer) {
     const fileContent = WorkspaceFilesSystem.readFileSync(filePath).toString();
-
     const globalScope = tokenizer.tokenizeContent(fileContent, TokenizedScope.global);
 
     return new Document(filePath, globalScope.children, globalScope.complexTokens, globalScope.structComplexTokens, this);
@@ -38,12 +37,9 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
   async initialize(workspaceFilesSystem: WorkspaceFilesSystem, tokenizer: Tokenizer) {
     const filePaths = workspaceFilesSystem.getAllFilePaths();
 
-    // This executes in parallel
     await each(filePaths, async (filePath) => {
       this.addDocument(this.initializeDocument(filePath, tokenizer));
     });
-
-    return this;
   }
 
   public updateDocument(uri: string, tokenizer: Tokenizer) {
