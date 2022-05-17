@@ -13,7 +13,7 @@ export default class WorkspaceFilesSystem {
   }
 
   public getAllFilePaths() {
-    return new GlobSync(`src/**/*.${FILES_EXTENSION}`).found.map((filename) => this.normalizedAbsolutePath(filename));
+    return new GlobSync(`**/*.${FILES_EXTENSION}`).found.map((filename) => this.normalizedAbsolutePath(filename));
   }
 
   public static fileUriToPath(uri: string) {

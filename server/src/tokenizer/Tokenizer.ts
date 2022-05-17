@@ -4,7 +4,6 @@ import { loadWASM, OnigScanner, OnigString } from "vscode-oniguruma";
 import { CompletionItemKind } from "vscode-languageserver";
 import type { IGrammar } from "vscode-textmate";
 
-import { TriggerCharacters } from "../Providers";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { Logger } from "../Logger";
 import {
