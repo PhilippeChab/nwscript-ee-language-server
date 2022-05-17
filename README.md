@@ -15,7 +15,7 @@ None.
 Simply open a project with nss files and the extension installed. The extension will index your files and you will be ready to go - it can currently take up to 20-30 seconds to index
 big projects.
 
-![](./images/loading.png)
+![](https://github.com/PhilippeChab/nwscript-ee-language-server/blob/main/images/loading.png)
 
 ## Features
 
