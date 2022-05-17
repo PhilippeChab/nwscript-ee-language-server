@@ -15,6 +15,18 @@ big projects.
 
 ## Features
 
-Enhanced syntax highlighting.
+Enhanced syntax highlighting:
 
 ![](./images/syntax-highlighting.png)
+
+Completion:
+
+![](./images/completion.gif)
+
+Hover information:
+
+![](./images/hover.gif)
+
+Goto definition:
+
+![](./images/goto.gif)
