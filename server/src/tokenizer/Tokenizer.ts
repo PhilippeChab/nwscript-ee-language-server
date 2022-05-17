@@ -71,9 +71,9 @@ export default class Tokenizer {
       loadGrammar: (scopeName) => {
         return new Promise((resolve, reject) => {
           if (scopeName === "source.nss") {
-            return WorkspaceFilesSystem.readFileAsync(
-              join(__dirname, "..", "..", "..", "syntaxes", "new.nwscript.tmLanguage")
-            ).then((data) => resolve(parseRawGrammar((data as Buffer).toString())));
+            return WorkspaceFilesSystem.readFileAsync(join(__dirname, "..", "..", "..", "syntaxes", "nwscript.tmLanguage")).then(
+              (data) => resolve(parseRawGrammar((data as Buffer).toString()))
+            );
           }
 
           reject(`Unknown scope name: ${scopeName}`);

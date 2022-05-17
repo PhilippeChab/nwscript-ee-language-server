@@ -1,7 +1,9 @@
 import { join } from "path";
+import { each } from "async";
+
 import type { Tokenizer } from "../Tokenizer";
-import { TokenizedScope } from "../Tokenizer/Tokenizer";
 import type { ComplexToken } from "../Tokenizer/types";
+import { TokenizedScope } from "../Tokenizer/Tokenizer";
 import { Dictionnary } from "../Utils";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import Document from "./Document";
@@ -35,7 +37,9 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
 
   async initialize(workspaceFilesSystem: WorkspaceFilesSystem, tokenizer: Tokenizer) {
     const filePaths = workspaceFilesSystem.getAllFilePaths();
-    filePaths.forEach((filePath) => {
+
+    // This executes in parallel
+    await each(filePaths, async (filePath) => {
       this.addDocument(this.initializeDocument(filePath, tokenizer));
     });
 
