@@ -1,6 +1,10 @@
 # README
 
-NWScript: EE Language Server is a Visual Studio extension LSP to provide intellisense to the NWScript language.
+NWScript: EE Language Server is a Visual Studio extension LSP for the NWScript language.
+
+While it seems to work well, even in bigger and older code bases, it is still an early project and there might be some unintended behaviours.
+
+If you wish to have formatting on top of that, take a look at this other [extension](https://github.com/PhilippeChab/nwscript-formatter). It was written before the LSP, hence why the formatting is not included directly in it. I will migrate it to the LSP eventually if I have time.
 
 ## Dependencies
 
