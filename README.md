@@ -21,16 +21,16 @@ big projects.
 
 Enhanced syntax highlighting:
 
-![](./images/syntax-highlighting.png)
+![](https://github.com/PhilippeChab/nwscript-ee-language-server/blob/main/images/syntax-highlighting.png)
 
 Completion:
 
-![](./images/completion.gif)
+![](https://github.com/PhilippeChab/nwscript-ee-language-server/blob/main/images/completion.gif)
 
 Hover information:
 
-![](./images/hover.gif)
+![](https://github.com/PhilippeChab/nwscript-ee-language-server/blob/main/images/hover.gif)
 
 Goto definition:
 
-![](./images/goto.gif)
+![](https://github.com/PhilippeChab/nwscript-ee-language-server/blob/main/images/goto.gif)
