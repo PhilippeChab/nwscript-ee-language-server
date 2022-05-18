@@ -15,22 +15,26 @@ None.
 Simply open a project with nss files and the extension installed. The extension will index your files and you will be ready to go - it can currently take up to 20-30 seconds to index
 big projects.
 
-![](https://github.com/PhilippeChab/nwscript-ee-language-server/blob/main/images/loading.png)
+![](https://i.imgur.com/DKn8znH.png)
 
 ## Features
 
 Enhanced syntax highlighting:
 
-![](https://github.com/PhilippeChab/nwscript-ee-language-server/blob/main/images/syntax-highlighting.png)
+![](https://i.imgur.com/A78xmBR.png)
 
 Completion:
 
-![](https://github.com/PhilippeChab/nwscript-ee-language-server/blob/main/images/completion.gif)
+![](https://i.imgur.com/Iet1Lul.gif)
 
 Hover information:
 
-![](https://github.com/PhilippeChab/nwscript-ee-language-server/blob/main/images/hover.gif)
+![](https://i.imgur.com/ZARVTQs.gif)
 
 Goto definition:
 
-![](https://github.com/PhilippeChab/nwscript-ee-language-server/blob/main/images/goto.gif)
+![](https://i.imgur.com/vR13onI.gif)
+
+## Issues
+
+Please report any issues on the github [repository](https://github.com/PhilippeChab/nwscript-ee-language-server/issues).
