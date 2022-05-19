@@ -31,6 +31,7 @@ export const TYPE_SCOPE = "storage.type.built-in.nss";
 export const TERMINATOR_STATEMENT = "punctuation.terminator.statement.nss";
 export const DOT_ACCESS_STATEMENT = "punctuation.separator.dot-access.nss";
 export const ASSIGNATION_STATEMENT = "keyword.operator.assignment.nss";
+export const COMMENT_STATEMENT = "punctuation.definition.comment.nss";
 
 export const FUNCTION_DECLARACTION_SCOPE = "entity.name.function.nss";
 export const BLOCK_DECLARACTION_SCOPE = "punctuation.section.block.begin.bracket.curly.nss";

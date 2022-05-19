@@ -25,38 +25,42 @@ export default class HoverContentBuilder extends Builder {
     } else if (this.isStructToken(token)) {
       return this.buildStructItem(token);
     } else {
-      return this.buildSimpleMarkdown("");
+      return this.buildMarkdown("");
     }
   }
 
   private static buildConstantItem(token: ConstantComplexToken) {
-    return this.buildSimpleMarkdown(`${this.handleLanguageType(token.valueType)} ${token.identifier} = ${token.value}`);
+    return this.buildMarkdown(`${this.handleLanguageType(token.valueType)} ${token.identifier} = ${token.value}`);
   }
 
   private static buildVariableItem(token: VariableComplexToken) {
-    return this.buildSimpleMarkdown(`${this.handleLanguageType(token.valueType)} ${token.identifier}`);
+    return this.buildMarkdown(`${this.handleLanguageType(token.valueType)} ${token.identifier}`);
   }
 
   private static buildFunctionParamItem(token: FunctionParamComplexToken) {
-    return this.buildSimpleMarkdown(`${this.handleLanguageType(token.valueType)} ${token.identifier}`);
+    return this.buildMarkdown(`${this.handleLanguageType(token.valueType)} ${token.identifier}`);
   }
 
   private static buildFunctionItem(token: FunctionComplexToken) {
-    return this.buildSimpleMarkdown(
-      `${this.handleLanguageType(token.returnType)} ${token.identifier}(${token.params.reduce((acc, param, index) => {
-        return `${acc}${this.handleLanguageType(param.valueType)} ${param.identifier}${
-          index === token.params.length - 1 ? "" : ", "
-        }`;
-      }, "")})`
+    return this.buildMarkdown(
+      [
+        `${this.handleLanguageType(token.returnType)} ${token.identifier}(${token.params.reduce((acc, param, index) => {
+          return `${acc}${this.handleLanguageType(param.valueType)} ${param.identifier}${
+            index === token.params.length - 1 ? "" : ", "
+          }`;
+        }, "")})`,
+      ],
+      [],
+      ["<details>", "<summary>Details</summary>", "```nwscript", ...token.comments, "```", "</details>"]
     );
   }
 
   private static buildStructPropertyItem(property: StructPropertyComplexToken) {
-    return this.buildSimpleMarkdown(`${this.handleLanguageType(property.valueType)} ${property.identifier}`);
+    return this.buildMarkdown(`${this.handleLanguageType(property.valueType)} ${property.identifier}`);
   }
 
   private static buildStructItem(token: StructComplexToken) {
-    return this.buildComposedMarkdown([
+    return this.buildMarkdown([
       `struct ${token.identifier}`,
       "{",
       ...token.properties.map((property) => `\t${property.valueType} ${property.identifier}`),
@@ -64,17 +68,18 @@ export default class HoverContentBuilder extends Builder {
     ]);
   }
 
-  private static buildSimpleMarkdown(content: string) {
-    return {
-      kind: MarkupKind.Markdown,
-      value: ["```nwscript", content, "```"].join("\n"),
-    };
-  }
+  private static buildMarkdown(content: string[] | string, prepend: string[] = [], postpend: string[] = []) {
+    let formattedContent = content;
+    if (typeof content === "string") {
+      formattedContent = [content];
+    }
 
-  private static buildComposedMarkdown(content: string[]) {
     return {
       kind: MarkupKind.Markdown,
-      value: ["```nwscript"].concat(content).concat(["```"]).join("\n"),
+      value: prepend
+        .concat(["```nwscript", ...formattedContent, "```"])
+        .concat(postpend)
+        .join("\r\n"),
     };
   }
 }

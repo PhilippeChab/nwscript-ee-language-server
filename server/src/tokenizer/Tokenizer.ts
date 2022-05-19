@@ -22,6 +22,7 @@ import {
   FUNCTION_PARAMETER_SCOPE,
   ASSIGNATION_STATEMENT,
   STRUCT_PROPERTY_SCOPE,
+  COMMENT_STATEMENT,
 } from "./constants";
 import type {
   ComplexToken,
@@ -131,6 +132,7 @@ export default class Tokenizer {
 
     let ruleStack = INITIAL;
     let currentStruct: StructComplexToken | null = null;
+    let comments: string[] = [];
     for (let currentIndex = firstLineIndex; currentIndex < lastLineIndex; currentIndex++) {
       const line = lines[currentIndex];
       const tokensLine = this.grammar?.tokenizeLine(line, ruleStack);
@@ -138,6 +140,12 @@ export default class Tokenizer {
 
       if (tokensLine && tokensArray) {
         ruleStack = tokensLine.ruleStack;
+
+        const firstToken = tokensArray[0];
+        if (firstToken.scopes.includes(COMMENT_STATEMENT)) {
+          comments.push(line);
+          continue;
+        }
 
         const lastIndex = tokensArray.length - 1;
         const lastToken = tokensArray[lastIndex];
@@ -197,6 +205,7 @@ export default class Tokenizer {
               tokenType: CompletionItemKind.Function,
               returnType: this.getTokenLanguageType(line, tokensArray[index - 2]),
               params: this.getFunctionParams(line, currentIndex, tokensArray),
+              comments,
             });
             break;
           }
@@ -216,6 +225,8 @@ export default class Tokenizer {
           }
         }
       }
+
+      comments = [];
     }
 
     return scope;
@@ -296,6 +307,7 @@ export default class Tokenizer {
               tokenType: CompletionItemKind.Function,
               returnType: this.getTokenLanguageType(line, tokensArray[index - 2]),
               params: this.getFunctionParams(line, index, tokensArray),
+              comments: [],
             });
           }
         }
