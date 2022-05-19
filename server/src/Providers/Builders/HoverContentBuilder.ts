@@ -1,4 +1,5 @@
 import { MarkupContent, MarkupKind } from "vscode-languageserver";
+import { ServerConfiguration } from "../../ServerManager/ServerManager";
 import type {
   ComplexToken,
   ConstantComplexToken,
@@ -11,7 +12,7 @@ import type {
 import Builder from "./Builder";
 
 export default class HoverContentBuilder extends Builder {
-  public static buildItem(token: ComplexToken): MarkupContent {
+  public static buildItem(token: ComplexToken, serverConfig: ServerConfiguration): MarkupContent {
     if (this.isConstantToken(token)) {
       return this.buildConstantItem(token);
     } else if (this.isVariable(token)) {
@@ -19,7 +20,7 @@ export default class HoverContentBuilder extends Builder {
     } else if (this.isFunctionParameter(token)) {
       return this.buildFunctionParamItem(token);
     } else if (this.isFunctionToken(token)) {
-      return this.buildFunctionItem(token);
+      return this.buildFunctionItem(token, serverConfig);
     } else if (this.isStructPropertyToken(token)) {
       return this.buildStructPropertyItem(token);
     } else if (this.isStructToken(token)) {
@@ -41,7 +42,7 @@ export default class HoverContentBuilder extends Builder {
     return this.buildMarkdown(`${this.handleLanguageType(token.valueType)} ${token.identifier}`);
   }
 
-  private static buildFunctionItem(token: FunctionComplexToken) {
+  private static buildFunctionItem(token: FunctionComplexToken, serverConfig: ServerConfiguration) {
     return this.buildMarkdown(
       [
         `${this.handleLanguageType(token.returnType)} ${token.identifier}(${token.params.reduce((acc, param, index) => {
@@ -50,8 +51,8 @@ export default class HoverContentBuilder extends Builder {
           }`;
         }, "")})`,
       ],
-      [],
-      ["<details>", "<summary>Details</summary>", "```nwscript", ...token.comments, "```", "</details>"]
+      serverConfig.includeCommentsInFunctionsHover ? ["```nwscript", ...token.comments, "```"] : [],
+      []
     );
   }
 

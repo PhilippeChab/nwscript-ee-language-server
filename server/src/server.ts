@@ -17,16 +17,16 @@ connection.onInitialize(async (params: InitializeParams) => {
 
   await server.initialize();
 
-  return server.capabilities;
+  return server.getCapabilities();
 });
 
 connection.onInitialized(() => {});
 
 connection.onRequest(Requests.setup, async () => {
-  return await server.setup();
+  return await server.up();
 });
 
-connection.onShutdown(() => server.shutdown());
-connection.onExit(() => server.shutdown());
+connection.onShutdown(() => server.down());
+connection.onExit(() => server.down());
 
 connection.listen();

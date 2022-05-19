@@ -2,31 +2,44 @@ import type { Connection, InitializeParams, InitializeResult } from "vscode-lang
 import { TextDocumentSyncKind } from "vscode-languageserver";
 
 import { DocumentsCollection, LiveDocumentsManager } from "../Documents";
-import { CompletionItemsProvider, GotoDefinitionProvider, HoverContentProvider, TriggerCharacters } from "../Providers";
+import {
+  CompletionItemsProvider,
+  ConfigurationProvider,
+  GotoDefinitionProvider,
+  HoverContentProvider,
+  WorkspaceProvider,
+} from "../Providers";
 import { Tokenizer } from "../Tokenizer";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { Logger } from "../Logger";
+import CapabilitiesHandler from "./CapabilitiesHandler";
 
+const defaultServerConfiguration = {
+  autoCompleteFunctionsWithParams: false,
+  includeCommentsInFunctionsHover: false,
+};
+
+export type ServerConfiguration = typeof defaultServerConfiguration;
 export default class ServerManger {
   public connection: Connection;
   public logger: Logger;
+  public capabilitiesHandler: CapabilitiesHandler;
   public workspaceFilesSystem: WorkspaceFilesSystem;
   public liveDocumentsManager: LiveDocumentsManager;
+  public config = defaultServerConfiguration;
   public tokenizer: Tokenizer | null = null;
   public documentsCollection: DocumentsCollection | null = null;
 
   constructor(connection: Connection, params: InitializeParams) {
     this.connection = connection;
     this.logger = new Logger(connection.console);
+    this.capabilitiesHandler = new CapabilitiesHandler(params.capabilities);
     this.workspaceFilesSystem = new WorkspaceFilesSystem(params.rootPath!);
     this.liveDocumentsManager = new LiveDocumentsManager();
 
     this.liveDocumentsManager.listen(this.connection);
   }
 
-  /**
-   * Initialize should be run during the initialization phase of the client connection
-   */
   public async initialize() {
     this.tokenizer = await new Tokenizer(this.logger).loadGrammar();
     this.documentsCollection = new DocumentsCollection();
@@ -36,38 +49,35 @@ export default class ServerManger {
     return this;
   }
 
-  public get capabilities(): InitializeResult {
+  public getCapabilities() {
     return {
-      capabilities: {
-        textDocumentSync: TextDocumentSyncKind.Incremental,
-        definitionProvider: true,
-        hoverProvider: true,
-        completionProvider: {
-          resolveProvider: true,
-          triggerCharacters: [TriggerCharacters.dot],
-        },
-      },
+      capabilities: this.capabilitiesHandler.capabilities,
     };
   }
 
-  /**
-   * Setup should be run after the client connection has been initialized. We can do things here like
-   * handle changes to the workspace and query configuration settings
-   */
-  public async setup() {
+  public async up() {
+    WorkspaceProvider.register(this);
+
+    if (this.capabilitiesHandler.supportsWorkspaceConfiguration) {
+      ConfigurationProvider.register(this, () => {
+        this.loadConfig();
+      });
+    }
+
     if (this.tokenizer) {
-      await this.documentsCollection?.initialize(this.workspaceFilesSystem, this.tokenizer);
+      return await Promise.all([
+        this.documentsCollection?.initialize(this.workspaceFilesSystem, this.tokenizer),
+        this.loadConfig(),
+      ]);
     }
   }
 
-  public shutdown() {}
+  public down() {}
 
   private registerProviders() {
-    if (this.tokenizer && this.documentsCollection) {
-      CompletionItemsProvider.register(this);
-      GotoDefinitionProvider.register(this);
-      HoverContentProvider.register(this);
-    }
+    CompletionItemsProvider.register(this);
+    GotoDefinitionProvider.register(this);
+    HoverContentProvider.register(this);
   }
 
   private registerLiveDocumentsEvents() {
@@ -76,5 +86,9 @@ export default class ServerManger {
         await this.documentsCollection?.updateDocument(event.document.uri, this.tokenizer);
       }
     });
+  }
+
+  private async loadConfig() {
+    this.config = await this.connection.workspace.getConfiguration("nwscript-ee-lsp");
   }
 }

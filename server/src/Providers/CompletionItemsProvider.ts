@@ -1,8 +1,8 @@
-import type { CompletionItem } from "vscode-languageserver";
+import { CompletionItem, CompletionItemKind } from "vscode-languageserver";
 import { join } from "path";
 
 import type { ServerManager } from "../ServerManager";
-import type { ComplexToken } from "../Tokenizer/types";
+import type { ComplexToken, FunctionParamComplexToken } from "../Tokenizer/types";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { CompletionItemBuilder } from "./Builders";
 import { LocalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Tokenizer";
@@ -57,7 +57,7 @@ export default class CompletionItemsProvider extends Provider {
     });
 
     this.server.connection.onCompletionResolve((item: CompletionItem) => {
-      return item;
+      return CompletionItemBuilder.buildResolvedItem(item, this.server.config);
     });
   }
 

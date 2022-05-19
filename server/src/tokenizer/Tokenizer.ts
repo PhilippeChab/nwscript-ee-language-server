@@ -1,5 +1,5 @@
 import { join } from "path";
-import { Registry, INITIAL, parseRawGrammar, IToken } from "vscode-textmate";
+import { Registry, INITIAL, parseRawGrammar, IToken, ITokenizeLineResult } from "vscode-textmate";
 import { loadWASM, OnigScanner, OnigString } from "vscode-oniguruma";
 import { CompletionItemKind } from "vscode-languageserver";
 import type { IGrammar } from "vscode-textmate";
@@ -119,6 +119,18 @@ export default class Tokenizer {
         valueType: this.getTokenLanguageType(line, tokensArray[this.getTokenIndex(tokensArray, token) - 2]),
       };
     });
+  }
+
+  private getLocalFunctionComments(lines: string[], tokensLines: (ITokenizeLineResult | undefined)[]) {
+    const comments: string[] = [];
+
+    let index = Math.max(tokensLines.length - 1, 0);
+    while (tokensLines[index]?.tokens.at(0)?.scopes.includes(COMMENT_STATEMENT)) {
+      comments.push(lines[index]);
+      index--;
+    }
+
+    return comments;
   }
 
   private tokenizeLinesForGlobalScope(lines: string[], startIndex: number = 0, stopIndex: number = -1) {
@@ -307,7 +319,7 @@ export default class Tokenizer {
               tokenType: CompletionItemKind.Function,
               returnType: this.getTokenLanguageType(line, tokensArray[index - 2]),
               params: this.getFunctionParams(line, index, tokensArray),
-              comments: [],
+              comments: this.getLocalFunctionComments(lines, tokensLines),
             });
           }
         }

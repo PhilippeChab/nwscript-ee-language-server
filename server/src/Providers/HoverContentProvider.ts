@@ -1,11 +1,11 @@
 import { CompletionItemKind } from "vscode-languageserver";
+
 import type { ServerManager } from "../ServerManager";
 import type { ComplexToken } from "../Tokenizer/types";
 import { TokenizedScope } from "../Tokenizer/Tokenizer";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
-import Provider from "./Provider";
 import { HoverContentBuilder } from "./Builders";
-import { DocumentsCollection } from "../Documents";
+import Provider from "./Provider";
 
 export default class HoverContentProvider extends Provider {
   constructor(server: ServerManager) {
@@ -72,7 +72,7 @@ export default class HoverContentProvider extends Provider {
 
         if (token) {
           return {
-            contents: HoverContentBuilder.buildItem(token),
+            contents: HoverContentBuilder.buildItem(token, this.server.config),
           };
         }
       }

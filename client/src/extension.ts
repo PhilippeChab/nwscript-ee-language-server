@@ -25,6 +25,7 @@ export function activate(context: ExtensionContext) {
   };
 
   client = new LanguageClient("nwscript", "NWscript Language Server", serverOptions, clientOptions);
+  client.registerProposedFeatures();
   client.start();
 
   client.onReady().then(() => {
