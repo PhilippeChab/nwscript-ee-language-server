@@ -7,6 +7,7 @@ import {
   ConfigurationProvider,
   GotoDefinitionProvider,
   HoverContentProvider,
+  SignatureHelpProvider,
   WorkspaceProvider,
 } from "../Providers";
 import { Tokenizer } from "../Tokenizer";
@@ -78,6 +79,7 @@ export default class ServerManger {
     CompletionItemsProvider.register(this);
     GotoDefinitionProvider.register(this);
     HoverContentProvider.register(this);
+    SignatureHelpProvider.register(this);
   }
 
   private registerLiveDocumentsEvents() {

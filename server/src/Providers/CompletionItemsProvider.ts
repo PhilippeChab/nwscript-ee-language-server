@@ -1,8 +1,6 @@
-import { CompletionItem, CompletionItemKind } from "vscode-languageserver";
-import { join } from "path";
+import { CompletionItem } from "vscode-languageserver";
 
 import type { ServerManager } from "../ServerManager";
-import type { ComplexToken, FunctionParamComplexToken } from "../Tokenizer/types";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { CompletionItemBuilder } from "./Builders";
 import { LocalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Tokenizer";
@@ -75,16 +73,6 @@ export default class CompletionItemsProvider extends Provider {
       return this.getStandardLibComplexTokens()
         .concat(document.getGlobalComplexTokens())
         .map((token) => CompletionItemBuilder.buildItem(token));
-    }
-
-    return [];
-  }
-
-  private getStandardLibComplexTokens() {
-    const documentCollection = this.server.documentsCollection;
-
-    if (documentCollection) {
-      return documentCollection.standardLibComplexTokens;
     }
 
     return [];

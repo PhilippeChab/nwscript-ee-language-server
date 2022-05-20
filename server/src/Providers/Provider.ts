@@ -6,4 +6,14 @@ export default class Provider {
   }
 
   constructor(protected readonly server: ServerManager) {}
+
+  protected getStandardLibComplexTokens() {
+    const documentCollection = this.server.documentsCollection;
+
+    if (documentCollection) {
+      return documentCollection.standardLibComplexTokens;
+    }
+
+    return [];
+  }
 }

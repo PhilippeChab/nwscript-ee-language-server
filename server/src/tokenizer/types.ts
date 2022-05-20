@@ -12,7 +12,7 @@ type LanguageVariable = {
   tokenType: typeof CompletionItemKind.Variable;
   valueType: LanguageTypes;
 };
-type LangugeFunction = {
+type LanguageFunction = {
   tokenType: typeof CompletionItemKind.Function;
   returnType: LanguageTypes;
   params: FunctionParamComplexToken[];
@@ -34,7 +34,7 @@ type BaseComplexToken<T> = T & { position: Position; identifier: string };
 
 export type ConstantComplexToken = BaseComplexToken<LanguageConstant>;
 export type VariableComplexToken = BaseComplexToken<LanguageVariable>;
-export type FunctionComplexToken = BaseComplexToken<LangugeFunction>;
+export type FunctionComplexToken = BaseComplexToken<LanguageFunction>;
 export type FunctionParamComplexToken = BaseComplexToken<LanguageFunctionParam>;
 export type StructComplexToken = BaseComplexToken<LanguageStruct>;
 export type StructPropertyComplexToken = BaseComplexToken<LanguageStructProperty>;

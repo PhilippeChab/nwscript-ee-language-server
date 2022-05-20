@@ -27,6 +27,9 @@ export default class CapabilitiesHandler {
         resolveProvider: true,
         triggerCharacters: [TriggerCharacters.dot],
       },
+      signatureHelpProvider: {
+        triggerCharacters: [TriggerCharacters.leftRoundBracket, TriggerCharacters.comma],
+      },
     };
 
     if (this.clientCapabilities.workspace && this.clientCapabilities.workspace.workspaceFolders) {
