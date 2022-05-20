@@ -1,17 +1,10 @@
-import { ParameterInformation, SignatureHelp, SignatureInformation } from "vscode-languageserver";
-import type { ComplexToken, FunctionComplexToken } from "../../Tokenizer/types";
+import { ParameterInformation, SignatureInformation } from "vscode-languageserver";
+
+import type { FunctionComplexToken } from "../../Tokenizer/types";
 import Builder from "./Builder";
 
 export default class SignatureHelpBuilder extends Builder {
-  public static buildItem(token: ComplexToken, activeSignatureHelp: SignatureHelp | undefined): SignatureHelp | undefined {
-    if (this.isFunctionToken(token)) {
-      return this.buildFunctionItem(token, activeSignatureHelp);
-    } else {
-      return undefined;
-    }
-  }
-
-  static buildFunctionItem(token: FunctionComplexToken, activeSignatureHelp: SignatureHelp | undefined) {
+  static buildFunctionItem(token: FunctionComplexToken, activeParameter: number | undefined) {
     return {
       signatures: [
         SignatureInformation.create(
@@ -26,8 +19,8 @@ export default class SignatureHelpBuilder extends Builder {
           )
         ),
       ],
-      activeSignature: activeSignatureHelp?.activeSignature || null,
-      activeParameter: activeSignatureHelp?.activeParameter || null,
+      activeSignature: 0,
+      activeParameter: activeParameter || null,
     };
   }
 }

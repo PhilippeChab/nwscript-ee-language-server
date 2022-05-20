@@ -1,4 +1,4 @@
-import { CompletionItemKind } from "vscode-languageserver";
+import { CompletionItemKind, HoverParams } from "vscode-languageserver";
 
 import type { ServerManager } from "../ServerManager";
 import type { ComplexToken } from "../Tokenizer/types";
@@ -11,7 +11,11 @@ export default class HoverContentProvider extends Provider {
   constructor(server: ServerManager) {
     super(server);
 
-    this.server.connection.onHover((params) => {
+    this.server.connection.onHover((params) => this.exceptionsWrapper(this.providerHandler(params)));
+  }
+
+  private providerHandler(params: HoverParams) {
+    return () => {
       const {
         textDocument: { uri },
         position,
@@ -24,7 +28,7 @@ export default class HoverContentProvider extends Provider {
 
       if (liveDocument) {
         let token: ComplexToken | undefined;
-        const { tokenType, structVariableIdentifier, identifier } = this.server.tokenizer?.findActionTarget(
+        const { tokenType, structVariableIdentifier, identifier } = this.server.tokenizer?.findActionTargetAtPosition(
           liveDocument.getText(),
           position
         )!;
@@ -78,6 +82,6 @@ export default class HoverContentProvider extends Provider {
       }
 
       return undefined;
-    });
+    };
   }
 }

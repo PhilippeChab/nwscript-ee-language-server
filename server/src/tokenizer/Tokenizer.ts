@@ -3,27 +3,8 @@ import { Registry, INITIAL, parseRawGrammar, IToken, ITokenizeLineResult } from 
 import { loadWASM, OnigScanner, OnigString } from "vscode-oniguruma";
 import { CompletionItemKind } from "vscode-languageserver";
 import type { IGrammar } from "vscode-textmate";
+import type { Position } from "vscode-languageserver-textdocument";
 
-import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
-import { Logger } from "../Logger";
-import {
-  LanguageTypes,
-  TYPE_SCOPE,
-  BLOCK_TERMINATION_SCOPE,
-  BLOCK_DECLARACTION_SCOPE,
-  VARIABLE_SCOPE,
-  INCLUDE_SCOPE,
-  CONSTANT_SCOPE,
-  FUNCTION_SCOPE,
-  BLOCK_SCOPE,
-  FUNCTION_DECLARACTION_SCOPE,
-  TERMINATOR_STATEMENT,
-  STRUCT_SCOPE,
-  FUNCTION_PARAMETER_SCOPE,
-  ASSIGNATION_STATEMENT,
-  STRUCT_PROPERTY_SCOPE,
-  COMMENT_STATEMENT,
-} from "./constants";
 import type {
   ComplexToken,
   FunctionComplexToken,
@@ -31,7 +12,9 @@ import type {
   StructComplexToken,
   VariableComplexToken,
 } from "./types";
-import { Position } from "vscode-languageserver-textdocument";
+import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
+import { Logger } from "../Logger";
+import { LanguageTypes, LanguageScopes } from "./constants";
 
 const wasmBin = WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "onig.wasm")).buffer;
 
@@ -65,6 +48,7 @@ export type LocalScopeTokenizationResult = {
 export default class Tokenizer {
   private readonly registry: Registry;
   private grammar: IGrammar | null = null;
+  private localScopeCache: (ITokenizeLineResult | undefined)[] | null = null;
 
   constructor(private readonly logger: Logger | null = null) {
     this.registry = new Registry({
@@ -83,6 +67,14 @@ export default class Tokenizer {
     });
   }
 
+  private getTokenIndexAtPosition(tokensArray: IToken[], position: Position) {
+    return tokensArray.findIndex((token) => token.startIndex <= position.character && token.endIndex >= position.character)!;
+  }
+
+  private getTokenAtPosition(tokensArray: IToken[], position: Position) {
+    return tokensArray.find((token) => token.startIndex <= position.character && token.endIndex >= position.character);
+  }
+
   private getRawTokenContent(line: string, token: IToken) {
     return line.slice(token.startIndex, token.endIndex);
   }
@@ -98,7 +90,7 @@ export default class Tokenizer {
   }
 
   private getConstantValue(line: string, tokensArray: IToken[]) {
-    const startIndex = tokensArray.findIndex((token) => token.scopes.includes(ASSIGNATION_STATEMENT));
+    const startIndex = tokensArray.findIndex((token) => token.scopes.includes(LanguageScopes.assignationStatement));
     const endIndex = tokensArray.length - 1;
 
     return tokensArray
@@ -109,7 +101,7 @@ export default class Tokenizer {
   }
 
   private getFunctionParams(line: string, lineIndex: number, tokensArray: IToken[]) {
-    const functionParamTokens = tokensArray.filter((token) => token.scopes.includes(FUNCTION_PARAMETER_SCOPE));
+    const functionParamTokens = tokensArray.filter((token) => token.scopes.includes(LanguageScopes.functionParameter));
 
     return functionParamTokens.map((token) => {
       return {
@@ -125,7 +117,7 @@ export default class Tokenizer {
     const comments: string[] = [];
 
     let index = Math.max(tokensLines.length - 1, 0);
-    while (tokensLines[index]?.tokens.at(0)?.scopes.includes(COMMENT_STATEMENT)) {
+    while (tokensLines[index]?.tokens.at(0)?.scopes.includes(LanguageScopes.commentStatement)) {
       comments.push(lines[index]);
       index--;
     }
@@ -154,7 +146,7 @@ export default class Tokenizer {
         ruleStack = tokensLine.ruleStack;
 
         const firstToken = tokensArray[0];
-        if (firstToken.scopes.includes(COMMENT_STATEMENT)) {
+        if (firstToken.scopes.includes(LanguageScopes.commentStatement)) {
           comments.push(line);
           continue;
         }
@@ -166,10 +158,10 @@ export default class Tokenizer {
 
           // STRUCT PROPERTIES
           if (currentStruct) {
-            if (token.scopes.includes(BLOCK_TERMINATION_SCOPE)) {
+            if (token.scopes.includes(LanguageScopes.blockTermination)) {
               scope.structComplexTokens.push(currentStruct);
               currentStruct = null;
-            } else if (lastIndex > 2 && !token.scopes.includes(BLOCK_DECLARACTION_SCOPE)) {
+            } else if (lastIndex > 2 && !token.scopes.includes(LanguageScopes.blockDeclaraction)) {
               currentStruct.properties.push({
                 position: { line: currentIndex, character: tokensArray[3].startIndex },
                 identifier: this.getRawTokenContent(line, tokensArray[3]),
@@ -183,7 +175,7 @@ export default class Tokenizer {
 
           // CHILD
           {
-            if (token.scopes.includes(INCLUDE_SCOPE)) {
+            if (token.scopes.includes(LanguageScopes.includeDeclaration)) {
               scope.children.push(this.getRawTokenContent(line, tokensArray.at(-2)!));
               break;
             }
@@ -191,9 +183,9 @@ export default class Tokenizer {
 
           // CONSTANT
           if (
-            token.scopes.includes(CONSTANT_SCOPE) &&
-            !token.scopes.includes(FUNCTION_SCOPE) &&
-            !token.scopes.includes(BLOCK_SCOPE)
+            token.scopes.includes(LanguageScopes.constantIdentifer) &&
+            !token.scopes.includes(LanguageScopes.functionDeclaration) &&
+            !token.scopes.includes(LanguageScopes.block)
           ) {
             scope.complexTokens.push({
               position: { line: currentIndex, character: token.startIndex },
@@ -207,9 +199,9 @@ export default class Tokenizer {
 
           // FUNCTION
           if (
-            token.scopes.includes(FUNCTION_DECLARACTION_SCOPE) &&
-            lastToken.scopes.includes(TERMINATOR_STATEMENT) &&
-            !token.scopes.includes(BLOCK_SCOPE)
+            token.scopes.includes(LanguageScopes.functionIdentifier) &&
+            lastToken.scopes.includes(LanguageScopes.terminatorStatement) &&
+            !token.scopes.includes(LanguageScopes.block)
           ) {
             scope.complexTokens.push({
               position: { line: currentIndex, character: token.startIndex },
@@ -224,8 +216,9 @@ export default class Tokenizer {
 
           // STRUCT
           if (
-            token.scopes.includes(STRUCT_SCOPE) &&
-            (lastToken.scopes.includes(STRUCT_SCOPE) || lastToken.scopes.includes(BLOCK_DECLARACTION_SCOPE))
+            token.scopes.includes(LanguageScopes.structIdentifier) &&
+            (lastToken.scopes.includes(LanguageScopes.structIdentifier) ||
+              lastToken.scopes.includes(LanguageScopes.blockDeclaraction))
           ) {
             currentStruct = {
               position: { line: currentIndex, character: token.startIndex },
@@ -253,15 +246,21 @@ export default class Tokenizer {
     };
 
     let ruleStack = INITIAL;
-    const tokensLines = lines.map((line) => {
-      const tokenizedLine = this.grammar?.tokenizeLine(line, ruleStack);
+    let tokensLines;
+    if (this.localScopeCache) {
+      tokensLines = this.localScopeCache;
+      this.localScopeCache = null;
+    } else {
+      tokensLines = lines.map((line) => {
+        const tokenizedLine = this.grammar?.tokenizeLine(line, ruleStack);
 
-      if (tokenizedLine) {
-        ruleStack = tokenizedLine.ruleStack;
-      }
+        if (tokenizedLine) {
+          ruleStack = tokenizedLine.ruleStack;
+        }
 
-      return tokenizedLine;
-    });
+        return tokenizedLine;
+      });
+    }
 
     let computeFunctionLocals = false;
 
@@ -275,7 +274,10 @@ export default class Tokenizer {
         const lastIndex = tokensArray.length - 1;
         const lastToken = tokensArray[lastIndex];
 
-        if (isLastLine && (lastToken.scopes.includes(BLOCK_SCOPE) || lastToken.scopes.includes(FUNCTION_SCOPE))) {
+        if (
+          isLastLine &&
+          (lastToken.scopes.includes(LanguageScopes.block) || lastToken.scopes.includes(LanguageScopes.functionDeclaration))
+        ) {
           computeFunctionLocals = true;
         }
 
@@ -285,9 +287,10 @@ export default class Tokenizer {
           // VARIABLE
           if (
             computeFunctionLocals &&
-            token.scopes.includes(VARIABLE_SCOPE) &&
+            token.scopes.includes(LanguageScopes.variableIdentifer) &&
             index > 1 &&
-            (tokensArray[index - 2].scopes.includes(TYPE_SCOPE) || tokensArray[index - 2].scopes.includes(STRUCT_SCOPE))
+            (tokensArray[index - 2].scopes.includes(LanguageScopes.type) ||
+              tokensArray[index - 2].scopes.includes(LanguageScopes.structIdentifier))
           ) {
             scope.functionVariablesComplexTokens.push({
               position: { line: currentIndex, character: token.startIndex },
@@ -298,7 +301,7 @@ export default class Tokenizer {
           }
 
           // FUNCTION PARAM
-          if (computeFunctionLocals && token.scopes.includes(FUNCTION_PARAMETER_SCOPE)) {
+          if (computeFunctionLocals && token.scopes.includes(LanguageScopes.functionParameter)) {
             scope.functionVariablesComplexTokens.push({
               position: { line: currentIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
@@ -309,9 +312,9 @@ export default class Tokenizer {
 
           // FUNCTION
           if (
-            token.scopes.includes(FUNCTION_DECLARACTION_SCOPE) &&
-            !lastToken.scopes.includes(TERMINATOR_STATEMENT) &&
-            !token.scopes.includes(BLOCK_SCOPE)
+            token.scopes.includes(LanguageScopes.functionIdentifier) &&
+            !lastToken.scopes.includes(LanguageScopes.terminatorStatement) &&
+            !token.scopes.includes(LanguageScopes.block)
           ) {
             scope.functionsComplexTokens.push({
               position: { line: currentIndex, character: token.startIndex },
@@ -325,7 +328,7 @@ export default class Tokenizer {
         }
 
         // Needs to be after for allow more one iteration to fetch function params
-        if (computeFunctionLocals && !lastToken.scopes.includes(BLOCK_SCOPE)) {
+        if (computeFunctionLocals && !lastToken.scopes.includes(LanguageScopes.block)) {
           computeFunctionLocals = false;
         }
       }
@@ -354,7 +357,71 @@ export default class Tokenizer {
     }
   }
 
-  public findLineIdentiferAt(content: string, position: Position, index: number) {
+  public isInLanguageScope(content: string, position: Position, tokenizedScope: LanguageScopes) {
+    let ruleStack = INITIAL;
+    const lines = content.split(/\r?\n/);
+
+    const tokensLines = lines.map((line) => {
+      const tokenizedLine = this.grammar?.tokenizeLine(line, ruleStack);
+
+      if (tokenizedLine) {
+        ruleStack = tokenizedLine.ruleStack;
+      }
+
+      return tokenizedLine;
+    });
+    this.localScopeCache = tokensLines;
+
+    const line = lines[position.line];
+    const tokensArray = tokensLines[position.line]?.tokens;
+
+    if (tokensArray && this.getTokenAtPosition(tokensArray, position)?.scopes.includes(tokenizedScope)) {
+      return { line, tokensArray };
+    }
+
+    return false;
+  }
+
+  public findIdentiferFromPositionForLanguageScopes(
+    line: string,
+    tokensArray: IToken[],
+    position: Position,
+    languageScopes: LanguageScopes[]
+  ) {
+    let identifier: string | undefined;
+    const tokenIndex = this.getTokenIndexAtPosition(tokensArray, position);
+
+    for (let currentIndex = tokenIndex; currentIndex >= 0; currentIndex--) {
+      const token = tokensArray[currentIndex];
+      if (languageScopes.every((scope) => token.scopes.includes(scope))) {
+        identifier = this.getRawTokenContent(line, token);
+      }
+    }
+
+    return identifier;
+  }
+
+  public getLanguageScopeOccurencesFromPositionWithDelimiter(
+    tokensArray: IToken[],
+    position: Position,
+    occurencesTarget: LanguageScopes,
+    delimiter: LanguageScopes
+  ) {
+    let occurences = 0;
+
+    let currentIndex = this.getTokenIndexAtPosition(tokensArray, position);
+    while (currentIndex >= 0 && !tokensArray[currentIndex].scopes.includes(delimiter)) {
+      if (tokensArray[currentIndex].scopes.includes(occurencesTarget)) {
+        occurences++;
+      }
+
+      currentIndex--;
+    }
+
+    return occurences;
+  }
+
+  public findLineIdentiferFromPositionAt(content: string, position: Position, index: number) {
     let ruleStack = INITIAL;
 
     const lines = content.split(/\r?\n/);
@@ -369,7 +436,19 @@ export default class Tokenizer {
     return this.getRawTokenContent(line, tokensArray?.at(index)!);
   }
 
-  public findActionTarget(content: string, position: Position) {
+  public findFirstIdentiferForLanguageScope(line: string, languageScope: LanguageScopes) {
+    const tokensArray = this.grammar?.tokenizeLine(line, INITIAL)?.tokens;
+
+    const token = tokensArray?.find((token) => token.scopes.includes(languageScope));
+
+    if (token) {
+      return this.getRawTokenContent(line, token);
+    }
+
+    return undefined;
+  }
+
+  public findActionTargetAtPosition(content: string, position: Position) {
     let ruleStack = INITIAL;
 
     let tokenType = undefined;
@@ -379,19 +458,17 @@ export default class Tokenizer {
     const tokensArray = this.grammar?.tokenizeLine(line, ruleStack)?.tokens;
 
     if (tokensArray) {
-      const tokenIndex = tokensArray.findIndex(
-        (token) => token.startIndex <= position.character && token.endIndex >= position.character
-      )!;
+      const tokenIndex = this.getTokenIndexAtPosition(tokensArray, position);
       const token = tokensArray[tokenIndex];
 
-      if (token.scopes.includes(STRUCT_PROPERTY_SCOPE)) {
+      if (token.scopes.includes(LanguageScopes.structProperty)) {
         tokenType = CompletionItemKind.Property;
         structVariableIdentifier = this.getRawTokenContent(line, tokensArray[tokenIndex - 2]);
-      } else if (token.scopes.includes(CONSTANT_SCOPE)) {
-        tokenType = CompletionItemKind.Constant;
-      } else if (token.scopes.includes(STRUCT_SCOPE)) {
+      } else if (token.scopes.includes(LanguageScopes.structIdentifier)) {
         tokenType = CompletionItemKind.Struct;
-      } else if (token.scopes.includes(FUNCTION_DECLARACTION_SCOPE)) {
+      } else if (token.scopes.includes(LanguageScopes.constantIdentifer)) {
+        tokenType = CompletionItemKind.Constant;
+      } else if (token.scopes.includes(LanguageScopes.functionIdentifier)) {
         tokenType = CompletionItemKind.Function;
       }
 

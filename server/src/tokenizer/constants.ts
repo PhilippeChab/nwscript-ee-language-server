@@ -18,21 +18,24 @@ export enum LanguageTypes {
   none = "none",
 }
 
-export const INCLUDE_SCOPE = "meta.preprocessor.include.nss";
-export const FUNCTION_SCOPE = "meta.function.nss";
-export const FUNCTION_PARAMETER_SCOPE = "variable.parameter.nss";
-export const BLOCK_SCOPE = "meta.block.nss";
-export const STRUCT_SCOPE = "storage.type.struct-defined.nss";
-export const STRUCT_PROPERTY_SCOPE = "entity.other.attribute-name.nss";
-export const VARIABLE_SCOPE = "variable.language.nss";
-export const CONSTANT_SCOPE = "constant.language.nss";
-export const TYPE_SCOPE = "storage.type.built-in.nss";
-
-export const TERMINATOR_STATEMENT = "punctuation.terminator.statement.nss";
-export const DOT_ACCESS_STATEMENT = "punctuation.separator.dot-access.nss";
-export const ASSIGNATION_STATEMENT = "keyword.operator.assignment.nss";
-export const COMMENT_STATEMENT = "punctuation.definition.comment.nss";
-
-export const FUNCTION_DECLARACTION_SCOPE = "entity.name.function.nss";
-export const BLOCK_DECLARACTION_SCOPE = "punctuation.section.block.begin.bracket.curly.nss";
-export const BLOCK_TERMINATION_SCOPE = "punctuation.section.block.end.bracket.curly.nss";
+export enum LanguageScopes {
+  includeDeclaration = "meta.preprocessor.include.nss",
+  structIdentifier = "storage.type.struct-defined.nss",
+  structProperty = "entity.other.attribute-name.nss",
+  variableIdentifer = "variable.language.nss",
+  constantIdentifer = "constant.language.nss",
+  type = "storage.type.built-in.nss",
+  separatorStatement = "punctuation.separator.delimiter.nss",
+  terminatorStatement = "punctuation.terminator.statement.nss",
+  dotAccessStatement = "punctuation.separator.dot-access.nss",
+  commentStatement = "punctuation.definition.comment.nss",
+  assignationStatement = "keyword.operator.assignment.nss",
+  functionIdentifier = "entity.name.function.nss",
+  functionCall = "meta.function-call.nss",
+  functionDeclaration = "meta.function.nss",
+  functionParameter = "variable.parameter.nss",
+  block = "meta.block.nss",
+  blockDeclaraction = "punctuation.section.block.begin.bracket.curly.nss",
+  blockTermination = "punctuation.section.block.end.bracket.curly.nss",
+  leftRoundBracket = "punctuation.section.arguments.begin.bracket.round.nss",
+}

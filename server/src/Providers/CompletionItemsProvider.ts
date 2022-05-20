@@ -1,4 +1,4 @@
-import { CompletionItem } from "vscode-languageserver";
+import { CompletionParams } from "vscode-languageserver";
 
 import type { ServerManager } from "../ServerManager";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
@@ -6,14 +6,21 @@ import { CompletionItemBuilder } from "./Builders";
 import { LocalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Tokenizer";
 import { TriggerCharacters } from ".";
 import { Document } from "../Documents";
-import Provider from "./Provider";
 import { LanguageTypes } from "../Tokenizer/constants";
+import Provider from "./Provider";
 
 export default class CompletionItemsProvider extends Provider {
   constructor(server: ServerManager) {
     super(server);
 
-    this.server.connection.onCompletion((params) => {
+    this.server.connection.onCompletion((params) => this.exceptionsWrapper(this.providerHandler(params)));
+    this.server.connection.onCompletionResolve((item) =>
+      this.exceptionsWrapper(() => CompletionItemBuilder.buildResolvedItem(item, this.server.config), item)
+    );
+  }
+
+  private providerHandler(params: CompletionParams) {
+    return () => {
       const {
         textDocument: { uri },
         position,
@@ -30,7 +37,11 @@ export default class CompletionItemsProvider extends Provider {
         if (localScope) {
           if (document) {
             if (params.context?.triggerCharacter === TriggerCharacters.dot) {
-              const structVariableIdentifier = this.server.tokenizer?.findLineIdentiferAt(liveDocument.getText(), position, -2);
+              const structVariableIdentifier = this.server.tokenizer?.findLineIdentiferFromPositionAt(
+                liveDocument.getText(),
+                position,
+                -2
+              );
 
               const structIdentifer = localScope.functionVariablesComplexTokens.find(
                 (token) => token.identifier === structVariableIdentifier
@@ -44,7 +55,10 @@ export default class CompletionItemsProvider extends Provider {
                 });
             }
 
-            if (this.server.tokenizer?.findLineIdentiferAt(liveDocument.getText(), position, -3) === LanguageTypes.struct) {
+            if (
+              this.server.tokenizer?.findLineIdentiferFromPositionAt(liveDocument.getText(), position, -3) ===
+              LanguageTypes.struct
+            ) {
               return document.getGlobalStructComplexTokens().map((token) => CompletionItemBuilder.buildItem(token));
             }
           }
@@ -52,11 +66,7 @@ export default class CompletionItemsProvider extends Provider {
           return this.getLocalScopeCompletionItems(localScope).concat(this.getGlobalScopeCompletionItems(document));
         }
       }
-    });
-
-    this.server.connection.onCompletionResolve((item: CompletionItem) => {
-      return CompletionItemBuilder.buildResolvedItem(item, this.server.config);
-    });
+    };
   }
 
   private getLocalScopeCompletionItems(localScope: LocalScopeTokenizationResult) {

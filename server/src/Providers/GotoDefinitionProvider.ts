@@ -1,16 +1,21 @@
+import { CompletionItemKind, DefinitionParams } from "vscode-languageserver";
+
 import type { OwnedComplexTokens, OwnedStructComplexTokens } from "../Documents/Document";
 import type { ServerManager } from "../ServerManager";
 import type { ComplexToken } from "../Tokenizer/types";
 import { TokenizedScope } from "../Tokenizer/Tokenizer";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import Provider from "./Provider";
-import { CompletionItemKind } from "vscode-languageserver";
 
 export default class GotoDefinitionProvider extends Provider {
   constructor(server: ServerManager) {
     super(server);
 
-    this.server.connection.onDefinition((params) => {
+    this.server.connection.onDefinition((params) => this.exceptionsWrapper(this.providerHandler(params)));
+  }
+
+  private providerHandler(params: DefinitionParams) {
+    return () => {
       const {
         textDocument: { uri },
         position,
@@ -24,7 +29,7 @@ export default class GotoDefinitionProvider extends Provider {
       if (liveDocument) {
         let token: ComplexToken | undefined;
         let ref: OwnedComplexTokens | OwnedStructComplexTokens | undefined;
-        const { tokenType, structVariableIdentifier, identifier } = this.server.tokenizer?.findActionTarget(
+        const { tokenType, structVariableIdentifier, identifier } = this.server.tokenizer?.findActionTargetAtPosition(
           liveDocument.getText(),
           position
         )!;
@@ -96,6 +101,6 @@ export default class GotoDefinitionProvider extends Provider {
       }
 
       return undefined;
-    });
+    };
   }
 }

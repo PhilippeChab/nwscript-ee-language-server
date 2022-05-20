@@ -16,4 +16,21 @@ export default class Provider {
 
     return [];
   }
+
+  protected exceptionsWrapper<N>(cb: () => N): N | undefined;
+  protected exceptionsWrapper<N>(cb: () => N, defaultResult: N): N;
+  protected exceptionsWrapper<N>(cb: () => N, defaultResult?: N): N | undefined {
+    let result;
+    try {
+      result = cb();
+    } catch (e: any) {
+      this.server.logger.error("Unknown error, could not resolve the request.");
+
+      // Uncomment this when deving
+      // this.server.logger.error(e.message);
+      // this.server.logger.error(e.stack);
+    } finally {
+      return result || defaultResult;
+    }
+  }
 }
