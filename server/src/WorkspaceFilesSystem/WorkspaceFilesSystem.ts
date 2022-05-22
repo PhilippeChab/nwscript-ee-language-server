@@ -1,12 +1,13 @@
-import { readFileSync, readFile } from "fs";
+import { readFileSync, readFile, existsSync } from "fs";
 import { fileURLToPath, pathToFileURL } from "url";
 import { basename, join, normalize } from "path";
+import { WorkspaceFolder } from "vscode-languageserver";
 
-import { GlobSync, Glob } from "glob";
+import { GlobSync } from "glob";
 
 const FILES_EXTENSION = "nss";
 export default class WorkspaceFilesSystem {
-  constructor(private readonly rootPath: string) {}
+  constructor(private readonly rootPath: string, private readonly workspaceFolders: WorkspaceFolder[]) {}
 
   private normalizedAbsolutePath(...parts: string[]) {
     return normalize(join(this.rootPath, ...parts));
@@ -16,12 +17,28 @@ export default class WorkspaceFilesSystem {
     return new GlobSync(`**/*.${FILES_EXTENSION}`).found.map((filename) => this.normalizedAbsolutePath(filename));
   }
 
+  public getGlobFilePaths(glob: string) {
+    return new GlobSync(glob).found.map((filename) => this.normalizedAbsolutePath(filename));
+  }
+
+  public getExecutablePath(executable: string) {
+    return executable;
+  }
+
+  public getWorkspaceRootPath() {
+    return this.rootPath;
+  }
+
   public static fileUriToPath(uri: string) {
     return fileURLToPath(uri);
   }
 
   public static filePathToUri(path: string) {
     return pathToFileURL(path);
+  }
+
+  public static existsSync(path: string) {
+    return existsSync(path);
   }
 
   public static readFileSync(filePath: string) {

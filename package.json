@@ -64,6 +64,46 @@
           "type": "boolean",
           "default": false,
           "description": "Will include a function's comments when hovering it."
+        },
+        "nwscript-ee-lsp.formatter": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "Whether the formatter is enabled or not."
+            } ,
+            "executable": {
+              "type": "string",
+              "default": "clang-format",
+              "description": "Clang's executable path."
+            },
+            "ignoredGlobs": {
+              "type": "array",
+              "default": [],
+              "description": "Glob patterns to ignore.",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nwscript-formatter.style": {
+              "type": "object",
+              "default": {
+                "BasedOnStyle": "Google",
+                "AlignTrailingComments": true,
+                "AlignConsecutiveAssignments": true,
+                "ColumnLimit": 250,
+                "BreakBeforeBraces": "Allman",
+                "AlignEscapedNewlinesLeft": true,
+                "AlwaysBreakBeforeMultilineStrings": true,
+                "MaxEmptyLinesToKeep": 1,
+                "TabWidth": 4,
+                "IndentWidth": 4,
+                "UseTab": "Always"
+              },
+              "description": "Style for the formatter."
+            }
+          }
         }
       }
     }

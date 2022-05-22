@@ -23,6 +23,7 @@
     "glob": "^8.0.1",
     "patch-package": "^6.4.7",
     "postinstall-postinstall": "^2.1.0",
+    "sax": "^1.2.4",
     "vscode-languageserver": "^7.0.0",
     "vscode-languageserver-textdocument": "^1.0.4",
     "vscode-oniguruma": "^1.6.1",
@@ -31,6 +32,7 @@
   "devDependencies": {
     "@types/async": "^3.2.13",
     "@types/glob": "^7.2.0",
+    "@types/sax": "^1.2.4",
     "ts-node": "^10.7.0"
   }
 }

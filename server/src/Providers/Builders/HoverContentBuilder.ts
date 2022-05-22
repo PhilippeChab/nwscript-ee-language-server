@@ -1,5 +1,5 @@
 import { MarkupContent, MarkupKind } from "vscode-languageserver";
-import { ServerConfiguration } from "../../ServerManager/ServerManager";
+import { ServerConfiguration } from "../../ServerManager/Config";
 import type {
   ComplexToken,
   ConstantComplexToken,

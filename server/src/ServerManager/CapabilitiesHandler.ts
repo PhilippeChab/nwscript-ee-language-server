@@ -21,6 +21,8 @@ export default class CapabilitiesHandler {
   private initializeServerCapabilties(): ServerCapabilities {
     const capabilities: ServerCapabilities = {
       textDocumentSync: TextDocumentSyncKind.Incremental as TextDocumentSyncKind,
+      documentFormattingProvider: true,
+      documentRangeFormattingProvider: true,
       definitionProvider: true,
       hoverProvider: true,
       completionProvider: {

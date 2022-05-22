@@ -1,26 +1,22 @@
-import type { Connection, InitializeParams, InitializeResult } from "vscode-languageserver";
-import { TextDocumentSyncKind } from "vscode-languageserver";
+import type { Connection, InitializeParams } from "vscode-languageserver";
 
-import { DocumentsCollection, LiveDocumentsManager } from "../Documents";
 import {
   CompletionItemsProvider,
   ConfigurationProvider,
+  DocumentFormatingProvider,
+  DocumentRangeFormattingProvider,
   GotoDefinitionProvider,
   HoverContentProvider,
   SignatureHelpProvider,
   WorkspaceProvider,
 } from "../Providers";
+import { DocumentsCollection, LiveDocumentsManager } from "../Documents";
 import { Tokenizer } from "../Tokenizer";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { Logger } from "../Logger";
+import { defaultServerConfiguration } from "./Config";
 import CapabilitiesHandler from "./CapabilitiesHandler";
 
-const defaultServerConfiguration = {
-  autoCompleteFunctionsWithParams: false,
-  includeCommentsInFunctionsHover: false,
-};
-
-export type ServerConfiguration = typeof defaultServerConfiguration;
 export default class ServerManger {
   public connection: Connection;
   public logger: Logger;
@@ -35,7 +31,7 @@ export default class ServerManger {
     this.connection = connection;
     this.logger = new Logger(connection.console);
     this.capabilitiesHandler = new CapabilitiesHandler(params.capabilities);
-    this.workspaceFilesSystem = new WorkspaceFilesSystem(params.rootPath!);
+    this.workspaceFilesSystem = new WorkspaceFilesSystem(params.rootPath!, params.workspaceFolders!);
     this.liveDocumentsManager = new LiveDocumentsManager();
 
     this.liveDocumentsManager.listen(this.connection);
@@ -80,6 +76,8 @@ export default class ServerManger {
     GotoDefinitionProvider.register(this);
     HoverContentProvider.register(this);
     SignatureHelpProvider.register(this);
+    DocumentFormatingProvider.register(this);
+    DocumentRangeFormattingProvider.register(this);
   }
 
   private registerLiveDocumentsEvents() {
@@ -91,6 +89,8 @@ export default class ServerManger {
   }
 
   private async loadConfig() {
-    this.config = await this.connection.workspace.getConfiguration("nwscript-ee-lsp");
+    const { formatter, ...rest } = await this.connection.workspace.getConfiguration("nwscript-ee-lsp");
+    this.config = { ...this.config, ...rest };
+    this.config.formatter = { ...this.config.formatter, ...formatter };
   }
 }
