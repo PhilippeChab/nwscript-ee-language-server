@@ -22,7 +22,7 @@ export default class WorkspaceFilesSystem {
   }
 
   public getExecutablePath(executable: string) {
-    return executable;
+    return normalize(executable);
   }
 
   public getWorkspaceRootPath() {

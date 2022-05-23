@@ -3,7 +3,7 @@ import { normalize, join } from "path";
 import { Tokenizer } from "../src/Tokenizer";
 import { TokenizedScope } from "../src/Tokenizer/Tokenizer";
 
-const loadGrammar = async () => {
+const generateDefinitions = async () => {
   const tokenizer = await new Tokenizer().loadGrammar();
 
   const lib = readFileSync(normalize(join(__dirname, "../resources/nwscript.nss"))).toString();
@@ -12,4 +12,4 @@ const loadGrammar = async () => {
   writeFileSync(normalize(join(__dirname, "../resources/standardLibDefinitions.json")), JSON.stringify(definitions, null, 4));
 };
 
-loadGrammar();
+generateDefinitions();
