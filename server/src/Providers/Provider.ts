@@ -41,11 +41,11 @@ export default class Provider {
     try {
       result = await cb();
     } catch (e: any) {
-      // this.server.logger.error("Unknown error, could not resolve the request.");
+      this.server.logger.error("Unknown error, could not resolve the request.");
 
       // Uncomment this when deving
-      this.server.logger.error(e.message);
-      this.server.logger.error(e.stack);
+      // this.server.logger.error(e.message);
+      // this.server.logger.error(e.stack);
     } finally {
       return result || defaultResult;
     }

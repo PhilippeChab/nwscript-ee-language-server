@@ -2,12 +2,11 @@ import { ClientCapabilities, ServerCapabilities, TextDocumentSyncKind } from "vs
 import { TriggerCharacters } from "../Providers";
 
 export default class CapabilitiesHandler {
-  public clientCapabilities: ClientCapabilities;
   public capabilities: ServerCapabilities;
 
-  constructor(clientCapabilities: ClientCapabilities) {
+  constructor(private readonly clientCapabilities: ClientCapabilities) {
     this.clientCapabilities = clientCapabilities;
-    this.capabilities = this.initializeServerCapabilties();
+    this.capabilities = this.initializeServerCapabilities();
   }
 
   public get supportsWorkspaceFolders(): boolean {
@@ -18,7 +17,7 @@ export default class CapabilitiesHandler {
     return (this.clientCapabilities.workspace && !!this.clientCapabilities.workspace.configuration) || false;
   }
 
-  private initializeServerCapabilties(): ServerCapabilities {
+  private initializeServerCapabilities(): ServerCapabilities {
     const capabilities: ServerCapabilities = {
       textDocumentSync: TextDocumentSyncKind.Incremental as TextDocumentSyncKind,
       documentFormattingProvider: true,
