@@ -27,12 +27,14 @@
     "vscode-languageserver": "^7.0.0",
     "vscode-languageserver-textdocument": "^1.0.4",
     "vscode-oniguruma": "^1.6.1",
-    "vscode-textmate": "^7.0.1"
+    "vscode-textmate": "^7.0.1",
+    "zeromq": "6.0.0-beta.6"
   },
   "devDependencies": {
     "@types/async": "^3.2.13",
     "@types/glob": "^7.2.0",
     "@types/sax": "^1.2.4",
+    "@types/zeromq": "^5.2.1",
     "ts-node": "^10.7.0"
   }
 }

@@ -76,9 +76,9 @@ export default class ServerManger {
   }
 
   private registerLiveDocumentsEvents() {
-    this.liveDocumentsManager.onDidSave(async (event) => {
+    this.liveDocumentsManager.onDidSave((event) => {
       if (this.tokenizer) {
-        await this.documentsCollection?.updateDocument(event.document.uri, this.tokenizer);
+        this.documentsCollection?.updateDocument(event.document.uri, this.tokenizer);
       }
     });
   }

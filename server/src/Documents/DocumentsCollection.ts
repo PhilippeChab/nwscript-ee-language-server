@@ -30,15 +30,13 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     return new Document(filePath, globalScope.children, globalScope.complexTokens, globalScope.structComplexTokens, this);
   }
 
-  public initialize(documentsIndexerResult: { filePath: string; globalScope: GlobalScopeTokenizationResult }[]) {
-    documentsIndexerResult.forEach((result) => {
-      this.addDocument(this.initializeDocument(result.filePath, result.globalScope));
-    });
+  public createDocument(filePath: string, globalScope: GlobalScopeTokenizationResult) {
+    this.addDocument(this.initializeDocument(filePath, globalScope));
   }
 
-  public async updateDocument(uri: string, tokenizer: Tokenizer) {
+  public updateDocument(uri: string, tokenizer: Tokenizer) {
     const filePath = WorkspaceFilesSystem.fileUriToPath(uri);
-    const fileContent = (await WorkspaceFilesSystem.readFileAsync(filePath)).toString();
+    const fileContent = WorkspaceFilesSystem.readFileAsync(filePath).toString();
     const globalScope = tokenizer.tokenizeContent(fileContent, TokenizedScope.global);
 
     this.overwriteDocument(this.initializeDocument(filePath, globalScope));
