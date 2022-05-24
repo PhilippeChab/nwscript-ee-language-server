@@ -61,12 +61,7 @@ export default class ServerManger {
       });
     }
 
-    if (this.tokenizer) {
-      return await Promise.all([
-        this.documentsCollection?.initialize(this.workspaceFilesSystem, this.tokenizer),
-        this.loadConfig(),
-      ]);
-    }
+    await this.loadConfig();
   }
 
   public down() {}

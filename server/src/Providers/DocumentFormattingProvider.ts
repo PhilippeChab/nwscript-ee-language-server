@@ -1,4 +1,5 @@
 import { DocumentFormattingParams } from "vscode-languageserver";
+
 import { ServerManager } from "../ServerManager";
 import { ClangFormatter } from "./Formatters";
 import Provider from "./Provider";

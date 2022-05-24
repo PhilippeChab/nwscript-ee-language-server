@@ -13,7 +13,7 @@ export default class ConfigurationProvider {
     this.server.connection.onDidChangeConfiguration(this.handleDidChangeConfiguration);
   }
 
-  // This needs to be an arrow function to keeo the context
+  // This needs to be an arrow function to keep the context
   private handleDidChangeConfiguration = (_: DidChangeConfigurationParams) => {
     this.configChangeCallback();
   };

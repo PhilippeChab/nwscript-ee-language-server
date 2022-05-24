@@ -1,5 +1,5 @@
 import { MarkupContent, MarkupKind } from "vscode-languageserver";
-import { ServerConfiguration } from "../../ServerManager/Config";
+
 import type {
   ComplexToken,
   ConstantComplexToken,
@@ -9,6 +9,7 @@ import type {
   StructPropertyComplexToken,
   VariableComplexToken,
 } from "../../Tokenizer/types";
+import { ServerConfiguration } from "../../ServerManager/Config";
 import Builder from "./Builder";
 
 export default class HoverContentBuilder extends Builder {

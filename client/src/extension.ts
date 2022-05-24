@@ -2,11 +2,7 @@ import { join } from "path";
 import { LanguageClient, ServerOptions, TransportKind } from "vscode-languageclient/node";
 
 import type { LanguageClientOptions } from "vscode-languageclient/node";
-import { ExtensionContext, ProgressLocation, window } from "vscode";
-
-enum Requests {
-  setup = "server/setup",
-}
+import { ExtensionContext } from "vscode";
 
 let client: LanguageClient;
 const serverConfig = (serverPath: string) => {
@@ -27,23 +23,6 @@ export function activate(context: ExtensionContext) {
   client = new LanguageClient("nwscript", "NWscript Language Server", serverOptions, clientOptions);
   client.registerProposedFeatures();
   client.start();
-
-  client.onReady().then(() => {
-    window.withProgress(
-      {
-        location: ProgressLocation.Window,
-        cancellable: false,
-        title: "Indexing files for NWScript: EE LSP ...",
-      },
-      async (progress) => {
-        progress.report({ increment: 0 });
-
-        await client.sendRequest(Requests.setup);
-
-        progress.report({ increment: 100 });
-      }
-    );
-  });
 }
 
 export function deactivate() {

@@ -1,9 +1,8 @@
 import { join } from "path";
-import { each } from "async";
 
 import type { Tokenizer } from "../Tokenizer";
 import type { ComplexToken } from "../Tokenizer/types";
-import { TokenizedScope } from "../Tokenizer/Tokenizer";
+import { GlobalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Tokenizer";
 import { Dictionnary } from "../Utils";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import Document from "./Document";
@@ -27,23 +26,21 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     this.overwrite(document.getKey(), document);
   }
 
-  private async initializeDocument(filePath: string, tokenizer: Tokenizer) {
-    const fileContent = (await WorkspaceFilesSystem.readFileAsync(filePath)).toString();
-    const globalScope = tokenizer.tokenizeContent(fileContent, TokenizedScope.global);
-
+  private initializeDocument(filePath: string, globalScope: GlobalScopeTokenizationResult) {
     return new Document(filePath, globalScope.children, globalScope.complexTokens, globalScope.structComplexTokens, this);
   }
 
-  public async initialize(workspaceFilesSystem: WorkspaceFilesSystem, tokenizer: Tokenizer) {
-    const filePaths = workspaceFilesSystem.getAllFilePaths();
-
-    await each(filePaths, async (filePath) => {
-      this.addDocument(await this.initializeDocument(filePath, tokenizer));
+  public initialize(documentsIndexerResult: { filePath: string; globalScope: GlobalScopeTokenizationResult }[]) {
+    documentsIndexerResult.forEach((result) => {
+      this.addDocument(this.initializeDocument(result.filePath, result.globalScope));
     });
   }
 
   public async updateDocument(uri: string, tokenizer: Tokenizer) {
     const filePath = WorkspaceFilesSystem.fileUriToPath(uri);
-    this.overwriteDocument(await this.initializeDocument(filePath, tokenizer));
+    const fileContent = (await WorkspaceFilesSystem.readFileAsync(filePath)).toString();
+    const globalScope = tokenizer.tokenizeContent(fileContent, TokenizedScope.global);
+
+    this.overwriteDocument(this.initializeDocument(filePath, globalScope));
   }
 }

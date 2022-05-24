@@ -1,9 +1,9 @@
-import { join } from "path";
+import type { IGrammar } from "vscode-textmate";
+import type { Position } from "vscode-languageserver-textdocument";
 import { Registry, INITIAL, parseRawGrammar, IToken, ITokenizeLineResult } from "vscode-textmate";
 import { loadWASM, OnigScanner, OnigString } from "vscode-oniguruma";
 import { CompletionItemKind } from "vscode-languageserver";
-import type { IGrammar } from "vscode-textmate";
-import type { Position } from "vscode-languageserver-textdocument";
+import { join } from "path";
 
 import type {
   ComplexToken,

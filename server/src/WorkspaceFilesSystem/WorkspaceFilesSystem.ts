@@ -1,11 +1,11 @@
+import { WorkspaceFolder } from "vscode-languageserver";
 import { readFileSync, readFile, existsSync } from "fs";
 import { fileURLToPath, pathToFileURL } from "url";
 import { basename, join, normalize } from "path";
-import { WorkspaceFolder } from "vscode-languageserver";
-
 import { GlobSync } from "glob";
 
-const FILES_EXTENSION = "nss";
+export const FILES_EXTENSION = "nss";
+
 export default class WorkspaceFilesSystem {
   constructor(private readonly rootPath: string, private readonly workspaceFolders: WorkspaceFolder[]) {}
 

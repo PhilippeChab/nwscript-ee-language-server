@@ -1,13 +1,8 @@
-import { each } from "async";
-import { readFile } from "fs";
 import { createConnection, ProposedFeatures, InitializeParams } from "vscode-languageserver/node";
-import { Document } from "./Documents";
-import { ServerManager } from "./ServerManager";
-import { TokenizedScope } from "./Tokenizer/Tokenizer";
+import { fork } from "child_process";
+import { join } from "path";
 
-enum Requests {
-  setup = "server/setup",
-}
+import { ServerManager } from "./ServerManager";
 
 const connection = createConnection(ProposedFeatures.all);
 let server: ServerManager;
@@ -20,10 +15,15 @@ connection.onInitialize(async (params: InitializeParams) => {
   return server.getCapabilities();
 });
 
-connection.onInitialized(() => {});
+connection.onInitialized(async () => {
+  await server.up();
 
-connection.onRequest(Requests.setup, async () => {
-  return await server.up();
+  server.logger.info("Indexing files ...");
+  const child = fork(join(__dirname, "Documents", "DocumentsIndexer.js"), [server.workspaceFilesSystem.getWorkspaceRootPath()]);
+  child.on("message", (message) => {
+    server.documentsCollection?.initialize(JSON.parse(message.toString()));
+    server.logger.info("Done");
+  });
 });
 
 connection.onShutdown(() => server.down());

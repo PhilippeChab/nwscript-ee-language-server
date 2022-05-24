@@ -1,4 +1,5 @@
-import { CompletionItem, CompletionItemKind } from "vscode-languageserver";
+import { CompletionItemKind } from "vscode-languageserver";
+
 import { LanguageTypes } from "../../Tokenizer/constants";
 import type {
   ComplexToken,

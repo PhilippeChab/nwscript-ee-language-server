@@ -42,6 +42,7 @@ export default class HoverContentProvider extends Provider {
         if (!token && tokenType === CompletionItemKind.Function) {
           token = localScope?.functionsComplexTokens.find((token) => token.identifier === identifier);
         }
+
         if (document) {
           if (tokenType === CompletionItemKind.Property && structVariableIdentifier) {
             const structIdentifer = localScope?.functionVariablesComplexTokens.find(
@@ -63,15 +64,15 @@ export default class HoverContentProvider extends Provider {
             const tokens = document.getGlobalComplexTokens();
             token = tokens.find((token) => token.identifier === identifier);
           }
+        }
 
-          if (
-            !token &&
-            (tokenType === CompletionItemKind.Constant || tokenType === CompletionItemKind.Function) &&
-            this.server.documentsCollection
-          ) {
-            const tokens = this.server.documentsCollection.standardLibComplexTokens;
-            token = tokens.find((token) => token.identifier === identifier);
-          }
+        if (
+          !token &&
+          (tokenType === CompletionItemKind.Constant || tokenType === CompletionItemKind.Function) &&
+          this.server.documentsCollection
+        ) {
+          const tokens = this.server.documentsCollection.standardLibComplexTokens;
+          token = tokens.find((token) => token.identifier === identifier);
         }
 
         if (token) {

@@ -63,7 +63,9 @@ export default class CompletionItemsProvider extends Provider {
             }
           }
 
-          return this.getLocalScopeCompletionItems(localScope).concat(this.getGlobalScopeCompletionItems(document));
+          return this.getLocalScopeCompletionItems(localScope)
+            .concat(this.getGlobalScopeCompletionItems(document))
+            .concat(this.getStandardLibCompletionItems());
         }
       }
     };
@@ -79,12 +81,10 @@ export default class CompletionItemsProvider extends Provider {
   }
 
   private getGlobalScopeCompletionItems(document: Document | undefined) {
-    if (document) {
-      return this.getStandardLibComplexTokens()
-        .concat(document.getGlobalComplexTokens())
-        .map((token) => CompletionItemBuilder.buildItem(token));
-    }
+    return document?.getGlobalComplexTokens().map((token) => CompletionItemBuilder.buildItem(token)) || [];
+  }
 
-    return [];
+  private getStandardLibCompletionItems() {
+    return this.getStandardLibComplexTokens().map((token) => CompletionItemBuilder.buildItem(token));
   }
 }

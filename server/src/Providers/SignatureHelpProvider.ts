@@ -84,11 +84,11 @@ export default class SignatureHelpProvider extends Provider {
             if (!functionComplexToken) {
               functionComplexToken = this.getStandardLibComplexTokens().find((token) => token.identifier === functionIdentifier);
             }
-
-            if (functionComplexToken) {
-              return SignatureHelpBuilder.buildFunctionItem(functionComplexToken as FunctionComplexToken, activeParameter);
-            }
           }
+        }
+
+        if (functionComplexToken) {
+          return SignatureHelpBuilder.buildFunctionItem(functionComplexToken as FunctionComplexToken, activeParameter);
         }
       }
     };
