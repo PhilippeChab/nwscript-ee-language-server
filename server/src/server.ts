@@ -54,7 +54,7 @@ connection.onInitialized(async () => {
   const partCount = filesCount / numCPUs;
   for (let i = 0; i < numCPUs; i++) {
     const worker = cluster.fork();
-    worker.send(filesPath.slice(i * partCount, Math.min((i + 1) * partCount, filesCount)).join(","));
+    worker.send(filesPath.slice(i * partCount, Math.min((i + 1) * partCount, filesCount - 1)).join(","));
   }
 
   cluster.on("exit", () => {
