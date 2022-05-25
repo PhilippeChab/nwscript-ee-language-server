@@ -78,7 +78,7 @@ export default class Formatter {
     const documentPath = WorkspaceFilesSystem.fileUriToPath(documentUri);
 
     return this.ignoredGlobs.some((glob) => {
-      return this.workspaceFilesSystem.getGlobFilePaths(glob).some((path) => path === documentPath);
+      return this.workspaceFilesSystem.getGlobPaths(glob).some((path) => path === documentPath);
     });
   }
 }
