@@ -48,7 +48,7 @@
       {
         "language": "nwscript",
         "scopeName": "source.nss",
-        "path": "./syntaxes/nwscript.tmLanguage"
+        "path": "./syntaxes/nwscript-ee.tmLanguage"
       }
     ],
     "configuration": {
@@ -72,7 +72,7 @@
               "type": "boolean",
               "default": false,
               "description": "Whether the formatter is enabled or not."
-            } ,
+            },
             "executable": {
               "type": "string",
               "default": "clang-format",
