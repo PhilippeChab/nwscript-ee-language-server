@@ -15,3 +15,10 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 ## [1.2.0]
 
 - New providers: [DocumentFormatting](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#format-source-code-in-an-editor) and [DocumentRangeFormatting](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#format-the-selected-lines-in-an-editor).
+
+## [1.3.0]
+
+- Files indexing received a big performance boost - ~2 times faster than it was before:
+  - Is now performed in background, which means it is not blocking other features of the LSP.
+  - Is now clustered - the number of processes depends on the number of cores on your machine.
+  - Is now incremental, which means a file will be available as soon as it is indexed.

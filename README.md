@@ -12,9 +12,14 @@ While it seems to work well, even in bigger and older code bases, it is still an
 
 ## Usage
 
-Simply open a project with nss files and the extension installed. The extension will index your files and you will be ready to go - it can currently take up to 20-30 seconds to index big projects.
+Simply open a project with nss files and the extension installed. The extension will index your files and you will be ready to go - it can currently take up to 10-15 seconds to index big projects.
 
 ![](https://i.imgur.com/DKn8znH.png)
+
+Notes:
+
+- The files are indexed in background processes, which means it will not block other features of the LSP like formatting, and a file's local definitions generated on the fly will be available.
+- The files are indexed incrementally, which means a file's global definitions become available as soon as it has been indexed.
 
 ### Formatting
 
