@@ -36,7 +36,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
 
   public updateDocument(uri: string, tokenizer: Tokenizer) {
     const filePath = WorkspaceFilesSystem.fileUriToPath(uri);
-    const fileContent = WorkspaceFilesSystem.readFileAsync(filePath).toString();
+    const fileContent = WorkspaceFilesSystem.readFileSync(filePath).toString();
     const globalScope = tokenizer.tokenizeContent(fileContent, TokenizedScope.global);
 
     this.overwriteDocument(this.initializeDocument(filePath, globalScope));
