@@ -21,6 +21,7 @@ type LanguageFunction = {
 type LanguageFunctionParam = {
   tokenType: typeof CompletionItemKind.TypeParameter;
   valueType: LanguageTypes;
+  defaultValue?: string;
 };
 type LanguageStruct = {
   tokenType: typeof CompletionItemKind.Struct;

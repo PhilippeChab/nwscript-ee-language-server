@@ -59792,7 +59792,8 @@
                     },
                     "identifier": "nWidth",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "18"
                 },
                 {
                     "position": {
@@ -59801,7 +59802,8 @@
                     },
                     "identifier": "nDecimals",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "9"
                 }
             ],
             "comments": [
@@ -59835,7 +59837,8 @@
                     },
                     "identifier": "nWidth",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "18"
                 },
                 {
                     "position": {
@@ -59844,7 +59847,8 @@
                     },
                     "identifier": "nDecimals",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "9"
                 }
             ],
             "comments": [
@@ -59998,7 +60002,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -60022,7 +60027,8 @@
                     },
                     "identifier": "nClearCombatState",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -60307,7 +60313,8 @@
                     },
                     "identifier": "bRun",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -60344,7 +60351,8 @@
                     },
                     "identifier": "bRun",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -60353,7 +60361,8 @@
                     },
                     "identifier": "fRange",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "1.0f"
                 }
             ],
             "comments": [
@@ -60391,7 +60400,8 @@
                     },
                     "identifier": "bRun",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -60400,7 +60410,8 @@
                     },
                     "identifier": "fMoveAwayRange",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "40.0f"
                 }
             ],
             "comments": [
@@ -60606,7 +60617,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -60615,7 +60627,8 @@
                     },
                     "identifier": "nStackSize",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 },
                 {
                     "position": {
@@ -60624,7 +60637,8 @@
                     },
                     "identifier": "sNewTag",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -60773,7 +60787,8 @@
                     },
                     "identifier": "oAttackee",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -60807,7 +60822,8 @@
                     },
                     "identifier": "bPassive",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -60849,7 +60865,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -60858,7 +60875,8 @@
                     },
                     "identifier": "nNth",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 },
                 {
                     "position": {
@@ -60867,7 +60885,8 @@
                     },
                     "identifier": "nSecondCriteriaType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 },
                 {
                     "position": {
@@ -60876,7 +60895,8 @@
                     },
                     "identifier": "nSecondCriteriaValue",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 },
                 {
                     "position": {
@@ -60885,7 +60905,8 @@
                     },
                     "identifier": "nThirdCriteriaType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 },
                 {
                     "position": {
@@ -60894,7 +60915,8 @@
                     },
                     "identifier": "nThirdCriteriaValue",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 }
             ],
             "comments": [
@@ -60951,7 +60973,8 @@
                     },
                     "identifier": "nTalkVolume",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TALKVOLUME_TALK"
                 }
             ],
             "comments": [
@@ -60985,7 +61008,8 @@
                     },
                     "identifier": "fSpeed",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "1.0"
                 },
                 {
                     "position": {
@@ -60994,7 +61018,8 @@
                     },
                     "identifier": "fDurationSeconds",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0"
                 }
             ],
             "comments": [
@@ -61123,7 +61148,8 @@
                     },
                     "identifier": "fDistance",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "-1.0f"
                 },
                 {
                     "position": {
@@ -61132,7 +61158,8 @@
                     },
                     "identifier": "fPitch",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "-1.0"
                 },
                 {
                     "position": {
@@ -61141,7 +61168,8 @@
                     },
                     "identifier": "nTransitionType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "CAMERA_TRANSITION_TYPE_SNAP"
                 }
             ],
             "comments": [
@@ -61236,7 +61264,8 @@
                     },
                     "identifier": "nMetaMagic",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "METAMAGIC_ANY"
                 },
                 {
                     "position": {
@@ -61245,7 +61274,8 @@
                     },
                     "identifier": "bCheat",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -61254,7 +61284,8 @@
                     },
                     "identifier": "nDomainLevel",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 },
                 {
                     "position": {
@@ -61263,7 +61294,8 @@
                     },
                     "identifier": "nProjectilePathType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "PROJECTILE_PATH_TYPE_DEFAULT"
                 },
                 {
                     "position": {
@@ -61272,7 +61304,8 @@
                     },
                     "identifier": "bInstantSpell",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -61305,7 +61338,8 @@
                     },
                     "identifier": "oObject",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -61329,7 +61363,8 @@
                     },
                     "identifier": "oObject",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -61889,7 +61924,8 @@
                     },
                     "identifier": "nStart",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 }
             ],
             "comments": [
@@ -62215,7 +62251,8 @@
                     },
                     "identifier": "nDamageType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "DAMAGE_TYPE_MAGICAL"
                 },
                 {
                     "position": {
@@ -62224,7 +62261,8 @@
                     },
                     "identifier": "nDamagePower",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "DAMAGE_POWER_NORMAL"
                 }
             ],
             "comments": [
@@ -62302,7 +62340,8 @@
                     },
                     "identifier": "nLimit",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 }
             ],
             "comments": [
@@ -62351,7 +62390,8 @@
                     },
                     "identifier": "nVisualEffectId",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "VFX_NONE"
                 },
                 {
                     "position": {
@@ -62360,7 +62400,8 @@
                     },
                     "identifier": "fDelaySeconds",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0f"
                 },
                 {
                     "position": {
@@ -62369,7 +62410,8 @@
                     },
                     "identifier": "nUseAppearAnimation",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 }
             ],
             "comments": [
@@ -62623,7 +62665,8 @@
                     },
                     "identifier": "oArea",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -62648,7 +62691,8 @@
                     },
                     "identifier": "oArea",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -62673,7 +62717,8 @@
                     },
                     "identifier": "nNumDice",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -62697,7 +62742,8 @@
                     },
                     "identifier": "nNumDice",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -62721,7 +62767,8 @@
                     },
                     "identifier": "nNumDice",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -62745,7 +62792,8 @@
                     },
                     "identifier": "nNumDice",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -62769,7 +62817,8 @@
                     },
                     "identifier": "nNumDice",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -62793,7 +62842,8 @@
                     },
                     "identifier": "nNumDice",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -62817,7 +62867,8 @@
                     },
                     "identifier": "nNumDice",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -62841,7 +62892,8 @@
                     },
                     "identifier": "nNumDice",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -62865,7 +62917,8 @@
                     },
                     "identifier": "nNumDice",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -62994,7 +63047,8 @@
                     },
                     "identifier": "nSaveType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "SAVING_THROW_TYPE_NONE"
                 },
                 {
                     "position": {
@@ -63003,7 +63057,8 @@
                     },
                     "identifier": "oSaveVersus",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -63053,7 +63108,8 @@
                     },
                     "identifier": "nSaveType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "SAVING_THROW_TYPE_NONE"
                 },
                 {
                     "position": {
@@ -63062,7 +63118,8 @@
                     },
                     "identifier": "oSaveVersus",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -63112,7 +63169,8 @@
                     },
                     "identifier": "nSaveType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "SAVING_THROW_TYPE_NONE"
                 },
                 {
                     "position": {
@@ -63121,7 +63179,8 @@
                     },
                     "identifier": "oSaveVersus",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -63251,7 +63310,8 @@
                     },
                     "identifier": "nModifyType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "AC_DODGE_BONUS"
                 },
                 {
                     "position": {
@@ -63260,7 +63320,8 @@
                     },
                     "identifier": "nDamageType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "AC_VS_DAMAGE_TYPE_ALL"
                 }
             ],
             "comments": [
@@ -63296,7 +63357,8 @@
                     },
                     "identifier": "nForFutureUse",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 }
             ],
             "comments": [
@@ -63340,7 +63402,8 @@
                     },
                     "identifier": "nSaveType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "SAVING_THROW_TYPE_ALL"
                 }
             ],
             "comments": [
@@ -63379,7 +63442,8 @@
                     },
                     "identifier": "nModifierType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "ATTACK_BONUS_MISC"
                 }
             ],
             "comments": [
@@ -63422,7 +63486,8 @@
                     },
                     "identifier": "nLimit",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 }
             ],
             "comments": [
@@ -63458,7 +63523,8 @@
                     },
                     "identifier": "nDamageType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "DAMAGE_TYPE_MAGICAL"
                 }
             ],
             "comments": [
@@ -63684,7 +63750,8 @@
                     },
                     "identifier": "bLineOfSight",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -63693,7 +63760,8 @@
                     },
                     "identifier": "nObjectFilter",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "OBJECT_TYPE_CREATURE"
                 },
                 {
                     "position": {
@@ -63702,7 +63770,8 @@
                     },
                     "identifier": "vOrigin",
                     "tokenType": 25,
-                    "valueType": "vector"
+                    "valueType": "vector",
+                    "defaultValue": "[ 0.0"
                 }
             ],
             "comments": [
@@ -63776,7 +63845,8 @@
                     },
                     "identifier": "bLineOfSight",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -63785,7 +63855,8 @@
                     },
                     "identifier": "nObjectFilter",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "OBJECT_TYPE_CREATURE"
                 },
                 {
                     "position": {
@@ -63794,7 +63865,8 @@
                     },
                     "identifier": "vOrigin",
                     "tokenType": 25,
-                    "valueType": "vector"
+                    "valueType": "vector",
+                    "defaultValue": "[ 0.0"
                 }
             ],
             "comments": [
@@ -63934,7 +64006,8 @@
                     },
                     "identifier": "nSpectacularDeath",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -63943,7 +64016,8 @@
                     },
                     "identifier": "nDisplayFeedback",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -64076,7 +64150,8 @@
                     },
                     "identifier": "nStrMod",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 },
                 {
                     "position": {
@@ -64085,7 +64160,8 @@
                     },
                     "identifier": "nDexMod",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 },
                 {
                     "position": {
@@ -64094,7 +64170,8 @@
                     },
                     "identifier": "nConMod",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 },
                 {
                     "position": {
@@ -64103,7 +64180,8 @@
                     },
                     "identifier": "nIntMod",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 },
                 {
                     "position": {
@@ -64112,7 +64190,8 @@
                     },
                     "identifier": "nWisMod",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 },
                 {
                     "position": {
@@ -64121,7 +64200,8 @@
                     },
                     "identifier": "nChaMod",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -64168,7 +64248,8 @@
                     },
                     "identifier": "nBaseAbilityScore",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -64253,7 +64334,8 @@
                     },
                     "identifier": "x",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0f"
                 },
                 {
                     "position": {
@@ -64262,7 +64344,8 @@
                     },
                     "identifier": "y",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0f"
                 },
                 {
                     "position": {
@@ -64271,7 +64354,8 @@
                     },
                     "identifier": "z",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0f"
                 }
             ],
             "comments": [
@@ -64372,7 +64456,8 @@
                     },
                     "identifier": "bDisplayFeedback",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -64407,7 +64492,8 @@
                     },
                     "identifier": "bDisplayFeedback",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -64444,7 +64530,8 @@
                     },
                     "identifier": "nImmunityToSpell",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "SPELL_ALL_SPELLS"
                 }
             ],
             "comments": [
@@ -64614,7 +64701,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -64728,7 +64816,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -64751,7 +64840,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -64869,7 +64959,8 @@
                     },
                     "identifier": "fFollowDistance",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0f"
                 }
             ],
             "comments": [
@@ -64990,7 +65081,8 @@
                     },
                     "identifier": "sOnEnterScript",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -64999,7 +65091,8 @@
                     },
                     "identifier": "sHeartbeatScript",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -65008,7 +65101,8 @@
                     },
                     "identifier": "sOnExitScript",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -65041,7 +65135,8 @@
                     },
                     "identifier": "oSecondObject",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -65170,7 +65265,8 @@
                     },
                     "identifier": "nNumber",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 }
             ],
             "comments": [
@@ -65274,7 +65370,8 @@
                     },
                     "identifier": "nMissEffect",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -65283,7 +65380,8 @@
                     },
                     "identifier": "fScale",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "1.0f"
                 },
                 {
                     "position": {
@@ -65292,7 +65390,8 @@
                     },
                     "identifier": "vTranslate",
                     "tokenType": 25,
-                    "valueType": "vector"
+                    "valueType": "vector",
+                    "defaultValue": "[ 0.0"
                 },
                 {
                     "position": {
@@ -65301,7 +65400,8 @@
                     },
                     "identifier": "vRotate",
                     "tokenType": 25,
-                    "valueType": "vector"
+                    "valueType": "vector",
+                    "defaultValue": "[ 0.0"
                 }
             ],
             "comments": [
@@ -65327,7 +65427,8 @@
                     },
                     "identifier": "oFactionMember",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -65336,7 +65437,8 @@
                     },
                     "identifier": "bMustBeVisible",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -65360,7 +65462,8 @@
                     },
                     "identifier": "oFactionMember",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -65369,7 +65472,8 @@
                     },
                     "identifier": "bMustBeVisible",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -65393,7 +65497,8 @@
                     },
                     "identifier": "oFactionMember",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -65402,7 +65507,8 @@
                     },
                     "identifier": "bMustBeVisible",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -65427,7 +65533,8 @@
                     },
                     "identifier": "oFactionMember",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -65436,7 +65543,8 @@
                     },
                     "identifier": "bMustBeVisible",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -65642,7 +65750,8 @@
                     },
                     "identifier": "oFactionMember",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -65651,7 +65760,8 @@
                     },
                     "identifier": "bMustBeVisible",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -65675,7 +65785,8 @@
                     },
                     "identifier": "oFactionMember",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -65684,7 +65795,8 @@
                     },
                     "identifier": "bMustBeVisible",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -65766,7 +65878,8 @@
                     },
                     "identifier": "bWalkStraightLineToPoint",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -65892,7 +66005,8 @@
                     },
                     "identifier": "nNth",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 }
             ],
             "comments": [
@@ -65946,7 +66060,8 @@
                     },
                     "identifier": "bAllPartyMembers",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -66023,7 +66138,8 @@
                     },
                     "identifier": "sCustomAreaTransitionBMP",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -66064,7 +66180,8 @@
                     },
                     "identifier": "sDialogResRef",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -66073,7 +66190,8 @@
                     },
                     "identifier": "bPrivateConversation",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -66082,7 +66200,8 @@
                     },
                     "identifier": "bPlayHello",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -66163,7 +66282,8 @@
                     },
                     "identifier": "bMissEffect",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -66172,7 +66292,8 @@
                     },
                     "identifier": "fScale",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "1.0f"
                 },
                 {
                     "position": {
@@ -66181,7 +66302,8 @@
                     },
                     "identifier": "vTranslate",
                     "tokenType": 25,
-                    "valueType": "vector"
+                    "valueType": "vector",
+                    "defaultValue": "[ 0.0"
                 },
                 {
                     "position": {
@@ -66190,7 +66312,8 @@
                     },
                     "identifier": "vRotate",
                     "tokenType": 25,
-                    "valueType": "vector"
+                    "valueType": "vector",
+                    "defaultValue": "[ 0.0"
                 }
             ],
             "comments": [
@@ -66501,7 +66624,8 @@
                     },
                     "identifier": "fDuration",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0f"
                 }
             ],
             "comments": [
@@ -66620,7 +66744,8 @@
                     },
                     "identifier": "fDuration",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0f"
                 }
             ],
             "comments": [
@@ -66652,7 +66777,8 @@
                     },
                     "identifier": "nTalkVolume",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TALKVOLUME_TALK"
                 }
             ],
             "comments": [
@@ -66787,7 +66913,8 @@
                     },
                     "identifier": "nNth",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 },
                 {
                     "position": {
@@ -66796,7 +66923,8 @@
                     },
                     "identifier": "nSecondCriteriaType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 },
                 {
                     "position": {
@@ -66805,7 +66933,8 @@
                     },
                     "identifier": "nSecondCriteriaValue",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 },
                 {
                     "position": {
@@ -66814,7 +66943,8 @@
                     },
                     "identifier": "nThirdCriteriaType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 },
                 {
                     "position": {
@@ -66823,7 +66953,8 @@
                     },
                     "identifier": "nThirdCriteriaValue",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 }
             ],
             "comments": [
@@ -66871,7 +67002,8 @@
                     },
                     "identifier": "nObjectType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "OBJECT_TYPE_ALL"
                 },
                 {
                     "position": {
@@ -66880,7 +67012,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -66889,7 +67022,8 @@
                     },
                     "identifier": "nNth",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -66934,7 +67068,8 @@
                     },
                     "identifier": "nNth",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -66970,7 +67105,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -66979,7 +67115,8 @@
                     },
                     "identifier": "nNth",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -67113,7 +67250,8 @@
                     },
                     "identifier": "nMetaMagic",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "METAMAGIC_ANY"
                 },
                 {
                     "position": {
@@ -67122,7 +67260,8 @@
                     },
                     "identifier": "bCheat",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -67131,7 +67270,8 @@
                     },
                     "identifier": "nProjectilePathType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "PROJECTILE_PATH_TYPE_DEFAULT"
                 },
                 {
                     "position": {
@@ -67140,7 +67280,8 @@
                     },
                     "identifier": "bInstantSpell",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -67181,7 +67322,8 @@
                     },
                     "identifier": "oSource",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -67213,7 +67355,8 @@
                     },
                     "identifier": "oSource",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -67245,7 +67388,8 @@
                     },
                     "identifier": "oSource",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -67291,7 +67435,8 @@
                     },
                     "identifier": "nGender",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "GENDER_MALE"
                 }
             ],
             "comments": [
@@ -67323,7 +67468,8 @@
                     },
                     "identifier": "nTalkVolume",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TALKVOLUME_TALK"
                 }
             ],
             "comments": [
@@ -67357,7 +67503,8 @@
                     },
                     "identifier": "fDelay",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0f"
                 }
             ],
             "comments": [
@@ -67422,7 +67569,8 @@
                     },
                     "identifier": "bUseAppearAnimation",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -67431,7 +67579,8 @@
                     },
                     "identifier": "sNewTag",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -67478,7 +67627,8 @@
                     },
                     "identifier": "bHarmful",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -67571,7 +67721,8 @@
                     },
                     "identifier": "nNameType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "NAME_FIRST_GENERIC_MALE"
                 }
             ],
             "comments": [
@@ -67665,7 +67816,8 @@
                     },
                     "identifier": "bOriginalName",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -67709,7 +67861,8 @@
                     },
                     "identifier": "sResRef",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -67718,7 +67871,8 @@
                     },
                     "identifier": "oObjectToDialog",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -67828,7 +67982,8 @@
                     },
                     "identifier": "oPersistentObject",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -67837,7 +67992,8 @@
                     },
                     "identifier": "nResidentObjectType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "OBJECT_TYPE_CREATURE"
                 },
                 {
                     "position": {
@@ -67846,7 +68002,8 @@
                     },
                     "identifier": "nPersistentZone",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "PERSISTENT_ZONE_ACTIVE"
                 }
             ],
             "comments": [
@@ -67874,7 +68031,8 @@
                     },
                     "identifier": "oPersistentObject",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -67883,7 +68041,8 @@
                     },
                     "identifier": "nResidentObjectType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "OBJECT_TYPE_CREATURE"
                 },
                 {
                     "position": {
@@ -67892,7 +68051,8 @@
                     },
                     "identifier": "nPersistentZone",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "PERSISTENT_ZONE_ACTIVE"
                 }
             ],
             "comments": [
@@ -67920,7 +68080,8 @@
                     },
                     "identifier": "oAreaOfEffectObject",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -68195,7 +68356,8 @@
                     },
                     "identifier": "oVersus",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -68256,7 +68418,8 @@
                     },
                     "identifier": "oEncounter",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -68288,7 +68451,8 @@
                     },
                     "identifier": "oEncounter",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -68313,7 +68477,8 @@
                     },
                     "identifier": "oEncounter",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -68345,7 +68510,8 @@
                     },
                     "identifier": "oEncounter",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -68368,7 +68534,8 @@
                     },
                     "identifier": "oEncounter",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -68400,7 +68567,8 @@
                     },
                     "identifier": "oEncounter",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -68493,7 +68661,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -68527,7 +68696,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -68604,7 +68774,8 @@
                     },
                     "identifier": "nSubSkill",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 },
                 {
                     "position": {
@@ -68613,7 +68784,8 @@
                     },
                     "identifier": "oItemUsed",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -68650,7 +68822,8 @@
                     },
                     "identifier": "oSource",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -68684,7 +68857,8 @@
                     },
                     "identifier": "oSource",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -68804,7 +68978,8 @@
                     },
                     "identifier": "oEncounter",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -68829,7 +69004,8 @@
                     },
                     "identifier": "oEncounter",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -68911,7 +69087,8 @@
                     },
                     "identifier": "nSaveType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "SAVING_THROW_TYPE_NONE"
                 },
                 {
                     "position": {
@@ -68920,7 +69097,8 @@
                     },
                     "identifier": "oSaveVersus",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -68958,7 +69136,8 @@
                     },
                     "identifier": "fSpeed",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "1.0"
                 },
                 {
                     "position": {
@@ -68967,7 +69146,8 @@
                     },
                     "identifier": "fSeconds",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0"
                 }
             ],
             "comments": [
@@ -69074,7 +69254,8 @@
                     },
                     "identifier": "oObject",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -69135,7 +69316,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -69167,7 +69349,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -69210,7 +69393,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -69405,7 +69589,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -69414,7 +69599,8 @@
                     },
                     "identifier": "nBaseSkillRank",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -69443,7 +69629,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -69467,7 +69654,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -69491,7 +69679,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -69515,7 +69704,8 @@
                     },
                     "identifier": "oAssociate",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -69538,7 +69728,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -69561,7 +69752,8 @@
                     },
                     "identifier": "oAssociate",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -69625,7 +69817,8 @@
                     },
                     "identifier": "bRaiseable",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 },
                 {
                     "position": {
@@ -69634,7 +69827,8 @@
                     },
                     "identifier": "bSelectableWhenDead",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -69733,7 +69927,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -69827,7 +70022,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -69908,7 +70104,8 @@
                     },
                     "identifier": "oMaster",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -69931,7 +70128,8 @@
                     },
                     "identifier": "oMaster",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -70034,7 +70232,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -70060,7 +70259,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -70095,7 +70295,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -70133,7 +70334,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -70171,7 +70373,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -70233,7 +70436,8 @@
                     },
                     "identifier": "oObject",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -70378,7 +70582,8 @@
                     },
                     "identifier": "oMaster",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -70387,7 +70592,8 @@
                     },
                     "identifier": "nNth",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -70421,7 +70627,8 @@
                     },
                     "identifier": "nLawChaos",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "ALIGNMENT_ALL"
                 },
                 {
                     "position": {
@@ -70430,7 +70637,8 @@
                     },
                     "identifier": "nGoodEvil",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "ALIGNMENT_ALL"
                 }
             ],
             "comments": [
@@ -70568,7 +70776,8 @@
                     },
                     "identifier": "bRun",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -70577,7 +70786,8 @@
                     },
                     "identifier": "fMoveAwayRange",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "40.0f"
                 }
             ],
             "comments": [
@@ -70671,7 +70881,8 @@
                     },
                     "identifier": "oMaster",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -70680,7 +70891,8 @@
                     },
                     "identifier": "nTh",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -70716,7 +70928,8 @@
                     },
                     "identifier": "oHenchman",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -70749,7 +70962,8 @@
                     },
                     "identifier": "oHenchman",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -70799,7 +71013,8 @@
                     },
                     "identifier": "bAllPartyMembers",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 },
                 {
                     "position": {
@@ -70808,7 +71023,8 @@
                     },
                     "identifier": "bAllPlayers",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -70817,7 +71033,8 @@
                     },
                     "identifier": "bAllowOverrideHigher",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -70867,7 +71084,8 @@
                     },
                     "identifier": "bAllPartyMembers",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 },
                 {
                     "position": {
@@ -70876,7 +71094,8 @@
                     },
                     "identifier": "bAllPlayers",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -70914,7 +71133,8 @@
                     },
                     "identifier": "nSinglePlayerCDKey",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -71121,7 +71341,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -71164,7 +71385,8 @@
                     },
                     "identifier": "nBonusMarkUp",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 },
                 {
                     "position": {
@@ -71173,7 +71395,8 @@
                     },
                     "identifier": "nBonusMarkDown",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 }
             ],
             "comments": [
@@ -71221,7 +71444,8 @@
                     },
                     "identifier": "bPCOnly",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -71255,7 +71479,8 @@
                     },
                     "identifier": "bPCOnly",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -71289,7 +71514,8 @@
                     },
                     "identifier": "bRun",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -71298,7 +71524,8 @@
                     },
                     "identifier": "fTimeout",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "30.0f"
                 }
             ],
             "comments": [
@@ -71330,7 +71557,8 @@
                     },
                     "identifier": "bRun",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -71339,7 +71567,8 @@
                     },
                     "identifier": "fRange",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "1.0f"
                 },
                 {
                     "position": {
@@ -71348,7 +71577,8 @@
                     },
                     "identifier": "fTimeout",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "30.0f"
                 }
             ],
             "comments": [
@@ -71403,7 +71633,8 @@
                     },
                     "identifier": "nWalkStraightLineToPoint",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -71530,7 +71761,8 @@
                     },
                     "identifier": "oSource",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -71562,7 +71794,8 @@
                     },
                     "identifier": "oSource",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -71571,7 +71804,8 @@
                     },
                     "identifier": "bDecays",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -71580,7 +71814,8 @@
                     },
                     "identifier": "fDurationInSeconds",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "180.0f"
                 }
             ],
             "comments": [
@@ -71624,7 +71859,8 @@
                     },
                     "identifier": "oSource",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -71633,7 +71869,8 @@
                     },
                     "identifier": "bDecays",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -71642,7 +71879,8 @@
                     },
                     "identifier": "fDurationInSeconds",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "180.0f"
                 }
             ],
             "comments": [
@@ -71683,7 +71921,8 @@
                     },
                     "identifier": "oSource",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -71692,7 +71931,8 @@
                     },
                     "identifier": "bDecays",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -71701,7 +71941,8 @@
                     },
                     "identifier": "fDurationInSeconds",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "180.0f"
                 }
             ],
             "comments": [
@@ -71906,7 +72147,8 @@
                     },
                     "identifier": "oVersus",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 },
                 {
                     "position": {
@@ -71915,7 +72157,8 @@
                     },
                     "identifier": "bOffHand",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -71944,7 +72187,8 @@
                     },
                     "identifier": "oVersus",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -71995,7 +72239,8 @@
                     },
                     "identifier": "bCreatureToEnemyLineOfSightCheck",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -72042,7 +72287,8 @@
                     },
                     "identifier": "bExplored",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -72134,7 +72380,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -72329,7 +72576,8 @@
                     },
                     "identifier": "sDialogResRef",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -72338,7 +72586,8 @@
                     },
                     "identifier": "oTokenTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_TYPE_INVALID"
                 }
             ],
             "comments": [
@@ -72364,7 +72613,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -72435,7 +72685,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -72460,7 +72711,8 @@
                     },
                     "identifier": "oVersus",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 },
                 {
                     "position": {
@@ -72469,7 +72721,8 @@
                     },
                     "identifier": "bOffHand",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -72525,7 +72778,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -73011,7 +73265,8 @@
                     },
                     "identifier": "bDestroy",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -73104,7 +73359,8 @@
                     },
                     "identifier": "nModifierType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "ATTACK_BONUS_MISC"
                 }
             ],
             "comments": [
@@ -73138,7 +73394,8 @@
                     },
                     "identifier": "nDamageType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "DAMAGE_TYPE_MAGICAL"
                 }
             ],
             "comments": [
@@ -73206,7 +73463,8 @@
                     },
                     "identifier": "nModifyType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "AC_DODGE_BONUS"
                 },
                 {
                     "position": {
@@ -73215,7 +73473,8 @@
                     },
                     "identifier": "nDamageType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "AC_VS_DAMAGE_TYPE_ALL"
                 }
             ],
             "comments": [
@@ -73288,7 +73547,8 @@
                     },
                     "identifier": "nSaveType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "SAVING_THROW_TYPE_ALL"
                 }
             ],
             "comments": [
@@ -73374,7 +73634,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -73464,7 +73725,8 @@
                     },
                     "identifier": "nMissType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "MISS_CHANCE_TYPE_NORMAL"
                 }
             ],
             "comments": [
@@ -73504,7 +73766,8 @@
                     },
                     "identifier": "nCasterLevel",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "USE_CREATURE_LEVEL"
                 }
             ],
             "comments": [
@@ -73552,7 +73815,8 @@
                     },
                     "identifier": "bHPBonus",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -73586,7 +73850,8 @@
                     },
                     "identifier": "nLocked",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -73695,7 +73960,8 @@
                     },
                     "identifier": "oSource",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -73732,7 +73998,8 @@
                     },
                     "identifier": "oSource",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -73769,7 +74036,8 @@
                     },
                     "identifier": "oSource",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -73806,7 +74074,8 @@
                     },
                     "identifier": "nTotalSpellLevelsAbsorbed",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 },
                 {
                     "position": {
@@ -73815,7 +74084,8 @@
                     },
                     "identifier": "nSpellSchool",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "SPELL_SCHOOL_GENERAL"
                 }
             ],
             "comments": [
@@ -73846,7 +74116,8 @@
                     },
                     "identifier": "nCasterLevel",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "USE_CREATURE_LEVEL"
                 }
             ],
             "comments": [
@@ -73881,7 +74152,8 @@
                     },
                     "identifier": "sIPaddress",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -73890,7 +74162,8 @@
                     },
                     "identifier": "sPassword",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -73899,7 +74172,8 @@
                     },
                     "identifier": "sWaypointTag",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -73908,7 +74182,8 @@
                     },
                     "identifier": "bSeemless",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -73991,7 +74266,8 @@
                     },
                     "identifier": "nMissChanceType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "MISS_CHANCE_TYPE_NORMAL"
                 }
             ],
             "comments": [
@@ -74018,7 +74294,8 @@
                     },
                     "identifier": "oUndead",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -74074,7 +74351,8 @@
                     },
                     "identifier": "nAnimation",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -74101,7 +74379,8 @@
                     },
                     "identifier": "nAnimation",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -74127,7 +74406,8 @@
                     },
                     "identifier": "nAnimation",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
             "comments": [
@@ -74225,7 +74505,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -74296,7 +74577,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -74305,7 +74587,8 @@
                     },
                     "identifier": "nTrapDetected",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -74648,7 +74931,8 @@
                     },
                     "identifier": "nProjectilePathType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "PROJECTILE_PATH_TYPE_DEFAULT"
                 }
             ],
             "comments": [
@@ -74693,7 +74977,8 @@
                     },
                     "identifier": "nProjectilePathType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "PROJECTILE_PATH_TYPE_DEFAULT"
                 }
             ],
             "comments": [
@@ -74729,7 +75014,8 @@
                     },
                     "identifier": "oAssociate",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -74789,7 +75075,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -74920,7 +75207,8 @@
                     },
                     "identifier": "sCreatureTemplate2",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -74929,7 +75217,8 @@
                     },
                     "identifier": "sCreatureTemplate3",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -74938,7 +75227,8 @@
                     },
                     "identifier": "sCreatureTemplate4",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -75282,7 +75572,8 @@
                     },
                     "identifier": "oObject",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -75323,7 +75614,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -75358,7 +75650,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -75406,7 +75699,8 @@
                     },
                     "identifier": "bBroadcastToFaction",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -75454,7 +75748,8 @@
                     },
                     "identifier": "bBroadcastToFaction",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -75873,7 +76168,8 @@
                     },
                     "identifier": "oObject",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -75898,7 +76194,8 @@
                     },
                     "identifier": "oPlaceable",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -75907,7 +76204,8 @@
                     },
                     "identifier": "bIlluminate",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -75942,7 +76240,8 @@
                     },
                     "identifier": "oPlaceable",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -76079,7 +76378,8 @@
                     },
                     "identifier": "bDetected",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -76184,7 +76484,8 @@
                     },
                     "identifier": "bRespawnButtonEnabled",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 },
                 {
                     "position": {
@@ -76193,7 +76494,8 @@
                     },
                     "identifier": "bWaitForHelpButtonEnabled",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 },
                 {
                     "position": {
@@ -76202,7 +76504,8 @@
                     },
                     "identifier": "nHelpStringReference",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 },
                 {
                     "position": {
@@ -76211,7 +76514,8 @@
                     },
                     "identifier": "sHelpString",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -76268,7 +76572,8 @@
                     },
                     "identifier": "oVictim",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -76480,7 +76785,8 @@
                     },
                     "identifier": "sReason",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -76977,7 +77283,8 @@
                     },
                     "identifier": "oTargetInventory",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 },
                 {
                     "position": {
@@ -76986,7 +77293,8 @@
                     },
                     "identifier": "bCopyVars",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -77057,7 +77365,8 @@
                     },
                     "identifier": "oObject",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -77130,7 +77439,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -77185,7 +77495,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -77240,7 +77551,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -77295,7 +77607,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -77350,7 +77663,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -77419,7 +77733,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -77465,7 +77780,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -77511,7 +77827,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -77557,7 +77874,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -77603,7 +77921,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -77649,7 +77968,8 @@
                     },
                     "identifier": "oOwner",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 },
                 {
                     "position": {
@@ -77658,7 +77978,8 @@
                     },
                     "identifier": "sNewTag",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -77667,7 +77988,8 @@
                     },
                     "identifier": "bCopyLocalState",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -77713,7 +78035,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -77763,7 +78086,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 },
                 {
                     "position": {
@@ -77772,7 +78096,8 @@
                     },
                     "identifier": "bSaveObjectState",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -77826,7 +78151,8 @@
                     },
                     "identifier": "oOwner",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 },
                 {
                     "position": {
@@ -77835,7 +78161,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 },
                 {
                     "position": {
@@ -77844,7 +78171,8 @@
                     },
                     "identifier": "bLoadObjectState",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -78033,7 +78361,8 @@
                     },
                     "identifier": "fDuration",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0f"
                 }
             ],
             "comments": [
@@ -79852,7 +80181,8 @@
                     },
                     "identifier": "nSpecial",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 }
             ],
             "comments": [
@@ -80263,7 +80593,8 @@
                     },
                     "identifier": "nAmmoDamage",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "IP_CONST_UNLIMITEDAMMO_BASIC"
                 }
             ],
             "comments": [
@@ -80478,7 +80809,8 @@
                     },
                     "identifier": "nSpecial",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 }
             ],
             "comments": [
@@ -80632,7 +80964,8 @@
                     },
                     "identifier": "nWalkType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 }
             ],
             "comments": [
@@ -80749,7 +81082,8 @@
                     },
                     "identifier": "nPercent",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "100"
                 },
                 {
                     "position": {
@@ -80758,7 +81092,8 @@
                     },
                     "identifier": "nSpellSchool",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "SPELL_SCHOOL_GENERAL"
                 }
             ],
             "comments": [
@@ -80792,7 +81127,8 @@
                     },
                     "identifier": "nTalkVolume",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TALKVOLUME_TALK"
                 }
             ],
             "comments": [
@@ -80827,7 +81163,8 @@
                     },
                     "identifier": "nInCutscene",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 },
                 {
                     "position": {
@@ -80836,7 +81173,8 @@
                     },
                     "identifier": "nLeftClickingEnabled",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -80913,7 +81251,8 @@
                     },
                     "identifier": "fSpeed",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "FADE_SPEED_MEDIUM"
                 }
             ],
             "comments": [
@@ -80946,7 +81285,8 @@
                     },
                     "identifier": "fSpeed",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "FADE_SPEED_MEDIUM"
                 }
             ],
             "comments": [
@@ -81152,7 +81492,8 @@
                     },
                     "identifier": "nClass",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "CLASS_TYPE_INVALID"
                 },
                 {
                     "position": {
@@ -81161,7 +81502,8 @@
                     },
                     "identifier": "bReadyAllSpells",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -81170,7 +81512,8 @@
                     },
                     "identifier": "nPackage",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "PACKAGE_INVALID"
                 }
             ],
             "comments": [
@@ -81236,7 +81579,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -81274,7 +81618,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -81297,7 +81642,8 @@
                     },
                     "identifier": "bDisplayFeedback",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 },
                 {
                     "position": {
@@ -81306,7 +81652,8 @@
                     },
                     "identifier": "bImproved",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -81397,7 +81744,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -81513,7 +81861,8 @@
                     },
                     "identifier": "oArea",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -81636,7 +81985,8 @@
                     },
                     "identifier": "nRunAsAction",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -81911,7 +82261,8 @@
                     },
                     "identifier": "bCopyVars",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -82460,7 +82811,8 @@
                     },
                     "identifier": "fTransitionTime",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0f"
                 }
             ],
             "comments": [
@@ -82494,7 +82846,8 @@
                     },
                     "identifier": "fTransitionTime",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0f"
                 }
             ],
             "comments": [
@@ -82619,7 +82972,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -82645,7 +82999,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -82957,7 +83312,8 @@
                     },
                     "identifier": "oSubArea",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -83163,7 +83519,8 @@
                     },
                     "identifier": "fHeight",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0f"
                 }
             ],
             "comments": [
@@ -83196,7 +83553,8 @@
                     },
                     "identifier": "oArea",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -83254,7 +83612,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -83303,7 +83662,8 @@
                     },
                     "identifier": "oArea",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -83336,7 +83696,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -83362,7 +83723,8 @@
                     },
                     "identifier": "oArea",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -83398,7 +83760,8 @@
                     },
                     "identifier": "oArea",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -83443,7 +83806,8 @@
                     },
                     "identifier": "oArea",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -83479,7 +83843,8 @@
                     },
                     "identifier": "oArea",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -83563,7 +83928,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -83599,7 +83965,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -83643,7 +84010,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -83685,7 +84053,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -83729,7 +84098,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -83800,7 +84170,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -83854,7 +84225,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -83893,7 +84265,8 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -83925,7 +84298,8 @@
                     },
                     "identifier": "oObject",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -83960,7 +84334,8 @@
                     },
                     "identifier": "oObject",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -83996,7 +84371,8 @@
                     },
                     "identifier": "nKeyRequired",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -84070,7 +84446,8 @@
                     },
                     "identifier": "nLockable",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -84172,7 +84549,8 @@
                     },
                     "identifier": "nDisarmable",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -84206,7 +84584,8 @@
                     },
                     "identifier": "nDetectable",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -84242,7 +84621,8 @@
                     },
                     "identifier": "nOneShot",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -84387,7 +84767,8 @@
                     },
                     "identifier": "fSize",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "2.0f"
                 },
                 {
                     "position": {
@@ -84396,7 +84777,8 @@
                     },
                     "identifier": "sTag",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -84405,7 +84787,8 @@
                     },
                     "identifier": "nFaction",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "STANDARD_FACTION_HOSTILE"
                 },
                 {
                     "position": {
@@ -84414,7 +84797,8 @@
                     },
                     "identifier": "sOnDisarmScript",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -84423,7 +84807,8 @@
                     },
                     "identifier": "sOnTrapTriggeredScript",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -84476,7 +84861,8 @@
                     },
                     "identifier": "nFaction",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "STANDARD_FACTION_HOSTILE"
                 },
                 {
                     "position": {
@@ -84485,7 +84871,8 @@
                     },
                     "identifier": "sOnDisarmScript",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -84494,7 +84881,8 @@
                     },
                     "identifier": "sOnTrapTriggeredScript",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -84707,7 +85095,8 @@
                     },
                     "identifier": "nRecoverable",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -84864,7 +85253,8 @@
                     },
                     "identifier": "nActive",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -84903,7 +85293,8 @@
                     },
                     "identifier": "bLocked",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -84939,7 +85330,8 @@
                     },
                     "identifier": "bLocked",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -84975,7 +85367,8 @@
                     },
                     "identifier": "bLocked",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -85055,7 +85448,8 @@
                     },
                     "identifier": "bInfinite",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -85092,7 +85486,8 @@
                     },
                     "identifier": "oArea",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -85131,7 +85526,8 @@
                     },
                     "identifier": "sNewName",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -85160,7 +85556,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -85228,7 +85625,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
             "comments": [
@@ -85334,7 +85732,8 @@
                     },
                     "identifier": "bOriginalDescription",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -85343,7 +85742,8 @@
                     },
                     "identifier": "bIdentifiedDescription",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -85382,7 +85782,8 @@
                     },
                     "identifier": "sNewDescription",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -85391,7 +85792,8 @@
                     },
                     "identifier": "bIdentifiedDescription",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -85478,7 +85880,8 @@
                     },
                     "identifier": "sNewChatMessage",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -85506,7 +85909,8 @@
                     },
                     "identifier": "nTalkVolume",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TALKVOLUME_TALK"
                 }
             ],
             "comments": [
@@ -85984,7 +86388,8 @@
                     },
                     "identifier": "sNewTag",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -85993,7 +86398,8 @@
                     },
                     "identifier": "sNewName",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -86074,7 +86480,8 @@
                     },
                     "identifier": "sNewTag",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -86083,7 +86490,8 @@
                     },
                     "identifier": "sNewName",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -86854,7 +87262,8 @@
                     },
                     "identifier": "bCurrentLerp",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -86907,7 +87316,8 @@
                     },
                     "identifier": "nLerpType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "OBJECT_VISUAL_TRANSFORM_LERP_NONE"
                 },
                 {
                     "position": {
@@ -86916,7 +87326,8 @@
                     },
                     "identifier": "fLerpDuration",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0"
                 },
                 {
                     "position": {
@@ -86925,7 +87336,8 @@
                     },
                     "identifier": "bPauseWithGame",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -87040,7 +87452,8 @@
                     },
                     "identifier": "fValue2",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0"
                 },
                 {
                     "position": {
@@ -87049,7 +87462,8 @@
                     },
                     "identifier": "fValue3",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0"
                 },
                 {
                     "position": {
@@ -87058,7 +87472,8 @@
                     },
                     "identifier": "fValue4",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0"
                 }
             ],
             "comments": [
@@ -87093,7 +87508,8 @@
                     },
                     "identifier": "sMaterial",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -87102,7 +87518,8 @@
                     },
                     "identifier": "sParam",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -87199,7 +87616,8 @@
                     },
                     "identifier": "nLastValue",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 },
                 {
                     "position": {
@@ -87208,7 +87626,8 @@
                     },
                     "identifier": "nCurValue",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 },
                 {
                     "position": {
@@ -87217,7 +87636,8 @@
                     },
                     "identifier": "nMaxValue",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 }
             ],
             "comments": [
@@ -87253,7 +87673,8 @@
                     },
                     "identifier": "oObject",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -87262,7 +87683,8 @@
                     },
                     "identifier": "bWrapIntoMain",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -87418,7 +87840,8 @@
                     },
                     "identifier": "sNewName",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -87427,7 +87850,8 @@
                     },
                     "identifier": "oPC",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -87470,7 +87894,8 @@
                     },
                     "identifier": "nX",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 },
                 {
                     "position": {
@@ -87479,7 +87904,8 @@
                     },
                     "identifier": "nY",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 },
                 {
                     "position": {
@@ -87488,7 +87914,8 @@
                     },
                     "identifier": "nAnchor",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "SCREEN_ANCHOR_TOP_LEFT"
                 },
                 {
                     "position": {
@@ -87497,7 +87924,8 @@
                     },
                     "identifier": "fLife",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "10.0f"
                 },
                 {
                     "position": {
@@ -87506,7 +87934,8 @@
                     },
                     "identifier": "nRGBA",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "2147418367"
                 },
                 {
                     "position": {
@@ -87515,7 +87944,8 @@
                     },
                     "identifier": "nRGBA2",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "2147418367"
                 },
                 {
                     "position": {
@@ -87524,7 +87954,8 @@
                     },
                     "identifier": "nID",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 },
                 {
                     "position": {
@@ -87533,7 +87964,8 @@
                     },
                     "identifier": "sFont",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -87577,7 +88009,8 @@
                     },
                     "identifier": "nClass",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "CLASS_TYPE_WIZARD"
                 }
             ],
             "comments": [
@@ -87611,7 +88044,8 @@
                     },
                     "identifier": "nDomainIndex",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 },
                 {
                     "position": {
@@ -87620,7 +88054,8 @@
                     },
                     "identifier": "nClass",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "CLASS_TYPE_CLERIC"
                 }
             ],
             "comments": [
@@ -87857,7 +88292,8 @@
                     },
                     "identifier": "nSubPropertyIndex",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 },
                 {
                     "position": {
@@ -87866,7 +88302,8 @@
                     },
                     "identifier": "bDecrementCharges",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -87921,7 +88358,8 @@
                     },
                     "identifier": "nSubPropertyIndex",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 },
                 {
                     "position": {
@@ -87930,7 +88368,8 @@
                     },
                     "identifier": "bDecrementCharges",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -87967,7 +88406,8 @@
                     },
                     "identifier": "nValidObjectTypes",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "OBJECT_TYPE_ALL"
                 },
                 {
                     "position": {
@@ -87976,7 +88416,8 @@
                     },
                     "identifier": "nMouseCursorId",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "MOUSECURSOR_MAGIC"
                 },
                 {
                     "position": {
@@ -87985,7 +88426,8 @@
                     },
                     "identifier": "nBadTargetCursor",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "MOUSECURSOR_NOMAGIC"
                 }
             ],
             "comments": [
@@ -88059,7 +88501,8 @@
                     },
                     "identifier": "nColor",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 }
             ],
             "comments": [
@@ -88092,7 +88535,8 @@
                     },
                     "identifier": "nCursor",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 }
             ],
             "comments": [
@@ -88221,7 +88665,8 @@
                     },
                     "identifier": "sNew",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -88585,7 +89030,8 @@
                     },
                     "identifier": "bSaveObjectState",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -88809,7 +89255,8 @@
                     },
                     "identifier": "oInventory",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 },
                 {
                     "position": {
@@ -88818,7 +89265,8 @@
                     },
                     "identifier": "bLoadObjectState",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -88910,7 +89358,8 @@
                     },
                     "identifier": "bInheritParent",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
             "comments": [
@@ -89308,7 +89757,8 @@
                     },
                     "identifier": "fStrength",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "CASSOWARY_STRENGTH_REQUIRED"
                 }
             ],
             "comments": [
@@ -89366,7 +89816,8 @@
                     },
                     "identifier": "fStrength",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "CASSOWARY_STRENGTH_STRONG"
                 }
             ],
             "comments": [
@@ -89459,7 +89910,8 @@
                     },
                     "identifier": "sValue",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -89492,7 +89944,8 @@
                     },
                     "identifier": "nSubType",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 },
                 {
                     "position": {
@@ -89501,7 +89954,8 @@
                     },
                     "identifier": "nCostTableValue",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 },
                 {
                     "position": {
@@ -89510,7 +89964,8 @@
                     },
                     "identifier": "nParam1Value",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 }
             ],
             "comments": [
@@ -89535,7 +89990,8 @@
                     },
                     "identifier": "sOnAppliedScript",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -89544,7 +90000,8 @@
                     },
                     "identifier": "sOnRemovedScript",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -89553,7 +90010,8 @@
                     },
                     "identifier": "sOnIntervalScript",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -89562,7 +90020,8 @@
                     },
                     "identifier": "fInterval",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.0f"
                 },
                 {
                     "position": {
@@ -89571,7 +90030,8 @@
                     },
                     "identifier": "sData",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -89870,7 +90330,8 @@
                     },
                     "identifier": "nIndent",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 }
             ],
             "comments": [
@@ -89971,7 +90432,8 @@
                     },
                     "identifier": "sError",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -90419,7 +90881,8 @@
                     },
                     "identifier": "nIndex",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "-1"
                 }
             ],
             "comments": [
@@ -90491,7 +90954,8 @@
                     },
                     "identifier": "bSaveObjectState",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -90537,7 +91001,8 @@
                     },
                     "identifier": "oOwner",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 },
                 {
                     "position": {
@@ -90546,7 +91011,8 @@
                     },
                     "identifier": "bLoadObjectState",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 }
             ],
             "comments": [
@@ -90957,7 +91423,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -91003,7 +91470,8 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
             "comments": [
@@ -91210,7 +91678,8 @@
                     },
                     "identifier": "nNth",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 },
                 {
                     "position": {
@@ -91219,7 +91688,8 @@
                     },
                     "identifier": "bSearchBaseData",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -91228,7 +91698,8 @@
                     },
                     "identifier": "sOnlyKeyTable",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -91273,7 +91744,8 @@
                     },
                     "identifier": "sWindowId",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -91320,7 +91792,8 @@
                     },
                     "identifier": "sWindowId",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
             "comments": [
@@ -91735,7 +92208,8 @@
                     },
                     "identifier": "nNth",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 }
             ],
             "comments": [
@@ -91787,7 +92261,8 @@
                     },
                     "identifier": "nNth",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 }
             ],
             "comments": [
@@ -91982,7 +92457,8 @@
                     },
                     "identifier": "nNth",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "0"
                 },
                 {
                     "position": {
@@ -91991,7 +92467,8 @@
                     },
                     "identifier": "nConditional",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "JSON_FIND_EQUAL"
                 }
             ],
             "comments": [

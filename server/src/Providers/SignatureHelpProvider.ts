@@ -49,7 +49,7 @@ export default class SignatureHelpProvider extends Provider {
           tokenizedResult.tokensArray,
           position,
           LanguageScopes.separatorStatement,
-          LanguageScopes.leftRoundBracket
+          LanguageScopes.leftArgumentsRoundBracket
         );
 
         if (context?.isRetrigger && context.activeSignatureHelp) {

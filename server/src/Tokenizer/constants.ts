@@ -37,5 +37,6 @@ export enum LanguageScopes {
   block = "meta.block.nss",
   blockDeclaraction = "punctuation.section.block.begin.bracket.curly.nss",
   blockTermination = "punctuation.section.block.end.bracket.curly.nss",
-  leftRoundBracket = "punctuation.section.arguments.begin.bracket.round.nss",
+  leftArgumentsRoundBracket = "punctuation.section.arguments.begin.bracket.round.nss",
+  rightParametersRoundBracket = "punctuation.section.parameters.end.bracket.round.nss",
 }

@@ -48,8 +48,8 @@ export default class HoverContentBuilder extends Builder {
       [
         `${this.handleLanguageType(token.returnType)} ${token.identifier}(${token.params.reduce((acc, param, index) => {
           return `${acc}${this.handleLanguageType(param.valueType)} ${param.identifier}${
-            index === token.params.length - 1 ? "" : ", "
-          }`;
+            param.defaultValue ? ` = ${param.defaultValue}` : ""
+          }${index === token.params.length - 1 ? "" : ", "}`;
         }, "")})`,
       ],
       serverConfig.includeCommentsInFunctionsHover ? ["```nwscript", ...token.comments, "```"] : [],

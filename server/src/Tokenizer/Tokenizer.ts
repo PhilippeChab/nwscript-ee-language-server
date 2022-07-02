@@ -104,11 +104,27 @@ export default class Tokenizer {
     const functionParamTokens = tokensArray.filter((token) => token.scopes.includes(LanguageScopes.functionParameter));
 
     return functionParamTokens.map((token) => {
+      const tokenIndex = this.getTokenIndex(tokensArray, token);
+      let defaultValue = "";
+
+      if (tokensArray[tokenIndex + 2]?.scopes.includes(LanguageScopes.assignationStatement)) {
+        let index = tokenIndex + 4;
+
+        while (
+          !tokensArray[index].scopes.includes(LanguageScopes.separatorStatement) &&
+          !tokensArray[index].scopes.includes(LanguageScopes.rightParametersRoundBracket)
+        ) {
+          defaultValue += this.getRawTokenContent(line, tokensArray[index]);
+          index++;
+        }
+      }
+
       return {
         position: { line: lineIndex, character: token.startIndex },
         identifier: this.getRawTokenContent(line, token),
         tokenType: CompletionItemKind.TypeParameter,
-        valueType: this.getTokenLanguageType(line, tokensArray[this.getTokenIndex(tokensArray, token) - 2]),
+        valueType: this.getTokenLanguageType(line, tokensArray[tokenIndex - 2]),
+        defaultValue: defaultValue || undefined,
       };
     });
   }
@@ -298,6 +314,24 @@ export default class Tokenizer {
               tokenType: CompletionItemKind.Variable,
               valueType: this.getTokenLanguageType(line, tokensArray[index - 2]),
             });
+
+            let nextVariableToken;
+            let currentVariableIndex = index;
+            while (tokensArray[currentVariableIndex + 1].scopes.includes(LanguageScopes.separatorStatement)) {
+              if (tokensArray[currentVariableIndex + 2].scopes.includes(LanguageScopes.variableIdentifer)) {
+                currentVariableIndex = currentVariableIndex + 2;
+              } else {
+                currentVariableIndex = currentVariableIndex + 3;
+              }
+
+              nextVariableToken = tokensArray[currentVariableIndex];
+              scope.functionVariablesComplexTokens.push({
+                position: { line: currentIndex, character: nextVariableToken.startIndex },
+                identifier: this.getRawTokenContent(line, nextVariableToken),
+                tokenType: CompletionItemKind.Variable,
+                valueType: this.getTokenLanguageType(line, tokensArray[index - 2]),
+              });
+            }
           }
 
           // FUNCTION PARAM
