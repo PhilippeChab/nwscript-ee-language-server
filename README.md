@@ -84,3 +84,12 @@ Also:
 ## Issues
 
 Please report any issues on the github [repository](https://github.com/PhilippeChab/nwscript-ee-language-server/issues).
+
+## Building and running
+
+- Install NodeJS from https://nodejs.org/en/
+- Invoke `npm install -g yarn vsce` which will install Yarn, a dependency manager, and vsce, a VS Code packaging library
+- In the project root directory, invoke `yarn install` which will install all dependencies using Yarn
+- Optional: If you want to regenerate data from nwscript.nss, place it in `servers/resources/nwscript.nss` then execute `yarn run generate-lib-defs` in the server project root directory.
+- In the project root directory, invoke `vsce package` which will produce a .vsix file
+- To install, in VS Code on the extension pane, click on the three dots at the top right then select Install From VSIX and navigate to the package you just produced.
