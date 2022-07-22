@@ -25,6 +25,7 @@ Notes:
 
 ```
 {
+    "editor.formatOnSave": true,
     "files.associations": {
       "*.nss": "nwscript"
     },
@@ -54,12 +55,12 @@ Notes:
 
 Notes:
 
-- The executable setting must either bet set to you path executable's identifer, or its absolute path.
+- The executable setting must either bet set to you path executable's identifier, or its absolute path.
 - The style object must respect clang-format [rules](https://clang.llvm.org/docs/ClangFormatStyleOptions.html).
 
 ## Features
 
-Enhanced syntax highlighting:
+Enhanced syntax highlighting - the following example is with the [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme) theme:
 
 ![](https://i.imgur.com/A78xmBR.png)
 
@@ -81,15 +82,17 @@ Also:
 - Range formatting
 - Signature help
 
+## Building and running
+
+- Install NodeJS from https://nodejs.org/en/.
+- Invoke `npm install -g yarn vsce` which will install Yarn, a dependency manager, and vsce, a VS Code packaging library.
+- In the project root directory, invoke `yarn install` which will install all dependencies using Yarn.
+- In the project root directory, invoke `vsce package` which will produce a .vsix file.
+- To install, in VS Code on the extension pane, click on the three dots at the top right then select `Install From VSIX and navigate to the package you just produced.
+
+### Generating the language library definitions
+Replace `servers/resources/nwscript.nss` by its new version and execute `yarn run generate-lib-defs` in the server project root directory.
+
 ## Issues
 
 Please report any issues on the github [repository](https://github.com/PhilippeChab/nwscript-ee-language-server/issues).
-
-## Building and running
-
-- Install NodeJS from https://nodejs.org/en/
-- Invoke `npm install -g yarn vsce` which will install Yarn, a dependency manager, and vsce, a VS Code packaging library
-- In the project root directory, invoke `yarn install` which will install all dependencies using Yarn
-- Optional: If you want to regenerate data from nwscript.nss, place it in `servers/resources/nwscript.nss` then execute `yarn run generate-lib-defs` in the server project root directory.
-- In the project root directory, invoke `vsce package` which will produce a .vsix file
-- To install, in VS Code on the extension pane, click on the three dots at the top right then select Install From VSIX and navigate to the package you just produced.
