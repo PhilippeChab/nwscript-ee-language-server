@@ -50,7 +50,7 @@ connection.onInitialized(async () => {
   filesCount = filesPath.length;
 
   progressReporter = await server.connection.window.createWorkDoneProgress();
-  progressReporter.begin("Indexing files ...", 0);
+  progressReporter.begin("Indexing files for NWScript: EE LSP ...", 0);
   const partCount = filesCount / numCPUs;
   for (let i = 0; i < numCPUs; i++) {
     const worker = cluster.fork();
