@@ -92,7 +92,7 @@ Also:
 
 ### Generating the language library definitions
 
-Replace `server/resources/nwscript.nss` by its new version and execute `yarn run generate-lib-defs` in the server project root directory.
+Replace `server/resources/nwscript.nss` by its new version and execute `yarn run generate-lib-defs` in the server root directory.
 
 ## Issues
 
