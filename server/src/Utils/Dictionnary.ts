@@ -26,4 +26,8 @@ export default class Dictionnary<K extends string, V> {
   public forEach(cb: (value: V) => void) {
     Object.values<V>(this._dict).forEach((value) => cb(value));
   }
+
+  public debug() {
+    console.log(JSON.stringify(Object.keys(this._dict)));
+  }
 }

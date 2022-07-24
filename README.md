@@ -10,6 +10,10 @@ While it seems to work well, even in bigger and older code bases, it is still an
 
 [clang-format](https://clang.llvm.org/docs/ClangFormat.html).
 
+### Diagnostics
+
+Neverwinter Nights home and installation folders.
+
 ## Usage
 
 Simply open a project with nss files and the extension installed. The extension will index your files and you will be ready to go - it can currently take up to 10-15 seconds to index big projects.
@@ -25,31 +29,31 @@ Notes:
 
 ```
 {
-    "editor.formatOnSave": true,
-    "files.associations": {
-      "*.nss": "nwscript"
-    },
-    "[nwscript]": {
-      "editor.defaultFormatter": "PhilippeChab.nwscript-ee-language-server"
-    },
-    "nwscript-ee-lsp.formatter": {
-      "enabled": true,
-      "executable": "clang-format",
-      "ignoredGlobs": ["/folder/to/ignore/*.nss", "file/to/ignore/filename.nss"],
-      "style": {
-        "BasedOnStyle": "Google",
-        "AlignTrailingComments": true,
-        "AlignConsecutiveAssignments": true,
-        "ColumnLimit": 250,
-        "BreakBeforeBraces": "Allman",
-        "AlignEscapedNewlinesLeft": true,
-        "AlwaysBreakBeforeMultilineStrings": true,
-        "MaxEmptyLinesToKeep": 1,
-        "TabWidth": 4,
-        "IndentWidth": 4,
-        "UseTab": "Always"
-      }
+  "editor.formatOnSave": true,
+  "files.associations": {
+    "*.nss": "nwscript"
+  },
+  "[nwscript]": {
+    "editor.defaultFormatter": "PhilippeChab.nwscript-ee-language-server"
+  },
+  "nwscript-ee-lsp.formatter": {
+    "enabled": true,
+    "executable": "clang-format",
+    "ignoredGlobs": ["/folder/to/ignore/*.nss", "file/to/ignore/filename.nss"],
+    "style": {
+      "BasedOnStyle": "Google",
+      "AlignTrailingComments": true,
+      "AlignConsecutiveAssignments": true,
+      "ColumnLimit": 250,
+      "BreakBeforeBraces": "Allman",
+      "AlignEscapedNewlinesLeft": true,
+      "AlwaysBreakBeforeMultilineStrings": true,
+      "MaxEmptyLinesToKeep": 1,
+      "TabWidth": 4,
+      "IndentWidth": 4,
+      "UseTab": "Always"
     }
+  }
 }
 ```
 
@@ -57,6 +61,28 @@ Notes:
 
 - The executable setting must either bet set to you path executable's identifier, or its absolute path.
 - The style object must respect clang-format [rules](https://clang.llvm.org/docs/ClangFormatStyleOptions.html).
+
+### Diagnostics
+
+```
+{
+  "nwscript-ee-lsp.compiler": {
+    "enabled": true,
+    "verbose": false,
+    "nwnHome": "C:\\Users\\YOUR_USERNAME\\Documents\\Neverwinter Nights",
+    "nwnInstallation": "D:\\Program Files (x86)\\Steam\\steamapps\\common\\Neverwinter Nights"
+  }
+}
+```
+
+Notes:
+
+- Diagnostics are provided by compiling the file with the [nwnsc](https://github.com/nwneetools/nwnsc) executable.
+- The compiler executable is provided for Windows, Darwin and Linux operating systems.
+- By default, the compiler will try to detect automatically your Neverwinter Nights home and installation folders if they are not specified. If it fails to do so, you can provide the paths in the extension settings like shown above - input paths are wrapped into quotes automatically.
+- In order to compile a file's includes, the compiler needs to know their directories. Files that had been requested a diagnostic while the project is being indexed are queued and processed once the indexing is done.
+- You can set the `verbose` setting to `true` if you wish to see detailed logs of the compilation process.
+- Big files with a lot of includes can take between half a second to a second to compile on older machines - it will not affect the client performances as the processing is done on the server.
 
 ## Features
 
@@ -81,6 +107,7 @@ Also:
 - Formatting
 - Range formatting
 - Signature help
+- Diagnostics
 
 ## Building and running
 

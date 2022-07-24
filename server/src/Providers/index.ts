@@ -6,6 +6,7 @@ import HoverContentProvider from "./HoverContentProvider";
 import SignatureHelpProvider from "./SignatureHelpProvider";
 import DocumentFormatingProvider from "./DocumentFormattingProvider";
 import DocumentRangeFormattingProvider from "./DocumentRangeFormattingProvider";
+import DiagnosticsProvider from "./DiagnosticsProvider";
 
 export enum TriggerCharacters {
   dot = ".",
@@ -22,4 +23,5 @@ export {
   SignatureHelpProvider,
   DocumentFormatingProvider,
   DocumentRangeFormattingProvider,
+  DiagnosticsProvider,
 };

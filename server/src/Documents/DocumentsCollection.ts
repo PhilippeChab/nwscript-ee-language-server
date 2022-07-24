@@ -6,6 +6,7 @@ import { GlobalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Toke
 import { Dictionnary } from "../Utils";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import Document from "./Document";
+import { TextDocument } from "vscode-languageserver-textdocument";
 
 export default class DocumentsCollection extends Dictionnary<string, Document> {
   public readonly standardLibComplexTokens: ComplexToken[] = [];
@@ -34,10 +35,9 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     this.addDocument(this.initializeDocument(filePath, globalScope));
   }
 
-  public updateDocument(uri: string, tokenizer: Tokenizer) {
-    const filePath = WorkspaceFilesSystem.fileUriToPath(uri);
-    const fileContent = WorkspaceFilesSystem.readFileSync(filePath).toString();
-    const globalScope = tokenizer.tokenizeContent(fileContent, TokenizedScope.global);
+  public updateDocument(document: TextDocument, tokenizer: Tokenizer) {
+    const filePath = WorkspaceFilesSystem.fileUriToPath(document.uri);
+    const globalScope = tokenizer.tokenizeContent(document.getText(), TokenizedScope.global);
 
     this.overwriteDocument(this.initializeDocument(filePath, globalScope));
   }

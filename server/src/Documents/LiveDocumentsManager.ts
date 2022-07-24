@@ -13,6 +13,14 @@ export default class DocumentManager {
     this.documents.onDidSave(cb);
   }
 
+  public onWillSave(cb: (e: TextDocumentChangeEvent<TextDocument>) => any, thisArgs?: any, disposables?: Disposable[]) {
+    this.documents.onWillSave(cb);
+  }
+
+  public onDidOpen(cb: (e: TextDocumentChangeEvent<TextDocument>) => any, thisArgs?: any, disposables?: Disposable[]) {
+    this.documents.onDidOpen(cb);
+  }
+
   public get(uri: string) {
     return this.documents.get(uri);
   }

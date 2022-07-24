@@ -7,3 +7,4 @@ test/
 server/resources/nwscript.nss
 yarn-error.log
 .DS_Store
+TODO.txt

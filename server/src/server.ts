@@ -57,10 +57,12 @@ connection.onInitialized(async () => {
     worker.send(filesPath.slice(i * partCount, Math.min((i + 1) * partCount, filesCount - 1)).join(","));
   }
 
-  cluster.on("exit", () => {
+  cluster.on("exit", async () => {
     if (Object.keys(cluster.workers || {}).length === 0) {
       socket.close();
       progressReporter?.done();
+      server.hasIndexedDocuments = true;
+      await server.diagnosticsProvider?.processDocumentsWaitingForPublish();
     }
   });
 });

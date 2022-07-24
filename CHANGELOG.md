@@ -22,3 +22,7 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
   - Is now performed in background, which means it is not blocking other features of the LSP.
   - Is now clustered - the number of processes depends on the number of cores on your machine.
   - Is now incremental, which means a file will be available as soon as it is indexed.
+
+## [1.4.0]
+
+- New provider: [Diagnostics](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#provide-diagnostics).
