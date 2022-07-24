@@ -3,6 +3,7 @@ import type { Connection, InitializeParams } from "vscode-languageserver";
 import {
   CompletionItemsProvider,
   ConfigurationProvider,
+  DiagnosticsProvider,
   DocumentFormatingProvider,
   DocumentRangeFormattingProvider,
   GotoDefinitionProvider,
@@ -26,6 +27,9 @@ export default class ServerManger {
   public config = defaultServerConfiguration;
   public tokenizer: Tokenizer | null = null;
   public documentsCollection: DocumentsCollection | null = null;
+  public hasIndexedDocuments: boolean = false;
+  public documentsWaitingForPublish: string[] = [];
+  public diagnosticsProvider: DiagnosticsProvider | null = null;
 
   constructor(connection: Connection, params: InitializeParams) {
     this.connection = connection;
@@ -73,19 +77,22 @@ export default class ServerManger {
     SignatureHelpProvider.register(this);
     DocumentFormatingProvider.register(this);
     DocumentRangeFormattingProvider.register(this);
+
+    this.diagnosticsProvider = DiagnosticsProvider.register(this) as DiagnosticsProvider;
   }
 
   private registerLiveDocumentsEvents() {
-    this.liveDocumentsManager.onDidSave((event) => {
+    this.liveDocumentsManager.onWillSave((event) => {
       if (this.tokenizer) {
-        this.documentsCollection?.updateDocument(event.document.uri, this.tokenizer);
+        this.documentsCollection?.updateDocument(event.document, this.tokenizer);
       }
     });
   }
 
   private async loadConfig() {
-    const { formatter, ...rest } = await this.connection.workspace.getConfiguration("nwscript-ee-lsp");
+    const { formatter, compiler, ...rest } = await this.connection.workspace.getConfiguration("nwscript-ee-lsp");
     this.config = { ...this.config, ...rest };
     this.config.formatter = { ...this.config.formatter, ...formatter };
+    this.config.compiler = { ...this.config.compiler, ...compiler };
   }
 }

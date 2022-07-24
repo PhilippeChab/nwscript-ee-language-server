@@ -11,3 +11,4 @@ test/**
 server/resources/nwscript.nss
 server/scripts
 images/**
+TODO.txt

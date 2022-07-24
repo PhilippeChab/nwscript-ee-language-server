@@ -1,6 +1,7 @@
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import type { ComplexToken, StructComplexToken } from "../Tokenizer/types";
 import type DocumentsCollection from "./DocumentsCollection";
+import { Diagnostic } from "vscode-languageserver";
 
 export type OwnedComplexTokens = { owner: string; tokens: ComplexToken[] };
 export type OwnedStructComplexTokens = { owner: string; tokens: StructComplexToken[] };
@@ -16,6 +17,27 @@ export default class Document {
 
   public getKey() {
     return WorkspaceFilesSystem.getFileBasename(this.path);
+  }
+
+  public getChildren(computedChildren: string[] = []): string[] {
+    return this.children.concat(
+      this.children.flatMap((child) => {
+        // Cycling children or/and duplicates
+        if (computedChildren.includes(child)) {
+          return [];
+        } else {
+          computedChildren.push(child);
+        }
+
+        const childDocument = this.collection.get(child);
+
+        if (!childDocument) {
+          return [];
+        }
+
+        return childDocument.getChildren(computedChildren);
+      })
+    );
   }
 
   public getGlobalComplexTokensWithRef(computedChildren: string[] = []): OwnedComplexTokens[] {

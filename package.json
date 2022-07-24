@@ -8,7 +8,7 @@
     "url": "https://github.com/PhilippeChab/nwscript-ee-language-server"
   },
   "license": "MIT",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "author": {
     "name": "Philippe Chabot"
   },
@@ -86,7 +86,7 @@
                 "type": "string"
               }
             },
-            "nwscript-formatter.style": {
+            "style": {
               "type": "object",
               "default": {
                 "BasedOnStyle": "Google",
@@ -102,6 +102,31 @@
                 "UseTab": "Always"
               },
               "description": "Style for the formatter."
+            }
+          }
+        },
+        "nwscript-ee-lsp.compiler": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true,
+              "description": "Whether the compiler is enabled or not."
+            },
+            "verbose": {
+              "type": "boolean",
+              "default": false,
+              "description": "Print the compilation result in the output console."
+            },
+            "nwnHome": {
+              "type": "string",
+              "default": "",
+              "description": "Your Neverwinter Nights home directory."
+            },
+            "nwnInstallation": {
+              "type": "string",
+              "default": "",
+              "description": "Your Neverwinter Nights installation directory."
             }
           }
         }

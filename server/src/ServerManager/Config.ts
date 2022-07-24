@@ -20,6 +20,12 @@ const defaultServerConfiguration = {
       UseTab: "Always",
     },
   },
+  compiler: {
+    enabled: true,
+    verbose: false,
+    nwnHome: "",
+    nwnInstallation: "",
+  },
 };
 /* eslint-enable @typescript-eslint/naming-convention */
 

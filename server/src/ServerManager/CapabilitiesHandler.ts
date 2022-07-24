@@ -19,7 +19,12 @@ export default class CapabilitiesHandler {
 
   private initializeServerCapabilities(): ServerCapabilities {
     const capabilities: ServerCapabilities = {
-      textDocumentSync: TextDocumentSyncKind.Incremental as TextDocumentSyncKind,
+      textDocumentSync: {
+        openClose: true,
+        willSave: true,
+        save: true,
+        change: TextDocumentSyncKind.Full,
+      },
       documentFormattingProvider: true,
       documentRangeFormattingProvider: true,
       definitionProvider: true,
