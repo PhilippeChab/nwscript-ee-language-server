@@ -79,6 +79,7 @@ Notes:
 
 - Diagnostics are provided by compiling the file with the [nwnsc](https://github.com/nwneetools/nwnsc) executable.
 - The compiler executable is provided for Windows, Darwin and Linux operating systems.
+- Diagnostics are currently published when opening or saving a file.
 - By default, the compiler will try to detect automatically your Neverwinter Nights home and installation folders if they are not specified. If it fails to do so, you can provide the paths in the extension settings like shown above - input paths are wrapped into quotes automatically.
 - In order to compile a file's includes, the compiler needs to know their directories. Files that had been requested a diagnostic while the project is being indexed are queued and processed once the indexing is done.
 - You can set the `verbose` setting to `true` if you wish to see detailed logs of the compilation process.
