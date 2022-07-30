@@ -128,7 +128,7 @@ export default class DiagnoticsProvider extends Provider {
         }
         if (children.length > 0) {
           args.push("-i");
-          args.push([...new Set(paths.map((path) => `"${dirname(path)}"`))].join(";"));
+          args.push(`"${[...new Set(paths.map((path) => dirname(path)))].join(";")}"`);
         }
         args.push(`"${path}"`);
 

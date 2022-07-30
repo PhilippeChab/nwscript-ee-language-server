@@ -26,3 +26,8 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 ## [1.4.0]
 
 - New provider: [Diagnostics](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#provide-diagnostics).
+
+## [1.4.1]
+
+- Fixed compiler `-i` parameter for Darwin and Linux operating systems.
+- The tokenization process now supports function definitions spread over multiple lines.
