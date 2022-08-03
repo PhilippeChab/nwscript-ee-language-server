@@ -122,6 +122,62 @@ Also:
 
 Replace `server/resources/nwscript.nss` by its new version and execute `yarn run generate-lib-defs` in the server root directory.
 
+## Modifying themes
+
+vsCode's themes generally work very well.  However, because tokens are returned via scope and not semantically analyzed, the tokens may not always be highlighted with the colors that make sense to the user.  One example of this is in vsCode's Dark+ theme where a functions arguments/parameters is colored differently than the same token used within the function body.  To modify portions of a theme to better suit user preferences, add the `editor.tokenColorCustomizations` block to the local `settings.json` file.  Within this section, the user can select universal or theme-based modification to token colors.  Here's an example of a modification for the Dark+ theme that does the following:
+
+1) Highlights variables within the function the same color as function arguments/parameters
+2) Highlights constants (all caps) in a color different than variables
+3) Highlights the hexadecimal prefix (`0x`) in the same color as all other numbers and makes it bold/underline
+4) Highlights variables modifiers (such as `const`) in bold/italics
+
+```
+"editor.tokenColorCustomizations": {
+    "[Default Dark+]": {
+        "textMateRules": [
+            {
+                "scope": "variable.language, variable.parameter",
+                "settings": {
+                    "foreground": "#9cdcfe"
+                }
+            },
+            {
+                "scope": "constant.language",
+                "settings": {
+                    "foreground": "#d19a66"
+                }
+            },
+            {
+                "scope": "keyword.other.unit.hexadecimal",
+                "settings": {
+                    "foreground": "#b5cea8",
+                    "fontStyle": "bold underline"
+                }
+            },
+            {
+                "scope": "storage.modifier",
+                "settings": {
+                    "fontStyle": "bold italic"
+                }
+            }
+        ]
+    }
+  }
+}
+```
+
+Here's an example of a simple function highlighted using vsCode's Dark+ theme, both before and after the modification made above:
+
+![](https://i.imgur.com/K918zP0.jpg)
+
+![](https://i.imgur.com/pz57iA1.jpg)
+
+Modifying thematic highlighting requires knowledge of the token's scope.  To determine a token's scope, use vsCode's `Inspect Editor Tokens and Scopes` function, which can be found using the `F1` searchbox.  Once this function is selected, hover over any token and the inspector will display the token's scope and highlight color.
+
+For the purposes of `scope` in the `settings.json` file, use the scope listed at the top of the `textmate scopes` inspection block, but do not include the `.nss` suffix.  Here is an example of the information the inspector provides:
+
+![](https://i.imgur.com/Q4Y1UNK.jpg)
+
 ## Issues
 
 Please report any issues on the github [repository](https://github.com/PhilippeChab/nwscript-ee-language-server/issues).
