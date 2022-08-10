@@ -1,0 +1,71 @@
+name: Release vsix
+
+on:
+  pull_request:
+  push:
+  release:
+    types: published
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        uses: borales/actions-yarn@v3
+        with:
+          cmd: install
+      - name: Package Extension
+        id: packageExtension
+        uses: HaaLeo/publish-vscode-extension@v1
+        with:
+          pat: stub
+          dryRun: true
+      - name: Upload Extension
+        uses: actions/upload-artifact@v2
+        with:
+          name: nwscript-ee-lsp
+          path: ${{ steps.packageExtension.outputs.vsixPath }}
+
+  publish:
+    name: Publish
+    needs: build
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        uses: borales/actions-yarn@v3
+        with:
+          cmd: install
+      - name: Download Extension
+        uses: actions/download-artifact@v2
+        with:
+          name: nwscript-ee-lsp
+      - name: GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          generate_release_notes: true
+          body: |
+            # Summary
+            See [changelog](https://github.com/PhilippeChab/nwscript-ee-language-server/blob/main/CHANGELOG.md)
+          name: ${{ github.ref_name }}
+          fail_on_unmatched_files: true
+          files: ${{ needs.build.outputs.vsixPath }}
+      - name: Visual Studio Marketplace Release
+        uses: HaaLeo/publish-vscode-extension@v1
+        with:
+          pat: ${{ secrets.VS_CODE_MARKETPLACE_TOKEN }}
+          extensionFile: ${{ needs.build.outputs.vsixPath }}
+          registryUrl: https://marketplace.visualstudio.com

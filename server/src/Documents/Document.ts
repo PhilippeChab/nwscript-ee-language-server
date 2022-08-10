@@ -1,7 +1,6 @@
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import type { ComplexToken, StructComplexToken } from "../Tokenizer/types";
 import type DocumentsCollection from "./DocumentsCollection";
-import { Diagnostic } from "vscode-languageserver";
 
 export type OwnedComplexTokens = { owner: string; tokens: ComplexToken[] };
 export type OwnedStructComplexTokens = { owner: string; tokens: StructComplexToken[] };
