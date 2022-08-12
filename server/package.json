@@ -16,7 +16,8 @@
   },
   "scripts": {
     "postinstall": "patch-package",
-    "generate-lib-defs": "ts-node scripts/GenerateLibDefinitions.ts"
+    "generate-lib-defs": "ts-node scripts/GenerateLibDefinitions.ts",
+    "test": "mocha -r ts-node/register 'test/**/*.ts'"
   },
   "dependencies": {
     "glob": "^8.0.1",
@@ -30,10 +31,14 @@
     "zeromq": "6.0.0-beta.6"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.3",
     "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
     "@types/node": "^17.0.35",
     "@types/sax": "^1.2.4",
     "@types/zeromq": "^5.2.1",
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
     "ts-node": "^10.7.0"
   }
 }

@@ -1,0 +1,552 @@
+{
+  "complexTokens": [
+      {
+          "position": {
+              "line": 7,
+              "character": 13
+          },
+          "identifier": "NWNX_SkillRanks",
+          "tokenType": 21,
+          "valueType": "string",
+          "value": "\"NWNX_SkillRanks\""
+      },
+      {
+          "position": {
+              "line": 14,
+              "character": 10
+          },
+          "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_STRENGTH",
+          "tokenType": 21,
+          "valueType": "int",
+          "value": "1"
+      },
+      {
+          "position": {
+              "line": 15,
+              "character": 10
+          },
+          "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_DEXTERITY",
+          "tokenType": 21,
+          "valueType": "int",
+          "value": "2"
+      },
+      {
+          "position": {
+              "line": 16,
+              "character": 10
+          },
+          "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_CONSTITUTION",
+          "tokenType": 21,
+          "valueType": "int",
+          "value": "4"
+      },
+      {
+          "position": {
+              "line": 17,
+              "character": 10
+          },
+          "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_INTELLIGENCE",
+          "tokenType": 21,
+          "valueType": "int",
+          "value": "8"
+      },
+      {
+          "position": {
+              "line": 18,
+              "character": 10
+          },
+          "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_WISDOM",
+          "tokenType": 21,
+          "valueType": "int",
+          "value": "16"
+      },
+      {
+          "position": {
+              "line": 19,
+              "character": 10
+          },
+          "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_CHARISMA",
+          "tokenType": 21,
+          "valueType": "int",
+          "value": "32"
+      },
+      {
+          "position": {
+              "line": 28,
+              "character": 10
+          },
+          "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_CALC_MIN",
+          "tokenType": 21,
+          "valueType": "int",
+          "value": "64"
+      },
+      {
+          "position": {
+              "line": 29,
+              "character": 10
+          },
+          "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_CALC_MAX",
+          "tokenType": 21,
+          "valueType": "int",
+          "value": "128"
+      },
+      {
+          "position": {
+              "line": 30,
+              "character": 10
+          },
+          "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_CALC_AVERAGE",
+          "tokenType": 21,
+          "valueType": "int",
+          "value": "256"
+      },
+      {
+          "position": {
+              "line": 31,
+              "character": 10
+          },
+          "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_CALC_SUM",
+          "tokenType": 21,
+          "valueType": "int",
+          "value": "512"
+      },
+      {
+          "position": {
+              "line": 84,
+              "character": 4
+          },
+          "identifier": "NWNX_SkillRanks_GetSkillFeatCountForSkill",
+          "tokenType": 3,
+          "returnType": "int",
+          "params": [
+              {
+                  "position": {
+                      "line": 84,
+                      "character": 50
+                  },
+                  "identifier": "iSkill",
+                  "tokenType": 25,
+                  "valueType": "int"
+              }
+          ],
+          "comments": [
+              "/// @param iSkill The skill to check the feat count.",
+              "/// @return The count of feats for a specific skill."
+          ]
+      },
+      {
+          "position": {
+              "line": 90,
+              "character": 33
+          },
+          "identifier": "NWNX_SkillRanks_GetSkillFeat",
+          "tokenType": 3,
+          "returnType": "NWNX_SkillRanks_SkillFeat",
+          "params": [
+              {
+                  "position": {
+                      "line": 91,
+                      "character": 6
+                  },
+                  "identifier": "iSkill",
+                  "tokenType": 25,
+                  "valueType": "int"
+              },
+              {
+                  "position": {
+                      "line": 92,
+                      "character": 6
+                  },
+                  "identifier": "iFeat",
+                  "tokenType": 25,
+                  "valueType": "int"
+              }
+          ],
+          "comments": [
+              "/// @brief Returns a skill feat.",
+              "/// @param iSkill The skill.",
+              "/// @param iFeat The feat.",
+              "/// @return A constructed NWNX_SkillRanks_SkillFeat."
+          ]
+      },
+      {
+          "position": {
+              "line": 101,
+              "character": 0
+          },
+          "identifier": "NWNX_SkillRanks_GetSkillFeatForSkillByIndex",
+          "tokenType": 3,
+          "returnType": "NWNX_SkillRanks_SkillFeat",
+          "params": [
+              {
+                  "position": {
+                      "line": 101,
+                      "character": 48
+                  },
+                  "identifier": "iSkill",
+                  "tokenType": 25,
+                  "valueType": "int"
+              },
+              {
+                  "position": {
+                      "line": 101,
+                      "character": 60
+                  },
+                  "identifier": "iIndex",
+                  "tokenType": 25,
+                  "valueType": "int"
+              }
+          ],
+          "comments": [
+              "/// @brief Returns a skill feat by index.",
+              "/// @remark Generally used in a loop with NWNX_SkillRanks_GetSkillFeatCountForSkill().",
+              "/// @param iSkill The skill.",
+              "/// @param iIndex The index in the list of feats for the skill.",
+              "/// @return A constructed NWNX_SkillRanks_SkillFeat."
+          ]
+      },
+      {
+          "position": {
+              "line": 107,
+              "character": 0
+          },
+          "identifier": "NWNX_SkillRanks_SetSkillFeat",
+          "tokenType": 3,
+          "returnType": "void",
+          "params": [
+              {
+                  "position": {
+                      "line": 108,
+                      "character": 35
+                  },
+                  "identifier": "skillFeat",
+                  "tokenType": 25,
+                  "valueType": "NWNX_SkillRanks_SkillFeat"
+              },
+              {
+                  "position": {
+                      "line": 109,
+                      "character": 6
+                  },
+                  "identifier": "createIfNonExistent",
+                  "tokenType": 25,
+                  "valueType": "int",
+                  "defaultValue": "FALSE"
+              }
+          ],
+          "comments": [
+              "/// @brief Modifies or creates a skill feat.",
+              "/// @param skillFeat The defined NWNX_SkillRanks_SkillFeat.",
+              "/// @param createIfNonExistent TRUE to create if the feat does not exist."
+          ]
+      },
+      {
+          "position": {
+              "line": 119,
+              "character": 0
+          },
+          "identifier": "NWNX_SkillRanks_AddSkillFeatClass",
+          "tokenType": 3,
+          "returnType": "NWNX_SkillRanks_SkillFeat",
+          "params": [
+              {
+                  "position": {
+                      "line": 120,
+                      "character": 35
+                  },
+                  "identifier": "skillFeat",
+                  "tokenType": 25,
+                  "valueType": "NWNX_SkillRanks_SkillFeat"
+              },
+              {
+                  "position": {
+                      "line": 121,
+                      "character": 6
+                  },
+                  "identifier": "iClass",
+                  "tokenType": 25,
+                  "valueType": "int"
+              }
+          ],
+          "comments": [
+              "/// @brief Add classes to a skill feat instead of working with the NWNX_SkillRanks_SkillFeat::sClasses string.",
+              "///",
+              "/// Manipulating the sClasses string in the NWNX_SkillRanks_SkillFeat struct can be difficult. This",
+              "/// function allows the builder to enter one class at a time.",
+              "/// @param skillFeat The NWNX_SkillRanks_SkillFeat for which the sClasses field will be modifier.",
+              "/// @param iClass The class to add to the Skill Feat.",
+              "/// @return The updated NWNX_SkillRanks_SkillFeat."
+          ]
+      },
+      {
+          "position": {
+              "line": 130,
+              "character": 5
+          },
+          "identifier": "NWNX_SkillRanks_SetSkillFeatFocusModifier",
+          "tokenType": 3,
+          "returnType": "void",
+          "params": [
+              {
+                  "position": {
+                      "line": 130,
+                      "character": 51
+                  },
+                  "identifier": "iModifier",
+                  "tokenType": 25,
+                  "valueType": "int"
+              },
+              {
+                  "position": {
+                      "line": 130,
+                      "character": 66
+                  },
+                  "identifier": "iEpic",
+                  "tokenType": 25,
+                  "valueType": "int",
+                  "defaultValue": "FALSE"
+              }
+          ],
+          "comments": [
+              "/// @brief Change the modifier value for Skill Focus and Epic Skill Focus feats.",
+              "///",
+              "/// The stock modifier on Skill Focus and Epic Skill Focus are 3 and 10 respectively, these can be",
+              "/// changed with this function.",
+              "/// @param iModifier The new value for the feat modifier.",
+              "/// @param iEpic Set to TRUE to change the value for Epic Skill Focus."
+          ]
+      },
+      {
+          "position": {
+              "line": 134,
+              "character": 4
+          },
+          "identifier": "NWNX_SkillRanks_GetBlindnessPenalty",
+          "tokenType": 3,
+          "returnType": "int",
+          "params": [],
+          "comments": [
+              "/// @brief Gets the current penalty to Dexterity based skills when blind.",
+              "/// @return The penalty to Dexterity when blind."
+          ]
+      },
+      {
+          "position": {
+              "line": 139,
+              "character": 5
+          },
+          "identifier": "NWNX_SkillRanks_SetBlindnessPenalty",
+          "tokenType": 3,
+          "returnType": "void",
+          "params": [
+              {
+                  "position": {
+                      "line": 139,
+                      "character": 45
+                  },
+                  "identifier": "iModifier",
+                  "tokenType": 25,
+                  "valueType": "int"
+              }
+          ],
+          "comments": [
+              "/// @brief Set the value the Dexterity based skills get decreased due to blindness.",
+              "/// @remark Default is 4.",
+              "/// @param iModifier The penalty to Dexterity when blind."
+          ]
+      },
+      {
+          "position": {
+              "line": 145,
+              "character": 4
+          },
+          "identifier": "NWNX_SkillRanks_GetAreaModifier",
+          "tokenType": 3,
+          "returnType": "int",
+          "params": [
+              {
+                  "position": {
+                      "line": 145,
+                      "character": 43
+                  },
+                  "identifier": "oArea",
+                  "tokenType": 25,
+                  "valueType": "object"
+              },
+              {
+                  "position": {
+                      "line": 145,
+                      "character": 54
+                  },
+                  "identifier": "iSkill",
+                  "tokenType": 25,
+                  "valueType": "int"
+              }
+          ],
+          "comments": [
+              "/// @brief Get a skill modifier for an area.",
+              "/// @param oArea The area.",
+              "/// @param iSkill The skill to check.",
+              "/// @return The modifier to that skill in the area."
+          ]
+      },
+      {
+          "position": {
+              "line": 151,
+              "character": 5
+          },
+          "identifier": "NWNX_SkillRanks_SetAreaModifier",
+          "tokenType": 3,
+          "returnType": "void",
+          "params": [
+              {
+                  "position": {
+                      "line": 151,
+                      "character": 44
+                  },
+                  "identifier": "oArea",
+                  "tokenType": 25,
+                  "valueType": "object"
+              },
+              {
+                  "position": {
+                      "line": 151,
+                      "character": 55
+                  },
+                  "identifier": "iSkill",
+                  "tokenType": 25,
+                  "valueType": "int"
+              },
+              {
+                  "position": {
+                      "line": 151,
+                      "character": 67
+                  },
+                  "identifier": "iModifier",
+                  "tokenType": 25,
+                  "valueType": "int"
+              }
+          ],
+          "comments": [
+              "/// @brief Sets a skill modifier for the area.",
+              "/// @param oArea The area.",
+              "/// @param iSkill The skill to change.",
+              "/// @param iModifier The modifier to the skill in the area."
+          ]
+      }
+  ],
+  "structComplexTokens": [
+      {
+          "position": {
+              "line": 35,
+              "character": 7
+          },
+          "identifier": "NWNX_SkillRanks_SkillFeat",
+          "tokenType": 22,
+          "properties": [
+              {
+                  "position": {
+                      "line": 37,
+                      "character": 8
+                  },
+                  "identifier": "iSkill",
+                  "tokenType": 10,
+                  "valueType": "int"
+              },
+              {
+                  "position": {
+                      "line": 38,
+                      "character": 8
+                  },
+                  "identifier": "iFeat",
+                  "tokenType": 10,
+                  "valueType": "int"
+              },
+              {
+                  "position": {
+                      "line": 41,
+                      "character": 8
+                  },
+                  "identifier": "iModifier",
+                  "tokenType": 10,
+                  "valueType": "int"
+              },
+              {
+                  "position": {
+                      "line": 45,
+                      "character": 8
+                  },
+                  "identifier": "iFocusFeat",
+                  "tokenType": 10,
+                  "valueType": "int"
+              },
+              {
+                  "position": {
+                      "line": 55,
+                      "character": 11
+                  },
+                  "identifier": "sClasses",
+                  "tokenType": 10,
+                  "valueType": "string"
+              },
+              {
+                  "position": {
+                      "line": 59,
+                      "character": 10
+                  },
+                  "identifier": "fClassLevelMod",
+                  "tokenType": 10,
+                  "valueType": "float"
+              },
+              {
+                  "position": {
+                      "line": 62,
+                      "character": 8
+                  },
+                  "identifier": "iAreaFlagsRequired",
+                  "tokenType": 10,
+                  "valueType": "int"
+              },
+              {
+                  "position": {
+                      "line": 65,
+                      "character": 8
+                  },
+                  "identifier": "iAreaFlagsForbidden",
+                  "tokenType": 10,
+                  "valueType": "int"
+              },
+              {
+                  "position": {
+                      "line": 69,
+                      "character": 8
+                  },
+                  "identifier": "iDayOrNight",
+                  "tokenType": 10,
+                  "valueType": "int"
+              },
+              {
+                  "position": {
+                      "line": 72,
+                      "character": 8
+                  },
+                  "identifier": "bBypassArmorCheckPenalty",
+                  "tokenType": 10,
+                  "valueType": "int"
+              },
+              {
+                  "position": {
+                      "line": 79,
+                      "character": 8
+                  },
+                  "identifier": "iKeyAbilityMask",
+                  "tokenType": 10,
+                  "valueType": "int"
+              }
+          ]
+      }
+  ],
+  "children": [
+      "nwnx"
+  ]
+}

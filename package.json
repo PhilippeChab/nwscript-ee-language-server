@@ -139,7 +139,8 @@
     "watch": "tsc -b -w",
     "package": "yarn compile",
     "lint": "eslint ./client/src ./server/src --ext .ts",
-    "postinstall": "cd client && yarn install && cd ../server && yarn install && cd .."
+    "postinstall": "cd client && yarn install && cd ../server && yarn install && cd ..",
+    "test": "cd server && yarn test"
   },
   "devDependencies": {
     "@types/node": "14.x",

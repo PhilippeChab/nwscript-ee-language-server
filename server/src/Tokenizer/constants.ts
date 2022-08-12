@@ -29,6 +29,7 @@ export enum LanguageScopes {
   terminatorStatement = "punctuation.terminator.statement.nss",
   dotAccessStatement = "punctuation.separator.dot-access.nss",
   commentStatement = "punctuation.definition.comment.nss",
+  documentationCommentStatement = "punctuation.definition.comment.documentation.nss",
   assignationStatement = "keyword.operator.assignment.nss",
   functionIdentifier = "entity.name.function.nss",
   functionCall = "meta.function-call.nss",

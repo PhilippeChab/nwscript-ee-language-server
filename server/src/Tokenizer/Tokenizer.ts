@@ -83,15 +83,16 @@ export default class Tokenizer {
     return tokensArray.findIndex((token) => token.startIndex === targetToken.startIndex);
   }
 
-  private getTokenLanguageType(line: string, token: IToken) {
-    const rawContent = this.getRawTokenContent(line, token);
+  private getTokenLanguageType(line: string, tokens: IToken[], index: number) {
+    const rawContent = this.getRawTokenContent(line, tokens[index]);
 
-    return LanguageTypes[rawContent as keyof typeof LanguageTypes] || rawContent;
+    const type = LanguageTypes[rawContent as keyof typeof LanguageTypes] || rawContent;
+    return (type === LanguageTypes.struct ? this.getRawTokenContent(line, tokens[index + 2]) : type) as LanguageTypes;
   }
 
   private getConstantValue(line: string, tokensArray: IToken[]) {
     const startIndex = tokensArray.findIndex((token) => token.scopes.includes(LanguageScopes.assignationStatement));
-    const endIndex = tokensArray.length - 1;
+    const endIndex = tokensArray.findIndex((token) => token.scopes.includes(LanguageScopes.terminatorStatement));
 
     return tokensArray
       .filter((_, index) => index > startIndex && index < endIndex)
@@ -145,7 +146,7 @@ export default class Tokenizer {
         position: { line: lineIndex, character: token.startIndex },
         identifier: this.getRawTokenContent(line, token),
         tokenType: CompletionItemKind.TypeParameter,
-        valueType: this.getTokenLanguageType(line, tokensArray[tokenIndex - 2]),
+        valueType: this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
         defaultValue: defaultValue.trim() || undefined,
       };
     });
@@ -155,7 +156,13 @@ export default class Tokenizer {
     const comments: string[] = [];
 
     let errorSafeIndex = Math.max(index, 0);
-    while (tokensLines[errorSafeIndex]?.at(0)?.scopes.includes(LanguageScopes.commentStatement)) {
+    while (
+      tokensLines[errorSafeIndex]
+        ?.at(0)
+        ?.scopes.find(
+          (scope) => scope === LanguageScopes.commentStatement || scope === LanguageScopes.documentationCommentStatement
+        )
+    ) {
       comments.unshift(lines[errorSafeIndex]);
       errorSafeIndex--;
     }
@@ -218,12 +225,12 @@ export default class Tokenizer {
             if (token.scopes.includes(LanguageScopes.blockTermination)) {
               scope.structComplexTokens.push(currentStruct);
               currentStruct = null;
-            } else if (lastIndex > 2 && !token.scopes.includes(LanguageScopes.blockDeclaraction)) {
+            } else if (lastIndex > 0 && tokensArray[1].scopes.includes(LanguageScopes.type)) {
               currentStruct.properties.push({
                 position: { line: lineIndex, character: tokensArray[3].startIndex },
                 identifier: this.getRawTokenContent(line, tokensArray[3]),
                 tokenType: CompletionItemKind.Property,
-                valueType: this.getTokenLanguageType(line, tokensArray[1]),
+                valueType: this.getTokenLanguageType(line, tokensArray, 1),
               });
             }
 
@@ -248,7 +255,7 @@ export default class Tokenizer {
               position: { line: lineIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
               tokenType: CompletionItemKind.Constant,
-              valueType: this.getTokenLanguageType(line, tokensArray[tokenIndex - 2]),
+              valueType: this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
               value: this.getConstantValue(line, tokensArray),
             });
             break;
@@ -267,8 +274,8 @@ export default class Tokenizer {
               tokenType: CompletionItemKind.Function,
               returnType:
                 tokenIndex === 0
-                  ? this.getTokenLanguageType(lines[lineIndex - 1], tokensArrays[lineIndex - 1]![0])
-                  : this.getTokenLanguageType(line, tokensArray[tokenIndex - 2]),
+                  ? this.getTokenLanguageType(lines[lineIndex - 1], tokensArrays[lineIndex - 1]!, 0)
+                  : this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
               params: this.getFunctionParams(lineIndex, lines, tokensArrays),
               comments: this.getFunctionComments(lines, tokensArrays, tokenIndex === 0 ? lineIndex - 2 : lineIndex - 1),
             });
@@ -279,7 +286,8 @@ export default class Tokenizer {
           // STRUCT
           if (
             token.scopes.includes(LanguageScopes.structIdentifier) &&
-            (lastToken.scopes.includes(LanguageScopes.structIdentifier) ||
+            ((lastToken.scopes.includes(LanguageScopes.structIdentifier) &&
+              tokensArrays[lineIndex + 1]?.at(0)?.scopes.includes(LanguageScopes.blockDeclaraction)) ||
               lastToken.scopes.includes(LanguageScopes.blockDeclaraction))
           ) {
             currentStruct = {
@@ -355,7 +363,7 @@ export default class Tokenizer {
               position: { line: lineIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
               tokenType: CompletionItemKind.Variable,
-              valueType: this.getTokenLanguageType(line, tokensArray[tokenIndex - 2]),
+              valueType: this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
             });
 
             let nextVariableToken;
@@ -372,7 +380,7 @@ export default class Tokenizer {
                 position: { line: lineIndex, character: nextVariableToken.startIndex },
                 identifier: this.getRawTokenContent(line, nextVariableToken),
                 tokenType: CompletionItemKind.Variable,
-                valueType: this.getTokenLanguageType(line, tokensArray[tokenIndex - 2]),
+                valueType: this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
               });
             }
           }
@@ -383,7 +391,7 @@ export default class Tokenizer {
               position: { line: lineIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
               tokenType: CompletionItemKind.TypeParameter,
-              valueType: this.getTokenLanguageType(line, tokensArray[tokenIndex - 2]),
+              valueType: this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
             });
           }
 
@@ -400,8 +408,8 @@ export default class Tokenizer {
               tokenType: CompletionItemKind.Function,
               returnType:
                 tokenIndex === 0
-                  ? this.getTokenLanguageType(lines[lineIndex - 1], tokensArrays[lineIndex - 1]![0])
-                  : this.getTokenLanguageType(line, tokensArray[tokenIndex - 2]),
+                  ? this.getTokenLanguageType(lines[lineIndex - 1], tokensArrays[lineIndex - 1]!, 0)
+                  : this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
               params: this.getFunctionParams(lineIndex, lines, tokensArrays),
               comments: this.getFunctionComments(lines, tokensArrays, tokenIndex === 0 ? lineIndex - 2 : lineIndex - 1),
             });

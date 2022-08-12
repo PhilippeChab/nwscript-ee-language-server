@@ -10,5 +10,6 @@ webpack.config.js
 test/**
 server/resources/nwscript.nss
 server/scripts
+server/test
 images/**
 TODO.txt
