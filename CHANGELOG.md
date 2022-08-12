@@ -31,3 +31,7 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 
 - Fixed compiler `-i` parameter for Darwin and Linux operating systems.
 - The tokenization process now supports function definitions spread over multiple lines.
+
+## [1.4.2]
+
+- Fixed a few issues with the tokenizer
