@@ -1,4 +1,4 @@
-name: Release vsix
+name: Build
 
 on:
   pull_request:

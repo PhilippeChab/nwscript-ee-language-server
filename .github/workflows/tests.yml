@@ -1,11 +1,11 @@
-name: Run tests suite
+name: Tests
 
 on:
   pull_request:
   push:
 jobs:
   tests:
-    name: Tests Suite
+    name: Run Tests Suite
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
