@@ -5,7 +5,7 @@ on:
   push:
 jobs:
   tests:
-    name: Run Tests Suite
+    name: Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -18,7 +18,7 @@ jobs:
         uses: borales/actions-yarn@v3
         with:
           cmd: install
-      - name: Run Tests
+      - name: Run Tests Suite
         uses: borales/actions-yarn@v3
         with:
           cmd: test
