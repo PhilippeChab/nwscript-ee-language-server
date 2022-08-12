@@ -15,7 +15,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     super();
 
     this.standardLibComplexTokens = JSON.parse(
-      WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "standardLibDefinitions.json")).toString()
+      WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "resources", "standardLibDefinitions.json")).toString()
     ).complexTokens as ComplexToken[];
   }
 

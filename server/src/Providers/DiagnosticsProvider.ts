@@ -57,11 +57,11 @@ export default class DiagnoticsProvider extends Provider {
   private getExecutablePath() {
     switch (type()) {
       case OS.linux:
-        return "../../resources/compiler/linux/nwnsc";
+        return "../resources/compiler/linux/nwnsc";
       case OS.mac:
-        return "../../resources/compiler/mac/nwnsc";
+        return "../resources/compiler/mac/nwnsc";
       case OS.windows:
-        return "../../resources/compiler/windows/nwnsc.exe";
+        return "../resources/compiler/windows/nwnsc.exe";
       default:
         return "";
     }

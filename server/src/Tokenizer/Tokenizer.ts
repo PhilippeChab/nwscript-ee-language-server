@@ -16,7 +16,7 @@ import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { Logger } from "../Logger";
 import { LanguageTypes, LanguageScopes } from "./constants";
 
-const wasmBin = WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "onig.wasm")).buffer;
+const wasmBin = WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "resources", "onig.wasm")).buffer;
 
 const vscodeOnigurumaLib = loadWASM(wasmBin).then(() => {
   return {
@@ -56,9 +56,9 @@ export default class Tokenizer {
       loadGrammar: (scopeName) => {
         return new Promise((resolve, reject) => {
           if (scopeName === "source.nss") {
-            return WorkspaceFilesSystem.readFileAsync(
-              join(__dirname, "..", "..", "..", "syntaxes", "nwscript-ee.tmLanguage")
-            ).then((data) => resolve(parseRawGrammar((data as Buffer).toString())));
+            return WorkspaceFilesSystem.readFileAsync(join(__dirname, "..", "..", "syntaxes", "nwscript-ee.tmLanguage")).then(
+              (data) => resolve(parseRawGrammar((data as Buffer).toString()))
+            );
           }
 
           reject(`Unknown scope name: ${scopeName}`);
