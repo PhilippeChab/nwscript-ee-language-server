@@ -4,6 +4,17 @@ NWScript: EE Language Server is a Visual Studio Code extension LSP for the NWScr
 
 While it seems to work well, even in bigger and older code bases, it is still an early project and there might be some unintended behaviours.
 
+## Features
+
+- Enhanced syntax highlighting
+- Completion
+- Hover information
+- Goto definition
+- Formatting
+- Range formatting
+- Signature help
+- Diagnostics
+
 ## Dependencies
 
 ### Formatting
@@ -85,30 +96,11 @@ Notes:
 - You can set the `verbose` setting to `true` if you wish to see detailed logs of the compilation process.
 - Big files with a lot of includes can take between half a second to a second to compile on older machines - it will not affect the client performances as the processing is done on the server.
 
-## Features
+### Syntax highligthing
 
-Enhanced syntax highlighting - the following example is with the [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme) theme:
+I personally use the [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme) theme - results below. See the [documentation](https://code.visualstudio.com/docs/getstarted/themes) if you wish to customize the highlighting further.
 
 ![](https://i.imgur.com/A78xmBR.png)
-
-Completion:
-
-![](https://i.imgur.com/Iet1Lul.gif)
-
-Hover information:
-
-![](https://i.imgur.com/ZARVTQs.gif)
-
-Goto definition:
-
-![](https://i.imgur.com/vR13onI.gif)
-
-Also:
-
-- Formatting
-- Range formatting
-- Signature help
-- Diagnostics
 
 ## Building and running
 
