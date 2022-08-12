@@ -1,6 +1,7 @@
 # NWScript EE: LSP
 
 ![Build](https://github.com/PhilippeChab/nwscript-ee-language-server/actions/workflows/build.yml/badge.svg)
+![Tests](https://github.com/PhilippeChab/nwscript-ee-language-server/actions/workflows/tests.yml/badge.svg)
 
 
 NWScript: EE Language Server is a Visual Studio Code extension LSP for the NWScript language.
