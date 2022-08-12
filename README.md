@@ -3,7 +3,6 @@
 ![Build](https://github.com/PhilippeChab/nwscript-ee-language-server/actions/workflows/build.yml/badge.svg)
 ![Tests](https://github.com/PhilippeChab/nwscript-ee-language-server/actions/workflows/tests.yml/badge.svg)
 
-
 NWScript: EE Language Server is a Visual Studio Code extension LSP for the NWScript language.
 
 While it seems to work well, even in bigger and older code bases, it is still an early project and there might be some unintended behaviours.
@@ -74,7 +73,7 @@ Notes:
 
 Notes:
 
-- The executable setting must either bet set to you path executable's identifier, or its absolute path.
+- The executable setting must either bet set to your path executable's identifier, or its absolute path.
 - The style object must respect clang-format [rules](https://clang.llvm.org/docs/ClangFormatStyleOptions.html).
 
 ### Diagnostics
@@ -114,7 +113,7 @@ I personally use the [One Dark Pro](https://marketplace.visualstudio.com/items?i
 
 ### Generating the language library definitions
 
-Replace `server/resources/nwscript.nss` by its new version and execute `yarn run generate-lib-defs` in the server root directory.
+Replace `server/scripts/nwscript.nss` by its new version and execute `yarn run generate-lib-defs` in the server root directory.
 
 ## Issues
 
