@@ -98,9 +98,7 @@ Notes:
 
 ### Syntax highligthing
 
-I personally use the [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme) theme - results below. See the [documentation](https://code.visualstudio.com/docs/getstarted/themes) if you wish to customize the highlighting further.
-
-![](https://i.imgur.com/A78xmBR.png)
+I personally use the [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme) theme . See VS Code [documentation](https://code.visualstudio.com/docs/getstarted/themes) if you wish to customize the highlighting further.
 
 ## Building and running
 
