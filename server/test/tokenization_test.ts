@@ -17,7 +17,7 @@ describe("Tokenization", () => {
   let staticLocalTokens: LocalScopeTokenizationResult;
 
   before("Read static data", async () => {
-    tokenizer = await new Tokenizer().loadGrammar();
+    tokenizer = await new Tokenizer(true).loadGrammar();
     staticCode = readFileSync(normalize(join(__dirname, "./static/test.nss"))).toString();
     staticGlobalTokens = JSON.parse(
       readFileSync(normalize(join(__dirname, "./static/globalScopeTokens.json"))).toString()

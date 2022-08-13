@@ -2,7 +2,6 @@
 
 const path = require('path');
 const merge = require('merge-options');
-const webpack = require("webpack");
 
 module.exports = function withDefaults(config) {
 

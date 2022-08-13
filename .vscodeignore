@@ -15,4 +15,5 @@ client/**
 server/**
 !client/out/extension.js
 !server/out/server.js
+!server/out/indexer.js
 !server/resources/**

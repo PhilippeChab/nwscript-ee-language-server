@@ -6,13 +6,14 @@ const path = require('path');
 module.exports = withDefaults({
 	context: path.join(__dirname),
 	entry: {
-		extension: './src/server.ts',
+		server: './src/server.ts',
+		indexer: './src/Documents/DocumentsIndexer.ts'
 	},
 	resolve: {
 		symlinks: false
 	},
 	output: {
-		filename: 'server.js',
+		filename: '[name].js',
 		path: path.join(__dirname, 'out')
 	}
 });

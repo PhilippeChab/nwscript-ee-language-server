@@ -4,7 +4,7 @@ import { Tokenizer } from "../src/Tokenizer";
 import { TokenizedScope } from "../src/Tokenizer/Tokenizer";
 
 const generateDefinitions = async () => {
-  const tokenizer = await new Tokenizer().loadGrammar();
+  const tokenizer = await new Tokenizer(true).loadGrammar();
 
   const lib = readFileSync(normalize(join(__dirname, "./nwscript.nss"))).toString();
 
