@@ -35,3 +35,7 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 ## [1.4.2]
 
 - Fixed a few issues with the tokenizer
+
+## [1.5.0]
+
+- Fixed a few issues with the tokenizer
