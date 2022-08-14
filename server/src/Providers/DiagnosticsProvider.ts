@@ -1,7 +1,7 @@
 import { spawn } from "child_process";
 import { type } from "os";
 import { join, dirname, basename } from "path";
-import { fileURLToPath, pathToFileURL } from "url";
+import { fileURLToPath } from "url";
 import { Diagnostic, DiagnosticSeverity } from "vscode-languageserver";
 
 import { ServerManager } from "../ServerManager";
@@ -34,12 +34,11 @@ export default class DiagnoticsProvider extends Provider {
     this.server.connection.sendDiagnostics({ uri, diagnostics });
   }
 
-  private generateDiagnostic(paths: string[], files: FilesDiagnostics, severity: DiagnosticSeverity) {
+  private generateDiagnostic(uris: string[], files: FilesDiagnostics, severity: DiagnosticSeverity) {
     return (line: string) => {
-      const path = paths.find((path) => basename(path) === lineFilename.exec(line)![0]);
+      const uri = uris.find((uri) => basename(fileURLToPath(uri)) === lineFilename.exec(line)![0]);
 
-      if (path) {
-        const fileUri = pathToFileURL(path).toString();
+      if (uri) {
         const linePosition = Number(lineNumber.exec(line)![1]) - 1;
         const diagnostic = {
           severity,
@@ -50,7 +49,7 @@ export default class DiagnoticsProvider extends Provider {
           message: lineMessage.exec(line)![1].trim(),
         };
 
-        files[fileUri].push(diagnostic);
+        files[uri].push(diagnostic);
       }
     };
   }
@@ -86,8 +85,7 @@ export default class DiagnoticsProvider extends Provider {
           return reject(new Error(errorMessage));
         }
 
-        const path = fileURLToPath(uri);
-        const document = this.server.documentsCollection.getFromPath(path);
+        const document = this.server.documentsCollection.getFromUri(uri);
 
         if (!this.server.hasIndexedDocuments || !document) {
           if (!this.server.documentsWaitingForPublish.includes(uri)) {
@@ -97,18 +95,18 @@ export default class DiagnoticsProvider extends Provider {
         }
 
         const children = document.getChildren();
-        const files: FilesDiagnostics = { [pathToFileURL(document.path).toString()]: [] };
-        const paths: string[] = [];
+        const files: FilesDiagnostics = { [document.uri]: [] };
+        const uris: string[] = [];
         children.forEach((child) => {
-          const filePath = this.server.documentsCollection?.get(child)?.path;
-          if (filePath) {
-            files[pathToFileURL(filePath).toString()] = [];
-            paths.push(filePath);
+          const fileUri = this.server.documentsCollection?.get(child)?.uri;
+          if (fileUri) {
+            files[fileUri] = [];
+            uris.push(fileUri);
           }
         });
 
         if (verbose) {
-          this.server.logger.info(`Compiling ${basename(document.path)}:`);
+          this.server.logger.info(`Compiling ${document.uri}:`);
         }
         // The compiler command:
         //  - y; continue on error
@@ -133,9 +131,9 @@ export default class DiagnoticsProvider extends Provider {
         }
         if (children.length > 0) {
           args.push("-i");
-          args.push(`"${[...new Set(paths.map((path) => dirname(path)))].join(";")}"`);
+          args.push(`"${[...new Set(uris.map((uri) => dirname(fileURLToPath(uri))))].join(";")}"`);
         }
-        args.push(`"${path}"`);
+        args.push(`"${fileURLToPath(uri)}"`);
 
         let stdout = "";
         let stderr = "";
@@ -200,9 +198,9 @@ export default class DiagnoticsProvider extends Provider {
               this.server.logger.info("Done.\n");
             }
 
-            paths.push(document.path);
-            errors.forEach(this.generateDiagnostic(paths, files, DiagnosticSeverity.Error));
-            warnings.forEach(this.generateDiagnostic(paths, files, DiagnosticSeverity.Warning));
+            uris.push(document.uri);
+            errors.forEach(this.generateDiagnostic(uris, files, DiagnosticSeverity.Error));
+            warnings.forEach(this.generateDiagnostic(uris, files, DiagnosticSeverity.Warning));
 
             for (const [uri, diagnostics] of Object.entries(files)) {
               this.sendDiagnostics(uri, diagnostics);

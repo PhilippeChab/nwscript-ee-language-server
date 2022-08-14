@@ -1,4 +1,3 @@
-import { fileURLToPath, pathToFileURL } from "url";
 import { CompletionItemKind, DefinitionParams } from "vscode-languageserver";
 
 import type { OwnedComplexTokens, OwnedStructComplexTokens } from "../Documents/Document";
@@ -22,8 +21,7 @@ export default class GotoDefinitionProvider extends Provider {
       } = params;
 
       const liveDocument = this.server.liveDocumentsManager.get(uri);
-      const path = fileURLToPath(uri);
-      const document = this.server.documentsCollection.getFromPath(path);
+      const document = this.server.documentsCollection.getFromUri(uri);
 
       if (liveDocument && this.server.tokenizer) {
         let token: ComplexToken | undefined;
@@ -90,7 +88,7 @@ export default class GotoDefinitionProvider extends Provider {
 
         if (token) {
           return {
-            uri: ref ? pathToFileURL(ref.owner).toString() : uri,
+            uri: ref ? ref.owner : uri,
             range: {
               start: { line: token.position.line, character: token.position.character },
               end: { line: token.position.line, character: token.position.character },

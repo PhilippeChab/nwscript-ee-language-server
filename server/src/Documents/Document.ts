@@ -6,7 +6,7 @@ export type OwnedStructComplexTokens = { owner: string; tokens: StructComplexTok
 
 export default class Document {
   constructor(
-    readonly path: string,
+    readonly uri: string,
     readonly children: string[],
     readonly complexTokens: ComplexToken[],
     readonly structComplexTokens: StructComplexToken[],
@@ -14,7 +14,7 @@ export default class Document {
   ) {}
 
   public getKey() {
-    return this.collection.getKey(this.path);
+    return this.collection.getKey(this.uri);
   }
 
   public getChildren(computedChildren: string[] = []): string[] {
@@ -39,7 +39,7 @@ export default class Document {
   }
 
   public getGlobalComplexTokensWithRef(computedChildren: string[] = []): OwnedComplexTokens[] {
-    return [{ owner: this.path, tokens: this.complexTokens }].concat(
+    return [{ owner: this.uri, tokens: this.complexTokens }].concat(
       this.children.flatMap((child) => {
         // Cycling children or/and duplicates
         if (computedChildren.includes(child)) {
@@ -81,7 +81,7 @@ export default class Document {
   }
 
   public getGlobalStructComplexTokensWithRef(computedChildren: string[] = []): OwnedStructComplexTokens[] {
-    return [{ owner: this.path, tokens: this.structComplexTokens }].concat(
+    return [{ owner: this.uri, tokens: this.structComplexTokens }].concat(
       this.children.flatMap((child) => {
         // Cycling children or/and duplicates
         if (computedChildren.includes(child)) {

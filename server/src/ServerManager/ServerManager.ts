@@ -1,7 +1,8 @@
-import type { Connection, InitializeParams } from "vscode-languageserver";
 import { cpus } from "os";
 import { join } from "path";
+import { pathToFileURL } from "url";
 import * as clustering from "cluster";
+import type { Connection, InitializeParams } from "vscode-languageserver";
 
 import {
   CompletionItemsProvider,
@@ -90,7 +91,7 @@ export default class ServerManger {
       worker.send(filesPath.slice(i * partCount, Math.min((i + 1) * partCount, filesCount - 1)).join(","));
       worker.on("message", (message: string) => {
         const { filePath, globalScope } = JSON.parse(message);
-        this.documentsCollection?.createDocument(filePath, globalScope);
+        this.documentsCollection?.createDocument(pathToFileURL(filePath).href, globalScope);
         filesIndexedCount++;
         progressReporter?.report(filesIndexedCount / filesCount);
       });
