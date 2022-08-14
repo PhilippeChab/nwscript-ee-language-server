@@ -1,4 +1,3 @@
-import { fileURLToPath } from "url";
 import { CompletionItemKind, HoverParams } from "vscode-languageserver";
 
 import type { ServerManager } from "../ServerManager";
@@ -22,8 +21,7 @@ export default class HoverContentProvider extends Provider {
       } = params;
 
       const liveDocument = this.server.liveDocumentsManager.get(uri);
-      const path = fileURLToPath(uri);
-      const document = this.server.documentsCollection.getFromPath(path);
+      const document = this.server.documentsCollection.getFromUri(uri);
 
       if (liveDocument && this.server.tokenizer) {
         let token: ComplexToken | undefined;

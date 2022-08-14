@@ -1,4 +1,3 @@
-import { fileURLToPath } from "url";
 import { SignatureHelpParams } from "vscode-languageserver/node";
 
 import type { ServerManager } from "../ServerManager";
@@ -24,8 +23,7 @@ export default class SignatureHelpProvider extends Provider {
       } = params;
 
       const liveDocument = this.server.liveDocumentsManager.get(uri);
-      const path = fileURLToPath(uri);
-      const document = this.server.documentsCollection.getFromPath(path);
+      const document = this.server.documentsCollection.getFromUri(uri);
 
       let functionComplexToken: ComplexToken | undefined;
       if (liveDocument) {

@@ -1,5 +1,4 @@
 import { basename, join } from "path";
-import { fileURLToPath } from "url";
 import { readFileSync } from "fs";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
@@ -29,26 +28,25 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     this.overwrite(document.getKey(), document);
   }
 
-  private initializeDocument(filePath: string, globalScope: GlobalScopeTokenizationResult) {
-    return new Document(filePath, globalScope.children, globalScope.complexTokens, globalScope.structComplexTokens, this);
+  private initializeDocument(uri: string, globalScope: GlobalScopeTokenizationResult) {
+    return new Document(uri, globalScope.children, globalScope.complexTokens, globalScope.structComplexTokens, this);
   }
 
-  public getKey(path: string) {
-    return basename(path, FILES_EXTENSION).slice(0, -1);
+  public getKey(uri: string) {
+    return basename(uri, FILES_EXTENSION).slice(0, -1);
   }
 
-  public getFromPath(path: string) {
-    return this.get(this.getKey(path));
+  public getFromUri(uri: string) {
+    return this.get(this.getKey(uri));
   }
 
-  public createDocument(filePath: string, globalScope: GlobalScopeTokenizationResult) {
-    this.addDocument(this.initializeDocument(filePath, globalScope));
+  public createDocument(uri: string, globalScope: GlobalScopeTokenizationResult) {
+    this.addDocument(this.initializeDocument(uri, globalScope));
   }
 
   public updateDocument(document: TextDocument, tokenizer: Tokenizer) {
-    const filePath = fileURLToPath(document.uri);
     const globalScope = tokenizer.tokenizeContent(document.getText(), TokenizedScope.global);
 
-    this.overwriteDocument(this.initializeDocument(filePath, globalScope));
+    this.overwriteDocument(this.initializeDocument(document.uri, globalScope));
   }
 }
