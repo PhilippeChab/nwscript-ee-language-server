@@ -1,23 +1,11 @@
 import { spawn } from "child_process";
-import { parser } from "sax";
+import { parser, Tag } from "sax";
 import { Range } from "vscode-languageserver";
 import { TextDocument, TextEdit } from "vscode-languageserver-textdocument";
 
-import { Logger } from "../../Logger";
-import { WorkspaceFilesSystem } from "../../WorkspaceFilesSystem";
 import Formatter from "./Formatter";
 
 export default class ClangFormatter extends Formatter {
-  constructor(
-    workspaceFilesSystem: WorkspaceFilesSystem,
-    ignoredGlobs: string[],
-    executable: string,
-    style: { [index: string]: any },
-    logger: Logger
-  ) {
-    super(workspaceFilesSystem, ignoredGlobs, executable, style, logger);
-  }
-
   private getEdits(document: TextDocument, xml: string, codeContent: string) {
     const saxParser = parser(true, {
       trim: false,
@@ -31,7 +19,7 @@ export default class ClangFormatter extends Formatter {
       throw err;
     };
 
-    saxParser.onopentag = (tag) => {
+    saxParser.onopentag = (tag: Tag) => {
       if (currentEdit) {
         throw new Error("Malformed output.");
       }
@@ -42,8 +30,8 @@ export default class ClangFormatter extends Formatter {
 
         case "replacement":
           currentEdit = {
-            length: parseInt(tag.attributes["length"].toString()),
-            offset: parseInt(tag.attributes["offset"].toString()),
+            length: parseInt(tag.attributes.length.toString()),
+            offset: parseInt(tag.attributes.offset.toString()),
             text: "",
           };
           this.byteToOffset(codeContent, currentEdit);
@@ -80,8 +68,8 @@ export default class ClangFormatter extends Formatter {
     return edits;
   }
 
-  public formatDocument(document: TextDocument, range: Range | null): Promise<TextEdit[] | null> {
-    return new Promise((resolve, reject) => {
+  public async formatDocument(document: TextDocument, range: Range | null): Promise<TextEdit[] | null> {
+    return await new Promise((resolve, reject) => {
       const formatCommandBinPath = this.getExecutablePath();
       const codeContent = document.getText();
 
@@ -101,18 +89,18 @@ export default class ClangFormatter extends Formatter {
       });
 
       child.stdin.end(codeContent);
-      child.stdout.on("data", (chunk) => (stdout += chunk));
-      child.stderr.on("data", (chunk) => (stderr += chunk));
+      child.stdout.on("data", (chunk: string) => (stdout += chunk));
+      child.stderr.on("data", (chunk: string) => (stderr += chunk));
 
       child.on("error", (e: any) => {
         if (e && e.code === "ENOENT") {
           this.logger.error(
-            `The ${formatCommandBinPath} command is not available.  Please check your executable setting and ensure clang executable is installed.`
+            `The ${formatCommandBinPath} command is not available.  Please check your executable setting and ensure clang executable is installed.`,
           );
           reject(e);
         } else {
           this.logger.error(e.message);
-          reject();
+          reject(e);
         }
       });
 
@@ -120,13 +108,13 @@ export default class ClangFormatter extends Formatter {
         try {
           if (code !== 0 || stderr.length !== 0) {
             this.logger.error(stderr);
-            reject();
+            reject(new Error(stderr));
           }
 
           resolve(this.getEdits(document, stdout, codeContent));
         } catch (e: any) {
           this.logger.error(e.message);
-          reject();
+          reject(e);
         }
       });
     });

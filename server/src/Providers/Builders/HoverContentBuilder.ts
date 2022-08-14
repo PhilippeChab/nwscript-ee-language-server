@@ -16,9 +16,9 @@ export default class HoverContentBuilder extends Builder {
   public static buildItem(token: ComplexToken, serverConfig: ServerConfiguration): MarkupContent {
     if (this.isConstantToken(token)) {
       return this.buildConstantItem(token);
-    } else if (this.isVariable(token)) {
+    } else if (this.isVariableToken(token)) {
       return this.buildVariableItem(token);
-    } else if (this.isFunctionParameter(token)) {
+    } else if (this.isFunctionParameterToken(token)) {
       return this.buildFunctionParamItem(token);
     } else if (this.isFunctionToken(token)) {
       return this.buildFunctionItem(token, serverConfig);
@@ -53,7 +53,7 @@ export default class HoverContentBuilder extends Builder {
         }, "")})`,
       ],
       serverConfig.includeCommentsInFunctionsHover ? ["```nwscript", ...token.comments, "```"] : [],
-      []
+      [],
     );
   }
 

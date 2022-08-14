@@ -39,22 +39,24 @@ export default class Tokenizer {
   constructor(localPath = false) {
     this.registry = new Registry({
       onigLib,
-      loadGrammar: (scopeName) => {
-        return new Promise((resolve, reject) => {
+      loadGrammar: async (scopeName) => {
+        return await new Promise((resolve, reject) => {
           if (scopeName === "source.nss") {
-            return WorkspaceFilesSystem.readFileAsync(
-              join(__dirname, "..", "..", localPath ? ".." : "", "syntaxes", "nwscript-ee.tmLanguage")
-            ).then((data) => resolve(parseRawGrammar((data as Buffer).toString())));
+            const grammar = WorkspaceFilesSystem.readFileSync(
+              join(__dirname, "..", "..", localPath ? ".." : "", "syntaxes", "nwscript-ee.tmLanguage"),
+            );
+
+            return resolve(parseRawGrammar(grammar.toString()));
           }
 
-          reject(`Unknown scope name: ${scopeName}`);
+          reject(new Error(`Unknown scope name: ${scopeName}`));
         });
       },
     });
   }
 
   private getTokenIndexAtPosition(tokensArray: IToken[], position: Position) {
-    return tokensArray.findIndex((token) => token.startIndex <= position.character && token.endIndex >= position.character)!;
+    return tokensArray.findIndex((token) => token.startIndex <= position.character && token.endIndex >= position.character);
   }
 
   private getTokenAtPosition(tokensArray: IToken[], position: Position) {
@@ -107,7 +109,7 @@ export default class Tokenizer {
   private getInlineFunctionParams(line: string, lineIndex: number, tokensArray: IToken[]) {
     const functionParamTokens = tokensArray.filter(
       (token) =>
-        token.scopes.includes(LanguageScopes.functionParameter) || token.scopes.includes(LanguageScopes.variableIdentifer)
+        token.scopes.includes(LanguageScopes.functionParameter) || token.scopes.includes(LanguageScopes.variableIdentifer),
     );
 
     return functionParamTokens.map((token) => {
@@ -146,7 +148,7 @@ export default class Tokenizer {
       tokensLines[errorSafeIndex]
         ?.at(0)
         ?.scopes.find(
-          (scope) => scope === LanguageScopes.commentStatement || scope === LanguageScopes.documentationCommentStatement
+          (scope) => scope === LanguageScopes.commentStatement || scope === LanguageScopes.documentationCommentStatement,
         )
     ) {
       comments.unshift(lines[errorSafeIndex]);
@@ -224,11 +226,9 @@ export default class Tokenizer {
           }
 
           // CHILD
-          {
-            if (token.scopes.includes(LanguageScopes.includeDeclaration)) {
-              scope.children.push(this.getRawTokenContent(line, tokensArray.at(-2)!));
-              break;
-            }
+          if (token.scopes.includes(LanguageScopes.includeDeclaration)) {
+            scope.children.push(this.getRawTokenContent(line, tokensArray.at(-2)!));
+            break;
           }
 
           // CONSTANT
@@ -416,13 +416,13 @@ export default class Tokenizer {
     content: string,
     scope: TokenizedScope.global,
     startIndex?: number,
-    stopIndex?: number
+    stopIndex?: number,
   ): GlobalScopeTokenizationResult;
   public tokenizeContent(
     content: string,
     scope: TokenizedScope.local,
     startIndex?: number,
-    stopIndex?: number
+    stopIndex?: number,
   ): LocalScopeTokenizationResult;
   public tokenizeContent(content: string, scope: TokenizedScope, startIndex: number = 0, stopIndex: number = -1) {
     if (scope === TokenizedScope.global) {
@@ -461,7 +461,7 @@ export default class Tokenizer {
     line: string,
     tokensArray: IToken[],
     position: Position,
-    languageScopes: LanguageScopes[]
+    languageScopes: LanguageScopes[],
   ) {
     let identifier: string | undefined;
     const tokenIndex = this.getTokenIndexAtPosition(tokensArray, position);
@@ -480,7 +480,7 @@ export default class Tokenizer {
     tokensArray: IToken[],
     position: Position,
     occurencesTarget: LanguageScopes,
-    delimiter: LanguageScopes
+    delimiter: LanguageScopes,
   ) {
     let occurences = 0;
 
@@ -497,18 +497,23 @@ export default class Tokenizer {
   }
 
   public findLineIdentiferFromPositionAt(content: string, position: Position, index: number) {
-    let ruleStack = INITIAL;
+    const ruleStack = INITIAL;
 
     const lines = content.split(/\r?\n/);
     const line = lines[position.line];
     const tokensArray = this.grammar?.tokenizeLine(line, ruleStack)?.tokens;
-    const arrayLength = tokensArray?.length || 0;
 
+    if (!tokensArray) {
+      return undefined;
+    }
+
+    const arrayLength = tokensArray?.length || 0;
     if ((index > 0 && Math.abs(index) >= arrayLength) || (index < 0 && Math.abs(index) > arrayLength)) {
       return undefined;
     }
 
-    return this.getRawTokenContent(line, tokensArray?.at(index)!);
+    const token = tokensArray.at(index);
+    return token ? this.getRawTokenContent(line, token) : undefined;
   }
 
   public findFirstIdentiferForLanguageScope(line: string, languageScope: LanguageScopes) {
@@ -524,10 +529,10 @@ export default class Tokenizer {
   }
 
   public findActionTargetAtPosition(content: string, position: Position) {
-    let ruleStack = INITIAL;
+    const ruleStack = INITIAL;
 
-    let tokenType = undefined;
-    let structVariableIdentifier = undefined;
+    let tokenType;
+    let structVariableIdentifier;
     const lines = content.split(/\r?\n/);
     const line = lines[position.line];
     const tokensArray = this.grammar?.tokenizeLine(line, ruleStack)?.tokens;

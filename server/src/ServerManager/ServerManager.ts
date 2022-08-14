@@ -1,4 +1,7 @@
 import type { Connection, InitializeParams } from "vscode-languageserver";
+import { cpus } from "os";
+import { join } from "path";
+import * as clustering from "cluster";
 
 import {
   CompletionItemsProvider,
@@ -29,7 +32,6 @@ export default class ServerManger {
   public documentsCollection: DocumentsCollection | null = null;
   public hasIndexedDocuments: boolean = false;
   public documentsWaitingForPublish: string[] = [];
-  public diagnosticsProvider: DiagnosticsProvider | null = null;
 
   constructor(connection: Connection, params: InitializeParams) {
     this.connection = connection;
@@ -59,13 +61,48 @@ export default class ServerManger {
   public async up() {
     WorkspaceProvider.register(this);
 
-    if (this.capabilitiesHandler.supportsWorkspaceConfiguration) {
+    if (this.capabilitiesHandler.getSupportsWorkspaceConfiguration()) {
       ConfigurationProvider.register(this, () => {
         this.loadConfig();
       });
     }
 
     await this.loadConfig();
+
+    const diagnosticsProvider = DiagnosticsProvider.register(this) as DiagnosticsProvider;
+    const numCPUs = cpus().length;
+    const cluster = clustering.default;
+    if (cluster.isPrimary) {
+      cluster.setupPrimary({
+        exec: join(__dirname, "indexer.js"),
+      });
+    }
+
+    let filesIndexedCount = 0;
+    const filesPath = this.workspaceFilesSystem.getAllFilesPath();
+    const progressReporter = await this.connection.window.createWorkDoneProgress();
+    const filesCount = filesPath.length;
+
+    progressReporter.begin("Indexing files for NWScript: EE LSP ...", 0);
+    const partCount = filesCount / numCPUs;
+    for (let i = 0; i < Math.min(numCPUs, filesCount); i++) {
+      const worker = cluster.fork();
+      worker.send(filesPath.slice(i * partCount, Math.min((i + 1) * partCount, filesCount - 1)).join(","));
+      worker.on("message", (message: string) => {
+        const { filePath, globalScope } = JSON.parse(message);
+        this.documentsCollection?.createDocument(filePath, globalScope);
+        filesIndexedCount++;
+        progressReporter?.report(filesIndexedCount / filesCount);
+      });
+    }
+
+    cluster.on("exit", () => {
+      if (Object.keys(cluster.workers || {}).length === 0) {
+        progressReporter?.done();
+        this.hasIndexedDocuments = true;
+        diagnosticsProvider?.processDocumentsWaitingForPublish();
+      }
+    });
   }
 
   public down() {}
@@ -77,8 +114,6 @@ export default class ServerManger {
     SignatureHelpProvider.register(this);
     DocumentFormatingProvider.register(this);
     DocumentRangeFormattingProvider.register(this);
-
-    this.diagnosticsProvider = DiagnosticsProvider.register(this) as DiagnosticsProvider;
   }
 
   private registerLiveDocumentsEvents() {

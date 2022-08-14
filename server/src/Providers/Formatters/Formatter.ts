@@ -19,7 +19,7 @@ export default class Formatter {
     protected readonly ignoredGlobs: string[],
     protected readonly executable: string,
     protected readonly style: { [index: string]: any },
-    protected readonly logger: Logger
+    protected readonly logger: Logger,
   ) {}
 
   protected byteToOffset(codeContent: string, editInfo: { length: number; offset: number }) {
@@ -56,8 +56,8 @@ export default class Formatter {
         return binNameToSearch;
       }
 
-      if (process.env["PATH"]) {
-        const pathParts = process.env["PATH"].split(delimiter);
+      if (process.env.PATH) {
+        const pathParts = process.env.PATH.split(delimiter);
 
         for (let i = 0; i < pathParts.length; i++) {
           const binPath = join(pathParts[i], binNameToSearch);

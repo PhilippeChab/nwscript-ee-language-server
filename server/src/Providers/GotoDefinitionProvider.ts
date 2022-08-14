@@ -26,13 +26,13 @@ export default class GotoDefinitionProvider extends Provider {
       const documentKey = WorkspaceFilesSystem.getFileBasename(path);
       const document = this.server.documentsCollection?.get(documentKey);
 
-      if (liveDocument) {
+      if (liveDocument && this.server.tokenizer) {
         let token: ComplexToken | undefined;
         let ref: OwnedComplexTokens | OwnedStructComplexTokens | undefined;
-        const { tokenType, structVariableIdentifier, identifier } = this.server.tokenizer?.findActionTargetAtPosition(
+        const { tokenType, structVariableIdentifier, identifier } = this.server.tokenizer.findActionTargetAtPosition(
           liveDocument.getText(),
-          position
-        )!;
+          position,
+        );
 
         const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
 
@@ -47,7 +47,7 @@ export default class GotoDefinitionProvider extends Provider {
         if (document) {
           if (tokenType === CompletionItemKind.Property && structVariableIdentifier) {
             const structIdentifer = localScope?.functionVariablesComplexTokens.find(
-              (token) => token.identifier === structVariableIdentifier
+              (token) => token.identifier === structVariableIdentifier,
             )?.valueType;
 
             const tokensWithRef = document.getGlobalStructComplexTokensWithRef();

@@ -2,17 +2,40 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module"
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": ["./client/tsconfig.json", "./server/tsconfig.json"]
   },
   "plugins": ["@typescript-eslint"],
+  "extends": ["standard-with-typescript", "plugin:prettier/recommended"],
   "rules": {
+    "@typescript-eslint/quotes": ["error", "double"],
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     "@typescript-eslint/naming-convention": "warn",
-    "@typescript-eslint/semi": "warn",
+    "@typescript-eslint/no-non-null-assertion": "warn",
+    "@typescript-eslint/no-floating-promises": "warn",
+    "@typescript-eslint/semi": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/space-before-function-paren": "off",
+    "@typescript-eslint/array-type": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/consistent-type-assertions": "off",
+    "@typescript-eslint/no-extraneous-class": "off",
     "curly": "warn",
     "eqeqeq": "warn",
+    "no-unsafe-finally": "warn",
     "no-throw-literal": "warn",
-    "semi": "off"
+    "space-before-function-paren": "off",
+    "semi": "off",
+    "quotes": "off",
+    "no-extra-boolean-cast": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   },
-  "ignorePatterns": ["out", "dist", "**/*.d.ts"]
+  "ignorePatterns": ["out", "**/*.d.ts"]
 }

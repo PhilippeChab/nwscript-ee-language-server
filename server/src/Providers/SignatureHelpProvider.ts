@@ -33,7 +33,7 @@ export default class SignatureHelpProvider extends Provider {
         const tokenizedResult = this.server.tokenizer?.isInLanguageScope(
           liveDocument.getText(),
           position,
-          LanguageScopes.functionCall
+          LanguageScopes.functionCall,
         );
         if (!tokenizedResult) {
           return undefined;
@@ -43,13 +43,13 @@ export default class SignatureHelpProvider extends Provider {
           tokenizedResult.line,
           tokenizedResult.tokensArray,
           position,
-          [LanguageScopes.functionCall, LanguageScopes.functionIdentifier]
+          [LanguageScopes.functionCall, LanguageScopes.functionIdentifier],
         );
         const activeParameter = this.server.tokenizer?.getLanguageScopeOccurencesFromPositionWithDelimiter(
           tokenizedResult.tokensArray,
           position,
           LanguageScopes.separatorStatement,
-          LanguageScopes.leftArgumentsRoundBracket
+          LanguageScopes.leftArgumentsRoundBracket,
         );
 
         if (context?.isRetrigger && context.activeSignatureHelp) {
@@ -60,7 +60,7 @@ export default class SignatureHelpProvider extends Provider {
             functionIdentifier ===
               this.server.tokenizer?.findFirstIdentiferForLanguageScope(
                 signatures[activeSignature].label,
-                LanguageScopes.functionIdentifier
+                LanguageScopes.functionIdentifier,
               )
           ) {
             return {

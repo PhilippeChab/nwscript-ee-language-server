@@ -15,7 +15,7 @@ export default class CompletionItemsProvider extends Provider {
 
     this.server.connection.onCompletion((params) => this.exceptionsWrapper(this.providerHandler(params)));
     this.server.connection.onCompletionResolve((item) =>
-      this.exceptionsWrapper(() => CompletionItemBuilder.buildResolvedItem(item, this.server.config), item)
+      this.exceptionsWrapper(() => CompletionItemBuilder.buildResolvedItem(item, this.server.config), item),
     );
   }
 
@@ -40,11 +40,11 @@ export default class CompletionItemsProvider extends Provider {
               const structVariableIdentifier = this.server.tokenizer?.findLineIdentiferFromPositionAt(
                 liveDocument.getText(),
                 position,
-                -2
+                -2,
               );
 
               const structIdentifer = localScope.functionVariablesComplexTokens.find(
-                (token) => token.identifier === structVariableIdentifier
+                (token) => token.identifier === structVariableIdentifier,
               )?.valueType;
 
               return document
@@ -73,7 +73,7 @@ export default class CompletionItemsProvider extends Provider {
 
   private getLocalScopeCompletionItems(localScope: LocalScopeTokenizationResult) {
     const functionVariablesCompletionItems = localScope.functionVariablesComplexTokens.map((token) =>
-      CompletionItemBuilder.buildItem(token)
+      CompletionItemBuilder.buildItem(token),
     );
     const functionsCompletionItems = localScope.functionsComplexTokens.map((token) => CompletionItemBuilder.buildItem(token));
 

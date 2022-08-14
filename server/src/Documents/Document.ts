@@ -11,7 +11,7 @@ export default class Document {
     readonly children: string[],
     readonly complexTokens: ComplexToken[],
     readonly structComplexTokens: StructComplexToken[],
-    private readonly collection: DocumentsCollection
+    private readonly collection: DocumentsCollection,
   ) {}
 
   public getKey() {
@@ -35,7 +35,7 @@ export default class Document {
         }
 
         return childDocument.getChildren(computedChildren);
-      })
+      }),
     );
   }
 
@@ -56,7 +56,7 @@ export default class Document {
         }
 
         return childDocument.getGlobalComplexTokensWithRef(computedChildren);
-      })
+      }),
     );
   }
 
@@ -77,7 +77,7 @@ export default class Document {
         }
 
         return childDocument.getGlobalComplexTokens(computedChildren);
-      })
+      }),
     );
   }
 
@@ -98,7 +98,7 @@ export default class Document {
         }
 
         return childDocument.getGlobalStructComplexTokensWithRef(computedChildren);
-      })
+      }),
     );
   }
 
@@ -119,7 +119,7 @@ export default class Document {
         }
 
         return childDocument.getGlobalStructComplexTokens(computedChildren);
-      })
+      }),
     );
   }
 }

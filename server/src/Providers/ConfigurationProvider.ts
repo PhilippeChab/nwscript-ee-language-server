@@ -14,7 +14,7 @@ export default class ConfigurationProvider {
   }
 
   // This needs to be an arrow function to keep the context
-  private handleDidChangeConfiguration = (_: DidChangeConfigurationParams) => {
+  private readonly handleDidChangeConfiguration = (_: DidChangeConfigurationParams) => {
     this.configChangeCallback();
   };
 }

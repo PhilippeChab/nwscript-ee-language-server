@@ -9,7 +9,7 @@ export default class DocumentRangeFormattingProvider extends Provider {
     super(server);
 
     this.server.connection.onDocumentRangeFormatting(
-      async (params) => await this.asyncExceptionsWrapper(this.providerHandler(params))
+      async (params) => await this.asyncExceptionsWrapper(this.providerHandler(params)),
     );
   }
 
@@ -25,7 +25,7 @@ export default class DocumentRangeFormattingProvider extends Provider {
         ignoredGlobs,
         executable,
         style,
-        this.server.logger
+        this.server.logger,
       );
 
       if (!enabled || clangFormatter.isIgnoredFile(uri)) {

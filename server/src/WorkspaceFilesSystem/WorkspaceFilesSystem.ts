@@ -46,7 +46,7 @@ export default class WorkspaceFilesSystem {
   }
 
   public static async readFileAsync(filePath: string): Promise<Buffer> {
-    return new Promise((resolve, reject) => {
+    return await new Promise((resolve, reject) => {
       readFile(filePath, (error, data) => (error ? reject(error) : resolve(data)));
     });
   }
