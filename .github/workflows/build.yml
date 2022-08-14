@@ -1,8 +1,12 @@
 name: Build
 
 on:
-  pull_request:
   push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
   release:
     types: published
 
@@ -61,7 +65,7 @@ jobs:
           generate_release_notes: true
           body: |
             # Summary
-            See [changelog](https://github.com/PhilippeChab/nwscript-ee-language-server/blob/main/CHANGELOG.md)
+            See the [Changelog](https://github.com/PhilippeChab/nwscript-ee-language-server/blob/main/CHANGELOG.md).
           name: ${{ github.ref_name }}
           fail_on_unmatched_files: true
           files: ${{ needs.build.outputs.vsixPath }}

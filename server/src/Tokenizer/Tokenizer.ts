@@ -1,8 +1,7 @@
 import type { IGrammar } from "vscode-textmate";
 import type { Position } from "vscode-languageserver-textdocument";
-import { Registry, INITIAL, parseRawGrammar, IToken, ITokenizeLineResult } from "vscode-textmate";
-import { loadWASM, OnigScanner, OnigString } from "vscode-oniguruma";
-import { CompletionItemKind, Diagnostic, DiagnosticSeverity } from "vscode-languageserver";
+import { Registry, INITIAL, parseRawGrammar, IToken } from "vscode-textmate";
+import { CompletionItemKind } from "vscode-languageserver";
 import { join } from "path";
 
 import type {
@@ -13,21 +12,8 @@ import type {
   VariableComplexToken,
 } from "./types";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
-import { Logger } from "../Logger";
 import { LanguageTypes, LanguageScopes } from "./constants";
-
-const wasmBin = WorkspaceFilesSystem.readFileSync(join(__dirname, "..", "..", "resources", "onig.wasm")).buffer;
-
-const vscodeOnigurumaLib = loadWASM(wasmBin).then(() => {
-  return {
-    createOnigScanner(patterns: string[]) {
-      return new OnigScanner(patterns);
-    },
-    createOnigString(string: string) {
-      return new OnigString(string);
-    },
-  };
-});
+import onigLib from "../onigLib";
 
 export enum TokenizedScope {
   global = "global",
@@ -50,14 +36,14 @@ export default class Tokenizer {
   private grammar: IGrammar | null = null;
   private localScopeCache: (IToken[] | undefined)[] | null = null;
 
-  constructor(private readonly logger: Logger | null = null) {
+  constructor(localPath = false) {
     this.registry = new Registry({
-      onigLib: vscodeOnigurumaLib,
+      onigLib,
       loadGrammar: (scopeName) => {
         return new Promise((resolve, reject) => {
           if (scopeName === "source.nss") {
             return WorkspaceFilesSystem.readFileAsync(
-              join(__dirname, "..", "..", "..", "syntaxes", "nwscript-ee.tmLanguage")
+              join(__dirname, "..", "..", localPath ? ".." : "", "syntaxes", "nwscript-ee.tmLanguage")
             ).then((data) => resolve(parseRawGrammar((data as Buffer).toString())));
           }
 

@@ -42,7 +42,7 @@ export default class ServerManger {
   }
 
   public async initialize() {
-    this.tokenizer = await new Tokenizer(this.logger).loadGrammar();
+    this.tokenizer = await new Tokenizer().loadGrammar();
     this.documentsCollection = new DocumentsCollection();
     this.registerProviders();
     this.registerLiveDocumentsEvents();

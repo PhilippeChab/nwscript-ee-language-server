@@ -3,7 +3,7 @@ dist
 node_modules
 tsconfig.tsbuildinfo
 *.vsix
-server/resources/nwscript.nss
+server/scripts/nwscript.nss
 yarn-error.log
 .DS_Store
 TODO.txt
