@@ -1,4 +1,3 @@
-import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import type { ComplexToken, StructComplexToken } from "../Tokenizer/types";
 import type DocumentsCollection from "./DocumentsCollection";
 
@@ -11,11 +10,11 @@ export default class Document {
     readonly children: string[],
     readonly complexTokens: ComplexToken[],
     readonly structComplexTokens: StructComplexToken[],
-    private readonly collection: DocumentsCollection
+    private readonly collection: DocumentsCollection,
   ) {}
 
   public getKey() {
-    return WorkspaceFilesSystem.getFileBasename(this.path);
+    return this.collection.getKey(this.path);
   }
 
   public getChildren(computedChildren: string[] = []): string[] {
@@ -35,7 +34,7 @@ export default class Document {
         }
 
         return childDocument.getChildren(computedChildren);
-      })
+      }),
     );
   }
 
@@ -56,7 +55,7 @@ export default class Document {
         }
 
         return childDocument.getGlobalComplexTokensWithRef(computedChildren);
-      })
+      }),
     );
   }
 
@@ -77,7 +76,7 @@ export default class Document {
         }
 
         return childDocument.getGlobalComplexTokens(computedChildren);
-      })
+      }),
     );
   }
 
@@ -98,7 +97,7 @@ export default class Document {
         }
 
         return childDocument.getGlobalStructComplexTokensWithRef(computedChildren);
-      })
+      }),
     );
   }
 
@@ -119,7 +118,7 @@ export default class Document {
         }
 
         return childDocument.getGlobalStructComplexTokens(computedChildren);
-      })
+      }),
     );
   }
 }

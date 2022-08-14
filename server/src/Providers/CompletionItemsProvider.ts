@@ -1,7 +1,7 @@
+import { fileURLToPath } from "url";
 import { CompletionParams } from "vscode-languageserver";
 
 import type { ServerManager } from "../ServerManager";
-import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { CompletionItemBuilder } from "./Builders";
 import { LocalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Tokenizer";
 import { TriggerCharacters } from ".";
@@ -15,7 +15,7 @@ export default class CompletionItemsProvider extends Provider {
 
     this.server.connection.onCompletion((params) => this.exceptionsWrapper(this.providerHandler(params)));
     this.server.connection.onCompletionResolve((item) =>
-      this.exceptionsWrapper(() => CompletionItemBuilder.buildResolvedItem(item, this.server.config), item)
+      this.exceptionsWrapper(() => CompletionItemBuilder.buildResolvedItem(item, this.server.config), item),
     );
   }
 
@@ -27,9 +27,8 @@ export default class CompletionItemsProvider extends Provider {
       } = params;
 
       const liveDocument = this.server.liveDocumentsManager.get(uri);
-      const path = WorkspaceFilesSystem.fileUriToPath(uri);
-      const documentKey = WorkspaceFilesSystem.getFileBasename(path);
-      const document = this.server.documentsCollection?.get(documentKey);
+      const path = fileURLToPath(uri);
+      const document = this.server.documentsCollection.getFromPath(path);
 
       if (liveDocument) {
         const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
@@ -40,11 +39,11 @@ export default class CompletionItemsProvider extends Provider {
               const structVariableIdentifier = this.server.tokenizer?.findLineIdentiferFromPositionAt(
                 liveDocument.getText(),
                 position,
-                -2
+                -2,
               );
 
               const structIdentifer = localScope.functionVariablesComplexTokens.find(
-                (token) => token.identifier === structVariableIdentifier
+                (token) => token.identifier === structVariableIdentifier,
               )?.valueType;
 
               return document
@@ -73,7 +72,7 @@ export default class CompletionItemsProvider extends Provider {
 
   private getLocalScopeCompletionItems(localScope: LocalScopeTokenizationResult) {
     const functionVariablesCompletionItems = localScope.functionVariablesComplexTokens.map((token) =>
-      CompletionItemBuilder.buildItem(token)
+      CompletionItemBuilder.buildItem(token),
     );
     const functionsCompletionItems = localScope.functionsComplexTokens.map((token) => CompletionItemBuilder.buildItem(token));
 

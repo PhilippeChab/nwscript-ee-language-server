@@ -39,3 +39,7 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 ## [1.5.0]
 
 - The extension size has been lowered from 14.7 to 4.8 MB.
+
+## [1.5.1]
+
+- Eslint has been configured along with prettier and the project will be linted from now on.

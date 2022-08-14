@@ -14,9 +14,9 @@ export default class SignatureHelpBuilder extends Builder {
             }`;
           }, "")})`,
           undefined,
-          ...(token as FunctionComplexToken).params.map<ParameterInformation>((param) =>
-            ParameterInformation.create(`${param.valueType} ${param.identifier}`)
-          )
+          ...token.params.map<ParameterInformation>((param) =>
+            ParameterInformation.create(`${param.valueType} ${param.identifier}`),
+          ),
         ),
       ],
       activeSignature: 0,

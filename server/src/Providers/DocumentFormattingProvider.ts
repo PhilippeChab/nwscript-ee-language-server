@@ -8,9 +8,8 @@ export default class DocumentFormattingProvider extends Provider {
   constructor(server: ServerManager) {
     super(server);
 
-    this.server.connection.onDocumentOnTypeFormatting;
     this.server.connection.onDocumentFormatting(
-      async (params) => await this.asyncExceptionsWrapper(this.providerHandler(params))
+      async (params) => await this.asyncExceptionsWrapper(this.providerHandler(params)),
     );
   }
 
@@ -25,7 +24,7 @@ export default class DocumentFormattingProvider extends Provider {
         ignoredGlobs,
         executable,
         style,
-        this.server.logger
+        this.server.logger,
       );
 
       if (!enabled || clangFormatter.isIgnoredFile(uri)) {

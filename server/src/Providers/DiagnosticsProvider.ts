@@ -1,14 +1,15 @@
 import { spawn } from "child_process";
 import { type } from "os";
 import { join, dirname, basename } from "path";
+import { fileURLToPath, pathToFileURL } from "url";
 import { Diagnostic, DiagnosticSeverity } from "vscode-languageserver";
+
 import { ServerManager } from "../ServerManager";
-import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import Provider from "./Provider";
 
 const lineNumber = /\(([^)]+)\)/;
 const lineMessage = /Error:(.*)/;
-const lineFilename = /^[^\(]+/;
+const lineFilename = /^[^(]+/;
 
 enum OS {
   linux = "Linux",
@@ -21,8 +22,12 @@ export default class DiagnoticsProvider extends Provider {
   constructor(server: ServerManager) {
     super(server);
 
-    this.server.liveDocumentsManager.onDidSave((event) => this.asyncExceptionsWrapper(this.publish(event.document.uri)));
-    this.server.liveDocumentsManager.onDidOpen((event) => this.asyncExceptionsWrapper(this.publish(event.document.uri)));
+    this.server.liveDocumentsManager.onDidSave(
+      async (event) => await this.asyncExceptionsWrapper(this.publish(event.document.uri)),
+    );
+    this.server.liveDocumentsManager.onDidOpen(
+      async (event) => await this.asyncExceptionsWrapper(this.publish(event.document.uri)),
+    );
   }
 
   private sendDiagnostics(uri: string, diagnostics: Diagnostic[]) {
@@ -34,10 +39,10 @@ export default class DiagnoticsProvider extends Provider {
       const path = paths.find((path) => basename(path) === lineFilename.exec(line)![0]);
 
       if (path) {
-        const fileUri = WorkspaceFilesSystem.filePathToUri(path).toString();
+        const fileUri = pathToFileURL(path).toString();
         const linePosition = Number(lineNumber.exec(line)![1]) - 1;
         const diagnostic = {
-          severity: severity,
+          severity,
           range: {
             start: { line: linePosition, character: 0 },
             end: { line: linePosition, character: Number.MAX_VALUE },
@@ -69,20 +74,20 @@ export default class DiagnoticsProvider extends Provider {
 
   private publish(uri: string) {
     return async () => {
-      return new Promise((resolve, reject) => {
+      return await new Promise((resolve, reject) => {
         const { enabled, nwnHome, nwnInstallation, verbose } = this.server.config.compiler;
         if (!enabled) {
-          return reject();
+          return resolve(true);
         }
 
         if (!this.hasSupportedOS()) {
-          this.server.logger.error("Unsupported OS. Cannot provide diagnostics.");
-          return reject();
+          const errorMessage = "Unsupported OS. Cannot provide diagnostics.";
+          this.server.logger.error(errorMessage);
+          return reject(new Error(errorMessage));
         }
 
-        const path = WorkspaceFilesSystem.fileUriToPath(uri);
-        const documentKey = WorkspaceFilesSystem.getFileBasename(path);
-        const document = this.server.documentsCollection?.get(documentKey);
+        const path = fileURLToPath(uri);
+        const document = this.server.documentsCollection.getFromPath(path);
 
         if (!this.server.hasIndexedDocuments || !document) {
           if (!this.server.documentsWaitingForPublish.includes(uri)) {
@@ -92,12 +97,12 @@ export default class DiagnoticsProvider extends Provider {
         }
 
         const children = document.getChildren();
-        const files: FilesDiagnostics = { [WorkspaceFilesSystem.filePathToUri(document.path).toString()]: [] };
+        const files: FilesDiagnostics = { [pathToFileURL(document.path).toString()]: [] };
         const paths: string[] = [];
         children.forEach((child) => {
           const filePath = this.server.documentsCollection?.get(child)?.path;
           if (filePath) {
-            files[WorkspaceFilesSystem.filePathToUri(filePath).toString()] = [];
+            files[pathToFileURL(filePath).toString()] = [];
             paths.push(filePath);
           }
         });
@@ -137,12 +142,12 @@ export default class DiagnoticsProvider extends Provider {
 
         const child = spawn(join(__dirname, this.getExecutablePath()), args, { shell: true });
 
-        child.stdout.on("data", (chunk) => (stdout += chunk));
-        child.stderr.on("data", (chunk) => (stderr += chunk));
+        child.stdout.on("data", (chunk: string) => (stdout += chunk));
+        child.stderr.on("data", (chunk: string) => (stderr += chunk));
 
         child.on("error", (e: any) => {
           this.server.logger.error(e.message);
-          reject();
+          reject(e);
         });
 
         child.on("close", (_) => {
@@ -170,22 +175,22 @@ export default class DiagnoticsProvider extends Provider {
               // Actual errors
               if (line.includes("NOTFOUND")) {
                 return this.server.logger.error(
-                  "Unable to resolve nwscript.nss. Are your Neverwinter Nights home and/or installation directories valid?"
+                  "Unable to resolve nwscript.nss. Are your Neverwinter Nights home and/or installation directories valid?",
                 );
               }
               if (line.includes("Failed to open .key archive")) {
                 return this.server.logger.error(
-                  "Unable to open nwn_base.key Is your Neverwinter Nights installation directory valid?"
+                  "Unable to open nwn_base.key Is your Neverwinter Nights installation directory valid?",
                 );
               }
               if (line.includes("Unable to read input file")) {
                 if (Boolean(nwnHome) || Boolean(nwnInstallation)) {
                   return this.server.logger.error(
-                    "Unable to resolve provided Neverwinter Nights home and/or installation directories. Ensure the paths are valid in the extension settings."
+                    "Unable to resolve provided Neverwinter Nights home and/or installation directories. Ensure the paths are valid in the extension settings.",
                   );
                 } else {
                   return this.server.logger.error(
-                    "Unable to automatically resolve Neverwinter Nights home and/or installation directories."
+                    "Unable to automatically resolve Neverwinter Nights home and/or installation directories.",
                   );
                 }
               }
@@ -205,7 +210,7 @@ export default class DiagnoticsProvider extends Provider {
             resolve(true);
           } catch (e: any) {
             this.server.logger.error(e.message);
-            reject();
+            reject(e);
           }
         });
       });
@@ -213,6 +218,8 @@ export default class DiagnoticsProvider extends Provider {
   }
 
   public async processDocumentsWaitingForPublish() {
-    return Promise.all(this.server.documentsWaitingForPublish.map((uri) => this.asyncExceptionsWrapper(this.publish(uri))));
+    return await Promise.all(
+      this.server.documentsWaitingForPublish.map(async (uri) => await this.asyncExceptionsWrapper(this.publish(uri))),
+    );
   }
 }

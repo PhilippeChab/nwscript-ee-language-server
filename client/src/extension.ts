@@ -25,6 +25,6 @@ export function activate(context: ExtensionContext) {
   client.start();
 }
 
-export function deactivate() {
-  return client?.stop();
+export async function deactivate() {
+  return await client?.stop();
 }

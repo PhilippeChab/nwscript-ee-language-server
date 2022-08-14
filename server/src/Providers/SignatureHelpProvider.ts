@@ -1,10 +1,10 @@
+import { fileURLToPath } from "url";
 import { SignatureHelpParams } from "vscode-languageserver/node";
 
 import type { ServerManager } from "../ServerManager";
 import type { ComplexToken, FunctionComplexToken } from "../Tokenizer/types";
 import { LanguageScopes } from "../Tokenizer/constants";
 import { TokenizedScope } from "../Tokenizer/Tokenizer";
-import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { SignatureHelpBuilder } from "./Builders";
 import Provider from "./Provider";
 
@@ -24,16 +24,15 @@ export default class SignatureHelpProvider extends Provider {
       } = params;
 
       const liveDocument = this.server.liveDocumentsManager.get(uri);
-      const path = WorkspaceFilesSystem.fileUriToPath(uri);
-      const documentKey = WorkspaceFilesSystem.getFileBasename(path);
-      const document = this.server.documentsCollection?.get(documentKey);
+      const path = fileURLToPath(uri);
+      const document = this.server.documentsCollection.getFromPath(path);
 
       let functionComplexToken: ComplexToken | undefined;
       if (liveDocument) {
         const tokenizedResult = this.server.tokenizer?.isInLanguageScope(
           liveDocument.getText(),
           position,
-          LanguageScopes.functionCall
+          LanguageScopes.functionCall,
         );
         if (!tokenizedResult) {
           return undefined;
@@ -43,13 +42,13 @@ export default class SignatureHelpProvider extends Provider {
           tokenizedResult.line,
           tokenizedResult.tokensArray,
           position,
-          [LanguageScopes.functionCall, LanguageScopes.functionIdentifier]
+          [LanguageScopes.functionCall, LanguageScopes.functionIdentifier],
         );
         const activeParameter = this.server.tokenizer?.getLanguageScopeOccurencesFromPositionWithDelimiter(
           tokenizedResult.tokensArray,
           position,
           LanguageScopes.separatorStatement,
-          LanguageScopes.leftArgumentsRoundBracket
+          LanguageScopes.leftArgumentsRoundBracket,
         );
 
         if (context?.isRetrigger && context.activeSignatureHelp) {
@@ -60,7 +59,7 @@ export default class SignatureHelpProvider extends Provider {
             functionIdentifier ===
               this.server.tokenizer?.findFirstIdentiferForLanguageScope(
                 signatures[activeSignature].label,
-                LanguageScopes.functionIdentifier
+                LanguageScopes.functionIdentifier,
               )
           ) {
             return {

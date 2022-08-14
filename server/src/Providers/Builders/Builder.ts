@@ -24,11 +24,11 @@ export default abstract class Builder {
     return token.tokenType === CompletionItemKind.Constant;
   }
 
-  protected static isVariable(token: ComplexToken): token is VariableComplexToken {
+  protected static isVariableToken(token: ComplexToken): token is VariableComplexToken {
     return token.tokenType === CompletionItemKind.Variable;
   }
 
-  protected static isFunctionParameter(token: ComplexToken): token is FunctionParamComplexToken {
+  protected static isFunctionParameterToken(token: ComplexToken): token is FunctionParamComplexToken {
     return token.tokenType === CompletionItemKind.TypeParameter;
   }
 

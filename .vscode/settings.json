@@ -2,6 +2,5 @@
   "editor.formatOnSave": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "prettier.printWidth": 130
+  }
 }

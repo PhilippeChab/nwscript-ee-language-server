@@ -15,7 +15,7 @@ export default class Dictionnary<K extends string, V> {
     this._dict[key] = value;
   }
 
-  public get(key: K) {
+  public get(key: K): V | undefined {
     return this._dict[key];
   }
 
