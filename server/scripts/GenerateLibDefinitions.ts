@@ -1,5 +1,6 @@
 import { writeFileSync, readFileSync } from "fs";
 import { normalize, join } from "path";
+
 import { Tokenizer } from "../src/Tokenizer";
 import { TokenizedScope } from "../src/Tokenizer/Tokenizer";
 

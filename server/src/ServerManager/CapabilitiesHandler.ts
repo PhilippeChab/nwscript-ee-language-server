@@ -9,14 +9,6 @@ export default class CapabilitiesHandler {
     this.capabilities = this.initializeServerCapabilities();
   }
 
-  public getSupportsWorkspaceFolders(): boolean {
-    return (this.clientCapabilities.workspace && !!this.clientCapabilities.workspace.workspaceFolders) || false;
-  }
-
-  public getSupportsWorkspaceConfiguration(): boolean {
-    return (this.clientCapabilities.workspace && !!this.clientCapabilities.workspace.configuration) || false;
-  }
-
   private initializeServerCapabilities(): ServerCapabilities {
     const capabilities: ServerCapabilities = {
       textDocumentSync: {
@@ -48,5 +40,13 @@ export default class CapabilitiesHandler {
     }
 
     return capabilities;
+  }
+
+  public getSupportsWorkspaceFolders(): boolean {
+    return (this.clientCapabilities.workspace && !!this.clientCapabilities.workspace.workspaceFolders) || false;
+  }
+
+  public getSupportsWorkspaceConfiguration(): boolean {
+    return (this.clientCapabilities.workspace && !!this.clientCapabilities.workspace.configuration) || false;
   }
 }

@@ -1,4 +1,3 @@
-import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import type { ComplexToken, StructComplexToken } from "../Tokenizer/types";
 import type DocumentsCollection from "./DocumentsCollection";
 
@@ -15,7 +14,7 @@ export default class Document {
   ) {}
 
   public getKey() {
-    return WorkspaceFilesSystem.getFileBasename(this.path);
+    return this.collection.getKey(this.path);
   }
 
   public getChildren(computedChildren: string[] = []): string[] {

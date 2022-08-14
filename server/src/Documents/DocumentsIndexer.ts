@@ -1,8 +1,8 @@
+import { readFileSync } from "fs";
 import { exit } from "process";
 
 import { Tokenizer } from "../Tokenizer";
 import { TokenizedScope } from "../Tokenizer/Tokenizer";
-import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 
 const generateTokens = async (filesPath: string[]) => {
   if (filesPath.length === 1 && !Boolean(filesPath[0])) {
@@ -17,7 +17,7 @@ const generateTokens = async (filesPath: string[]) => {
       continue;
     }
 
-    const fileContent = WorkspaceFilesSystem.readFileSync(filePath).toString();
+    const fileContent = readFileSync(filePath).toString();
     const globalScope = tokenizer.tokenizeContent(fileContent, TokenizedScope.global);
 
     process?.send!(JSON.stringify({ filePath, globalScope }));

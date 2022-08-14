@@ -1,9 +1,10 @@
 import { spawn } from "child_process";
 import { type } from "os";
 import { join, dirname, basename } from "path";
+import { fileURLToPath, pathToFileURL } from "url";
 import { Diagnostic, DiagnosticSeverity } from "vscode-languageserver";
+
 import { ServerManager } from "../ServerManager";
-import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import Provider from "./Provider";
 
 const lineNumber = /\(([^)]+)\)/;
@@ -38,7 +39,7 @@ export default class DiagnoticsProvider extends Provider {
       const path = paths.find((path) => basename(path) === lineFilename.exec(line)![0]);
 
       if (path) {
-        const fileUri = WorkspaceFilesSystem.filePathToUri(path).toString();
+        const fileUri = pathToFileURL(path).toString();
         const linePosition = Number(lineNumber.exec(line)![1]) - 1;
         const diagnostic = {
           severity,
@@ -85,9 +86,8 @@ export default class DiagnoticsProvider extends Provider {
           return reject(new Error(errorMessage));
         }
 
-        const path = WorkspaceFilesSystem.fileUriToPath(uri);
-        const documentKey = WorkspaceFilesSystem.getFileBasename(path);
-        const document = this.server.documentsCollection?.get(documentKey);
+        const path = fileURLToPath(uri);
+        const document = this.server.documentsCollection.getFromPath(path);
 
         if (!this.server.hasIndexedDocuments || !document) {
           if (!this.server.documentsWaitingForPublish.includes(uri)) {
@@ -97,12 +97,12 @@ export default class DiagnoticsProvider extends Provider {
         }
 
         const children = document.getChildren();
-        const files: FilesDiagnostics = { [WorkspaceFilesSystem.filePathToUri(document.path).toString()]: [] };
+        const files: FilesDiagnostics = { [pathToFileURL(document.path).toString()]: [] };
         const paths: string[] = [];
         children.forEach((child) => {
           const filePath = this.server.documentsCollection?.get(child)?.path;
           if (filePath) {
-            files[WorkspaceFilesSystem.filePathToUri(filePath).toString()] = [];
+            files[pathToFileURL(filePath).toString()] = [];
             paths.push(filePath);
           }
         });

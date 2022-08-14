@@ -1,10 +1,10 @@
+import { fileURLToPath, pathToFileURL } from "url";
 import { CompletionItemKind, DefinitionParams } from "vscode-languageserver";
 
 import type { OwnedComplexTokens, OwnedStructComplexTokens } from "../Documents/Document";
 import type { ServerManager } from "../ServerManager";
 import type { ComplexToken } from "../Tokenizer/types";
 import { TokenizedScope } from "../Tokenizer/Tokenizer";
-import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import Provider from "./Provider";
 
 export default class GotoDefinitionProvider extends Provider {
@@ -22,9 +22,8 @@ export default class GotoDefinitionProvider extends Provider {
       } = params;
 
       const liveDocument = this.server.liveDocumentsManager.get(uri);
-      const path = WorkspaceFilesSystem.fileUriToPath(uri);
-      const documentKey = WorkspaceFilesSystem.getFileBasename(path);
-      const document = this.server.documentsCollection?.get(documentKey);
+      const path = fileURLToPath(uri);
+      const document = this.server.documentsCollection.getFromPath(path);
 
       if (liveDocument && this.server.tokenizer) {
         let token: ComplexToken | undefined;
@@ -91,7 +90,7 @@ export default class GotoDefinitionProvider extends Provider {
 
         if (token) {
           return {
-            uri: ref ? WorkspaceFilesSystem.filePathToUri(ref.owner).toString() : uri,
+            uri: ref ? pathToFileURL(ref.owner).toString() : uri,
             range: {
               start: { line: token.position.line, character: token.position.character },
               end: { line: token.position.line, character: token.position.character },

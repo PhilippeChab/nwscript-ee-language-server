@@ -1,10 +1,10 @@
+import { fileURLToPath } from "url";
 import { SignatureHelpParams } from "vscode-languageserver/node";
 
 import type { ServerManager } from "../ServerManager";
 import type { ComplexToken, FunctionComplexToken } from "../Tokenizer/types";
 import { LanguageScopes } from "../Tokenizer/constants";
 import { TokenizedScope } from "../Tokenizer/Tokenizer";
-import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { SignatureHelpBuilder } from "./Builders";
 import Provider from "./Provider";
 
@@ -24,9 +24,8 @@ export default class SignatureHelpProvider extends Provider {
       } = params;
 
       const liveDocument = this.server.liveDocumentsManager.get(uri);
-      const path = WorkspaceFilesSystem.fileUriToPath(uri);
-      const documentKey = WorkspaceFilesSystem.getFileBasename(path);
-      const document = this.server.documentsCollection?.get(documentKey);
+      const path = fileURLToPath(uri);
+      const document = this.server.documentsCollection.getFromPath(path);
 
       let functionComplexToken: ComplexToken | undefined;
       if (liveDocument) {

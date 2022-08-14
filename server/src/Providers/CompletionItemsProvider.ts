@@ -1,7 +1,7 @@
+import { fileURLToPath } from "url";
 import { CompletionParams } from "vscode-languageserver";
 
 import type { ServerManager } from "../ServerManager";
-import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { CompletionItemBuilder } from "./Builders";
 import { LocalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Tokenizer";
 import { TriggerCharacters } from ".";
@@ -27,9 +27,8 @@ export default class CompletionItemsProvider extends Provider {
       } = params;
 
       const liveDocument = this.server.liveDocumentsManager.get(uri);
-      const path = WorkspaceFilesSystem.fileUriToPath(uri);
-      const documentKey = WorkspaceFilesSystem.getFileBasename(path);
-      const document = this.server.documentsCollection?.get(documentKey);
+      const path = fileURLToPath(uri);
+      const document = this.server.documentsCollection.getFromPath(path);
 
       if (liveDocument) {
         const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);

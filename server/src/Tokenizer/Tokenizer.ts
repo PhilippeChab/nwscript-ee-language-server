@@ -1,8 +1,10 @@
+import { join } from "path";
+import { readFileSync } from "fs";
+
 import type { IGrammar } from "vscode-textmate";
 import type { Position } from "vscode-languageserver-textdocument";
 import { Registry, INITIAL, parseRawGrammar, IToken } from "vscode-textmate";
 import { CompletionItemKind } from "vscode-languageserver";
-import { join } from "path";
 
 import type {
   ComplexToken,
@@ -11,7 +13,6 @@ import type {
   StructComplexToken,
   VariableComplexToken,
 } from "./types";
-import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { LanguageTypes, LanguageScopes } from "./constants";
 import onigLib from "../onigLib";
 
@@ -42,7 +43,7 @@ export default class Tokenizer {
       loadGrammar: async (scopeName) => {
         return await new Promise((resolve, reject) => {
           if (scopeName === "source.nss") {
-            const grammar = WorkspaceFilesSystem.readFileSync(
+            const grammar = readFileSync(
               join(__dirname, "..", "..", localPath ? ".." : "", "syntaxes", "nwscript-ee.tmLanguage"),
             );
 

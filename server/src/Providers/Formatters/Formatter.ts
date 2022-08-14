@@ -1,7 +1,9 @@
+import { delimiter, join } from "path";
+import { fileURLToPath } from "url";
+import { existsSync } from "fs";
+
 import { WorkspaceFilesSystem } from "../../WorkspaceFilesSystem";
 import { Logger } from "../../Logger";
-import { delimiter, join } from "path";
-
 const codeByteOffsetCache = { byte: 0, offset: 0 };
 const binPathCache: { [bin: string]: string } = {};
 
@@ -51,7 +53,7 @@ export default class Formatter {
     }
 
     for (const binNameToSearch of platformBinName(binName)) {
-      if (WorkspaceFilesSystem.existsSync(binNameToSearch)) {
+      if (existsSync(binNameToSearch)) {
         binPathCache[binName] = binNameToSearch;
         return binNameToSearch;
       }
@@ -62,7 +64,7 @@ export default class Formatter {
         for (let i = 0; i < pathParts.length; i++) {
           const binPath = join(pathParts[i], binNameToSearch);
 
-          if (WorkspaceFilesSystem.existsSync(binPath)) {
+          if (existsSync(binPath)) {
             binPathCache[binName] = binPath;
             return binPath;
           }
@@ -75,7 +77,7 @@ export default class Formatter {
   }
 
   public isIgnoredFile(documentUri: string) {
-    const documentPath = WorkspaceFilesSystem.fileUriToPath(documentUri);
+    const documentPath = fileURLToPath(documentUri);
 
     return this.ignoredGlobs.some((glob) => {
       return this.workspaceFilesSystem.getGlobPaths(glob).some((path) => path === documentPath);

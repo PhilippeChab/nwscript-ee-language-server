@@ -24,13 +24,13 @@ import CapabilitiesHandler from "./CapabilitiesHandler";
 export default class ServerManger {
   public connection: Connection;
   public logger: Logger;
+  public config = defaultServerConfiguration;
   public capabilitiesHandler: CapabilitiesHandler;
   public workspaceFilesSystem: WorkspaceFilesSystem;
   public liveDocumentsManager: LiveDocumentsManager;
-  public config = defaultServerConfiguration;
+  public documentsCollection: DocumentsCollection;
   public tokenizer: Tokenizer | null = null;
-  public documentsCollection: DocumentsCollection | null = null;
-  public hasIndexedDocuments: boolean = false;
+  public hasIndexedDocuments = false;
   public documentsWaitingForPublish: string[] = [];
 
   constructor(connection: Connection, params: InitializeParams) {
@@ -39,13 +39,13 @@ export default class ServerManger {
     this.capabilitiesHandler = new CapabilitiesHandler(params.capabilities);
     this.workspaceFilesSystem = new WorkspaceFilesSystem(params.rootPath!, params.workspaceFolders!);
     this.liveDocumentsManager = new LiveDocumentsManager();
+    this.documentsCollection = new DocumentsCollection();
 
     this.liveDocumentsManager.listen(this.connection);
   }
 
   public async initialize() {
     this.tokenizer = await new Tokenizer().loadGrammar();
-    this.documentsCollection = new DocumentsCollection();
     this.registerProviders();
     this.registerLiveDocumentsEvents();
 
@@ -62,7 +62,7 @@ export default class ServerManger {
     WorkspaceProvider.register(this);
 
     if (this.capabilitiesHandler.getSupportsWorkspaceConfiguration()) {
-      ConfigurationProvider.register(this, () => {
+      await ConfigurationProvider.register(this, () => {
         this.loadConfig();
       });
     }

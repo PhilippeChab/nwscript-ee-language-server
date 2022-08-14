@@ -1,10 +1,6 @@
 import type { ServerManager } from "../ServerManager";
 
 export default class Provider {
-  public static register(server: ServerManager) {
-    return new this(server);
-  }
-
   constructor(protected readonly server: ServerManager) {}
 
   protected getStandardLibComplexTokens() {
@@ -49,5 +45,9 @@ export default class Provider {
     } finally {
       return result || defaultResult;
     }
+  }
+
+  public static register(server: ServerManager) {
+    return new this(server);
   }
 }
