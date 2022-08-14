@@ -4,7 +4,7 @@
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project": ["./client/tsconfig.json", "./server/tsconfig.json"]
+    "project": ["./client/tsconfig.json", "./server/tsconfig.json", "./server/tsconfig.eslint.json"]
   },
   "plugins": ["@typescript-eslint"],
   "extends": ["standard-with-typescript", "plugin:prettier/recommended"],

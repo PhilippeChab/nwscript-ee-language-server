@@ -20,10 +20,10 @@ describe("Tokenization", () => {
     tokenizer = await new Tokenizer(true).loadGrammar();
     staticCode = readFileSync(normalize(join(__dirname, "./static/test.nss"))).toString();
     staticGlobalTokens = JSON.parse(
-      readFileSync(normalize(join(__dirname, "./static/globalScopeTokens.json"))).toString()
+      readFileSync(normalize(join(__dirname, "./static/globalScopeTokens.json"))).toString(),
     ) as GlobalScopeTokenizationResult;
     staticLocalTokens = JSON.parse(
-      readFileSync(normalize(join(__dirname, "./static/localScopeTokens.json"))).toString()
+      readFileSync(normalize(join(__dirname, "./static/localScopeTokens.json"))).toString(),
     ) as LocalScopeTokenizationResult;
   });
 

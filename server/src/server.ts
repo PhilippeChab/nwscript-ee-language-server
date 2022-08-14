@@ -5,9 +5,10 @@ const connection = createConnection(ProposedFeatures.all);
 
 let server: ServerManager;
 
-connection.onInitialize(async (params: InitializeParams) =>
-  (await new ServerManager(connection, params).initialize()).getCapabilities(),
-);
+connection.onInitialize(async (params: InitializeParams) => {
+  server = new ServerManager(connection, params);
+  return (await server.initialize()).getCapabilities();
+});
 
 connection.onInitialized(() => {
   server.up();
