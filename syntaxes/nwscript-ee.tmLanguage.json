@@ -25,11 +25,7 @@
       "include": "#storage_types"
     },
     {
-      "match": "\\b(const|static)\\b",
-      "name": "storage.modifier.nss"
-    },
-    {
-      "match": "\\b[A-Z]+(_[A-Z]+)*(_[a-zA-Z0-9]+){0,1}(?!\\()\\b",
+      "match": "\\b_{0,1}[A-Z]+(_[A-Z0-9]+)*(_[a-zA-Z0-9]+){0,1}_{0,1}(?!\\()\\b",
       "name": "constant.language.nss"
     },
     {
@@ -2406,8 +2402,18 @@
     "storage_types": {
       "patterns": [
         {
-          "match": "\\b(action|effect|event|float|int|itemproperty|location|object|string|talent|vector|void|json|sqlquery|cassowary)\\b",
-          "name": "storage.type.built-in.nss"
+          "match": "(const){0,1} *\\b(action|effect|event|float|int|itemproperty|location|object|string|talent|vector|void|json|sqlquery|cassowary)\\b (?(1)(\\S*)|)",
+          "captures": {
+            "1": {
+              "name": "storage.modifier.nss"
+            },
+            "2": {
+              "name": "storage.type.built-in.nss"
+            },
+            "3": {
+              "name": "constant.language.nss"
+            }
+          }
         },
         {
           "match": "\\b(struct)\\b \\b([a-zA-Z_][a-zA-Z0-9_]*\\b(?!\\s*\\())",

@@ -40,13 +40,7 @@
       </dict>
       <dict>
         <key>match</key>
-        <string>\b(const|static)\b</string>
-        <key>name</key>
-        <string>storage.modifier.nss</string>
-      </dict>
-      <dict>
-        <key>match</key>
-        <string>\b[A-Z]+(_[A-Z]+)*(_[a-zA-Z0-9]+){0,1}(?!\()\b</string>
+        <string>\b_{0,1}[A-Z]+(_[A-Z0-9]+)*(_[a-zA-Z0-9]+){0,1}_{0,1}(?!\()\b</string>
         <key>name</key>
         <string>constant.language.nss</string>
       </dict>
@@ -3736,9 +3730,25 @@ U[a-fA-F0-9]{,8} )</string>
         <array>
           <dict>
             <key>match</key>
-            <string>\b(action|effect|event|float|int|itemproperty|location|object|string|talent|vector|void|json|sqlquery|cassowary)\b</string>
-            <key>name</key>
-            <string>storage.type.built-in.nss</string>
+            <string>(const){0,1} *\b(action|effect|event|float|int|itemproperty|location|object|string|talent|vector|void|json|sqlquery|cassowary)\b (?(1)(\S*)|)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.nss</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.built-in.nss</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>constant.language.nss</string>
+              </dict>
+            </dict>
           </dict>
           <dict>
             <key>match</key>
