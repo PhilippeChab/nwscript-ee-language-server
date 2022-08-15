@@ -25,7 +25,7 @@
       "include": "#storage_types"
     },
     {
-      "match": "\\b_{0,1}[A-Z]+(_[A-Z0-9]+)*(_[a-zA-Z0-9]+){0,1}_{0,1}(?!\\()\\b",
+      "match": "\\b_{0,1}[A-Z0-9]+(_[A-Z0-9]+)*(_[a-zA-Z0-9]+){0,1}_{0,1}(?!\\()\\b",
       "name": "constant.language.nss"
     },
     {
