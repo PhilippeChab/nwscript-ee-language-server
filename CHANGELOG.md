@@ -44,3 +44,7 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 
 - Eslint has been configured along with prettier and the project will be linted from now on.
 - File handling is now done with their uri instead of their path.
+
+## [1.5.2]
+
+- `const` expressions resolution has been enhanced.
