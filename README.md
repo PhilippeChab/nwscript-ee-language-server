@@ -36,7 +36,7 @@ Simply open a project with nss files and the extension installed. The extension 
 
 Notes:
 
-- The files are indexed in background processes, which means it will not block other features of the LSP like formatting, and a file's local definitions generated on the fly will be available.
+- The files are indexed in background processes, which means it will not block other features of the language server like formatting, and a file's local definitions generated on the fly will be available.
 - The files are indexed incrementally, which means a file's global definitions become available as soon as it has been indexed.
 
 ### Formatting
