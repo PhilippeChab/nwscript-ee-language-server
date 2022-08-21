@@ -48,3 +48,10 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 ## [1.5.2]
 
 - `const` expressions resolution has been enhanced.
+
+## [1.5.3]
+
+- Goto will now work for functions from `nwscript.nss` if the file is in your project.
+- Fixed the compilation provider not reporting warnings.
+- New compiler setting `reportWarnings`. True by default.
+- New formatter setting `verbose`. False by default.

@@ -18,8 +18,4 @@ export default class WorkspaceFilesSystem {
   public getGlobPaths(glob: string) {
     return new GlobSync(glob).found.map((filename) => this.normalizedAbsolutePath(filename));
   }
-
-  public getWorkspaceRootPath() {
-    return this.rootPath;
-  }
 }

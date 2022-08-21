@@ -8,7 +8,7 @@ import { ServerManager } from "../ServerManager";
 import Provider from "./Provider";
 
 const lineNumber = /\(([^)]+)\)/;
-const lineMessage = /Error:(.*)/;
+const lineMessage = /(Error|Warning):(.*)/;
 const lineFilename = /^[^(]+/;
 
 enum OS {
@@ -30,11 +30,7 @@ export default class DiagnoticsProvider extends Provider {
     );
   }
 
-  private sendDiagnostics(uri: string, diagnostics: Diagnostic[]) {
-    this.server.connection.sendDiagnostics({ uri, diagnostics });
-  }
-
-  private generateDiagnostic(uris: string[], files: FilesDiagnostics, severity: DiagnosticSeverity) {
+  private generateDiagnostics(uris: string[], files: FilesDiagnostics, severity: DiagnosticSeverity) {
     return (line: string) => {
       const uri = uris.find((uri) => basename(fileURLToPath(uri)) === lineFilename.exec(line)![0]);
 
@@ -73,8 +69,8 @@ export default class DiagnoticsProvider extends Provider {
 
   private publish(uri: string) {
     return async () => {
-      return await new Promise((resolve, reject) => {
-        const { enabled, nwnHome, nwnInstallation, verbose } = this.server.config.compiler;
+      return await new Promise<boolean>((resolve, reject) => {
+        const { enabled, nwnHome, reportWarnings, nwnInstallation, verbose } = this.server.config.compiler;
         if (!enabled) {
           return resolve(true);
         }
@@ -149,67 +145,62 @@ export default class DiagnoticsProvider extends Provider {
         });
 
         child.on("close", (_) => {
-          try {
-            const lines = stdout
-              .toString()
-              .split("\n")
-              .filter((line) => line !== "\r" && line !== "\n" && Boolean(line));
-            const errors: string[] = [];
-            const warnings: string[] = [];
+          const lines = stdout
+            .toString()
+            .split("\n")
+            .filter((line) => line !== "\r" && line !== "\n" && Boolean(line));
+          const errors: string[] = [];
+          const warnings: string[] = [];
 
-            lines.forEach((line) => {
-              if (verbose && !line.includes("Compiling:")) {
-                this.server.logger.info(line);
-              }
-
-              // Diagnostics
-              if (line.includes("Error:")) {
-                errors.push(line);
-              }
-              if (line.includes("Warning:")) {
-                warnings.push(line);
-              }
-
-              // Actual errors
-              if (line.includes("NOTFOUND")) {
-                return this.server.logger.error(
-                  "Unable to resolve nwscript.nss. Are your Neverwinter Nights home and/or installation directories valid?",
-                );
-              }
-              if (line.includes("Failed to open .key archive")) {
-                return this.server.logger.error(
-                  "Unable to open nwn_base.key Is your Neverwinter Nights installation directory valid?",
-                );
-              }
-              if (line.includes("Unable to read input file")) {
-                if (Boolean(nwnHome) || Boolean(nwnInstallation)) {
-                  return this.server.logger.error(
-                    "Unable to resolve provided Neverwinter Nights home and/or installation directories. Ensure the paths are valid in the extension settings.",
-                  );
-                } else {
-                  return this.server.logger.error(
-                    "Unable to automatically resolve Neverwinter Nights home and/or installation directories.",
-                  );
-                }
-              }
-            });
-
-            if (verbose) {
-              this.server.logger.info("Done.\n");
+          lines.forEach((line) => {
+            if (verbose && !line.includes("Compiling:")) {
+              this.server.logger.info(line);
             }
 
-            uris.push(document.uri);
-            errors.forEach(this.generateDiagnostic(uris, files, DiagnosticSeverity.Error));
-            warnings.forEach(this.generateDiagnostic(uris, files, DiagnosticSeverity.Warning));
-
-            for (const [uri, diagnostics] of Object.entries(files)) {
-              this.sendDiagnostics(uri, diagnostics);
+            // Diagnostics
+            if (line.includes("Error:")) {
+              errors.push(line);
             }
-            resolve(true);
-          } catch (e: any) {
-            this.server.logger.error(e.message);
-            reject(e);
+            if (reportWarnings && line.includes("Warning:")) {
+              warnings.push(line);
+            }
+
+            // Actual errors
+            if (line.includes("NOTFOUND")) {
+              return this.server.logger.error(
+                "Unable to resolve nwscript.nss. Are your Neverwinter Nights home and/or installation directories valid?",
+              );
+            }
+            if (line.includes("Failed to open .key archive")) {
+              return this.server.logger.error(
+                "Unable to open nwn_base.key Is your Neverwinter Nights installation directory valid?",
+              );
+            }
+            if (line.includes("Unable to read input file")) {
+              if (Boolean(nwnHome) || Boolean(nwnInstallation)) {
+                return this.server.logger.error(
+                  "Unable to resolve provided Neverwinter Nights home and/or installation directories. Ensure the paths are valid in the extension settings.",
+                );
+              } else {
+                return this.server.logger.error(
+                  "Unable to automatically resolve Neverwinter Nights home and/or installation directories.",
+                );
+              }
+            }
+          });
+
+          if (verbose) {
+            this.server.logger.info("Done.\n");
           }
+
+          uris.push(document.uri);
+          errors.forEach(this.generateDiagnostics(uris, files, DiagnosticSeverity.Error));
+          if (reportWarnings) warnings.forEach(this.generateDiagnostics(uris, files, DiagnosticSeverity.Warning));
+
+          for (const [uri, diagnostics] of Object.entries(files)) {
+            this.server.connection.sendDiagnostics({ uri, diagnostics });
+          }
+          resolve(true);
         });
       });
     };

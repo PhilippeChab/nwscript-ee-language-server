@@ -26,6 +26,7 @@
     "eqeqeq": "warn",
     "no-unsafe-finally": "warn",
     "no-throw-literal": "warn",
+    "prefer-const": "warn",
     "space-before-function-paren": "off",
     "semi": "off",
     "quotes": "off",

@@ -18,21 +18,18 @@ export default class DocumentFormattingProvider extends Provider {
       const {
         textDocument: { uri },
       } = params;
-      const { enabled, ignoredGlobs, style, executable } = this.server.config.formatter;
+      const { enabled, verbose, ignoredGlobs, style, executable } = this.server.config.formatter;
       const clangFormatter = new ClangFormatter(
         this.server.workspaceFilesSystem,
+        enabled,
+        verbose,
         ignoredGlobs,
         executable,
         style,
         this.server.logger,
       );
 
-      if (!enabled || clangFormatter.isIgnoredFile(uri)) {
-        return undefined;
-      }
-
       const liveDocument = this.server.liveDocumentsManager.get(uri);
-
       if (liveDocument) {
         return await clangFormatter.formatDocument(liveDocument, null);
       }

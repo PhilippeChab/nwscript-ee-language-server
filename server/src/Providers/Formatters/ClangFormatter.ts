@@ -5,23 +5,22 @@ import { TextDocument, TextEdit } from "vscode-languageserver-textdocument";
 
 import Formatter from "./Formatter";
 
+type CurrentEdit = { length: number; offset: number; text: string } | null;
 export default class ClangFormatter extends Formatter {
-  private getEdits(document: TextDocument, xml: string, codeContent: string) {
-    const saxParser = parser(true, {
-      trim: false,
-      normalize: false,
-    });
+  private xmlParseOnText(currentEdit: CurrentEdit) {
+    return (text: string) => {
+      if (!currentEdit) {
+        return;
+      }
 
-    const edits: TextEdit[] = [];
-    let currentEdit: { length: number; offset: number; text: string } | null;
-
-    saxParser.onerror = (err) => {
-      throw err;
+      currentEdit.text = text;
     };
+  }
 
-    saxParser.onopentag = (tag: Tag) => {
+  private xmlParserOnOpenTag(currentEdit: CurrentEdit, reject: (reason: any) => void) {
+    return (tag: Tag) => {
       if (currentEdit) {
-        throw new Error("Malformed output.");
+        reject(new Error("Malformed output."));
       }
 
       switch (tag.name) {
@@ -34,23 +33,16 @@ export default class ClangFormatter extends Formatter {
             offset: parseInt(tag.attributes.offset.toString()),
             text: "",
           };
-          this.byteToOffset(codeContent, currentEdit);
           break;
 
         default:
-          throw new Error(`Unexpected tag ${tag.name}.`);
+          reject(new Error(`Unexpected tag ${tag.name}.`));
       }
     };
+  }
 
-    saxParser.ontext = (text) => {
-      if (!currentEdit) {
-        return;
-      }
-
-      currentEdit.text = text;
-    };
-
-    saxParser.onclosetag = () => {
+  private xmlParserOnCloseTag(document: TextDocument, edits: TextEdit[], currentEdit: CurrentEdit) {
+    return () => {
       if (!currentEdit) {
         return;
       }
@@ -61,61 +53,70 @@ export default class ClangFormatter extends Formatter {
       edits.push({ range: { start, end }, newText: currentEdit.text });
       currentEdit = null;
     };
-
-    saxParser.write(xml);
-    saxParser.end();
-
-    return edits;
   }
 
-  public async formatDocument(document: TextDocument, range: Range | null): Promise<TextEdit[] | null> {
-    return await new Promise((resolve, reject) => {
-      const formatCommandBinPath = this.getExecutablePath();
-      const codeContent = document.getText();
+  public async formatDocument(document: TextDocument, range: Range | null) {
+    return await new Promise<TextEdit[] | null>((resolve, reject) => {
+      if (!this.enabled || this.isIgnoredFile(document.uri)) {
+        return resolve(null);
+      }
 
-      const formatArgs = ["-output-replacements-xml", `-style=${JSON.stringify(this.style)}`];
+      if (this.verbose) {
+        this.logger.info(`Formatting ${document.uri}:`);
+      }
+
+      const args = ["-output-replacements-xml", `-style=${JSON.stringify(this.style)}`];
 
       if (range) {
         const offset = document.offsetAt(range.start);
         const length = document.offsetAt(range.end) - offset;
 
-        formatArgs.push(`-offset=${offset}`, `-length=${length}`);
+        args.push(`-offset=${offset}`, `-length=${length}`);
       }
 
       let stdout = "";
       let stderr = "";
-      const child = spawn(formatCommandBinPath, formatArgs, {
-        cwd: this.workspaceFilesSystem.getWorkspaceRootPath(),
-      });
 
-      child.stdin.end(codeContent);
+      if (this.verbose) {
+        this.logger.info(`Resolving clang-format's executable with: ${this.executable}.`);
+      }
+
+      const child = spawn(this.executable, args, { shell: true });
+
+      child.stdin.end(document.getText());
       child.stdout.on("data", (chunk: string) => (stdout += chunk));
       child.stderr.on("data", (chunk: string) => (stderr += chunk));
 
       child.on("error", (e: any) => {
-        if (e && e.code === "ENOENT") {
-          this.logger.error(
-            `The ${formatCommandBinPath} command is not available.  Please check your executable setting and ensure clang executable is installed.`,
-          );
-          reject(e);
-        } else {
-          this.logger.error(e.message);
-          reject(e);
-        }
+        this.logger.error(e.message);
+        reject(e);
       });
 
       child.on("close", (code) => {
-        try {
-          if (code !== 0 || stderr.length !== 0) {
-            this.logger.error(stderr);
-            reject(new Error(stderr));
-          }
-
-          resolve(this.getEdits(document, stdout, codeContent));
-        } catch (e: any) {
-          this.logger.error(e.message);
-          reject(e);
+        if (code !== 0 || stderr.length !== 0) {
+          this.logger.error(stderr);
+          reject(new Error(stderr));
         }
+
+        let currentEdit: CurrentEdit = null;
+        const edits: TextEdit[] = [];
+        const xmlParser = parser(true, {
+          trim: false,
+          normalize: false,
+        });
+
+        xmlParser.onerror = (err) => reject(err);
+        xmlParser.ontext = this.xmlParseOnText(currentEdit);
+        xmlParser.onopentag = this.xmlParserOnOpenTag(currentEdit, reject);
+        xmlParser.onclosetag = this.xmlParserOnCloseTag(document, edits, currentEdit);
+        xmlParser.write(stdout);
+        xmlParser.end();
+
+        if (this.verbose) {
+          this.logger.info("Done.\n");
+        }
+
+        resolve(edits);
       });
     });
   }

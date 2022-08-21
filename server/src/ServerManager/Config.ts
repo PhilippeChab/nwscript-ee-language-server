@@ -4,6 +4,7 @@ const defaultServerConfiguration = {
   includeCommentsInFunctionsHover: false,
   formatter: {
     enabled: false,
+    verbose: false,
     executable: "clang-format",
     ignoredGlobs: [],
     style: {
@@ -23,6 +24,7 @@ const defaultServerConfiguration = {
   compiler: {
     enabled: true,
     verbose: false,
+    reportWarnings: true,
     nwnHome: "",
     nwnInstallation: "",
   },

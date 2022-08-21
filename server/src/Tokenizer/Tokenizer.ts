@@ -499,7 +499,6 @@ export default class Tokenizer {
 
   public findLineIdentiferFromPositionAt(content: string, position: Position, index: number) {
     const ruleStack = INITIAL;
-
     const lines = content.split(/\r?\n/);
     const line = lines[position.line];
     const tokensArray = this.grammar?.tokenizeLine(line, ruleStack)?.tokens;
@@ -519,7 +518,6 @@ export default class Tokenizer {
 
   public findFirstIdentiferForLanguageScope(line: string, languageScope: LanguageScopes) {
     const tokensArray = this.grammar?.tokenizeLine(line, INITIAL)?.tokens;
-
     const token = tokensArray?.find((token) => token.scopes.includes(languageScope));
 
     if (token) {
@@ -530,10 +528,9 @@ export default class Tokenizer {
   }
 
   public findActionTargetAtPosition(content: string, position: Position) {
-    const ruleStack = INITIAL;
-
     let tokenType;
     let structVariableIdentifier;
+    const ruleStack = INITIAL;
     const lines = content.split(/\r?\n/);
     const line = lines[position.line];
     const tokensArray = this.grammar?.tokenizeLine(line, ruleStack)?.tokens;

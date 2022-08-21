@@ -10,13 +10,8 @@ const generateTokens = async (filesPath: string[]) => {
   }
 
   const tokenizer = await new Tokenizer().loadGrammar();
-
   for (let i = 0; i < filesPath.length; i++) {
     const filePath = filesPath[i];
-    if (filePath.includes("nwscript.nss")) {
-      continue;
-    }
-
     const fileContent = readFileSync(filePath).toString();
     const globalScope = tokenizer.tokenizeContent(fileContent, TokenizedScope.global);
 
