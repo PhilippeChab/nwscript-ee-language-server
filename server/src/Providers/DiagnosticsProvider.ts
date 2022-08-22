@@ -42,7 +42,7 @@ export default class DiagnoticsProvider extends Provider {
             start: { line: linePosition, character: 0 },
             end: { line: linePosition, character: Number.MAX_VALUE },
           },
-          message: lineMessage.exec(line)![1].trim(),
+          message: lineMessage.exec(line)![2].trim(),
         };
 
         files[uri].push(diagnostic);
@@ -71,7 +71,7 @@ export default class DiagnoticsProvider extends Provider {
     return async () => {
       return await new Promise<boolean>((resolve, reject) => {
         const { enabled, nwnHome, reportWarnings, nwnInstallation, verbose } = this.server.config.compiler;
-        if (!enabled) {
+        if (!enabled || uri.includes("nwscript.nss")) {
           return resolve(true);
         }
 

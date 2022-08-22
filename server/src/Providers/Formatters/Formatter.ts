@@ -1,9 +1,10 @@
 import { fileURLToPath } from "url";
+import { Range, TextDocument, TextEdit } from "vscode-languageserver-textdocument";
 
 import { WorkspaceFilesSystem } from "../../WorkspaceFilesSystem";
 import { Logger } from "../../Logger";
 
-export default class Formatter {
+export default abstract class Formatter {
   constructor(
     protected readonly workspaceFilesSystem: WorkspaceFilesSystem,
     protected readonly enabled: boolean,
@@ -21,4 +22,6 @@ export default class Formatter {
       return this.workspaceFilesSystem.getGlobPaths(glob).some((path) => path === documentPath);
     });
   }
+
+  protected abstract formatDocument(document: TextDocument, range: Range | null): Promise<TextEdit[] | null>;
 }

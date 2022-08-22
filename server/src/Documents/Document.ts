@@ -39,7 +39,13 @@ export default class Document {
   }
 
   public getGlobalComplexTokensWithRef(computedChildren: string[] = []): OwnedComplexTokens[] {
-    return [{ owner: this.uri, tokens: this.complexTokens }].concat(
+    const localStandardLibDefinitions = this.collection.get("nwscript");
+    return [
+      { owner: this.uri, tokens: this.complexTokens },
+      ...(localStandardLibDefinitions
+        ? [{ owner: localStandardLibDefinitions.uri, tokens: localStandardLibDefinitions.complexTokens }]
+        : []),
+    ].concat(
       this.children.flatMap((child) => {
         // Cycling children or/and duplicates
         if (computedChildren.includes(child)) {
@@ -59,25 +65,27 @@ export default class Document {
     );
   }
 
-  public getGlobalComplexTokens(computedChildren: string[] = []): ComplexToken[] {
-    return this.complexTokens.concat(
-      this.children.flatMap((child) => {
-        // Cycling children or/and duplicates
-        if (computedChildren.includes(child)) {
-          return [];
-        } else {
-          computedChildren.push(child);
-        }
+  public getGlobalComplexTokens(computedChildren: string[] = [], localFunctionIdentifiers: string[] = []): ComplexToken[] {
+    return this.complexTokens
+      .filter((token) => !localFunctionIdentifiers.includes(token.identifier))
+      .concat(
+        this.children.flatMap((child) => {
+          // Cycling children or/and duplicates
+          if (computedChildren.includes(child)) {
+            return [];
+          } else {
+            computedChildren.push(child);
+          }
 
-        const childDocument = this.collection.get(child);
+          const childDocument = this.collection.get(child);
 
-        if (!childDocument) {
-          return [];
-        }
+          if (!childDocument) {
+            return [];
+          }
 
-        return childDocument.getGlobalComplexTokens(computedChildren);
-      }),
-    );
+          return childDocument.getGlobalComplexTokens(computedChildren);
+        }),
+      );
   }
 
   public getGlobalStructComplexTokensWithRef(computedChildren: string[] = []): OwnedStructComplexTokens[] {

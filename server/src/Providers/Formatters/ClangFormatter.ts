@@ -1,25 +1,28 @@
 import { spawn } from "child_process";
 import { parser, Tag } from "sax";
-import { Range } from "vscode-languageserver";
-import { TextDocument, TextEdit } from "vscode-languageserver-textdocument";
+import { TextDocument, Range, TextEdit } from "vscode-languageserver-textdocument";
 
 import Formatter from "./Formatter";
 
-type CurrentEdit = { length: number; offset: number; text: string } | null;
+type CurrentEdit = { length: number; offset: number; text: string };
+
 export default class ClangFormatter extends Formatter {
-  private xmlParseOnText(currentEdit: CurrentEdit) {
+  edits: TextEdit[] = [];
+  currentEdit: CurrentEdit | null = null;
+
+  private xmlParseOnText() {
     return (text: string) => {
-      if (!currentEdit) {
+      if (!this.currentEdit) {
         return;
       }
 
-      currentEdit.text = text;
+      this.currentEdit.text = text;
     };
   }
 
-  private xmlParserOnOpenTag(currentEdit: CurrentEdit, reject: (reason: any) => void) {
+  private xmlParserOnOpenTag(reject: (reason: any) => void) {
     return (tag: Tag) => {
-      if (currentEdit) {
+      if (this.currentEdit) {
         reject(new Error("Malformed output."));
       }
 
@@ -28,7 +31,7 @@ export default class ClangFormatter extends Formatter {
           return;
 
         case "replacement":
-          currentEdit = {
+          this.currentEdit = {
             length: parseInt(tag.attributes.length.toString()),
             offset: parseInt(tag.attributes.offset.toString()),
             text: "",
@@ -41,17 +44,17 @@ export default class ClangFormatter extends Formatter {
     };
   }
 
-  private xmlParserOnCloseTag(document: TextDocument, edits: TextEdit[], currentEdit: CurrentEdit) {
+  private xmlParserOnCloseTag(document: TextDocument) {
     return () => {
-      if (!currentEdit) {
+      if (!this.currentEdit) {
         return;
       }
 
-      const start = document.positionAt(currentEdit.offset);
-      const end = document.positionAt(currentEdit.offset + currentEdit.length);
+      const start = document.positionAt(this.currentEdit.offset);
+      const end = document.positionAt(this.currentEdit.offset + this.currentEdit.length);
 
-      edits.push({ range: { start, end }, newText: currentEdit.text });
-      currentEdit = null;
+      this.edits.push({ range: { start, end }, newText: this.currentEdit.text });
+      this.currentEdit = null;
     };
   }
 
@@ -81,7 +84,9 @@ export default class ClangFormatter extends Formatter {
         this.logger.info(`Resolving clang-format's executable with: ${this.executable}.`);
       }
 
-      const child = spawn(this.executable, args, { shell: true });
+      const child = spawn(this.executable, args, {
+        cwd: this.workspaceFilesSystem.getWorkspaceRootPath(),
+      });
 
       child.stdin.end(document.getText());
       child.stdout.on("data", (chunk: string) => (stdout += chunk));
@@ -98,17 +103,15 @@ export default class ClangFormatter extends Formatter {
           reject(new Error(stderr));
         }
 
-        let currentEdit: CurrentEdit = null;
-        const edits: TextEdit[] = [];
         const xmlParser = parser(true, {
           trim: false,
           normalize: false,
         });
 
         xmlParser.onerror = (err) => reject(err);
-        xmlParser.ontext = this.xmlParseOnText(currentEdit);
-        xmlParser.onopentag = this.xmlParserOnOpenTag(currentEdit, reject);
-        xmlParser.onclosetag = this.xmlParserOnCloseTag(document, edits, currentEdit);
+        xmlParser.ontext = this.xmlParseOnText();
+        xmlParser.onopentag = this.xmlParserOnOpenTag(reject);
+        xmlParser.onclosetag = this.xmlParserOnCloseTag(document);
         xmlParser.write(stdout);
         xmlParser.end();
 
@@ -116,7 +119,7 @@ export default class ClangFormatter extends Formatter {
           this.logger.info("Done.\n");
         }
 
-        resolve(edits);
+        resolve(this.edits);
       });
     });
   }

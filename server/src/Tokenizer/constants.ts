@@ -35,6 +35,7 @@ export enum LanguageScopes {
   functionCall = "meta.function-call.nss",
   functionDeclaration = "meta.function.nss",
   functionParameter = "variable.parameter.nss",
+  functionParameters = "meta.function.definition.parameters.nss",
   block = "meta.block.nss",
   blockDeclaraction = "punctuation.section.block.begin.bracket.curly.nss",
   blockTermination = "punctuation.section.block.end.bracket.curly.nss",

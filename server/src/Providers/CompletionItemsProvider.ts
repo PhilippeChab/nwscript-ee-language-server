@@ -61,7 +61,7 @@ export default class CompletionItemsProvider extends Provider {
           }
 
           return this.getLocalScopeCompletionItems(localScope)
-            .concat(this.getGlobalScopeCompletionItems(document))
+            .concat(this.getGlobalScopeCompletionItems(document, localScope))
             .concat(this.getStandardLibCompletionItems());
         }
       }
@@ -77,8 +77,15 @@ export default class CompletionItemsProvider extends Provider {
     return functionVariablesCompletionItems.concat(functionsCompletionItems);
   }
 
-  private getGlobalScopeCompletionItems(document: Document | undefined) {
-    return document?.getGlobalComplexTokens().map((token) => CompletionItemBuilder.buildItem(token)) || [];
+  private getGlobalScopeCompletionItems(document: Document | undefined, localScope: LocalScopeTokenizationResult) {
+    return (
+      document
+        ?.getGlobalComplexTokens(
+          [],
+          localScope.functionsComplexTokens.map((token) => token.identifier),
+        )
+        .map((token) => CompletionItemBuilder.buildItem(token)) || []
+    );
   }
 
   private getStandardLibCompletionItems() {

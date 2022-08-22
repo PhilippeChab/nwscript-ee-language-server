@@ -2402,7 +2402,7 @@
     "storage_types": {
       "patterns": [
         {
-          "match": "(const){0,1} *\\b(action|effect|event|float|int|itemproperty|location|object|string|talent|vector|void|json|sqlquery|cassowary)\\b (?(1)(\\S*)|)",
+          "match": "(const){0,1} *\\b(action|effect|event|float|int|itemproperty|location|object|string|talent|vector|void|json|sqlquery|cassowary)\\b (?(1)([a-zA-Z0-9_]+)|)",
           "captures": {
             "1": {
               "name": "storage.modifier.nss"

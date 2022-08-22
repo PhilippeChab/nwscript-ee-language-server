@@ -110,7 +110,8 @@ export default class Tokenizer {
   private getInlineFunctionParams(line: string, lineIndex: number, tokensArray: IToken[]) {
     const functionParamTokens = tokensArray.filter(
       (token) =>
-        token.scopes.includes(LanguageScopes.functionParameter) || token.scopes.includes(LanguageScopes.variableIdentifer),
+        token.scopes.includes(LanguageScopes.functionParameters) &&
+        (token.scopes.includes(LanguageScopes.functionParameter) || token.scopes.includes(LanguageScopes.variableIdentifer)),
     );
 
     return functionParamTokens.map((token) => {
@@ -167,7 +168,14 @@ export default class Tokenizer {
     while (!isLastParamsLine) {
       isLastParamsLine = Boolean(tokensArray.find((token) => token.scopes.includes(LanguageScopes.rightParametersRoundBracket)));
 
-      if (isLastParamsLine && Boolean(tokensArray.find((token) => token.scopes.includes(LanguageScopes.terminatorStatement)))) {
+      if (
+        isLastParamsLine &&
+        Boolean(
+          tokensArray.find(
+            (token) => token.scopes.includes(LanguageScopes.terminatorStatement) && !token.scopes.includes(LanguageScopes.block),
+          ),
+        )
+      ) {
         isFunctionDeclaration = true;
       }
 
