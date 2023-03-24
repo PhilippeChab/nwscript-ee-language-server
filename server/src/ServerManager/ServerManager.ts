@@ -101,7 +101,6 @@ export default class ServerManger {
       if (Object.keys(cluster.workers || {}).length === 0) {
         progressReporter?.done();
         this.hasIndexedDocuments = true;
-        console.log(filesIndexedCount);
         diagnosticsProvider?.processDocumentsWaitingForPublish();
       }
     });
