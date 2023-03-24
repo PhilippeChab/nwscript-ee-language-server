@@ -49,4 +49,8 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
 
     this.overwriteDocument(this.initializeDocument(document.uri, globalScope));
   }
+
+  public debug() {
+    this.forEach((document) => document.debug());
+  }
 }

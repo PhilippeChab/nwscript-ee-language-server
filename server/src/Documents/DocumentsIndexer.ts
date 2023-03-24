@@ -9,6 +9,9 @@ const generateTokens = async (filesPath: string[]) => {
     exit(0);
   }
 
+  console.log("Indexer ...");
+  console.log(JSON.stringify(filesPath, null, 2));
+  console.log(".");
   const tokenizer = await new Tokenizer().loadGrammar();
   for (let i = 0; i < filesPath.length; i++) {
     const filePath = filesPath[i];

@@ -85,7 +85,7 @@ export default class ServerManger {
     const filesCount = filesPath.length;
 
     progressReporter.begin("Indexing files for NWScript: EE LSP ...", 0);
-    const partCount = filesCount / numCPUs;
+    const partCount = Math.ceil(filesCount / numCPUs);
     for (let i = 0; i < Math.min(numCPUs, filesCount); i++) {
       const worker = cluster.fork();
       worker.send(filesPath.slice(i * partCount, Math.min((i + 1) * partCount, filesCount - 1)).join(","));
@@ -101,6 +101,7 @@ export default class ServerManger {
       if (Object.keys(cluster.workers || {}).length === 0) {
         progressReporter?.done();
         this.hasIndexedDocuments = true;
+        console.log(filesIndexedCount);
         diagnosticsProvider?.processDocumentsWaitingForPublish();
       }
     });
