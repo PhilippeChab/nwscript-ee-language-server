@@ -28,6 +28,6 @@ export default class Dictionnary<K extends string, V> {
   }
 
   public debug() {
-    console.log(JSON.stringify(Object.keys(this._dict)));
+    console.log(JSON.stringify(Object.keys(this._dict), null, 2));
   }
 }
