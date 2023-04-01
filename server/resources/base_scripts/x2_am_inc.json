@@ -1,0 +1,1002 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 28,
+                "character": 10
+            },
+            "identifier": "LEISURE_THRESHHOLD",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "100"
+        },
+        {
+            "position": {
+                "line": 29,
+                "character": 10
+            },
+            "identifier": "EVENT_NEEDMOREPATRONS",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5000"
+        },
+        {
+            "position": {
+                "line": 30,
+                "character": 11
+            },
+            "identifier": "EVENT_IT_SHOUTS",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "5001"
+        },
+        {
+            "position": {
+                "line": 31,
+                "character": 11
+            },
+            "identifier": "EVENT_NOTIT_SHOUTS",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "5002"
+        },
+        {
+            "position": {
+                "line": 32,
+                "character": 10
+            },
+            "identifier": "EVENT_IAMTHEHUNTER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5003"
+        },
+        {
+            "position": {
+                "line": 34,
+                "character": 10
+            },
+            "identifier": "LISTEN_MOVETOTOWNHUB",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "999"
+        },
+        {
+            "position": {
+                "line": 36,
+                "character": 10
+            },
+            "identifier": "LISTEN_SOMEONEISIT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "998"
+        },
+        {
+            "position": {
+                "line": 37,
+                "character": 11
+            },
+            "identifier": "LISTEN_IHUNTYOU",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "997"
+        },
+        {
+            "position": {
+                "line": 38,
+                "character": 10
+            },
+            "identifier": "LISTEN_IAMNOTIT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "996"
+        },
+        {
+            "position": {
+                "line": 39,
+                "character": 10
+            },
+            "identifier": "LISTEN_GOAWAY",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "995"
+        },
+        {
+            "position": {
+                "line": 43,
+                "character": 10
+            },
+            "identifier": "PLOT_COST_ALE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 44,
+                "character": 10
+            },
+            "identifier": "PLOT_COST_SPIRITS",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5"
+        },
+        {
+            "position": {
+                "line": 45,
+                "character": 10
+            },
+            "identifier": "PLOT_COST_WINE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "10"
+        },
+        {
+            "position": {
+                "line": 46,
+                "character": 12
+            },
+            "identifier": "fDelayBetweenBarmaidAskingForDrinks",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "60.0"
+        },
+        {
+            "position": {
+                "line": 47,
+                "character": 12
+            },
+            "identifier": "FPATRONDELAY",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "40.0"
+        },
+        {
+            "position": {
+                "line": 48,
+                "character": 12
+            },
+            "identifier": "DISTANCE_TALKHUB",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "4.0"
+        },
+        {
+            "position": {
+                "line": 50,
+                "character": 12
+            },
+            "identifier": "DISTANCE_OBJECT_TALK",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "10.0"
+        },
+        {
+            "position": {
+                "line": 53,
+                "character": 10
+            },
+            "identifier": "JOB_BARMAID",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1000"
+        },
+        {
+            "position": {
+                "line": 58,
+                "character": 33
+            },
+            "identifier": "BarmaidMakeDrink",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 58,
+                        "character": 57
+                    },
+                    "identifier": "sDrink",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 58,
+                        "character": 69
+                    },
+                    "identifier": "nAmount",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 59,
+                "character": 33
+            },
+            "identifier": "BarmaidMakeDrunk",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 59,
+                        "character": 57
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 59,
+                        "character": 70
+                    },
+                    "identifier": "nPoints",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 61,
+                "character": 33
+            },
+            "identifier": "SetupInn1DrinkPrices",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 62,
+                "character": 10
+            },
+            "identifier": "JOB_BLACKSMITH",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1001"
+        },
+        {
+            "position": {
+                "line": 67,
+                "character": 10
+            },
+            "identifier": "JOB_GUARD1",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1002"
+        },
+        {
+            "position": {
+                "line": 72,
+                "character": 10
+            },
+            "identifier": "JOB_PATRON",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1003"
+        },
+        {
+            "position": {
+                "line": 77,
+                "character": 10
+            },
+            "identifier": "JOB_TAG_NOTIT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1004"
+        },
+        {
+            "position": {
+                "line": 78,
+                "character": 10
+            },
+            "identifier": "JOB_TAG_IT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1005"
+        },
+        {
+            "position": {
+                "line": 79,
+                "character": 10
+            },
+            "identifier": "JOB_FRIEND",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1006"
+        },
+        {
+            "position": {
+                "line": 81,
+                "character": 10
+            },
+            "identifier": "JOB_WANDER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1007"
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 10
+            },
+            "identifier": "JOB_HUNTER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1008"
+        },
+        {
+            "position": {
+                "line": 84,
+                "character": 10
+            },
+            "identifier": "JOB_GUARD2",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1009"
+        },
+        {
+            "position": {
+                "line": 90,
+                "character": 10
+            },
+            "identifier": "TASK_WORK_CLEANING",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1000"
+        },
+        {
+            "position": {
+                "line": 91,
+                "character": 10
+            },
+            "identifier": "TASK_WORK_ANVIL",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1001"
+        },
+        {
+            "position": {
+                "line": 92,
+                "character": 10
+            },
+            "identifier": "TASK_WORK_LAMPPOST",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1002"
+        },
+        {
+            "position": {
+                "line": 93,
+                "character": 10
+            },
+            "identifier": "TASK_LEISURE_READBOOK",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1003"
+        },
+        {
+            "position": {
+                "line": 94,
+                "character": 10
+            },
+            "identifier": "TASK_LEISURE_SIT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1004"
+        },
+        {
+            "position": {
+                "line": 98,
+                "character": 4
+            },
+            "identifier": "GetReady",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 98,
+                        "character": 20
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// * Only returns true if the object is ready",
+                "// * to be given more actions or to be interrupted"
+            ]
+        },
+        {
+            "position": {
+                "line": 100,
+                "character": 5
+            },
+            "identifier": "GoToRandomPersonAndInit",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 100,
+                        "character": 36
+                    },
+                    "identifier": "oMe",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 100,
+                        "character": 48
+                    },
+                    "identifier": "sLocalIntName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 100,
+                        "character": 70
+                    },
+                    "identifier": "nLocalIntCannotEqualThisNumber",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Will go up to a valid bar patron (not associates)."
+            ]
+        },
+        {
+            "position": {
+                "line": 101,
+                "character": 4
+            },
+            "identifier": "IsAtJob",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 101,
+                        "character": 19
+                    },
+                    "identifier": "oNPC",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 103,
+                "character": 4
+            },
+            "identifier": "PlayerSeen",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 103,
+                        "character": 22
+                    },
+                    "identifier": "oMe",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": [
+                "// Can a player be seen?"
+            ]
+        },
+        {
+            "position": {
+                "line": 106,
+                "character": 4
+            },
+            "identifier": "GetAmbientBusy",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 106,
+                        "character": 26
+                    },
+                    "identifier": "oSelf",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": [
+                "//* Returns true if the ambient is currently working on a task assigned by",
+                "// * (a) Placeable Objects"
+            ]
+        },
+        {
+            "position": {
+                "line": 108,
+                "character": 5
+            },
+            "identifier": "SetAmbientBusy",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 108,
+                        "character": 24
+                    },
+                    "identifier": "bTrue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 108,
+                        "character": 38
+                    },
+                    "identifier": "oSelf",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": [
+                "// * sets ambient on"
+            ]
+        },
+        {
+            "position": {
+                "line": 111,
+                "character": 4
+            },
+            "identifier": "GetInTransition",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 111,
+                        "character": 27
+                    },
+                    "identifier": "oSelf",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": [
+                "// * Transit is set when the character is walking between areas",
+                "// * like the barmaid going home during the day"
+            ]
+        },
+        {
+            "position": {
+                "line": 114,
+                "character": 5
+            },
+            "identifier": "SetInTransition",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 114,
+                        "character": 25
+                    },
+                    "identifier": "bTrue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 114,
+                        "character": 39
+                    },
+                    "identifier": "oSelf",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": [
+                "// * Transit is set when the character is walking between areas",
+                "// * like the barmaid going home during the day"
+            ]
+        },
+        {
+            "position": {
+                "line": 119,
+                "character": 5
+            },
+            "identifier": "PlayRandomImmobileAnimation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "comments": [
+                "// * Plays a random animation"
+            ]
+        },
+        {
+            "position": {
+                "line": 121,
+                "character": 5
+            },
+            "identifier": "JobBarPatron",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 121,
+                        "character": 25
+                    },
+                    "identifier": "oSelf",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// * bar patron job task"
+            ]
+        },
+        {
+            "position": {
+                "line": 124,
+                "character": 5
+            },
+            "identifier": "SetJob",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 124,
+                        "character": 16
+                    },
+                    "identifier": "nJob",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 124,
+                        "character": 29
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                },
+                {
+                    "position": {
+                        "line": 124,
+                        "character": 56
+                    },
+                    "identifier": "nTownTalker",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                },
+                {
+                    "position": {
+                        "line": 124,
+                        "character": 84
+                    },
+                    "identifier": "sResRef",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// * CALLED FROM : Spawn In Script",
+                "// * PURPOSE: Defines why this NPC exists"
+            ]
+        },
+        {
+            "position": {
+                "line": 125,
+                "character": 4
+            },
+            "identifier": "GetJob",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 125,
+                        "character": 18
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 128,
+                "character": 5
+            },
+            "identifier": "DoJob",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 128,
+                        "character": 18
+                    },
+                    "identifier": "oSelf",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": [
+                "// * IMPORTANT: Main performing a job function for creatures"
+            ]
+        },
+        {
+            "position": {
+                "line": 130,
+                "character": 5
+            },
+            "identifier": "IncrementLeisure",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 130,
+                        "character": 26
+                    },
+                    "identifier": "nValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 130,
+                        "character": 40
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 131,
+                "character": 5
+            },
+            "identifier": "DecrementLeisure",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 131,
+                        "character": 26
+                    },
+                    "identifier": "nValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 131,
+                        "character": 40
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 132,
+                "character": 4
+            },
+            "identifier": "GetLeisure",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 132,
+                        "character": 22
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 134,
+                "character": 5
+            },
+            "identifier": "CreateRat",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "comments": [
+                "// * Creates a rat (called by Rat 'see baddy' and Garbage scripts)"
+            ]
+        },
+        {
+            "position": {
+                "line": 138,
+                "character": 5
+            },
+            "identifier": "Face",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 138,
+                        "character": 17
+                    },
+                    "identifier": "oNPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 138,
+                        "character": 30
+                    },
+                    "identifier": "oToFace",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// ******************HUB FUNCTIONS******************************",
+                "// * makes oNPC face oToFace"
+            ]
+        },
+        {
+            "position": {
+                "line": 140,
+                "character": 5
+            },
+            "identifier": "AskPatronToLeave",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 140,
+                        "character": 29
+                    },
+                    "identifier": "oFirst",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// * TownHub: Makes patron leave randomly, or if another hub asks for him"
+            ]
+        },
+        {
+            "position": {
+                "line": 142,
+                "character": 4
+            },
+            "identifier": "CreatureValidForHubUse",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 142,
+                        "character": 34
+                    },
+                    "identifier": "oCreature",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// * Creatures true if this is an acceptable creature for use in the conversation hub"
+            ]
+        },
+        {
+            "position": {
+                "line": 145,
+                "character": 4
+            },
+            "identifier": "NoPlayerInArea",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": [
+                "// * returns true if there is no player in the area",
+                "// * has to be ran from an object"
+            ]
+        },
+        {
+            "position": {
+                "line": 152,
+                "character": 5
+            },
+            "identifier": "Request",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 152,
+                        "character": 17
+                    },
+                    "identifier": "nTask",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 152,
+                        "character": 30
+                    },
+                    "identifier": "fActivationThreshold",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 152,
+                        "character": 58
+                    },
+                    "identifier": "fMoveThisClose",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 152,
+                        "character": 81
+                    },
+                    "identifier": "oSelf",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": [
+                "// * Asks the appropriate creature to perform a LEISURE or WORK task",
+                "// * The object MUST be the nearest object to be able to comply with the request"
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

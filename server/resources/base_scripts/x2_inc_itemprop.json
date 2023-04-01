@@ -1,0 +1,1216 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 23,
+                "character": 14
+            },
+            "identifier": "X2_IP_WORK_CONTAINER_TAG",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "\"x2_plc_ipbox\""
+        },
+        {
+            "position": {
+                "line": 25,
+                "character": 13
+            },
+            "identifier": "X2_IP_ADDRPOP_2DA",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"des_crft_props\""
+        },
+        {
+            "position": {
+                "line": 27,
+                "character": 13
+            },
+            "identifier": "X2_IP_POISONWEAPON_2DA",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"des_crft_poison\""
+        },
+        {
+            "position": {
+                "line": 29,
+                "character": 13
+            },
+            "identifier": "X2_IP_ARMORPARTS_2DA",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"des_crft_aparts\""
+        },
+        {
+            "position": {
+                "line": 31,
+                "character": 13
+            },
+            "identifier": "X2_IP_ARMORAPPEARANCE_2DA",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"des_crft_appear\""
+        },
+        {
+            "position": {
+                "line": 34,
+                "character": 13
+            },
+            "identifier": "XP_IP_ITEMMODCONVERSATION_CTOKENBASE",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "12220"
+        },
+        {
+            "position": {
+                "line": 35,
+                "character": 13
+            },
+            "identifier": "X2_IP_ITEMMODCONVERSATION_MODE_TAILOR",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 36,
+                "character": 13
+            },
+            "identifier": "X2_IP_ITEMMODCONVERSATION_MODE_CRAFT",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 39,
+                "character": 13
+            },
+            "identifier": "X2_IP_MAX_ITEM_PROPERTIES",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "8"
+        },
+        {
+            "position": {
+                "line": 42,
+                "character": 13
+            },
+            "identifier": "X2_IP_ARMORTYPE_NEXT",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 43,
+                "character": 13
+            },
+            "identifier": "X2_IP_ARMORTYPE_PREV",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 44,
+                "character": 13
+            },
+            "identifier": "X2_IP_ARMORTYPE_RANDOM",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 45,
+                "character": 13
+            },
+            "identifier": "X2_IP_WEAPONTYPE_NEXT",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 46,
+                "character": 13
+            },
+            "identifier": "X2_IP_WEAPONTYPE_PREV",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 47,
+                "character": 13
+            },
+            "identifier": "X2_IP_WEAPONTYPE_RANDOM",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 50,
+                "character": 13
+            },
+            "identifier": "X2_IP_ADDPROP_POLICY_REPLACE_EXISTING",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 51,
+                "character": 13
+            },
+            "identifier": "X2_IP_ADDPROP_POLICY_KEEP_EXISTING",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 52,
+                "character": 13
+            },
+            "identifier": "X2_IP_ADDPROP_POLICY_IGNORE_EXISTING",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 56,
+                "character": 6
+            },
+            "identifier": "IPRemoveMatchingItemProperties",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 56,
+                        "character": 45
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 56,
+                        "character": 56
+                    },
+                    "identifier": "nItemPropertyType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 56,
+                        "character": 79
+                    },
+                    "identifier": "nItemPropertyDuration",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "DURATION_TYPE_TEMPORARY"
+                },
+                {
+                    "position": {
+                        "line": 56,
+                        "character": 132
+                    },
+                    "identifier": "nItemPropertySubType",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "-1"
+                }
+            ],
+            "comments": [
+                "// *  removes all itemproperties with matching nItemPropertyType and nItemPropertyDuration"
+            ]
+        },
+        {
+            "position": {
+                "line": 59,
+                "character": 6
+            },
+            "identifier": "IPRemoveAllItemProperties",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 59,
+                        "character": 40
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 59,
+                        "character": 51
+                    },
+                    "identifier": "nItemPropertyDuration",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "DURATION_TYPE_TEMPORARY"
+                }
+            ],
+            "comments": [
+                "// *  Removes ALL item properties from oItem matching nItemPropertyDuration"
+            ]
+        },
+        {
+            "position": {
+                "line": 63,
+                "character": 6
+            },
+            "identifier": "IPGetIsItemEquipable",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 63,
+                        "character": 35
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *  returns TRUE if item can be equipped.",
+                "// *  Uses Get2DAString, so do not use in a loop!"
+            ]
+        },
+        {
+            "position": {
+                "line": 71,
+                "character": 7
+            },
+            "identifier": "IPDyeArmor",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 26
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 37
+                    },
+                    "identifier": "nColorType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 53
+                    },
+                    "identifier": "nColor",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *  Changes the color of an item armor",
+                "// *  oItem        - The armor",
+                "// *  nColorType   - ITEM_APPR_ARMOR_COLOR_* constant",
+                "// *  nColor       - color from 0 to 63",
+                "// *  Since oItem is destroyed in the process, the function returns",
+                "// *  the item created with the color changed"
+            ]
+        },
+        {
+            "position": {
+                "line": 75,
+                "character": 7
+            },
+            "identifier": "IPGetIPWorkContainer",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 75,
+                        "character": 36
+                    },
+                    "identifier": "oCaller",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": [
+                "// *  Returns the container used for item property and appearance modifications in the",
+                "// *  module. If it does not exist, create it."
+            ]
+        },
+        {
+            "position": {
+                "line": 79,
+                "character": 13
+            },
+            "identifier": "IPGetItemPropertyByID",
+            "tokenType": 3,
+            "returnType": "itemproperty",
+            "params": [
+                {
+                    "position": {
+                        "line": 79,
+                        "character": 40
+                    },
+                    "identifier": "nPropID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 79,
+                        "character": 53
+                    },
+                    "identifier": "nParam1",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                },
+                {
+                    "position": {
+                        "line": 79,
+                        "character": 70
+                    },
+                    "identifier": "nParam2",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                },
+                {
+                    "position": {
+                        "line": 79,
+                        "character": 87
+                    },
+                    "identifier": "nParam3",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                },
+                {
+                    "position": {
+                        "line": 79,
+                        "character": 104
+                    },
+                    "identifier": "nParam4",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "comments": [
+                "// *  This function needs to be rather extensive and needs to be updated if there are new",
+                "// *  ip types we want to use, but it goes into the item property include anyway"
+            ]
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 6
+            },
+            "identifier": "IPGetIsRangedWeapon",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 82,
+                        "character": 34
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *  returns TRUE if oItem is a ranged weapon"
+            ]
+        },
+        {
+            "position": {
+                "line": 85,
+                "character": 6
+            },
+            "identifier": "IPGetIsMeleeWeapon",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 85,
+                        "character": 33
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *  return TRUE if oItem is a melee weapon"
+            ]
+        },
+        {
+            "position": {
+                "line": 88,
+                "character": 6
+            },
+            "identifier": "IPGetIsProjectile",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 88,
+                        "character": 32
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *  return TRUE if oItem is a projectile (bolt, arrow, etc)"
+            ]
+        },
+        {
+            "position": {
+                "line": 92,
+                "character": 6
+            },
+            "identifier": "IPGetIsBludgeoningWeapon",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 92,
+                        "character": 39
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *  returns true if weapon is blugeoning (used for poison)",
+                "// *  This uses Get2DAstring, so it is slow. Avoid using in loops!"
+            ]
+        },
+        {
+            "position": {
+                "line": 97,
+                "character": 6
+            },
+            "identifier": "IPGetIPConstCastSpellFromSpellID",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 97,
+                        "character": 44
+                    },
+                    "identifier": "nSpellID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *  Return the IP_CONST_CASTSPELL_* ID matching to the SPELL_* constant given in nSPELL_ID",
+                "// *  This uses Get2DAstring, so it is slow. Avoid using in loops!",
+                "// *  returns -1 if there is no matching property for a spell"
+            ]
+        },
+        {
+            "position": {
+                "line": 103,
+                "character": 6
+            },
+            "identifier": "IPGetItemHasItemOnHitPropertySubType",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 103,
+                        "character": 51
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 103,
+                        "character": 64
+                    },
+                    "identifier": "nSubType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *  Returns TRUE if an item has ITEM_PROPERTY_ON_HIT and the specified nSubType",
+                "// *  possible values for nSubType can be taken from IPRP_ONHIT.2da",
+                "// *  popular ones:",
+                "// *  5 - Daze   19 - ItemPoison   24 - Vorpal"
+            ]
+        },
+        {
+            "position": {
+                "line": 108,
+                "character": 6
+            },
+            "identifier": "IPGetNumberOfAppearances",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 108,
+                        "character": 36
+                    },
+                    "identifier": "nPart",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *  Returns the number of possible armor part variations for the specified part",
+                "// *  nPart - ITEM_APPR_ARMOR_MODEL_* constant",
+                "// *  Uses Get2DAstring, so do not use in loops"
+            ]
+        },
+        {
+            "position": {
+                "line": 114,
+                "character": 6
+            },
+            "identifier": "IPGetNextArmorAppearanceType",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 114,
+                        "character": 42
+                    },
+                    "identifier": "oArmor",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 114,
+                        "character": 54
+                    },
+                    "identifier": "nPart",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *  Returns the next valid appearance type for oArmor",
+                "// *  nPart - ITEM_APPR_ARMOR_MODEL_* constant",
+                "// *  Uses Get2DAstring, so do not use in loops"
+            ]
+        },
+        {
+            "position": {
+                "line": 119,
+                "character": 6
+            },
+            "identifier": "IPGetPrevArmorAppearanceType",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 119,
+                        "character": 42
+                    },
+                    "identifier": "oArmor",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 119,
+                        "character": 54
+                    },
+                    "identifier": "nPart",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *  Returns the previous valid appearance type for oArmor",
+                "// *  nPart - ITEM_APPR_ARMOR_MODEL_* constant",
+                "// *  Uses Get2DAstring, so do not use in loops"
+            ]
+        },
+        {
+            "position": {
+                "line": 124,
+                "character": 6
+            },
+            "identifier": "IPGetRandomArmorAppearanceType",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 124,
+                        "character": 44
+                    },
+                    "identifier": "oArmor",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 124,
+                        "character": 56
+                    },
+                    "identifier": "nPart",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *  Returns a random valid appearance type for oArmor",
+                "// *  nPart - ITEM_APPR_ARMOR_MODEL_* constant",
+                "// *  Uses Get2DAstring, so do not use in loops"
+            ]
+        },
+        {
+            "position": {
+                "line": 135,
+                "character": 7
+            },
+            "identifier": "IPGetModifiedArmor",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 33
+                    },
+                    "identifier": "oArmor",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 45
+                    },
+                    "identifier": "nPart",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 56
+                    },
+                    "identifier": "nMode",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 67
+                    },
+                    "identifier": "bDestroyOldOnSuccess",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// * Returns a new armor based of oArmor with nPartModified",
+                "// * nPart - ITEM_APPR_ARMOR_MODEL_* constant of the part to be changed",
+                "// * nMode -",
+                "// *        X2_IP_ARMORTYPE_NEXT    - next valid appearance",
+                "// *        X2_IP_ARMORTYPE_PREV    - previous valid apperance;",
+                "// *        X2_IP_ARMORTYPE_RANDOM  - random valid appearance;",
+                "// *",
+                "// * bDestroyOldOnSuccess - Destroy oArmor in process?",
+                "// * Uses Get2DAstring, so do not use in loops"
+            ]
+        },
+        {
+            "position": {
+                "line": 150,
+                "character": 6
+            },
+            "identifier": "IPSafeAddItemProperty",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 150,
+                        "character": 35
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 150,
+                        "character": 55
+                    },
+                    "identifier": "ip",
+                    "tokenType": 25,
+                    "valueType": "itemproperty"
+                },
+                {
+                    "position": {
+                        "line": 150,
+                        "character": 65
+                    },
+                    "identifier": "fDuration",
+                    "tokenType": 25,
+                    "valueType": "float",
+                    "defaultValue": ".0f"
+                },
+                {
+                    "position": {
+                        "line": 150,
+                        "character": 86
+                    },
+                    "identifier": "nAddItemPropertyPolicy",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "X2_IP_ADDPROP_POLICY_REPLACE_EXISTING"
+                },
+                {
+                    "position": {
+                        "line": 150,
+                        "character": 154
+                    },
+                    "identifier": "bIgnoreDurationType",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                },
+                {
+                    "position": {
+                        "line": 150,
+                        "character": 187
+                    },
+                    "identifier": "bIgnoreSubType",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                }
+            ],
+            "comments": [
+                "// *  Add an item property in a safe fashion, preventing unwanted stacking",
+                "// *  Parameters:",
+                "// *   oItem     - the item to add the property to",
+                "// *   ip        - the itemproperty to add",
+                "// *   fDuration - set 0.0f to add the property permanent, anything else is temporary",
+                "// *   nAddItemPropertyPolicy - How to handle existing properties. Valid values are:",
+                "// *      X2_IP_ADDPROP_POLICY_REPLACE_EXISTING - remove any property of the same type, subtype, durationtype before adding;",
+                "// *      X2_IP_ADDPROP_POLICY_KEEP_EXISTING - do not add if any property with same type, subtype and durationtype already exists;",
+                "// *      X2_IP_ADDPROP_POLICY_IGNORE_EXISTING - add itemproperty in any case - Do not Use with OnHit or OnHitSpellCast props!",
+                "// *",
+                "// *  bIgnoreDurationType - If set to TRUE, an item property will be considered identical even if the DurationType is different. Be careful when using this",
+                "// *                        with X2_IP_ADDPROP_POLICY_REPLACE_EXISTING, as this could lead to a temporary item property removing a permanent one",
+                "// *  bIgnoreSubType      - If set to TRUE an item property will be considered identical even if the SubType is different."
+            ]
+        },
+        {
+            "position": {
+                "line": 156,
+                "character": 6
+            },
+            "identifier": "IPGetItemHasProperty",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 156,
+                        "character": 34
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 156,
+                        "character": 54
+                    },
+                    "identifier": "ipCompareTo",
+                    "tokenType": 25,
+                    "valueType": "itemproperty"
+                },
+                {
+                    "position": {
+                        "line": 156,
+                        "character": 71
+                    },
+                    "identifier": "nDurationType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 156,
+                        "character": 90
+                    },
+                    "identifier": "bIgnoreSubType",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                }
+            ],
+            "comments": [
+                "// *  Wrapper for GetItemHasItemProperty that returns true if",
+                "// *  oItem has an itemproperty that matches ipCompareTo by Type AND DurationType AND SubType",
+                "// *  nDurationType = Valid DURATION_TYPE_* or -1 to ignore",
+                "// *  bIgnoreSubType - If set to TRUE an item property will be considered identical even if the SubType is different."
+            ]
+        },
+        {
+            "position": {
+                "line": 160,
+                "character": 6
+            },
+            "identifier": "IPGetItemSequencerProperty",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 160,
+                        "character": 40
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *  returns FALSE it the item has no sequencer property",
+                "// *  returns number of spells that can be stored in any other case"
+            ]
+        },
+        {
+            "position": {
+                "line": 163,
+                "character": 6
+            },
+            "identifier": "IPGetIsIntelligentWeapon",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 163,
+                        "character": 38
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *  returns TRUE if the item has the OnHit:IntelligentWeapon property."
+            ]
+        },
+        {
+            "position": {
+                "line": 167,
+                "character": 6
+            },
+            "identifier": "IPGetDamagePowerConstantFromNumber",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 167,
+                        "character": 45
+                    },
+                    "identifier": "nNumber",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *  Mapping between numbers and power constants for ITEM_PROPERTY_DAMAGE_BONUS",
+                "// *  returns the appropriate ITEM_PROPERTY_DAMAGE_POWER_* constant for nNumber"
+            ]
+        },
+        {
+            "position": {
+                "line": 171,
+                "character": 6
+            },
+            "identifier": "IPGetDamageBonusConstantFromNumber",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 171,
+                        "character": 45
+                    },
+                    "identifier": "nNumber",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *  returns the appropriate ITEM_PROPERTY_DAMAGE_BONUS_= constant for nNumber",
+                "// *  Do not pass in any number <1 ! Will return -1 on error"
+            ]
+        },
+        {
+            "position": {
+                "line": 177,
+                "character": 6
+            },
+            "identifier": "IPWildShapeCopyItemProperties",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 177,
+                        "character": 43
+                    },
+                    "identifier": "oOld",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 177,
+                        "character": 56
+                    },
+                    "identifier": "oNew",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 177,
+                        "character": 66
+                    },
+                    "identifier": "bWeapon",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                }
+            ],
+            "comments": [
+                "// *  Special Version of Copy Item Properties for use with greater wild shape",
+                "// *  oOld - Item equipped before polymorphing (source for item props)",
+                "// *  oNew - Item equipped after polymorphing  (target for item props)",
+                "// *  bWeapon - Must be set TRUE when oOld is a weapon."
+            ]
+        },
+        {
+            "position": {
+                "line": 183,
+                "character": 6
+            },
+            "identifier": "IPGetWeaponEnhancementBonus",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 183,
+                        "character": 41
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 183,
+                        "character": 54
+                    },
+                    "identifier": "nEnhancementBonusType",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "ITEM_PROPERTY_ENHANCEMENT_BONUS"
+                }
+            ],
+            "comments": [
+                "// *  Returns the current enhancement bonus of a weapon (+1 to +20), 0 if there is",
+                "// *  no enhancement bonus. You can test for a specific type of enhancement bonus",
+                "// *  by passing the appropritate ITEM_PROPERTY_ENHANCEMENT_BONUS* constant into",
+                "// *  nEnhancementBonusType"
+            ]
+        },
+        {
+            "position": {
+                "line": 188,
+                "character": 6
+            },
+            "identifier": "IPSetWeaponEnhancementBonus",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 188,
+                        "character": 41
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 188,
+                        "character": 54
+                    },
+                    "identifier": "nBonus",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 188,
+                        "character": 66
+                    },
+                    "identifier": "bOnlyIfHigher",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// *  Shortcut function to set the enhancement bonus of a weapon to a certain bonus",
+                "// *  Specifying bOnlyIfHigher as TRUE will prevent a bonus lower than the requested",
+                "// *  bonus from being applied. Valid values for nBonus are 1 to 20."
+            ]
+        },
+        {
+            "position": {
+                "line": 193,
+                "character": 6
+            },
+            "identifier": "IPUpgradeWeaponEnhancementBonus",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 193,
+                        "character": 45
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 193,
+                        "character": 58
+                    },
+                    "identifier": "nUpgradeBy",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *  Shortcut function to upgrade the enhancement bonus of a weapon by the",
+                "// *  number specified in nUpgradeBy. If the resulting new enhancement bonus",
+                "// *  would be out of bounds (>+20), it will be set to +20"
+            ]
+        },
+        {
+            "position": {
+                "line": 197,
+                "character": 6
+            },
+            "identifier": "IPGetHasItemPropertyOnCharacter",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 197,
+                        "character": 45
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 197,
+                        "character": 54
+                    },
+                    "identifier": "nItemPropertyConst",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *  Returns TRUE if a character has any item equipped that has the itemproperty",
+                "// *  defined in nItemPropertyConst in it (ITEM_PROPERTY_* constant)"
+            ]
+        },
+        {
+            "position": {
+                "line": 200,
+                "character": 6
+            },
+            "identifier": "IPGetNumberOfItemProperties",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 200,
+                        "character": 41
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *  Returns an integer with the number of properties present oItem"
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

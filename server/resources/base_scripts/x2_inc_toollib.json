@@ -1,0 +1,320 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 20,
+                "character": 10
+            },
+            "identifier": "X2_TL_GROUNDTILE_ICE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "426"
+        },
+        {
+            "position": {
+                "line": 21,
+                "character": 10
+            },
+            "identifier": "X2_TL_GROUNDTILE_WATER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "401"
+        },
+        {
+            "position": {
+                "line": 22,
+                "character": 10
+            },
+            "identifier": "X2_TL_GROUNDTILE_GRASS",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "402"
+        },
+        {
+            "position": {
+                "line": 23,
+                "character": 10
+            },
+            "identifier": "X2_TL_GROUNDTILE_LAVA_FOUNTAIN",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "349"
+        },
+        {
+            "position": {
+                "line": 24,
+                "character": 10
+            },
+            "identifier": "X2_TL_GROUNDTILE_LAVA",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "350"
+        },
+        {
+            "position": {
+                "line": 25,
+                "character": 10
+            },
+            "identifier": "X2_TL_GROUNDTILE_CAVEFLOOR",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "406"
+        },
+        {
+            "position": {
+                "line": 26,
+                "character": 10
+            },
+            "identifier": "X2_TL_GROUNDTILE_SEWER_WATER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "461"
+        },
+        {
+            "position": {
+                "line": 30,
+                "character": 5
+            },
+            "identifier": "TLVFXPillar",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 21
+                    },
+                    "identifier": "nVFX",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 36
+                    },
+                    "identifier": "lStart",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 48
+                    },
+                    "identifier": "nIterations",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 69
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 88
+                    },
+                    "identifier": "fZOffset",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 110
+                    },
+                    "identifier": "fStepSize",
+                    "tokenType": 25,
+                    "valueType": "float",
+                    "defaultValue": "-2.0f"
+                }
+            ],
+            "comments": [
+                "// Create a rising or falling pillar with a certain visual effect. Looks cool",
+                "// but quite expensive on the graphics engine, so don't get too mad with it"
+            ]
+        },
+        {
+            "position": {
+                "line": 41,
+                "character": 5
+            },
+            "identifier": "TLChangeAreaGroundTiles",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 41,
+                        "character": 36
+                    },
+                    "identifier": "oArea",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 41,
+                        "character": 47
+                    },
+                    "identifier": "nGroundTileConst",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 41,
+                        "character": 69
+                    },
+                    "identifier": "nColumns",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 41,
+                        "character": 83
+                    },
+                    "identifier": "nRows",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 41,
+                        "character": 96
+                    },
+                    "identifier": "fZOffset",
+                    "tokenType": 25,
+                    "valueType": "float",
+                    "defaultValue": "-0.4f"
+                }
+            ],
+            "comments": [
+                "// change the type of the ground or (by default) sub ground tiles (i.e. water) to the specified type",
+                "// Valid values are",
+                "// const int X2_TL_GROUNDTILE_ICE = 426;",
+                "// const int X2_TL_GROUNDTILE_WATER = 401;",
+                "// const int X2_TL_GROUNDTILE_GRASS = 402;",
+                "// const int X2_TL_GROUNDTILE_LAVA_FOUNTAIN = 349; // ugly",
+                "// const int X2_TL_GROUNDTILE_LAVA = 350;",
+                "// const int X2_TL_GROUNDTILE_CAVEFLOOR = 406;",
+                "// const int X2_TL_GROUNDTILE_SEWER_WATER = 461;"
+            ]
+        },
+        {
+            "position": {
+                "line": 43,
+                "character": 5
+            },
+            "identifier": "TLResetAreaGroundTiles",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 43,
+                        "character": 35
+                    },
+                    "identifier": "oArea",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 43,
+                        "character": 46
+                    },
+                    "identifier": "nColumns",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 43,
+                        "character": 60
+                    },
+                    "identifier": "nRows",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// remove any ground area tiles created with TLChangeAreaGroundTiles in current area"
+            ]
+        },
+        {
+            "position": {
+                "line": 46,
+                "character": 5
+            },
+            "identifier": "TLResetAreaGroundTilesEx",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 46,
+                        "character": 37
+                    },
+                    "identifier": "oArea",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// patch 1.67 version of TLResetAreaGroundTiles, auto determines height and width of the area"
+            ]
+        },
+        {
+            "position": {
+                "line": 49,
+                "character": 5
+            },
+            "identifier": "TLChangeAreaGroundTilesEx",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 49,
+                        "character": 38
+                    },
+                    "identifier": "oArea",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 49,
+                        "character": 49
+                    },
+                    "identifier": "nGroundTileConst",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 49,
+                        "character": 73
+                    },
+                    "identifier": "fZOffset",
+                    "tokenType": 25,
+                    "valueType": "float",
+                    "defaultValue": "-0.4f"
+                }
+            ],
+            "comments": [
+                "// patch 1.67 version of TLChangeAreaGroundTiles, auto determines height and width of the area"
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

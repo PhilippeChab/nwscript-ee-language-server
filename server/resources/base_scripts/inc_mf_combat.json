@@ -1,0 +1,51 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 15,
+                "character": 5
+            },
+            "identifier": "ActionPsionicMB",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 15,
+                        "character": 28
+                    },
+                    "identifier": "oSpellTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 17,
+                "character": 5
+            },
+            "identifier": "ActionPsionicCharm",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 17,
+                        "character": 31
+                    },
+                    "identifier": "oSpellTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        }
+    ],
+    "structComplexTokens": [],
+    "children": [
+        "NW_I0_GENERIC",
+        "NW_I0_SPELLS"
+    ]
+}

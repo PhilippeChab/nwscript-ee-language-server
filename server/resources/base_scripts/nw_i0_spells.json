@@ -1,0 +1,532 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 12,
+                "character": 10
+            },
+            "identifier": "NW_I0_SPELLS_MAX_BREACH",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "33"
+        },
+        {
+            "position": {
+                "line": 15,
+                "character": 5
+            },
+            "identifier": "TrapDoElectricalDamage",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 15,
+                        "character": 32
+                    },
+                    "identifier": "ngDamageMaster",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 15,
+                        "character": 52
+                    },
+                    "identifier": "nSaveDC",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 15,
+                        "character": 65
+                    },
+                    "identifier": "nSecondary",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// * Function for doing electrical traps"
+            ]
+        },
+        {
+            "position": {
+                "line": 23,
+                "character": 4
+            },
+            "identifier": "MyResistSpell",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 23,
+                        "character": 25
+                    },
+                    "identifier": "oCaster",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 23,
+                        "character": 41
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 23,
+                        "character": 56
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float",
+                    "defaultValue": "0.0"
+                }
+            ],
+            "comments": [
+                "// * Used to route the resist magic checks into this function to check for spell countering by SR, Globes or Mantles.",
+                "//   Return value if oCaster or oTarget is an invalid object: FALSE",
+                "//   Return value if spell cast is not a player spell: - 1",
+                "//   Return value if spell resisted: 1",
+                "//   Return value if spell resisted via magic immunity: 2",
+                "//   Return value if spell resisted via spell absorption: 3"
+            ]
+        },
+        {
+            "position": {
+                "line": 35,
+                "character": 7
+            },
+            "identifier": "CreateProtectionFromAlignmentLink",
+            "tokenType": 3,
+            "returnType": "effect",
+            "params": [
+                {
+                    "position": {
+                        "line": 35,
+                        "character": 45
+                    },
+                    "identifier": "nAlignment",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 35,
+                        "character": 61
+                    },
+                    "identifier": "nPower",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "1"
+                }
+            ],
+            "comments": [
+                "// * Will pass back a linked effect for all the protection from alignment spells.  The power represents the multiplier of strength.",
+                "// * That is instead of +3 AC and +2 Saves a  power of 2 will yield +6 AC and +4 Saves."
+            ]
+        },
+        {
+            "position": {
+                "line": 38,
+                "character": 7
+            },
+            "identifier": "CreateDoomEffectsLink",
+            "tokenType": 3,
+            "returnType": "effect",
+            "params": [],
+            "comments": [
+                "// * Will pass back a linked effect for all of the doom effects."
+            ]
+        },
+        {
+            "position": {
+                "line": 41,
+                "character": 5
+            },
+            "identifier": "RemoveSpellEffects",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 41,
+                        "character": 28
+                    },
+                    "identifier": "nSpell_ID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 41,
+                        "character": 46
+                    },
+                    "identifier": "oCaster",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 41,
+                        "character": 62
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// * Searchs through a persons effects and removes those from a particular spell by a particular caster."
+            ]
+        },
+        {
+            "position": {
+                "line": 44,
+                "character": 5
+            },
+            "identifier": "RemoveSpecificEffect",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 44,
+                        "character": 30
+                    },
+                    "identifier": "nEffectTypeID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 44,
+                        "character": 52
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// * Searchs through a persons effects and removes all those of a specific type."
+            ]
+        },
+        {
+            "position": {
+                "line": 47,
+                "character": 6
+            },
+            "identifier": "GetSpellEffectDelay",
+            "tokenType": 3,
+            "returnType": "float",
+            "params": [
+                {
+                    "position": {
+                        "line": 47,
+                        "character": 35
+                    },
+                    "identifier": "SpellTargetLocation",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 47,
+                        "character": 63
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// * Returns the time in seconds that the effect should be delayed before application."
+            ]
+        },
+        {
+            "position": {
+                "line": 50,
+                "character": 6
+            },
+            "identifier": "GetRandomDelay",
+            "tokenType": 3,
+            "returnType": "float",
+            "params": [
+                {
+                    "position": {
+                        "line": 50,
+                        "character": 27
+                    },
+                    "identifier": "fMinimumTime",
+                    "tokenType": 25,
+                    "valueType": "float",
+                    "defaultValue": "0.4"
+                },
+                {
+                    "position": {
+                        "line": 50,
+                        "character": 53
+                    },
+                    "identifier": "MaximumTime",
+                    "tokenType": 25,
+                    "valueType": "float",
+                    "defaultValue": "1.1"
+                }
+            ],
+            "comments": [
+                "// * This allows the application of a random delay to effects based on time parameters passed in.  Min default = 0.4, Max default = 1.1"
+            ]
+        },
+        {
+            "position": {
+                "line": 53,
+                "character": 4
+            },
+            "identifier": "GetScaledDuration",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 53,
+                        "character": 26
+                    },
+                    "identifier": "nActualDuration",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 53,
+                        "character": 50
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// * Get Difficulty Duration"
+            ]
+        },
+        {
+            "position": {
+                "line": 56,
+                "character": 7
+            },
+            "identifier": "GetScaledEffect",
+            "tokenType": 3,
+            "returnType": "effect",
+            "params": [
+                {
+                    "position": {
+                        "line": 56,
+                        "character": 30
+                    },
+                    "identifier": "eStandard",
+                    "tokenType": 25,
+                    "valueType": "effect"
+                },
+                {
+                    "position": {
+                        "line": 56,
+                        "character": 48
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// * Get Scaled Effect"
+            ]
+        },
+        {
+            "position": {
+                "line": 59,
+                "character": 4
+            },
+            "identifier": "RemoveProtections",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 59,
+                        "character": 26
+                    },
+                    "identifier": "nSpell_ID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 59,
+                        "character": 44
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 59,
+                        "character": 57
+                    },
+                    "identifier": "nCount",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// * Remove all spell protections of a specific type"
+            ]
+        },
+        {
+            "position": {
+                "line": 63,
+                "character": 4
+            },
+            "identifier": "GetSpellBreachProtection",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 63,
+                        "character": 33
+                    },
+                    "identifier": "nLastChecked",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// * Performs a spell breach up to nTotal spells are removed and nSR spell",
+                "// * resistance is lowered."
+            ]
+        },
+        {
+            "position": {
+                "line": 66,
+                "character": 5
+            },
+            "identifier": "AssignAOEDebugString",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 66,
+                        "character": 33
+                    },
+                    "identifier": "sString",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "//* Assigns a debug string to the Area of Effect Creator"
+            ]
+        },
+        {
+            "position": {
+                "line": 69,
+                "character": 5
+            },
+            "identifier": "PlayDragonBattleCry",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "comments": [
+                "// * Plays a random dragon battlecry based on age."
+            ]
+        },
+        {
+            "position": {
+                "line": 72,
+                "character": 4
+            },
+            "identifier": "AmIAHumanoid",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 72,
+                        "character": 24
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// * Returns true if Target is a humanoid"
+            ]
+        },
+        {
+            "position": {
+                "line": 79,
+                "character": 5
+            },
+            "identifier": "DoSpellBreach",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 79,
+                        "character": 26
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 79,
+                        "character": 39
+                    },
+                    "identifier": "nTotal",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 79,
+                        "character": 51
+                    },
+                    "identifier": "nSR",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 79,
+                        "character": 60
+                    },
+                    "identifier": "nSpellId",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "-1"
+                }
+            ],
+            "comments": [
+                "// * Performs a spell breach up to nTotal spell are removed and",
+                "// * nSR spell resistance is  lowered. nSpellId can be used to override",
+                "// * the originating spell ID. If not specified, SPELL_GREATER_SPELL_BREACH",
+                "// * is used"
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

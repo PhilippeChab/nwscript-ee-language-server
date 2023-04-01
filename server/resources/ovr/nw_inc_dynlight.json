@@ -1,0 +1,186 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 1,
+                "character": 16
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_MODULE_GLOBAL_LATITUDE",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "\"MODULE_GLOBAL_LATITUDE\""
+        },
+        {
+            "position": {
+                "line": 2,
+                "character": 16
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_MODULE_GLOBAL_LATITUDE_DEFAULT",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "45.0"
+        },
+        {
+            "position": {
+                "line": 4,
+                "character": 16
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_GLOBE_ROTATION_AXIAL_TILT",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "23.5"
+        },
+        {
+            "position": {
+                "line": 5,
+                "character": 16
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_MOON_ROTATION_AXIAL_TILT",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "5.1"
+        },
+        {
+            "position": {
+                "line": 7,
+                "character": 16
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_FADE_TIME",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "10.0"
+        },
+        {
+            "position": {
+                "line": 8,
+                "character": 16
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_FADE_TIME_OVERLAP",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "2.0"
+        },
+        {
+            "position": {
+                "line": 10,
+                "character": 12
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_SUN_REDSHIFT_COLOR_RED",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "1.0"
+        },
+        {
+            "position": {
+                "line": 11,
+                "character": 12
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_SUN_REDSHIFT_COLOR_GREEN",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "0.8"
+        },
+        {
+            "position": {
+                "line": 12,
+                "character": 12
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_SUN_REDSHIFT_COLOR_BLUE",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "0.6"
+        },
+        {
+            "position": {
+                "line": 14,
+                "character": 12
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_SUN_REDSHIFT_DIFFUSE_MODIFIER",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "1.0"
+        },
+        {
+            "position": {
+                "line": 15,
+                "character": 12
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_SUN_REDSHIFT_AMBIENT_MODIFIER",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "0.1"
+        },
+        {
+            "position": {
+                "line": 16,
+                "character": 12
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_SUN_REDSHIFT_FOG_MODIFIER",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "0.75"
+        },
+        {
+            "position": {
+                "line": 18,
+                "character": 13
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_ORIGINAL_AREA_FOG_COLOR",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"NW_DYNAMIC_LIGHT_ORIGINAL_AREA_FOG_COLOR\""
+        },
+        {
+            "position": {
+                "line": 19,
+                "character": 13
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_ORIGINAL_AREA_AMBIENT_COLOR",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"NW_DYNAMIC_LIGHT_ORIGINAL_AREA_AMBIENT_COLOR\""
+        },
+        {
+            "position": {
+                "line": 20,
+                "character": 13
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_ORIGINAL_AREA_DIFFUSE_COLOR",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"NW_DYNAMIC_LIGHT_ORIGINAL_AREA_DIFFUSE_COLOR\""
+        },
+        {
+            "position": {
+                "line": 21,
+                "character": 13
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_ORIGINAL_AREA_ENTER_SCRIPT",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"NW_DYNAMIC_LIGHT_ORIGINAL_AREA_ENTER_SCRIPT\""
+        },
+        {
+            "position": {
+                "line": 23,
+                "character": 13
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_RUNNING",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"NW_DYNAMIC_LIGHT_RUNNING\""
+        },
+        {
+            "position": {
+                "line": 26,
+                "character": 12
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_AZIMUTH_OFFSET",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "22.5"
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

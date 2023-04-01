@@ -1,0 +1,1068 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 27,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_ENABLE_UMD_SCROLLS",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SWITCH_ENABLE_UMD_SCROLLS\""
+        },
+        {
+            "position": {
+                "line": 34,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_DISABLE_ITEM_CREATION_FEATS",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SWITCH_DISABLE_ITEMCREATION_FEATS\""
+        },
+        {
+            "position": {
+                "line": 41,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_AOE_HURT_NEUTRAL_NPCS",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X0_G_ALLOWSPELLSTOHURT\""
+        },
+        {
+            "position": {
+                "line": 48,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_ENABLE_CRAFT_WAND_50_CHARGES",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SWITCH_ENABLE_50_WAND_CHARGES\""
+        },
+        {
+            "position": {
+                "line": 54,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_EPIC_SPELLS_HURT_CASTER",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SWITCH_EPIC_SPELLS_HURT_CASTER\""
+        },
+        {
+            "position": {
+                "line": 62,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_SPELL_CORERULES_DMASTERTOUCH",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SWITCH_SPELL_CORERULE_DMTOUCH\""
+        },
+        {
+            "position": {
+                "line": 69,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_RESTRICT_USE_POISON_TO_FEAT",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SWITCH_RESTRICT_USE_POISON_FEAT\""
+        },
+        {
+            "position": {
+                "line": 78,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_ENABLE_MULTI_HENCH_AOE_DAMAGE",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SWITCH_MULTI_HENCH_AOE_MADNESS\""
+        },
+        {
+            "position": {
+                "line": 85,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_ENABLE_NPC_AOE_HURT_ALLIES",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SWITCH_ENABLE_NPC_AOE_HURT_ALLIES\""
+        },
+        {
+            "position": {
+                "line": 91,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_ENABLE_BEBILITH_RUIN_ARMOR",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SWITCH_BEBILITH_HARDCORE_RUIN_ARMOR\""
+        },
+        {
+            "position": {
+                "line": 97,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_ENABLE_INVISIBLE_GLYPH_OF_WARDING",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SWITCH_GLYPH_OF_WARDING_INVISIBLE\""
+        },
+        {
+            "position": {
+                "line": 104,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_ENABLE_CROSSAREA_WALKWAYPOINTS",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SWITCH_CROSSAREA_WALKWAYPOINTS\""
+        },
+        {
+            "position": {
+                "line": 110,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_DISABLE_SECRET_DOOR_FLASH",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SWITCH_DISABLE_SECRET_DOOR_FLASH\""
+        },
+        {
+            "position": {
+                "line": 116,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_ENABLE_TAGBASED_SCRIPTS",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SWITCH_ENABLE_TAGBASED_SCRIPTS\""
+        },
+        {
+            "position": {
+                "line": 123,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_USE_XP2_RESTSYSTEM",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SWITCH_ENABLE_XP2_RESTSYSTEM\""
+        },
+        {
+            "position": {
+                "line": 129,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_DISABLE_AI_DISPEL_AOE",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_L_AI_NO_AOE_DISPEL\""
+        },
+        {
+            "position": {
+                "line": 135,
+                "character": 13
+            },
+            "identifier": "MODULE_SWITCH_NO_RANDOM_MONSTER_LOOT",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_L_NOTREASURE\""
+        },
+        {
+            "position": {
+                "line": 140,
+                "character": 13
+            },
+            "identifier": "MODULE_VAR_OVERRIDE_SPELLSCRIPT",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_S_UD_SPELLSCRIPT\""
+        },
+        {
+            "position": {
+                "line": 142,
+                "character": 13
+            },
+            "identifier": "MODULE_VAR_TAGBASED_SCRIPT_PREFIX",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_S_UD_SPELLSCRIPT\""
+        },
+        {
+            "position": {
+                "line": 147,
+                "character": 13
+            },
+            "identifier": "MODULE_VAR_WANDERING_MONSTER_2DA",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_WM_2DA_NAME\""
+        },
+        {
+            "position": {
+                "line": 153,
+                "character": 13
+            },
+            "identifier": "MODULE_VAR_AI_NO_DISPEL_AOE_CHANCE",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_L_AI_AOE_DISPEL_CHANCE\""
+        },
+        {
+            "position": {
+                "line": 159,
+                "character": 13
+            },
+            "identifier": "MODULE_VAR_AI_STOP_EXPERTISE_ABUSE",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_L_STOP_EXPERTISE_ABUSE\""
+        },
+        {
+            "position": {
+                "line": 169,
+                "character": 13
+            },
+            "identifier": "CREATURE_VAR_CUSTOM_AISCRIPT",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SPECIAL_COMBAT_AI_SCRIPT\""
+        },
+        {
+            "position": {
+                "line": 177,
+                "character": 13
+            },
+            "identifier": "CREATURE_VAR_RANDOMIZE_NAME",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_NAME_RANDOM\""
+        },
+        {
+            "position": {
+                "line": 184,
+                "character": 13
+            },
+            "identifier": "CREATURE_VAR_RANDOMIZE_SPELLUSE",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_SPELL_RANDOM\""
+        },
+        {
+            "position": {
+                "line": 189,
+                "character": 13
+            },
+            "identifier": "CREATURE_VAR_USE_SPAWN_STEALTH",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_L_SPAWN_USE_STEALTH\""
+        },
+        {
+            "position": {
+                "line": 194,
+                "character": 13
+            },
+            "identifier": "CREATURE_VAR_USE_SPAWN_SEARCH",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_L_SPAWN_USE_SEARCH\""
+        },
+        {
+            "position": {
+                "line": 199,
+                "character": 13
+            },
+            "identifier": "CREATURE_VAR_USE_SPAWN_AMBIENT",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_L_SPAWN_USE_AMBIENT\""
+        },
+        {
+            "position": {
+                "line": 204,
+                "character": 13
+            },
+            "identifier": "CREATURE_VAR_USE_SPAWN_AMBIENT_IMMOBILE",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_L_SPAWN_USE_AMBIENT_IMMOBILE\""
+        },
+        {
+            "position": {
+                "line": 209,
+                "character": 13
+            },
+            "identifier": "CREATURE_VAR_IMMUNE_TO_DISPEL",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X1_L_IMMUNE_TO_DISPEL\""
+        },
+        {
+            "position": {
+                "line": 214,
+                "character": 13
+            },
+            "identifier": "CREATURE_VAR_IS_INCORPOREAL",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_L_IS_INCORPOREAL\""
+        },
+        {
+            "position": {
+                "line": 219,
+                "character": 13
+            },
+            "identifier": "CREATURE_VAR_NUMBER_OF_ATTACKS",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_L_NUMBER_OF_ATTACKS\""
+        },
+        {
+            "position": {
+                "line": 225,
+                "character": 13
+            },
+            "identifier": "CREATURE_AI_MODIFIED_MAGIC_RATE",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_L_BEH_MAGIC\""
+        },
+        {
+            "position": {
+                "line": 231,
+                "character": 13
+            },
+            "identifier": "CREATURE_AI_MODIFIED_OFFENSE_RATE",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_L_BEH_OFFENSE\""
+        },
+        {
+            "position": {
+                "line": 238,
+                "character": 13
+            },
+            "identifier": "CREATURE_AI_MODIFIED_COMPASSION_RATE",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_L_BEH_COMPASSION\""
+        },
+        {
+            "position": {
+                "line": 246,
+                "character": 13
+            },
+            "identifier": "CREATURE_VAR_PALE_MASTER_SPECIAL_ITEM",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_S_PM_SPECIAL_ITEM\""
+        },
+        {
+            "position": {
+                "line": 253,
+                "character": 10
+            },
+            "identifier": "X2_ITEM_EVENT_ACTIVATE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 254,
+                "character": 10
+            },
+            "identifier": "X2_ITEM_EVENT_EQUIP",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 255,
+                "character": 10
+            },
+            "identifier": "X2_ITEM_EVENT_UNEQUIP",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 256,
+                "character": 10
+            },
+            "identifier": "X2_ITEM_EVENT_ONHITCAST",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3"
+        },
+        {
+            "position": {
+                "line": 257,
+                "character": 10
+            },
+            "identifier": "X2_ITEM_EVENT_ACQUIRE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "4"
+        },
+        {
+            "position": {
+                "line": 258,
+                "character": 10
+            },
+            "identifier": "X2_ITEM_EVENT_UNACQUIRE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5"
+        },
+        {
+            "position": {
+                "line": 259,
+                "character": 10
+            },
+            "identifier": "X2_ITEM_EVENT_SPELLCAST_AT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "6"
+        },
+        {
+            "position": {
+                "line": 261,
+                "character": 10
+            },
+            "identifier": "X2_EXECUTE_SCRIPT_CONTINUE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 262,
+                "character": 10
+            },
+            "identifier": "X2_EXECUTE_SCRIPT_END",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 272,
+                "character": 5
+            },
+            "identifier": "SetUserDefinedItemEventNumber",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 272,
+                        "character": 39
+                    },
+                    "identifier": "nEvent",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Set the active User Defined Item Event",
+                "// X2_ITEM_EVENT_ACTIVATE",
+                "// X2_ITEM_EVENT_EQUIP",
+                "// X2_ITEM_EVENT_UNEQUIP",
+                "// X2_ITEM_EVENT_ONHITCAST",
+                "// X2_ITEM_EVENT_ACQUIRE",
+                "// X2_ITEM_EVENT_UNACQUIRE",
+                "// X2_ITEM_EVENT_SPELLCAST_AT"
+            ]
+        },
+        {
+            "position": {
+                "line": 282,
+                "character": 4
+            },
+            "identifier": "GetUserDefinedItemEventNumber",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": [
+                "// Get the active User Defined Item Event",
+                "// X2_ITEM_EVENT_ACTIVATE",
+                "// X2_ITEM_EVENT_EQUIP",
+                "// X2_ITEM_EVENT_UNEQUIP",
+                "// X2_ITEM_EVENT_ONHITCAST",
+                "// X2_ITEM_EVENT_ACQUIRE",
+                "// X2_ITEM_EVENT_UNACQUIRE",
+                "// X2_ITEM_EVENT_SPELLCAST_AT"
+            ]
+        },
+        {
+            "position": {
+                "line": 288,
+                "character": 5
+            },
+            "identifier": "SetModuleSwitch",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 288,
+                        "character": 28
+                    },
+                    "identifier": "sModuleSwitchConstant",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 288,
+                        "character": 54
+                    },
+                    "identifier": "bValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "//------------------------------------------------------------------------------",
+                "// * Used to switch between different rule implementations or to subsystems for the game",
+                "// * see x2_inc_switches for more detailed information on these constants",
+                "//------------------------------------------------------------------------------"
+            ]
+        },
+        {
+            "position": {
+                "line": 293,
+                "character": 4
+            },
+            "identifier": "GetModuleSwitchValue",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 293,
+                        "character": 33
+                    },
+                    "identifier": "sModuleSwitchConstant",
+                    "tokenType": 25,
+                    "valueType": " "
+                }
+            ],
+            "comments": [
+                "//------------------------------------------------------------------------------",
+                "// * Returns the value of a module switch",
+                "//------------------------------------------------------------------------------"
+            ]
+        },
+        {
+            "position": {
+                "line": 298,
+                "character": 13
+            },
+            "identifier": "DOOR_FLAG_RESIST_KNOCK",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_FLAG_DOOR_RESIST_KNOCK\""
+        },
+        {
+            "position": {
+                "line": 308,
+                "character": 5
+            },
+            "identifier": "SetDoorFlag",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 308,
+                        "character": 24
+                    },
+                    "identifier": "oDoor",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 308,
+                        "character": 38
+                    },
+                    "identifier": "sDoorFlagConstant",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 308,
+                        "character": 61
+                    },
+                    "identifier": "nValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "//------------------------------------------------------------------------------",
+                "// * Used to toggle custom flags on a door",
+                "// * oDoor - Door to set the switch on",
+                "// * Valid values for sDoorFlagConstant:",
+                "// * X2_FLAG_DOOR_RESIST_KNOCK -",
+                "// *        Set to 1 to prevent knock from working with feedback.",
+                "// *        Set to 2 to prevent knock from working without feedback",
+                "//------------------------------------------------------------------------------"
+            ]
+        },
+        {
+            "position": {
+                "line": 309,
+                "character": 4
+            },
+            "identifier": "GetDoorFlag",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 309,
+                        "character": 23
+                    },
+                    "identifier": "oDoor",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 309,
+                        "character": 38
+                    },
+                    "identifier": "sDoorFlagConstant",
+                    "tokenType": 25,
+                    "valueType": " "
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 320,
+                "character": 14
+            },
+            "identifier": "WAYPOINT_VAR_FORCE_SETFACING",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "\"X2_L_WAYPOINT_SETFACING\""
+        },
+        {
+            "position": {
+                "line": 329,
+                "character": 13
+            },
+            "identifier": "ITEM_FLAG_NO_CRAFT_MODIFICATION",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X2_FLAG_ITEM_CRAFT_DO_NOT_MODIFY\""
+        },
+        {
+            "position": {
+                "line": 330,
+                "character": 5
+            },
+            "identifier": "SetItemFlag",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 330,
+                        "character": 24
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 330,
+                        "character": 38
+                    },
+                    "identifier": "sItemFlagConstant",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 330,
+                        "character": 61
+                    },
+                    "identifier": "nValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 331,
+                "character": 4
+            },
+            "identifier": "GetItemFlag",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 331,
+                        "character": 23
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 331,
+                        "character": 38
+                    },
+                    "identifier": "sItemFlagConstant",
+                    "tokenType": 25,
+                    "valueType": " "
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 337,
+                "character": 4
+            },
+            "identifier": "ExecuteScriptAndReturnInt",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 337,
+                        "character": 37
+                    },
+                    "identifier": "sScript",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 337,
+                        "character": 53
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "//------------------------------------------------------------------------------",
+                "// * Execute sScript on oTarget returning an integer.",
+                "// * Do not nest this function",
+                "//------------------------------------------------------------------------------"
+            ]
+        },
+        {
+            "position": {
+                "line": 345,
+                "character": 6
+            },
+            "identifier": "SetExecutedScriptReturnValue",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 345,
+                        "character": 39
+                    },
+                    "identifier": "nValue",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "X2_EXECUTE_SCRIPT_END"
+                }
+            ],
+            "comments": [
+                "//------------------------------------------------------------------------------",
+                "// * Sets the return value for scripts called via ExecuteScriptAndReturnInt",
+                "// * valid values are",
+                "// * X2_EXECUTE_SCRIPT_CONTINUE - continue calling script after executed scriptis done",
+                "// * X2_EXECUTE_SCRIPT_END - end calling script after executed script is done",
+                "//------------------------------------------------------------------------------"
+            ]
+        },
+        {
+            "position": {
+                "line": 354,
+                "character": 5
+            },
+            "identifier": "SetUserDefinedItemEventPrefix",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 354,
+                        "character": 42
+                    },
+                    "identifier": "sPrefix",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "//------------------------------------------------------------------------------",
+                "// * This is a security feature. If you are running a *local vault* server and you",
+                "// * have tag based script execution enabled, people could bring items into your",
+                "// * game that execute existing scripts. You can set a script prefix here to",
+                "// * prevent that. Note that you have to add this prefix to your item scripts in",
+                "// * the module to make them work.",
+                "//------------------------------------------------------------------------------"
+            ]
+        },
+        {
+            "position": {
+                "line": 368,
+                "character": 5
+            },
+            "identifier": "SetModuleOverrideSpellscript",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 368,
+                        "character": 41
+                    },
+                    "identifier": "sScriptName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "//------------------------------------------------------------------------------",
+                "// Allows the module creator to specify a script that will be run before any spellscript is run",
+                "// You can call SetModuleOverrideSpellscript() at the end of the script specified by",
+                "// sScriptName. If you call this function this will prevent the original spellscript",
+                "// (and all craft item code) from being executed.",
+                "// If you do not add this line, the original spellscript and/or crafting code will",
+                "// run in addition to your script",
+                "//------------------------------------------------------------------------------"
+            ]
+        },
+        {
+            "position": {
+                "line": 374,
+                "character": 5
+            },
+            "identifier": "SetCreatureFlag",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 374,
+                        "character": 28
+                    },
+                    "identifier": "oCreature",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 374,
+                        "character": 46
+                    },
+                    "identifier": "sFlag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 374,
+                        "character": 57
+                    },
+                    "identifier": "nValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 375,
+                "character": 5
+            },
+            "identifier": "GetCreatureFlag",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 375,
+                        "character": 28
+                    },
+                    "identifier": "oCreature",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 375,
+                        "character": 46
+                    },
+                    "identifier": "sFlag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 381,
+                "character": 5
+            },
+            "identifier": "SetCreatureOverrideAIScript",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 381,
+                        "character": 40
+                    },
+                    "identifier": "oCreature",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 381,
+                        "character": 58
+                    },
+                    "identifier": "sScriptName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "//------------------------------------------------------------------------------",
+                "// * Define a replacement script for DetermineCombatRound",
+                "// * See x2_ai_demo for details",
+                "//------------------------------------------------------------------------------"
+            ]
+        },
+        {
+            "position": {
+                "line": 387,
+                "character": 7
+            },
+            "identifier": "SetCreatureOverrideAIScriptFinished",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 387,
+                        "character": 50
+                    },
+                    "identifier": "oCreature",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": [
+                "//------------------------------------------------------------------------------",
+                "// * Call this at end of your custom override AI script set via CREATURE_VAR_CUSTOM_AISCRIPT",
+                "// * See x2_ai_demo for details.",
+                "//------------------------------------------------------------------------------"
+            ]
+        },
+        {
+            "position": {
+                "line": 388,
+                "character": 7
+            },
+            "identifier": "ClearCreatureOverrideAIScriptTarget",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 388,
+                        "character": 50
+                    },
+                    "identifier": "oCreature",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 389,
+                "character": 7
+            },
+            "identifier": "GetCreatureOverrideAIScriptTarget",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 389,
+                        "character": 48
+                    },
+                    "identifier": "oCreature",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 395,
+                "character": 5
+            },
+            "identifier": "SetWanderingMonster2DAFile",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 395,
+                        "character": 39
+                    },
+                    "identifier": "s2DAName",
+                    "tokenType": 25,
+                    "valueType": "string",
+                    "defaultValue": "\"des_restsystem\""
+                }
+            ],
+            "comments": [
+                "//------------------------------------------------------------------------------",
+                "// * Define the name of the 2da file which is used for the wandering monster",
+                "// * system",
+                "//------------------------------------------------------------------------------"
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

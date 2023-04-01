@@ -113,7 +113,7 @@ I personally use the [One Dark Pro](https://marketplace.visualstudio.com/items?i
 
 ### Generating the language library definitions
 
-Replace `server/scripts/nwscript.nss` by its new version and execute `yarn run generate-lib-defs` in the server root directory.
+Replace `server/scripts/nwscript.nss` by its new version, `server/scripts/base_scripts/` files by their new versions, `server/scripts/ovr/` includes by their new versions and execute `yarn run generate-lib-defs` in the server root directory.
 
 ## Issues
 

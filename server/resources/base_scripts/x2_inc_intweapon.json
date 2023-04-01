@@ -1,0 +1,870 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 21,
+                "character": 10
+            },
+            "identifier": "X2_IW_INTERJECTION_CHANCE_EQUIP",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "25"
+        },
+        {
+            "position": {
+                "line": 22,
+                "character": 10
+            },
+            "identifier": "X2_IW_INTERJECTION_TYPE_EQUIP",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 23,
+                "character": 10
+            },
+            "identifier": "X2_IW_INTERJECTION_EQUIP_COUNT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5"
+        },
+        {
+            "position": {
+                "line": 25,
+                "character": 10
+            },
+            "identifier": "X2_IW_INTERJECTION_CHANCE_UNEQUIP",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "25"
+        },
+        {
+            "position": {
+                "line": 26,
+                "character": 10
+            },
+            "identifier": "X2_IW_INTERJECTION_TYPE_UNEQUIP",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 27,
+                "character": 10
+            },
+            "identifier": "X2_IW_INTERJECTION_UNEQUIP_COUNT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5"
+        },
+        {
+            "position": {
+                "line": 29,
+                "character": 10
+            },
+            "identifier": "X2_IW_INTERJECTION_CHANCE_BATTLECRY",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "8"
+        },
+        {
+            "position": {
+                "line": 30,
+                "character": 10
+            },
+            "identifier": "X2_IW_INTERJECTION_TYPE_BATTLECRY",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3"
+        },
+        {
+            "position": {
+                "line": 31,
+                "character": 10
+            },
+            "identifier": "X2_IW_INTERJECTION_BATTLECRY_COUNT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "20"
+        },
+        {
+            "position": {
+                "line": 33,
+                "character": 10
+            },
+            "identifier": "X2_IW_INTERJECTION_CHANCE_ONHIT_CRE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "20"
+        },
+        {
+            "position": {
+                "line": 34,
+                "character": 10
+            },
+            "identifier": "X2_IW_INTERJECTION_TYPE_ONHIT_CRE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "4"
+        },
+        {
+            "position": {
+                "line": 36,
+                "character": 10
+            },
+            "identifier": "X2_IW_INTERJECTION_TYPE_TRIGGER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5"
+        },
+        {
+            "position": {
+                "line": 38,
+                "character": 10
+            },
+            "identifier": "X2_IW_CURSE_ENHANCEMENT_DURATION",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "10"
+        },
+        {
+            "position": {
+                "line": 45,
+                "character": 7
+            },
+            "identifier": "IWGetWeaponDialogName",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 45,
+                        "character": 36
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *   Return the Dialog ResRef Name of the intelligent weapon passed in."
+            ]
+        },
+        {
+            "position": {
+                "line": 48,
+                "character": 7
+            },
+            "identifier": "IWSWrapper",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 48,
+                        "character": 25
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 48,
+                        "character": 41
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *   Wrapper to use IWSpawnInWeaponCreature with Delaycommand"
+            ]
+        },
+        {
+            "position": {
+                "line": 51,
+                "character": 7
+            },
+            "identifier": "IWSpawnInWeaponCreature",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 51,
+                        "character": 38
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 51,
+                        "character": 54
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 51,
+                        "character": 67
+                    },
+                    "identifier": "bEquip",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// *   Spawns in a null human creature for oWeapon worn by oPlayer."
+            ]
+        },
+        {
+            "position": {
+                "line": 55,
+                "character": 7
+            },
+            "identifier": "IWStartIntelligentWeaponConversation",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 55,
+                        "character": 51
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 55,
+                        "character": 66
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *    Start a conversation with the intelligent weapon. This will make the",
+                "// *   weapon jump out of the players hands onto a null human and start the conv."
+            ]
+        },
+        {
+            "position": {
+                "line": 60,
+                "character": 7
+            },
+            "identifier": "IWEndIntelligentWeaponConversation",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 60,
+                        "character": 49
+                    },
+                    "identifier": "oWeaponCreature",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 60,
+                        "character": 74
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *   End an intelligent weapon conversation, despawning the null human that wields",
+                "// *   the weapon and moving the weapon back into the players hands. This should be",
+                "// *   called on the OnEnd and OnAbort scripts of the weapon dialog"
+            ]
+        },
+        {
+            "position": {
+                "line": 64,
+                "character": 7
+            },
+            "identifier": "IWGetIsInIntelligentWeaponConversation",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 64,
+                        "character": 53
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *   Returns TRUE if oPlayer is currently engaged in a conversation with his",
+                "// *   intelligent weapon"
+            ]
+        },
+        {
+            "position": {
+                "line": 67,
+                "character": 7
+            },
+            "identifier": "IWSetConversationCondition",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 67,
+                        "character": 41
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 67,
+                        "character": 53
+                    },
+                    "identifier": "nType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 67,
+                        "character": 64
+                    },
+                    "identifier": "nValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *   Sets the starting conditions for the next intelligent weapon conversation"
+            ]
+        },
+        {
+            "position": {
+                "line": 70,
+                "character": 7
+            },
+            "identifier": "IWGetConversationCondition",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 70,
+                        "character": 41
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 70,
+                        "character": 53
+                    },
+                    "identifier": "nType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *   Gets the starting conditions for current intelligent weapon conversation"
+            ]
+        },
+        {
+            "position": {
+                "line": 73,
+                "character": 7
+            },
+            "identifier": "IWClearConversationConditions",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 73,
+                        "character": 44
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *   Clear current intelligent weapon starting conditions"
+            ]
+        },
+        {
+            "position": {
+                "line": 75,
+                "character": 7
+            },
+            "identifier": "IWSetCreatureHadOneLiner",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 75,
+                        "character": 39
+                    },
+                    "identifier": "oCreature",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 75,
+                        "character": 54
+                    },
+                    "identifier": "bValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 77,
+                "character": 7
+            },
+            "identifier": "IWPlayRandomEquipComment",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 77,
+                        "character": 39
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 77,
+                        "character": 54
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 79,
+                "character": 7
+            },
+            "identifier": "IWPlayRandomUnequipComment",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 79,
+                        "character": 41
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 79,
+                        "character": 56
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 81,
+                "character": 7
+            },
+            "identifier": "IWPlayRandomHitQuote",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 81,
+                        "character": 35
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 81,
+                        "character": 51
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 81,
+                        "character": 67
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 83,
+                "character": 7
+            },
+            "identifier": "IWGetIntelligentWeaponEquipped",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 83,
+                        "character": 45
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 88,
+                "character": 5
+            },
+            "identifier": "IWCreateIntelligentWeapon",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 88,
+                        "character": 38
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 88,
+                        "character": 51
+                    },
+                    "identifier": "nLevel",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// * Transforms the weapon passed in oWeapon into an intelligent weapon, preserving",
+                "// * all item properties stored on the weapon.",
+                "// * nLevel - The power level of the weapon - unused at the moment (1 = default)"
+            ]
+        },
+        {
+            "position": {
+                "line": 90,
+                "character": 5
+            },
+            "identifier": "IWSetEnhancementAndDrainLevel",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 90,
+                        "character": 42
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 90,
+                        "character": 55
+                    },
+                    "identifier": "nAddition",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 90,
+                        "character": 70
+                    },
+                    "identifier": "bRemove",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 92,
+                "character": 4
+            },
+            "identifier": "IWGetStaticEnhancementBonus",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 92,
+                        "character": 39
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 96,
+                "character": 5
+            },
+            "identifier": "IWSetTalkedTo",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 96,
+                        "character": 26
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 96,
+                        "character": 42
+                    },
+                    "identifier": "sWeaponTag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 96,
+                        "character": 58
+                    },
+                    "identifier": "nNumTimes",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "1"
+                }
+            ],
+            "comments": [
+                "// * Sets the number of times a player has talked to the intelligent weapon",
+                "// * This information is stored on the player"
+            ]
+        },
+        {
+            "position": {
+                "line": 100,
+                "character": 4
+            },
+            "identifier": "IWGetTalkedTo",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 100,
+                        "character": 25
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 100,
+                        "character": 41
+                    },
+                    "identifier": "sWeaponTag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// * Gets the number of times a player has talked to the intelligent weapon",
+                "// * This information is stored on the player"
+            ]
+        },
+        {
+            "position": {
+                "line": 104,
+                "character": 5
+            },
+            "identifier": "IWSetQuestionAsked",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 104,
+                        "character": 31
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 104,
+                        "character": 47
+                    },
+                    "identifier": "sWeaponTag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 104,
+                        "character": 62
+                    },
+                    "identifier": "nQuestion",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// * Sets the asked flag for question no. nQuestion, in sWeaponTag's conversation",
+                "// * on the Player"
+            ]
+        },
+        {
+            "position": {
+                "line": 108,
+                "character": 4
+            },
+            "identifier": "IWGetQuestionAsked",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 108,
+                        "character": 30
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 108,
+                        "character": 46
+                    },
+                    "identifier": "sWeaponTag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 108,
+                        "character": 61
+                    },
+                    "identifier": "nQuestion",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// * Returns the asked flag for question no. nQuestion, in sWeaponTag's conversation",
+                "// * on the Player"
+            ]
+        },
+        {
+            "position": {
+                "line": 112,
+                "character": 4
+            },
+            "identifier": "IWGetIsHotUChapter1",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": [
+                "// * Helper Function. Returns TRUE if we currently play Hordes of the Underdark",
+                "// * Chapter 1"
+            ]
+        },
+        {
+            "position": {
+                "line": 116,
+                "character": 4
+            },
+            "identifier": "IWGetIsHotUChapter2",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": [
+                "// * Helper Function. Returns TRUE if we currently play Hordes of the Underdark",
+                "// * Chapter 2"
+            ]
+        },
+        {
+            "position": {
+                "line": 120,
+                "character": 4
+            },
+            "identifier": "IWGetIsHotUChapter3",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": [
+                "// * Helper Function. Returns TRUE if we currently play Hordes of the Underdark",
+                "// * Chapter 3"
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": [
+        "x2_inc_itemprop",
+        "x2_i0_spells"
+    ]
+}

@@ -1,0 +1,2700 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 0,
+                "character": 10
+            },
+            "identifier": "NUI_DIRECTION_HORIZONTAL",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 1,
+                "character": 10
+            },
+            "identifier": "NUI_DIRECTION_VERTICAL",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 3,
+                "character": 10
+            },
+            "identifier": "NUI_MOUSE_BUTTON_LEFT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 4,
+                "character": 10
+            },
+            "identifier": "NUI_MOUSE_BUTTON_MIDDLE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 5,
+                "character": 10
+            },
+            "identifier": "NUI_MOUSE_BUTTON_RIGHT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 7,
+                "character": 10
+            },
+            "identifier": "NUI_SCROLLBARS_NONE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 8,
+                "character": 10
+            },
+            "identifier": "NUI_SCROLLBARS_X",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 9,
+                "character": 10
+            },
+            "identifier": "NUI_SCROLLBARS_Y",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 10,
+                "character": 10
+            },
+            "identifier": "NUI_SCROLLBARS_BOTH",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3"
+        },
+        {
+            "position": {
+                "line": 11,
+                "character": 10
+            },
+            "identifier": "NUI_SCROLLBARS_AUTO",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "4"
+        },
+        {
+            "position": {
+                "line": 13,
+                "character": 10
+            },
+            "identifier": "NUI_ASPECT_FIT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 14,
+                "character": 10
+            },
+            "identifier": "NUI_ASPECT_FILL",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 15,
+                "character": 10
+            },
+            "identifier": "NUI_ASPECT_FIT100",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 16,
+                "character": 10
+            },
+            "identifier": "NUI_ASPECT_EXACT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3"
+        },
+        {
+            "position": {
+                "line": 17,
+                "character": 10
+            },
+            "identifier": "NUI_ASPECT_EXACTSCALED",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "4"
+        },
+        {
+            "position": {
+                "line": 18,
+                "character": 10
+            },
+            "identifier": "NUI_ASPECT_STRETCH",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5"
+        },
+        {
+            "position": {
+                "line": 20,
+                "character": 10
+            },
+            "identifier": "NUI_HALIGN_CENTER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 21,
+                "character": 10
+            },
+            "identifier": "NUI_HALIGN_LEFT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 22,
+                "character": 10
+            },
+            "identifier": "NUI_HALIGN_RIGHT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 24,
+                "character": 10
+            },
+            "identifier": "NUI_VALIGN_MIDDLE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 25,
+                "character": 10
+            },
+            "identifier": "NUI_VALIGN_TOP",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 26,
+                "character": 10
+            },
+            "identifier": "NUI_VALIGN_BOTTOM",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 31,
+                "character": 12
+            },
+            "identifier": "NUI_STYLE_PRIMARY_WIDTH",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "150.0"
+        },
+        {
+            "position": {
+                "line": 32,
+                "character": 12
+            },
+            "identifier": "NUI_STYLE_PRIMARY_HEIGHT",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "50.0"
+        },
+        {
+            "position": {
+                "line": 34,
+                "character": 12
+            },
+            "identifier": "NUI_STYLE_SECONDARY_WIDTH",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "150.0"
+        },
+        {
+            "position": {
+                "line": 35,
+                "character": 12
+            },
+            "identifier": "NUI_STYLE_SECONDARY_HEIGHT",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "35.0"
+        },
+        {
+            "position": {
+                "line": 37,
+                "character": 12
+            },
+            "identifier": "NUI_STYLE_TERTIARY_WIDTH",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "100.0"
+        },
+        {
+            "position": {
+                "line": 38,
+                "character": 12
+            },
+            "identifier": "NUI_STYLE_TERTIARY_HEIGHT",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "30.0"
+        },
+        {
+            "position": {
+                "line": 40,
+                "character": 12
+            },
+            "identifier": "NUI_STYLE_ROW_HEIGHT",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "25.0"
+        },
+        {
+            "position": {
+                "line": 50,
+                "character": 0
+            },
+            "identifier": "NuiWindow",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 51,
+                        "character": 7
+                    },
+                    "identifier": "jRoot",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 52,
+                        "character": 7
+                    },
+                    "identifier": "jTitle",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 53,
+                        "character": 7
+                    },
+                    "identifier": "jGeometry",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 56,
+                        "character": 7
+                    },
+                    "identifier": "jResizable",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 57,
+                        "character": 7
+                    },
+                    "identifier": "jCollapsed",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 60,
+                        "character": 7
+                    },
+                    "identifier": "jClosable",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 62,
+                        "character": 7
+                    },
+                    "identifier": "jTransparent",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 63,
+                        "character": 7
+                    },
+                    "identifier": "jBorder",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 64,
+                        "character": 7
+                    },
+                    "identifier": "jAcceptsInput",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// Special cases:",
+                "// * Set the window title to JsonBool(FALSE), Collapse to JsonBool(FALSE) and bClosable to FALSE",
+                "//   to hide the title bar.",
+                "//   Note: You MUST provide a way to close the window some other way, or the user will be stuck with it."
+            ]
+        },
+        {
+            "position": {
+                "line": 77,
+                "character": 0
+            },
+            "identifier": "NuiBind",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 78,
+                        "character": 9
+                    },
+                    "identifier": "sId",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Create a dynamic bind. Unlike static values, these can change at runtime:",
+                "//    NuiBind(\"mybindlabel\");",
+                "//    NuiSetBind(.., \"mybindlabel\", JsonString(\"hi\"));",
+                "// To create static values, just use the json types directly:",
+                "//    JsonString(\"hi\");"
+            ]
+        },
+        {
+            "position": {
+                "line": 84,
+                "character": 0
+            },
+            "identifier": "NuiId",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 85,
+                        "character": 7
+                    },
+                    "identifier": "jElem",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 86,
+                        "character": 9
+                    },
+                    "identifier": "sId",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Tag the given element with a id.",
+                "// Only tagged elements will send events to the server."
+            ]
+        },
+        {
+            "position": {
+                "line": 92,
+                "character": 0
+            },
+            "identifier": "NuiStrRef",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 93,
+                        "character": 8
+                    },
+                    "identifier": "nStrRef",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// A shim/helper that can be used to render or bind a strref where otherwise",
+                "// a string value would go."
+            ]
+        },
+        {
+            "position": {
+                "line": 102,
+                "character": 0
+            },
+            "identifier": "NuiCol",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 103,
+                        "character": 7
+                    },
+                    "identifier": "jList",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// A column will auto-space all elements inside of it and advise the parent",
+                "// about it's desired size."
+            ]
+        },
+        {
+            "position": {
+                "line": 109,
+                "character": 0
+            },
+            "identifier": "NuiRow",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 110,
+                        "character": 7
+                    },
+                    "identifier": "jList",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// A row will auto-space all elements inside of it and advise the parent",
+                "// about it's desired size."
+            ]
+        },
+        {
+            "position": {
+                "line": 117,
+                "character": 0
+            },
+            "identifier": "NuiGroup",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 118,
+                        "character": 7
+                    },
+                    "identifier": "jChild",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 119,
+                        "character": 6
+                    },
+                    "identifier": "bBorder",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                },
+                {
+                    "position": {
+                        "line": 120,
+                        "character": 6
+                    },
+                    "identifier": "nScroll",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "NUI_SCROLLBARS_AUTO"
+                }
+            ],
+            "comments": [
+                "// A group, usually with a border and some padding, holding a single element. Can scroll.",
+                "// Will not advise parent of size, so you need to let it fill a span (col/row) as if it was",
+                "// a element."
+            ]
+        },
+        {
+            "position": {
+                "line": 128,
+                "character": 0
+            },
+            "identifier": "NuiWidth",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 129,
+                        "character": 7
+                    },
+                    "identifier": "jElem",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 130,
+                        "character": 8
+                    },
+                    "identifier": "fWidth",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 134,
+                "character": 0
+            },
+            "identifier": "NuiHeight",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 7
+                    },
+                    "identifier": "jElem",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 136,
+                        "character": 8
+                    },
+                    "identifier": "fHeight",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 140,
+                "character": 0
+            },
+            "identifier": "NuiAspect",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 141,
+                        "character": 7
+                    },
+                    "identifier": "jElem",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 142,
+                        "character": 8
+                    },
+                    "identifier": "fAspect",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 147,
+                "character": 0
+            },
+            "identifier": "NuiMargin",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 148,
+                        "character": 7
+                    },
+                    "identifier": "jElem",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 149,
+                        "character": 8
+                    },
+                    "identifier": "fMargin",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "comments": [
+                "// Set a margin on the widget. The margin is the spacing outside of the widget."
+            ]
+        },
+        {
+            "position": {
+                "line": 154,
+                "character": 0
+            },
+            "identifier": "NuiPadding",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 155,
+                        "character": 7
+                    },
+                    "identifier": "jElem",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 156,
+                        "character": 8
+                    },
+                    "identifier": "fPadding",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "comments": [
+                "// Set padding on the widget. The margin is the spacing inside of the widget."
+            ]
+        },
+        {
+            "position": {
+                "line": 161,
+                "character": 0
+            },
+            "identifier": "NuiEnabled",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 162,
+                        "character": 7
+                    },
+                    "identifier": "jElem",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 163,
+                        "character": 7
+                    },
+                    "identifier": "jEnabler",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// Disabled elements are non-interactive and greyed out."
+            ]
+        },
+        {
+            "position": {
+                "line": 168,
+                "character": 0
+            },
+            "identifier": "NuiVisible",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 169,
+                        "character": 7
+                    },
+                    "identifier": "jElem",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 170,
+                        "character": 7
+                    },
+                    "identifier": "jVisible",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// Invisible elements do not render at all, but still take up layout space."
+            ]
+        },
+        {
+            "position": {
+                "line": 175,
+                "character": 0
+            },
+            "identifier": "NuiTooltip",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 176,
+                        "character": 7
+                    },
+                    "identifier": "jElem",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 177,
+                        "character": 7
+                    },
+                    "identifier": "jTooltip",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// Tooltips show on mouse hover."
+            ]
+        },
+        {
+            "position": {
+                "line": 182,
+                "character": 0
+            },
+            "identifier": "NuiDisabledTooltip",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 183,
+                        "character": 7
+                    },
+                    "identifier": "jElem",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 184,
+                        "character": 7
+                    },
+                    "identifier": "jTooltip",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// Tooltips for disabled elements show on mouse hover."
+            ]
+        },
+        {
+            "position": {
+                "line": 189,
+                "character": 0
+            },
+            "identifier": "NuiEncouraged",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 190,
+                        "character": 7
+                    },
+                    "identifier": "jElem",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 191,
+                        "character": 7
+                    },
+                    "identifier": "jEncouraged",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// Encouraged elements have a breathing animated glow inside of it."
+            ]
+        },
+        {
+            "position": {
+                "line": 198,
+                "character": 0
+            },
+            "identifier": "NuiVec",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 198,
+                        "character": 13
+                    },
+                    "identifier": "x",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 198,
+                        "character": 22
+                    },
+                    "identifier": "y",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 201,
+                "character": 0
+            },
+            "identifier": "NuiRect",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 201,
+                        "character": 14
+                    },
+                    "identifier": "x",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 201,
+                        "character": 23
+                    },
+                    "identifier": "y",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 201,
+                        "character": 32
+                    },
+                    "identifier": "w",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 201,
+                        "character": 41
+                    },
+                    "identifier": "h",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 204,
+                "character": 0
+            },
+            "identifier": "NuiColor",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 204,
+                        "character": 13
+                    },
+                    "identifier": "r",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 204,
+                        "character": 20
+                    },
+                    "identifier": "g",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 204,
+                        "character": 27
+                    },
+                    "identifier": "b",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 204,
+                        "character": 34
+                    },
+                    "identifier": "a",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "255"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 210,
+                "character": 0
+            },
+            "identifier": "NuiStyleForegroundColor",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 211,
+                        "character": 7
+                    },
+                    "identifier": "jElem",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 212,
+                        "character": 7
+                    },
+                    "identifier": "jColor",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// Style the foreground color of the widget. This is dependent on the widget",
+                "// in question and only supports solid/full colors right now (no texture skinning).",
+                "// For example, labels would style their text color; progress bars would style the bar."
+            ]
+        },
+        {
+            "position": {
+                "line": 222,
+                "character": 0
+            },
+            "identifier": "NuiSpacer",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [],
+            "comments": [
+                "// A special widget that just takes up layout space.",
+                "// If you add multiple spacers to a span, they will try to size equally.",
+                "//  e.g.: [ <spacer> <button|w=50> <spacer> ] will try to center the button."
+            ]
+        },
+        {
+            "position": {
+                "line": 226,
+                "character": 0
+            },
+            "identifier": "NuiLabel",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 227,
+                        "character": 7
+                    },
+                    "identifier": "jValue",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 228,
+                        "character": 7
+                    },
+                    "identifier": "jHAlign",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 229,
+                        "character": 7
+                    },
+                    "identifier": "jVAlign",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// Create a label field. Labels are single-line stylable non-editable text fields."
+            ]
+        },
+        {
+            "position": {
+                "line": 235,
+                "character": 0
+            },
+            "identifier": "NuiText",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 236,
+                        "character": 7
+                    },
+                    "identifier": "jValue",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 237,
+                        "character": 6
+                    },
+                    "identifier": "bBorder",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                },
+                {
+                    "position": {
+                        "line": 238,
+                        "character": 6
+                    },
+                    "identifier": "nScroll",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "NUI_SCROLLBARS_AUTO"
+                }
+            ],
+            "comments": [
+                "// Create a non-editable text field. Note: This text field internally implies a NuiGroup wrapped",
+                "// around it, which is providing the optional border and scrollbars."
+            ]
+        },
+        {
+            "position": {
+                "line": 244,
+                "character": 0
+            },
+            "identifier": "NuiButton",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 245,
+                        "character": 7
+                    },
+                    "identifier": "jLabel",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// A clickable button with text as the label.",
+                "// Sends \"click\" events on click."
+            ]
+        },
+        {
+            "position": {
+                "line": 251,
+                "character": 0
+            },
+            "identifier": "NuiButtonImage",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 252,
+                        "character": 7
+                    },
+                    "identifier": "jResRef",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// A clickable button with an image as the label.",
+                "// Sends \"click\" events on click."
+            ]
+        },
+        {
+            "position": {
+                "line": 259,
+                "character": 0
+            },
+            "identifier": "NuiButtonSelect",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 260,
+                        "character": 7
+                    },
+                    "identifier": "jLabel",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 261,
+                        "character": 7
+                    },
+                    "identifier": "jValue",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// A clickable button with text as the label.",
+                "// Same as the normal button, but this one is a toggle.",
+                "// Sends \"click\" events on click."
+            ]
+        },
+        {
+            "position": {
+                "line": 266,
+                "character": 0
+            },
+            "identifier": "NuiCheck",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 267,
+                        "character": 7
+                    },
+                    "identifier": "jLabel",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 268,
+                        "character": 7
+                    },
+                    "identifier": "jBool",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// A checkbox with a label to the right of it."
+            ]
+        },
+        {
+            "position": {
+                "line": 273,
+                "character": 0
+            },
+            "identifier": "NuiImage",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 274,
+                        "character": 7
+                    },
+                    "identifier": "jResRef",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 275,
+                        "character": 7
+                    },
+                    "identifier": "jAspect",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 276,
+                        "character": 7
+                    },
+                    "identifier": "jHAlign",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 277,
+                        "character": 7
+                    },
+                    "identifier": "jVAlign",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// A image, with no border or padding."
+            ]
+        },
+        {
+            "position": {
+                "line": 283,
+                "character": 0
+            },
+            "identifier": "NuiImageRegion",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 284,
+                        "character": 9
+                    },
+                    "identifier": "jImage",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 285,
+                        "character": 9
+                    },
+                    "identifier": "jRegion",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// Optionally render only subregion of jImage.",
+                "// jRegion is a NuiRect (x, y, w, h) to indicate the render region inside the image."
+            ]
+        },
+        {
+            "position": {
+                "line": 290,
+                "character": 0
+            },
+            "identifier": "NuiCombo",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 291,
+                        "character": 7
+                    },
+                    "identifier": "jElements",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 292,
+                        "character": 7
+                    },
+                    "identifier": "jSelected",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// A combobox/dropdown."
+            ]
+        },
+        {
+            "position": {
+                "line": 296,
+                "character": 0
+            },
+            "identifier": "NuiComboEntry",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 297,
+                        "character": 9
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 298,
+                        "character": 6
+                    },
+                    "identifier": "nValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 303,
+                "character": 0
+            },
+            "identifier": "NuiSliderFloat",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 304,
+                        "character": 7
+                    },
+                    "identifier": "jValue",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 305,
+                        "character": 7
+                    },
+                    "identifier": "jMin",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 306,
+                        "character": 7
+                    },
+                    "identifier": "jMax",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 307,
+                        "character": 7
+                    },
+                    "identifier": "jStepSize",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// A floating-point slider. A good step size for normal-sized sliders is 0.01."
+            ]
+        },
+        {
+            "position": {
+                "line": 312,
+                "character": 0
+            },
+            "identifier": "NuiSlider",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 313,
+                        "character": 7
+                    },
+                    "identifier": "jValue",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 314,
+                        "character": 7
+                    },
+                    "identifier": "jMin",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 315,
+                        "character": 7
+                    },
+                    "identifier": "jMax",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 316,
+                        "character": 7
+                    },
+                    "identifier": "jStepSize",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// A integer/discrete slider."
+            ]
+        },
+        {
+            "position": {
+                "line": 321,
+                "character": 0
+            },
+            "identifier": "NuiProgress",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 322,
+                        "character": 7
+                    },
+                    "identifier": "jValue",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// A progress bar. Progress is always from 0.0 to 1.0."
+            ]
+        },
+        {
+            "position": {
+                "line": 327,
+                "character": 0
+            },
+            "identifier": "NuiTextEdit",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 328,
+                        "character": 7
+                    },
+                    "identifier": "jPlaceholder",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 329,
+                        "character": 7
+                    },
+                    "identifier": "jValue",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 330,
+                        "character": 6
+                    },
+                    "identifier": "nMaxLength",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 331,
+                        "character": 6
+                    },
+                    "identifier": "bMultiline",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 332,
+                        "character": 6
+                    },
+                    "identifier": "bWordWrap",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// A editable text field."
+            ]
+        },
+        {
+            "position": {
+                "line": 343,
+                "character": 0
+            },
+            "identifier": "NuiList",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 344,
+                        "character": 7
+                    },
+                    "identifier": "jTemplate",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 345,
+                        "character": 7
+                    },
+                    "identifier": "jRowCount",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 346,
+                        "character": 8
+                    },
+                    "identifier": "fRowHeight",
+                    "tokenType": 25,
+                    "valueType": "float",
+                    "defaultValue": "NUI_STYLE_ROW_HEIGHT"
+                },
+                {
+                    "position": {
+                        "line": 347,
+                        "character": 6
+                    },
+                    "identifier": "bBorder",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                },
+                {
+                    "position": {
+                        "line": 348,
+                        "character": 6
+                    },
+                    "identifier": "nScroll",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "NUI_SCROLLBARS_Y"
+                }
+            ],
+            "comments": [
+                "// Creates a list view of elements.",
+                "// jTemplate needs to be an array of NuiListTemplateCell instances.",
+                "// All binds referenced in jTemplate should be arrays of rRowCount size;",
+                "// e.g. when rendering a NuiLabel(), the bound label String should be an array of strings.",
+                "// You can pass in one of the template jRowCount into jSize as a convenience. The array",
+                "// size will be uses as the Int bind.",
+                "// jRowHeight defines the height of the rendered rows."
+            ]
+        },
+        {
+            "position": {
+                "line": 352,
+                "character": 0
+            },
+            "identifier": "NuiListTemplateCell",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 353,
+                        "character": 7
+                    },
+                    "identifier": "jElem",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 354,
+                        "character": 8
+                    },
+                    "identifier": "fWidth",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 355,
+                        "character": 6
+                    },
+                    "identifier": "bVariable",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 360,
+                "character": 0
+            },
+            "identifier": "NuiColorPicker",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 361,
+                        "character": 7
+                    },
+                    "identifier": "jColor",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// A simple color picker, with no border or spacing."
+            ]
+        },
+        {
+            "position": {
+                "line": 368,
+                "character": 0
+            },
+            "identifier": "NuiOptions",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 369,
+                        "character": 6
+                    },
+                    "identifier": "nDirection",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 370,
+                        "character": 7
+                    },
+                    "identifier": "jElements",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 371,
+                        "character": 7
+                    },
+                    "identifier": "jValue",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// A list of options (radio buttons). Only one can be selected",
+                "// at a time. jValue is updated every time a different element is",
+                "// selected. The special value -1 means \"nothing\"."
+            ]
+        },
+        {
+            "position": {
+                "line": 378,
+                "character": 0
+            },
+            "identifier": "NuiToggles",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 379,
+                        "character": 6
+                    },
+                    "identifier": "nDirection",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 380,
+                        "character": 7
+                    },
+                    "identifier": "jElements",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 381,
+                        "character": 7
+                    },
+                    "identifier": "jValue",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// A group of buttons.  Only one can be selected at a time.  jValue",
+                "// is updated every time a different button is selected.  The special",
+                "// value -1 means \"nothing\"."
+            ]
+        },
+        {
+            "position": {
+                "line": 384,
+                "character": 10
+            },
+            "identifier": "NUI_CHART_TYPE_LINES",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 385,
+                "character": 10
+            },
+            "identifier": "NUI_CHART_TYPE_COLUMN",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 388,
+                "character": 0
+            },
+            "identifier": "NuiChartSlot",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 389,
+                        "character": 6
+                    },
+                    "identifier": "nType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 390,
+                        "character": 7
+                    },
+                    "identifier": "jLegend",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 391,
+                        "character": 7
+                    },
+                    "identifier": "jColor",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 392,
+                        "character": 7
+                    },
+                    "identifier": "jData",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 399,
+                "character": 0
+            },
+            "identifier": "NuiChart",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 400,
+                        "character": 7
+                    },
+                    "identifier": "jSlots",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// Renders a chart.",
+                "// Currently, min and max values are determined automatically and",
+                "// cannot be influenced."
+            ]
+        },
+        {
+            "position": {
+                "line": 412,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_TYPE_POLYLINE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 413,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_TYPE_CURVE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 414,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_TYPE_CIRCLE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 415,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_TYPE_ARC",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3"
+        },
+        {
+            "position": {
+                "line": 416,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_TYPE_TEXT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "4"
+        },
+        {
+            "position": {
+                "line": 417,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_TYPE_IMAGE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5"
+        },
+        {
+            "position": {
+                "line": 418,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_TYPE_LINE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "6"
+        },
+        {
+            "position": {
+                "line": 424,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_ORDER_BEFORE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "-1"
+        },
+        {
+            "position": {
+                "line": 425,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_ORDER_AFTER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 428,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 430,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_RENDER_MOUSE_OFF",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 432,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_RENDER_MOUSE_HOVER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 434,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_RENDER_MOUSE_LEFT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3"
+        },
+        {
+            "position": {
+                "line": 436,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_RENDER_MOUSE_RIGHT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "4"
+        },
+        {
+            "position": {
+                "line": 438,
+                "character": 10
+            },
+            "identifier": "NUI_DRAW_LIST_ITEM_RENDER_MOUSE_MIDDLE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5"
+        },
+        {
+            "position": {
+                "line": 441,
+                "character": 0
+            },
+            "identifier": "NuiDrawListPolyLine",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 442,
+                        "character": 7
+                    },
+                    "identifier": "jEnabled",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 443,
+                        "character": 7
+                    },
+                    "identifier": "jColor",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 444,
+                        "character": 7
+                    },
+                    "identifier": "jFill",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 445,
+                        "character": 7
+                    },
+                    "identifier": "jLineThickness",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 446,
+                        "character": 7
+                    },
+                    "identifier": "jPoints",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 447,
+                        "character": 7
+                    },
+                    "identifier": "nOrder",
+                    "tokenType": 25,
+                    "valueType": " ",
+                    "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
+                },
+                {
+                    "position": {
+                        "line": 448,
+                        "character": 7
+                    },
+                    "identifier": "nRender",
+                    "tokenType": 25,
+                    "valueType": " ",
+                    "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 452,
+                "character": 0
+            },
+            "identifier": "NuiDrawListCurve",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 453,
+                        "character": 7
+                    },
+                    "identifier": "jEnabled",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 454,
+                        "character": 7
+                    },
+                    "identifier": "jColor",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 455,
+                        "character": 7
+                    },
+                    "identifier": "jLineThickness",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 456,
+                        "character": 7
+                    },
+                    "identifier": "jA",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 457,
+                        "character": 7
+                    },
+                    "identifier": "jB",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 458,
+                        "character": 7
+                    },
+                    "identifier": "jCtrl0",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 459,
+                        "character": 7
+                    },
+                    "identifier": "jCtrl1",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 460,
+                        "character": 7
+                    },
+                    "identifier": "nOrder",
+                    "tokenType": 25,
+                    "valueType": " ",
+                    "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
+                },
+                {
+                    "position": {
+                        "line": 461,
+                        "character": 7
+                    },
+                    "identifier": "nRender",
+                    "tokenType": 25,
+                    "valueType": " ",
+                    "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 465,
+                "character": 0
+            },
+            "identifier": "NuiDrawListCircle",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 466,
+                        "character": 7
+                    },
+                    "identifier": "jEnabled",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 467,
+                        "character": 7
+                    },
+                    "identifier": "jColor",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 468,
+                        "character": 7
+                    },
+                    "identifier": "jFill",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 469,
+                        "character": 7
+                    },
+                    "identifier": "jLineThickness",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 470,
+                        "character": 7
+                    },
+                    "identifier": "jRect",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 471,
+                        "character": 7
+                    },
+                    "identifier": "nOrder",
+                    "tokenType": 25,
+                    "valueType": " ",
+                    "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
+                },
+                {
+                    "position": {
+                        "line": 472,
+                        "character": 7
+                    },
+                    "identifier": "nRender",
+                    "tokenType": 25,
+                    "valueType": " ",
+                    "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 476,
+                "character": 0
+            },
+            "identifier": "NuiDrawListArc",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 477,
+                        "character": 7
+                    },
+                    "identifier": "jEnabled",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 478,
+                        "character": 7
+                    },
+                    "identifier": "jColor",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 479,
+                        "character": 7
+                    },
+                    "identifier": "jFill",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 480,
+                        "character": 7
+                    },
+                    "identifier": "jLineThickness",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 481,
+                        "character": 7
+                    },
+                    "identifier": "jCenter",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 482,
+                        "character": 7
+                    },
+                    "identifier": "jRadius",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 483,
+                        "character": 7
+                    },
+                    "identifier": "jAMin",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 484,
+                        "character": 7
+                    },
+                    "identifier": "jAMax",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 485,
+                        "character": 7
+                    },
+                    "identifier": "nOrder",
+                    "tokenType": 25,
+                    "valueType": " ",
+                    "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
+                },
+                {
+                    "position": {
+                        "line": 486,
+                        "character": 7
+                    },
+                    "identifier": "nRender",
+                    "tokenType": 25,
+                    "valueType": " ",
+                    "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 490,
+                "character": 0
+            },
+            "identifier": "NuiDrawListText",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 491,
+                        "character": 7
+                    },
+                    "identifier": "jEnabled",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 492,
+                        "character": 7
+                    },
+                    "identifier": "jColor",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 493,
+                        "character": 7
+                    },
+                    "identifier": "jRect",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 494,
+                        "character": 7
+                    },
+                    "identifier": "jText",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 495,
+                        "character": 7
+                    },
+                    "identifier": "nOrder",
+                    "tokenType": 25,
+                    "valueType": " ",
+                    "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
+                },
+                {
+                    "position": {
+                        "line": 496,
+                        "character": 7
+                    },
+                    "identifier": "nRender",
+                    "tokenType": 25,
+                    "valueType": " ",
+                    "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 500,
+                "character": 0
+            },
+            "identifier": "NuiDrawListImage",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 501,
+                        "character": 7
+                    },
+                    "identifier": "jEnabled",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 502,
+                        "character": 7
+                    },
+                    "identifier": "jResRef",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 503,
+                        "character": 7
+                    },
+                    "identifier": "jPos",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 504,
+                        "character": 7
+                    },
+                    "identifier": "jAspect",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 505,
+                        "character": 7
+                    },
+                    "identifier": "jHAlign",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 506,
+                        "character": 7
+                    },
+                    "identifier": "jVAlign",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 507,
+                        "character": 7
+                    },
+                    "identifier": "nOrder",
+                    "tokenType": 25,
+                    "valueType": " ",
+                    "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
+                },
+                {
+                    "position": {
+                        "line": 508,
+                        "character": 7
+                    },
+                    "identifier": "nRender",
+                    "tokenType": 25,
+                    "valueType": " ",
+                    "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 512,
+                "character": 0
+            },
+            "identifier": "NuiDrawListImageRegion",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 513,
+                        "character": 7
+                    },
+                    "identifier": "jDrawListImage",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 514,
+                        "character": 7
+                    },
+                    "identifier": "jRegion",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 518,
+                "character": 0
+            },
+            "identifier": "NuiDrawListLine",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 519,
+                        "character": 7
+                    },
+                    "identifier": "jEnabled",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 520,
+                        "character": 7
+                    },
+                    "identifier": "jColor",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 521,
+                        "character": 7
+                    },
+                    "identifier": "jLineThickness",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 522,
+                        "character": 7
+                    },
+                    "identifier": "jA",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 523,
+                        "character": 7
+                    },
+                    "identifier": "jB",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 524,
+                        "character": 7
+                    },
+                    "identifier": "nOrder",
+                    "tokenType": 25,
+                    "valueType": " ",
+                    "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
+                },
+                {
+                    "position": {
+                        "line": 525,
+                        "character": 7
+                    },
+                    "identifier": "nRender",
+                    "tokenType": 25,
+                    "valueType": " ",
+                    "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 529,
+                "character": 0
+            },
+            "identifier": "NuiDrawList",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 530,
+                        "character": 7
+                    },
+                    "identifier": "jElem",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 531,
+                        "character": 7
+                    },
+                    "identifier": "jScissor",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 532,
+                        "character": 7
+                    },
+                    "identifier": "jList",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": []
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

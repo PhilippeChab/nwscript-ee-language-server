@@ -1,0 +1,287 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 21,
+                "character": 13
+            },
+            "identifier": "sCombatCondVarname",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"X0_COMBAT_CONDITION\""
+        },
+        {
+            "position": {
+                "line": 23,
+                "character": 10
+            },
+            "identifier": "X0_COMBAT_FLAG_RANGED",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000001"
+        },
+        {
+            "position": {
+                "line": 24,
+                "character": 10
+            },
+            "identifier": "X0_COMBAT_FLAG_DEFENSIVE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000002"
+        },
+        {
+            "position": {
+                "line": 25,
+                "character": 10
+            },
+            "identifier": "X0_COMBAT_FLAG_COWARDLY",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000004"
+        },
+        {
+            "position": {
+                "line": 26,
+                "character": 10
+            },
+            "identifier": "X0_COMBAT_FLAG_AMBUSHER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000008"
+        },
+        {
+            "position": {
+                "line": 33,
+                "character": 4
+            },
+            "identifier": "GetCombatCondition",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 33,
+                        "character": 27
+                    },
+                    "identifier": "nCond",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 33,
+                        "character": 41
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Determine whether the specified X0_COMBAT_FLAG_* is set on the target"
+            ]
+        },
+        {
+            "position": {
+                "line": 36,
+                "character": 5
+            },
+            "identifier": "SetCombatCondition",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 36,
+                        "character": 28
+                    },
+                    "identifier": "nCond",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 36,
+                        "character": 39
+                    },
+                    "identifier": "bValid",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 36,
+                        "character": 59
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Set one of the X0_COMBAT_FLAG_* values on the target"
+            ]
+        },
+        {
+            "position": {
+                "line": 47,
+                "character": 4
+            },
+            "identifier": "SpecialTactics",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 47,
+                        "character": 26
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// This function checks for the special tactics flags and",
+                "// chooses tactics appropriately for each.",
+                "// Currently available:",
+                "// X0_COMBAT_FLAG_{RANGED,DEFENSIVE,COWARDLY,AMBUSHER}",
+                "//",
+                "// Note that only one special tactics flag should be applied",
+                "// to a single creature for the most part!",
+                "//",
+                "// Returns TRUE on success, FALSE on failure."
+            ]
+        },
+        {
+            "position": {
+                "line": 63,
+                "character": 4
+            },
+            "identifier": "SpecialTacticsRanged",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 63,
+                        "character": 32
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Special tactics for ranged fighters.",
+                "// The caller will attempt to stay in ranged distance and",
+                "// will make use of active ranged combat feats (Rapid Shot",
+                "// and Called Shot).",
+                "// If the target is too close and is not currently attacking",
+                "// the caller, the caller will instead try to find a ranged",
+                "// enemy to attack. If that fails, the caller will try to run",
+                "// away from the target to a ranged distance.",
+                "// This will fall through and return FALSE after three",
+                "// consecutive attempts to get away from an opponent within",
+                "// melee distance, at which point the caller will use normal",
+                "// tactics until they are again at a ranged distance from",
+                "// their target.",
+                "// Returns TRUE on success, FALSE on failure."
+            ]
+        },
+        {
+            "position": {
+                "line": 73,
+                "character": 4
+            },
+            "identifier": "SpecialTacticsAmbusher",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 73,
+                        "character": 34
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Special tactics for ambushers.",
+                "// Ambushers will first attempt to get out of sight",
+                "// of their target if currently visible to that target.",
+                "// If not visible to the target, they will use any invisibility/",
+                "// hide powers they have.",
+                "// Once hidden, they will then attempt to attack the target using",
+                "// standard AI.",
+                "// Returns TRUE on success, FALSE on failure."
+            ]
+        },
+        {
+            "position": {
+                "line": 85,
+                "character": 4
+            },
+            "identifier": "SpecialTacticsCowardly",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 85,
+                        "character": 34
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Special tactics for cowardly creatures",
+                "// Cowards act as follows:",
+                "// - if you and your friends outnumber the enemy by 6:1 or",
+                "//   by more than 10, fall through to normal combat.",
+                "// - if you are currently being attacked by a melee attacker,",
+                "//   fight defensively (see SpecialTacticsDefensive).",
+                "// - if there is a \"NW_SAFE\" waypoint in your area that is",
+                "//   out of sight of the target, run to it.",
+                "// - otherwise, run away randomly from the target.",
+                "// Returns TRUE on success, FALSE on failure."
+            ]
+        },
+        {
+            "position": {
+                "line": 92,
+                "character": 4
+            },
+            "identifier": "SpecialTacticsDefensive",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 92,
+                        "character": 35
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Special tactics for defensive fighters",
+                "// This will attempt to use the active defensive feats such as",
+                "// Knockdown and Expertise, and also use Parry mode, when these",
+                "// are appropriate. Falls through to standard combat on failure.",
+                "// Returns TRUE on success, FALSE on failure."
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": [
+        "x0_i0_talent"
+    ]
+}

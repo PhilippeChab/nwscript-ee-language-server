@@ -1,0 +1,45 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 17,
+                "character": 5
+            },
+            "identifier": "SetupWander",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 17,
+                        "character": 24
+                    },
+                    "identifier": "sMonster",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 17,
+                        "character": 38
+                    },
+                    "identifier": "nPercent",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 17,
+                        "character": 52
+                    },
+                    "identifier": "nNumber",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

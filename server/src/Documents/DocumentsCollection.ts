@@ -1,5 +1,5 @@
-import { basename, join } from "path";
-import { readFileSync } from "fs";
+import { basename, join, normalize } from "path";
+import { readFileSync, readdirSync } from "fs";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
 import type { Tokenizer } from "../Tokenizer";
@@ -18,6 +18,15 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     this.standardLibComplexTokens = JSON.parse(
       readFileSync(join(__dirname, "..", "resources", "standardLibDefinitions.json")).toString(),
     ).complexTokens as ComplexToken[];
+
+    // const directoryPath = normalize(join(__dirname, "..", "resources", "base_scripts"));
+    // const files = readdirSync(directoryPath);
+    // files.forEach((filename) => {
+    //   const tokens = readFileSync(
+    //     join(__dirname, "..", "resources", "base_scripts", filename),
+    //   ).toString() as any as GlobalScopeTokenizationResult;
+    //   this.initializeDocument("", tokens);
+    // });
   }
 
   private addDocument(document: Document) {
@@ -33,7 +42,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
   }
 
   public getKey(uri: string) {
-    return basename(uri, FILES_EXTENSION).slice(0, -1);
+    return basename(uri, FILES_EXTENSION);
   }
 
   public getFromUri(uri: string) {

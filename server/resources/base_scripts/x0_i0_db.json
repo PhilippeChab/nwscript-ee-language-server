@@ -1,0 +1,564 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 16,
+                "character": 9
+            },
+            "identifier": "dbGetCampaignFloat",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 16,
+                        "character": 35
+                    },
+                    "identifier": "sCampaignName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 16,
+                        "character": 57
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 16,
+                        "character": 74
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// * retrieve float"
+            ]
+        },
+        {
+            "position": {
+                "line": 17,
+                "character": 9
+            },
+            "identifier": "dbGetCampaignInt",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 17,
+                        "character": 33
+                    },
+                    "identifier": "sCampaignName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 17,
+                        "character": 55
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 17,
+                        "character": 72
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 18,
+                "character": 9
+            },
+            "identifier": "dbGetCampaignLocation",
+            "tokenType": 3,
+            "returnType": "location",
+            "params": [
+                {
+                    "position": {
+                        "line": 18,
+                        "character": 38
+                    },
+                    "identifier": "sCampaignName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 18,
+                        "character": 60
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 18,
+                        "character": 77
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 19,
+                "character": 9
+            },
+            "identifier": "dbGetCampaignString",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 19,
+                        "character": 36
+                    },
+                    "identifier": "sCampaignName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 19,
+                        "character": 58
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 19,
+                        "character": 75
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 20,
+                "character": 9
+            },
+            "identifier": "dbGetCampaignVector",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 20,
+                        "character": 36
+                    },
+                    "identifier": "sCampaignName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 20,
+                        "character": 58
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 20,
+                        "character": 75
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 29,
+                "character": 5
+            },
+            "identifier": "dbSetCampaignFloat",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 29,
+                        "character": 31
+                    },
+                    "identifier": "sCampaignName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 29,
+                        "character": 53
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 29,
+                        "character": 69
+                    },
+                    "identifier": "flFloat",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 29,
+                        "character": 88
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Campaign variable table database control.",
+                "// Use the set functions to add/change a variable to a campaign database.",
+                "// Use the get functions to retrieve the variable from a campaign database",
+                "// Use the delete functions to remove the variable from a campaign database.",
+                "// The database name must be the same for both set and get functions. It IS case sensitive.",
+                "// The var name must be unique acrossed the entire database.",
+                "// If you want a variable to pertain to a specific player in the game, provide a player object."
+            ]
+        },
+        {
+            "position": {
+                "line": 30,
+                "character": 5
+            },
+            "identifier": "dbSetCampaignInt",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 29
+                    },
+                    "identifier": "sCampaignName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 51
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 65
+                    },
+                    "identifier": "nInt",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 86
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 31,
+                "character": 5
+            },
+            "identifier": "dbSetCampaignLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 31,
+                        "character": 34
+                    },
+                    "identifier": "sCampaignName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 31,
+                        "character": 56
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 31,
+                        "character": 75
+                    },
+                    "identifier": "locLocation",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 31,
+                        "character": 95
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 32,
+                "character": 5
+            },
+            "identifier": "dbSetCampaignString",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 32,
+                        "character": 32
+                    },
+                    "identifier": "sCampaignName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 32,
+                        "character": 54
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 32,
+                        "character": 71
+                    },
+                    "identifier": "sString",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 32,
+                        "character": 89
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 33,
+                "character": 5
+            },
+            "identifier": "dbSetCampaignVector",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 33,
+                        "character": 32
+                    },
+                    "identifier": "sCampaignName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 33,
+                        "character": 54
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 33,
+                        "character": 71
+                    },
+                    "identifier": "vVector",
+                    "tokenType": 25,
+                    "valueType": "vector"
+                },
+                {
+                    "position": {
+                        "line": 33,
+                        "character": 89
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 37,
+                "character": 7
+            },
+            "identifier": "dbStoreCampaignObject",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 37,
+                        "character": 36
+                    },
+                    "identifier": "sCampaignName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 37,
+                        "character": 58
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 37,
+                        "character": 75
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 37,
+                        "character": 91
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Stores an object with the given id.",
+                "// Returns 0 if it failled, 1 if it worked."
+            ]
+        },
+        {
+            "position": {
+                "line": 41,
+                "character": 7
+            },
+            "identifier": "dbRetrieveCampaignObject",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 41,
+                        "character": 39
+                    },
+                    "identifier": "sCampaignName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 41,
+                        "character": 61
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 41,
+                        "character": 80
+                    },
+                    "identifier": "locLocation",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 41,
+                        "character": 100
+                    },
+                    "identifier": "oOwner",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
+                },
+                {
+                    "position": {
+                        "line": 41,
+                        "character": 132
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Use RetrieveCampaign with the given id to restore it.",
+                "// If you specify an owner, the object will try to be created in their repository",
+                "// If the owner can't handle the item (or if it's a creature) it will be created on the ground."
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

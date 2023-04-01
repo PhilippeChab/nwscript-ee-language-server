@@ -1,0 +1,52 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 15,
+                "character": 10
+            },
+            "identifier": "MIN_SKILL_LEVEL",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5"
+        },
+        {
+            "position": {
+                "line": 19,
+                "character": 5
+            },
+            "identifier": "craft_drop_items",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 19,
+                        "character": 29
+                    },
+                    "identifier": "oSlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// * Drops craft items if killed or bashed"
+            ]
+        },
+        {
+            "position": {
+                "line": 21,
+                "character": 5
+            },
+            "identifier": "craft_drop_placeable",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "comments": [
+                "// * handles dropping crafting items if a placeable is bashed"
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

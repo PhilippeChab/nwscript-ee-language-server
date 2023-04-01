@@ -1,0 +1,220 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 24,
+                "character": 5
+            },
+            "identifier": "PWGiveExperienceParty",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 24,
+                        "character": 34
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 24,
+                        "character": 43
+                    },
+                    "identifier": "nExperience",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Give the specified amount of experience to everyone in oPC's party."
+            ]
+        },
+        {
+            "position": {
+                "line": 33,
+                "character": 5
+            },
+            "identifier": "PWSetMinLocalIntParty",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 33,
+                        "character": 34
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 33,
+                        "character": 46
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 33,
+                        "character": 60
+                    },
+                    "identifier": "nValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Set the local integer variable sVarName to nValue",
+                "// for all players in oPC's party.",
+                "// If the local int is already greater than nValue, do nothing."
+            ]
+        },
+        {
+            "position": {
+                "line": 43,
+                "character": 5
+            },
+            "identifier": "PWSetMinLocalIntPartyPCSpeaker",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 43,
+                        "character": 43
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 43,
+                        "character": 57
+                    },
+                    "identifier": "nValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Set the local integer variable sVarName to nValue",
+                "// for all players in the PC Speaker's party.",
+                "// If the local int is already greater than nValue, do nothing."
+            ]
+        },
+        {
+            "position": {
+                "line": 45,
+                "character": 5
+            },
+            "identifier": "PWSetMinLocalIntAndJournalForItemAcquired",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 45,
+                        "character": 54
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 45,
+                        "character": 71
+                    },
+                    "identifier": "sJournalTag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 45,
+                        "character": 88
+                    },
+                    "identifier": "nState",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 45,
+                        "character": 103
+                    },
+                    "identifier": "sItemTag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 45,
+                        "character": 117
+                    },
+                    "identifier": "nExperience",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 47,
+                "character": 5
+            },
+            "identifier": "PWSetMinLocalIntAndJournalForOpenerParty",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 47,
+                        "character": 53
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 47,
+                        "character": 70
+                    },
+                    "identifier": "sJournalTag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 47,
+                        "character": 87
+                    },
+                    "identifier": "nState",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 47,
+                        "character": 99
+                    },
+                    "identifier": "nExperience",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}
