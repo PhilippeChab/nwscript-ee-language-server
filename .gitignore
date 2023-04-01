@@ -9,6 +9,7 @@ yarn-error.log
 # Static definitions
 server/scripts/nwscript.nss
 server/scripts/base_scripts/*
+server/scripts/ovr/*
 
 # Varia
 .DS_Store
