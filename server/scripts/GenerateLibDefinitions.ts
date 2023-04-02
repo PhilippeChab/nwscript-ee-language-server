@@ -8,10 +8,10 @@ const generateDefinitions = async () => {
   const tokenizer = await new Tokenizer(true).loadGrammar();
 
   console.log("Generating nwscript.nss definitions ...");
-  // const lib = readFileSync(normalize(join(__dirname, "./nwscript.nss"))).toString();
+  const lib = readFileSync(normalize(join(__dirname, "./nwscript.nss"))).toString();
 
-  // const definitions = tokenizer.tokenizeContent(lib, TokenizedScope.global);
-  // writeFileSync(normalize(join(__dirname, "../resources/standardLibDefinitions.json")), JSON.stringify(definitions, null, 4));
+  const definitions = tokenizer.tokenizeContent(lib, TokenizedScope.global);
+  writeFileSync(normalize(join(__dirname, "../resources/standardLibDefinitions.json")), JSON.stringify(definitions, null, 4));
   console.log("Done.");
 
   // Ideally this script would extract directly from the .bif file but meh.
@@ -44,7 +44,6 @@ const generateDefinitions = async () => {
   console.log(`Generated ${filesCount} files.`);
   console.log("Done.");
 
-  // Ideally this script would extract directly from the .bif file but meh.
   console.log("Generating ovr includes definitions ...");
   filesCount = 0;
   directoryPath = normalize(join(__dirname, "ovr"));
