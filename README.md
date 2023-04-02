@@ -30,14 +30,7 @@ Neverwinter Nights home and installation folders.
 
 ## Usage
 
-Simply open a project with nss files and the extension installed. The extension will index your files and you will be ready to go - it can currently take up to 10-15 seconds to index big projects.
-
-![](https://i.imgur.com/DKn8znH.png)
-
-Notes:
-
-- The files are indexed in background processes, which means it will not block other features of the language server like formatting, and a file's local definitions generated on the fly will be available.
-- The files are indexed incrementally, which means a file's global definitions become available as soon as it has been indexed.
+Simply open a project with nss files and the extension installed.
 
 ### Formatting
 
@@ -95,7 +88,6 @@ Notes:
 - The compiler executable is provided for Windows, Darwin and Linux operating systems.
 - Diagnostics are currently published when opening or saving a file.
 - By default, the compiler will try to detect automatically your Neverwinter Nights home and installation folders if they are not specified. If it fails to do so, you can provide the paths in the extension settings like shown above - input paths are wrapped into quotes automatically.
-- In order to compile a file's includes, the compiler needs to know their directories. Files that had been requested a diagnostic while the project is being indexed are queued and processed once the indexing is done.
 - You can set the `verbose` setting to `true` if you wish to see detailed logs of the compilation process.
 - Big files with a lot of includes can take between half a second to a second to compile on older machines - it will not affect the client performances as the processing is done on the server.
 

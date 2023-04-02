@@ -11,8 +11,13 @@ export default class WorkspaceFilesSystem {
     return normalize(join(this.rootPath, ...parts));
   }
 
-  public getAllFilesPath() {
-    return new GlobSync(`**/*.${FILES_EXTENSION}`).found.map((filename) => this.normalizedAbsolutePath(filename));
+  public getFilePath(filename: string) {
+    const path = new GlobSync(`**/${filename}${FILES_EXTENSION}`).found[0];
+    if (path) {
+      return this.normalizedAbsolutePath(path);
+    }
+
+    return null;
   }
 
   public getGlobPaths(glob: string) {

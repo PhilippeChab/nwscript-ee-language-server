@@ -87,8 +87,18 @@ export default class GotoDefinitionProvider extends Provider {
         }
 
         if (token) {
+          if (ref && !ref.owner) {
+            return {
+              uri,
+              range: {
+                start: { line: position.line, character: position.character },
+                end: { line: position.line, character: position.character },
+              },
+            };
+          }
+
           return {
-            uri: ref && ref.owner !== "" ? ref.owner : uri,
+            uri: ref ? ref.owner : uri,
             range: {
               start: { line: token.position.line, character: token.position.character },
               end: { line: token.position.line, character: token.position.character },

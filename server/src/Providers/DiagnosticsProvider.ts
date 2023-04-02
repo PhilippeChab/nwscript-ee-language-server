@@ -21,13 +21,6 @@ type FilesDiagnostics = { [uri: string]: Diagnostic[] };
 export default class DiagnoticsProvider extends Provider {
   constructor(server: ServerManager) {
     super(server);
-
-    this.server.liveDocumentsManager.onDidSave(
-      async (event) => await this.asyncExceptionsWrapper(this.publish(event.document.uri)),
-    );
-    this.server.liveDocumentsManager.onDidOpen(
-      async (event) => await this.asyncExceptionsWrapper(this.publish(event.document.uri)),
-    );
   }
 
   private generateDiagnostics(uris: string[], files: FilesDiagnostics, severity: DiagnosticSeverity) {
@@ -67,7 +60,7 @@ export default class DiagnoticsProvider extends Provider {
     }
   }
 
-  private publish(uri: string) {
+  public publish(uri: string) {
     return async () => {
       return await new Promise<boolean>((resolve, reject) => {
         const { enabled, nwnHome, reportWarnings, nwnInstallation, verbose } = this.server.config.compiler;
@@ -83,7 +76,7 @@ export default class DiagnoticsProvider extends Provider {
 
         const document = this.server.documentsCollection.getFromUri(uri);
 
-        if (!this.server.hasIndexedDocuments || !document) {
+        if (!document) {
           if (!this.server.documentsWaitingForPublish.includes(uri)) {
             this.server.documentsWaitingForPublish?.push(uri);
           }
