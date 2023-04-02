@@ -27,7 +27,6 @@ export default class ServerManger {
   public liveDocumentsManager: LiveDocumentsManager;
   public documentsCollection: DocumentsCollection;
   public tokenizer: Tokenizer | null = null;
-  public documentsWaitingForPublish: string[] = [];
 
   constructor(connection: Connection, params: InitializeParams) {
     this.connection = connection;

@@ -98,7 +98,7 @@ export default class GotoDefinitionProvider extends Provider {
           }
 
           return {
-            uri: ref ? ref.owner : uri,
+            uri: ref ? ref.owner || "" : uri,
             range: {
               start: { line: token.position.line, character: token.position.character },
               end: { line: token.position.line, character: token.position.character },

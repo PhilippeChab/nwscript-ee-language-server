@@ -77,9 +77,6 @@ export default class DiagnoticsProvider extends Provider {
         const document = this.server.documentsCollection.getFromUri(uri);
 
         if (!document) {
-          if (!this.server.documentsWaitingForPublish.includes(uri)) {
-            this.server.documentsWaitingForPublish?.push(uri);
-          }
           return resolve(true);
         }
 
@@ -197,11 +194,5 @@ export default class DiagnoticsProvider extends Provider {
         });
       });
     };
-  }
-
-  public async processDocumentsWaitingForPublish() {
-    return await Promise.all(
-      this.server.documentsWaitingForPublish.map(async (uri) => await this.asyncExceptionsWrapper(this.publish(uri))),
-    );
   }
 }
