@@ -22,11 +22,15 @@ export default class ServerManger {
   public connection: Connection;
   public logger: Logger;
   public config = defaultServerConfiguration;
+  public configLoaded = false;
   public capabilitiesHandler: CapabilitiesHandler;
   public workspaceFilesSystem: WorkspaceFilesSystem;
   public liveDocumentsManager: LiveDocumentsManager;
   public documentsCollection: DocumentsCollection;
+  public documentsWaitingForPublish: string[] = [];
   public tokenizer: Tokenizer | null = null;
+
+  private diagnosticsProvider: DiagnosticsProvider | null = null;
 
   constructor(connection: Connection, params: InitializeParams) {
     this.connection = connection;
@@ -63,6 +67,8 @@ export default class ServerManger {
     }
 
     await this.loadConfig();
+    this.configLoaded = true;
+    this.diagnosticsProvider?.processDocumentsWaitingForPublish();
   }
 
   public down() {}
@@ -74,18 +80,17 @@ export default class ServerManger {
     SignatureHelpProvider.register(this);
     DocumentFormatingProvider.register(this);
     DocumentRangeFormattingProvider.register(this);
+    this.diagnosticsProvider = DiagnosticsProvider.register(this) as DiagnosticsProvider;
   }
 
   private registerLiveDocumentsEvents() {
-    const diagnosticProvider = DiagnosticsProvider.register(this) as DiagnosticsProvider;
-
     this.liveDocumentsManager.onWillSave((event) => {
       if (this.tokenizer) {
         this.documentsCollection?.updateDocument(event.document, this.tokenizer, this.workspaceFilesSystem);
       }
     });
 
-    this.liveDocumentsManager.onDidSave((event) => diagnosticProvider.publish(event.document.uri));
+    this.liveDocumentsManager.onDidSave((event) => this.diagnosticsProvider?.publish(event.document.uri));
 
     this.liveDocumentsManager.onDidOpen((event) => {
       if (this.tokenizer) {
@@ -97,13 +102,17 @@ export default class ServerManger {
         );
       }
 
-      diagnosticProvider.publish(event.document.uri);
+      this.diagnosticsProvider?.publish(event.document.uri);
     });
   }
 
   private async loadConfig() {
-    const { formatter, compiler, ...rest } = await this.connection.workspace.getConfiguration("nwscript-ee-lsp");
+    const { completion, hovering, formatter, compiler, ...rest } = await this.connection.workspace.getConfiguration(
+      "nwscript-ee-lsp",
+    );
     this.config = { ...this.config, ...rest };
+    this.config.completion = { ...this.config.completion, ...completion };
+    this.config.hovering = { ...this.config.hovering, ...hovering };
     this.config.formatter = { ...this.config.formatter, ...formatter };
     this.config.compiler = { ...this.config.compiler, ...compiler };
   }

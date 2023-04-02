@@ -437,7 +437,7 @@ export default class Tokenizer {
     if (scope === TokenizedScope.global) {
       return this.tokenizeLinesForGlobalScope(content.split(/\r?\n/), startIndex, stopIndex);
     } else {
-      return this.tokenizeLinesForLocalScope(content.split(/\r?\n/), startIndex, stopIndex);
+      return this.tokenizeLinesForLocalScope(content.split(/\r?\n/), startIndex, stopIndex - 1);
     }
   }
 

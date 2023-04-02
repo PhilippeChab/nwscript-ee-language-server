@@ -55,15 +55,25 @@
       "type": "object",
       "title": "NWScript: EE LSP Formatter Configuration",
       "properties": {
-        "nwscript-ee-lsp.autoCompleteFunctionsWithParams": {
-          "type": "boolean",
-          "default": false,
-          "description": "Will include a function's params when auto completing it."
+        "nwscript-ee-lsp.completion": {
+          "type": "object",
+          "properties": {
+            "addParamsToFunctions": {
+              "type": "boolean",
+              "default": false,
+              "description": "Will include a function's params when auto completing it."
+            }
+          }
         },
-        "nwscript-ee-lsp.includeCommentsInFunctionsHover": {
-          "type": "boolean",
-          "default": false,
-          "description": "Will include a function's comments when hovering it."
+        "nwscript-ee-lsp.hovering": {
+          "type": "object",
+          "properties": {
+            "addCommentsToFunctions": {
+              "type": "boolean",
+              "default": false,
+              "description": "Will include a function's comments when hovering it."
+            }
+          }
         },
         "nwscript-ee-lsp.formatter": {
           "type": "object",
@@ -117,6 +127,11 @@
               "type": "boolean",
               "default": true,
               "description": "Whether or not the compiler is enabled."
+            },
+            "os": {
+              "type": "string",
+              "default": null,
+              "description": "Force to use a specific os executable. Darwin, Linux or Windows_NT."
             },
             "verbose": {
               "type": "boolean",
