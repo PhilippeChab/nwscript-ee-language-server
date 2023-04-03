@@ -1,0 +1,299 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 30,
+                "character": 5
+            },
+            "identifier": "TravelToObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 27
+                    },
+                    "identifier": "oDest",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 41
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 66
+                    },
+                    "identifier": "bRun",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 84
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "comments": [
+                "// Target goes to specified destination object intelligently.",
+                "// If location is in same area, walk (or run) there.",
+                "// If location is in different area, walk (or run) to",
+                "//     most appropriate door, area transition, or waypoint, ",
+                "//     then jump.",
+                "// If either of these fail, jump after fDelay seconds."
+            ]
+        },
+        {
+            "position": {
+                "line": 34,
+                "character": 5
+            },
+            "identifier": "TravelToLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 34,
+                        "character": 31
+                    },
+                    "identifier": "lDest",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 34,
+                        "character": 45
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 34,
+                        "character": 70
+                    },
+                    "identifier": "bRun",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 34,
+                        "character": 88
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "comments": [
+                "// Target goes to specified location intelligently. See",
+                "// TravelToObject for description."
+            ]
+        },
+        {
+            "position": {
+                "line": 37,
+                "character": 7
+            },
+            "identifier": "GetNearestExit",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 37,
+                        "character": 29
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Find nearest exit to target (either door or waypoint)."
+            ]
+        },
+        {
+            "position": {
+                "line": 40,
+                "character": 7
+            },
+            "identifier": "GetBestExit",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 40,
+                        "character": 26
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 40,
+                        "character": 54
+                    },
+                    "identifier": "oTargetArea",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Find best exit based on desired target area"
+            ]
+        },
+        {
+            "position": {
+                "line": 45,
+                "character": 5
+            },
+            "identifier": "TransportToWaypoint",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 45,
+                        "character": 32
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 45,
+                        "character": 44
+                    },
+                    "identifier": "oWaypoint",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Transport a player and his/her associates to a waypoint.",
+                "// This does NOT transport the rest of the player's party,",
+                "// only their henchman, summoned, dominated, etc."
+            ]
+        },
+        {
+            "position": {
+                "line": 50,
+                "character": 5
+            },
+            "identifier": "TransportToLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 50,
+                        "character": 32
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 50,
+                        "character": 46
+                    },
+                    "identifier": "oLoc",
+                    "tokenType": 25,
+                    "valueType": "location"
+                }
+            ],
+            "comments": [
+                "// Transport a player and his/her associates to a location.",
+                "// This does NOT transport the rest of the player's party,",
+                "// only their henchman, summoned, dominated, etc."
+            ]
+        },
+        {
+            "position": {
+                "line": 53,
+                "character": 5
+            },
+            "identifier": "TransportAllToWaypoint",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 53,
+                        "character": 35
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 53,
+                        "character": 47
+                    },
+                    "identifier": "oWay",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Transport an entire party to a waypoint"
+            ]
+        },
+        {
+            "position": {
+                "line": 56,
+                "character": 5
+            },
+            "identifier": "TransportAllToLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 56,
+                        "character": 35
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 56,
+                        "character": 49
+                    },
+                    "identifier": "lLoc",
+                    "tokenType": 25,
+                    "valueType": "location"
+                }
+            ],
+            "comments": [
+                "// Transport an entire party to a location"
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

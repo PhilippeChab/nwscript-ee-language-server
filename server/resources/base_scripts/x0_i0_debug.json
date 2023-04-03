@@ -1,0 +1,104 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 23,
+                "character": 5
+            },
+            "identifier": "newdebug",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 23,
+                        "character": 21
+                    },
+                    "identifier": "sString",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// * displays debug info added since November 2002."
+            ]
+        },
+        {
+            "position": {
+                "line": 28,
+                "character": 5
+            },
+            "identifier": "DubugPrintTalentID",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 28,
+                        "character": 31
+                    },
+                    "identifier": "tTalent",
+                    "tokenType": 25,
+                    "valueType": "talent"
+                }
+            ],
+            "comments": [
+                "// TYPO! Use DebugPrintTalentID(talent tTalent) instead.",
+                "// This function is commented out for release; use PrintString for",
+                "// debugging."
+            ]
+        },
+        {
+            "position": {
+                "line": 33,
+                "character": 5
+            },
+            "identifier": "DebugPrintTalentID",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 33,
+                        "character": 31
+                    },
+                    "identifier": "tTalent",
+                    "tokenType": 25,
+                    "valueType": "talent"
+                }
+            ],
+            "comments": [
+                "// Prints a log string with the ID of the passed in talent.",
+                "// This function is commented out for release; use PrintString for",
+                "// debugging."
+            ]
+        },
+        {
+            "position": {
+                "line": 38,
+                "character": 5
+            },
+            "identifier": "MyPrintString",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 38,
+                        "character": 26
+                    },
+                    "identifier": "sString",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Inserts a debug print string into the client log file.",
+                "// This function is commented out for release; use PrintString for",
+                "// debugging."
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

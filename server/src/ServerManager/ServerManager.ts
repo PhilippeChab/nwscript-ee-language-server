@@ -1,7 +1,3 @@
-import { cpus } from "os";
-import { join } from "path";
-import { pathToFileURL } from "url";
-import * as clustering from "cluster";
 import type { Connection, InitializeParams } from "vscode-languageserver";
 
 import {
@@ -26,13 +22,15 @@ export default class ServerManger {
   public connection: Connection;
   public logger: Logger;
   public config = defaultServerConfiguration;
+  public configLoaded = false;
   public capabilitiesHandler: CapabilitiesHandler;
   public workspaceFilesSystem: WorkspaceFilesSystem;
   public liveDocumentsManager: LiveDocumentsManager;
   public documentsCollection: DocumentsCollection;
-  public tokenizer: Tokenizer | null = null;
-  public hasIndexedDocuments = false;
   public documentsWaitingForPublish: string[] = [];
+  public tokenizer: Tokenizer | null = null;
+
+  private diagnosticsProvider: DiagnosticsProvider | null = null;
 
   constructor(connection: Connection, params: InitializeParams) {
     this.connection = connection;
@@ -69,41 +67,8 @@ export default class ServerManger {
     }
 
     await this.loadConfig();
-
-    const diagnosticsProvider = DiagnosticsProvider.register(this) as DiagnosticsProvider;
-    const numCPUs = cpus().length;
-    const cluster = clustering.default;
-    if (cluster.isPrimary) {
-      cluster.setupPrimary({
-        exec: join(__dirname, "indexer.js"),
-      });
-    }
-
-    let filesIndexedCount = 0;
-    const filesPath = this.workspaceFilesSystem.getAllFilesPath();
-    const progressReporter = await this.connection.window.createWorkDoneProgress();
-    const filesCount = filesPath.length;
-
-    progressReporter.begin("Indexing files for NWScript: EE LSP ...", 0);
-    const partCount = Math.ceil(filesCount / numCPUs);
-    for (let i = 0; i < Math.min(numCPUs, filesCount); i++) {
-      const worker = cluster.fork();
-      worker.send(filesPath.slice(i * partCount, Math.min((i + 1) * partCount, filesCount - 1)).join(","));
-      worker.on("message", (message: string) => {
-        const { filePath, globalScope } = JSON.parse(message);
-        this.documentsCollection?.createDocument(pathToFileURL(filePath).href, globalScope);
-        filesIndexedCount++;
-        progressReporter?.report(filesIndexedCount / filesCount);
-      });
-    }
-
-    cluster.on("exit", () => {
-      if (Object.keys(cluster.workers || {}).length === 0) {
-        progressReporter?.done();
-        this.hasIndexedDocuments = true;
-        diagnosticsProvider?.processDocumentsWaitingForPublish();
-      }
-    });
+    this.configLoaded = true;
+    this.diagnosticsProvider?.processDocumentsWaitingForPublish();
   }
 
   public down() {}
@@ -115,19 +80,39 @@ export default class ServerManger {
     SignatureHelpProvider.register(this);
     DocumentFormatingProvider.register(this);
     DocumentRangeFormattingProvider.register(this);
+    this.diagnosticsProvider = DiagnosticsProvider.register(this) as DiagnosticsProvider;
   }
 
   private registerLiveDocumentsEvents() {
     this.liveDocumentsManager.onWillSave((event) => {
       if (this.tokenizer) {
-        this.documentsCollection?.updateDocument(event.document, this.tokenizer);
+        this.documentsCollection?.updateDocument(event.document, this.tokenizer, this.workspaceFilesSystem);
       }
+    });
+
+    this.liveDocumentsManager.onDidSave((event) => this.diagnosticsProvider?.publish(event.document.uri));
+
+    this.liveDocumentsManager.onDidOpen((event) => {
+      if (this.tokenizer) {
+        this.documentsCollection?.createDocuments(
+          event.document.uri,
+          event.document.getText(),
+          this.tokenizer,
+          this.workspaceFilesSystem,
+        );
+      }
+
+      this.diagnosticsProvider?.publish(event.document.uri);
     });
   }
 
   private async loadConfig() {
-    const { formatter, compiler, ...rest } = await this.connection.workspace.getConfiguration("nwscript-ee-lsp");
+    const { completion, hovering, formatter, compiler, ...rest } = await this.connection.workspace.getConfiguration(
+      "nwscript-ee-lsp",
+    );
     this.config = { ...this.config, ...rest };
+    this.config.completion = { ...this.config.completion, ...completion };
+    this.config.hovering = { ...this.config.hovering, ...hovering };
     this.config.formatter = { ...this.config.formatter, ...formatter };
     this.config.compiler = { ...this.config.compiler, ...compiler };
   }

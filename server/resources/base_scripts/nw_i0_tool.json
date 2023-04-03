@@ -1,0 +1,46 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 17,
+                "character": 4
+            },
+            "identifier": "DC_EASY",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 18,
+                "character": 4
+            },
+            "identifier": "DC_MEDIUM",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 19,
+                "character": 4
+            },
+            "identifier": "DC_HARD",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 23,
+                "character": 4
+            },
+            "identifier": "G_CLASSCHANCE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "70"
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

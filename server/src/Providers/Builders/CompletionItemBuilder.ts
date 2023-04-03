@@ -14,7 +14,7 @@ import Builder from "./Builder";
 
 export default class CompletionItemBuilder extends Builder {
   public static buildResolvedItem(item: CompletionItem, serverConfig: ServerConfiguration): CompletionItem {
-    if (serverConfig.autoCompleteFunctionsWithParams && item.kind === CompletionItemKind.Function) {
+    if (serverConfig.completion.addParamsToFunctions && item.kind === CompletionItemKind.Function) {
       const params = item.data as FunctionParamComplexToken[];
 
       return {

@@ -1,0 +1,378 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 14,
+                "character": 10
+            },
+            "identifier": "X2_DTS_CLASS_LOW",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 15,
+                "character": 10
+            },
+            "identifier": "X2_DTS_CLASS_MEDIUM",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 16,
+                "character": 10
+            },
+            "identifier": "X2_DTS_CLASS_HIGH",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 18,
+                "character": 10
+            },
+            "identifier": "X2_DTS_TYPE_DISP",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 19,
+                "character": 10
+            },
+            "identifier": "X2_DTS_TYPE_AMMO",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 20,
+                "character": 10
+            },
+            "identifier": "X2_DTS_TYPE_GOLD",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "4"
+        },
+        {
+            "position": {
+                "line": 21,
+                "character": 10
+            },
+            "identifier": "X2_DTS_TYPE_ITEM",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "8"
+        },
+        {
+            "position": {
+                "line": 25,
+                "character": 10
+            },
+            "identifier": "X2_DTS_BASECHANCE_TREAS",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "50"
+        },
+        {
+            "position": {
+                "line": 26,
+                "character": 10
+            },
+            "identifier": "X2_DTS_MAXITEMS",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 27,
+                "character": 10
+            },
+            "identifier": "X2_DTS_STACKVAR",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "50"
+        },
+        {
+            "position": {
+                "line": 30,
+                "character": 13
+            },
+            "identifier": "X2_DTS_2DA_DISP",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"des_treas_disp\""
+        },
+        {
+            "position": {
+                "line": 31,
+                "character": 13
+            },
+            "identifier": "X2_DTS_2DA_AMMO",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"des_treas_ammo\""
+        },
+        {
+            "position": {
+                "line": 32,
+                "character": 13
+            },
+            "identifier": "X2_DTS_2DA_GOLD",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"des_treas_gold\""
+        },
+        {
+            "position": {
+                "line": 33,
+                "character": 13
+            },
+            "identifier": "X2_DTS_2DA_ITEM",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"des_treas_items\""
+        },
+        {
+            "position": {
+                "line": 35,
+                "character": 13
+            },
+            "identifier": "X2_DTS_2DA_ENHANCEMENTS",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"des_treas_enh\""
+        },
+        {
+            "position": {
+                "line": 37,
+                "character": 13
+            },
+            "identifier": "X2_DTS_2DA_CONF",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"des_conf_treas\""
+        },
+        {
+            "position": {
+                "line": 54,
+                "character": 5
+            },
+            "identifier": "DTSGenerateTreasureOnContainer",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 54,
+                        "character": 44
+                    },
+                    "identifier": "oContainer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 54,
+                        "character": 63
+                    },
+                    "identifier": "oOpener",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 54,
+                        "character": 76
+                    },
+                    "identifier": "nClass",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 54,
+                        "character": 88
+                    },
+                    "identifier": "nType",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "5"
+                }
+            ],
+            "comments": [
+                "// Generate random, disposeable treasure on the container",
+                "// oContainer - Valid object with inventory",
+                "// oOpener    - The one who opened the container",
+                "// nClass - Treasure Class (X2_DTS_CLASS_*)",
+                "// nType  - Treasure Type  (X2_DTS_TYPE_*), default = X2_DTS_TYPE_DISPOSEABLE | X2_DTS_TYPE_GOLD",
+                "//          Values: X2_DTS_TYPE_DISPOSEABLE - Potions, Kits, etc",
+                "//                  X2_DTS_TYPE_AMMO        - Ammunition",
+                "//                  X2_DTS_TYPE_GOLD        - Gold and Gems",
+                "//                  X2_DTS_TYPE_ITEM    - Character Optimized treasure (ignores treasure class)",
+                "// Example:",
+                "//     Generate Low Class Ammo and Gold+Gems",
+                "//     DTSGenerateTreasureOnContainer (oChest, X2_DTS_CLASS_LOW, X2_DTS_TYPE_AMMO | X2_DTS_TYPE_GOLD);"
+            ]
+        },
+        {
+            "position": {
+                "line": 60,
+                "character": 7
+            },
+            "identifier": "DTSGenerateCharSpecificTreasure",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 60,
+                        "character": 47
+                    },
+                    "identifier": "oContainer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 60,
+                        "character": 66
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 60,
+                        "character": 83
+                    },
+                    "identifier": "bIgnoreFeats",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                }
+            ],
+            "comments": [
+                "// Generates one random, character specific item on container",
+                "// Treasure is optimized to suit a characters needs",
+                "// if bIgnoreFeats is set TRUE, the system will not use Feats (i.e. Weapon Focus)",
+                "// to determine a baseitem to spawn"
+            ]
+        },
+        {
+            "position": {
+                "line": 65,
+                "character": 5
+            },
+            "identifier": "DTSInitialize",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 65,
+                        "character": 24
+                    },
+                    "identifier": "nConfigIndex",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "comments": [
+                "// Initializes the treasure system by loading x2_conf_tras.2da",
+                "// nConfigIndex - RowIndex of the configuration to load"
+            ]
+        },
+        {
+            "position": {
+                "line": 69,
+                "character": 5
+            },
+            "identifier": "DTSSetAreaTreasureProbability",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 69,
+                        "character": 42
+                    },
+                    "identifier": "oArea",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 69,
+                        "character": 53
+                    },
+                    "identifier": "nBaseChance",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 69,
+                        "character": 70
+                    },
+                    "identifier": "bDisabled",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                }
+            ],
+            "comments": [
+                "// Sets the area wide chance for treasure Generation ...",
+                "// if bDisable = TRUE, then no random treasure is generated at all"
+            ]
+        },
+        {
+            "position": {
+                "line": 75,
+                "character": 4
+            },
+            "identifier": "DTSGrantCharSpecificWeaponEnhancement",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 75,
+                        "character": 46
+                    },
+                    "identifier": "nLevel",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 75,
+                        "character": 61
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Enchantes the weapon passed in oItem with a scaled enhancement bonus",
+                "// nLevel should be the level of the player who is going to receive",
+                "// the item. Lookup is done via  des_treas_enh.2da.",
+                "// returns TRUE on success"
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": [
+        "x2_inc_itemprop"
+    ]
+}

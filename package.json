@@ -8,7 +8,7 @@
     "url": "https://github.com/PhilippeChab/nwscript-ee-language-server"
   },
   "license": "MIT",
-  "version": "1.5.5",
+  "version": "2.0.0",
   "author": {
     "name": "Philippe Chabot"
   },
@@ -55,15 +55,25 @@
       "type": "object",
       "title": "NWScript: EE LSP Formatter Configuration",
       "properties": {
-        "nwscript-ee-lsp.autoCompleteFunctionsWithParams": {
-          "type": "boolean",
-          "default": false,
-          "description": "Will include a function's params when auto completing it."
+        "nwscript-ee-lsp.completion": {
+          "type": "object",
+          "properties": {
+            "addParamsToFunctions": {
+              "type": "boolean",
+              "default": false,
+              "description": "Will include a function's params when auto completing it."
+            }
+          }
         },
-        "nwscript-ee-lsp.includeCommentsInFunctionsHover": {
-          "type": "boolean",
-          "default": false,
-          "description": "Will include a function's comments when hovering it."
+        "nwscript-ee-lsp.hovering": {
+          "type": "object",
+          "properties": {
+            "addCommentsToFunctions": {
+              "type": "boolean",
+              "default": false,
+              "description": "Will include a function's comments when hovering it."
+            }
+          }
         },
         "nwscript-ee-lsp.formatter": {
           "type": "object",
@@ -118,6 +128,11 @@
               "default": true,
               "description": "Whether or not the compiler is enabled."
             },
+            "os": {
+              "type": "string",
+              "default": null,
+              "description": "Force to use a specific os executable. Darwin, Linux or Windows_NT."
+            },
             "verbose": {
               "type": "boolean",
               "default": false,
@@ -147,7 +162,7 @@
     "vscode:prepublish": "yarn build",
     "build": "yarn clean && yarn buildClient && yarn buildServer",
     "buildClient": "esbuild extension=./client/src/extension.ts --sourcemap --bundle --external:vscode --platform=node --outdir=./client/out/",
-    "buildServer": "esbuild server=./server/src/server.ts indexer=./server/src/Documents/DocumentsIndexer.ts --sourcemap --bundle --external:vscode --platform=node --outdir=./server/out/",
+    "buildServer": "esbuild server=./server/src/server.ts --sourcemap --bundle --external:vscode --platform=node --outdir=./server/out/",
     "compile": "tsc -b",
     "compile:client": "tsc -b ./client/tsconfig.json",
     "compile:server": "tsc -b ./server/tsconfig.json",

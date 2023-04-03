@@ -1,0 +1,193 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 19,
+                "character": 5
+            },
+            "identifier": "SetLocalArrayString",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 19,
+                        "character": 32
+                    },
+                    "identifier": "oidObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 19,
+                        "character": 50
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 19,
+                        "character": 64
+                    },
+                    "identifier": "nVarNum",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 19,
+                        "character": 80
+                    },
+                    "identifier": "nValue",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 20,
+                "character": 7
+            },
+            "identifier": "GetLocalArrayString",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 20,
+                        "character": 34
+                    },
+                    "identifier": "oidObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 20,
+                        "character": 52
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 20,
+                        "character": 66
+                    },
+                    "identifier": "nVarNum",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 21,
+                "character": 5
+            },
+            "identifier": "SetLocalArrayInt",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 21,
+                        "character": 29
+                    },
+                    "identifier": "oidObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 21,
+                        "character": 47
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 21,
+                        "character": 61
+                    },
+                    "identifier": "nVarNum",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 21,
+                        "character": 74
+                    },
+                    "identifier": "nValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 22,
+                "character": 4
+            },
+            "identifier": "GetLocalArrayInt",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 22,
+                        "character": 28
+                    },
+                    "identifier": "oidObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 22,
+                        "character": 46
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 22,
+                        "character": 60
+                    },
+                    "identifier": "nVarNum",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 29,
+                "character": 5
+            },
+            "identifier": "CreateForgeItem",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "comments": []
+        }
+    ],
+    "structComplexTokens": [],
+    "children": [
+        "nw_i0_plot"
+    ]
+}

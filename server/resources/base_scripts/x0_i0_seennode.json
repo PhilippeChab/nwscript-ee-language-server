@@ -1,0 +1,30 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 16,
+                "character": 7
+            },
+            "identifier": "SeenNodeVarName",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 16,
+                        "character": 28
+                    },
+                    "identifier": "nNode",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Returns a string, the variable name for determining if this",
+                "// 'conversation node' has been seen in script."
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

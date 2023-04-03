@@ -1,0 +1,226 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 18,
+                "character": 10
+            },
+            "identifier": "NW_ASC_DISTANCE_2_METERS",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000001"
+        },
+        {
+            "position": {
+                "line": 19,
+                "character": 10
+            },
+            "identifier": "NW_ASC_DISTANCE_4_METERS",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000002"
+        },
+        {
+            "position": {
+                "line": 20,
+                "character": 10
+            },
+            "identifier": "NW_ASC_DISTANCE_6_METERS",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000004"
+        },
+        {
+            "position": {
+                "line": 22,
+                "character": 10
+            },
+            "identifier": "NW_ASC_HEAL_AT_75",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000008"
+        },
+        {
+            "position": {
+                "line": 23,
+                "character": 10
+            },
+            "identifier": "NW_ASC_HEAL_AT_50",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000010"
+        },
+        {
+            "position": {
+                "line": 24,
+                "character": 10
+            },
+            "identifier": "NW_ASC_HEAL_AT_25",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000020"
+        },
+        {
+            "position": {
+                "line": 26,
+                "character": 10
+            },
+            "identifier": "NW_ASC_AGGRESSIVE_BUFF",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000040"
+        },
+        {
+            "position": {
+                "line": 27,
+                "character": 10
+            },
+            "identifier": "NW_ASC_AGGRESSIVE_SEARCH",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000080"
+        },
+        {
+            "position": {
+                "line": 28,
+                "character": 10
+            },
+            "identifier": "NW_ASC_AGGRESSIVE_STEALTH",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000100"
+        },
+        {
+            "position": {
+                "line": 30,
+                "character": 10
+            },
+            "identifier": "NW_ASC_RETRY_OPEN_LOCKS",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000200"
+        },
+        {
+            "position": {
+                "line": 32,
+                "character": 10
+            },
+            "identifier": "NW_ASC_OVERKIll_CASTING",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000400"
+        },
+        {
+            "position": {
+                "line": 33,
+                "character": 10
+            },
+            "identifier": "NW_ASC_POWER_CASTING",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000800"
+        },
+        {
+            "position": {
+                "line": 34,
+                "character": 10
+            },
+            "identifier": "NW_ASC_SCALED_CASTING",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00001000"
+        },
+        {
+            "position": {
+                "line": 36,
+                "character": 10
+            },
+            "identifier": "NW_ASC_USE_CUSTOM_DIALOGUE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00002000"
+        },
+        {
+            "position": {
+                "line": 37,
+                "character": 10
+            },
+            "identifier": "NW_ASC_DISARM_TRAPS",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00004000"
+        },
+        {
+            "position": {
+                "line": 38,
+                "character": 10
+            },
+            "identifier": "NW_ASC_USE_RANGED_WEAPON",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00008000"
+        },
+        {
+            "position": {
+                "line": 39,
+                "character": 10
+            },
+            "identifier": "NW_ASC_MODE_DEFEND_MASTER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x04000000"
+        },
+        {
+            "position": {
+                "line": 40,
+                "character": 10
+            },
+            "identifier": "NW_ASC_MODE_STAND_GROUND",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x08000000"
+        },
+        {
+            "position": {
+                "line": 42,
+                "character": 10
+            },
+            "identifier": "NW_ASC_MASTER_GONE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x10000000"
+        },
+        {
+            "position": {
+                "line": 43,
+                "character": 10
+            },
+            "identifier": "NW_ASC_MASTER_REVOKED",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x20000000"
+        },
+        {
+            "position": {
+                "line": 44,
+                "character": 10
+            },
+            "identifier": "NW_ASC_IS_BUSY",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x40000000"
+        },
+        {
+            "position": {
+                "line": 45,
+                "character": 10
+            },
+            "identifier": "NW_ASC_HAVE_MASTER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x80000000"
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

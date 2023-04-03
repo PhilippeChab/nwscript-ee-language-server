@@ -1,0 +1,86 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 37,
+                "character": 17
+            },
+            "identifier": "sDaelinTag",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"NW_HEN_DAE\""
+        },
+        {
+            "position": {
+                "line": 42,
+                "character": 17
+            },
+            "identifier": "sSharwynTag",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"NW_HEN_SHA\""
+        },
+        {
+            "position": {
+                "line": 43,
+                "character": 17
+            },
+            "identifier": "sLinuTag",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"NW_HEN_LIN\""
+        },
+        {
+            "position": {
+                "line": 44,
+                "character": 17
+            },
+            "identifier": "sGallowTag",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"NW_HEN_GAL\""
+        },
+        {
+            "position": {
+                "line": 45,
+                "character": 17
+            },
+            "identifier": "sGrimTag",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"NW_HEN_GRI\""
+        },
+        {
+            "position": {
+                "line": 46,
+                "character": 17
+            },
+            "identifier": "sBoddyTag",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"NW_HEN_BOD\""
+        },
+        {
+            "position": {
+                "line": 49,
+                "character": 14
+            },
+            "identifier": "INT_NUM_HENCHMEN",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "6"
+        },
+        {
+            "position": {
+                "line": 50,
+                "character": 14
+            },
+            "identifier": "INT_FUDGE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3"
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

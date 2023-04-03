@@ -1,0 +1,2452 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 14,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_STRUCT",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"struct\""
+        },
+        {
+            "position": {
+                "line": 15,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_LIST",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"list\""
+        },
+        {
+            "position": {
+                "line": 16,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_BYTE",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"byte\""
+        },
+        {
+            "position": {
+                "line": 17,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_CHAR",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"char\""
+        },
+        {
+            "position": {
+                "line": 18,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_WORD",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"word\""
+        },
+        {
+            "position": {
+                "line": 19,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_SHORT",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"short\""
+        },
+        {
+            "position": {
+                "line": 20,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_DWORD",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"dword\""
+        },
+        {
+            "position": {
+                "line": 21,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_INT",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"int\""
+        },
+        {
+            "position": {
+                "line": 22,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_DWORD64",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"dword64\""
+        },
+        {
+            "position": {
+                "line": 23,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_INT64",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"int64\""
+        },
+        {
+            "position": {
+                "line": 24,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_FLOAT",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"float\""
+        },
+        {
+            "position": {
+                "line": 25,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_DOUBLE",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"double\""
+        },
+        {
+            "position": {
+                "line": 26,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_RESREF",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"resref\""
+        },
+        {
+            "position": {
+                "line": 27,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_STRING",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"cexostring\""
+        },
+        {
+            "position": {
+                "line": 28,
+                "character": 13
+            },
+            "identifier": "GFF_FIELD_TYPE_LOC_STRING",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"cexolocstring\""
+        },
+        {
+            "position": {
+                "line": 34,
+                "character": 5
+            },
+            "identifier": "GffCreateObject",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 34,
+                        "character": 25
+                    },
+                    "identifier": "nObjectType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Create a empty object of the given type. You need to manually fill in all",
+                "// GFF data with GffAddXXX. This will require understanding of the GFF file format",
+                "// and what data fields each object type requires."
+            ]
+        },
+        {
+            "position": {
+                "line": 36,
+                "character": 5
+            },
+            "identifier": "GffCreateArea",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 36,
+                        "character": 24
+                    },
+                    "identifier": "jARE",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 36,
+                        "character": 35
+                    },
+                    "identifier": "jGIT",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// Create a combined area format(CAF) object. You need to manually create the ARE and GIT objects with their required data fields."
+            ]
+        },
+        {
+            "position": {
+                "line": 40,
+                "character": 4
+            },
+            "identifier": "GffGetObjectType",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 40,
+                        "character": 26
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// Returns the OBJECT_TYPE_* of jGff.",
+                "// Note: Will return 0 for invalid object types, including areas."
+            ]
+        },
+        {
+            "position": {
+                "line": 42,
+                "character": 4
+            },
+            "identifier": "GffGetIsArea",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 42,
+                        "character": 22
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": [
+                "// Returns TRUE if jGff is a combined area format(CAF) object."
+            ]
+        },
+        {
+            "position": {
+                "line": 47,
+                "character": 4
+            },
+            "identifier": "GffGetFieldExists",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 47,
+                        "character": 27
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 47,
+                        "character": 40
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 47,
+                        "character": 55
+                    },
+                    "identifier": "sType",
+                    "tokenType": 25,
+                    "valueType": "string",
+                    "defaultValue": "\"\""
+                }
+            ],
+            "comments": [
+                "// Returns TRUE if a field named sLabel of sType exists in jGff.",
+                "// * sLabel: Can be a json pointer(path) without the starting /, see the documentation of JsonPointer() for details.",
+                "// * sType: An optional GFF_FIELD_TYPE_*, leave empty to check if sLabel exists regardless of type."
+            ]
+        },
+        {
+            "position": {
+                "line": 58,
+                "character": 5
+            },
+            "identifier": "GffAddStruct",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 58,
+                        "character": 23
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 58,
+                        "character": 36
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 58,
+                        "character": 49
+                    },
+                    "identifier": "jStruct",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 58,
+                        "character": 62
+                    },
+                    "identifier": "nType",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "-1"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 59,
+                "character": 5
+            },
+            "identifier": "GffAddList",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 59,
+                        "character": 21
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 59,
+                        "character": 34
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 59,
+                        "character": 47
+                    },
+                    "identifier": "jList",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 60,
+                "character": 5
+            },
+            "identifier": "GffAddByte",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 60,
+                        "character": 21
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 60,
+                        "character": 34
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 60,
+                        "character": 46
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 61,
+                "character": 5
+            },
+            "identifier": "GffAddChar",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 61,
+                        "character": 21
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 61,
+                        "character": 34
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 61,
+                        "character": 46
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 62,
+                "character": 5
+            },
+            "identifier": "GffAddWord",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 62,
+                        "character": 21
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 62,
+                        "character": 34
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 62,
+                        "character": 46
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 63,
+                "character": 5
+            },
+            "identifier": "GffAddShort",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 63,
+                        "character": 22
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 63,
+                        "character": 35
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 63,
+                        "character": 47
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 65,
+                "character": 5
+            },
+            "identifier": "GffAddDword",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 65,
+                        "character": 22
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 65,
+                        "character": 35
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 65,
+                        "character": 47
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Note: Only data of type int32 will fit, because that's all that NWScript supports."
+            ]
+        },
+        {
+            "position": {
+                "line": 66,
+                "character": 5
+            },
+            "identifier": "GffAddInt",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 66,
+                        "character": 20
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 66,
+                        "character": 33
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 66,
+                        "character": 45
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 68,
+                "character": 5
+            },
+            "identifier": "GffAddDword64",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 68,
+                        "character": 24
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 68,
+                        "character": 37
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 68,
+                        "character": 49
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Note: Only data of type int32 will fit, because that's all that NWScript supports."
+            ]
+        },
+        {
+            "position": {
+                "line": 70,
+                "character": 5
+            },
+            "identifier": "GffAddInt64",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 70,
+                        "character": 22
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 70,
+                        "character": 35
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 70,
+                        "character": 47
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Note: Only data of type int32 will fit, because that's all that NWScript supports."
+            ]
+        },
+        {
+            "position": {
+                "line": 71,
+                "character": 5
+            },
+            "identifier": "GffAddFloat",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 22
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 35
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 49
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 73,
+                "character": 5
+            },
+            "identifier": "GffAddDouble",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 73,
+                        "character": 23
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 73,
+                        "character": 36
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 73,
+                        "character": 50
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "comments": [
+                "// Note: Only data of type float will fit, because that's all that NWScript supports."
+            ]
+        },
+        {
+            "position": {
+                "line": 74,
+                "character": 5
+            },
+            "identifier": "GffAddResRef",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 74,
+                        "character": 23
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 74,
+                        "character": 36
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 74,
+                        "character": 51
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 75,
+                "character": 5
+            },
+            "identifier": "GffAddString",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 75,
+                        "character": 23
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 75,
+                        "character": 36
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 75,
+                        "character": 51
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 76,
+                "character": 5
+            },
+            "identifier": "GffAddLocString",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 76,
+                        "character": 26
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 76,
+                        "character": 39
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 76,
+                        "character": 54
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 76,
+                        "character": 61
+                    },
+                    "identifier": "nStrRef",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "-1"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 87,
+                "character": 5
+            },
+            "identifier": "GffReplaceStruct",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 87,
+                        "character": 27
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 87,
+                        "character": 40
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 87,
+                        "character": 53
+                    },
+                    "identifier": "jStruct",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 88,
+                "character": 5
+            },
+            "identifier": "GffReplaceList",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 88,
+                        "character": 25
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 88,
+                        "character": 38
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 88,
+                        "character": 51
+                    },
+                    "identifier": "jList",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 89,
+                "character": 5
+            },
+            "identifier": "GffReplaceByte",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 89,
+                        "character": 25
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 89,
+                        "character": 38
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 89,
+                        "character": 50
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 90,
+                "character": 5
+            },
+            "identifier": "GffReplaceChar",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 90,
+                        "character": 25
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 90,
+                        "character": 38
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 90,
+                        "character": 50
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 91,
+                "character": 5
+            },
+            "identifier": "GffReplaceWord",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 91,
+                        "character": 25
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 91,
+                        "character": 38
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 91,
+                        "character": 50
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 92,
+                "character": 5
+            },
+            "identifier": "GffReplaceShort",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 92,
+                        "character": 26
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 92,
+                        "character": 39
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 92,
+                        "character": 51
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 94,
+                "character": 5
+            },
+            "identifier": "GffReplaceDword",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 94,
+                        "character": 26
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 94,
+                        "character": 39
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 94,
+                        "character": 51
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Note: Only data of type int32 will fit, because that's all that NWScript supports."
+            ]
+        },
+        {
+            "position": {
+                "line": 95,
+                "character": 5
+            },
+            "identifier": "GffReplaceInt",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 95,
+                        "character": 24
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 95,
+                        "character": 37
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 95,
+                        "character": 49
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 97,
+                "character": 5
+            },
+            "identifier": "GffReplaceDword64",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 97,
+                        "character": 28
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 97,
+                        "character": 41
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 97,
+                        "character": 53
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Note: Only data of type int32 will fit, because that's all that NWScript supports."
+            ]
+        },
+        {
+            "position": {
+                "line": 99,
+                "character": 5
+            },
+            "identifier": "GffReplaceInt64",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 99,
+                        "character": 26
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 99,
+                        "character": 39
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 99,
+                        "character": 51
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Note: Only data of type int32 will fit, because that's all that NWScript supports."
+            ]
+        },
+        {
+            "position": {
+                "line": 100,
+                "character": 5
+            },
+            "identifier": "GffReplaceFloat",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 100,
+                        "character": 26
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 100,
+                        "character": 39
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 100,
+                        "character": 53
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 102,
+                "character": 5
+            },
+            "identifier": "GffReplaceDouble",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 102,
+                        "character": 27
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 102,
+                        "character": 40
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 102,
+                        "character": 54
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "comments": [
+                "// Note: Only data of type float will fit, because that's all that NWScript supports."
+            ]
+        },
+        {
+            "position": {
+                "line": 103,
+                "character": 5
+            },
+            "identifier": "GffReplaceResRef",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 103,
+                        "character": 27
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 103,
+                        "character": 40
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 103,
+                        "character": 55
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 104,
+                "character": 5
+            },
+            "identifier": "GffReplaceString",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 104,
+                        "character": 27
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 104,
+                        "character": 40
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 104,
+                        "character": 55
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 105,
+                "character": 5
+            },
+            "identifier": "GffReplaceLocString",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 105,
+                        "character": 30
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 105,
+                        "character": 43
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 105,
+                        "character": 58
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 105,
+                        "character": 65
+                    },
+                    "identifier": "nStrRef",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "-1"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 116,
+                "character": 5
+            },
+            "identifier": "GffRemoveStruct",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 116,
+                        "character": 26
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 116,
+                        "character": 39
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 117,
+                "character": 5
+            },
+            "identifier": "GffRemoveList",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 117,
+                        "character": 24
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 117,
+                        "character": 37
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 118,
+                "character": 5
+            },
+            "identifier": "GffRemoveByte",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 118,
+                        "character": 24
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 118,
+                        "character": 37
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 119,
+                "character": 5
+            },
+            "identifier": "GffRemoveChar",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 119,
+                        "character": 24
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 119,
+                        "character": 37
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 120,
+                "character": 5
+            },
+            "identifier": "GffRemoveWord",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 120,
+                        "character": 24
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 120,
+                        "character": 37
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 121,
+                "character": 5
+            },
+            "identifier": "GffRemoveShort",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 121,
+                        "character": 25
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 121,
+                        "character": 38
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 122,
+                "character": 5
+            },
+            "identifier": "GffRemoveDword",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 122,
+                        "character": 25
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 122,
+                        "character": 38
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 123,
+                "character": 5
+            },
+            "identifier": "GffRemoveInt",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 123,
+                        "character": 23
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 123,
+                        "character": 36
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 124,
+                "character": 5
+            },
+            "identifier": "GffRemoveDword64",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 124,
+                        "character": 27
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 124,
+                        "character": 40
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 125,
+                "character": 5
+            },
+            "identifier": "GffRemoveInt64",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 125,
+                        "character": 25
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 125,
+                        "character": 38
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 126,
+                "character": 5
+            },
+            "identifier": "GffRemoveFloat",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 126,
+                        "character": 25
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 126,
+                        "character": 38
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 127,
+                "character": 5
+            },
+            "identifier": "GffRemoveDouble",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 127,
+                        "character": 26
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 127,
+                        "character": 39
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 128,
+                "character": 5
+            },
+            "identifier": "GffRemoveResRef",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 128,
+                        "character": 26
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 128,
+                        "character": 39
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 129,
+                "character": 5
+            },
+            "identifier": "GffRemoveString",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 129,
+                        "character": 26
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 129,
+                        "character": 39
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 130,
+                "character": 5
+            },
+            "identifier": "GffRemoveLocString",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 130,
+                        "character": 29
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 130,
+                        "character": 42
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 155,
+                "character": 5
+            },
+            "identifier": "GffGetStruct",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 155,
+                        "character": 23
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 155,
+                        "character": 36
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns the struct as JsonObject() on success."
+            ]
+        },
+        {
+            "position": {
+                "line": 157,
+                "character": 5
+            },
+            "identifier": "GffGetList",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 157,
+                        "character": 21
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 157,
+                        "character": 34
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns a JsonArray() with all the list elements on success."
+            ]
+        },
+        {
+            "position": {
+                "line": 159,
+                "character": 5
+            },
+            "identifier": "GffGetByte",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 159,
+                        "character": 21
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 159,
+                        "character": 34
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns a JsonInt() on success."
+            ]
+        },
+        {
+            "position": {
+                "line": 161,
+                "character": 5
+            },
+            "identifier": "GffGetChar",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 161,
+                        "character": 21
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 161,
+                        "character": 34
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns a JsonInt() on success."
+            ]
+        },
+        {
+            "position": {
+                "line": 163,
+                "character": 5
+            },
+            "identifier": "GffGetWord",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 163,
+                        "character": 21
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 163,
+                        "character": 34
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns a JsonInt() on success."
+            ]
+        },
+        {
+            "position": {
+                "line": 165,
+                "character": 5
+            },
+            "identifier": "GffGetShort",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 165,
+                        "character": 22
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 165,
+                        "character": 35
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns a JsonInt() on success."
+            ]
+        },
+        {
+            "position": {
+                "line": 167,
+                "character": 5
+            },
+            "identifier": "GffGetDword",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 167,
+                        "character": 22
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 167,
+                        "character": 35
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns a JsonInt() on success."
+            ]
+        },
+        {
+            "position": {
+                "line": 169,
+                "character": 5
+            },
+            "identifier": "GffGetInt",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 169,
+                        "character": 20
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 169,
+                        "character": 33
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns a JsonInt() on success."
+            ]
+        },
+        {
+            "position": {
+                "line": 171,
+                "character": 5
+            },
+            "identifier": "GffGetDword64",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 171,
+                        "character": 24
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 171,
+                        "character": 37
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns a JsonInt() on success."
+            ]
+        },
+        {
+            "position": {
+                "line": 173,
+                "character": 5
+            },
+            "identifier": "GffGetInt64",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 173,
+                        "character": 22
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 173,
+                        "character": 35
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns a JsonInt() on success."
+            ]
+        },
+        {
+            "position": {
+                "line": 175,
+                "character": 5
+            },
+            "identifier": "GffGetFloat",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 175,
+                        "character": 22
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 175,
+                        "character": 35
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns a JsonFloat() on success."
+            ]
+        },
+        {
+            "position": {
+                "line": 177,
+                "character": 5
+            },
+            "identifier": "GffGetDouble",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 177,
+                        "character": 23
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 177,
+                        "character": 36
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns a JsonFloat() on success."
+            ]
+        },
+        {
+            "position": {
+                "line": 179,
+                "character": 5
+            },
+            "identifier": "GffGetResRef",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 179,
+                        "character": 23
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 179,
+                        "character": 36
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns a JsonString() on success."
+            ]
+        },
+        {
+            "position": {
+                "line": 181,
+                "character": 5
+            },
+            "identifier": "GffGetString",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 181,
+                        "character": 23
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 181,
+                        "character": 36
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns a JsonString() on success."
+            ]
+        },
+        {
+            "position": {
+                "line": 185,
+                "character": 5
+            },
+            "identifier": "GffGetLocString",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 185,
+                        "character": 26
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 185,
+                        "character": 39
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Returns a JsonObject() on success.",
+                "//   Key \"0\" will have a JsonString() with the string, if set.",
+                "//   Key \"id\" will have a JsonInt() with the strref, if set."
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

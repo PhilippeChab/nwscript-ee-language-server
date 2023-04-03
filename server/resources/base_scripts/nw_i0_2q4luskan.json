@@ -1,0 +1,571 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 16,
+                "character": 4
+            },
+            "identifier": "PLOT_2Q4_ITEM_KURTH_BASE_KEY",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 17,
+                "character": 4
+            },
+            "identifier": "PLOT_2Q4_ITEM_BARAM_BASE_KEY",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 18,
+                "character": 4
+            },
+            "identifier": "PLOT_2Q4_ITEM_ERBS_RING",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3"
+        },
+        {
+            "position": {
+                "line": 21,
+                "character": 5
+            },
+            "identifier": "Give2Q4PlotItem",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 21,
+                        "character": 25
+                    },
+                    "identifier": "nPlotItemConstant",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "//Function to determine what plot item to hand to the character"
+            ]
+        },
+        {
+            "position": {
+                "line": 23,
+                "character": 4
+            },
+            "identifier": "GetHas2Q4PlotItem",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 23,
+                        "character": 29
+                    },
+                    "identifier": "oItemPossesser",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 23,
+                        "character": 49
+                    },
+                    "identifier": "nPlotItemConstant",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "//Test if the object has the specified plot item"
+            ]
+        },
+        {
+            "position": {
+                "line": 25,
+                "character": 5
+            },
+            "identifier": "MoveTo2Q4PlotPoint",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 25,
+                        "character": 28
+                    },
+                    "identifier": "nPlotPointIndex",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "//Pass in one of nine predetermined way points to move the character to."
+            ]
+        },
+        {
+            "position": {
+                "line": 27,
+                "character": 5
+            },
+            "identifier": "SetLocalPlotIntOnCharacter",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 27,
+                        "character": 39
+                    },
+                    "identifier": "oNPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 27,
+                        "character": 49
+                    },
+                    "identifier": "nPlotStateIndex",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "//Set a generic plot flag on a specific character"
+            ]
+        },
+        {
+            "position": {
+                "line": 29,
+                "character": 4
+            },
+            "identifier": "GetLocalPlotIntFromCharacter",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 29,
+                        "character": 40
+                    },
+                    "identifier": "oNPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "//Get the generic plot flag off of a character"
+            ]
+        },
+        {
+            "position": {
+                "line": 31,
+                "character": 4
+            },
+            "identifier": "GetCanSeePC",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 31,
+                        "character": 23
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "comments": [
+                "//Returns true if a PC can be seen"
+            ]
+        },
+        {
+            "position": {
+                "line": 33,
+                "character": 5
+            },
+            "identifier": "PlayConversationAnimation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 33,
+                        "character": 35
+                    },
+                    "identifier": "nAnimationConstant",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 33,
+                        "character": 62
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
+                }
+            ],
+            "comments": [
+                "//Sets the animation on the creature and makes them face the PC if object left invalid."
+            ]
+        },
+        {
+            "position": {
+                "line": 35,
+                "character": 5
+            },
+            "identifier": "CreateColmarrPotion",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "comments": [
+                "//This is a plot specific function used to generate potions for Colmarr's Machine."
+            ]
+        },
+        {
+            "position": {
+                "line": 37,
+                "character": 5
+            },
+            "identifier": "SetMachineState",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 37,
+                        "character": 25
+                    },
+                    "identifier": "nCondition",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 37,
+                        "character": 41
+                    },
+                    "identifier": "bValid",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "//Set the new state of the machine after the lever is pressed."
+            ]
+        },
+        {
+            "position": {
+                "line": 39,
+                "character": 4
+            },
+            "identifier": "GetMachineState",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 39,
+                        "character": 24
+                    },
+                    "identifier": "nCondition",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "//Get the state of one lever"
+            ]
+        },
+        {
+            "position": {
+                "line": 41,
+                "character": 5
+            },
+            "identifier": "FaceNearestPC",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "comments": [
+                "//Makes the NPC face the nearest PC"
+            ]
+        },
+        {
+            "position": {
+                "line": 43,
+                "character": 5
+            },
+            "identifier": "AssignPCDebugString",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 43,
+                        "character": 32
+                    },
+                    "identifier": "sString",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "//Make the nearest PC say the stated string"
+            ]
+        },
+        {
+            "position": {
+                "line": 45,
+                "character": 5
+            },
+            "identifier": "CreateObjectVoid",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 45,
+                        "character": 26
+                    },
+                    "identifier": "nObjectType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 45,
+                        "character": 46
+                    },
+                    "identifier": "sTemplate",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 45,
+                        "character": 66
+                    },
+                    "identifier": "lLoc",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 45,
+                        "character": 76
+                    },
+                    "identifier": "bUseAppearAnimation",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                }
+            ],
+            "comments": [
+                "//Creates a creature with a specific string at a specified location"
+            ]
+        },
+        {
+            "position": {
+                "line": 224,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_COLMARR_FIRE_LEVER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000001"
+        },
+        {
+            "position": {
+                "line": 225,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_COLMARR_AIR_LEVER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000002"
+        },
+        {
+            "position": {
+                "line": 226,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_COLMARR_WATER_LEVER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000004"
+        },
+        {
+            "position": {
+                "line": 227,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_COLMARR_STONE_LEVER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000008"
+        },
+        {
+            "position": {
+                "line": 229,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_ENGINE_STATE_OFF",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000000"
+        },
+        {
+            "position": {
+                "line": 231,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_ENGINE_IDENTIFY",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000001"
+        },
+        {
+            "position": {
+                "line": 232,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_ENGINE_AID",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000002"
+        },
+        {
+            "position": {
+                "line": 233,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_ENGINE_CURE_LIGHT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000004"
+        },
+        {
+            "position": {
+                "line": 234,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_ENGINE_BARKSKIN",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000008"
+        },
+        {
+            "position": {
+                "line": 236,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_FOXS_CUNNING",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000005"
+        },
+        {
+            "position": {
+                "line": 237,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_INVISIBILITY",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x0000000A"
+        },
+        {
+            "position": {
+                "line": 238,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_ENDURANCE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x0000000C"
+        },
+        {
+            "position": {
+                "line": 239,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_BULLS_STRENGTH",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000009"
+        },
+        {
+            "position": {
+                "line": 240,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_CATS_GRACE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000003"
+        },
+        {
+            "position": {
+                "line": 241,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_CURE_MODERATE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000006"
+        },
+        {
+            "position": {
+                "line": 243,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_SPEED",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x00000007"
+        },
+        {
+            "position": {
+                "line": 244,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_CURE_SERIOUS",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x0000000B"
+        },
+        {
+            "position": {
+                "line": 245,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_CLARITY",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x0000000E"
+        },
+        {
+            "position": {
+                "line": 247,
+                "character": 4
+            },
+            "identifier": "NW_2Q4_ENGINE_STATE_ON",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0x0000000F"
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

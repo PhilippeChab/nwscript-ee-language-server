@@ -2,5 +2,28 @@
   "editor.formatOnSave": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "files.associations": {
+    "*.nss": "nwscript"
+  },
+  "[nwscript]": {
+    "editor.defaultFormatter": "PhilippeChab.nwscript-ee-language-server"
+  },
+  "nwscript-ee-lsp.formatter": {
+    "enabled": true,
+    "executable": "clang-format",
+    "style": {
+      "BasedOnStyle": "Google",
+      "AlignTrailingComments": true,
+      "AlignConsecutiveAssignments": true,
+      "ColumnLimit": 250,
+      "BreakBeforeBraces": "Allman",
+      "AlignEscapedNewlinesLeft": true,
+      "AlwaysBreakBeforeMultilineStrings": true,
+      "MaxEmptyLinesToKeep": 1,
+      "TabWidth": 4,
+      "IndentWidth": 4,
+      "UseTab": "Always"
+    }
+  },
 }

@@ -1,0 +1,2217 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 61,
+                "character": 6
+            },
+            "identifier": "GetShift",
+            "tokenType": 3,
+            "returnType": "float",
+            "params": [
+                {
+                    "position": {
+                        "line": 61,
+                        "character": 22
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 61,
+                        "character": 35
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Used to shift the entire cutscene a length of time. Used internally here,",
+                "// but very handy for cutscenes that are complete, but need to be changed",
+                "// after the fact. From the point it is called, it just shifts the cutscene",
+                "// accordingly. Can be used (and should be) for non-cutscene delays in a",
+                "// script (ie - commands that aren't here or regular DelayCommands in a script.)"
+            ]
+        },
+        {
+            "position": {
+                "line": 65,
+                "character": 5
+            },
+            "identifier": "RemoveCommandable",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 65,
+                        "character": 30
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Used to clear commandable state FALSE in the event there are too many",
+                "// Used in this include only."
+            ]
+        },
+        {
+            "position": {
+                "line": 71,
+                "character": 5
+            },
+            "identifier": "CutRemoveEffects",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 26
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 43
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 58
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 71
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to remove all effects from an object.",
+                "// Example: CutRemoveEffects(10.5, GetObjectByTag(\"guard1\")); would",
+                "// remove all effects from guard1 after a 10.5 second delay.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 81,
+                "character": 5
+            },
+            "identifier": "CutActionStartConversation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 81,
+                        "character": 36
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 81,
+                        "character": 53
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 81,
+                        "character": 68
+                    },
+                    "identifier": "oNPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 81,
+                        "character": 81
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 81,
+                        "character": 93
+                    },
+                    "identifier": "szConversationFile",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 81,
+                        "character": 117
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used for a conversation file when you need to have an NPC speak",
+                "// via a conversation instead of bubble text. The fDelay is used",
+                "// when timing is important.",
+                "//",
+                "// Example: CutActionStartConversation(5.0, oNPC, oPC, \"my_conv\"); would start the",
+                "//  conversation file \"my_conv\" of the NPC, after a 5 sec delay, and",
+                "// the conversation subject would be the PC.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 88,
+                "character": 5
+            },
+            "identifier": "CutSpeakString",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 88,
+                        "character": 24
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 88,
+                        "character": 41
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 88,
+                        "character": 56
+                    },
+                    "identifier": "oSpeaker",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 88,
+                        "character": 73
+                    },
+                    "identifier": "szString",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 88,
+                        "character": 87
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used for bubble text type speaking.",
+                "// Example: CutSpeakString(0.0, GetObjectByTag(\"drow_priest\"), \"I like",
+                "// green eggs and ham.\"); would have the object drow_priest speak the",
+                "// line \"I like green eggs and ham.\" after no delay.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 94,
+                "character": 5
+            },
+            "identifier": "CutPlayAnimation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 94,
+                        "character": 26
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 94,
+                        "character": 43
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 94,
+                        "character": 58
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 94,
+                        "character": 71
+                    },
+                    "identifier": "nAnimation",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 94,
+                        "character": 89
+                    },
+                    "identifier": "fLength",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 94,
+                        "character": 102
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used if you need a cutscene participant to do an animation.",
+                "// Example: CutPlayAnimation(<cutscene>, 26.0, oPC, ANIMATION_FIREFORGET_BOW, 3.0);",
+                "// would have the PC bow for 3 seconds after a 26 second delay.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 100,
+                "character": 5
+            },
+            "identifier": "CutPlayAnimation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 100,
+                        "character": 26
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 100,
+                        "character": 43
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 100,
+                        "character": 58
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 100,
+                        "character": 71
+                    },
+                    "identifier": "nAnimation",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 100,
+                        "character": 89
+                    },
+                    "identifier": "fLength",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 100,
+                        "character": 102
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used if you need a cutscene participant to do an animation.",
+                "// Example: CutPlayAnimation(<cutscene>, 26.0, oPC, ANIMATION_FIREFORGET_BOW, 3.0);",
+                "// would have the PC bow for 3 seconds after a 26 second delay.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 107,
+                "character": 5
+            },
+            "identifier": "CutJumpToLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 107,
+                        "character": 27
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 107,
+                        "character": 44
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 107,
+                        "character": 59
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 107,
+                        "character": 73
+                    },
+                    "identifier": "lLoc",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 107,
+                        "character": 83
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to jump the PC to a location.",
+                "// Example: CutJumpToLocation(20.0, oPC, GetLocation(GetWaypointByTag",
+                "// (\"wp_jump\")); would jump the PC to the wp_jump waypoint after a 20",
+                "// second delay.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 114,
+                "character": 5
+            },
+            "identifier": "CutJumpToObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 114,
+                        "character": 25
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 114,
+                        "character": 42
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 114,
+                        "character": 57
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 114,
+                        "character": 69
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 114,
+                        "character": 82
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to jump the PC or NPC to an object.",
+                "// Example: CutJumpToObject(20.0, oPC, GetObject(GetObjectByTag",
+                "// (\"invis_object\")); would jump the PC to the invis_object after a 20",
+                "// second delay.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 120,
+                "character": 5
+            },
+            "identifier": "CutActionMoveToObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 120,
+                        "character": 31
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 120,
+                        "character": 48
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 120,
+                        "character": 63
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 120,
+                        "character": 75
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 120,
+                        "character": 88
+                    },
+                    "identifier": "iRun",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 120,
+                        "character": 98
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to move the PC or NPC to an object.",
+                "// Example: CutActionMoveToObject(2.0, oPC, oTable, TRUE); would have the",
+                "// PC run to oTable after a 2 second delay. TRUE = run, FALSE = walk.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 126,
+                "character": 5
+            },
+            "identifier": "CutActionMoveToLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 126,
+                        "character": 33
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 126,
+                        "character": 50
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 126,
+                        "character": 65
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 126,
+                        "character": 79
+                    },
+                    "identifier": "lLoc",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 126,
+                        "character": 89
+                    },
+                    "identifier": "iRun",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 126,
+                        "character": 99
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to move the PC or NPC to a location.",
+                "// Example: CutActionMoveToLocation(2.0, oPC, lTable, FALSE); would have the",
+                "// PC walk to lTable after a 2 second delay. TRUE = run, FALSE = walk.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 135,
+                "character": 5
+            },
+            "identifier": "CutCreateObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 25
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 42
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 57
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 66
+                    },
+                    "identifier": "iType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 80
+                    },
+                    "identifier": "sName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 96
+                    },
+                    "identifier": "lLoc",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 106
+                    },
+                    "identifier": "iEffect",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 119
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to delay object create. Pass the type, the sTemplate, the location,",
+                "// and the effect you wish to have appear when the object is created",
+                "// (0 for no effect).  The PC is also passed to check cutscene abort.",
+                "// EXAMPLE: CutCreateObject(2.3, oPC, OBJECT_TYPE_PLACEABLE, \"resref\", lLoc, VFX_FNF_HOLY_STRIKE);",
+                "// would create a placeable with the resref of \"resref\" at the location",
+                "// lLoc after 2.3 seconds, with the VFX_FNF_HOLY_STRIKE effect.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 141,
+                "character": 5
+            },
+            "identifier": "CutSetFacingPoint",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 141,
+                        "character": 27
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 141,
+                        "character": 44
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 141,
+                        "character": 59
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 141,
+                        "character": 71
+                    },
+                    "identifier": "szTag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 141,
+                        "character": 82
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to set the facing of a creature.",
+                "// EXAMPLE CutSetFacingPoint(22.5, oPC, \"creature_tag\"); would",
+                "// have the PC face \"creature_tag\" object after a 22.5 second delay.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 148,
+                "character": 5
+            },
+            "identifier": "CutFadeOutAndIn",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 148,
+                        "character": 25
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 148,
+                        "character": 42
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 148,
+                        "character": 57
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 148,
+                        "character": 70
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to fade out and back in, with a black screen section of",
+                "// 2 seconds in between.",
+                "// EXAMPLE: CallFadeOutAndIn(35.0, oPC); would Fade the screen",
+                "// out and back in on the PC, after a delay of 35 seconds.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 154,
+                "character": 5
+            },
+            "identifier": "CutFadeToBlack",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 154,
+                        "character": 24
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 154,
+                        "character": 41
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 154,
+                        "character": 56
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 154,
+                        "character": 69
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to fade out.",
+                "// EXAMPLE: CallFadeToBlack(35.0, oPC); would Fade the screen",
+                "// out on the PC, after a delay of 35 seconds.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 160,
+                "character": 5
+            },
+            "identifier": "CutFadeFromBlack",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 160,
+                        "character": 26
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 160,
+                        "character": 43
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 160,
+                        "character": 58
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 160,
+                        "character": 71
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to fade in.",
+                "// EXAMPLE: CallFadeFromBlack(35.0, oPC); would Fade the screen",
+                "// in on the PC, after a delay of 35 seconds.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 174,
+                "character": 5
+            },
+            "identifier": "CutSetCamera",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 174,
+                        "character": 22
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 174,
+                        "character": 39
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 174,
+                        "character": 54
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 174,
+                        "character": 67
+                    },
+                    "identifier": "iCameraType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 174,
+                        "character": 86
+                    },
+                    "identifier": "fFacing",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 174,
+                        "character": 101
+                    },
+                    "identifier": "fZoom",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 174,
+                        "character": 114
+                    },
+                    "identifier": "fPitch",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 174,
+                        "character": 126
+                    },
+                    "identifier": "nSpeed",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 174,
+                        "character": 138
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to set the camera for cutscene dramatics.",
+                "// EXAMPLE: To set a camera with the following settings on the PC,",
+                "// after a 30.0 second delay:",
+                "//   CAMERA_MODE_TOP_DOWN",
+                "//   Facing = 170.0",
+                "//   Zoom = 5.0",
+                "//   Pitch = 50.0",
+                "//   CAMERA_TRANSITION_TYPE_MEDIUM",
+                "//",
+                "//   CutSetCamera(30.0, oPC, CAMERA_MODE_TOP_DOWN, 170.0, 5.0, 50.0,",
+                "//                CAMERA_TRANSITION_TYPE_MEDIUM);",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 180,
+                "character": 5
+            },
+            "identifier": "CutClearAllActions",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 180,
+                        "character": 28
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 180,
+                        "character": 45
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 180,
+                        "character": 60
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 180,
+                        "character": 73
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to clear the actions of the subject.",
+                "// EXAMPLE: CutClearAllActions(3.2, GetObjectByTag(\"guard\"));",
+                "//   would clear the actions of \"guard\" after a 3.2 second delay.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 189,
+                "character": 5
+            },
+            "identifier": "CutApplyEffectAtLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 189,
+                        "character": 34
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 189,
+                        "character": 51
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 189,
+                        "character": 66
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 189,
+                        "character": 79
+                    },
+                    "identifier": "iDur",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 189,
+                        "character": 89
+                    },
+                    "identifier": "iEffect",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 189,
+                        "character": 107
+                    },
+                    "identifier": "lLoc",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 189,
+                        "character": 119
+                    },
+                    "identifier": "fDur",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 189,
+                        "character": 129
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to apply a visual effect at a location. The PC is passed to",
+                "// determine if the cutscene has been aborted or not.",
+                "// EXAMPLE: CutApplyEffectAtLocation(98.3, oPC, DURATION_TYPE_INSTANT,",
+                "//                                     VXF_FNF_HOLY_STRIKE, lLoc, 0.0);",
+                "//   would have a holy strike visual appear at lLoc after a 98.3 second delay.",
+                "//   The duration is instant, lasting the default time.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 197,
+                "character": 5
+            },
+            "identifier": "CutApplyEffectToObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 197,
+                        "character": 32
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 197,
+                        "character": 49
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 197,
+                        "character": 61
+                    },
+                    "identifier": "iDur",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 197,
+                        "character": 71
+                    },
+                    "identifier": "iEffect",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 197,
+                        "character": 87
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 197,
+                        "character": 102
+                    },
+                    "identifier": "fDur",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 197,
+                        "character": 112
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to apply a visual effect to an object.",
+                "// EXAMPLE: CutApplyEffectToObject(98.3, oPC, DURATION_TYPE_TEMPORARY,",
+                "//                                     VXF_DUR_PETRIFY, oPC, 4.0);",
+                "//   would have a PETRIFY visual appear to the PC after a 98.3 second delay.",
+                "//   The duration is temporary, lasting 4 seconds.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 201,
+                "character": 5
+            },
+            "identifier": "CutApplyEffectToObject2",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 201,
+                        "character": 33
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 201,
+                        "character": 50
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 201,
+                        "character": 62
+                    },
+                    "identifier": "iDur",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 201,
+                        "character": 75
+                    },
+                    "identifier": "eEffect",
+                    "tokenType": 25,
+                    "valueType": "effect"
+                },
+                {
+                    "position": {
+                        "line": 201,
+                        "character": 91
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 201,
+                        "character": 106
+                    },
+                    "identifier": "fDur",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 201,
+                        "character": 116
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "//For all other effects (NOT VISUAL EFFECTS)",
+                "//Used to apply a NON visual effect to an object."
+            ]
+        },
+        {
+            "position": {
+                "line": 208,
+                "character": 5
+            },
+            "identifier": "CutKnockdown",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 208,
+                        "character": 22
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 208,
+                        "character": 39
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 208,
+                        "character": 54
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 208,
+                        "character": 69
+                    },
+                    "identifier": "fDur",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 208,
+                        "character": 79
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to apply a knockdown effect to an object.",
+                "// EXAMPLE: CutKnockdown(98.3, oPC, 4.0);",
+                "//   would have a knockdown appear on the PC after a 98.3 second delay.",
+                "//   The duration is always temporary, this one lasting 4 seconds.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 216,
+                "character": 5
+            },
+            "identifier": "CutDeath",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 216,
+                        "character": 18
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 216,
+                        "character": 35
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 216,
+                        "character": 50
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 216,
+                        "character": 63
+                    },
+                    "identifier": "iSpec",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 216,
+                        "character": 74
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to apply a death effect to an object.",
+                "// EXAMPLE: CutDeath(98.3, oPC, TRUE);",
+                "//   would have a death appear on the PC after a 98.3 second delay.",
+                "//   The duration is always instant. TRUE is used if you want a",
+                "//   spectacular death. Set FALSE otherwise.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 225,
+                "character": 5
+            },
+            "identifier": "CutActionCastFakeSpellAtObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 225,
+                        "character": 40
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 225,
+                        "character": 57
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 225,
+                        "character": 69
+                    },
+                    "identifier": "iSpell",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 225,
+                        "character": 84
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 225,
+                        "character": 100
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 225,
+                        "character": 113
+                    },
+                    "identifier": "iPath",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 225,
+                        "character": 124
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to cast a fake spell at an object.",
+                "// EXAMPLE: CutActionCastFakeSpellAtObject(23.0, oPC, SPELL_SUNBEAM, oTarget,",
+                "//            PROJECTILE_PATH_TYPE_DEFAULT); would have the",
+                "//            PC cast a sunbeam at the oTarget, with a default",
+                "//            projectile path. This would happen after a 23",
+                "//            second delay.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 234,
+                "character": 5
+            },
+            "identifier": "CutActionCastFakeSpellAtLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 234,
+                        "character": 42
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 234,
+                        "character": 59
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 234,
+                        "character": 71
+                    },
+                    "identifier": "iSpell",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 234,
+                        "character": 86
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 234,
+                        "character": 104
+                    },
+                    "identifier": "lLoc",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 234,
+                        "character": 114
+                    },
+                    "identifier": "iPath",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 234,
+                        "character": 125
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to cast a fake spell at a location.",
+                "// EXAMPLE: CutActionCastFakeSpellAtLocation(23.0, oPC, SPELL_SUNBEAM, lLoc,",
+                "//            PROJECTILE_PATH_TYPE_DEFAULT); would have the",
+                "//            PC cast a sunbeam at lLoc, with a default",
+                "//            projectile path. This would happen after a 23",
+                "//            second delay.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 242,
+                "character": 5
+            },
+            "identifier": "CutSetLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 242,
+                        "character": 24
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 242,
+                        "character": 41
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 242,
+                        "character": 56
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 242,
+                        "character": 65
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to set the PC's location so they can be jumped around as though",
+                "// they are the camera.",
+                "// EXAMPLE: CutSetLocation(23.0, oPC); would set the location",
+                "//   on the PC, as a variable, as a location to be returned to later. This",
+                "//   would happen after a 23 second delay.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 249,
+                "character": 5
+            },
+            "identifier": "CutRestoreLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 249,
+                        "character": 28
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 249,
+                        "character": 45
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 249,
+                        "character": 60
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 249,
+                        "character": 69
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to recall the PC's location so they can be jumped back to their",
+                "// original location, stored by CutGetLocation.",
+                "// EXAMPLE: CutRestoreLocation(23.0, oPC); would return the PC",
+                "//   to their original spot. This would happen after a 23 second delay.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 255,
+                "character": 5
+            },
+            "identifier": "CutSetCutsceneMode",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 255,
+                        "character": 28
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 255,
+                        "character": 45
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 255,
+                        "character": 60
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 255,
+                        "character": 69
+                    },
+                    "identifier": "iValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 255,
+                        "character": 81
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to turn cutscene mode on or off.",
+                "// EXAMPLE: CutSetCutsceneMode(10.0, oPC, TRUE); would turn cutscene mode",
+                "//   on after 10 seconds for the PC.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 261,
+                "character": 5
+            },
+            "identifier": "CutSetPlotFlag",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 261,
+                        "character": 24
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 261,
+                        "character": 41
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 261,
+                        "character": 56
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 261,
+                        "character": 69
+                    },
+                    "identifier": "iValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 261,
+                        "character": 81
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to turn plot flags on or off.",
+                "// EXAMPLE: CutSetPlotFlag(10.0, oObject, 1); would turn plot flag to",
+                "//   on after 10 seconds for the object.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 268,
+                "character": 5
+            },
+            "identifier": "CutDestroyObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 268,
+                        "character": 26
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 268,
+                        "character": 43
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 268,
+                        "character": 58
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 268,
+                        "character": 71
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to destroy objects. Make sure they are destroyable first with the",
+                "// CutSetPlotFlag function.",
+                "// EXAMPLE: CutDestroyObject(10.0, oObject); would destroy the object",
+                "//   after 10 seconds.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 274,
+                "character": 5
+            },
+            "identifier": "CutStoreCameraFacing",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 274,
+                        "character": 30
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 274,
+                        "character": 47
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 274,
+                        "character": 62
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 274,
+                        "character": 71
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to store the camera position.",
+                "// EXAMPLE: CutStoreCameraFacing(10.0, oPC); would set the current",
+                "//   camera settings at the 10.0 mark.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 280,
+                "character": 5
+            },
+            "identifier": "CutRestoreCameraFacing",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 280,
+                        "character": 32
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 280,
+                        "character": 49
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 280,
+                        "character": 64
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 280,
+                        "character": 73
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to restore the camera position.",
+                "// EXAMPLE: CutRestoreCameraFacing(10.0, oPC); would set the old",
+                "//   camera settings back at the 10.0 mark.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 287,
+                "character": 5
+            },
+            "identifier": "CutBlackScreen",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 287,
+                        "character": 24
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 287,
+                        "character": 41
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 287,
+                        "character": 56
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 287,
+                        "character": 65
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to set the screen to black.  This is very useful in covering up",
+                "// and cutscene jumps that happen in the same area as the play area.",
+                "// EXAMPLE: CutBlackScreen(10.0, oPC); would set the screen to black",
+                "//   at the 10.0 mark.",
+                "//"
+            ]
+        },
+        {
+            "position": {
+                "line": 293,
+                "character": 5
+            },
+            "identifier": "CutStopFade",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 293,
+                        "character": 21
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 293,
+                        "character": 38
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 293,
+                        "character": 53
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 293,
+                        "character": 62
+                    },
+                    "identifier": "iShift",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "comments": [
+                "// Used to remove the screen to black.",
+                "// EXAMPLE: CutStopFade(10.0, oPC); would set the screen back from black",
+                "//   at the 10.0 mark.",
+                "//"
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

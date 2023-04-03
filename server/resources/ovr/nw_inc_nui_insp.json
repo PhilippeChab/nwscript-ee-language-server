@@ -1,0 +1,18 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 2,
+                "character": 13
+            },
+            "identifier": "NuiInspectorWindowId",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"nw_nui_inspector\""
+        }
+    ],
+    "structComplexTokens": [],
+    "children": [
+        "nw_inc_nui"
+    ]
+}

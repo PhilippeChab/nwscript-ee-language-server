@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 const defaultServerConfiguration = {
-  autoCompleteFunctionsWithParams: false,
-  includeCommentsInFunctionsHover: false,
+  completion: {
+    addParamsToFunctions: false,
+  },
+  hovering: {
+    addCommentsToFunctions: false,
+  },
   formatter: {
     enabled: false,
     verbose: false,
@@ -23,6 +27,7 @@ const defaultServerConfiguration = {
   },
   compiler: {
     enabled: true,
+    os: null,
     verbose: false,
     reportWarnings: true,
     nwnHome: "",

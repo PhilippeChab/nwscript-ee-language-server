@@ -1,0 +1,743 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 34,
+                "character": 14
+            },
+            "identifier": "X2_CI_CRAFTSKILL_CONV",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "\"x2_p_craftskills\""
+        },
+        {
+            "position": {
+                "line": 38,
+                "character": 14
+            },
+            "identifier": "X2_CI_BREWPOTION_FEAT_ID",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "944"
+        },
+        {
+            "position": {
+                "line": 39,
+                "character": 14
+            },
+            "identifier": "X2_CI_BREWPOTION_MAXLEVEL",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "3"
+        },
+        {
+            "position": {
+                "line": 40,
+                "character": 14
+            },
+            "identifier": "X2_CI_BREWPOTION_COSTMODIFIER",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "50"
+        },
+        {
+            "position": {
+                "line": 42,
+                "character": 14
+            },
+            "identifier": "X2_CI_BREWPOTION_NEWITEM_RESREF",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "\"x2_it_pcpotion\""
+        },
+        {
+            "position": {
+                "line": 45,
+                "character": 14
+            },
+            "identifier": "X2_CI_SCRIBESCROLL_FEAT_ID",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "945"
+        },
+        {
+            "position": {
+                "line": 46,
+                "character": 14
+            },
+            "identifier": "X2_CI_SCRIBESCROLL_COSTMODIFIER",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "25"
+        },
+        {
+            "position": {
+                "line": 47,
+                "character": 14
+            },
+            "identifier": "X2_CI_SCRIBESCROLL_NEWITEM_RESREF",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "\"x2_it_pcscroll\""
+        },
+        {
+            "position": {
+                "line": 50,
+                "character": 14
+            },
+            "identifier": "X2_CI_CRAFTWAND_FEAT_ID",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "946"
+        },
+        {
+            "position": {
+                "line": 51,
+                "character": 14
+            },
+            "identifier": "X2_CI_CRAFTWAND_MAXLEVEL",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "4"
+        },
+        {
+            "position": {
+                "line": 52,
+                "character": 14
+            },
+            "identifier": "X2_CI_CRAFTWAND_COSTMODIFIER",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "750"
+        },
+        {
+            "position": {
+                "line": 53,
+                "character": 14
+            },
+            "identifier": "X2_CI_CRAFTWAND_NEWITEM_RESREF",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "\"x2_it_pcwand\""
+        },
+        {
+            "position": {
+                "line": 56,
+                "character": 13
+            },
+            "identifier": "X2_CI_CRAFTING_WP_2DA",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"des_crft_weapon\""
+        },
+        {
+            "position": {
+                "line": 57,
+                "character": 13
+            },
+            "identifier": "X2_CI_CRAFTING_AR_2DA",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"des_crft_armor\""
+        },
+        {
+            "position": {
+                "line": 58,
+                "character": 13
+            },
+            "identifier": "X2_CI_CRAFTING_MAT_2DA",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"des_crft_mat\""
+        },
+        {
+            "position": {
+                "line": 62,
+                "character": 13
+            },
+            "identifier": "X2_CI_CRAFTING_SP_2DA",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"des_crft_spells\""
+        },
+        {
+            "position": {
+                "line": 64,
+                "character": 14
+            },
+            "identifier": "X2_CI_CRAFTINGSKILL_CTOKENBASE",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "13220"
+        },
+        {
+            "position": {
+                "line": 67,
+                "character": 14
+            },
+            "identifier": "X2_CI_CRAFTINGSKILL_DC_CTOKENBASE",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "14220"
+        },
+        {
+            "position": {
+                "line": 70,
+                "character": 14
+            },
+            "identifier": "X2_CI_CRAFTINGSKILL_GP_CTOKENBASE",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "14320"
+        },
+        {
+            "position": {
+                "line": 73,
+                "character": 14
+            },
+            "identifier": "X2_CI_MODIFYARMOR_GP_CTOKENBASE",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "14420"
+        },
+        {
+            "position": {
+                "line": 76,
+                "character": 14
+            },
+            "identifier": "X2_CI_CRAFTING_ITEMS_PER_ROW",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "5"
+        },
+        {
+            "position": {
+                "line": 79,
+                "character": 14
+            },
+            "identifier": "X2_CI_2DA_SCROLLS",
+            "tokenType": 21,
+            "valueType": " ",
+            "value": "\"des_crft_scroll\""
+        },
+        {
+            "position": {
+                "line": 81,
+                "character": 10
+            },
+            "identifier": "X2_CI_CRAFTMODE_INVALID",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 10
+            },
+            "identifier": "X2_CI_CRAFTMODE_CONTAINER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 83,
+                "character": 10
+            },
+            "identifier": "X2_CI_CRAFTMODE_BASE_ITEM",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 84,
+                "character": 10
+            },
+            "identifier": "X2_CI_CRAFTMODE_ASSEMBLE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3"
+        },
+        {
+            "position": {
+                "line": 86,
+                "character": 10
+            },
+            "identifier": "X2_CI_MAGICTYPE_INVALID",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 87,
+                "character": 10
+            },
+            "identifier": "X2_CI_MAGICTYPE_ARCANE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 88,
+                "character": 10
+            },
+            "identifier": "X2_CI_MAGICTYPE_DIVINE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 90,
+                "character": 10
+            },
+            "identifier": "X2_CI_MODMODE_INVALID",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 91,
+                "character": 10
+            },
+            "identifier": "X2_CI_MODMODE_ARMOR",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 92,
+                "character": 10
+            },
+            "identifier": "X2_CI_MODMODE_WEAPON",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 96,
+                "character": 6
+            },
+            "identifier": "CIGetIsCraftFeatBaseItem",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 96,
+                        "character": 39
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *  Returns TRUE if an item is a Craft Base Item",
+                "// *  to be used in spellscript that can be cast on items - i.e light"
+            ]
+        },
+        {
+            "position": {
+                "line": 101,
+                "character": 6
+            },
+            "identifier": "CICraftCheckBrewPotion",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 101,
+                        "character": 36
+                    },
+                    "identifier": "oSpellTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 101,
+                        "character": 57
+                    },
+                    "identifier": "oCaster",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *  Checks if the last spell cast was used to brew potion and will do the brewing process.",
+                "// *  Returns TRUE if the spell was indeed used to brew a potion (regardless of the actual outcome of the brewing process)",
+                "// *  Meant to be used in spellscripts only"
+            ]
+        },
+        {
+            "position": {
+                "line": 106,
+                "character": 6
+            },
+            "identifier": "CICraftCheckScribeScroll",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 106,
+                        "character": 38
+                    },
+                    "identifier": "oSpellTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 106,
+                        "character": 59
+                    },
+                    "identifier": "oCaster",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *  Checks if the last spell cast was used to scribe a scroll and handles the scribe scroll process",
+                "// *  Returns TRUE if the spell was indeed used to scribe a scroll (regardless of the actual outcome)",
+                "// *  Meant to be used in spellscripts only"
+            ]
+        },
+        {
+            "position": {
+                "line": 109,
+                "character": 7
+            },
+            "identifier": "CICraftBrewPotion",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 109,
+                        "character": 32
+                    },
+                    "identifier": "oCreator",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 109,
+                        "character": 46
+                    },
+                    "identifier": "nSpellID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *   Create a new potion item based on the spell nSpellID  on the creator"
+            ]
+        },
+        {
+            "position": {
+                "line": 112,
+                "character": 7
+            },
+            "identifier": "CICraftScribeScroll",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 112,
+                        "character": 34
+                    },
+                    "identifier": "oCreator",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 112,
+                        "character": 48
+                    },
+                    "identifier": "nSpellID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *   Create a new scroll item based on the spell nSpellID on the creator"
+            ]
+        },
+        {
+            "position": {
+                "line": 118,
+                "character": 6
+            },
+            "identifier": "CIGetSpellWasUsedForItemCreation",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 118,
+                        "character": 46
+                    },
+                    "identifier": "oSpellTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// *  Checks if the caster intends to use his item creation feats and",
+                "// *  calls appropriate item creation subroutine if conditions are met (spell cast on correct item, etc).",
+                "// *  Returns TRUE if the spell was used for an item creation feat"
+            ]
+        },
+        {
+            "position": {
+                "line": 140,
+                "character": 7
+            },
+            "identifier": "CIUseCraftItemSkill",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 140,
+                        "character": 34
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 140,
+                        "character": 43
+                    },
+                    "identifier": "nSkill",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 140,
+                        "character": 58
+                    },
+                    "identifier": "sResRef",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 140,
+                        "character": 71
+                    },
+                    "identifier": "nDC",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 140,
+                        "character": 83
+                    },
+                    "identifier": "oContainer",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
+                }
+            ],
+            "comments": [
+                "// * Makes oPC do a Craft check using nSkill to create the item supplied in sResRe",
+                "// * If oContainer is specified, the item will be created there.",
+                "// * Throwing weapons are created with stack sizes of 10, ammo with 20",
+                "// *  oPC       - The player crafting",
+                "// *  nSkill    - SKILL_CRAFT_WEAPON or SKILL_CRAFT_ARMOR,",
+                "// *  sResRef   - ResRef of the item to be crafted",
+                "// *  nDC       - DC to beat to succeed",
+                "// *  oContainer - if a container is specified, create item inside"
+            ]
+        },
+        {
+            "position": {
+                "line": 143,
+                "character": 6
+            },
+            "identifier": "CIGetIsSpellRestrictedFromCraftFeat",
+            "tokenType": 3,
+            "returnType": " ",
+            "params": [
+                {
+                    "position": {
+                        "line": 143,
+                        "character": 46
+                    },
+                    "identifier": "nSpellID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 143,
+                        "character": 60
+                    },
+                    "identifier": "nFeatID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *  Returns TRUE if a spell is prevented from being used with one of the crafting feats"
+            ]
+        },
+        {
+            "position": {
+                "line": 146,
+                "character": 20
+            },
+            "identifier": "CIGetCraftItemStructFrom2DA",
+            "tokenType": 3,
+            "returnType": "craft_struct",
+            "params": [
+                {
+                    "position": {
+                        "line": 146,
+                        "character": 55
+                    },
+                    "identifier": "s2DA",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 146,
+                        "character": 65
+                    },
+                    "identifier": "nRow",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 146,
+                        "character": 75
+                    },
+                    "identifier": "nItemNo",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// *  Return craftitemstructdata"
+            ]
+        }
+    ],
+    "structComplexTokens": [
+        {
+            "position": {
+                "line": 18,
+                "character": 7
+            },
+            "identifier": "craft_struct",
+            "tokenType": 22,
+            "properties": [
+                {
+                    "position": {
+                        "line": 20,
+                        "character": 8
+                    },
+                    "identifier": "   ",
+                    "tokenType": 10,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 21,
+                        "character": 11
+                    },
+                    "identifier": "sResRef",
+                    "tokenType": 10,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 22,
+                        "character": 8
+                    },
+                    "identifier": "   ",
+                    "tokenType": 10,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 23,
+                        "character": 8
+                    },
+                    "identifier": "   ",
+                    "tokenType": 10,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 24,
+                        "character": 11
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 10,
+                    "valueType": "string"
+                }
+            ]
+        },
+        {
+            "position": {
+                "line": 27,
+                "character": 7
+            },
+            "identifier": "craft_receipe_struct",
+            "tokenType": 22,
+            "properties": [
+                {
+                    "position": {
+                        "line": 29,
+                        "character": 8
+                    },
+                    "identifier": "nMode",
+                    "tokenType": 10,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 30,
+                        "character": 11
+                    },
+                    "identifier": "oMajor",
+                    "tokenType": 10,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 31,
+                        "character": 11
+                    },
+                    "identifier": "oMinor",
+                    "tokenType": 10,
+                    "valueType": "object"
+                }
+            ]
+        }
+    ],
+    "children": [
+        "x2_inc_itemprop",
+        "x2_inc_switches"
+    ]
+}

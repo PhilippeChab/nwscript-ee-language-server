@@ -52,7 +52,7 @@ export default class HoverContentBuilder extends Builder {
           }${index === token.params.length - 1 ? "" : ", "}`;
         }, "")})`,
       ],
-      serverConfig.includeCommentsInFunctionsHover ? ["```nwscript", ...token.comments, "```"] : [],
+      serverConfig.hovering.addCommentsToFunctions ? ["```nwscript", ...token.comments, "```"] : [],
       [],
     );
   }

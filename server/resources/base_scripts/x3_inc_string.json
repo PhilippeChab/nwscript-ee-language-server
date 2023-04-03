@@ -1,0 +1,270 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 22,
+                "character": 13
+            },
+            "identifier": "STRING_COLOR_BLACK",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"000\""
+        },
+        {
+            "position": {
+                "line": 23,
+                "character": 13
+            },
+            "identifier": "STRING_COLOR_BLUE",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"007\""
+        },
+        {
+            "position": {
+                "line": 24,
+                "character": 13
+            },
+            "identifier": "STRING_COLOR_GREEN",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"070\""
+        },
+        {
+            "position": {
+                "line": 25,
+                "character": 13
+            },
+            "identifier": "STRING_COLOR_PINK",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"755\""
+        },
+        {
+            "position": {
+                "line": 26,
+                "character": 13
+            },
+            "identifier": "STRING_COLOR_RED",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"700\""
+        },
+        {
+            "position": {
+                "line": 27,
+                "character": 13
+            },
+            "identifier": "STRING_COLOR_ROSE",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"744\""
+        },
+        {
+            "position": {
+                "line": 28,
+                "character": 13
+            },
+            "identifier": "STRING_COLOR_WHITE",
+            "tokenType": 21,
+            "valueType": "string",
+            "value": "\"777\""
+        },
+        {
+            "position": {
+                "line": 47,
+                "character": 7
+            },
+            "identifier": "StringToRGBString",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 47,
+                        "character": 32
+                    },
+                    "identifier": "sString",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 47,
+                        "character": 48
+                    },
+                    "identifier": "sRGB",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// FILE: x3_inc_string      FUNCTION: StringToRGBString()",
+                "//",
+                "// This function will make sString be the specified color",
+                "// as specified in sRGB.  RGB is the Red, Green, and Blue",
+                "// components of the color.  Each color can have a value from",
+                "// 0 to 7.",
+                "// Ex: red   == \"700\"",
+                "//     green == \"070\"",
+                "//     blue  == \"007\"",
+                "//     white == \"777\"",
+                "//     black == \"000\"",
+                "// The STRING_COLOR_* constants may be used for sRGB."
+            ]
+        },
+        {
+            "position": {
+                "line": 56,
+                "character": 7
+            },
+            "identifier": "StringParse",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 56,
+                        "character": 26
+                    },
+                    "identifier": "sSource",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 56,
+                        "character": 42
+                    },
+                    "identifier": "sDelimiter",
+                    "tokenType": 25,
+                    "valueType": "string",
+                    "defaultValue": "\" \""
+                },
+                {
+                    "position": {
+                        "line": 56,
+                        "character": 64
+                    },
+                    "identifier": "bRightToLeft",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                }
+            ],
+            "comments": [
+                "// FILE: x3_inc_string       FUNCTION: StringParse()",
+                "//",
+                "// This function will parse sSource from left to right until it encounters",
+                "// sDelimiter and will return all the characters it encountered before",
+                "// the delimiter occurred.",
+                "// If bRightToLeft is set to TRUE then it will parse from right to left instead."
+            ]
+        },
+        {
+            "position": {
+                "line": 68,
+                "character": 7
+            },
+            "identifier": "StringRemoveParsed",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 68,
+                        "character": 33
+                    },
+                    "identifier": "sSource",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 68,
+                        "character": 49
+                    },
+                    "identifier": "sParsed",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 68,
+                        "character": 65
+                    },
+                    "identifier": "sDelimiter",
+                    "tokenType": 25,
+                    "valueType": "string",
+                    "defaultValue": "\" \""
+                },
+                {
+                    "position": {
+                        "line": 68,
+                        "character": 87
+                    },
+                    "identifier": "bRightToLeft",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                }
+            ],
+            "comments": [
+                "// FILE: x3_inc_string        FUNCTION: StringRemoveParsed()",
+                "//",
+                "// This function will take sParsed and remove it from the left side of sSource.",
+                "// It will also remove any excess sDelimiter occurrences after sParsed.",
+                "// If bRightToLeft is set to TRUE then it will perform this from the right side",
+                "// rather than the left.",
+                "//",
+                "// No check is made that sParsed actually matches sSource; all that matters",
+                "// about sParsed is its length."
+            ]
+        },
+        {
+            "position": {
+                "line": 74,
+                "character": 7
+            },
+            "identifier": "StringReplace",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 74,
+                        "character": 28
+                    },
+                    "identifier": "sSource",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 74,
+                        "character": 44
+                    },
+                    "identifier": "sFind",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 74,
+                        "character": 58
+                    },
+                    "identifier": "sReplace",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// FILE: x3_inc_string         FUNCTION: StringReplace()",
+                "//",
+                "// This function will replace any occurrence of sFind in sSource with sReplace."
+            ]
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

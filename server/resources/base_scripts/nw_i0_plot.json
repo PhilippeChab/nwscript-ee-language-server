@@ -1,0 +1,1423 @@
+{
+    "complexTokens": [
+        {
+            "position": {
+                "line": 23,
+                "character": 10
+            },
+            "identifier": "DC_EASY",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0"
+        },
+        {
+            "position": {
+                "line": 24,
+                "character": 10
+            },
+            "identifier": "DC_MEDIUM",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 25,
+                "character": 10
+            },
+            "identifier": "DC_HARD",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 26,
+                "character": 10
+            },
+            "identifier": "DC_SUPERIOR",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3"
+        },
+        {
+            "position": {
+                "line": 27,
+                "character": 10
+            },
+            "identifier": "DC_MASTER",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "4"
+        },
+        {
+            "position": {
+                "line": 28,
+                "character": 10
+            },
+            "identifier": "DC_LEGENDARY",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5"
+        },
+        {
+            "position": {
+                "line": 29,
+                "character": 10
+            },
+            "identifier": "DC_EPIC",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "6"
+        },
+        {
+            "position": {
+                "line": 33,
+                "character": 10
+            },
+            "identifier": "G_CLASSCHANCE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "70"
+        },
+        {
+            "position": {
+                "line": 36,
+                "character": 10
+            },
+            "identifier": "XP_VERY_LOW",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1"
+        },
+        {
+            "position": {
+                "line": 37,
+                "character": 10
+            },
+            "identifier": "XP_LOW",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "2"
+        },
+        {
+            "position": {
+                "line": 38,
+                "character": 10
+            },
+            "identifier": "XP_MEDIUM_LOW",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3"
+        },
+        {
+            "position": {
+                "line": 39,
+                "character": 10
+            },
+            "identifier": "XP_MEDIUM",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "4"
+        },
+        {
+            "position": {
+                "line": 40,
+                "character": 10
+            },
+            "identifier": "XP_MEDIUM_HIGH",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5"
+        },
+        {
+            "position": {
+                "line": 41,
+                "character": 10
+            },
+            "identifier": "XP_HIGH",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "6"
+        },
+        {
+            "position": {
+                "line": 42,
+                "character": 10
+            },
+            "identifier": "XP_VERY_HIGH",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "7"
+        },
+        {
+            "position": {
+                "line": 43,
+                "character": 10
+            },
+            "identifier": "XP_EPIC",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "8"
+        },
+        {
+            "position": {
+                "line": 49,
+                "character": 4
+            },
+            "identifier": "plotCanRemoveXP",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 49,
+                        "character": 27
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 49,
+                        "character": 36
+                    },
+                    "identifier": "nPenalty",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// * returns true if the player can afford to lose the indicated amount of XP without losing  a level"
+            ]
+        },
+        {
+            "position": {
+                "line": 51,
+                "character": 4
+            },
+            "identifier": "GetCanCastHealingSpells",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 51,
+                        "character": 35
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 52,
+                "character": 4
+            },
+            "identifier": "DoOnce",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 53,
+                "character": 5
+            },
+            "identifier": "DebugSpeak",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 53,
+                        "character": 23
+                    },
+                    "identifier": "s",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 54,
+                "character": 7
+            },
+            "identifier": "GetMyMaster",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 55,
+                "character": 4
+            },
+            "identifier": "IsRecall",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 56,
+                "character": 5
+            },
+            "identifier": "DimensionHop",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 56,
+                        "character": 25
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 57,
+                "character": 4
+            },
+            "identifier": "CanSeePlayer",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 58,
+                "character": 5
+            },
+            "identifier": "EscapeArea",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 58,
+                        "character": 20
+                    },
+                    "identifier": "bRun",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                },
+                {
+                    "position": {
+                        "line": 58,
+                        "character": 40
+                    },
+                    "identifier": "sTag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 59,
+                "character": 4
+            },
+            "identifier": "HasItem",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 59,
+                        "character": 19
+                    },
+                    "identifier": "oCreature",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 59,
+                        "character": 37
+                    },
+                    "identifier": "s",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 60,
+                "character": 5
+            },
+            "identifier": "TakeGold",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 60,
+                        "character": 18
+                    },
+                    "identifier": "nAmount",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 60,
+                        "character": 34
+                    },
+                    "identifier": "oGoldHolder",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 60,
+                        "character": 51
+                    },
+                    "identifier": "bDestroy",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 61,
+                "character": 7
+            },
+            "identifier": "GetNearestPC",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 62,
+                "character": 5
+            },
+            "identifier": "SetIsEnemy",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 62,
+                        "character": 23
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 68,
+                "character": 4
+            },
+            "identifier": "AutoDC",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 68,
+                        "character": 15
+                    },
+                    "identifier": "DC",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 68,
+                        "character": 23
+                    },
+                    "identifier": "nSkill",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 68,
+                        "character": 38
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Provide a scaled skill check DC based on the DC_* constant passed in",
+                "// DC      -  DC_EASY  DC_MEDIUM  DC_HARD  DC_SUPERIOR  DC_MASTER  DC_LEGENDARY  DC_EPIC",
+                "// nSkill  - SKILL_* constant",
+                "// oTarget - creature that is going to perform the check;"
+            ]
+        },
+        {
+            "position": {
+                "line": 69,
+                "character": 5
+            },
+            "identifier": "AutoAlignG",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 69,
+                        "character": 20
+                    },
+                    "identifier": "DC",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 69,
+                        "character": 31
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 70,
+                "character": 5
+            },
+            "identifier": "AutoAlignE",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 70,
+                        "character": 20
+                    },
+                    "identifier": "DC",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 70,
+                        "character": 31
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 71,
+                "character": 5
+            },
+            "identifier": "DoGiveXP",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 21
+                    },
+                    "identifier": "sJournalTag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 38
+                    },
+                    "identifier": "nPercentage",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 58
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 71
+                    },
+                    "identifier": "QuestAlignment",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 72,
+                "character": 5
+            },
+            "identifier": "RewardXP",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 72,
+                        "character": 21
+                    },
+                    "identifier": "sJournalTag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 72,
+                        "character": 38
+                    },
+                    "identifier": "nPercentage",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 72,
+                        "character": 58
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 72,
+                        "character": 71
+                    },
+                    "identifier": "QuestAlignment",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 72,
+                        "character": 109
+                    },
+                    "identifier": "bAllParty",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 73,
+                "character": 5
+            },
+            "identifier": "RewardGP",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 73,
+                        "character": 18
+                    },
+                    "identifier": "GP",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 73,
+                        "character": 29
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 73,
+                        "character": 41
+                    },
+                    "identifier": "bAllParty",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 74,
+                "character": 4
+            },
+            "identifier": "CheckCharismaMiddle",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 75,
+                "character": 4
+            },
+            "identifier": "CheckCharismaNormal",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 76,
+                "character": 4
+            },
+            "identifier": "CheckCharismaLow",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 77,
+                "character": 4
+            },
+            "identifier": "CheckCharismaHigh",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 78,
+                "character": 4
+            },
+            "identifier": "CheckIntelligenceLow",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 79,
+                "character": 4
+            },
+            "identifier": "CheckIntelligenceNormal",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 80,
+                "character": 4
+            },
+            "identifier": "CheckIntelligenceNormal",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 81,
+                "character": 4
+            },
+            "identifier": "CheckIntelligenceHigh",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 4
+            },
+            "identifier": "CheckWisdomHigh",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 84,
+                "character": 4
+            },
+            "identifier": "GetWisdom",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 84,
+                        "character": 21
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Return the wisdom of oTarget"
+            ]
+        },
+        {
+            "position": {
+                "line": 86,
+                "character": 4
+            },
+            "identifier": "GetIntelligence",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 86,
+                        "character": 27
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Return the Intelligence of the Target"
+            ]
+        },
+        {
+            "position": {
+                "line": 88,
+                "character": 4
+            },
+            "identifier": "GetCharisma",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 88,
+                        "character": 23
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// Return the Charisma of the Target"
+            ]
+        },
+        {
+            "position": {
+                "line": 90,
+                "character": 4
+            },
+            "identifier": "GetNumItems",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 90,
+                        "character": 23
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 90,
+                        "character": 38
+                    },
+                    "identifier": "sItem",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": [
+                "// Return the numer of items oTarget possesses from type sItem (Tag)"
+            ]
+        },
+        {
+            "position": {
+                "line": 92,
+                "character": 5
+            },
+            "identifier": "GiveNumItems",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 92,
+                        "character": 25
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 92,
+                        "character": 40
+                    },
+                    "identifier": "sItem",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 92,
+                        "character": 50
+                    },
+                    "identifier": "nNumItems",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Gives the item with the ResRef sItem to creature oTarget nNumItems times"
+            ]
+        },
+        {
+            "position": {
+                "line": 94,
+                "character": 5
+            },
+            "identifier": "TakeNumItems",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 94,
+                        "character": 25
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 94,
+                        "character": 40
+                    },
+                    "identifier": "sItem",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 94,
+                        "character": 50
+                    },
+                    "identifier": "nNumItems",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// Remove nNumItems Items of Type sItem (Tag) from oTarget"
+            ]
+        },
+        {
+            "position": {
+                "line": 97,
+                "character": 5
+            },
+            "identifier": "PlayCharacterTheme",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 97,
+                        "character": 28
+                    },
+                    "identifier": "nTheme",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "// * plays the correct character theme",
+                "// * assumes OBJECT_SELF is in the area"
+            ]
+        },
+        {
+            "position": {
+                "line": 100,
+                "character": 5
+            },
+            "identifier": "PlayOldTheme",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "comments": [
+                "// * plays the old theme for the area",
+                "// * assumes OBJECT_SELF is in the area"
+            ]
+        },
+        {
+            "position": {
+                "line": 101,
+                "character": 4
+            },
+            "identifier": "GetPLocalInt",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 101,
+                        "character": 24
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 101,
+                        "character": 35
+                    },
+                    "identifier": "sLocalName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 102,
+                "character": 5
+            },
+            "identifier": "SetPLocalInt",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 102,
+                        "character": 25
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 102,
+                        "character": 36
+                    },
+                    "identifier": "sLocalName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 102,
+                        "character": 52
+                    },
+                    "identifier": "nValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 104,
+                "character": 5
+            },
+            "identifier": "RemoveEffects",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 104,
+                        "character": 26
+                    },
+                    "identifier": "oDead",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "// * removes all negative effects"
+            ]
+        },
+        {
+            "position": {
+                "line": 106,
+                "character": 5
+            },
+            "identifier": "gplotAppraiseOpenStore",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 106,
+                        "character": 35
+                    },
+                    "identifier": "oStore",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 106,
+                        "character": 50
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 106,
+                        "character": 59
+                    },
+                    "identifier": "nBonusMarkUp",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                },
+                {
+                    "position": {
+                        "line": 106,
+                        "character": 81
+                    },
+                    "identifier": "nBonusMarkDown",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "comments": [
+                "// * starts store using appraise skill"
+            ]
+        },
+        {
+            "position": {
+                "line": 108,
+                "character": 5
+            },
+            "identifier": "gplotAppraiseFavOpenStore",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 108,
+                        "character": 38
+                    },
+                    "identifier": "oStore",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 108,
+                        "character": 53
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 108,
+                        "character": 62
+                    },
+                    "identifier": "nBonusMarkUp",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                },
+                {
+                    "position": {
+                        "line": 108,
+                        "character": 84
+                    },
+                    "identifier": "nBonusMarkDown",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "comments": [
+                "// * starts store with favorable appraise check"
+            ]
+        },
+        {
+            "position": {
+                "line": 110,
+                "character": 4
+            },
+            "identifier": "CheckDCStr",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 110,
+                        "character": 19
+                    },
+                    "identifier": "DC",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 110,
+                        "character": 27
+                    },
+                    "identifier": "nSkill",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 110,
+                        "character": 42
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "//Do a DC check and modify the skill by the Target's Strength modifier"
+            ]
+        },
+        {
+            "position": {
+                "line": 112,
+                "character": 4
+            },
+            "identifier": "GetIsPlayerCharacter",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 112,
+                        "character": 32
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "//Check to see if target is PC and not DM"
+            ]
+        },
+        {
+            "position": {
+                "line": 114,
+                "character": 5
+            },
+            "identifier": "Reward_2daXP",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 114,
+                        "character": 25
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 114,
+                        "character": 34
+                    },
+                    "identifier": "nRow",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 114,
+                        "character": 44
+                    },
+                    "identifier": "bAllParty",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                },
+                {
+                    "position": {
+                        "line": 114,
+                        "character": 66
+                    },
+                    "identifier": "nPercentage",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "100"
+                }
+            ],
+            "comments": [
+                "//Reward Experience based on an entry in the des_xp_rewards 2da file"
+            ]
+        },
+        {
+            "position": {
+                "line": 116,
+                "character": 5
+            },
+            "identifier": "PlaySpeakSoundByStrRef",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 116,
+                        "character": 32
+                    },
+                    "identifier": "nStrRef",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": [
+                "//Both speak a string ref as well as play the associate sound file"
+            ]
+        },
+        {
+            "position": {
+                "line": 395,
+                "character": 6
+            },
+            "identifier": "GetReactionAdjustment",
+            "tokenType": 3,
+            "returnType": "float",
+            "params": [
+                {
+                    "position": {
+                        "line": 395,
+                        "character": 35
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": [
+                "//  Returns the adjusted Reaction for the purposes of store pricing."
+            ]
+        },
+        {
+            "position": {
+                "line": 401,
+                "character": 5
+            },
+            "identifier": "AdjustFactionReputation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 401,
+                        "character": 36
+                    },
+                    "identifier": "oTargetCreature",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 401,
+                        "character": 60
+                    },
+                    "identifier": "oMemberOfSourceFaction",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 401,
+                        "character": 88
+                    },
+                    "identifier": "nAdjustment",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "comments": []
+        },
+        {
+            "position": {
+                "line": 406,
+                "character": 5
+            },
+            "identifier": "EscapeViaTeleport",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 406,
+                        "character": 30
+                    },
+                    "identifier": "oFleeing",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "comments": []
+        }
+    ],
+    "structComplexTokens": [],
+    "children": []
+}

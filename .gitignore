@@ -1,10 +1,16 @@
+# Builds and stuff
+*.vsix
 out
 dist
 node_modules
 tsconfig.tsbuildinfo
-*.vsix
-server/scripts/nwscript.nss
 yarn-error.log
+
+# Static definitions
+server/scripts/nwscript.nss
+server/scripts/base_scripts/*
+server/scripts/ovr/*
+
+# Varia
 .DS_Store
 TODO.txt
-nwscript.nss
