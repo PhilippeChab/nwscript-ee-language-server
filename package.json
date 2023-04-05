@@ -8,7 +8,7 @@
     "url": "https://github.com/PhilippeChab/nwscript-ee-language-server"
   },
   "license": "MIT",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": {
     "name": "Philippe Chabot"
   },
@@ -28,7 +28,6 @@
   "activationEvents": [
     "onLanguage:nwscript"
   ],
-  "preview": true,
   "main": "./client/out/extension",
   "contributes": {
     "languages": [

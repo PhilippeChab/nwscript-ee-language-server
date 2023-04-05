@@ -5,8 +5,6 @@
 
 NWScript: EE Language Server is a Visual Studio Code extension for the NWScript language.
 
-While it seems to work well, even in bigger and older code bases, it is still an early project and there might be some unintended behaviours.
-
 ## Features
 
 - Enhanced syntax highlighting
@@ -105,7 +103,7 @@ I personally use the [One Dark Pro](https://marketplace.visualstudio.com/items?i
 
 ### Generating the language library definitions
 
-Replace `server/scripts/nwscript.nss` by its new version, `server/scripts/base_scripts/` files by their new versions, `server/scripts/ovr/` includes by their new versions and execute `yarn run generate-lib-defs` in the server root directory.
+Replace `/server/scripts/nwscript.nss` by its new version, `/server/scripts/base_scripts/` files by their new versions, `/server/scripts/ovr/` includes by their new versions and execute `yarn run generate-lib-defs` in the server root directory.
 
 ## Issues
 

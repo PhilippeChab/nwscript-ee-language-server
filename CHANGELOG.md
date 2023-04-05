@@ -57,3 +57,27 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 - Fixed the compilation provider not reporting warnings.
 - New compiler setting `reportWarnings`. True by default.
 - New formatter setting `verbose`. False by default.
+
+## [1.5.4]
+
+- Fixed security issues.
+- The project is now bundled with esbuild instead of webpack.
+
+## [1.5.5]
+
+- Build the indexer again... yikes.
+
+## [2.0.0]
+
+- `GenerateLibDefinitions.ts` now also generates definitions for files in `/data/base_scripts.bif` and files in the `/ovr` folder. See the [README.md](./README.md#generating-the-language-library-definitions) for more details.
+- Static scripts definitions are now provided as fallback if they don't exist in the project directory. This includes files in `/data/base_scripts.bif` and files in the `/ovr` folder.
+- New setting `os` for diagnostics that forces the extension to use the executable of a specific os. Can be useful for wsl, for example. `null` by default.
+- The extension no longer indexes the project files in background at project startup. Instead, it will index a file and its children when it is opened.
+- The compilers have been updated to their latest versions.
+- `nwscript.nss` definitions have been updated.
+- The setting `autoCompleteFunctionsWithParams` is now `completion.addParamsToFunctions`.
+- The setting `includeCommentsInFunctionsHover` is now `hovering.addCommentsToFunctions`.
+
+## [2.0.1]
+
+I think we can consider the extension stable and out of beta. A big thank you to everyone who has been implied in a way or another in its development! :)
