@@ -1,3 +1,7 @@
+import { cpus } from "os";
+import { join } from "path";
+import { pathToFileURL } from "url";
+import * as clustering from "cluster";
 import type { Connection, InitializeParams } from "vscode-languageserver";
 
 import {
@@ -67,8 +71,42 @@ export default class ServerManger {
     }
 
     await this.loadConfig();
-    this.configLoaded = true;
-    this.diagnosticsProvider?.processDocumentsWaitingForPublish();
+
+    const numCPUs = cpus().length;
+    const cluster = clustering.default;
+    if (cluster.isPrimary) {
+      cluster.setupPrimary({
+        exec: join(__dirname, "indexer.js"),
+      });
+    }
+
+    let filesIndexedCount = 0;
+    const filesPath = this.workspaceFilesSystem.getAllFilesPath();
+    const progressReporter = await this.connection.window.createWorkDoneProgress();
+    const filesCount = filesPath.length;
+    this.logger.info(`Indexing files ...`);
+
+    progressReporter.begin("Indexing files for NWScript: EE Language Server ...", 0);
+    const partCount = Math.ceil(filesCount / numCPUs);
+    for (let i = 0; i < Math.min(numCPUs, filesCount); i++) {
+      const worker = cluster.fork();
+      worker.send(filesPath.slice(i * partCount, Math.min((i + 1) * partCount, filesCount - 1)).join(","));
+      worker.on("message", (message: string) => {
+        const { filePath, globalScope } = JSON.parse(message);
+        this.documentsCollection?.createDocument(pathToFileURL(filePath).href, globalScope);
+        filesIndexedCount++;
+        progressReporter?.report(filesIndexedCount / filesCount);
+      });
+    }
+
+    cluster.on("exit", () => {
+      if (Object.keys(cluster.workers || {}).length === 0) {
+        progressReporter?.done();
+        this.logger.info(`Indexed ${filesIndexedCount} files.`);
+        this.configLoaded = true;
+        this.diagnosticsProvider?.processDocumentsWaitingForPublish();
+      }
+    });
   }
 
   public down() {}

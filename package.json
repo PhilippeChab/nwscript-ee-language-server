@@ -8,7 +8,7 @@
     "url": "https://github.com/PhilippeChab/nwscript-ee-language-server"
   },
   "license": "MIT",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": {
     "name": "Philippe Chabot"
   },
@@ -161,7 +161,7 @@
     "vscode:prepublish": "yarn build",
     "build": "yarn clean && yarn buildClient && yarn buildServer",
     "buildClient": "esbuild extension=./client/src/extension.ts --sourcemap --bundle --external:vscode --platform=node --outdir=./client/out/",
-    "buildServer": "esbuild server=./server/src/server.ts --sourcemap --bundle --external:vscode --platform=node --outdir=./server/out/",
+    "buildServer": "esbuild server=./server/src/server.ts indexer=./server/src/Documents/DocumentsIndexer.ts --sourcemap --bundle --external:vscode --platform=node --outdir=./server/out/",
     "compile": "tsc -b",
     "compile:client": "tsc -b ./client/tsconfig.json",
     "compile:server": "tsc -b ./server/tsconfig.json",

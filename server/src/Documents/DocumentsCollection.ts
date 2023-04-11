@@ -53,6 +53,8 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       if (!filePath) return;
 
       const uri = pathToFileURL(filePath).href;
+      if (this.get(this.getKey(uri, false))) return;
+
       const fileContent = readFileSync(filePath).toString();
       this.createDocuments(uri, fileContent, tokenizer, workespaceFilesSystem);
     });
