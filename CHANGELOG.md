@@ -81,3 +81,7 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 ## [2.0.1]
 
 I think we can consider the extension stable and out of beta. A big thank you to everyone who has been implied in a way or another in its development! :)
+
+## [2.0.2]
+
+- Add back the initial indexing. Its removal caused performance issues. 
