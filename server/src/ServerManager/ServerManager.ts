@@ -13,6 +13,7 @@ import {
   GotoDefinitionProvider,
   HoverContentProvider,
   SignatureHelpProvider,
+  SymbolsProvider,
   WorkspaceProvider,
 } from "../Providers";
 import { DocumentsCollection, LiveDocumentsManager } from "../Documents";
@@ -118,6 +119,7 @@ export default class ServerManger {
     SignatureHelpProvider.register(this);
     DocumentFormatingProvider.register(this);
     DocumentRangeFormattingProvider.register(this);
+    SymbolsProvider.register(this);
     this.diagnosticsProvider = DiagnosticsProvider.register(this) as DiagnosticsProvider;
   }
 

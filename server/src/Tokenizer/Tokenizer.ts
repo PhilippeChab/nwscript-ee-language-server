@@ -326,19 +326,24 @@ export default class Tokenizer {
     }
 
     let computeFunctionLocals = false;
+    let currentFunctionIdentifier = "";
 
     for (let lineIndex = lastLineIndex; lineIndex >= firstLineIndex; lineIndex--) {
       const line = lines[lineIndex];
       const isLastLine = lineIndex === lastLineIndex;
       const tokensArray = tokensArrays[lineIndex];
+      currentFunctionIdentifier = "";
 
       if (tokensArray) {
         const lastIndex = tokensArray.length - 1;
         const lastToken = tokensArray[lastIndex];
 
         if (
-          isLastLine &&
-          (lastToken.scopes.includes(LanguageScopes.block) || lastToken.scopes.includes(LanguageScopes.functionDeclaration))
+          (lastToken.scopes.includes(LanguageScopes.block) &&
+            lastToken.scopes.includes(LanguageScopes.blockTermination) &&
+            lastLineIndex === lines.length) ||
+          (isLastLine &&
+            (lastToken.scopes.includes(LanguageScopes.block) || lastToken.scopes.includes(LanguageScopes.functionDeclaration)))
         ) {
           computeFunctionLocals = true;
         }
@@ -363,7 +368,10 @@ export default class Tokenizer {
 
             let nextVariableToken;
             let currentVariableIndex = tokenIndex;
-            while (tokensArray[currentVariableIndex + 1].scopes.includes(LanguageScopes.separatorStatement)) {
+            while (
+              tokensArray[currentVariableIndex + 1] &&
+              tokensArray[currentVariableIndex + 1].scopes.includes(LanguageScopes.separatorStatement)
+            ) {
               if (tokensArray[currentVariableIndex + 2].scopes.includes(LanguageScopes.variableIdentifer)) {
                 currentVariableIndex = currentVariableIndex + 2;
               } else {
@@ -387,6 +395,7 @@ export default class Tokenizer {
               identifier: this.getRawTokenContent(line, token),
               tokenType: CompletionItemKind.TypeParameter,
               valueType: this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
+              ...(!!currentFunctionIdentifier && { parentIdentifier: currentFunctionIdentifier }),
             });
           }
 
@@ -397,9 +406,10 @@ export default class Tokenizer {
             !this.isFunctionDeclaration(lineIndex, tokensArrays) &&
             !(tokenIndex === 0 && lineIndex === 0)
           ) {
+            const id = this.getRawTokenContent(line, token);
             scope.functionsComplexTokens.push({
               position: { line: lineIndex, character: token.startIndex },
-              identifier: this.getRawTokenContent(line, token),
+              identifier: id,
               tokenType: CompletionItemKind.Function,
               returnType:
                 tokenIndex === 0
@@ -408,10 +418,16 @@ export default class Tokenizer {
               params: this.getFunctionParams(lineIndex, lines, tokensArrays),
               comments: this.getFunctionComments(lines, tokensArrays, tokenIndex === 0 ? lineIndex - 2 : lineIndex - 1),
             });
+
+            scope.functionVariablesComplexTokens
+              .filter((token) => !token.parentIdentifier)
+              .forEach((token) => (token.parentIdentifier = id));
+
+            currentFunctionIdentifier = id;
           }
         }
 
-        // Needs to be after for allow more one iteration to fetch function params
+        // Needs to be after to allow more one iteration to fetch function params
         if (computeFunctionLocals && !lastToken.scopes.includes(LanguageScopes.block)) {
           computeFunctionLocals = false;
         }
