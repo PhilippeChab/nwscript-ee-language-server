@@ -427,7 +427,7 @@ export default class Tokenizer {
           }
         }
 
-        // Needs to be after to allow more one iteration to fetch function params
+        // Needs to be after to allow one more iteration to fetch function params
         if (computeFunctionLocals && !lastToken.scopes.includes(LanguageScopes.block)) {
           computeFunctionLocals = false;
         }
