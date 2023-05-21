@@ -408,10 +408,9 @@ export default class Tokenizer {
             !this.isFunctionDeclaration(lineIndex, tokensArrays) &&
             !(tokenIndex === 0 && lineIndex === 0)
           ) {
-            const id = this.getRawTokenContent(line, token);
             scope.functionsComplexTokens.push({
               position: { line: lineIndex, character: token.startIndex },
-              identifier: id,
+              identifier: this.getRawTokenContent(line, token),
               tokenType: CompletionItemKind.Function,
               returnType:
                 tokenIndex === 0
