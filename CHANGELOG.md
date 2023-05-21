@@ -89,3 +89,4 @@ I think we can consider the extension stable and out of beta. A big thank you to
 ## [2.1.0]
 
 - New provider: [Document Symbols](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#show-all-symbol-definitions-within-a-document).
+
