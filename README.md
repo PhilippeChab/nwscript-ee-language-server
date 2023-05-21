@@ -106,6 +106,10 @@ I personally use the [One Dark Pro](https://marketplace.visualstudio.com/items?i
 
 Replace `/server/scripts/nwscript.nss` by its new version, `/server/scripts/base_scripts/` files by their new versions, `/server/scripts/ovr/` includes by their new versions and execute `yarn run generate-lib-defs` in the server root directory.
 
+## Known issues
+
+The nwnsc process doesn't terminate on linux. This is caused by the [compiler](https://github.com/nwneetools/nwnsc) itself, not the extension.
+
 ## Issues
 
 Please report any issues on the github [repository](https://github.com/PhilippeChab/nwscript-ee-language-server/issues).
