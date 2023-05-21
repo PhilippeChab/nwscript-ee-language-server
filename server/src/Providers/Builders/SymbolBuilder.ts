@@ -22,13 +22,11 @@ export default class SymbolBuilder extends Builder {
     } else if (this.isFunctionToken(token)) {
       return this.buildFunctionItem(token, children);
     } else if (this.isStructPropertyToken(token)) {
-      throw new Error("Invalid token");
-      // return this.buildStructPropertyItem(token, uri);
+      return this.buildStructPropertyItem(token);
     } else if (this.isStructToken(token)) {
-      throw new Error("Invalid token");
-      // return this.buildStructItem(token, uri);
+      return this.buildStructItem(token);
     } else {
-      throw new Error("Invalid token");
+      throw new Error("Invalid complex token. Cannot build symbol.");
     }
   }
 
@@ -56,7 +54,7 @@ export default class SymbolBuilder extends Builder {
     return DocumentSymbol.create(
       token.identifier,
       undefined,
-      SymbolKind.Variable,
+      SymbolKind.TypeParameter,
       { start: token.position, end: token.position },
       { start: token.position, end: token.position },
     );
@@ -75,9 +73,26 @@ export default class SymbolBuilder extends Builder {
     );
   }
 
-  // private static buildStructPropertyItem(token: StructPropertyComplexToken, uri?: string) {
-  // }
+  private static buildStructPropertyItem(token: StructPropertyComplexToken) {
+    return DocumentSymbol.create(
+      token.identifier,
+      undefined,
+      SymbolKind.Property,
+      { start: token.position, end: token.position },
+      { start: token.position, end: token.position },
+    );
+  }
 
-  // private static buildStructItem(token: StructComplexToken, uri?: string) {
-  // }
+  private static buildStructItem(token: StructComplexToken) {
+    const symbols = token.properties?.map((child) => SymbolBuilder.buildItem(child));
+
+    return DocumentSymbol.create(
+      token.identifier,
+      undefined,
+      SymbolKind.Struct,
+      { start: token.position, end: token.position },
+      { start: token.position, end: token.position },
+      symbols,
+    );
+  }
 }
