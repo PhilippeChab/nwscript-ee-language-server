@@ -74,7 +74,13 @@ export default class GotoDefinitionProvider extends Provider {
           }
 
           if (!token && (tokenType === CompletionItemKind.Constant || tokenType === CompletionItemKind.Function)) {
+            const localStandardLibDefinitions = this.server.documentsCollection.get("nwscript");
             const tokensWithRef = document.getGlobalComplexTokensWithRef();
+
+            if (localStandardLibDefinitions) {
+              tokensWithRef.push({ owner: localStandardLibDefinitions?.uri, tokens: localStandardLibDefinitions?.complexTokens });
+            }
+
             for (let i = 0; i < tokensWithRef.length; i++) {
               ref = tokensWithRef[i];
 

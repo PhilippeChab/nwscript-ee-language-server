@@ -42,13 +42,7 @@ export default class Document {
   }
 
   public getGlobalComplexTokensWithRef(computedChildren: string[] = []): OwnedComplexTokens[] {
-    const localStandardLibDefinitions = this.collection.get("nwscript");
-    return [
-      { owner: this.base ? undefined : this.uri, tokens: this.complexTokens } as OwnedComplexTokens,
-      ...(localStandardLibDefinitions
-        ? [{ owner: localStandardLibDefinitions.uri, tokens: localStandardLibDefinitions.complexTokens }]
-        : []),
-    ].concat(
+    return [{ owner: this.base ? undefined : this.uri, tokens: this.complexTokens } as OwnedComplexTokens].concat(
       this.children.flatMap((child) => {
         // Cycling children or/and duplicates
         if (computedChildren.includes(child)) {

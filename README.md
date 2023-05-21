@@ -15,6 +15,7 @@ NWScript: EE Language Server is a Visual Studio Code extension for the NWScript 
 - Range formatting
 - Signature help
 - Diagnostics
+- Document Symbols
 
 ## Dependencies
 

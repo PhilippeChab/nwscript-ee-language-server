@@ -81,3 +81,11 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 ## [2.0.1]
 
 I think we can consider the extension stable and out of beta. A big thank you to everyone who has been implied in a way or another in its development! :)
+
+## [2.0.2]
+
+- Indexing added back. Its removal caused performances issues.
+
+## [2.1.0]
+
+- New provider: [Document Symbols](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#show-all-symbol-definitions-within-a-document).
