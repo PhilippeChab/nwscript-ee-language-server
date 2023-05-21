@@ -28,7 +28,27 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": [
+                {
+                    "position": {
+                        "line": 278,
+                        "character": 37
+                    },
+                    "identifier": "skillFeat",
+                    "tokenType": 6,
+                    "valueType": "NWNX_SkillRanks_SkillFeat"
+                },
+                {
+                    "position": {
+                        "line": 272,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -67,7 +87,18 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": [
+                {
+                    "position": {
+                        "line": 262,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -97,7 +128,18 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": [
+                {
+                    "position": {
+                        "line": 251,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -118,7 +160,18 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": [
+                {
+                    "position": {
+                        "line": 243,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -129,7 +182,18 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
-            "comments": []
+            "comments": [],
+            "variables": [
+                {
+                    "position": {
+                        "line": 234,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -160,7 +224,18 @@
                     "defaultValue": "FALSE"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": [
+                {
+                    "position": {
+                        "line": 225,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -190,7 +265,27 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": [
+                {
+                    "position": {
+                        "line": 215,
+                        "character": 15
+                    },
+                    "identifier": "sPad",
+                    "tokenType": 6,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 214,
+                        "character": 12
+                    },
+                    "identifier": "i",
+                    "tokenType": 6,
+                    "valueType": "int"
+                }
+            ]
         },
         {
             "position": {
@@ -221,7 +316,18 @@
                     "defaultValue": "FALSE"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": [
+                {
+                    "position": {
+                        "line": 192,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -251,7 +357,27 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": [
+                {
+                    "position": {
+                        "line": 173,
+                        "character": 37
+                    },
+                    "identifier": "skillFeat",
+                    "tokenType": 6,
+                    "valueType": "NWNX_SkillRanks_SkillFeat"
+                },
+                {
+                    "position": {
+                        "line": 167,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -272,7 +398,18 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": [
+                {
+                    "position": {
+                        "line": 157,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         }
     ],
     "functionVariablesComplexTokens": [
@@ -283,8 +420,7 @@
             },
             "identifier": "skillFeat",
             "tokenType": 6,
-            "valueType": "NWNX_SkillRanks_SkillFeat",
-            "parentIdentifier": "NWNX_SkillRanks_GetSkillFeat"
+            "valueType": "NWNX_SkillRanks_SkillFeat"
         },
         {
             "position": {
@@ -293,8 +429,7 @@
             },
             "identifier": "sFunc",
             "tokenType": 6,
-            "valueType": "string",
-            "parentIdentifier": "NWNX_SkillRanks_GetSkillFeat"
+            "valueType": "string"
         },
         {
             "position": {
@@ -303,8 +438,7 @@
             },
             "identifier": "iSkill",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_GetSkillFeat"
+            "valueType": "int"
         },
         {
             "position": {
@@ -313,8 +447,7 @@
             },
             "identifier": "iFeat",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_GetSkillFeat"
+            "valueType": "int"
         },
         {
             "position": {
@@ -323,8 +456,7 @@
             },
             "identifier": "sFunc",
             "tokenType": 6,
-            "valueType": "string",
-            "parentIdentifier": "NWNX_SkillRanks_SetAreaModifier"
+            "valueType": "string"
         },
         {
             "position": {
@@ -333,8 +465,7 @@
             },
             "identifier": "oArea",
             "tokenType": 25,
-            "valueType": "object",
-            "parentIdentifier": "NWNX_SkillRanks_SetAreaModifier"
+            "valueType": "object"
         },
         {
             "position": {
@@ -343,8 +474,7 @@
             },
             "identifier": "iSkill",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_SetAreaModifier"
+            "valueType": "int"
         },
         {
             "position": {
@@ -353,8 +483,7 @@
             },
             "identifier": "iModifier",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_SetAreaModifier"
+            "valueType": "int"
         },
         {
             "position": {
@@ -363,8 +492,7 @@
             },
             "identifier": "sFunc",
             "tokenType": 6,
-            "valueType": "string",
-            "parentIdentifier": "NWNX_SkillRanks_GetAreaModifier"
+            "valueType": "string"
         },
         {
             "position": {
@@ -373,8 +501,7 @@
             },
             "identifier": "oArea",
             "tokenType": 25,
-            "valueType": "object",
-            "parentIdentifier": "NWNX_SkillRanks_GetAreaModifier"
+            "valueType": "object"
         },
         {
             "position": {
@@ -383,8 +510,7 @@
             },
             "identifier": "iSkill",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_GetAreaModifier"
+            "valueType": "int"
         },
         {
             "position": {
@@ -393,8 +519,7 @@
             },
             "identifier": "sFunc",
             "tokenType": 6,
-            "valueType": "string",
-            "parentIdentifier": "NWNX_SkillRanks_SetBlindnessPenalty"
+            "valueType": "string"
         },
         {
             "position": {
@@ -403,8 +528,7 @@
             },
             "identifier": "iModifier",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_SetBlindnessPenalty"
+            "valueType": "int"
         },
         {
             "position": {
@@ -413,8 +537,7 @@
             },
             "identifier": "sFunc",
             "tokenType": 6,
-            "valueType": "string",
-            "parentIdentifier": "NWNX_SkillRanks_GetBlindnessPenalty"
+            "valueType": "string"
         },
         {
             "position": {
@@ -423,8 +546,7 @@
             },
             "identifier": "sFunc",
             "tokenType": 6,
-            "valueType": "string",
-            "parentIdentifier": "NWNX_SkillRanks_SetSkillFeatFocusModifier"
+            "valueType": "string"
         },
         {
             "position": {
@@ -433,8 +555,7 @@
             },
             "identifier": "iModifier",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_SetSkillFeatFocusModifier"
+            "valueType": "int"
         },
         {
             "position": {
@@ -443,8 +564,7 @@
             },
             "identifier": "epicFocus",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_SetSkillFeatFocusModifier"
+            "valueType": "int"
         },
         {
             "position": {
@@ -453,8 +573,7 @@
             },
             "identifier": "sPad",
             "tokenType": 6,
-            "valueType": "string",
-            "parentIdentifier": "NWNX_SkillRanks_AddSkillFeatClass"
+            "valueType": "string"
         },
         {
             "position": {
@@ -463,8 +582,7 @@
             },
             "identifier": "i",
             "tokenType": 6,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_AddSkillFeatClass"
+            "valueType": "int"
         },
         {
             "position": {
@@ -473,8 +591,7 @@
             },
             "identifier": "skillFeat",
             "tokenType": 25,
-            "valueType": "NWNX_SkillRanks_SkillFeat",
-            "parentIdentifier": "NWNX_SkillRanks_AddSkillFeatClass"
+            "valueType": "NWNX_SkillRanks_SkillFeat"
         },
         {
             "position": {
@@ -483,8 +600,7 @@
             },
             "identifier": "iClass",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_AddSkillFeatClass"
+            "valueType": "int"
         },
         {
             "position": {
@@ -493,8 +609,7 @@
             },
             "identifier": "sFunc",
             "tokenType": 6,
-            "valueType": "string",
-            "parentIdentifier": "NWNX_SkillRanks_SetSkillFeat"
+            "valueType": "string"
         },
         {
             "position": {
@@ -503,8 +618,7 @@
             },
             "identifier": "skillFeat",
             "tokenType": 25,
-            "valueType": "NWNX_SkillRanks_SkillFeat",
-            "parentIdentifier": "NWNX_SkillRanks_SetSkillFeat"
+            "valueType": "NWNX_SkillRanks_SkillFeat"
         },
         {
             "position": {
@@ -513,8 +627,7 @@
             },
             "identifier": "createIfNonExistent",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_SetSkillFeat"
+            "valueType": "int"
         },
         {
             "position": {
@@ -523,8 +636,7 @@
             },
             "identifier": "skillFeat",
             "tokenType": 6,
-            "valueType": "NWNX_SkillRanks_SkillFeat",
-            "parentIdentifier": "NWNX_SkillRanks_GetSkillFeatForSkillByIndex"
+            "valueType": "NWNX_SkillRanks_SkillFeat"
         },
         {
             "position": {
@@ -533,8 +645,7 @@
             },
             "identifier": "sFunc",
             "tokenType": 6,
-            "valueType": "string",
-            "parentIdentifier": "NWNX_SkillRanks_GetSkillFeatForSkillByIndex"
+            "valueType": "string"
         },
         {
             "position": {
@@ -543,8 +654,7 @@
             },
             "identifier": "iSkill",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_GetSkillFeatForSkillByIndex"
+            "valueType": "int"
         },
         {
             "position": {
@@ -553,8 +663,7 @@
             },
             "identifier": "iIndex",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_GetSkillFeatForSkillByIndex"
+            "valueType": "int"
         },
         {
             "position": {
@@ -563,8 +672,7 @@
             },
             "identifier": "sFunc",
             "tokenType": 6,
-            "valueType": "string",
-            "parentIdentifier": "NWNX_SkillRanks_GetSkillFeatCountForSkill"
+            "valueType": "string"
         },
         {
             "position": {
@@ -573,8 +681,7 @@
             },
             "identifier": "iSkill",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_GetSkillFeatCountForSkill"
+            "valueType": "int"
         }
     ]
 }

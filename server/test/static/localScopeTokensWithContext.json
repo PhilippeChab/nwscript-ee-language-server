@@ -28,7 +28,27 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": [
+                {
+                    "position": {
+                        "line": 278,
+                        "character": 37
+                    },
+                    "identifier": "skillFeat",
+                    "tokenType": 6,
+                    "valueType": "NWNX_SkillRanks_SkillFeat"
+                },
+                {
+                    "position": {
+                        "line": 272,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -67,7 +87,8 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": []
         },
         {
             "position": {
@@ -97,7 +118,8 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": []
         },
         {
             "position": {
@@ -118,7 +140,8 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": []
         },
         {
             "position": {
@@ -129,7 +152,8 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
-            "comments": []
+            "comments": [],
+            "variables": []
         },
         {
             "position": {
@@ -160,7 +184,8 @@
                     "defaultValue": "FALSE"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": []
         },
         {
             "position": {
@@ -190,7 +215,8 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": []
         },
         {
             "position": {
@@ -221,7 +247,8 @@
                     "defaultValue": "FALSE"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": []
         },
         {
             "position": {
@@ -251,7 +278,8 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": []
         },
         {
             "position": {
@@ -272,7 +300,8 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "comments": [],
+            "variables": []
         }
     ],
     "functionVariablesComplexTokens": [
@@ -283,8 +312,7 @@
             },
             "identifier": "skillFeat",
             "tokenType": 6,
-            "valueType": "NWNX_SkillRanks_SkillFeat",
-            "parentIdentifier": "NWNX_SkillRanks_GetSkillFeat"
+            "valueType": "NWNX_SkillRanks_SkillFeat"
         },
         {
             "position": {
@@ -293,8 +321,7 @@
             },
             "identifier": "sFunc",
             "tokenType": 6,
-            "valueType": "string",
-            "parentIdentifier": "NWNX_SkillRanks_GetSkillFeat"
+            "valueType": "string"
         },
         {
             "position": {
@@ -303,8 +330,7 @@
             },
             "identifier": "iSkill",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_GetSkillFeat"
+            "valueType": "int"
         },
         {
             "position": {
@@ -313,8 +339,7 @@
             },
             "identifier": "iFeat",
             "tokenType": 25,
-            "valueType": "int",
-            "parentIdentifier": "NWNX_SkillRanks_GetSkillFeat"
+            "valueType": "int"
         }
     ]
 }

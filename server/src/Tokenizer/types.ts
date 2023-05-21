@@ -11,19 +11,18 @@ type LanguageConstant = {
 type LanguageVariable = {
   tokenType: typeof CompletionItemKind.Variable;
   valueType: LanguageTypes;
-  parentIdentifier?: string;
 };
 type LanguageFunction = {
   tokenType: typeof CompletionItemKind.Function;
   returnType: LanguageTypes;
   params: FunctionParamComplexToken[];
+  variables?: VariableComplexToken[];
   comments: string[];
 };
 type LanguageFunctionParam = {
   tokenType: typeof CompletionItemKind.TypeParameter;
   valueType: LanguageTypes;
   defaultValue?: string;
-  parentIdentifier?: string;
 };
 type LanguageStruct = {
   tokenType: typeof CompletionItemKind.Struct;

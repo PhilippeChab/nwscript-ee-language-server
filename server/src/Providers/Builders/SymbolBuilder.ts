@@ -1,4 +1,4 @@
-import { DocumentSymbol, SymbolInformation, SymbolKind } from "vscode-languageserver";
+import { DocumentSymbol, SymbolKind } from "vscode-languageserver";
 
 import type {
   ComplexToken,
@@ -12,7 +12,7 @@ import type {
 import Builder from "./Builder";
 
 export default class SymbolBuilder extends Builder {
-  public static buildItem(token: ComplexToken, children?: ComplexToken[]): DocumentSymbol {
+  public static buildItem(token: ComplexToken): DocumentSymbol {
     if (this.isConstantToken(token)) {
       return this.buildConstantItem(token);
     } else if (this.isVariableToken(token)) {
@@ -20,7 +20,7 @@ export default class SymbolBuilder extends Builder {
     } else if (this.isFunctionParameterToken(token)) {
       return this.buildFunctionParamItem(token);
     } else if (this.isFunctionToken(token)) {
-      return this.buildFunctionItem(token, children);
+      return this.buildFunctionItem(token);
     } else if (this.isStructPropertyToken(token)) {
       return this.buildStructPropertyItem(token);
     } else if (this.isStructToken(token)) {
@@ -60,8 +60,9 @@ export default class SymbolBuilder extends Builder {
     );
   }
 
-  private static buildFunctionItem(token: FunctionComplexToken, children?: ComplexToken[]) {
-    const symbols = children?.map((child) => SymbolBuilder.buildItem(child));
+  private static buildFunctionItem(token: FunctionComplexToken) {
+    const paramSymbols = token.params.map((child) => SymbolBuilder.buildItem(child)) || [];
+    const variableSymbols = token.variables?.map((child) => SymbolBuilder.buildItem(child)) || [];
 
     return DocumentSymbol.create(
       token.identifier,
@@ -69,7 +70,7 @@ export default class SymbolBuilder extends Builder {
       SymbolKind.Function,
       { start: token.position, end: token.position },
       { start: token.position, end: token.position },
-      symbols,
+      paramSymbols.concat(variableSymbols),
     );
   }
 

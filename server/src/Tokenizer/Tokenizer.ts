@@ -326,13 +326,12 @@ export default class Tokenizer {
     }
 
     let computeFunctionLocals = false;
-    let currentFunctionIdentifier = "";
+    let currentFunctionVariables = [];
 
     for (let lineIndex = lastLineIndex; lineIndex >= firstLineIndex; lineIndex--) {
       const line = lines[lineIndex];
       const isLastLine = lineIndex === lastLineIndex;
       const tokensArray = tokensArrays[lineIndex];
-      currentFunctionIdentifier = "";
 
       if (tokensArray) {
         const lastIndex = tokensArray.length - 1;
@@ -359,12 +358,14 @@ export default class Tokenizer {
             (tokensArray[tokenIndex - 2].scopes.includes(LanguageScopes.type) ||
               tokensArray[tokenIndex - 2].scopes.includes(LanguageScopes.structIdentifier))
           ) {
-            scope.functionVariablesComplexTokens.push({
+            const complexToken = {
               position: { line: lineIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
               tokenType: CompletionItemKind.Variable,
               valueType: this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
-            });
+            };
+            scope.functionVariablesComplexTokens.push(complexToken);
+            currentFunctionVariables.push(complexToken);
 
             let nextVariableToken;
             let currentVariableIndex = tokenIndex;
@@ -379,12 +380,14 @@ export default class Tokenizer {
               }
 
               nextVariableToken = tokensArray[currentVariableIndex];
-              scope.functionVariablesComplexTokens.push({
+              const complextToken = {
                 position: { line: lineIndex, character: nextVariableToken.startIndex },
                 identifier: this.getRawTokenContent(line, nextVariableToken),
                 tokenType: CompletionItemKind.Variable,
                 valueType: this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
-              });
+              };
+              scope.functionVariablesComplexTokens.push(complextToken);
+              currentFunctionVariables.push(complexToken);
             }
           }
 
@@ -395,7 +398,6 @@ export default class Tokenizer {
               identifier: this.getRawTokenContent(line, token),
               tokenType: CompletionItemKind.TypeParameter,
               valueType: this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
-              ...(!!currentFunctionIdentifier && { parentIdentifier: currentFunctionIdentifier }),
             });
           }
 
@@ -417,19 +419,15 @@ export default class Tokenizer {
                   : this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
               params: this.getFunctionParams(lineIndex, lines, tokensArrays),
               comments: this.getFunctionComments(lines, tokensArrays, tokenIndex === 0 ? lineIndex - 2 : lineIndex - 1),
+              variables: currentFunctionVariables,
             });
-
-            scope.functionVariablesComplexTokens
-              .filter((token) => !token.parentIdentifier)
-              .forEach((token) => (token.parentIdentifier = id));
-
-            currentFunctionIdentifier = id;
           }
         }
 
         // Needs to be after to allow one more iteration to fetch function params
         if (computeFunctionLocals && !lastToken.scopes.includes(LanguageScopes.block)) {
           computeFunctionLocals = false;
+          currentFunctionVariables = [];
         }
       }
     }

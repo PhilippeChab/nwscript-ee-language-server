@@ -2,7 +2,7 @@ import { CompletionItemKind, DocumentSymbolParams } from "vscode-languageserver"
 
 import type { ServerManager } from "../ServerManager";
 import { SymbolBuilder } from "./Builders";
-import { LocalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Tokenizer";
+import { TokenizedScope } from "../Tokenizer/Tokenizer";
 import Provider from "./Provider";
 
 export default class SymbolsProvider extends Provider {
@@ -32,18 +32,11 @@ export default class SymbolsProvider extends Provider {
         const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local);
 
         if (localScope) {
-          return constantSymbols.concat(structSymbols.concat(this.getLocalScopeSymbols(localScope)));
+          return constantSymbols.concat(
+            structSymbols.concat(localScope.functionsComplexTokens.map((token) => SymbolBuilder.buildItem(token))),
+          );
         }
       }
     };
-  }
-
-  private getLocalScopeSymbols(localScope: LocalScopeTokenizationResult) {
-    return localScope.functionsComplexTokens.map((token) => {
-      return SymbolBuilder.buildItem(
-        token,
-        localScope.functionVariablesComplexTokens.filter((variableToken) => variableToken.parentIdentifier === token.identifier),
-      );
-    });
   }
 }
