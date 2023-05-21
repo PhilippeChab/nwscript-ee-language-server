@@ -37,7 +37,7 @@ export default class CompletionItemsProvider extends Provider {
               const structVariableIdentifier = this.server.tokenizer?.findLineIdentiferFromPositionAt(
                 liveDocument.getText(),
                 position,
-                -2,
+                -1,
               );
 
               const structIdentifer = localScope.functionVariablesComplexTokens.find(
@@ -53,7 +53,7 @@ export default class CompletionItemsProvider extends Provider {
             }
 
             if (
-              this.server.tokenizer?.findLineIdentiferFromPositionAt(liveDocument.getText(), position, -3) ===
+              this.server.tokenizer?.findLineIdentiferFromPositionAt(liveDocument.getText(), position, -2) ===
               LanguageTypes.struct
             ) {
               return document.getGlobalStructComplexTokens().map((token) => CompletionItemBuilder.buildItem(token));

@@ -536,7 +536,8 @@ export default class Tokenizer {
       return undefined;
     }
 
-    const token = tokensArray.at(index);
+    const cursorIndex = tokensArray.findIndex((e) => e.startIndex <= position.character && e.endIndex >= position.character);
+    const token = tokensArray[cursorIndex + index];
     return token ? this.getRawTokenContent(line, token) : undefined;
   }
 
