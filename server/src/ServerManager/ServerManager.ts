@@ -1,5 +1,6 @@
 import { cpus } from "os";
 import { join } from "path";
+import { readFileSync } from "fs";
 import { pathToFileURL } from "url";
 import * as clustering from "cluster";
 import type { Connection, InitializeParams } from "vscode-languageserver";
@@ -13,10 +14,12 @@ import {
   GotoDefinitionProvider,
   HoverContentProvider,
   SignatureHelpProvider,
+  SymbolsProvider,
   WorkspaceProvider,
 } from "../Providers";
 import { DocumentsCollection, LiveDocumentsManager } from "../Documents";
 import { Tokenizer } from "../Tokenizer";
+import { TokenizedScope } from "../Tokenizer/Tokenizer";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { Logger } from "../Logger";
 import { defaultServerConfiguration } from "./Config";
@@ -82,6 +85,7 @@ export default class ServerManger {
 
     let filesIndexedCount = 0;
     const filesPath = this.workspaceFilesSystem.getAllFilesPath();
+    const nwscriptPath = filesPath.find((path) => path.includes("nwscript.nss"));
     const progressReporter = await this.connection.window.createWorkDoneProgress();
     const filesCount = filesPath.length;
     this.logger.info(`Indexing files ...`);
@@ -105,6 +109,12 @@ export default class ServerManger {
         this.logger.info(`Indexed ${filesIndexedCount} files.`);
         this.configLoaded = true;
         this.diagnosticsProvider?.processDocumentsWaitingForPublish();
+
+        if (nwscriptPath) {
+          const fileContent = readFileSync(nwscriptPath).toString();
+          const globalScope = this.tokenizer?.tokenizeContent(fileContent, TokenizedScope.global)!;
+          this.documentsCollection?.createDocument(pathToFileURL(nwscriptPath).href, globalScope);
+        }
       }
     });
   }
@@ -118,6 +128,7 @@ export default class ServerManger {
     SignatureHelpProvider.register(this);
     DocumentFormatingProvider.register(this);
     DocumentRangeFormattingProvider.register(this);
+    SymbolsProvider.register(this);
     this.diagnosticsProvider = DiagnosticsProvider.register(this) as DiagnosticsProvider;
   }
 

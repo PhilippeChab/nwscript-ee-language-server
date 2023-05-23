@@ -16,6 +16,7 @@ type LanguageFunction = {
   tokenType: typeof CompletionItemKind.Function;
   returnType: LanguageTypes;
   params: FunctionParamComplexToken[];
+  variables?: VariableComplexToken[];
   comments: string[];
 };
 type LanguageFunctionParam = {

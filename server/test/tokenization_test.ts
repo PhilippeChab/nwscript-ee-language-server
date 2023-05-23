@@ -1,6 +1,6 @@
 import { describe, before } from "mocha";
 import { expect } from "chai";
-import { readFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import { normalize, join } from "path";
 import Tokenizer, {
   GlobalScopeTokenizationResult,
@@ -14,7 +14,8 @@ describe("Tokenization", () => {
   let tokenizer: Tokenizer;
   let staticCode: string;
   let staticGlobalTokens: GlobalScopeTokenizationResult;
-  let staticLocalTokens: LocalScopeTokenizationResult;
+  let staticLocalTokensWithContext: LocalScopeTokenizationResult;
+  let staticLocalTokensWithoutContext: LocalScopeTokenizationResult;
 
   before("Read static data", async () => {
     tokenizer = await new Tokenizer(true).loadGrammar();
@@ -22,8 +23,11 @@ describe("Tokenization", () => {
     staticGlobalTokens = JSON.parse(
       readFileSync(normalize(join(__dirname, "./static/globalScopeTokens.json"))).toString(),
     ) as GlobalScopeTokenizationResult;
-    staticLocalTokens = JSON.parse(
-      readFileSync(normalize(join(__dirname, "./static/localScopeTokens.json"))).toString(),
+    staticLocalTokensWithContext = JSON.parse(
+      readFileSync(normalize(join(__dirname, "./static/localScopeTokensWithContext.json"))).toString(),
+    ) as LocalScopeTokenizationResult;
+    staticLocalTokensWithoutContext = JSON.parse(
+      readFileSync(normalize(join(__dirname, "./static/localScopeTokensWithoutContext.json"))).toString(),
     ) as LocalScopeTokenizationResult;
   });
 
@@ -46,18 +50,37 @@ describe("Tokenization", () => {
     });
   });
 
-  describe("Local Scope", () => {
+  describe("Local Scope with current function context", () => {
     let definitions: LocalScopeTokenizationResult;
     before("Tokenize Content", () => {
       definitions = format(tokenizer.tokenizeContent(staticCode, TokenizedScope.local, 0, 293));
     });
 
     it("should equal static function variables tokens", () => {
-      expect(definitions.functionVariablesComplexTokens).to.be.deep.equal(staticLocalTokens.functionVariablesComplexTokens);
+      expect(definitions.functionVariablesComplexTokens).to.be.deep.equal(
+        staticLocalTokensWithContext.functionVariablesComplexTokens,
+      );
     });
 
     it("should equal static function tokens", () => {
-      expect(definitions.functionsComplexTokens).to.be.deep.equal(staticLocalTokens.functionsComplexTokens);
+      expect(definitions.functionsComplexTokens).to.be.deep.equal(staticLocalTokensWithContext.functionsComplexTokens);
+    });
+  });
+
+  describe("Local Scope with entire file context", () => {
+    let definitions: LocalScopeTokenizationResult;
+    before("Tokenize Content", () => {
+      definitions = format(tokenizer.tokenizeContent(staticCode, TokenizedScope.local));
+    });
+
+    it("should equal static function variables tokens", () => {
+      expect(definitions.functionVariablesComplexTokens).to.be.deep.equal(
+        staticLocalTokensWithoutContext.functionVariablesComplexTokens,
+      );
+    });
+
+    it("should equal static function tokens", () => {
+      expect(definitions.functionsComplexTokens).to.be.deep.equal(staticLocalTokensWithoutContext.functionsComplexTokens);
     });
   });
 });

@@ -19,6 +19,7 @@ export default class CapabilitiesHandler {
       },
       documentFormattingProvider: true,
       documentRangeFormattingProvider: true,
+      documentSymbolProvider: true,
       definitionProvider: true,
       hoverProvider: true,
       completionProvider: {

@@ -7,6 +7,7 @@ import SignatureHelpProvider from "./SignatureHelpProvider";
 import DocumentFormatingProvider from "./DocumentFormattingProvider";
 import DocumentRangeFormattingProvider from "./DocumentRangeFormattingProvider";
 import DiagnosticsProvider from "./DiagnosticsProvider";
+import SymbolsProvider from "./SymbolsProvider";
 
 export enum TriggerCharacters {
   dot = ".",
@@ -24,4 +25,5 @@ export {
   DocumentFormatingProvider,
   DocumentRangeFormattingProvider,
   DiagnosticsProvider,
+  SymbolsProvider,
 };

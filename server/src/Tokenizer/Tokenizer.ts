@@ -326,6 +326,7 @@ export default class Tokenizer {
     }
 
     let computeFunctionLocals = false;
+    let currentFunctionVariables = [];
 
     for (let lineIndex = lastLineIndex; lineIndex >= firstLineIndex; lineIndex--) {
       const line = lines[lineIndex];
@@ -337,8 +338,11 @@ export default class Tokenizer {
         const lastToken = tokensArray[lastIndex];
 
         if (
-          isLastLine &&
-          (lastToken.scopes.includes(LanguageScopes.block) || lastToken.scopes.includes(LanguageScopes.functionDeclaration))
+          (lastToken.scopes.includes(LanguageScopes.block) &&
+            lastToken.scopes.includes(LanguageScopes.blockTermination) &&
+            lastLineIndex === lines.length) ||
+          (isLastLine &&
+            (lastToken.scopes.includes(LanguageScopes.block) || lastToken.scopes.includes(LanguageScopes.functionDeclaration)))
         ) {
           computeFunctionLocals = true;
         }
@@ -354,16 +358,21 @@ export default class Tokenizer {
             (tokensArray[tokenIndex - 2].scopes.includes(LanguageScopes.type) ||
               tokensArray[tokenIndex - 2].scopes.includes(LanguageScopes.structIdentifier))
           ) {
-            scope.functionVariablesComplexTokens.push({
+            const complexToken = {
               position: { line: lineIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
               tokenType: CompletionItemKind.Variable,
               valueType: this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
-            });
+            };
+            scope.functionVariablesComplexTokens.push(complexToken);
+            currentFunctionVariables.push(complexToken);
 
             let nextVariableToken;
             let currentVariableIndex = tokenIndex;
-            while (tokensArray[currentVariableIndex + 1].scopes.includes(LanguageScopes.separatorStatement)) {
+            while (
+              tokensArray[currentVariableIndex + 1] &&
+              tokensArray[currentVariableIndex + 1].scopes.includes(LanguageScopes.separatorStatement)
+            ) {
               if (tokensArray[currentVariableIndex + 2].scopes.includes(LanguageScopes.variableIdentifer)) {
                 currentVariableIndex = currentVariableIndex + 2;
               } else {
@@ -371,12 +380,14 @@ export default class Tokenizer {
               }
 
               nextVariableToken = tokensArray[currentVariableIndex];
-              scope.functionVariablesComplexTokens.push({
+              const complextToken = {
                 position: { line: lineIndex, character: nextVariableToken.startIndex },
                 identifier: this.getRawTokenContent(line, nextVariableToken),
                 tokenType: CompletionItemKind.Variable,
                 valueType: this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
-              });
+              };
+              scope.functionVariablesComplexTokens.push(complextToken);
+              currentFunctionVariables.push(complexToken);
             }
           }
 
@@ -407,13 +418,15 @@ export default class Tokenizer {
                   : this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
               params: this.getFunctionParams(lineIndex, lines, tokensArrays),
               comments: this.getFunctionComments(lines, tokensArrays, tokenIndex === 0 ? lineIndex - 2 : lineIndex - 1),
+              variables: currentFunctionVariables,
             });
           }
         }
 
-        // Needs to be after for allow more one iteration to fetch function params
+        // Needs to be after to allow one more iteration to fetch function params
         if (computeFunctionLocals && !lastToken.scopes.includes(LanguageScopes.block)) {
           computeFunctionLocals = false;
+          currentFunctionVariables = [];
         }
       }
     }
@@ -520,7 +533,8 @@ export default class Tokenizer {
       return undefined;
     }
 
-    const token = tokensArray.at(index);
+    const cursorIndex = tokensArray.findIndex((e) => e.startIndex <= position.character && e.endIndex >= position.character);
+    const token = tokensArray[cursorIndex + index];
     return token ? this.getRawTokenContent(line, token) : undefined;
   }
 

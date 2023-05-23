@@ -84,4 +84,10 @@ I think we can consider the extension stable and out of beta. A big thank you to
 
 ## [2.0.2]
 
-- Add back the initial indexing. Its removal caused performance issues. 
+- Indexing added back. Its removal caused performances issues.
+
+## [2.1.0]
+
+- New provider: [Document Symbols](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#show-all-symbol-definitions-within-a-document).
+- Fixed a small issue with the `CompletionItemsProvider`.
+- Goto will now _really_ work with definitions from `nwscript.nss` if the file is in your project.
