@@ -225,9 +225,9 @@ export default class Tokenizer {
   private isStructDeclaration(token: IToken, lastToken: IToken, lineIndex: number, tokensArrays: (IToken[] | undefined)[]) {
     return (
       token.scopes.includes(LanguageScopes.structIdentifier) &&
-      ((lastToken.scopes.includes(LanguageScopes.structIdentifier) &&
-        lastToken.scopes.includes(LanguageScopes.blockDeclaraction)) ||
-        tokensArrays[lineIndex + 1]?.at(0)?.scopes.includes(LanguageScopes.blockDeclaraction))
+      ((tokensArrays[lineIndex + 1]?.at(0)?.scopes.includes(LanguageScopes.blockDeclaraction) &&
+        lastToken.scopes.includes(LanguageScopes.structIdentifier)) ||
+        lastToken.scopes.includes(LanguageScopes.blockDeclaraction))
     );
   }
 
