@@ -186,6 +186,62 @@ export default class Tokenizer {
     return isFunctionDeclaration;
   }
 
+  private isGlobalFunctionDeclaration(
+    lineIndex: number,
+    tokenIndex: number,
+    token: IToken,
+    tokensArrays: (IToken[] | undefined)[],
+  ) {
+    return (
+      !(tokenIndex === 0 && lineIndex === 0) && // Not sure why we need this
+      !token.scopes.includes(LanguageScopes.block) &&
+      token.scopes.includes(LanguageScopes.functionIdentifier) &&
+      this.isFunctionDeclaration(lineIndex, tokensArrays)
+    );
+  }
+
+  private isLocalFunctionDeclaration(
+    lineIndex: number,
+    tokenIndex: number,
+    token: IToken,
+    tokensArrays: (IToken[] | undefined)[],
+  ) {
+    return (
+      token.scopes.includes(LanguageScopes.functionIdentifier) &&
+      !token.scopes.includes(LanguageScopes.block) &&
+      !(tokenIndex === 0 && lineIndex === 0) && // Not sure why we need this
+      !this.isFunctionDeclaration(lineIndex, tokensArrays)
+    );
+  }
+
+  private isGlobalConstant(token: IToken) {
+    return (
+      token.scopes.includes(LanguageScopes.constantIdentifer) &&
+      !token.scopes.includes(LanguageScopes.functionDeclaration) &&
+      !token.scopes.includes(LanguageScopes.block)
+    );
+  }
+
+  private isStructDeclaration(token: IToken, lastToken: IToken, lineIndex: number, tokensArrays: (IToken[] | undefined)[]) {
+    return (
+      token.scopes.includes(LanguageScopes.structIdentifier) &&
+      ((lastToken.scopes.includes(LanguageScopes.structIdentifier) &&
+        lastToken.scopes.includes(LanguageScopes.blockDeclaraction)) ||
+        tokensArrays[lineIndex + 1]?.at(0)?.scopes.includes(LanguageScopes.blockDeclaraction))
+    );
+  }
+
+  private isLocalVariable(tokenIndex: number, token: IToken, tokensArray: IToken[]) {
+    return (
+      token.scopes.includes(LanguageScopes.variableIdentifer) &&
+      tokenIndex > 1 &&
+      (tokensArray[tokenIndex - 2].scopes.includes(LanguageScopes.type) ||
+        tokensArray[tokenIndex - 2].scopes.includes(LanguageScopes.structIdentifier))
+    );
+  }
+
+  // Naive implementation
+  // Ideally we would use an AST tree
   private tokenizeLinesForGlobalScope(lines: string[], startIndex: number = 0, stopIndex: number = -1) {
     const firstLineIndex = startIndex > lines.length || startIndex < 0 ? 0 : startIndex;
     const lastLineIndex = stopIndex + 10 > lines.length || stopIndex < 0 ? lines.length : stopIndex;
@@ -234,18 +290,12 @@ export default class Tokenizer {
             break;
           }
 
-          // CHILD
           if (token.scopes.includes(LanguageScopes.includeDeclaration)) {
             scope.children.push(this.getRawTokenContent(line, tokensArray.at(-2)!));
             break;
           }
 
-          // CONSTANT
-          if (
-            token.scopes.includes(LanguageScopes.constantIdentifer) &&
-            !token.scopes.includes(LanguageScopes.functionDeclaration) &&
-            !token.scopes.includes(LanguageScopes.block)
-          ) {
+          if (this.isGlobalConstant(token)) {
             scope.complexTokens.push({
               position: { line: lineIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
@@ -256,13 +306,7 @@ export default class Tokenizer {
             break;
           }
 
-          // FUNCTION
-          if (
-            token.scopes.includes(LanguageScopes.functionIdentifier) &&
-            !token.scopes.includes(LanguageScopes.block) &&
-            this.isFunctionDeclaration(lineIndex, tokensArrays) &&
-            !(tokenIndex === 0 && lineIndex === 0)
-          ) {
+          if (this.isGlobalFunctionDeclaration(lineIndex, tokenIndex, token, tokensArrays)) {
             scope.complexTokens.push({
               position: { line: lineIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
@@ -278,13 +322,7 @@ export default class Tokenizer {
             break;
           }
 
-          // STRUCT
-          if (
-            token.scopes.includes(LanguageScopes.structIdentifier) &&
-            ((lastToken.scopes.includes(LanguageScopes.structIdentifier) &&
-              tokensArrays[lineIndex + 1]?.at(0)?.scopes.includes(LanguageScopes.blockDeclaraction)) ||
-              lastToken.scopes.includes(LanguageScopes.blockDeclaraction))
-          ) {
+          if (this.isStructDeclaration(token, lastToken, lineIndex, tokensArrays)) {
             currentStruct = {
               position: { line: lineIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
@@ -300,6 +338,8 @@ export default class Tokenizer {
     return scope;
   }
 
+  // Naive implementation
+  // Ideally we would use an AST tree
   private tokenizeLinesForLocalScope(lines: string[], startIndex: number = 0, stopIndex: number = -1) {
     const firstLineIndex = startIndex > lines.length || startIndex < 0 ? 0 : startIndex;
     const lastLineIndex = stopIndex > lines.length || stopIndex < 0 ? lines.length : stopIndex;
@@ -351,13 +391,7 @@ export default class Tokenizer {
           const token = tokensArray[tokenIndex];
 
           // VARIABLE
-          if (
-            computeFunctionLocals &&
-            token.scopes.includes(LanguageScopes.variableIdentifer) &&
-            tokenIndex > 1 &&
-            (tokensArray[tokenIndex - 2].scopes.includes(LanguageScopes.type) ||
-              tokensArray[tokenIndex - 2].scopes.includes(LanguageScopes.structIdentifier))
-          ) {
+          if (computeFunctionLocals && this.isLocalVariable(tokenIndex, token, tokensArray)) {
             const complexToken = {
               position: { line: lineIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
@@ -401,13 +435,7 @@ export default class Tokenizer {
             });
           }
 
-          // FUNCTION
-          if (
-            token.scopes.includes(LanguageScopes.functionIdentifier) &&
-            !token.scopes.includes(LanguageScopes.block) &&
-            !this.isFunctionDeclaration(lineIndex, tokensArrays) &&
-            !(tokenIndex === 0 && lineIndex === 0)
-          ) {
+          if (this.isLocalFunctionDeclaration(lineIndex, tokenIndex, token, tokensArrays)) {
             scope.functionsComplexTokens.push({
               position: { line: lineIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
