@@ -54,9 +54,9 @@ export default class DiagnoticsProvider extends Provider {
       case OS.linux:
         return "../resources/compiler/linux/nwn_script_comp";
       case OS.mac:
-        return "../resources/compiler/mac/nwnsc";
+        return "../resources/compiler/mac/nwn_script_comp";
       case OS.windows:
-        return "../resources/compiler/windows/nwnsc.exe";
+        return "../resources/compiler/windows/nwn_script_comp.exe";
       default:
         return "";
     }
@@ -114,10 +114,10 @@ export default class DiagnoticsProvider extends Provider {
       } else if (verbose) {
         this.server.logger.info("Trying to resolve Neverwinter Nights installation directory automatically.");
       }
-      // if (children.length > 0) {
-      //   args.push("-i");
-      //   args.push(`"${[...new Set(uris.map((uri) => dirname(fileURLToPath(uri))))].join(";")}"`);
-      // }
+      if (children.length > 0) {
+        args.push("--dirs");
+        args.push(`"${[...new Set(uris.map((uri) => dirname(fileURLToPath(uri))))].join(",")}"`);
+      }
       args.push("-c");
       args.push(`"${fileURLToPath(uri)}"`);
 
