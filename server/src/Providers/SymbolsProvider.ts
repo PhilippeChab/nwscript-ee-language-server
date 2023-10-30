@@ -20,23 +20,13 @@ export default class SymbolsProvider extends Provider {
 
       const liveDocument = this.server.liveDocumentsManager.get(uri);
       const document = this.server.documentsCollection.getFromUri(uri);
+      if (!liveDocument || !document) return;
 
-      const constantSymbols =
-        document?.complexTokens
-          .filter((token) => token.tokenType === CompletionItemKind.Constant)
-          .map((token) => SymbolBuilder.buildItem(token)) || [];
+      const localScope = this.server.tokenizer.tokenizeContent(liveDocument.getText(), TokenizedScope.local);
+      const constantSymbols = document.complexTokens.filter((token) => token.tokenType === CompletionItemKind.Constant).map((token) => SymbolBuilder.buildItem(token));
+      const structSymbols = document.structComplexTokens.map((token) => SymbolBuilder.buildItem(token));
 
-      const structSymbols = document?.structComplexTokens.map((token) => SymbolBuilder.buildItem(token)) || [];
-
-      if (liveDocument) {
-        const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local);
-
-        if (localScope) {
-          return constantSymbols.concat(
-            structSymbols.concat(localScope.functionsComplexTokens.map((token) => SymbolBuilder.buildItem(token))),
-          );
-        }
-      }
+      return constantSymbols.concat(structSymbols.concat(localScope.functionsComplexTokens.map((token) => SymbolBuilder.buildItem(token))));
     };
   }
 }
