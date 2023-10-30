@@ -79,6 +79,7 @@ export default class GotoDefinitionProvider extends Provider {
             break loop;
           }
         }
+        break;
       case CompletionItemKind.Struct:
         tokensWithRef = document.getGlobalStructComplexTokensWithRef();
         loop: for (let i = 0; i < tokensWithRef.length; i++) {
@@ -89,6 +90,7 @@ export default class GotoDefinitionProvider extends Provider {
             break loop;
           }
         }
+        break;
       case CompletionItemKind.Property:
         const structIdentifer = localScope.functionVariablesComplexTokens.find((candidate) => candidate.identifier === structVariableIdentifier)?.valueType;
 
@@ -102,6 +104,7 @@ export default class GotoDefinitionProvider extends Provider {
             break loop;
           }
         }
+        break;
       default:
         token = localScope.functionVariablesComplexTokens.find((token) => token.identifier === identifier);
     }
