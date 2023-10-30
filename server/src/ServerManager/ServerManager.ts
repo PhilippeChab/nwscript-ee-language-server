@@ -85,7 +85,7 @@ export default class ServerManger {
     }
 
     let filesIndexedCount = 0;
-    const filesPath = this.workspaceFilesSystem.getAllFilesPath();
+    const filesPath = this.workspaceFilesSystem.getFilesPath();
     const nwscriptPath = filesPath.find((path) => path.includes("nwscript.nss"));
     const progressReporter = await this.connection.window.createWorkDoneProgress();
     const filesCount = filesPath.length;

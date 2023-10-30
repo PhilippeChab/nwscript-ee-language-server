@@ -6,7 +6,7 @@ export default class Dictionnary<K extends string, V> {
   }
 
   protected add(key: K, value: V) {
-    if (!this.exist(key)) {
+    if (!this.exists(key)) {
       this._dict[key] = value;
     }
   }
@@ -19,7 +19,7 @@ export default class Dictionnary<K extends string, V> {
     return this._dict[key];
   }
 
-  public exist(key: K) {
+  public exists(key: K) {
     return Boolean(this._dict[key]);
   }
 
