@@ -79,7 +79,7 @@ export default class DiagnoticsProvider extends Provider {
 
       if (!this.server.configLoaded || !document) {
         if (!this.server.documentsWaitingForPublish.includes(uri)) {
-          this.server.documentsWaitingForPublish?.push(uri);
+          this.server.documentsWaitingForPublish.push(uri);
         }
         return resolve(true);
       }
@@ -88,7 +88,7 @@ export default class DiagnoticsProvider extends Provider {
       const files: FilesDiagnostics = { [document.uri]: [] };
       const uris: string[] = [];
       children.forEach((child) => {
-        const fileUri = this.server.documentsCollection?.get(child)?.uri;
+        const fileUri = this.server.documentsCollection.get(child)?.uri;
         if (fileUri) {
           files[fileUri] = [];
           uris.push(fileUri);
@@ -168,13 +168,9 @@ export default class DiagnoticsProvider extends Provider {
 
           if (line.includes("Could not locate")) {
             if (Boolean(nwnHome) || Boolean(nwnInstallation)) {
-              return this.server.logger.error(
-                "Unable to resolve provided Neverwinter Nights home and/or installation directories. Ensure the paths are valid in the extension settings.",
-              );
+              return this.server.logger.error("Unable to resolve provided Neverwinter Nights home and/or installation directories. Ensure the paths are valid in the extension settings.");
             } else {
-              return this.server.logger.error(
-                "Unable to automatically resolve Neverwinter Nights home and/or installation directories.",
-              );
+              return this.server.logger.error("Unable to automatically resolve Neverwinter Nights home and/or installation directories.");
             }
           }
         });
