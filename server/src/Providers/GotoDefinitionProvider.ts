@@ -55,13 +55,14 @@ export default class GotoDefinitionProvider extends Provider {
     let token: ComplexToken | undefined;
     let ref: OwnedComplexTokens | OwnedStructComplexTokens | undefined;
 
-    const { tokenType, structVariableIdentifier, identifier } = this.server.tokenizer.findActionTargetAtPosition(liveDocument.getText(), position);
-    const localScope = this.server.tokenizer.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
+    const [lines, rawTokenizedContent] = this.server.tokenizer.tokenizeContentToRaw(liveDocument.getText());
+    const localScope = this.server.tokenizer.tokenizeContentFromRaw(lines, rawTokenizedContent, 0, position.line);
+    const { tokenType, lookBehindRawContent, rawContent } = this.server.tokenizer.getActionTargetAtPosition(lines, rawTokenizedContent, position);
 
     switch (tokenType) {
       case CompletionItemKind.Function:
       case CompletionItemKind.Constant:
-        token = localScope.functionsComplexTokens.find((candidate) => candidate.identifier === identifier);
+        token = localScope.functionsComplexTokens.find((candidate) => candidate.identifier === rawContent);
         if (token) break;
 
         const localStandardLibDefinitions = this.server.documentsCollection.get("nwscript");
@@ -74,7 +75,7 @@ export default class GotoDefinitionProvider extends Provider {
         loop: for (let i = 0; i < tokensWithRef.length; i++) {
           ref = tokensWithRef[i];
 
-          token = ref?.tokens.find((candidate) => candidate.identifier === identifier);
+          token = ref?.tokens.find((candidate) => candidate.identifier === rawContent);
           if (token) {
             break loop;
           }
@@ -85,20 +86,20 @@ export default class GotoDefinitionProvider extends Provider {
         loop: for (let i = 0; i < tokensWithRef.length; i++) {
           ref = tokensWithRef[i];
 
-          token = ref?.tokens.find((candidate) => candidate.identifier === identifier);
+          token = ref?.tokens.find((candidate) => candidate.identifier === rawContent);
           if (token) {
             break loop;
           }
         }
         break;
       case CompletionItemKind.Property:
-        const structIdentifer = localScope.functionVariablesComplexTokens.find((candidate) => candidate.identifier === structVariableIdentifier)?.valueType;
+        const structIdentifer = localScope.functionVariablesComplexTokens.find((candidate) => candidate.identifier === lookBehindRawContent)?.valueType;
 
         tokensWithRef = document.getGlobalStructComplexTokensWithRef();
         loop: for (let i = 0; i < tokensWithRef.length; i++) {
           ref = tokensWithRef[i];
 
-          token = (ref as OwnedStructComplexTokens).tokens.find((candidate) => candidate.identifier === structIdentifer)?.properties.find((property) => property.identifier === identifier);
+          token = (ref as OwnedStructComplexTokens).tokens.find((candidate) => candidate.identifier === structIdentifer)?.properties.find((property) => property.identifier === rawContent);
 
           if (token) {
             break loop;
@@ -106,7 +107,7 @@ export default class GotoDefinitionProvider extends Provider {
         }
         break;
       default:
-        token = localScope.functionVariablesComplexTokens.find((candidate) => candidate.identifier === identifier);
+        token = localScope.functionVariablesComplexTokens.find((candidate) => candidate.identifier === rawContent);
     }
 
     return [token, ref];

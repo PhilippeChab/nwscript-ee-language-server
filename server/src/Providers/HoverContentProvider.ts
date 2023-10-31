@@ -40,36 +40,37 @@ export default class HoverContentProvider extends Provider {
     let tokens;
     let token: ComplexToken | undefined;
 
-    const { tokenType, structVariableIdentifier, identifier } = this.server.tokenizer.findActionTargetAtPosition(liveDocument.getText(), position);
-    const localScope = this.server.tokenizer.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
+    const [lines, rawTokenizedContent] = this.server.tokenizer.tokenizeContentToRaw(liveDocument.getText());
+    const localScope = this.server.tokenizer.tokenizeContentFromRaw(lines, rawTokenizedContent, 0, position.line);
+    const { tokenType, lookBehindRawContent, rawContent } = this.server.tokenizer.getActionTargetAtPosition(lines, rawTokenizedContent, position);
 
     switch (tokenType) {
       case CompletionItemKind.Function:
       case CompletionItemKind.Constant:
-        token = localScope.functionsComplexTokens.find((candidate) => candidate.identifier === identifier);
+        token = localScope.functionsComplexTokens.find((candidate) => candidate.identifier === rawContent);
         if (token) break;
 
         tokens = document.getGlobalComplexTokens();
-        token = tokens.find((candidate) => candidate.identifier === identifier);
+        token = tokens.find((candidate) => candidate.identifier === rawContent);
         if (token) break;
 
         tokens = this.server.documentsCollection.standardLibComplexTokens;
-        token = tokens.find((candidate) => candidate.identifier === identifier);
+        token = tokens.find((candidate) => candidate.identifier === rawContent);
         break;
       case CompletionItemKind.Struct:
         tokens = document.getGlobalStructComplexTokens();
-        token = tokens.find((candidate) => candidate.identifier === identifier);
+        token = tokens.find((candidate) => candidate.identifier === rawContent);
         break;
       case CompletionItemKind.Property:
-        const structIdentifer = localScope?.functionVariablesComplexTokens.find((candidate) => candidate.identifier === structVariableIdentifier)?.valueType;
+        const structIdentifer = localScope?.functionVariablesComplexTokens.find((candidate) => candidate.identifier === lookBehindRawContent)?.valueType;
 
         token = document
           .getGlobalStructComplexTokens()
           .find((candidate) => candidate.identifier === structIdentifer)
-          ?.properties.find((property) => property.identifier === identifier);
+          ?.properties.find((property) => property.identifier === rawContent);
         break;
       default:
-        token = localScope.functionVariablesComplexTokens.find((candidate) => candidate.identifier === identifier);
+        token = localScope.functionVariablesComplexTokens.find((candidate) => candidate.identifier === rawContent);
     }
 
     return token;
