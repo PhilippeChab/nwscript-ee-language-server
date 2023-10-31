@@ -41,7 +41,7 @@ export default class CompletionItemsProvider extends Provider {
           });
       }
 
-      if (this.server.tokenizer?.findLineIdentiferFromPositionAt(liveDocument.getText(), position, -2) === LanguageTypes.struct) {
+      if (this.server.tokenizer.findLineIdentiferFromPositionAt(liveDocument.getText(), position, -2) === LanguageTypes.struct) {
         return document.getGlobalStructComplexTokens().map((token) => CompletionItemBuilder.buildItem(token));
       }
 

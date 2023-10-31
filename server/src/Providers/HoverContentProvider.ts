@@ -41,7 +41,7 @@ export default class HoverContentProvider extends Provider {
     let token: ComplexToken | undefined;
 
     const { tokenType, structVariableIdentifier, identifier } = this.server.tokenizer.findActionTargetAtPosition(liveDocument.getText(), position);
-    const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
+    const localScope = this.server.tokenizer.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
 
     switch (tokenType) {
       case CompletionItemKind.Function:

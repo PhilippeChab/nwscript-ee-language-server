@@ -55,8 +55,8 @@ export default class GotoDefinitionProvider extends Provider {
     let token: ComplexToken | undefined;
     let ref: OwnedComplexTokens | OwnedStructComplexTokens | undefined;
 
-    const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
     const { tokenType, structVariableIdentifier, identifier } = this.server.tokenizer.findActionTargetAtPosition(liveDocument.getText(), position);
+    const localScope = this.server.tokenizer.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
 
     switch (tokenType) {
       case CompletionItemKind.Function:
@@ -85,7 +85,7 @@ export default class GotoDefinitionProvider extends Provider {
         loop: for (let i = 0; i < tokensWithRef.length; i++) {
           ref = tokensWithRef[i];
 
-          token = ref?.tokens.find((token) => token.identifier === identifier);
+          token = ref?.tokens.find((candidate) => candidate.identifier === identifier);
           if (token) {
             break loop;
           }
@@ -106,7 +106,7 @@ export default class GotoDefinitionProvider extends Provider {
         }
         break;
       default:
-        token = localScope.functionVariablesComplexTokens.find((token) => token.identifier === identifier);
+        token = localScope.functionVariablesComplexTokens.find((candidate) => candidate.identifier === identifier);
     }
 
     return [token, ref];
