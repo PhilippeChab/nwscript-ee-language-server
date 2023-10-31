@@ -1,9 +1,11 @@
-import { CompletionItemKind, HoverParams } from "vscode-languageserver";
+import { CompletionItemKind, HoverParams, Position } from "vscode-languageserver";
+import { TextDocument } from "vscode-languageserver-textdocument";
 
 import type { ServerManager } from "../ServerManager";
 import type { ComplexToken } from "../Tokenizer/types";
 import { TokenizedScope } from "../Tokenizer/Tokenizer";
 import { HoverContentBuilder } from "./Builders";
+import { Document } from "../Documents";
 import Provider from "./Provider";
 
 export default class HoverContentProvider extends Provider {
@@ -22,64 +24,54 @@ export default class HoverContentProvider extends Provider {
 
       const liveDocument = this.server.liveDocumentsManager.get(uri);
       const document = this.server.documentsCollection.getFromUri(uri);
+      if (!liveDocument || !document) return;
 
-      if (liveDocument && this.server.tokenizer) {
-        let token: ComplexToken | undefined;
-        const { tokenType, structVariableIdentifier, identifier } = this.server.tokenizer.findActionTargetAtPosition(
-          liveDocument.getText(),
-          position,
-        );
+      let token = this.resolveToken(position, document, liveDocument);
 
-        const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
-
-        if (!tokenType) {
-          token = localScope?.functionVariablesComplexTokens.find((token) => token.identifier === identifier);
-        }
-
-        if (!token && tokenType === CompletionItemKind.Function) {
-          token = localScope?.functionsComplexTokens.find((token) => token.identifier === identifier);
-        }
-
-        if (document) {
-          if (tokenType === CompletionItemKind.Property && structVariableIdentifier) {
-            const structIdentifer = localScope?.functionVariablesComplexTokens.find(
-              (token) => token.identifier === structVariableIdentifier,
-            )?.valueType;
-
-            token = document
-              .getGlobalStructComplexTokens()
-              .find((token) => token.identifier === structIdentifer)
-              ?.properties.find((property) => property.identifier === identifier);
-          }
-
-          if (!token && tokenType === CompletionItemKind.Struct) {
-            const tokens = document.getGlobalStructComplexTokens();
-            token = tokens.find((token) => token.identifier === identifier);
-          }
-
-          if (!token && (tokenType === CompletionItemKind.Constant || tokenType === CompletionItemKind.Function)) {
-            const tokens = document.getGlobalComplexTokens();
-            token = tokens.find((token) => token.identifier === identifier);
-          }
-        }
-
-        if (
-          !token &&
-          (tokenType === CompletionItemKind.Constant || tokenType === CompletionItemKind.Function) &&
-          this.server.documentsCollection
-        ) {
-          const tokens = this.server.documentsCollection.standardLibComplexTokens;
-          token = tokens.find((token) => token.identifier === identifier);
-        }
-
-        if (token) {
-          return {
-            contents: HoverContentBuilder.buildItem(token, this.server.config),
-          };
-        }
+      if (token) {
+        return {
+          contents: HoverContentBuilder.buildItem(token, this.server.config),
+        };
       }
-
-      return undefined;
     };
+  }
+
+  private resolveToken(position: Position, document: Document, liveDocument: TextDocument) {
+    let tokens;
+    let token: ComplexToken | undefined;
+
+    const { tokenType, structVariableIdentifier, identifier } = this.server.tokenizer.findActionTargetAtPosition(liveDocument.getText(), position);
+    const localScope = this.server.tokenizer.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
+
+    switch (tokenType) {
+      case CompletionItemKind.Function:
+      case CompletionItemKind.Constant:
+        token = localScope.functionsComplexTokens.find((candidate) => candidate.identifier === identifier);
+        if (token) break;
+
+        tokens = document.getGlobalComplexTokens();
+        token = tokens.find((candidate) => candidate.identifier === identifier);
+        if (token) break;
+
+        tokens = this.server.documentsCollection.standardLibComplexTokens;
+        token = tokens.find((candidate) => candidate.identifier === identifier);
+        break;
+      case CompletionItemKind.Struct:
+        tokens = document.getGlobalStructComplexTokens();
+        token = tokens.find((candidate) => candidate.identifier === identifier);
+        break;
+      case CompletionItemKind.Property:
+        const structIdentifer = localScope?.functionVariablesComplexTokens.find((candidate) => candidate.identifier === structVariableIdentifier)?.valueType;
+
+        token = document
+          .getGlobalStructComplexTokens()
+          .find((candidate) => candidate.identifier === structIdentifer)
+          ?.properties.find((property) => property.identifier === identifier);
+        break;
+      default:
+        token = localScope.functionVariablesComplexTokens.find((candidate) => candidate.identifier === identifier);
+    }
+
+    return token;
   }
 }

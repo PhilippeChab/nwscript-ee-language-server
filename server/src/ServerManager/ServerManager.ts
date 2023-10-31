@@ -35,7 +35,7 @@ export default class ServerManger {
   public liveDocumentsManager: LiveDocumentsManager;
   public documentsCollection: DocumentsCollection;
   public documentsWaitingForPublish: string[] = [];
-  public tokenizer: Tokenizer | null = null;
+  public tokenizer: Tokenizer;
 
   private diagnosticsProvider: DiagnosticsProvider | null = null;
 
@@ -46,12 +46,13 @@ export default class ServerManger {
     this.workspaceFilesSystem = new WorkspaceFilesSystem(params.rootPath!, params.workspaceFolders!);
     this.liveDocumentsManager = new LiveDocumentsManager();
     this.documentsCollection = new DocumentsCollection();
+    this.tokenizer = new Tokenizer();
 
     this.liveDocumentsManager.listen(this.connection);
   }
 
   public async initialize() {
-    this.tokenizer = await new Tokenizer().loadGrammar();
+    this.tokenizer.loadGrammar();
     this.registerProviders();
     this.registerLiveDocumentsEvents();
 
@@ -68,8 +69,8 @@ export default class ServerManger {
     WorkspaceProvider.register(this);
 
     if (this.capabilitiesHandler.getSupportsWorkspaceConfiguration()) {
-      await ConfigurationProvider.register(this, () => {
-        this.loadConfig();
+      await ConfigurationProvider.register(this, async () => {
+        await this.loadConfig();
       });
     }
 
@@ -84,7 +85,7 @@ export default class ServerManger {
     }
 
     let filesIndexedCount = 0;
-    const filesPath = this.workspaceFilesSystem.getAllFilesPath();
+    const filesPath = this.workspaceFilesSystem.getFilesPath();
     const nwscriptPath = filesPath.find((path) => path.includes("nwscript.nss"));
     const progressReporter = await this.connection.window.createWorkDoneProgress();
     const filesCount = filesPath.length;
@@ -129,36 +130,22 @@ export default class ServerManger {
     DocumentFormatingProvider.register(this);
     DocumentRangeFormattingProvider.register(this);
     SymbolsProvider.register(this);
+
     this.diagnosticsProvider = DiagnosticsProvider.register(this) as DiagnosticsProvider;
   }
 
   private registerLiveDocumentsEvents() {
-    this.liveDocumentsManager.onWillSave((event) => {
-      if (this.tokenizer) {
-        this.documentsCollection?.updateDocument(event.document, this.tokenizer, this.workspaceFilesSystem);
-      }
-    });
-
     this.liveDocumentsManager.onDidSave((event) => this.diagnosticsProvider?.publish(event.document.uri));
+    this.liveDocumentsManager.onWillSave((event) => this.documentsCollection?.updateDocument(event.document, this.tokenizer, this.workspaceFilesSystem));
 
     this.liveDocumentsManager.onDidOpen((event) => {
-      if (this.tokenizer) {
-        this.documentsCollection?.createDocuments(
-          event.document.uri,
-          event.document.getText(),
-          this.tokenizer,
-          this.workspaceFilesSystem,
-        );
-      }
-
+      this.documentsCollection?.createDocuments(event.document.uri, event.document.getText(), this.tokenizer, this.workspaceFilesSystem);
       this.diagnosticsProvider?.publish(event.document.uri);
     });
   }
 
   private async loadConfig() {
-    const { completion, hovering, formatter, compiler, ...rest } = await this.connection.workspace.getConfiguration(
-      "nwscript-ee-lsp",
-    );
+    const { completion, hovering, formatter, compiler, ...rest } = await this.connection.workspace.getConfiguration("nwscript-ee-lsp");
     this.config = { ...this.config, ...rest };
     this.config.completion = { ...this.config.completion, ...completion };
     this.config.hovering = { ...this.config.hovering, ...hovering };

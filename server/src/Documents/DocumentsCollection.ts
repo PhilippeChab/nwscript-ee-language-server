@@ -19,17 +19,13 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
   constructor() {
     super();
 
-    this.standardLibComplexTokens = JSON.parse(
-      readFileSync(join(__dirname, "..", "resources", "standardLibDefinitions.json")).toString(),
-    ).complexTokens as ComplexToken[];
+    this.standardLibComplexTokens = JSON.parse(readFileSync(join(__dirname, "..", "resources", "standardLibDefinitions.json")).toString()).complexTokens as ComplexToken[];
 
     STATIC_RESOURCES_FOLDERS.forEach((static_resources_folder) => {
       const directoryPath = normalize(join(__dirname, "..", "resources", static_resources_folder));
       const files = readdirSync(directoryPath);
       files.forEach((filename) => {
-        const tokens = JSON.parse(
-          readFileSync(join(__dirname, "..", "resources", static_resources_folder, filename)).toString(),
-        ) as any as GlobalScopeTokenizationResult;
+        const tokens = JSON.parse(readFileSync(join(__dirname, "..", "resources", static_resources_folder, filename)).toString()) as any as GlobalScopeTokenizationResult;
         this.addDocument(this.initializeDocument(`${STATIC_PREFIX}/${filename.replace(".json", FILES_EXTENSION)}`, true, tokens));
       });
     });

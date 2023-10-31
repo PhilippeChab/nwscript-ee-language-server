@@ -13,9 +13,7 @@ export default class CompletionItemsProvider extends Provider {
     super(server);
 
     this.server.connection.onCompletion((params) => this.exceptionsWrapper(this.providerHandler(params)));
-    this.server.connection.onCompletionResolve((item) =>
-      this.exceptionsWrapper(() => CompletionItemBuilder.buildResolvedItem(item, this.server.config), item),
-    );
+    this.server.connection.onCompletionResolve((item) => this.exceptionsWrapper(() => CompletionItemBuilder.buildResolvedItem(item, this.server.config), item));
   }
 
   private providerHandler(params: CompletionParams) {
@@ -27,65 +25,44 @@ export default class CompletionItemsProvider extends Provider {
 
       const liveDocument = this.server.liveDocumentsManager.get(uri);
       const document = this.server.documentsCollection.getFromUri(uri);
+      if (!liveDocument || !document) return;
 
-      if (liveDocument) {
-        const localScope = this.server.tokenizer?.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
+      const localScope = this.server.tokenizer.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
 
-        if (localScope) {
-          if (document) {
-            if (params.context?.triggerCharacter === TriggerCharacters.dot) {
-              const structVariableIdentifier = this.server.tokenizer?.findLineIdentiferFromPositionAt(
-                liveDocument.getText(),
-                position,
-                -1,
-              );
+      if (params.context?.triggerCharacter === TriggerCharacters.dot) {
+        const structVariableIdentifier = this.server.tokenizer.findLineIdentiferFromPositionAt(liveDocument.getText(), position, -1);
+        const structIdentifer = localScope.functionVariablesComplexTokens.find((token) => token.identifier === structVariableIdentifier)?.valueType;
 
-              const structIdentifer = localScope.functionVariablesComplexTokens.find(
-                (token) => token.identifier === structVariableIdentifier,
-              )?.valueType;
-
-              return document
-                .getGlobalStructComplexTokens()
-                .find((token) => token.identifier === structIdentifer)
-                ?.properties.map((property) => {
-                  return CompletionItemBuilder.buildItem(property);
-                });
-            }
-
-            if (
-              this.server.tokenizer?.findLineIdentiferFromPositionAt(liveDocument.getText(), position, -2) ===
-              LanguageTypes.struct
-            ) {
-              return document.getGlobalStructComplexTokens().map((token) => CompletionItemBuilder.buildItem(token));
-            }
-          }
-
-          return this.getLocalScopeCompletionItems(localScope)
-            .concat(this.getGlobalScopeCompletionItems(document, localScope))
-            .concat(this.getStandardLibCompletionItems());
-        }
+        return document
+          .getGlobalStructComplexTokens()
+          .find((token) => token.identifier === structIdentifer)
+          ?.properties.map((property) => {
+            return CompletionItemBuilder.buildItem(property);
+          });
       }
+
+      if (this.server.tokenizer.findLineIdentiferFromPositionAt(liveDocument.getText(), position, -2) === LanguageTypes.struct) {
+        return document.getGlobalStructComplexTokens().map((token) => CompletionItemBuilder.buildItem(token));
+      }
+
+      return this.getGlobalScopeCompletionItems(document, localScope).concat(this.getLocalScopeCompletionItems(localScope)).concat(this.getStandardLibCompletionItems());
     };
   }
 
+  private getGlobalScopeCompletionItems(document: Document, localScope: LocalScopeTokenizationResult) {
+    return document
+      .getGlobalComplexTokens(
+        [],
+        localScope.functionsComplexTokens.map((token) => token.identifier),
+      )
+      .map((token) => CompletionItemBuilder.buildItem(token));
+  }
+
   private getLocalScopeCompletionItems(localScope: LocalScopeTokenizationResult) {
-    const functionVariablesCompletionItems = localScope.functionVariablesComplexTokens.map((token) =>
-      CompletionItemBuilder.buildItem(token),
-    );
+    const functionVariablesCompletionItems = localScope.functionVariablesComplexTokens.map((token) => CompletionItemBuilder.buildItem(token));
     const functionsCompletionItems = localScope.functionsComplexTokens.map((token) => CompletionItemBuilder.buildItem(token));
 
     return functionVariablesCompletionItems.concat(functionsCompletionItems);
-  }
-
-  private getGlobalScopeCompletionItems(document: Document | undefined, localScope: LocalScopeTokenizationResult) {
-    return (
-      document
-        ?.getGlobalComplexTokens(
-          [],
-          localScope.functionsComplexTokens.map((token) => token.identifier),
-        )
-        .map((token) => CompletionItemBuilder.buildItem(token)) || []
-    );
   }
 
   private getStandardLibCompletionItems() {
