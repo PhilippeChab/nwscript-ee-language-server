@@ -9,6 +9,7 @@ import { CompletionItemKind } from "vscode-languageserver";
 import type { ComplexToken, FunctionComplexToken, FunctionParamComplexToken, StructComplexToken, VariableComplexToken } from "./types";
 import { LanguageTypes, LanguageScopes } from "./constants";
 import onigLib from "../onigLib";
+import { match } from "assert";
 
 export enum TokenizedScope {
   global = "global",
@@ -430,8 +431,10 @@ export default class Tokenizer {
       };
     }
 
-    const arrayLength = tokensArray?.length || 0;
-    if ((offset > 0 && Math.abs(offset) >= arrayLength) || (offset < 0 && Math.abs(offset) > arrayLength)) {
+    const arrayLength = tokensArray.length;
+    const tokenIndex = this.getTokenIndexAtPosition(tokensArray, position);
+
+    if (tokenIndex + offset >= arrayLength || tokenIndex - Math.abs(offset) < 0) {
       return {
         tokenType,
         lookBehindRawContent,
@@ -439,8 +442,7 @@ export default class Tokenizer {
       };
     }
 
-    const tokenIndex = this.getTokenIndexAtPosition(tokensArray, position) + offset;
-    const token = tokensArray[tokenIndex];
+    const token = tokensArray[tokenIndex + offset];
 
     if (token.scopes.includes(LanguageScopes.structProperty)) {
       tokenType = CompletionItemKind.Property;
