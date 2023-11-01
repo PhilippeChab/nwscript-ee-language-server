@@ -28,6 +28,7 @@ export type LocalScopeTokenizationResult = {
 
 // Naive implementation
 // Ideally we would use an AST tree
+// See the Notes section of the README for the explications
 export default class Tokenizer {
   private readonly registry: Registry;
   private grammar: IGrammar | null = null;
@@ -223,7 +224,6 @@ export default class Tokenizer {
         for (let tokenIndex = 0; tokenIndex < tokensArray.length; tokenIndex++) {
           const token = tokensArray[tokenIndex];
 
-          // STRUCT PROPERTIES
           if (currentStruct) {
             if (token.scopes.includes(LanguageScopes.blockTermination)) {
               scope.structComplexTokens.push(currentStruct);
@@ -315,7 +315,6 @@ export default class Tokenizer {
         for (let tokenIndex = 0; tokenIndex < tokensArray.length; tokenIndex++) {
           const token = tokensArray[tokenIndex];
 
-          // VARIABLE
           if (computeFunctionLocals && this.isLocalVariable(tokenIndex, token, tokensArray)) {
             const complexToken = {
               position: { line: lineIndex, character: token.startIndex },
@@ -347,7 +346,6 @@ export default class Tokenizer {
             }
           }
 
-          // FUNCTION PARAM
           if (computeFunctionLocals && token.scopes.includes(LanguageScopes.functionParameter)) {
             scope.functionVariablesComplexTokens.push({
               position: { line: lineIndex, character: token.startIndex },

@@ -106,6 +106,12 @@ I personally use the [One Dark Pro](https://marketplace.visualstudio.com/items?i
 
 Replace `/server/scripts/nwscript.nss` by its new version, `/server/scripts/base_scripts/` files by their new versions, `/server/scripts/ovr/` includes by their new versions and execute `yarn run generate-lib-defs` in the server root directory.
 
+## Notes
+
+The language symbols or tokens are not generated using an AST like language servers usually do. The NWScript Language Server exploits its TextMate grammar, which is derived from C's, to transform a file of code into tokens. While it works well for most cases since it is a simple scripting language built on C - even for a language like NWScript, we need to cheat and use lookahead and lookbehind strategies to ensure we are in the right context -, it will also fail for complex or uncommon code structures and styles. A TextMate grammar will never cover the most extreme cases of a language grammar. An AST represents the hierarchical structure of a file of code in a much more complete and precise way.
+
+Implementing a language parser to build its AST is a lot of work, and none was available at the time I implemented this project. Now that NWScript compiler has been made [public](https://github.com/niv/neverwinter.nim), it would be much easier to create a utility responsible for parsing a file of code and generating its AST. Implementing this utility and refactoring the whole tokenization engine of the Language Server is, however, a non-negligible amount of work. Considering the fact that the current solution works well for common use, I do not intend to do it.
+
 ## Known issues
 
 The nwnsc process doesn't terminate on linux. This is caused by the [compiler](https://github.com/nwneetools/nwnsc) itself, not the extension.
