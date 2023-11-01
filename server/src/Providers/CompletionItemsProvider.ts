@@ -2,7 +2,7 @@ import { CompletionParams } from "vscode-languageserver";
 
 import type { ServerManager } from "../ServerManager";
 import { CompletionItemBuilder } from "./Builders";
-import { LocalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Tokenizer";
+import { LocalScopeTokenizationResult } from "../Tokenizer/Tokenizer";
 import { TriggerCharacters } from ".";
 import { Document } from "../Documents";
 import { LanguageTypes } from "../Tokenizer/constants";

@@ -4,7 +4,6 @@ import { TextDocument } from "vscode-languageserver-textdocument";
 import type { OwnedComplexTokens, OwnedStructComplexTokens } from "../Documents/Document";
 import type { ServerManager } from "../ServerManager";
 import type { ComplexToken } from "../Tokenizer/types";
-import { TokenizedScope } from "../Tokenizer/Tokenizer";
 import { Document } from "../Documents";
 import Provider from "./Provider";
 

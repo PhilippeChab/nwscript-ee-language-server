@@ -3,7 +3,6 @@ import { TextDocument } from "vscode-languageserver-textdocument";
 
 import type { ServerManager } from "../ServerManager";
 import type { ComplexToken } from "../Tokenizer/types";
-import { TokenizedScope } from "../Tokenizer/Tokenizer";
 import { HoverContentBuilder } from "./Builders";
 import { Document } from "../Documents";
 import Provider from "./Provider";

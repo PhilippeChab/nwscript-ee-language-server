@@ -19,7 +19,6 @@ export default class SignatureHelpProvider extends Provider {
       const {
         textDocument: { uri },
         position,
-        context,
       } = params;
 
       const liveDocument = this.server.liveDocumentsManager.get(uri);

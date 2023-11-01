@@ -9,7 +9,6 @@ import { CompletionItemKind } from "vscode-languageserver";
 import type { ComplexToken, FunctionComplexToken, FunctionParamComplexToken, StructComplexToken, VariableComplexToken } from "./types";
 import { LanguageTypes, LanguageScopes } from "./constants";
 import onigLib from "../onigLib";
-import { match } from "assert";
 
 export enum TokenizedScope {
   global = "global",
