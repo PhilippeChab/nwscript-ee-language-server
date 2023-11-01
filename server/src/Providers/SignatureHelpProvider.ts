@@ -1,7 +1,7 @@
 import { SignatureHelpParams } from "vscode-languageserver/node";
 
 import type { ServerManager } from "../ServerManager";
-import type { ComplexToken, FunctionComplexToken } from "../Tokenizer/types";
+import type { FunctionComplexToken } from "../Tokenizer/types";
 import { LanguageScopes } from "../Tokenizer/constants";
 import { TokenizedScope } from "../Tokenizer/Tokenizer";
 import { SignatureHelpBuilder } from "./Builders";
@@ -19,44 +19,26 @@ export default class SignatureHelpProvider extends Provider {
       const {
         textDocument: { uri },
         position,
-        context,
       } = params;
 
       const liveDocument = this.server.liveDocumentsManager.get(uri);
       const document = this.server.documentsCollection.getFromUri(uri);
       if (!liveDocument || !document) return;
 
-      const tokenizedResult = this.server.tokenizer.isInLanguageScope(liveDocument.getText(), position, LanguageScopes.functionCall);
-      if (!tokenizedResult) return;
+      const [lines, rawTokenizedContent] = this.server.tokenizer.tokenizeContentToRaw(liveDocument.getText());
+      const line = lines[position.line];
+      const tokensArray = rawTokenizedContent[position.line];
 
-      const functionIdentifier = this.server.tokenizer.findIdentiferFromPositionForLanguageScopes(tokenizedResult.line, tokenizedResult.tokensArray, position, [
-        LanguageScopes.functionCall,
-        LanguageScopes.functionIdentifier,
-      ]);
-      const activeParameter = this.server.tokenizer.getLanguageScopeOccurencesFromPositionWithDelimiter(
-        tokenizedResult.tokensArray,
-        position,
-        LanguageScopes.separatorStatement,
-        LanguageScopes.leftArgumentsRoundBracket,
-      );
+      if (!tokensArray || !this.server.tokenizer.isInScope(tokensArray, position, LanguageScopes.functionCall)) return;
 
-      if (context?.isRetrigger && context.activeSignatureHelp) {
-        const { activeSignature, signatures } = context?.activeSignatureHelp;
-
-        if (activeSignature && functionIdentifier === this.server.tokenizer.findFirstIdentiferForLanguageScope(signatures[activeSignature].label, LanguageScopes.functionIdentifier)) {
-          return {
-            signatures,
-            activeSignature,
-            activeParameter: activeParameter || null,
-          };
-        }
-      }
+      const rawContent = this.server.tokenizer.getLookBehindScopesRawContent(line, tokensArray, position, [LanguageScopes.functionCall, LanguageScopes.functionIdentifier]);
+      const activeParameter = this.server.tokenizer.getLookBehindScopeOccurences(tokensArray, position, LanguageScopes.separatorStatement, LanguageScopes.leftArgumentsRoundBracket);
 
       const localScope = this.server.tokenizer.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
       const functionComplexToken =
-        localScope.functionsComplexTokens.find((token) => token.identifier === functionIdentifier) ||
-        document.getGlobalComplexTokens().find((token) => token.identifier === functionIdentifier) ||
-        this.getStandardLibComplexTokens().find((token) => token.identifier === functionIdentifier);
+        localScope.functionsComplexTokens.find((token) => token.identifier === rawContent) ||
+        document.getGlobalComplexTokens().find((token) => token.identifier === rawContent) ||
+        this.getStandardLibComplexTokens().find((token) => token.identifier === rawContent);
 
       if (functionComplexToken) {
         return SignatureHelpBuilder.buildFunctionItem(functionComplexToken as FunctionComplexToken, activeParameter);

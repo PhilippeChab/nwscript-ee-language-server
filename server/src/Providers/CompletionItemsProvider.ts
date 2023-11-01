@@ -2,7 +2,7 @@ import { CompletionParams } from "vscode-languageserver";
 
 import type { ServerManager } from "../ServerManager";
 import { CompletionItemBuilder } from "./Builders";
-import { LocalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Tokenizer";
+import { LocalScopeTokenizationResult } from "../Tokenizer/Tokenizer";
 import { TriggerCharacters } from ".";
 import { Document } from "../Documents";
 import { LanguageTypes } from "../Tokenizer/constants";
@@ -27,11 +27,12 @@ export default class CompletionItemsProvider extends Provider {
       const document = this.server.documentsCollection.getFromUri(uri);
       if (!liveDocument || !document) return;
 
-      const localScope = this.server.tokenizer.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
+      const [lines, rawTokenizedContent] = this.server.tokenizer.tokenizeContentToRaw(liveDocument.getText());
+      const localScope = this.server.tokenizer.tokenizeContentFromRaw(lines, rawTokenizedContent, 0, position.line);
 
       if (params.context?.triggerCharacter === TriggerCharacters.dot) {
-        const structVariableIdentifier = this.server.tokenizer.findLineIdentiferFromPositionAt(liveDocument.getText(), position, -1);
-        const structIdentifer = localScope.functionVariablesComplexTokens.find((token) => token.identifier === structVariableIdentifier)?.valueType;
+        const { rawContent } = this.server.tokenizer.getActionTargetAtPosition(lines, rawTokenizedContent, position, -1);
+        const structIdentifer = localScope.functionVariablesComplexTokens.find((token) => token.identifier === rawContent)?.valueType;
 
         return document
           .getGlobalStructComplexTokens()
@@ -41,7 +42,7 @@ export default class CompletionItemsProvider extends Provider {
           });
       }
 
-      if (this.server.tokenizer.findLineIdentiferFromPositionAt(liveDocument.getText(), position, -2) === LanguageTypes.struct) {
+      if (this.server.tokenizer.getActionTargetAtPosition(lines, rawTokenizedContent, position, -2).rawContent === LanguageTypes.struct) {
         return document.getGlobalStructComplexTokens().map((token) => CompletionItemBuilder.buildItem(token));
       }
 
