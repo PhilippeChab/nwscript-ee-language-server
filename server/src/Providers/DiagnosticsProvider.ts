@@ -98,7 +98,7 @@ export default class DiagnoticsProvider extends Provider {
       if (verbose) {
         this.server.logger.info(`Compiling ${document.uri}:`);
       }
-      // The compiler commands:
+      // The compiler command:
       //  - y; continue on error
       //  - s; dry run
       const args = ["-y", "-s"];
