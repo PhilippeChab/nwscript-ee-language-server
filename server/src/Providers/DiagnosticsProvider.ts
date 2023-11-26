@@ -8,8 +8,8 @@ import { ServerManager } from "../ServerManager";
 import Provider from "./Provider";
 
 const lineNumber = /\(([^)]+)\)/;
-const lineMessage = /(Error|Warning):(.*)/;
-const lineFilename = /^[^(]+/;
+const lineMessage = /(ERROR|WARNING):(.*)/;
+const lineFilename = /(:\s)([^(]+)/;
 
 enum OS {
   linux = "Linux",
@@ -25,7 +25,7 @@ export default class DiagnoticsProvider extends Provider {
 
   private generateDiagnostics(uris: string[], files: FilesDiagnostics, severity: DiagnosticSeverity) {
     return (line: string) => {
-      const uri = uris.find((uri) => basename(fileURLToPath(uri)) === lineFilename.exec(line)![0]);
+      const uri = uris.find((uri) => basename(fileURLToPath(uri)) === lineFilename.exec(line)![2]);
 
       if (uri) {
         const linePosition = Number(lineNumber.exec(line)![1]) - 1;
@@ -52,11 +52,11 @@ export default class DiagnoticsProvider extends Provider {
 
     switch (specifiedOs) {
       case OS.linux:
-        return "../resources/compiler/linux/nwnsc";
+        return "../resources/compiler/linux/nwn_script_comp";
       case OS.mac:
-        return "../resources/compiler/mac/nwnsc";
+        return "../resources/compiler/mac/nwn_script_comp";
       case OS.windows:
-        return "../resources/compiler/windows/nwnsc.exe";
+        return "../resources/compiler/windows/nwn_script_comp.exe";
       default:
         return "";
     }
@@ -79,7 +79,7 @@ export default class DiagnoticsProvider extends Provider {
 
       if (!this.server.configLoaded || !document) {
         if (!this.server.documentsWaitingForPublish.includes(uri)) {
-          this.server.documentsWaitingForPublish?.push(uri);
+          this.server.documentsWaitingForPublish.push(uri);
         }
         return resolve(true);
       }
@@ -88,7 +88,7 @@ export default class DiagnoticsProvider extends Provider {
       const files: FilesDiagnostics = { [document.uri]: [] };
       const uris: string[] = [];
       children.forEach((child) => {
-        const fileUri = this.server.documentsCollection?.get(child)?.uri;
+        const fileUri = this.server.documentsCollection.get(child)?.uri;
         if (fileUri) {
           files[fileUri] = [];
           uris.push(fileUri);
@@ -100,29 +100,25 @@ export default class DiagnoticsProvider extends Provider {
       }
       // The compiler command:
       //  - y; continue on error
-      //  - c; compile includes
-      //  - l; try to load resources if paths are not supplied
-      //  - r; don't generate the compiled file
-      //  - h; game home path
-      //  - n; game installation path
-      //  - i; includes directories
-      const args = ["-y", "-c", "-l", "-r", "SKIP_OUTPUT"];
+      //  - s; dry run
+      const args = ["-y", "-s"];
       if (Boolean(nwnHome)) {
-        args.push("-h");
+        args.push("--userdirectory");
         args.push(`"${nwnHome}"`);
       } else if (verbose) {
         this.server.logger.info("Trying to resolve Neverwinter Nights home directory automatically.");
       }
       if (Boolean(nwnInstallation)) {
-        args.push("-n");
+        args.push("--root");
         args.push(`"${nwnInstallation}"`);
       } else if (verbose) {
         this.server.logger.info("Trying to resolve Neverwinter Nights installation directory automatically.");
       }
       if (children.length > 0) {
-        args.push("-i");
-        args.push(`"${[...new Set(uris.map((uri) => dirname(fileURLToPath(uri))))].join(";")}"`);
+        args.push("--dirs");
+        args.push(`"${[...new Set(uris.map((uri) => dirname(fileURLToPath(uri))))].join(",")}"`);
       }
+      args.push("-c");
       args.push(`"${fileURLToPath(uri)}"`);
 
       let stdout = "";
@@ -144,7 +140,7 @@ export default class DiagnoticsProvider extends Provider {
       });
 
       child.on("close", (_) => {
-        const lines = stdout
+        const lines = stderr
           .toString()
           .split("\n")
           .filter((line) => line !== "\r" && line !== "\n" && Boolean(line));
@@ -152,38 +148,29 @@ export default class DiagnoticsProvider extends Provider {
         const warnings: string[] = [];
 
         lines.forEach((line) => {
-          if (verbose && !line.includes("Compiling:")) {
+          if (verbose) {
             this.server.logger.info(line);
           }
 
           // Diagnostics
-          if (line.includes("Error:")) {
+          if (line.includes("ERROR:")) {
             errors.push(line);
           }
-          if (reportWarnings && line.includes("Warning:")) {
+
+          if (reportWarnings && line.includes("WARNING:")) {
             warnings.push(line);
           }
 
           // Actual errors
-          if (line.includes("NOTFOUND")) {
-            return this.server.logger.error(
-              "Unable to resolve nwscript.nss. Are your Neverwinter Nights home and/or installation directories valid?",
-            );
+          if (line.includes("unhandled exception")) {
+            this.server.logger.error(line);
           }
-          if (line.includes("Failed to open .key archive")) {
-            return this.server.logger.error(
-              "Unable to open nwn_base.key Is your Neverwinter Nights installation directory valid?",
-            );
-          }
-          if (line.includes("Unable to read input file")) {
+
+          if (line.includes("Could not locate")) {
             if (Boolean(nwnHome) || Boolean(nwnInstallation)) {
-              return this.server.logger.error(
-                "Unable to resolve provided Neverwinter Nights home and/or installation directories. Ensure the paths are valid in the extension settings.",
-              );
+              return this.server.logger.error("Unable to resolve provided Neverwinter Nights home and/or installation directories. Ensure the paths are valid in the extension settings.");
             } else {
-              return this.server.logger.error(
-                "Unable to automatically resolve Neverwinter Nights home and/or installation directories.",
-              );
+              return this.server.logger.error("Unable to automatically resolve Neverwinter Nights home and/or installation directories.");
             }
           }
         });

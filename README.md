@@ -83,12 +83,11 @@ Notes:
 
 Notes:
 
-- Diagnostics are provided by compiling the file with the [nwnsc](https://github.com/nwneetools/nwnsc) executable.
+- Diagnostics are provided by compiling the file with the [nwn_script_comp](https://github.com/niv/neverwinter.nim/blob/master/nwn_script_comp.nim) compiled executable.
 - The compiler executable is provided for Windows, Darwin and Linux operating systems.
 - Diagnostics are currently published when opening or saving a file.
 - By default, the compiler will try to detect automatically your Neverwinter Nights home and installation folders if they are not specified. If it fails to do so, you can provide the paths in the extension settings like shown above - input paths are wrapped into quotes automatically.
 - You can set the `verbose` setting to `true` if you wish to see detailed logs of the compilation process.
-- Big files with a lot of includes can take between half a second to a second to compile on older machines - it will not affect the client performances as the processing is done on the server.
 
 ### Syntax highligthing
 
@@ -111,10 +110,6 @@ Replace `/server/scripts/nwscript.nss` by its new version, `/server/scripts/base
 The language server symbols or tokens are not generated using an AST like language servers usually do. The NWScript Language Server exploits its TextMate grammar, which is derived from C's, to transform a file of code into tokens. While it works well for most cases since it is a simple scripting language built on C - even for a language like NWScript, we need to cheat and use lookahead and lookbehind strategies to ensure we are in the right context -, it will also fail for complex or uncommon code structures and styles. A TextMate grammar will never cover the most extreme cases of a language grammar. An AST represents the hierarchical structure of a file of code in a much more complete and precise way.
 
 Implementing a language lexer and parser to build its AST is a lot of work, and none was available at the time I implemented this project. Now that NWScript compiler has been made [public](https://github.com/niv/neverwinter.nim), it would be much easier to create a utility responsible for parsing a file of code and generating its AST. Implementing this utility and refactoring the whole tokenization engine of the Language Server is, however, a non-negligible amount of work. Considering the fact that the current solution works well for common use, I do not intend to do it.
-
-## Known issues
-
-The nwnsc process doesn't terminate on linux. This is caused by the [compiler](https://github.com/nwneetools/nwnsc) itself, not the extension.
 
 ## Issues
 
