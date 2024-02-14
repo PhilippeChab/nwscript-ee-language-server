@@ -24,10 +24,10 @@
     "patch-package": "^6.4.7",
     "postinstall-postinstall": "^2.1.0",
     "sax": "^1.2.4",
-    "vscode-languageserver": "^7.0.0",
+    "vscode-languageserver": "^9.0.1",
     "vscode-languageserver-textdocument": "^1.0.4",
     "vscode-oniguruma": "^1.6.1",
-    "vscode-textmate": "^7.0.1"
+    "vscode-textmate": "^9.0.0"
   },
   "devDependencies": {
     "@types/chai": "^4.3.3",

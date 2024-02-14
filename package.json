@@ -8,13 +8,13 @@
     "url": "https://github.com/PhilippeChab/nwscript-ee-language-server"
   },
   "license": "MIT",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "author": {
     "name": "Philippe Chabot"
   },
   "publisher": "PhilippeChab",
   "engines": {
-    "vscode": "^1.66.2"
+    "vscode": "^1.86.0"
   },
   "categories": [
     "Programming Languages"

@@ -91,3 +91,9 @@ I think we can consider the extension stable and out of beta. A big thank you to
 - New provider: [Document Symbols](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#show-all-symbol-definitions-within-a-document).
 - Fixed a small issue with the `CompletionItemsProvider`.
 - Goto will now _really_ work with definitions from `nwscript.nss` if the file is in your project.
+
+## [2.1.1]
+
+- Fixed some dependabot issues.
+- Refactored some internals, might have introduce regressions.
+- Fixed vscode 1.86 update making vscode-textmate 7 failing to parse plist files.
