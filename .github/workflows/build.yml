@@ -34,7 +34,7 @@ jobs:
           pat: stub
           dryRun: true
       - name: Upload Extension
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: nwscript-ee-lsp
           path: ${{ steps.packageExtension.outputs.vsixPath }}
