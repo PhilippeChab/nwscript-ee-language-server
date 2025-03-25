@@ -97,3 +97,8 @@ I think we can consider the extension stable and out of beta. A big thank you to
 - Fixed some dependabot issues.
 - Refactored some internals, might have introduce regressions.
 - Fixed vscode 1.86 update making vscode-textmate 7 failing to parse plist files.
+
+## [2.2.0]
+
+- Script definitions bumped to version 89.8193.37.15, thanks to Peorthijel.
+- Bumped dependencies and fixed some dependabot issues. 
