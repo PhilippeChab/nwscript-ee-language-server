@@ -56,7 +56,7 @@ jobs:
         with:
           cmd: install
       - name: Download Extension
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: nwscript-ee-lsp
       - name: GitHub Release
