@@ -105,4 +105,4 @@ I think we can consider the extension stable and out of beta. A big thank you to
 
 ## [2.0.1]
 
-- Fix release workflow
+- Fixed the release workflow
