@@ -166,12 +166,11 @@ export default class Tokenizer {
     return isFunctionDeclaration;
   }
 
-  private isGlobalFunctionDeclaration(lineIndex: number, tokenIndex: number, token: IToken, tokensArrays: (IToken[] | undefined)[]) {
+  private isGlobalFunctionDeclarationOrDefinition(lineIndex: number, tokenIndex: number, token: IToken, tokensArrays: (IToken[] | undefined)[]) {
     return (
       !(tokenIndex === 0 && lineIndex === 0) && // Not sure why we need this
       !token.scopes.includes(LanguageScopes.block) &&
-      token.scopes.includes(LanguageScopes.functionIdentifier) &&
-      this.isFunctionDeclaration(lineIndex, tokensArrays)
+      token.scopes.includes(LanguageScopes.functionIdentifier)
     );
   }
 
@@ -256,7 +255,8 @@ export default class Tokenizer {
             break;
           }
 
-          if (this.isGlobalFunctionDeclaration(lineIndex, tokenIndex, token, tokensArrays)) {
+          if (this.isGlobalFunctionDeclarationOrDefinition(lineIndex, tokenIndex, token, tokensArrays)) {
+            const isForwardDeclaration = this.isFunctionDeclaration(lineIndex, tokensArrays);
             scope.complexTokens.push({
               position: { line: lineIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
@@ -264,6 +264,7 @@ export default class Tokenizer {
               returnType: tokenIndex === 0 ? this.getTokenLanguageType(lines[lineIndex - 1], tokensArrays[lineIndex - 1]!, 0) : this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
               params: this.getFunctionParams(lineIndex, lines, tokensArrays),
               comments: this.getFunctionComments(lines, tokensArrays, tokenIndex === 0 ? lineIndex - 2 : lineIndex - 1),
+              isForwardDeclaration,
             });
 
             break;

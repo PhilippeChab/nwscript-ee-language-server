@@ -18,6 +18,7 @@ type LanguageFunction = {
   params: FunctionParamComplexToken[];
   variables?: VariableComplexToken[];
   comments: string[];
+  isForwardDeclaration?: boolean;
 };
 type LanguageFunctionParam = {
   tokenType: typeof CompletionItemKind.TypeParameter;

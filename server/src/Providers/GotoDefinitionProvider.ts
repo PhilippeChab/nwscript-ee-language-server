@@ -3,7 +3,7 @@ import { TextDocument } from "vscode-languageserver-textdocument";
 
 import type { OwnedComplexTokens, OwnedStructComplexTokens } from "../Documents/Document";
 import type { ServerManager } from "../ServerManager";
-import type { ComplexToken } from "../Tokenizer/types";
+import type { ComplexToken, FunctionComplexToken } from "../Tokenizer/types";
 import { Document } from "../Documents";
 import Provider from "./Provider";
 
@@ -71,13 +71,36 @@ export default class GotoDefinitionProvider extends Provider {
           tokensWithRef.push({ owner: localStandardLibDefinitions?.uri, tokens: localStandardLibDefinitions?.complexTokens });
         }
 
+        // First pass: look for function definitions (with bodies)
+        let fallbackToken: ComplexToken | undefined;
+        let fallbackRef: OwnedComplexTokens | undefined;
+
         loop: for (let i = 0; i < tokensWithRef.length; i++) {
           ref = tokensWithRef[i];
 
-          token = ref?.tokens.find((candidate) => candidate.identifier === rawContent);
-          if (token) {
-            break loop;
+          for (const candidate of ref?.tokens ?? []) {
+            if (candidate.identifier !== rawContent) continue;
+
+            // Check if this is a function with isForwardDeclaration property
+            const funcCandidate = candidate as FunctionComplexToken;
+            if (funcCandidate.tokenType === CompletionItemKind.Function && funcCandidate.isForwardDeclaration) {
+              // Save as fallback, keep looking for definition
+              if (!fallbackToken) {
+                fallbackToken = candidate;
+                fallbackRef = ref;
+              }
+            } else {
+              // Found a definition or non-function token - use it
+              token = candidate;
+              break loop;
+            }
           }
+        }
+
+        // If no definition found, use forward declaration as fallback
+        if (!token && fallbackToken) {
+          token = fallbackToken;
+          ref = fallbackRef;
         }
         break;
       case CompletionItemKind.Struct:
