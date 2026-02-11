@@ -56,6 +56,7 @@ export default class ServerManger {
     this.tokenizer.loadGrammar();
     this.registerProviders();
     this.registerLiveDocumentsEvents();
+    this.registerCommands();
 
     return this;
   }
@@ -134,6 +135,19 @@ export default class ServerManger {
     CodeActionProvider.register(this);
 
     this.diagnosticsProvider = DiagnosticsProvider.register(this) as DiagnosticsProvider;
+  }
+
+  private registerCommands() {
+    this.connection.onExecuteCommand(async (params) => {
+      if (params.command === "nwscript-ee-lsp.recompile" && params.arguments?.[0]) {
+        const uri = params.arguments[0] as string;
+        const liveDocument = this.liveDocumentsManager.get(uri);
+        if (liveDocument) {
+          this.documentsCollection.updateDocument(liveDocument, this.tokenizer, this.workspaceFilesSystem);
+          await this.diagnosticsProvider?.publish(uri);
+        }
+      }
+    });
   }
 
   private registerLiveDocumentsEvents() {

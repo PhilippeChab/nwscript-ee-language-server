@@ -75,6 +75,7 @@ export default class CodeActionProvider extends Provider {
                   [uri]: [TextEdit.insert(insertPosition, `#include "${docKey}"\n`)],
                 },
               },
+              command: { title: "Recompile", command: "nwscript-ee-lsp.recompile", arguments: [uri] },
             });
           }
         });

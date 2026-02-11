@@ -24,6 +24,7 @@ export default class CompletionItemsProvider extends Provider {
           if (liveDocument) {
             const insertPosition = computeIncludeInsertPosition(liveDocument.getText());
             resolved.additionalTextEdits = [TextEdit.insert(insertPosition, `#include "${sourceFileKey}"\n`)];
+            resolved.command = { title: "Recompile", command: "nwscript-ee-lsp.recompile", arguments: [requestingUri] };
           }
         }
 

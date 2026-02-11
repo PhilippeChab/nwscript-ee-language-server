@@ -32,6 +32,9 @@ export default class CapabilitiesHandler {
       codeActionProvider: {
         codeActionKinds: [CodeActionKind.QuickFix],
       },
+      executeCommandProvider: {
+        commands: ["nwscript-ee-lsp.recompile"],
+      },
     };
 
     if (this.clientCapabilities.workspace?.workspaceFolders) {
