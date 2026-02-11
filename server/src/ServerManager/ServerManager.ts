@@ -6,6 +6,7 @@ import * as clustering from "cluster";
 import type { Connection, InitializeParams } from "vscode-languageserver";
 
 import {
+  CodeActionProvider,
   CompletionItemsProvider,
   ConfigurationProvider,
   DiagnosticsProvider,
@@ -130,6 +131,7 @@ export default class ServerManger {
     DocumentFormatingProvider.register(this);
     DocumentRangeFormattingProvider.register(this);
     SymbolsProvider.register(this);
+    CodeActionProvider.register(this);
 
     this.diagnosticsProvider = DiagnosticsProvider.register(this) as DiagnosticsProvider;
   }

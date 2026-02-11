@@ -14,20 +14,35 @@ import Builder from "./Builder";
 
 export default class CompletionItemBuilder extends Builder {
   public static buildResolvedItem(item: CompletionItem, serverConfig: ServerConfiguration): CompletionItem {
+    const isAutoImport = item.data?.autoImport;
+    const params = isAutoImport ? item.data.params : item.data;
+
     if (serverConfig.completion.addParamsToFunctions && item.kind === CompletionItemKind.Function) {
-      const params = item.data as FunctionParamComplexToken[];
+      const typedParams = params as FunctionParamComplexToken[];
 
       return {
-        label: `${item.label}(${params.reduce((acc, param, index) => {
+        label: `${item.label}(${typedParams.reduce((acc, param, index) => {
           return `${acc}${this.handleLanguageType(param.valueType)} ${param.identifier}${
-            index === params.length - 1 ? "" : ", "
+            index === typedParams.length - 1 ? "" : ", "
           }`;
         }, "")})`,
         kind: item.kind,
         detail: item.detail,
+        data: item.data,
       };
     }
 
+    return item;
+  }
+
+  public static buildAutoImportItem(token: ComplexToken, sourceFileKey: string, requestingUri: string): CompletionItem {
+    const item = this.buildItem(token);
+    item.data = {
+      autoImport: { sourceFileKey, requestingUri },
+      params: item.data,
+    };
+    item.sortText = `1_${item.label}`;
+    item.detail = `${item.detail || ""} (auto-import from ${sourceFileKey})`;
     return item;
   }
 

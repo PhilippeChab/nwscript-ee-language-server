@@ -1,3 +1,4 @@
+import CodeActionProvider from "./CodeActionProvider";
 import ConfigurationProvider from "./ConfigurationProvider";
 import WorkspaceProvider from "./WorkspaceProvider";
 import CompletionItemsProvider from "./CompletionItemsProvider";
@@ -16,6 +17,7 @@ export enum TriggerCharacters {
 }
 
 export {
+  CodeActionProvider,
   ConfigurationProvider,
   WorkspaceProvider,
   CompletionItemsProvider,

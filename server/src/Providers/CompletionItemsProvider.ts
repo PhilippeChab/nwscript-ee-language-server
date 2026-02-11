@@ -1,4 +1,4 @@
-import { CompletionParams } from "vscode-languageserver";
+import { CompletionItem, CompletionParams, TextEdit } from "vscode-languageserver";
 
 import type { ServerManager } from "../ServerManager";
 import { CompletionItemBuilder } from "./Builders";
@@ -6,6 +6,7 @@ import { LocalScopeTokenizationResult } from "../Tokenizer/Tokenizer";
 import { TriggerCharacters } from ".";
 import { Document } from "../Documents";
 import { LanguageTypes } from "../Tokenizer/constants";
+import { computeIncludeInsertPosition } from "../Utils/includeInsertPosition";
 import Provider from "./Provider";
 
 export default class CompletionItemsProvider extends Provider {
@@ -13,7 +14,22 @@ export default class CompletionItemsProvider extends Provider {
     super(server);
 
     this.server.connection.onCompletion((params) => this.exceptionsWrapper(this.providerHandler(params)));
-    this.server.connection.onCompletionResolve((item) => this.exceptionsWrapper(() => CompletionItemBuilder.buildResolvedItem(item, this.server.config), item));
+    this.server.connection.onCompletionResolve((item) =>
+      this.exceptionsWrapper(() => {
+        const resolved = CompletionItemBuilder.buildResolvedItem(item, this.server.config);
+
+        if (item.data?.autoImport) {
+          const { sourceFileKey, requestingUri } = item.data.autoImport;
+          const liveDocument = this.server.liveDocumentsManager.get(requestingUri);
+          if (liveDocument) {
+            const insertPosition = computeIncludeInsertPosition(liveDocument.getText());
+            resolved.additionalTextEdits = [TextEdit.insert(insertPosition, `#include "${sourceFileKey}"\n`)];
+          }
+        }
+
+        return resolved;
+      }, item),
+    );
   }
 
   private providerHandler(params: CompletionParams) {
@@ -46,7 +62,10 @@ export default class CompletionItemsProvider extends Provider {
         return document.getGlobalStructComplexTokens().map((token) => CompletionItemBuilder.buildItem(token));
       }
 
-      return this.getGlobalScopeCompletionItems(document, localScope).concat(this.getLocalScopeCompletionItems(localScope)).concat(this.getStandardLibCompletionItems());
+      return this.getGlobalScopeCompletionItems(document, localScope)
+        .concat(this.getLocalScopeCompletionItems(localScope))
+        .concat(this.getStandardLibCompletionItems())
+        .concat(this.getAutoImportCompletionItems(document, localScope, uri));
     };
   }
 
@@ -68,5 +87,44 @@ export default class CompletionItemsProvider extends Provider {
 
   private getStandardLibCompletionItems() {
     return this.getStandardLibComplexTokens().map((token) => CompletionItemBuilder.buildItem(token));
+  }
+
+  private getAutoImportCompletionItems(document: Document, localScope: LocalScopeTokenizationResult, uri: string) {
+    const children = document.getChildren();
+    const ownKey = document.getKey();
+    const excludedKeys = new Set([ownKey, ...children]);
+
+    const inScopeIdentifiers = new Set<string>();
+    document
+      .getGlobalComplexTokens(
+        [],
+        localScope.functionsComplexTokens.map((t) => t.identifier),
+      )
+      .forEach((t) => inScopeIdentifiers.add(t.identifier));
+    localScope.functionsComplexTokens.forEach((t) => inScopeIdentifiers.add(t.identifier));
+    localScope.functionVariablesComplexTokens.forEach((t) => inScopeIdentifiers.add(t.identifier));
+    this.getStandardLibComplexTokens().forEach((t) => inScopeIdentifiers.add(t.identifier));
+
+    const isQueueSrc = uri.includes("queue_src");
+    const items: CompletionItem[] = [];
+
+    this.server.documentsCollection.forEach((doc) => {
+      const docKey = doc.getKey();
+
+      if (doc.base || excludedKeys.has(docKey)) return;
+
+      const docIsQueueSrc = doc.uri.includes("queue_src");
+      if (isQueueSrc !== docIsQueueSrc) return;
+
+      const seenInDoc = new Set<string>();
+      doc.complexTokens.forEach((token) => {
+        if (!inScopeIdentifiers.has(token.identifier) && !seenInDoc.has(token.identifier)) {
+          seenInDoc.add(token.identifier);
+          items.push(CompletionItemBuilder.buildAutoImportItem(token, docKey, uri));
+        }
+      });
+    });
+
+    return items;
   }
 }

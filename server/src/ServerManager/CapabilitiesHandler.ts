@@ -1,4 +1,4 @@
-import { ClientCapabilities, ServerCapabilities, TextDocumentSyncKind } from "vscode-languageserver";
+import { ClientCapabilities, CodeActionKind, ServerCapabilities, TextDocumentSyncKind } from "vscode-languageserver";
 import { TriggerCharacters } from "../Providers";
 
 export default class CapabilitiesHandler {
@@ -28,6 +28,9 @@ export default class CapabilitiesHandler {
       },
       signatureHelpProvider: {
         triggerCharacters: [TriggerCharacters.leftRoundBracket, TriggerCharacters.comma],
+      },
+      codeActionProvider: {
+        codeActionKinds: [CodeActionKind.QuickFix],
       },
     };
 
