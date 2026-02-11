@@ -33,6 +33,9 @@ const defaultServerConfiguration = {
     nwnHome: "",
     nwnInstallation: "",
   },
+  definition: {
+    preferImplementation: true,
+  },
 };
 /* eslint-enable @typescript-eslint/naming-convention */
 

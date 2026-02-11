@@ -71,36 +71,44 @@ export default class GotoDefinitionProvider extends Provider {
           tokensWithRef.push({ owner: localStandardLibDefinitions?.uri, tokens: localStandardLibDefinitions?.complexTokens });
         }
 
-        // First pass: look for function definitions (with bodies)
-        let fallbackToken: ComplexToken | undefined;
-        let fallbackRef: OwnedComplexTokens | undefined;
+        if (this.server.config.definition.preferImplementation) {
+          // Two-pass: prefer function definitions (with bodies) over forward declarations
+          let fallbackToken: ComplexToken | undefined;
+          let fallbackRef: OwnedComplexTokens | undefined;
 
-        loop: for (let i = 0; i < tokensWithRef.length; i++) {
-          ref = tokensWithRef[i];
+          loop: for (let i = 0; i < tokensWithRef.length; i++) {
+            ref = tokensWithRef[i];
 
-          for (const candidate of ref?.tokens ?? []) {
-            if (candidate.identifier !== rawContent) continue;
+            for (const candidate of ref?.tokens ?? []) {
+              if (candidate.identifier !== rawContent) continue;
 
-            // Check if this is a function with isForwardDeclaration property
-            const funcCandidate = candidate as FunctionComplexToken;
-            if (funcCandidate.tokenType === CompletionItemKind.Function && funcCandidate.isForwardDeclaration) {
-              // Save as fallback, keep looking for definition
-              if (!fallbackToken) {
-                fallbackToken = candidate;
-                fallbackRef = ref;
+              const funcCandidate = candidate as FunctionComplexToken;
+              if (funcCandidate.tokenType === CompletionItemKind.Function && funcCandidate.isForwardDeclaration) {
+                if (!fallbackToken) {
+                  fallbackToken = candidate;
+                  fallbackRef = ref;
+                }
+              } else {
+                token = candidate;
+                break loop;
               }
-            } else {
-              // Found a definition or non-function token - use it
-              token = candidate;
+            }
+          }
+
+          if (!token && fallbackToken) {
+            token = fallbackToken;
+            ref = fallbackRef;
+          }
+        } else {
+          // Jump to first occurrence found
+          loop: for (let i = 0; i < tokensWithRef.length; i++) {
+            ref = tokensWithRef[i];
+
+            token = ref?.tokens.find((candidate) => candidate.identifier === rawContent);
+            if (token) {
               break loop;
             }
           }
-        }
-
-        // If no definition found, use forward declaration as fallback
-        if (!token && fallbackToken) {
-          token = fallbackToken;
-          ref = fallbackRef;
         }
         break;
       case CompletionItemKind.Struct:

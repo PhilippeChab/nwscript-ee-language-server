@@ -119,6 +119,16 @@
             }
           }
         },
+        "nwscript-ee-lsp.definition": {
+          "type": "object",
+          "properties": {
+            "preferImplementation": {
+              "type": "boolean",
+              "default": true,
+              "description": "When using Go to Definition on a function, prefer jumping to the implementation (with body) over the forward declaration. When disabled, jumps to the first occurrence found."
+            }
+          }
+        },
         "nwscript-ee-lsp.compiler": {
           "type": "object",
           "properties": {

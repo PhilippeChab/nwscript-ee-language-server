@@ -145,11 +145,12 @@ export default class ServerManger {
   }
 
   private async loadConfig() {
-    const { completion, hovering, formatter, compiler, ...rest } = await this.connection.workspace.getConfiguration("nwscript-ee-lsp");
+    const { completion, hovering, formatter, compiler, definition, ...rest } = await this.connection.workspace.getConfiguration("nwscript-ee-lsp");
     this.config = { ...this.config, ...rest };
     this.config.completion = { ...this.config.completion, ...completion };
     this.config.hovering = { ...this.config.hovering, ...hovering };
     this.config.formatter = { ...this.config.formatter, ...formatter };
     this.config.compiler = { ...this.config.compiler, ...compiler };
+    this.config.definition = { ...this.config.definition, ...definition };
   }
 }
