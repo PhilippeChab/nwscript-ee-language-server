@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "fs";
 import { basename, join } from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 import { Diagnostic, DiagnosticSeverity } from "vscode-languageserver";
@@ -21,6 +21,12 @@ type FilesDiagnostics = { [uri: string]: Diagnostic[] };
 
 export default class DiagnoticsProvider extends Provider {
   private modulePromise: Promise<any> | null = null;
+  // {scriptName -> absolutePath} for stock NWN scripts found under the
+  // configured nwnHome / nwnInstallation directories. Built lazily on
+  // first miss in the workspace, then reused. Old nwnsc resolved these
+  // automatically by reading the BIF/KEY archives; we instead look at
+  // the directories Beamdog ships extracted.
+  private nwnScriptIndex: Map<string, string> | null = null;
 
   constructor(server: ServerManager) {
     super(server);
@@ -42,15 +48,85 @@ export default class DiagnoticsProvider extends Provider {
   }
 
   /**
-   * Resolve a script name to its source bytes. Looks up `name` (no
-   * extension) via the workspace-file-system glob, returns null if
-   * not found or unreadable.
+   * Walk a directory tree once and return a {scriptName -> absPath} map
+   * of every .nss file found. Used to seed the NWN-install fallback
+   * index so the resolver can hand the compiler stock scripts that
+   * normally live inside Beamdog's BIF archives.
+   */
+  private indexNssDir(root: string): Map<string, string> {
+    const out = new Map<string, string>();
+    const stack = [root];
+    while (stack.length) {
+      const dir = stack.pop()!;
+      let entries: string[] = [];
+      try { entries = readdirSync(dir); } catch { continue; }
+      for (const name of entries) {
+        const full = join(dir, name);
+        try {
+          const st = statSync(full);
+          if (st.isDirectory()) {
+            stack.push(full);
+          } else if (st.isFile() && name.toLowerCase().endsWith(".nss")) {
+            const key = name.slice(0, -4).toLowerCase();
+            // Workspace overrides win, so we don't overwrite an
+            // earlier entry. Stock scripts sit under predictable
+            // dirs but order doesn't matter much in practice.
+            if (!out.has(key)) out.set(key, full);
+          }
+        } catch { /* skip unreadable entries */ }
+      }
+    }
+    return out;
+  }
+
+  /**
+   * Build the NWN-install lookup index from configured nwnHome /
+   * nwnInstallation directories. Cheap on subsequent calls thanks to
+   * caching - if the user changes the config we'll pick up new files
+   * by clearing the cache, which we do on every publish.
+   */
+  private buildNwnScriptIndex(): Map<string, string> {
+    const index = new Map<string, string>();
+    const { nwnHome, nwnInstallation } = this.server.config.compiler;
+    const candidates: string[] = [];
+    if (nwnInstallation) {
+      // Beamdog's install ships extracted base scripts under
+      // data/base_scripts and ovr/. Both are worth indexing.
+      candidates.push(join(nwnInstallation, "data"));
+      candidates.push(join(nwnInstallation, "ovr"));
+    }
+    if (nwnHome) {
+      // User's per-game scripts and overrides.
+      candidates.push(join(nwnHome, "override"));
+      candidates.push(join(nwnHome, "development"));
+    }
+    for (const root of candidates) {
+      if (!existsSync(root)) continue;
+      for (const [k, v] of this.indexNssDir(root)) {
+        if (!index.has(k)) index.set(k, v);
+      }
+    }
+    return index;
+  }
+
+  /**
+   * Resolve a script name to its source bytes. Tries the workspace
+   * first (via the existing glob), then falls back to the NWN install
+   * index for stock includes like x0_i0_stringlib.
    */
   private resolveScriptSource(name: string): string | null {
     try {
-      const path = this.server.workspaceFilesSystem?.getFilePath(name);
-      if (!path) return null;
-      return readFileSync(path).toString();
+      const ws = this.server.workspaceFilesSystem?.getFilePath(name);
+      if (ws) return readFileSync(ws).toString();
+    } catch { /* fall through to NWN index */ }
+
+    if (!this.nwnScriptIndex) {
+      this.nwnScriptIndex = this.buildNwnScriptIndex();
+    }
+    const stockPath = this.nwnScriptIndex.get(name.toLowerCase());
+    if (!stockPath) return null;
+    try {
+      return readFileSync(stockPath).toString();
     } catch {
       return null;
     }
