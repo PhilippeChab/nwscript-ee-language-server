@@ -76,7 +76,6 @@ export default class DiagnoticsProvider extends Provider {
     let deliveryBuf = 0;
     let loadCb = 0;
     let writeCb = 0;
-    const owned: number[] = [];
 
     try {
       // Resolver: hand the compiler script source, looking it up in
@@ -91,10 +90,16 @@ export default class DiagnoticsProvider extends Provider {
           }
           if (src === null) return 0;
 
+          // Reuse a single buffer per compile; free the previous
+          // request's bytes before allocating the next. A previous
+          // version pushed every allocation into a list and freed
+          // them all at the end of compile, which double-freed every
+          // buffer except the last one and corrupted the WASM heap.
+          // The corruption only surfaced one or two compiles later
+          // as "memory access out of bounds".
           const len = Module.lengthBytesUTF8(src);
           if (deliveryBuf) Module._free(deliveryBuf);
           deliveryBuf = Module._malloc(len + 1);
-          owned.push(deliveryBuf);
           Module.stringToUTF8(src, deliveryBuf, len + 1);
           Module._scriptCompApiDeliverFile(compilerPtr, deliveryBuf, len);
           return 1;
@@ -163,8 +168,8 @@ export default class DiagnoticsProvider extends Provider {
         try { Module._scriptCompApiDestroyCompiler(compilerPtr); }
         catch { /* ignore */ }
       }
-      for (const p of owned) {
-        try { Module._free(p); } catch { /* ignore */ }
+      if (deliveryBuf) {
+        try { Module._free(deliveryBuf); } catch { /* ignore */ }
       }
       if (loadCb) Module.removeFunction(loadCb);
       if (writeCb) Module.removeFunction(writeCb);

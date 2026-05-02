@@ -314,6 +314,38 @@ void VoidFn();
     expect(fixed).to.have.lengthOf(0);
   });
 
+  it("survives many compiles with deeply chained includes", async () => {
+    // Earlier the diagnostics provider double-freed the resolver's
+    // delivery buffer once per #include, corrupting the WASM heap.
+    // It usually surfaced two-or-three compiles later as "memory
+    // access out of bounds". Trigger a long include chain repeatedly
+    // and make sure no compile crashes.
+    writeFileSync(join(workspace, "leaf.nss"),
+      "const int LEAF_VAL = 1;");
+    writeFileSync(join(workspace, "mid.nss"),
+      '#include "leaf"\nconst int MID_VAL = 2;');
+    writeFileSync(join(workspace, "root_inc.nss"),
+      '#include "mid"\nconst int ROOT_VAL = 3;');
+    const uri = openDocument("uses_chain.nss",
+      '#include "root_inc"\nvoid main() { int x = LEAF_VAL + MID_VAL + ROOT_VAL; }');
+
+    // First publish
+    let diags = await client.waitForDiagnostics(uri);
+    expect(diags).to.have.lengthOf(0);
+
+    // Resave a bunch of times - any heap corruption would show up
+    // here as a sendDiagnostics with a "memory access out of bounds"
+    // error message OR no diagnostics arriving at all.
+    for (let i = 0; i < 10; i++) {
+      client.clearNotifications();
+      saveDocument(uri,
+        '#include "root_inc"\nvoid main() { int x = LEAF_VAL + MID_VAL + ROOT_VAL; }');
+      diags = await client.waitForDiagnostics(uri, 3000);
+      expect(diags).to.have.lengthOf(0,
+        `iter ${i}: expected clean compile, got: ${JSON.stringify(diags)}`);
+    }
+  });
+
   it("routes errors in #include'd files to the include's URI", async () => {
     const libUri = openDocument("buggy_lib.nss",
       "int helper() { return BadId(); }");
