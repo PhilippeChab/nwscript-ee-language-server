@@ -1,198 +1,252 @@
-import { spawn } from "child_process";
-import { type } from "os";
-import { join, dirname, basename } from "path";
-import { fileURLToPath } from "url";
+import { readFileSync } from "fs";
+import { basename, join } from "path";
+import { fileURLToPath, pathToFileURL } from "url";
 import { Diagnostic, DiagnosticSeverity } from "vscode-languageserver";
 
+import { ServerManager } from "../ServerManager";
 import Provider from "./Provider";
 
-const lineNumber = /\(([^)]+)\)/;
-const lineMessage = /(Error|Warning):(.*)/;
-const lineFilename = /^[^(]+/;
+// Resource type IDs the NWN script compiler API expects.
+const RT_NSS = 2009;
+const RT_NCS = 2010;
+const RT_NDB = 2064;
 
-enum OS {
-  linux = "Linux",
-  mac = "Darwin",
-  windows = "Windows_NT",
-}
+// Diagnostic line format from the compiler:
+//   filename.nss(line): ERROR: MESSAGE [optional context]
+// or, for some errors with no line attached:
+//   filename.nss: ERROR: MESSAGE
+const LINE_RE = /^(?<file>[^()]+?)(?:\((?<line>\d+)\))?:\s*ERROR:\s*(?<message>.+?)\s*$/m;
 
 type FilesDiagnostics = { [uri: string]: Diagnostic[] };
+
 export default class DiagnoticsProvider extends Provider {
-  private generateDiagnostics(uris: string[], files: FilesDiagnostics, severity: DiagnosticSeverity) {
-    return (line: string) => {
-      const uri = uris.find((uri) => basename(fileURLToPath(uri)) === lineFilename.exec(line)![0]);
+  private modulePromise: Promise<any> | null = null;
 
-      if (uri) {
-        const linePosition = Number(lineNumber.exec(line)![1]) - 1;
-        const diagnostic = {
-          severity,
-          range: {
-            start: { line: linePosition, character: 0 },
-            end: { line: linePosition, character: Number.MAX_VALUE },
-          },
-          message: lineMessage.exec(line)![2].trim(),
-        };
-
-        files[uri].push(diagnostic);
-      }
-    };
+  constructor(server: ServerManager) {
+    super(server);
   }
 
-  private hasSupportedOS() {
-    return ([...Object.values(OS).filter((item) => isNaN(Number(item)))] as string[]).includes(type());
+  /** Load the WASM module exactly once. */
+  private async getModule(): Promise<any> {
+    if (!this.modulePromise) {
+      const wasmPath = join(__dirname, "..", "..", "wasm", "nwscript_compiler.js");
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const NWScriptCompiler = require(wasmPath);
+      this.modulePromise = NWScriptCompiler();
+    }
+    return this.modulePromise;
   }
 
-  private getExecutablePath(os: OS | null) {
-    const specifiedOs = os || type();
-
-    switch (specifiedOs) {
-      case OS.linux:
-        return "../resources/compiler/linux/nwnsc";
-      case OS.mac:
-        return "../resources/compiler/mac/nwnsc";
-      case OS.windows:
-        return "../resources/compiler/windows/nwnsc.exe";
-      default:
-        return "";
+  /**
+   * Resolve a script name to its source bytes. Looks up `name` (no
+   * extension) via the workspace-file-system glob, returns null if
+   * not found or unreadable.
+   */
+  private resolveScriptSource(name: string): string | null {
+    try {
+      const path = this.server.workspaceFilesSystem?.getFilePath(name);
+      if (!path) return null;
+      return readFileSync(path).toString();
+    } catch {
+      return null;
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/promise-function-async
-  public publish(uri: string) {
-    return new Promise<boolean>((resolve, reject) => {
-      const { enabled, nwnHome, reportWarnings, nwnInstallation, verbose, os } = this.server.config.compiler;
-      if (!enabled || uri.includes("nwscript.nss")) {
-        return resolve(true);
-      }
+  /**
+   * Run the WASM compiler over `uri` in collect-all-errors mode and
+   * record per-file diagnostics into `files`.
+   */
+  private async compile(uri: string, files: FilesDiagnostics): Promise<void> {
+    const Module = await this.getModule();
 
-      if (!this.hasSupportedOS()) {
-        const errorMessage = "Unsupported OS. Cannot provide diagnostics.";
-        this.server.logger.error(errorMessage);
-        return reject(new Error(errorMessage));
-      }
+    const filePath = fileURLToPath(uri);
+    const fileBaseName = basename(filePath, ".nss");
 
-      const document = this.server.documentsCollection.getFromUri(uri);
+    // The compiler hands us the bare filename (no extension); we map
+    // it back to source via the workspace, with the requested document
+    // taking precedence over a same-named file elsewhere in the tree.
+    const sources: { [name: string]: string } = {};
+    sources[fileBaseName] = readFileSync(filePath).toString();
 
-      if (!this.server.configLoaded || !document) {
-        if (!this.server.documentsWaitingForPublish.includes(uri)) {
-          this.server.documentsWaitingForPublish?.push(uri);
+    let compilerPtr = 0;
+    let deliveryBuf = 0;
+    let loadCb = 0;
+    let writeCb = 0;
+    const owned: number[] = [];
+
+    try {
+      // Resolver: hand the compiler script source, looking it up in
+      // our local cache first then in the workspace.
+      loadCb = Module.addFunction((fnPtr: number) => {
+        try {
+          const fn = Module.UTF8ToString(fnPtr);
+          let src: string | null = sources[fn] ?? null;
+          if (src === null) {
+            src = this.resolveScriptSource(fn);
+            if (src !== null) sources[fn] = src;
+          }
+          if (src === null) return 0;
+
+          const len = Module.lengthBytesUTF8(src);
+          if (deliveryBuf) Module._free(deliveryBuf);
+          deliveryBuf = Module._malloc(len + 1);
+          owned.push(deliveryBuf);
+          Module.stringToUTF8(src, deliveryBuf, len + 1);
+          Module._scriptCompApiDeliverFile(compilerPtr, deliveryBuf, len);
+          return 1;
+        } catch {
+          return 0;
         }
-        return resolve(true);
+      }, "iii");
+
+      // We don't care about output bytes; signal success so the
+      // compiler doesn't treat the write as an error.
+      writeCb = Module.addFunction(() => 0, "iiiiii");
+
+      const newCompiler = Module.cwrap("scriptCompApiNewCompiler", "number",
+        ["number", "number", "number", "number", "number"]);
+      const initCompiler = Module.cwrap("scriptCompApiInitCompiler", null,
+        ["number", "string", "boolean", "number", "number", "string"]);
+      const setCollectAll = Module.cwrap("scriptCompApiSetCollectAllErrors",
+        null, ["number", "boolean"]);
+      const setRequireEntry = Module.cwrap(
+        "scriptCompApiSetRequireEntryPoint", null, ["number", "boolean"]);
+      const compile = Module.cwrap("wasmCompile", "number",
+        ["number", "string"]);
+      const errorCount = Module.cwrap("wasmGetCollectedErrorCount", "number",
+        ["number"]);
+      const errorAt = Module.cwrap("wasmGetCollectedError", "string",
+        ["number", "number"]);
+      const lastError = Module.cwrap("wasmGetLastError", "string", ["number"]);
+
+      compilerPtr = newCompiler(RT_NSS, RT_NCS, RT_NDB, writeCb, loadCb);
+      if (!compilerPtr) throw new Error("scriptCompApiNewCompiler returned null");
+
+      // writeDebug=false: we don't want NDB output. maxIncludeDepth=16
+      // matches the historic compiler default.
+      initCompiler(compilerPtr, "nwscript", false, 16, 0, "scriptout");
+      setCollectAll(compilerPtr, true);
+      // Allow files with no entry point (helper / include scripts) to
+      // validate cleanly - the LSP wants diagnostics on every editable
+      // file, not just main scripts.
+      setRequireEntry(compilerPtr, false);
+
+      compile(compilerPtr, fileBaseName);
+
+      const messages: string[] = [];
+      const n = errorCount(compilerPtr);
+      for (let i = 0; i < n; i++) {
+        messages.push(errorAt(compilerPtr, i));
+      }
+      // Some hard-fail paths (e.g. file-not-found, lexer panic) bypass
+      // the multi-error vector and only report through the captured
+      // single-error string. Pick that up too.
+      if (messages.length === 0) {
+        const single = lastError(compilerPtr);
+        if (single) messages.push(single);
       }
 
-      const children = document.getChildren();
-      const files: FilesDiagnostics = { [document.uri]: [] };
-      const uris: string[] = [];
-      children.forEach((child) => {
-        const fileUri = this.server.documentsCollection?.get(child)?.uri;
-        if (fileUri) {
-          files[fileUri] = [];
-          uris.push(fileUri);
+      for (const raw of messages) {
+        for (const line of raw.split("\n")) {
+          const m = LINE_RE.exec(line);
+          if (!m) continue;
+          this.recordDiagnostic(uri, files, m.groups!);
+          break;
         }
-      });
-
-      if (verbose) {
-        this.server.logger.info(`Compiling ${document.uri}:`);
       }
-      // The compiler command:
-      //  - y; continue on error
-      //  - c; compile includes
-      //  - l; try to load resources if paths are not supplied
-      //  - r; don't generate the compiled file
-      //  - h; game home path
-      //  - n; game installation path
-      //  - i; includes directories
-      const args = ["-y", "-c", "-l", "-r", "SKIP_OUTPUT"];
-      if (Boolean(nwnHome)) {
-        args.push("-h");
-        args.push(`"${nwnHome}"`);
-      } else if (verbose) {
-        this.server.logger.info("Trying to resolve Neverwinter Nights home directory automatically.");
+    } finally {
+      if (compilerPtr) {
+        try { Module._scriptCompApiDestroyCompiler(compilerPtr); }
+        catch { /* ignore */ }
       }
-      if (Boolean(nwnInstallation)) {
-        args.push("-n");
-        args.push(`"${nwnInstallation}"`);
-      } else if (verbose) {
-        this.server.logger.info("Trying to resolve Neverwinter Nights installation directory automatically.");
+      for (const p of owned) {
+        try { Module._free(p); } catch { /* ignore */ }
       }
-      if (children.length > 0) {
-        args.push("-i");
-        args.push(`"${[...new Set(uris.map((uri) => dirname(fileURLToPath(uri))))].join(";")}"`);
-      }
-      args.push(`"${fileURLToPath(uri)}"`);
+      if (loadCb) Module.removeFunction(loadCb);
+      if (writeCb) Module.removeFunction(writeCb);
+    }
+  }
 
-      let stdout = "";
-      let stderr = "";
+  /**
+   * Map a parsed diagnostic line to an LSP Diagnostic and stash it
+   * under the right URI. Errors raised in #include'd files are routed
+   * to that file's URI when we can resolve it; otherwise they're
+   * attached to the document we were asked to check.
+   */
+  private recordDiagnostic(
+    targetUri: string,
+    files: FilesDiagnostics,
+    parts: { [k: string]: string }
+  ) {
+    const file = (parts.file ?? "").trim();
+    const line = Number(parts.line ?? "1");
+    const message = (parts.message ?? "").trim();
 
-      if (verbose) {
-        this.server.logger.info(this.getExecutablePath(os));
-        this.server.logger.info(JSON.stringify(args, null, 4));
-      }
+    let uri = targetUri;
+    const base = file.replace(/\.nss$/, "");
+    const path = this.server.workspaceFilesSystem?.getFilePath(base);
+    if (path) uri = pathToFileURL(path).href;
 
-      const child = spawn(join(__dirname, this.getExecutablePath(os)), args, { shell: true });
+    if (!files[uri]) files[uri] = [];
 
-      child.stdout.on("data", (chunk: string) => (stdout += chunk));
-      child.stderr.on("data", (chunk: string) => (stderr += chunk));
-
-      child.on("error", (e: any) => {
-        this.server.logger.error(e.message);
-        reject(e);
-      });
-
-      child.on("close", (_) => {
-        const lines = stdout
-          .toString()
-          .split("\n")
-          .filter((line) => line !== "\r" && line !== "\n" && Boolean(line));
-        const errors: string[] = [];
-        const warnings: string[] = [];
-
-        lines.forEach((line) => {
-          if (verbose && !line.includes("Compiling:")) {
-            this.server.logger.info(line);
-          }
-
-          // Diagnostics
-          if (line.includes("Error:")) {
-            errors.push(line);
-          }
-          if (reportWarnings && line.includes("Warning:")) {
-            warnings.push(line);
-          }
-
-          // Actual errors
-          if (line.includes("NOTFOUND")) {
-            return this.server.logger.error("Unable to resolve nwscript.nss. Are your Neverwinter Nights home and/or installation directories valid?");
-          }
-          if (line.includes("Failed to open .key archive")) {
-            return this.server.logger.error("Unable to open nwn_base.key Is your Neverwinter Nights installation directory valid?");
-          }
-          if (line.includes("Unable to read input file")) {
-            if (Boolean(nwnHome) || Boolean(nwnInstallation)) {
-              return this.server.logger.error("Unable to resolve provided Neverwinter Nights home and/or installation directories. Ensure the paths are valid in the extension settings.");
-            } else {
-              return this.server.logger.error("Unable to automatically resolve Neverwinter Nights home and/or installation directories.");
-            }
-          }
-        });
-
-        if (verbose) {
-          this.server.logger.info("Done.\n");
-        }
-
-        uris.push(document.uri);
-        errors.forEach(this.generateDiagnostics(uris, files, DiagnosticSeverity.Error));
-        if (reportWarnings) warnings.forEach(this.generateDiagnostics(uris, files, DiagnosticSeverity.Warning));
-
-        for (const [uri, diagnostics] of Object.entries(files)) {
-          void this.server.connection.sendDiagnostics({ uri, diagnostics });
-        }
-        resolve(true);
-      });
+    const linePos = Math.max(0, line - 1);
+    files[uri].push({
+      severity: DiagnosticSeverity.Error,
+      range: {
+        start: { line: linePos, character: 0 },
+        end: { line: linePos, character: Number.MAX_VALUE },
+      },
+      message,
+      source: "nwscript",
     });
   }
 
+  public async publish(uri: string): Promise<boolean> {
+    const { enabled, verbose } = this.server.config.compiler;
+    if (!enabled || uri.includes("nwscript.nss")) {
+      return true;
+    }
+
+    const document = this.server.documentsCollection?.getFromUri(uri);
+    if (!this.server.configLoaded || !document) {
+      if (!this.server.documentsWaitingForPublish.includes(uri)) {
+        this.server.documentsWaitingForPublish?.push(uri);
+      }
+      return true;
+    }
+
+    if (verbose) {
+      this.server.logger.info(`Compiling ${uri}`);
+    }
+
+    // Pre-seed empty diagnostic lists for the target plus all of its
+    // transitive includes - so that fixing an error in an include
+    // immediately clears any prior squiggle on it.
+    const files: FilesDiagnostics = { [uri]: [] };
+    for (const child of document.getChildren()) {
+      const childUri = this.server.documentsCollection?.get(child)?.uri;
+      if (childUri) files[childUri] = [];
+    }
+
+    try {
+      await this.compile(uri, files);
+    } catch (e: any) {
+      this.server.logger.error(`Compile failed: ${e?.message ?? e}`);
+    }
+
+    for (const [u, diagnostics] of Object.entries(files)) {
+      this.server.connection.sendDiagnostics({ uri: u, diagnostics });
+    }
+
+    if (verbose) {
+      this.server.logger.info("Done.");
+    }
+    return true;
+  }
+
   public async processDocumentsWaitingForPublish() {
-    return await Promise.all(this.server.documentsWaitingForPublish.map(async (uri) => await this.publish(uri)));
+    return await Promise.all(
+      this.server.documentsWaitingForPublish.map(async (uri) => await this.publish(uri))
+    );
   }
 }
