@@ -29,7 +29,11 @@ export default class DiagnoticsProvider extends Provider {
   /** Load the WASM module exactly once. */
   private async getModule(): Promise<any> {
     if (!this.modulePromise) {
-      const wasmPath = join(__dirname, "..", "..", "wasm", "nwscript_compiler.js");
+      // server.js is bundled into server/out/, so server/wasm is one
+      // level up from __dirname. (The same path also works for the
+      // un-bundled ts-node compile from server/src/Providers/, where
+      // ../wasm reaches server/wasm.)
+      const wasmPath = join(__dirname, "..", "wasm", "nwscript_compiler.js");
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const NWScriptCompiler = require(wasmPath);
       this.modulePromise = NWScriptCompiler();
