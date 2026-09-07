@@ -96,9 +96,10 @@ I personally use the [One Dark Pro](https://marketplace.visualstudio.com/items?i
 
 ## Building and running
 
-- Install NodeJS from https://nodejs.org/en/.
-- Invoke `npm install -g yarn @vscode/vsce` which will install Yarn, a dependency manager, and vsce, a VS Code packaging library.
-- In the project root directory, invoke `yarn install` which will install all dependencies using Yarn.
+- Install Node.js 24 (the version in `.nvmrc`). With nvm, run `nvm install` and `nvm use` in the project root.
+- Invoke `npm install -g yarn@1.22.22 @vscode/vsce` to install Yarn Classic and the VS Code packaging tool.
+- In the project root directory, invoke `yarn install --frozen-lockfile`. The postinstall script also installs the client and server dependencies using their committed lockfiles.
+- Run `yarn compile`, `yarn test`, and `yarn build` to type-check, test, and bundle the extension. CI uses the same Node and Yarn versions.
 - In the project root directory, invoke `vsce package` which will produce a .vsix file.
 - To install, in VS Code on the extension pane, click on the three dots at the top right then select `Install From VSIX` and navigate to the package you just produced.
 
