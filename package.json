@@ -167,7 +167,7 @@
     "compile:server": "tsc -b ./server/tsconfig.json",
     "watch": "tsc -b -w",
     "lint": "eslint ./client/src ./server/src --ext .ts",
-    "postinstall": "cd client && yarn install && cd ../server && yarn install && cd ..",
+    "postinstall": "yarn --cwd client install --frozen-lockfile && yarn --cwd server install --frozen-lockfile",
     "test": "cd server && yarn test && cd ..",
     "clean": "rimraf client/out && rimraf server/out"
   },
@@ -188,5 +188,6 @@
     "rimraf": "^3.0.2",
     "ts-loader": "^9.3.1",
     "typescript": "*"
-  }
+  },
+  "packageManager": "yarn@1.22.22"
 }

@@ -12,16 +12,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
       - name: Install Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v6
         with:
-          node-version: 16
+          node-version-file: .nvmrc
+      - name: Install Yarn
+        run: npm install --global yarn@1.22.22
       - name: Install Dependencies
-        uses: borales/actions-yarn@v3
-        with:
-          cmd: install
+        run: yarn install --frozen-lockfile
+      - name: Type Check
+        run: yarn compile
       - name: Run Tests Suite
-        uses: borales/actions-yarn@v3
-        with:
-          cmd: test
+        run: yarn test
