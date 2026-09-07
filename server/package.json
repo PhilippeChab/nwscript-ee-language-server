@@ -17,7 +17,7 @@
   "scripts": {
     "postinstall": "patch-package",
     "generate-lib-defs": "ts-node scripts/GenerateLibDefinitions.ts",
-    "test": "mocha -r ts-node/register 'test/**/*.ts'"
+    "test": "node --no-experimental-strip-types ./node_modules/mocha/bin/mocha.js -r ts-node/register 'test/**/*.ts'"
   },
   "dependencies": {
     "glob": "^8.0.1",
@@ -38,5 +38,6 @@
     "chai": "^4.3.6",
     "mocha": "^11.1.0",
     "ts-node": "^10.7.0"
-  }
+  },
+  "type": "commonjs"
 }
