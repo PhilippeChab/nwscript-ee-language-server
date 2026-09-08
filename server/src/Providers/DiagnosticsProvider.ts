@@ -1,5 +1,6 @@
 import { spawn } from "child_process";
-import { type } from "os";
+import { type, tmpdir } from "os";
+import { copyFileSync, mkdtempSync, rmSync, statSync } from "fs";
 import { join, dirname, basename } from "path";
 import { fileURLToPath } from "url";
 import { Diagnostic, DiagnosticSeverity } from "vscode-languageserver";
@@ -81,6 +82,22 @@ export default class DiagnoticsProvider extends Provider {
         return resolve(true);
       }
 
+      const fail = (reason: string) => {
+        this.server.logger.error(`Unable to validate ${uri}: ${reason}. Previous diagnostics have been retained.`);
+        resolve(false);
+      };
+      try {
+        // The upstream resource resolver treats zero-byte files as missing.
+        if (statSync(fileURLToPath(uri)).size === 0) {
+          void this.server.connection.sendDiagnostics({ uri, diagnostics: [] });
+          resolve(true);
+          return;
+        }
+      } catch (error) {
+        fail(error instanceof Error ? error.message : String(error));
+        return;
+      }
+
       const children = document.getChildren();
       const files: FilesDiagnostics = { [document.uri]: [] };
       const uris: string[] = [document.uri];
@@ -100,7 +117,7 @@ export default class DiagnoticsProvider extends Provider {
       //  - s; dry run
       // Validate include-only files, including semantic errors in their functions.
       // Each publish checks one root, so avoid starting a pool for every CPU.
-      const args = ["-y", "-s", "-j", "1", "--no-require-entry-point"];
+      const args = ["-y", "-s", "-j", "1", "--no-require-entry-point", `--max-include-depth=${Math.max(64, uris.length + 1)}`];
       if (Boolean(nwnHome)) {
         args.push("--userdirectory");
         args.push(nwnHome);
@@ -118,7 +135,30 @@ export default class DiagnoticsProvider extends Provider {
       const languageSpec = this.server.workspaceFilesSystem.getFilePath("nwscript");
       if (languageSpec) includeDirectories.add(dirname(languageSpec));
       args.push("--dirs", [...includeDirectories].join(","));
-      args.push("-c", fileURLToPath(uri));
+      // Directory ordering cannot express arbitrary per-file selections, and the
+      // compiler always gives its input directory priority. Stage the indexed
+      // documents together so compilation uses the same includes as navigation.
+      // Copies also isolate the compiler's automatic deletion of adjacent NDBs.
+      let stagingDirectory: string | undefined;
+      try {
+        stagingDirectory = mkdtempSync(join(tmpdir(), "nwscript-compile-"));
+        const selected = new Map<string, string>();
+        for (const selectedUri of uris) {
+          const path = fileURLToPath(selectedUri);
+          const name = basename(path).toLowerCase();
+          if (!selected.has(name)) selected.set(name, path);
+        }
+        if (languageSpec) selected.set("nwscript.nss", languageSpec);
+        for (const [name, path] of selected) copyFileSync(path, join(stagingDirectory, name));
+        args.push("-c", join(stagingDirectory, basename(fileURLToPath(uri)).toLowerCase()));
+      } catch (error) {
+        if (stagingDirectory) rmSync(stagingDirectory, { recursive: true, force: true });
+        fail(error instanceof Error ? error.message : String(error));
+        return;
+      }
+      const cleanup = () => {
+        if (stagingDirectory) rmSync(stagingDirectory, { recursive: true, force: true });
+      };
 
       let stderr = "";
 
@@ -132,15 +172,17 @@ export default class DiagnoticsProvider extends Provider {
       child.stderr.on("data", (chunk: string) => (stderr += chunk));
 
       child.on("error", (e: any) => {
-        this.server.logger.error(e.message);
-        resolve(false);
+        cleanup();
+        fail(e.message);
       });
 
       child.on("close", (code, signal) => {
+        cleanup();
+        // A failed spawn also emits close after its error event.
+        if (child.pid === undefined) return;
         if (signal) {
           const error = new Error(`Compiler terminated by ${signal}`);
-          this.server.logger.error(error.message);
-          resolve(false);
+          fail(error.message);
           return;
         }
         const lines = stderr
@@ -163,19 +205,6 @@ export default class DiagnoticsProvider extends Provider {
           if (reportWarnings && line.includes("WARNING:")) {
             warnings.push(line);
           }
-
-          // Actual errors
-          if (line.includes("unhandled exception")) {
-            this.server.logger.error(line);
-          }
-
-          if (line.includes("Could not locate")) {
-            if (Boolean(nwnHome) || Boolean(nwnInstallation)) {
-              return this.server.logger.error("Unable to resolve provided Neverwinter Nights home and/or installation directories. Ensure the paths are valid in the extension settings.");
-            } else {
-              return this.server.logger.error("Unable to automatically resolve Neverwinter Nights home and/or installation directories.");
-            }
-          }
         });
 
         if (verbose) {
@@ -183,9 +212,10 @@ export default class DiagnoticsProvider extends Provider {
         }
 
         if (code !== 0 && !errors.some((line) => compilerDiagnostic.test(line))) {
-          const error = new Error(stderr.trim() || `Compiler exited with code ${String(code)}`);
-          this.server.logger.error(error.message);
-          resolve(false);
+          const reason = stderr.includes("Could not locate")
+            ? "Cannot locate the Neverwinter Nights installation or user directory. Check the compiler nwnInstallation and nwnHome settings"
+            : stderr.trim() || `Compiler exited with code ${String(code)}`;
+          fail(reason);
           return;
         }
 
@@ -193,7 +223,7 @@ export default class DiagnoticsProvider extends Provider {
         if (reportWarnings) warnings.forEach(this.generateDiagnostics(uris, files, DiagnosticSeverity.Warning));
 
         for (const [uri, diagnostics] of Object.entries(files)) {
-          this.server.connection.sendDiagnostics({ uri, diagnostics });
+          void this.server.connection.sendDiagnostics({ uri, diagnostics });
         }
         resolve(true);
       });

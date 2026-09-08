@@ -110,3 +110,5 @@ I think we can consider the extension stable and out of beta. A big thank you to
 ## [Unreleased]
 
 - Migrate diagnostics from nwnsc to the official nwn_script_comp 2.3.1 subprocess, including validation of standalone include files.
+- Clear diagnostics when a saved script becomes empty, use indexed include selections during compilation, and preserve existing compiled/debug files.
+- The official compiler reports one error at a time and has different warning coverage and language/resource restrictions; see `server/resources/compiler/README.md`.

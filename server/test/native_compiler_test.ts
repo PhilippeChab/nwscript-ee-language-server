@@ -1,7 +1,7 @@
 import { before, beforeEach, afterEach, describe, it } from "mocha";
 import { expect } from "chai";
 import { buildSync } from "esbuild";
-import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "fs";
 import { tmpdir } from "os";
 import { basename, join } from "path";
 import { pathToFileURL } from "url";
@@ -143,10 +143,67 @@ describe("Native compiler diagnostics", function () {
     expect(published.get(main.uri)![0].message).to.include("stock_lib.nss");
   });
 
+  it("clears an existing error when the saved document becomes empty", async () => {
+    const main = script("main.nss", 'void main() { int x = "wrong"; }');
+    await publish(main.uri);
+    expect(published.get(main.uri)).to.have.lengthOf(1);
+    writeFileSync(main.path, "");
+    await publish(main.uri);
+    expect(published.get(main.uri)).to.deep.equal([]);
+    expect(errors).to.deep.equal([]);
+    writeFileSync(main.path, "void main() {}");
+    await publish(main.uri);
+    expect(published.get(main.uri)).to.deep.equal([]);
+  });
+
+  it("uses the indexed include even when other search directories and the target contain duplicates", async () => {
+    const chosen = script("selected/choice.nss", "int chosen() { return 1; }");
+    script("other/extra.nss", "void extra() {}");
+    const main = script("scripts/main.nss", '#include "choice"\n#include "extra"\nvoid main() { int x = chosen(); }', ["choice", "extra"]);
+    for (const directory of ["scripts", "other", "ovr"]) {
+      writeFileSync(join(workspace, directory, "choice.nss"), 'int chosen() { return "wrong"; }');
+    }
+    await publish(main.uri);
+    expect(published.get(main.uri)).to.deep.equal([]);
+    expect(published.get(chosen.uri)).to.deep.equal([]);
+    // Changing the selected file must affect compilation and diagnostic routing.
+    writeFileSync(chosen.path, 'int chosen() { return "wrong"; }');
+    await publish(main.uri);
+    expect(published.get(chosen.uri)).to.have.lengthOf(1);
+  });
+
+  it("validates an include chain deeper than the compiler default", async () => {
+    const children = Array.from({ length: 25 }, (_, i) => `chain${i}`);
+    children.forEach((name, i) => script(`lib/${name}.nss`, i < 24 ? `#include "chain${i + 1}"\n` : "// end\n"));
+    const main = script("main.nss", '#include "chain0"\nvoid main() {}', children);
+    await publish(main.uri);
+    expect([...published.values()].every((diagnostics) => diagnostics.length === 0)).to.equal(true);
+  });
+
+  it("preserves existing compiler artifacts beside the source", async () => {
+    const main = script("main.nss", "void main() {}");
+    const ndb = main.path.replace(/\.nss$/, ".ndb");
+    const ncs = main.path.replace(/\.nss$/, ".ncs");
+    writeFileSync(ndb, "existing debug symbols");
+    writeFileSync(ncs, "existing compiled script");
+    await publish(main.uri);
+    expect(readFileSync(ndb, "utf8")).to.equal("existing debug symbols");
+    expect(readFileSync(ncs, "utf8")).to.equal("existing compiled script");
+  });
+
+  it("reports an unreadable source without publishing a clean result", async () => {
+    const main = script("main.nss", "void main() {}");
+    rmSync(main.path);
+    expect(await provider.publish(main.uri)).to.equal(false);
+    expect(published.size).to.equal(0);
+    expect(errors.join("\n")).to.include("Unable to validate").and.include(main.uri);
+  });
+
   it("does not clear diagnostics when the compiler cannot load the game directory", async () => {
     const helper = script("helper.nss", "int helper() { return 1; }");
     config.compiler.nwnInstallation = join(workspace, "missing-game");
     expect(await provider.publish(helper.uri)).to.equal(false);
     expect(published.size).to.equal(0);
+    expect(errors.join("\n")).to.include("nwnInstallation and nwnHome");
   });
 });
