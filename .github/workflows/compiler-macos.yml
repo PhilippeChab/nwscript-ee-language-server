@@ -1,0 +1,41 @@
+name: Build macOS compiler
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - .github/workflows/compiler-macos.yml
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-15-intel
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          repository: niv/neverwinter.nim
+          ref: 369fdc4186f19d3668f05b44f9b98d32ea5233c4 # 2.3.1
+      - uses: jiro4989/setup-nim-action@3a60cf06f20c1cf3a9becf76b30288c0361d5f1e # v2.2.2
+        with:
+          nim-version: '2.2.10'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Intel compiler
+        run: nimble build -y -d:release --backend:cpp nwn_script_comp
+      - name: Combine with upstream Apple Silicon compiler
+        run: |
+          curl --fail --location --output arm64.zip https://github.com/niv/neverwinter.nim/releases/download/2.3.1/neverwinter-aarch64-macos.zip
+          mkdir arm64
+          unzip arm64.zip nwn_script_comp -d arm64
+          lipo -create bin/nwn_script_comp arm64/nwn_script_comp -output nwn_script_comp
+          chmod +x nwn_script_comp
+          ./nwn_script_comp --version
+          ./nwn_script_comp --help | grep -- --no-require-entry-point
+          lipo -info nwn_script_comp
+          otool -L nwn_script_comp
+          tar -czf nwn_script_comp-macos.tar.gz nwn_script_comp
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nwn_script_comp-macos
+          path: nwn_script_comp-macos.tar.gz
