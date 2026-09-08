@@ -86,7 +86,9 @@ Notes:
 - Diagnostics are provided by compiling the file with the [nwn_script_comp](https://github.com/niv/neverwinter.nim/blob/master/nwn_script_comp.nim) compiled executable.
 - The compiler executable is provided for Windows, Darwin and Linux operating systems.
 - Diagnostics are currently published when opening or saving a file.
-- By default, the compiler will try to detect automatically your Neverwinter Nights home and installation folders if they are not specified. If it fails to do so, you can provide the paths in the extension settings like shown above - input paths are wrapped into quotes automatically.
+- Standalone include files are checked for syntax and semantic errors without requiring `main` or `StartingConditional`. Diagnostics run in dry-run mode and do not write `.ncs` or `.ndb` files.
+- The bundled compiler reports the first error per compilation; reporting multiple errors within one file is a separate upstream enhancement.
+- By default, the compiler will try to detect automatically your Neverwinter Nights home and installation folders if they are not specified. If it fails to do so, you can provide the paths in the extension settings like shown above - paths are passed directly to the compiler, including paths containing spaces.
 - You can set the `verbose` setting to `true` if you wish to see detailed logs of the compilation process.
 
 ### Syntax highligthing

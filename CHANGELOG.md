@@ -106,3 +106,7 @@ I think we can consider the extension stable and out of beta. A big thank you to
 ## [2.0.1]
 
 - Fixed the release workflow
+
+## [Unreleased]
+
+- Migrate diagnostics from nwnsc to the official nwn_script_comp 2.3.1 subprocess, including validation of standalone include files.

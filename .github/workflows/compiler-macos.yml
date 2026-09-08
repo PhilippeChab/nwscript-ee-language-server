@@ -12,15 +12,19 @@ permissions:
 jobs:
   build:
     runs-on: macos-15-intel
+    env:
+      MACOSX_DEPLOYMENT_TARGET: "10.15"
     steps:
       - uses: actions/checkout@v5
         with:
           repository: niv/neverwinter.nim
           ref: 369fdc4186f19d3668f05b44f9b98d32ea5233c4 # 2.3.1
-      - uses: jiro4989/setup-nim-action@3a60cf06f20c1cf3a9becf76b30288c0361d5f1e # v2.2.2
-        with:
-          nim-version: '2.2.10'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install pinned Nim toolchain
+        run: |
+          curl --fail --location --output nim.tar.xz https://nim-lang.org/download/nim-2.2.10-macosx_x64.tar.xz
+          echo "35df59b9bbe9f5dfcdf40a82b41037e6ac499e2ec0be6688cd3dd0e55c8bc851  nim.tar.xz" | shasum -a 256 -c -
+          tar -xf nim.tar.xz
+          echo "$PWD/nim-2.2.10/bin" >> "$GITHUB_PATH"
       - name: Build Intel compiler
         run: nimble build -y -d:release --backend:cpp nwn_script_comp
       - name: Combine with upstream Apple Silicon compiler
