@@ -1,10 +1,3 @@
-/*!
- * NWScript EE Language Server
- * Copyright (c) 2022-2026 Philippe Chabot and contributors
- * https://github.com/PhilippeChab/nwscript-ee-language-server
- * Licensed under GPL-3.0-only with the additional terms in the root NOTICE file.
- */
-
 export default class Dictionnary<K extends string, V> {
   private readonly _dict: Record<K, V>;
 
