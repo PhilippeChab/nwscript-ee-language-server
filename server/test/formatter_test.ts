@@ -2,11 +2,14 @@ import { describe, it, afterEach } from "mocha";
 import { expect } from "chai";
 import { EventEmitter } from "events";
 import { PassThrough } from "stream";
+import { resolve } from "path";
+import { pathToFileURL } from "url";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import ClangFormatter from "../src/Providers/Formatters/ClangFormatter";
 
 const childProcess = require("child_process");
 const originalSpawn = childProcess.spawn;
+const testUri = pathToFileURL(resolve("test.nss")).href;
 
 describe("Formatter Unicode offsets", () => {
   afterEach(() => { childProcess.spawn = originalSpawn; });
@@ -37,7 +40,7 @@ describe("Formatter Unicode offsets", () => {
 
   it("applies byte-offset replacements after NWN color codes without deleting code", async () => {
     const source = '// "<c ¤|>"\r\n// "<c ¥ÿ>"\r\n// "<c¡¡¡>"\r\n// "<cÔ ¶>"\r\n// "<c|  >"\r\n// "<cÿ? >"\r\n// 😀\r\nvoid testFunction() {int nFoo=1;}\r\n';
-    const document = TextDocument.create("file:///test.nss", "nwscript", 1, source);
+    const document = TextDocument.create(testUri, "nwscript", 1, source);
     const offset = source.indexOf("=1");
     mockCompiler(`<replacements><replacement offset="${Buffer.byteLength(source.slice(0, offset))}" length="1"> = </replacement></replacements>`);
     const edits = await formatter().formatDocument(document, null);
@@ -46,7 +49,7 @@ describe("Formatter Unicode offsets", () => {
 
   it("converts selection offsets and lengths to UTF-8 bytes", async () => {
     const source = '// ¥😀\nvoid main() { string s="¤😀"; }\n';
-    const document = TextDocument.create("file:///test.nss", "nwscript", 1, source);
+    const document = TextDocument.create(testUri, "nwscript", 1, source);
     const start = source.indexOf("¤");
     const end = start + "¤😀".length;
     mockCompiler("<replacements/>", (args, input) => {
@@ -59,7 +62,7 @@ describe("Formatter Unicode offsets", () => {
 
   it("preserves Unicode replacement text and measures replacement lengths in bytes", async () => {
     const source = 'void main() { string s="¥😀"; }';
-    const document = TextDocument.create("file:///test.nss", "nwscript", 1, source);
+    const document = TextDocument.create(testUri, "nwscript", 1, source);
     const offset = Buffer.byteLength(source.slice(0, source.indexOf("¥")));
     mockCompiler(`<replacements><replacement offset="${offset}" length="${Buffer.byteLength("¥😀")}">¤😀</replacement></replacements>`);
     const edits = await formatter().formatDocument(document, null);
