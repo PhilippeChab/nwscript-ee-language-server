@@ -1,7 +1,7 @@
 {
   "name": "nwscript-lsp-server",
   "description": "NWScript LSP Server. ",
-  "license": "MIT",
+  "license": "GPL-3.0-only",
   "version": "1.0.0",
   "author": {
     "name": "Philippe Chabot"

@@ -2,70 +2,51 @@
 
 All notable changes to the "nwscript-ee-language-server" extension will be documented in this file.
 
-## [1.0.0]
+## [2.3.1] Experimental pre-release
 
-- Initial release
+- Update minimatch and brace-expansion dependencies to address denial-of-service vulnerabilities.
+- Remove duplicated release entries from the changelog.
 
-## [1.1.0]
+Install using **Switch to Pre-Release Version** in VS Code's Extensions view.
 
-- New setting `autoCompleteFunctionsWithParams` which makes functions autocomplete with their complete signature. False by default.
-- New setting `includeCommentsInFunctionsHover` which add a function's comments to their hover informations. False by default.
-- New provider: [SignatureHelp](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#help-with-function-and-method-signatures).
+## [2.3.0] Experimental pre-release
 
-## [1.2.0]
+- Use the official nwn_script_comp 2.3.1 for diagnostics, including standalone include validation.
+- Keep compiler include selection consistent with indexed documents, support deeper include chains, clear diagnostics for empty saved files, and preserve existing build artifacts.
+- Fix formatting corruption around NWN color codes and other Unicode characters, including range formatting.
+- Preserve parameter zero in signature help.
+- Validate native diagnostics on Linux, Windows, Intel macOS, and Apple Silicon.
 
-- New providers: [DocumentFormatting](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#format-source-code-in-an-editor) and [DocumentRangeFormatting](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#format-the-selected-lines-in-an-editor).
+The official compiler reports one error per compilation and has different warning coverage and language/resource restrictions. Game installation and user directories must exist and may need explicit configuration. Empty included files produce an error; adding content or a comment avoids it. See `server/resources/compiler/README.md` for details.
 
-## [1.3.0]
+## [2.2.1]
 
-- Files indexing received a big performance boost - ~2 times faster than it was before:
-  - Is now performed in background, which means it is not blocking other features of the LSP.
-  - Is now clustered - the number of processes depends on the number of cores on your machine.
-  - Is now incremental, which means a file will be available as soon as it is indexed.
+- Fixed the release workflow
 
-## [1.4.0]
+## [2.2.0]
 
-- New provider: [Diagnostics](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#provide-diagnostics).
+- Script definitions bumped to version 89.8193.37.15, thanks to Peorthijel.
+- Bumped dependencies and fixed some dependabot issues.
 
-## [1.4.1]
+## [2.1.1]
 
-- Fixed compiler `-i` parameter for Darwin and Linux operating systems.
-- The tokenization process now supports function definitions spread over multiple lines.
+- Fixed some dependabot issues.
+- Refactored some internals, might have introduce regressions.
+- Fixed vscode 1.86 update making vscode-textmate 7 failing to parse plist files.
 
-## [1.4.2]
+## [2.1.0]
 
-- Fixed a few issues with the tokenizer
+- New provider: [Document Symbols](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#show-all-symbol-definitions-within-a-document).
+- Fixed a small issue with the `CompletionItemsProvider`.
+- Goto will now _really_ work with definitions from `nwscript.nss` if the file is in your project.
 
-## [1.5.0]
+## [2.0.2]
 
-- The extension size has been lowered from 14.7 to 4.8 MB.
+- Indexing added back. Its removal caused performances issues.
 
-## [1.5.1]
+## [2.0.1]
 
-- Eslint has been configured along with prettier and the project will be linted from now on.
-- File handling is now done with their uri instead of their path.
-
-## [1.5.2]
-
-- `const` expressions resolution has been enhanced.
-
-## [1.5.3]
-
-- Goto will now work for functions and constants from `nwscript.nss` if the file is in your project.
-- Fixed a few issues with the tokenizer.
-- Fixed a small issue with `const` expressions resolution.
-- Fixed the compilation provider not reporting warnings.
-- New compiler setting `reportWarnings`. True by default.
-- New formatter setting `verbose`. False by default.
-
-## [1.5.4]
-
-- Fixed security issues.
-- The project is now bundled with esbuild instead of webpack.
-
-## [1.5.5]
-
-- Build the indexer again... yikes.
+I think we can consider the extension stable and out of beta. A big thank you to everyone who has been implied in a way or another in its development! :)
 
 ## [2.0.0]
 
@@ -78,48 +59,67 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 - The setting `autoCompleteFunctionsWithParams` is now `completion.addParamsToFunctions`.
 - The setting `includeCommentsInFunctionsHover` is now `hovering.addCommentsToFunctions`.
 
-## [2.0.1]
+## [1.5.5]
 
-I think we can consider the extension stable and out of beta. A big thank you to everyone who has been implied in a way or another in its development! :)
+- Build the indexer again... yikes.
 
-## [2.0.2]
+## [1.5.4]
 
-- Indexing added back. Its removal caused performances issues.
+- Fixed security issues.
+- The project is now bundled with esbuild instead of webpack.
 
-## [2.1.0]
+## [1.5.3]
 
-- New provider: [Document Symbols](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#show-all-symbol-definitions-within-a-document).
-- Fixed a small issue with the `CompletionItemsProvider`.
-- Goto will now _really_ work with definitions from `nwscript.nss` if the file is in your project.
+- Goto will now work for functions and constants from `nwscript.nss` if the file is in your project.
+- Fixed a few issues with the tokenizer.
+- Fixed a small issue with `const` expressions resolution.
+- Fixed the compilation provider not reporting warnings.
+- New compiler setting `reportWarnings`. True by default.
+- New formatter setting `verbose`. False by default.
 
-## [2.1.1]
+## [1.5.2]
 
-- Fixed some dependabot issues.
-- Refactored some internals, might have introduce regressions.
-- Fixed vscode 1.86 update making vscode-textmate 7 failing to parse plist files.
+- `const` expressions resolution has been enhanced.
 
-## [2.2.0]
+## [1.5.1]
 
-- Script definitions bumped to version 89.8193.37.15, thanks to Peorthijel.
-- Bumped dependencies and fixed some dependabot issues.
+- Eslint has been configured along with prettier and the project will be linted from now on.
+- File handling is now done with their uri instead of their path.
 
-## [2.2.1]
+## [1.5.0]
 
-- Fixed the release workflow
+- The extension size has been lowered from 14.7 to 4.8 MB.
 
-## [2.3.0] Experimental pre-release
+## [1.4.2]
 
-- Use the official nwn_script_comp 2.3.1 for diagnostics, including standalone include validation.
-- Keep compiler include selection consistent with indexed documents, support deeper include chains, clear diagnostics for empty saved files, and preserve existing build artifacts.
-- Fix formatting corruption around NWN color codes and other Unicode characters, including range formatting.
-- Preserve parameter zero in signature help.
-- Validate native diagnostics on Linux, Windows, Intel macOS, and Apple Silicon.
+- Fixed a few issues with the tokenizer
 
-The official compiler reports one error per compilation and has different warning coverage and language/resource restrictions. Game installation and user directories must exist and may need explicit configuration. Empty included files produce an error; adding content or a comment avoids it. See `server/resources/compiler/README.md` for details.
+## [1.4.1]
 
-## [2.3.1] Experimental pre-release
+- Fixed compiler `-i` parameter for Darwin and Linux operating systems.
+- The tokenization process now supports function definitions spread over multiple lines.
 
-- Update minimatch and brace-expansion dependencies to address denial-of-service vulnerabilities.
-- Remove duplicated release entries from the changelog.
+## [1.4.0]
 
-Install using **Switch to Pre-Release Version** in VS Code's Extensions view.
+- New provider: [Diagnostics](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#provide-diagnostics).
+
+## [1.3.0]
+
+- Files indexing received a big performance boost - ~2 times faster than it was before:
+  - Is now performed in background, which means it is not blocking other features of the LSP.
+  - Is now clustered - the number of processes depends on the number of cores on your machine.
+  - Is now incremental, which means a file will be available as soon as it is indexed.
+
+## [1.2.0]
+
+- New providers: [DocumentFormatting](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#format-source-code-in-an-editor) and [DocumentRangeFormatting](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#format-the-selected-lines-in-an-editor).
+
+## [1.1.0]
+
+- New setting `autoCompleteFunctionsWithParams` which makes functions autocomplete with their complete signature. False by default.
+- New setting `includeCommentsInFunctionsHover` which add a function's comments to their hover informations. False by default.
+- New provider: [SignatureHelp](https://code.visualstudio.com/api/language-extensions/programmatic-language-features#help-with-function-and-method-signatures).
+
+## [1.0.0]
+
+- Initial release
