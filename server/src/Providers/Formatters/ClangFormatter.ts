@@ -16,7 +16,7 @@ export default class ClangFormatter extends Formatter {
         return;
       }
 
-      this.currentEdit.text = text;
+      this.currentEdit.text += text;
     };
   }
 
@@ -44,14 +44,15 @@ export default class ClangFormatter extends Formatter {
     };
   }
 
-  private xmlParserOnCloseTag(document: TextDocument) {
+  private xmlParserOnCloseTag(document: TextDocument, utf8Source: Buffer) {
     return () => {
       if (!this.currentEdit) {
         return;
       }
 
-      const start = document.positionAt(this.currentEdit.offset);
-      const end = document.positionAt(this.currentEdit.offset + this.currentEdit.length);
+      // clang-format reports UTF-8 bytes; TextDocument positions use UTF-16.
+      const start = document.positionAt(utf8Source.subarray(0, this.currentEdit.offset).toString("utf8").length);
+      const end = document.positionAt(utf8Source.subarray(0, this.currentEdit.offset + this.currentEdit.length).toString("utf8").length);
 
       this.edits.push({ range: { start, end }, newText: this.currentEdit.text });
       this.currentEdit = null;
@@ -68,11 +69,13 @@ export default class ClangFormatter extends Formatter {
         this.logger.info(`Formatting ${document.uri}:`);
       }
 
+      const text = document.getText();
+      const utf8Source = Buffer.from(text, "utf8");
       const args = ["-output-replacements-xml", `-style=${JSON.stringify(this.style)}`];
 
       if (range) {
-        const offset = document.offsetAt(range.start);
-        const length = document.offsetAt(range.end) - offset;
+        const offset = Buffer.byteLength(text.slice(0, document.offsetAt(range.start)), "utf8");
+        const length = Buffer.byteLength(document.getText(range), "utf8");
 
         args.push(`-offset=${offset}`, `-length=${length}`);
       }
@@ -88,7 +91,9 @@ export default class ClangFormatter extends Formatter {
         cwd: this.workspaceFilesSystem.getWorkspaceRootPath(),
       });
 
-      child.stdin.end(document.getText());
+      child.stdout.setEncoding("utf8");
+      child.stderr.setEncoding("utf8");
+      child.stdin.end(utf8Source);
       child.stdout.on("data", (chunk: string) => (stdout += chunk));
       child.stderr.on("data", (chunk: string) => (stderr += chunk));
 
@@ -101,6 +106,7 @@ export default class ClangFormatter extends Formatter {
         if (code !== 0 || stderr.length !== 0) {
           this.logger.error(stderr);
           reject(new Error(stderr));
+          return;
         }
 
         const xmlParser = parser(true, {
@@ -111,7 +117,7 @@ export default class ClangFormatter extends Formatter {
         xmlParser.onerror = (err) => reject(err);
         xmlParser.ontext = this.xmlParseOnText();
         xmlParser.onopentag = this.xmlParserOnOpenTag(reject);
-        xmlParser.onclosetag = this.xmlParserOnCloseTag(document);
+        xmlParser.onclosetag = this.xmlParserOnCloseTag(document, utf8Source);
         xmlParser.write(stdout);
         xmlParser.end();
 
