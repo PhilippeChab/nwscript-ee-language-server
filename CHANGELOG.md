@@ -117,9 +117,9 @@ I think we can consider the extension stable and out of beta. A big thank you to
 
 The official compiler reports one error per compilation and has different warning coverage and language/resource restrictions. Game installation and user directories must exist and may need explicit configuration. Empty included files produce an error; adding content or a comment avoids it. See `server/resources/compiler/README.md` for details.
 
-Install using **Switch to Pre-Release Version** in VS Code's Extensions view. Stable users can remain on 2.2.1.
-
 ## [2.3.1] Experimental pre-release
 
 - Update minimatch and brace-expansion dependencies to address denial-of-service vulnerabilities.
 - Remove duplicated release entries from the changelog.
+
+Install using **Switch to Pre-Release Version** in VS Code's Extensions view.
