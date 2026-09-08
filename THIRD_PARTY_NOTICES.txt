@@ -1,15 +1,9 @@
-Historical MIT license
-======================
+MIT-covered contributions
+=========================
 
-The project was distributed under the following MIT license through commit
-b00c8956b5e6c50ce52956542fdab7817cc18679. Those previously granted permissions
-remain available for that code. This notice is retained for the MIT-covered
-material incorporated into the GPLv3 project; it does not offer subsequent
-GPL-only changes under MIT.
-
-The contributor history records authorship, including contributions by Liareth
-and pethrowilo. Existing third-party copyright and license notices continue to
-apply to their respective material.
+The following notice applies to the README contributions by Liareth and the
+script-definition update by pethrowilo incorporated under the MIT license.
+It does not license the project as a whole under MIT.
 
 The MIT License (MIT)
 
