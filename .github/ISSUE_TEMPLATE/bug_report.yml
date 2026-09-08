@@ -1,0 +1,59 @@
+name: Bug report
+description: Report incorrect behavior in the language server.
+body:
+  - type: markdown
+    attributes:
+      value: Please search existing issues first and include a small example that reproduces the problem.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include a minimal NWScript example and any required includes. For formatting problems, show the code before and after formatting.
+      placeholder: |
+        1. Open a file containing ...
+        2. Save, format, or invoke ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: input
+    id: extension_version
+    attributes:
+      label: Extension version
+      description: Find the version in the VS Code Extensions view. For a local build, provide the commit or PR number.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include your OS and VS Code version. If using WSL, SSH, or a container, specify where the extension runs. For compiler issues, include the NWN EE version; for formatting issues, include the clang-format version.
+      placeholder: |
+        OS:
+        VS Code version:
+        Local / WSL / SSH / container:
+        NWN EE or clang-format version, if relevant:
+    validations:
+      required: true
+  - type: textarea
+    id: settings
+    attributes:
+      label: Relevant settings
+      description: Paste the relevant nwscript-ee-lsp settings. For compiler issues, include nwnInstallation and nwnHome and whether those directories exist in the extension's environment. Remove any private information.
+      render: json
+  - type: textarea
+    id: logs
+    attributes:
+      label: Language server output
+      description: Copy the relevant lines from the NWscript Language Server channel in VS Code's Output panel. For compiler or formatter issues, enable verbose in the corresponding settings and reproduce again.
+      render: text
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add screenshots, related issues, or anything else that helps explain the problem.
