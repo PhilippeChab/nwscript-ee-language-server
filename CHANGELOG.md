@@ -103,7 +103,7 @@ I think we can consider the extension stable and out of beta. A big thank you to
 - Script definitions bumped to version 89.8193.37.15, thanks to Peorthijel.
 - Bumped dependencies and fixed some dependabot issues.
 
-## [2.0.1]
+## [2.2.1]
 
 - Fixed the release workflow
 
