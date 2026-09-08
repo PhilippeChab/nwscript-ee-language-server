@@ -1,0 +1,30 @@
+name: Feature request
+description: Suggest an improvement to the language server.
+body:
+  - type: markdown
+    attributes:
+      value: Please search existing issues first. Describe the user-facing behavior you would like to improve.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the workflow or limitation, ideally with a small NWScript example.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Explain how you would expect the feature to work in the editor.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives or workarounds
+      description: Describe any approaches you have tried or other solutions worth considering.
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add examples, screenshots, or links to related issues.
