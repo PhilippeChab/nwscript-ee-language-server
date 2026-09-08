@@ -107,7 +107,7 @@ I think we can consider the extension stable and out of beta. A big thank you to
 
 - Fixed the release workflow
 
-## [2.3.0] — Experimental pre-release
+## [2.3.0] Experimental pre-release
 
 - Use the official nwn_script_comp 2.3.1 for diagnostics, including standalone include validation.
 - Keep compiler include selection consistent with indexed documents, support deeper include chains, clear diagnostics for empty saved files, and preserve existing build artifacts.
