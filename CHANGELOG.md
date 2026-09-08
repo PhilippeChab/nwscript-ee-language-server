@@ -92,6 +92,17 @@ I think we can consider the extension stable and out of beta. A big thank you to
 - Fixed a small issue with the `CompletionItemsProvider`.
 - Goto will now _really_ work with definitions from `nwscript.nss` if the file is in your project.
 
+## [2.1.1]
+
+- Fixed some dependabot issues.
+- Refactored some internals, might have introduce regressions.
+- Fixed vscode 1.86 update making vscode-textmate 7 failing to parse plist files.
+
 ## [2.2.0]
 
-- The compilation engine has been migrated from nwnsc to nwn_script_comp.
+- Script definitions bumped to version 89.8193.37.15, thanks to Peorthijel.
+- Bumped dependencies and fixed some dependabot issues.
+
+## [2.0.1]
+
+- Fixed the release workflow

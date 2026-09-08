@@ -1,10 +1,11 @@
 import { ParameterInformation, SignatureInformation } from "vscode-languageserver";
+import type { SignatureHelp } from "vscode-languageserver";
 
 import type { FunctionComplexToken } from "../../Tokenizer/types";
 import Builder from "./Builder";
 
 export default class SignatureHelpBuilder extends Builder {
-  static buildFunctionItem(token: FunctionComplexToken, activeParameter: number | undefined) {
+  static buildFunctionItem(token: FunctionComplexToken, activeParameter: number | undefined): SignatureHelp {
     return {
       signatures: [
         SignatureInformation.create(
@@ -20,7 +21,7 @@ export default class SignatureHelpBuilder extends Builder {
         ),
       ],
       activeSignature: 0,
-      activeParameter: activeParameter || null,
+      activeParameter,
     };
   }
 }

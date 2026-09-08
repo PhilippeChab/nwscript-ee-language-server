@@ -32,7 +32,7 @@ export type LocalScopeTokenizationResult = {
 export default class Tokenizer {
   private readonly registry: Registry;
   private grammar: IGrammar | null = null;
-  private localScopeCache: (IToken[] | undefined)[] | null = null;
+  private readonly localScopeCache: (IToken[] | undefined)[] | null = null;
 
   constructor(localPath = false) {
     this.registry = new Registry({
