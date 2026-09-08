@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/PhilippeChab/nwscript-ee-language-server"
   },
-  "license": "MIT",
+  "license": "GPL-3.0-only",
   "version": "2.3.1",
   "author": {
     "name": "Philippe Chabot"
