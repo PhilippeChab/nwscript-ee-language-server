@@ -120,6 +120,8 @@ Please report any issues on the github [repository](https://github.com/PhilippeC
 
 ## License
 
-The language server is licensed under the [GNU General Public License, version 3 only](LICENSE) (`GPL-3.0-only`). Distributed modified versions must comply with its corresponding-source and licensing requirements.
+Copyright (c) 2022-2026 Philippe Chabot and contributors.
+
+The language server is licensed under the [GNU General Public License, version 3 only](LICENSE) (`GPL-3.0-only`), with the attribution and origin-preservation terms in [NOTICE](NOTICE). Distributed versions must preserve the project attribution; modified versions must be identified as such and comply with GPLv3's corresponding-source requirements.
 
 Third-party dependencies, bundled tools, and game-derived assets retain their respective licensing terms; the project's GPL license does not relicense them. See the [bundled compiler documentation](server/resources/compiler/README.md) for its license and source provenance.
