@@ -112,3 +112,15 @@ I think we can consider the extension stable and out of beta. A big thank you to
 - Migrate diagnostics from nwnsc to the official nwn_script_comp 2.3.1 subprocess, including validation of standalone include files.
 - Clear diagnostics when a saved script becomes empty, use indexed include selections during compilation, and preserve existing compiled/debug files.
 - The official compiler reports one error at a time and has different warning coverage and language/resource restrictions; see `server/resources/compiler/README.md`.
+
+## [2.3.0] — Experimental pre-release
+
+- Use the official nwn_script_comp 2.3.1 for diagnostics, including standalone include validation.
+- Keep compiler include selection consistent with indexed documents, support deeper include chains, clear diagnostics for empty saved files, and preserve existing build artifacts.
+- Fix formatting corruption around NWN color codes and other Unicode characters, including range formatting.
+- Preserve parameter zero in signature help.
+- Validate native diagnostics on Linux, Windows, Intel macOS, and Apple Silicon.
+
+The official compiler reports one error per compilation and has different warning coverage and language/resource restrictions. Game installation and user directories must exist and may need explicit configuration, particularly when using WSL. Empty included files produce an error; adding content or a comment avoids it. See `server/resources/compiler/README.md` for details.
+
+Install using **Switch to Pre-Release Version** in VS Code's Extensions view. Stable users can remain on 2.2.1.
