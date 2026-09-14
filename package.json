@@ -162,14 +162,16 @@
     "build": "yarn clean && yarn buildClient && yarn buildServer",
     "buildClient": "esbuild extension=./client/src/extension.ts --sourcemap --bundle --external:vscode --platform=node --outdir=./client/out/",
     "buildServer": "esbuild server=./server/src/server.ts indexer=./server/src/Documents/DocumentsIndexer.ts --sourcemap --bundle --external:vscode --platform=node --outdir=./server/out/",
-    "compile": "tsc -b",
+    "compile": "tsc -b && tsc -p server/tsconfig.eslint.json",
     "compile:client": "tsc -b ./client/tsconfig.json",
     "compile:server": "tsc -b ./server/tsconfig.json",
     "watch": "tsc -b -w",
     "lint": "eslint .eslintrc.cjs ./client/src ./server/src ./server/scripts ./server/test --ext .ts --max-warnings 0",
     "postinstall": "yarn --cwd client install --frozen-lockfile && yarn --cwd server install --frozen-lockfile",
     "test": "cd server && yarn test && cd ..",
-    "clean": "rimraf client/out && rimraf server/out"
+    "clean": "rimraf client/out && rimraf server/out",
+    "package:standalone": "yarn --cwd server package:standalone",
+    "test:standalone": "yarn --cwd server test:standalone"
   },
   "devDependencies": {
     "@types/node": "14.x",

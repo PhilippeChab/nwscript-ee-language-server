@@ -1,11 +1,12 @@
 import { spawn } from "child_process";
 import { type, tmpdir } from "os";
-import { copyFileSync, mkdtempSync, rmSync, statSync } from "fs";
+import { copyFileSync, mkdtempSync, rmSync, statSync, readFileSync } from "fs";
 import { join, dirname, basename } from "path";
 import { fileURLToPath } from "url";
 import { Diagnostic, DiagnosticSeverity } from "vscode-languageserver";
 
 import Provider from "./Provider";
+import type { ServerConfiguration } from "../ServerManager/Config";
 import { isStandardLibrary } from "../Documents/StandardLibrary";
 
 const compilerDiagnostic = /(?:^|:\s)([^:\r\n]+?\.nss)(?:\((\d+)\))?:\s*(ERROR|WARNING):\s*(.*)/;
@@ -18,7 +19,7 @@ enum OS {
 
 type FilesDiagnostics = { [uri: string]: Diagnostic[] };
 export default class DiagnoticsProvider extends Provider {
-  private generateDiagnostics(uris: string[], files: FilesDiagnostics, severity: DiagnosticSeverity) {
+  private generateDiagnostics(uris: string[], files: FilesDiagnostics, sources: Map<string, string[]>, severity: DiagnosticSeverity) {
     return (line: string) => {
       const match = compilerDiagnostic.exec(line);
       if (!match) return;
@@ -27,12 +28,13 @@ export default class DiagnoticsProvider extends Provider {
       const uri = matchingUri || uris[0];
 
       if (uri) {
-        const linePosition = matchingUri ? Math.max(0, Number(match[2] || 1) - 1) : 0;
+        const sourceLines = sources.get(uri) || [""];
+        const linePosition = matchingUri ? Math.min(sourceLines.length - 1, Math.max(0, Number(match[2] || 1) - 1)) : 0;
         const diagnostic = {
           severity,
           range: {
             start: { line: linePosition, character: 0 },
-            end: { line: linePosition, character: Number.MAX_VALUE },
+            end: { line: linePosition, character: sourceLines[linePosition].length },
           },
           message: `${matchingUri ? "" : `${match[1].trim()}(${match[2] || 1}): `}${match[4].replace(/\s+\[<?[\d.]+ms\]$/, "").trim()}`,
         };
@@ -46,7 +48,7 @@ export default class DiagnoticsProvider extends Provider {
     return ([...Object.values(OS).filter((item) => isNaN(Number(item)))] as string[]).includes(type());
   }
 
-  private getExecutablePath(os: OS | null) {
+  private getExecutablePath(os: ServerConfiguration["compiler"]["os"]) {
     const specifiedOs = os || type();
 
     switch (specifiedOs) {
@@ -141,6 +143,7 @@ export default class DiagnoticsProvider extends Provider {
       // documents together so compilation uses the same includes as navigation.
       // Copies also isolate the compiler's automatic deletion of adjacent NDBs.
       let stagingDirectory: string | undefined;
+      const sources = new Map<string, string[]>();
       try {
         stagingDirectory = mkdtempSync(join(tmpdir(), "nwscript-compile-"));
         const selected = new Map<string, string>();
@@ -151,6 +154,11 @@ export default class DiagnoticsProvider extends Provider {
         }
         if (languageSpec) selected.set("nwscript.nss", languageSpec);
         for (const [name, path] of selected) copyFileSync(path, join(stagingDirectory, name));
+        // Match diagnostic ranges to the exact saved text sent to the compiler.
+        // JavaScript string lengths are UTF-16 offsets, as required by LSP.
+        for (const selectedUri of uris) {
+          sources.set(selectedUri, readFileSync(join(stagingDirectory, basename(fileURLToPath(selectedUri)).toLowerCase()), "utf8").split(/\r\n|\r|\n/));
+        }
         args.push("-c", join(stagingDirectory, basename(fileURLToPath(uri)).toLowerCase()));
       } catch (error) {
         if (stagingDirectory) rmSync(stagingDirectory, { recursive: true, force: true });
@@ -220,8 +228,8 @@ export default class DiagnoticsProvider extends Provider {
           return;
         }
 
-        errors.forEach(this.generateDiagnostics(uris, files, DiagnosticSeverity.Error));
-        if (reportWarnings) warnings.forEach(this.generateDiagnostics(uris, files, DiagnosticSeverity.Warning));
+        errors.forEach(this.generateDiagnostics(uris, files, sources, DiagnosticSeverity.Error));
+        if (reportWarnings) warnings.forEach(this.generateDiagnostics(uris, files, sources, DiagnosticSeverity.Warning));
 
         for (const [uri, diagnostics] of Object.entries(files)) {
           void this.server.connection.sendDiagnostics({ uri, diagnostics });

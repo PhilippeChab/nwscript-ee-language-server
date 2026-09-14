@@ -1,4 +1,4 @@
-import { CompletionItemKind, DocumentSymbolParams } from "vscode-languageserver";
+import { CompletionItemKind, DocumentSymbolParams, DocumentSymbol, SymbolInformation } from "vscode-languageserver";
 
 import type { ServerManager } from "../ServerManager";
 import { SymbolBuilder } from "./Builders";
@@ -26,7 +26,11 @@ export default class SymbolsProvider extends Provider {
       const constantSymbols = document.complexTokens.filter((token) => token.tokenType === CompletionItemKind.Constant).map((token) => SymbolBuilder.buildItem(token));
       const structSymbols = document.structComplexTokens.map((token) => SymbolBuilder.buildItem(token));
 
-      return constantSymbols.concat(structSymbols.concat(localScope.functionsComplexTokens.map((token) => SymbolBuilder.buildItem(token))));
+      const symbols = constantSymbols.concat(structSymbols.concat(localScope.functionsComplexTokens.map((token) => SymbolBuilder.buildItem(token))));
+      if (this.server.capabilitiesHandler.getSupportsHierarchicalSymbols()) return symbols;
+      const flatten = (items: DocumentSymbol[], containerName?: string): SymbolInformation[] =>
+        items.flatMap((item) => [{ name: item.name, kind: item.kind, location: { uri, range: item.selectionRange }, containerName }, ...flatten(item.children || [], item.name)]);
+      return flatten(symbols);
     };
   }
 }

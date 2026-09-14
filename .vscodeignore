@@ -17,3 +17,5 @@ server/**
 !server/out/server.js
 !server/out/indexer.js
 !server/resources/**
+
+dist/**

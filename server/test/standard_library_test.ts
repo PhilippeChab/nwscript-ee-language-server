@@ -67,6 +67,7 @@ describe("Workspace standard library", function () {
       collection.createDocuments(script.uri, script.getText(), tokenizer, files);
       const handlers: any = {};
       const server = {
+        capabilitiesHandler: { getSupportsMarkdownHover: () => true },
         standardLibrary: library,
         documentsCollection: collection,
         tokenizer,
@@ -101,6 +102,7 @@ describe("Workspace standard library", function () {
     const handlers: any = {};
     const documents = new Map<string, TextDocument>();
     const server = Object.assign(Object.create(api.Manager.prototype), {
+      capabilitiesHandler: { getSupportsMarkdownHover: () => true },
       standardLibrary: library,
       documentsCollection: new api.Collection(),
       tokenizer,
@@ -337,6 +339,7 @@ describe("Workspace standard library", function () {
     let folders: any;
     let refreshes = 0;
     api.Workspace.register({
+      capabilitiesHandler: { getSupportsWorkspaceFolders: () => true },
       workspaceFilesSystem: files,
       standardLibrary: library,
       refreshStandardLibrary: () => {

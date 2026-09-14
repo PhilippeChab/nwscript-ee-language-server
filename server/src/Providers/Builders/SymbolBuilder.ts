@@ -38,14 +38,12 @@ export default class SymbolBuilder extends Builder {
     const paramSymbols = token.params.map((child) => SymbolBuilder.buildItem(child)) || [];
     const variableSymbols = token.variables?.map((child) => SymbolBuilder.buildItem(child)) || [];
 
-    return DocumentSymbol.create(
-      token.identifier,
-      undefined,
-      SymbolKind.Function,
-      { start: token.position, end: token.position },
-      { start: token.position, end: token.position },
-      paramSymbols.concat(variableSymbols),
+    const children = paramSymbols.concat(variableSymbols);
+    const end = children.reduce(
+      (position, child) => (child.range.end.line > position.line || (child.range.end.line === position.line && child.range.end.character > position.character) ? child.range.end : position),
+      token.position,
     );
+    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Function, { start: token.position, end }, { start: token.position, end: token.position }, children);
   }
 
   private static buildStructPropertyItem(token: StructPropertyComplexToken) {
@@ -55,6 +53,10 @@ export default class SymbolBuilder extends Builder {
   private static buildStructItem(token: StructComplexToken) {
     const symbols = token.properties?.map((child) => SymbolBuilder.buildItem(child));
 
-    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Struct, { start: token.position, end: token.position }, { start: token.position, end: token.position }, symbols);
+    const end = symbols.reduce(
+      (position, child) => (child.range.end.line > position.line || (child.range.end.line === position.line && child.range.end.character > position.character) ? child.range.end : position),
+      token.position,
+    );
+    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Struct, { start: token.position, end }, { start: token.position, end: token.position }, symbols);
   }
 }

@@ -32,6 +32,15 @@ jobs:
           pat: stub
           dryRun: true
           preRelease: ${{ github.event.release.prerelease || false }}
+      - name: Install clang-format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+      - name: Test standalone archive
+        run: yarn test:standalone
+      - name: Upload standalone server
+        uses: actions/upload-artifact@v4
+        with:
+          name: nwscript-ee-standalone
+          path: dist/*.tgz
       - name: Upload Extension
         uses: actions/upload-artifact@v4
         with:
@@ -60,6 +69,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: nwscript-ee-lsp
+      - name: Download standalone server
+        uses: actions/download-artifact@v4
+        with:
+          name: nwscript-ee-standalone
       - name: GitHub Release
         uses: softprops/action-gh-release@v1
         with:
@@ -70,7 +83,9 @@ jobs:
           name: ${{ github.ref_name }}
           prerelease: ${{ github.event.release.prerelease }}
           fail_on_unmatched_files: true
-          files: ${{ needs.build.outputs.vsixPath }}
+          files: |
+            ${{ needs.build.outputs.vsixPath }}
+            nwscript-ee-language-server-*.tgz
       - name: Visual Studio Marketplace Release
         uses: HaaLeo/publish-vscode-extension@v1
         with:

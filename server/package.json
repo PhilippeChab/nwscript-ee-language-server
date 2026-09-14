@@ -19,7 +19,9 @@
     "check-standard-lib": "ts-node scripts/GenerateLibDefinitions.ts --check",
     "generate-lib-defs": "ts-node scripts/GenerateLibDefinitions.ts",
     "test": "node --no-experimental-strip-types ./node_modules/mocha/bin/mocha.js -r ts-node/register \"test/**/*.ts\"",
-    "update-standard-lib": "ts-node scripts/UpdateStandardLibrary.ts"
+    "update-standard-lib": "ts-node scripts/UpdateStandardLibrary.ts",
+    "package:standalone": "ts-node scripts/PackageStandalone.ts",
+    "test:standalone": "node --no-experimental-strip-types ./node_modules/mocha/bin/mocha.js -r ts-node/register test/standalone_test.ts"
   },
   "dependencies": {
     "glob": "^8.0.1",

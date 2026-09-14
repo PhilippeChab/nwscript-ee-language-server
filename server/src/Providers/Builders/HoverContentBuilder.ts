@@ -5,7 +5,20 @@ import { ServerConfiguration } from "../../ServerManager/Config";
 import Builder from "./Builder";
 
 export default class HoverContentBuilder extends Builder {
-  public static buildItem(token: ComplexToken, serverConfig: ServerConfiguration): MarkupContent {
+  public static buildItem(token: ComplexToken, serverConfig: ServerConfiguration, markdown = true): MarkupContent {
+    const content = this.buildRichItem(token, serverConfig);
+    return markdown
+      ? content
+      : {
+          kind: MarkupKind.PlainText,
+          value: content.value
+            .split("\r\n")
+            .filter((line) => line !== "```" && line !== "```nwscript")
+            .join("\n"),
+        };
+  }
+
+  private static buildRichItem(token: ComplexToken, serverConfig: ServerConfiguration): MarkupContent {
     if (this.isConstantToken(token)) {
       return this.buildConstantItem(token);
     } else if (this.isVariableToken(token)) {

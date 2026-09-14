@@ -29,7 +29,7 @@ export default class HoverContentProvider extends Provider {
 
       if (token) {
         return {
-          contents: HoverContentBuilder.buildItem(token, this.server.config),
+          contents: HoverContentBuilder.buildItem(token, this.server.config, this.server.capabilitiesHandler.getSupportsMarkdownHover()),
         };
       }
     };

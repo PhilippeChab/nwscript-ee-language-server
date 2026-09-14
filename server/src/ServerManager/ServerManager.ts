@@ -1,7 +1,8 @@
 import { cpus } from "os";
 import { join } from "path";
 import { fileURLToPath, pathToFileURL } from "url";
-import * as clustering from "cluster";
+import { fork, ChildProcess } from "child_process";
+import type { IndexerMessage } from "../Documents/DocumentsIndexer";
 import type { Connection, InitializeParams } from "vscode-languageserver";
 import type { TextDocument } from "vscode-languageserver-textdocument";
 
@@ -22,13 +23,13 @@ import { Tokenizer } from "../Tokenizer";
 import StandardLibrary, { isStandardLibrary } from "../Documents/StandardLibrary";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { Logger } from "../Logger";
-import { defaultServerConfiguration } from "./Config";
+import { defaultServerConfiguration, mergeConfiguration } from "./Config";
 import CapabilitiesHandler from "./CapabilitiesHandler";
 
 export default class ServerManger {
   public connection: Connection;
   public logger: Logger;
-  public config = defaultServerConfiguration;
+  public config = mergeConfiguration(defaultServerConfiguration, {});
   public configLoaded = false;
   public capabilitiesHandler: CapabilitiesHandler;
   public workspaceFilesSystem: WorkspaceFilesSystem;
@@ -38,9 +39,16 @@ export default class ServerManger {
   public tokenizer: Tokenizer;
   public standardLibrary: StandardLibrary;
 
+  private stopping = false;
+  private started = false;
+  private configurationRevision = 0;
+  private readonly workers = new Set<ChildProcess>();
+  private readonly pendingClientRequests = new Set<() => void>();
+
   private diagnosticsProvider: DiagnosticsProvider | null = null;
 
   constructor(connection: Connection, params: InitializeParams) {
+    this.config = mergeConfiguration(this.config, params.initializationOptions);
     this.connection = connection;
     this.logger = new Logger(connection.console);
     this.capabilitiesHandler = new CapabilitiesHandler(params.capabilities);
@@ -67,61 +75,118 @@ export default class ServerManger {
     };
   }
 
-  public async up() {
-    WorkspaceProvider.register(this);
-
-    if (this.capabilitiesHandler.getSupportsWorkspaceConfiguration()) {
-      await ConfigurationProvider.register(this, () => {
-        void this.loadConfig().catch((error: Error) => this.logger.error(error.message));
-      });
-    }
-
-    await this.loadConfig();
-
-    const numCPUs = cpus().length;
-    const cluster = clustering.default;
-    if (cluster.isPrimary) {
-      cluster.setupPrimary({
-        exec: join(__dirname, "indexer.js"),
-      });
-    }
-
-    let filesIndexedCount = 0;
-    const filesPath = this.workspaceFilesSystem.getFilesPath().filter((path) => !isStandardLibrary(path));
-    const progressReporter = await this.connection.window.createWorkDoneProgress();
-    const filesCount = filesPath.length;
-    this.logger.info("Indexing files ...");
-
-    progressReporter.begin("Indexing files for NWScript: EE Language Server ...", 0);
-    if (!filesCount) {
-      progressReporter.done();
-      this.configLoaded = true;
-      void this.diagnosticsProvider?.processDocumentsWaitingForPublish();
-      return;
-    }
-    const partCount = Math.ceil(filesCount / numCPUs);
-    for (let i = 0; i < Math.min(numCPUs, filesCount); i++) {
-      const worker = cluster.fork();
-      worker.send(filesPath.slice(i * partCount, Math.min((i + 1) * partCount, filesCount)).join(","));
-      worker.on("message", (message: string) => {
-        const { filePath, globalScope } = JSON.parse(message);
-        this.documentsCollection?.createDocument(pathToFileURL(filePath).href, globalScope);
-        filesIndexedCount++;
-        progressReporter?.report(filesIndexedCount / filesCount);
-      });
-    }
-
-    cluster.on("exit", () => {
-      if (Object.keys(cluster.workers || {}).length === 0) {
-        progressReporter?.done();
-        this.logger.info(`Indexed ${filesIndexedCount} files.`);
-        this.configLoaded = true;
-        void this.diagnosticsProvider?.processDocumentsWaitingForPublish();
-      }
+  // Optional client features must not prevent language features from starting.
+  // Bound stalled requests, and release startup immediately when shutting down.
+  public async optionalClientRequest<T>(name: string, request: () => Promise<T>): Promise<T | undefined> {
+    if (this.stopping) return undefined;
+    return await new Promise<T | undefined>((resolve) => {
+      const finish = (value?: T) => {
+        clearTimeout(timer);
+        this.pendingClientRequests.delete(cancel);
+        resolve(value);
+      };
+      const cancel = () => finish();
+      const timer = setTimeout(() => {
+        this.logger.error(`Client request ${name} timed out; continuing without it.`);
+        finish();
+      }, 3000);
+      this.pendingClientRequests.add(cancel);
+      void Promise.resolve()
+        .then(request)
+        .then(finish, (error: unknown) => {
+          if (this.pendingClientRequests.has(cancel) && !this.stopping) {
+            this.logger.error(`Client request ${name} failed: ${error instanceof Error ? error.message : String(error)}`);
+          }
+          finish();
+        });
     });
   }
 
-  public down() {}
+  public async up() {
+    if (this.started || this.stopping) return;
+    this.started = true;
+    WorkspaceProvider.register(this);
+    await Promise.all([
+      ConfigurationProvider.register(this, (settings) => {
+        void this.loadConfig(settings);
+      }),
+      this.loadConfig(),
+    ]);
+    if (this.stopping) return;
+
+    const progress = await this.optionalClientRequest("window/workDoneProgress/create", async () => await this.connection.window.createWorkDoneProgress());
+    if (this.stopping) return;
+    progress?.begin("Indexing NWScript files", 0);
+    let indexed = 0;
+    try {
+      const paths = [...new Set(this.workspaceFilesSystem.getFilesPath().filter((path) => !isStandardLibrary(path)))];
+      this.logger.info("Indexing files ...");
+      // Avoid spawning one Node.js process for every CPU on large machines.
+      const count = Math.min(4, cpus().length || 1, paths.length);
+      const size = count ? Math.ceil(paths.length / count) : 0;
+      await Promise.all(
+        Array.from({ length: count }, async (_, index) => {
+          await this.indexFiles(paths.slice(index * size, (index + 1) * size), (message) => {
+            if (message.error) this.logger.error(`Cannot index ${message.filePath}: ${message.error}`);
+            if (message.globalScope) {
+              const uri = pathToFileURL(message.filePath).href;
+              // An opened document may have newer, unsaved contents.
+              if (!this.liveDocumentsManager.get(uri)) this.documentsCollection.createDocument(uri, message.globalScope);
+              indexed++;
+              progress?.report(Math.round((100 * indexed) / paths.length));
+            }
+          });
+        }),
+      );
+    } catch (error) {
+      if (!this.stopping) this.logger.error(`Workspace indexing failed: ${error instanceof Error ? error.message : String(error)}`);
+    } finally {
+      if (!this.stopping) {
+        progress?.done();
+        this.logger.info(`Indexed ${indexed} files.`);
+        this.configLoaded = true;
+        void this.diagnosticsProvider?.processDocumentsWaitingForPublish().catch((error: Error) => this.logger.error(error.message));
+      }
+    }
+  }
+
+  private async indexFiles(paths: string[], onMessage: (message: IndexerMessage) => void) {
+    if (!paths.length || this.stopping) return;
+    await new Promise<void>((resolve) => {
+      const worker = fork(join(__dirname, "indexer.js"), [], { stdio: ["ignore", "ignore", "pipe", "ipc"] });
+      this.workers.add(worker);
+      worker.stderr?.on("data", (chunk: Buffer) => {
+        if (!this.stopping) this.logger.error(chunk.toString());
+      });
+      worker.on("message", (message: IndexerMessage) => {
+        if (!this.stopping) onMessage(message);
+      });
+      worker.on("error", (error) => {
+        if (!this.stopping) this.logger.error(`Indexer failed: ${error.message}`);
+      });
+      worker.on("close", (code) => {
+        this.workers.delete(worker);
+        if (code !== 0 && !this.stopping) this.logger.error(`Indexer exited with code ${String(code)}; available documents remain usable.`);
+        resolve();
+      });
+      worker.send(paths, (error) => {
+        if (error && !this.stopping) this.logger.error(`Cannot start indexing: ${error.message}`);
+      });
+    });
+  }
+
+  public async down() {
+    this.stopping = true;
+    for (const cancel of this.pendingClientRequests) cancel();
+    await Promise.all(
+      [...this.workers].map(async (worker) => {
+        await new Promise<void>((resolve) => {
+          worker.once("close", () => resolve());
+          worker.kill();
+        });
+      }),
+    );
+  }
 
   public refreshStandardLibrary() {
     this.standardLibrary.invalidate();
@@ -161,6 +226,19 @@ export default class ServerManger {
     }
   }
 
+  private updateDocument(document: TextDocument) {
+    try {
+      if (!this.documentsCollection.getFromUri(document.uri)) {
+        this.documentsCollection.createDocuments(document.uri, document.getText(), this.tokenizer, this.workspaceFilesSystem);
+      } else {
+        this.documentsCollection.updateDocument(document, this.tokenizer, this.workspaceFilesSystem);
+      }
+    } catch (error) {
+      this.logger.error(`Cannot index ${document.uri}: ${error instanceof Error ? error.message : String(error)}`);
+      if (!this.documentsCollection.getFromUri(document.uri)) this.documentsCollection.createDocument(document.uri, { children: [], complexTokens: [], structComplexTokens: [] });
+    }
+  }
+
   private registerLiveDocumentsEvents() {
     this.liveDocumentsManager.onDidChangeContent((event) => {
       if (isStandardLibrary(event.document.uri)) {
@@ -170,28 +248,32 @@ export default class ServerManger {
     this.liveDocumentsManager.onDidClose((event) => this.standardLibrary.close(event.document.uri));
     this.liveDocumentsManager.onDidSave((event) => {
       if (isStandardLibrary(event.document.uri)) this.refreshStandardLibrary();
-      else void this.diagnosticsProvider?.publish(event.document.uri);
+      else {
+        this.updateDocument(event.document);
+        void this.diagnosticsProvider?.publish(event.document.uri);
+      }
     });
     this.liveDocumentsManager.onWillSave((event) => {
-      if (!isStandardLibrary(event.document.uri)) this.documentsCollection?.updateDocument(event.document, this.tokenizer, this.workspaceFilesSystem);
+      if (!isStandardLibrary(event.document.uri)) this.updateDocument(event.document);
     });
 
     this.liveDocumentsManager.onDidOpen((event) => {
       if (isStandardLibrary(event.document.uri)) {
         this.registerStandardLibraryDocument(event.document);
       } else {
-        this.documentsCollection?.createDocuments(event.document.uri, event.document.getText(), this.tokenizer, this.workspaceFilesSystem);
+        this.updateDocument(event.document);
       }
       void this.diagnosticsProvider?.publish(event.document.uri);
     });
   }
 
-  private async loadConfig() {
-    const { completion, hovering, formatter, compiler, ...rest } = await this.connection.workspace.getConfiguration("nwscript-ee-lsp");
-    this.config = { ...this.config, ...rest };
-    this.config.completion = { ...this.config.completion, ...completion };
-    this.config.hovering = { ...this.config.hovering, ...hovering };
-    this.config.formatter = { ...this.config.formatter, ...formatter };
-    this.config.compiler = { ...this.config.compiler, ...compiler };
+  private async loadConfig(settings?: unknown) {
+    const revision = ++this.configurationRevision;
+    this.config = mergeConfiguration(this.config, settings);
+    if (this.capabilitiesHandler.getSupportsWorkspaceConfiguration()) {
+      const received = await this.optionalClientRequest("workspace/configuration", async () => await this.connection.workspace.getConfiguration("nwscript-ee-lsp"));
+      // A slower previous response must not overwrite a newer update.
+      if (!this.stopping && revision === this.configurationRevision) this.config = mergeConfiguration(this.config, received);
+    }
   }
 }

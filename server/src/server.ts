@@ -3,7 +3,7 @@ import { ServerManager } from "./ServerManager";
 
 const connection = createConnection(ProposedFeatures.all);
 
-let server: ServerManager;
+let server: ServerManager | undefined;
 
 connection.onInitialize(async (params: InitializeParams) => {
   server = new ServerManager(connection, params);
@@ -11,10 +11,12 @@ connection.onInitialize(async (params: InitializeParams) => {
 });
 
 connection.onInitialized(() => {
-  void server.up().catch((error: Error) => connection.console.error(error.message));
+  void server?.up().catch((error: Error) => connection.console.error(error.message));
 });
 
-connection.onShutdown(() => server.down());
-connection.onExit(() => server.down());
+connection.onShutdown(() => server?.down());
+connection.onExit(() => {
+  void server?.down();
+});
 
 connection.listen();
