@@ -40,11 +40,14 @@ export type ServerConfiguration = typeof defaultServerConfiguration;
 export { defaultServerConfiguration };
 
 // Accept the same settings section from initializationOptions, configuration
-// responses, and pushed didChangeConfiguration notifications.
-export function mergeConfiguration(current: ServerConfiguration, settings: unknown): ServerConfiguration {
+// responses, and pushed didChangeConfiguration notifications. For a full response,
+// pass the initialization/default baseline so omitted settings reset to it.
+// Null or malformed responses retain the current configuration.
+export function mergeConfiguration(current: ServerConfiguration, settings: unknown, baseline?: ServerConfiguration): ServerConfiguration {
   const isObject = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null && !Array.isArray(value);
   const section = isObject(settings) && "nwscript-ee-lsp" in settings ? settings["nwscript-ee-lsp"] : settings;
   const input = isObject(section) ? section : {};
+  const base = isObject(section) && baseline ? baseline : current;
   const merge = (defaults: Record<string, unknown>, values: Record<string, unknown>): Record<string, unknown> =>
     Object.fromEntries(
       Object.entries(defaults).map(([key, value]) => {
@@ -56,13 +59,13 @@ export function mergeConfiguration(current: ServerConfiguration, settings: unkno
         return [key, valid ? next : Array.isArray(value) ? [...value] : value];
       }),
     );
-  const result = merge(current, input) as ServerConfiguration;
+  const result = merge(base, input) as ServerConfiguration;
   // clang-format supports arbitrary style keys beyond the bundled defaults.
   const formatter = isObject(input.formatter) ? input.formatter : {};
   if (isObject(formatter.style)) result.formatter.style = { ...result.formatter.style, ...formatter.style };
   // This setting stays nullable even after an explicit OS has been selected.
   const compiler = isObject(input.compiler) ? input.compiler : {};
   if (compiler.os === null) result.compiler.os = null;
-  if (result.compiler.os !== null && !["Linux", "Darwin", "Windows_NT"].includes(result.compiler.os)) result.compiler.os = current.compiler.os;
+  if (result.compiler.os !== null && !["Linux", "Darwin", "Windows_NT"].includes(result.compiler.os)) result.compiler.os = base.compiler.os;
   return result;
 }

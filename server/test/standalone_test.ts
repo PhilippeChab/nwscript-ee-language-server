@@ -6,6 +6,7 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, 
 import { join, resolve } from "path";
 import { tmpdir } from "os";
 import { pathToFileURL } from "url";
+import { TextDocument } from "vscode-languageserver-textdocument";
 import {
   DidOpenTextDocumentNotification,
   DidChangeConfigurationNotification,
@@ -114,6 +115,79 @@ describe("Installed standalone LSP server", function () {
     expect(symbols?.[0]).to.have.property("location");
     expect(client.requests).to.deep.equal([]);
     await client.ready();
+    await client.shutdown();
+  });
+
+  it("preserves include selection when an unselected duplicate is opened and saved", async () => {
+    const duplicate = join(workspace, "duplicate", "helper.nss");
+    mkdirSync(join(workspace, "duplicate"));
+    writeFileSync(duplicate, "float Helper(float n);\n");
+    const client = await start();
+    await client.ready();
+    await open(client);
+    const definition = await client.rpc.sendRequest(DefinitionRequest.type, params());
+    const hover = await client.rpc.sendRequest(HoverRequest.type, params());
+    const candidates = [join(workspace, "helper.nss"), duplicate];
+    const selected = candidates.find((path) => JSON.stringify(definition).includes(pathToFileURL(path).href));
+    const unselected = candidates.find((path) => !JSON.stringify(definition).includes(pathToFileURL(path).href));
+    if (!selected || !unselected) throw new Error("Expected a selected include and an unselected duplicate");
+    const uri = pathToFileURL(unselected).href;
+    await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text: readFileSync(unselected, "utf8") } });
+    expect(await client.rpc.sendRequest(DefinitionRequest.type, params())).to.deep.equal(definition);
+    expect(await client.rpc.sendRequest(HoverRequest.type, params())).to.deep.equal(hover);
+    const changed = "string Helper(string n);\n";
+    writeFileSync(unselected, changed);
+    await client.rpc.sendNotification(DidChangeTextDocumentNotification.type, { textDocument: { uri, version: 2 }, contentChanges: [{ text: changed }] });
+    await client.rpc.sendNotification(DidSaveTextDocumentNotification.type, { textDocument: { uri } });
+    expect(await client.rpc.sendRequest(DefinitionRequest.type, params())).to.deep.equal(definition);
+    expect(await client.rpc.sendRequest(HoverRequest.type, params())).to.deep.equal(hover);
+    const ownHover = await client.rpc.sendRequest(HoverRequest.type, { textDocument: { uri }, position: { line: 0, character: 9 } });
+    expect(content(ownHover)?.value).to.include("string Helper(string n)");
+    const selectedUri = pathToFileURL(selected).href;
+    const updated = "int Helper(int updatedParameter);\n";
+    await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri: selectedUri, languageId: "nwscript", version: 1, text: readFileSync(selected, "utf8") } });
+    writeFileSync(selected, updated);
+    await client.rpc.sendNotification(DidChangeTextDocumentNotification.type, { textDocument: { uri: selectedUri, version: 2 }, contentChanges: [{ text: updated }] });
+    await client.rpc.sendNotification(DidSaveTextDocumentNotification.type, { textDocument: { uri: selectedUri } });
+    expect(content(await client.rpc.sendRequest(HoverRequest.type, params()))?.value).to.include("int Helper(int updatedParameter)");
+    await client.shutdown();
+  });
+
+  it("recovers a repaired include when its already-indexed parent is opened", async () => {
+    writeFileSync(join(workspace, "helper.nss"), "int Broken(");
+    const client = await start();
+    await client.ready();
+    expect(client.logs.some((log) => log.includes("Cannot index") && log.includes("helper.nss"))).to.equal(true);
+    writeFileSync(join(workspace, "helper.nss"), helper);
+    await open(client);
+    await features(client);
+    await client.shutdown();
+  });
+
+  it("removes deleted formatter style options from full configuration responses", async () => {
+    let settings: unknown = { formatter: { style: { SpaceBeforeParens: "Always" } } };
+    const client = await start({
+      initializationOptions: { compiler: { enabled: false }, formatter: { enabled: true, executable: formatter } },
+      capabilities: { workspace: { configuration: true } },
+      configuration: () => settings,
+    });
+    await client.ready();
+    await open(client);
+    const format = async () => {
+      const edits = await client.rpc.sendRequest(DocumentFormattingRequest.type, { textDocument: params().textDocument, options: { tabSize: 4, insertSpaces: true } });
+      return TextDocument.applyEdits(TextDocument.create(params().textDocument.uri, "nwscript", 1, source), edits || []);
+    };
+    expect(await format()).to.include("Helper (");
+    settings = { formatter: { style: {} }, hovering: { addCommentsToFunctions: true } };
+    await client.rpc.sendNotification(DidChangeConfigurationNotification.type, { settings: {} });
+    let applied = false;
+    for (let attempt = 0; attempt < 50; attempt++) {
+      applied = content(await client.rpc.sendRequest(HoverRequest.type, params()))?.value.includes("Helper documentation") === true;
+      if (applied) break;
+      await new Promise<void>((resolve) => setTimeout(resolve, 20));
+    }
+    expect(applied).to.equal(true);
+    expect(await format()).to.include("Helper(");
     await client.shutdown();
   });
 

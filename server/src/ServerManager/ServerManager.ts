@@ -42,13 +42,15 @@ export default class ServerManger {
   private stopping = false;
   private started = false;
   private configurationRevision = 0;
+  private readonly initialConfiguration;
   private readonly workers = new Set<ChildProcess>();
   private readonly pendingClientRequests = new Set<() => void>();
 
   private diagnosticsProvider: DiagnosticsProvider | null = null;
 
   constructor(connection: Connection, params: InitializeParams) {
-    this.config = mergeConfiguration(this.config, params.initializationOptions);
+    this.initialConfiguration = mergeConfiguration(this.config, params.initializationOptions);
+    this.config = this.initialConfiguration;
     this.connection = connection;
     this.logger = new Logger(connection.console);
     this.capabilitiesHandler = new CapabilitiesHandler(params.capabilities);
@@ -271,9 +273,9 @@ export default class ServerManger {
     });
   }
 
-  private applyConfiguration(settings: unknown) {
+  private applyConfiguration(settings: unknown, fullResponse = false) {
     const previousCompiler = this.config.compiler;
-    this.config = mergeConfiguration(this.config, settings);
+    this.config = mergeConfiguration(this.config, settings, fullResponse ? this.initialConfiguration : undefined);
     // Before indexing completes, queued diagnostics will use the new settings.
     // Afterwards, retry open files even if the client never edits or saves them.
     if (this.configLoaded && !this.stopping && JSON.stringify(previousCompiler) !== JSON.stringify(this.config.compiler)) {
@@ -289,7 +291,7 @@ export default class ServerManger {
         const received = await this.connection.workspace.getConfiguration("nwscript-ee-lsp");
         // The timeout releases startup, but a late response is still useful.
         // A slower previous response must not overwrite a newer update.
-        if (!this.stopping && revision === this.configurationRevision) this.applyConfiguration(received);
+        if (!this.stopping && revision === this.configurationRevision) this.applyConfiguration(received, true);
       });
     }
   }

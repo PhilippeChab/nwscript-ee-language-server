@@ -43,9 +43,10 @@ asked for section `nwscript-ee-lsp`. Otherwise pass it in `initializationOptions
 and send subsequent updates as `workspace/didChangeConfiguration` with
 `settings: { "nwscript-ee-lsp": { ... } }`. Both a bare settings object and the
 section wrapper are accepted in initialization options. Configuration responses
-are merged over initialization options, then built-in defaults. Partial updates
-retain unspecified settings. Null or missing configuration retains current
-settings. Settings apply to the server process; projects requiring different
+are complete snapshots layered over initialization options and built-in defaults;
+settings omitted from a new response revert to that baseline, including custom
+formatter style keys. Pushed partial updates retain unspecified settings. Null or
+missing configuration responses retain current settings. Settings apply to the server process; projects requiring different
 compiler or formatter settings should launch separate instances.
 Unsupported configuration requests and dynamic registrations are
 avoided; clients without workspace-folder support use `rootUri` (or legacy

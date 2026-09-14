@@ -25,6 +25,22 @@ describe("Standalone configuration", () => {
     expect(defaultServerConfiguration.formatter.style.ColumnLimit).to.equal(250);
   });
 
+  it("resets omitted snapshot values while retaining initialization defaults and partial updates", () => {
+    const baseline = mergeConfiguration(defaultServerConfiguration, { compiler: { enabled: false }, formatter: { style: { ColumnLimit: 90 } } });
+    const configured = mergeConfiguration(baseline, { formatter: { style: { ColumnLimit: 80, SpaceBeforeParens: "Always" } } }, baseline);
+    const partial = mergeConfiguration(configured, { hovering: { addCommentsToFunctions: true } });
+    expect(partial.formatter.style).to.include({ ColumnLimit: 80, SpaceBeforeParens: "Always" });
+    const replaced = mergeConfiguration(partial, { formatter: { style: {} } }, baseline);
+    expect(replaced.formatter.style).not.to.have.property("SpaceBeforeParens");
+    expect(replaced.formatter.style.ColumnLimit).to.equal(90);
+    expect(replaced.compiler.enabled).to.equal(false);
+    expect(replaced.hovering.addCommentsToFunctions).to.equal(false);
+    expect(mergeConfiguration(configured, {}, baseline)).to.deep.equal(baseline);
+    for (const invalid of [null, undefined, [], { "nwscript-ee-lsp": null }]) {
+      expect(mergeConfiguration(configured, invalid, baseline)).to.deep.equal(configured);
+    }
+  });
+
   it("can reset an explicit compiler OS to automatic detection", () => {
     const initial = mergeConfiguration(defaultServerConfiguration, { compiler: { os: "Linux" } });
     expect(initial.compiler.os).to.equal("Linux");

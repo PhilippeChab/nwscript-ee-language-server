@@ -37,7 +37,9 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
 
   private overwriteDocument(document: Document) {
     if (!document.base) this.documentsByUri.set(document.uri, document);
-    this.overwrite(document.getKey(), document);
+    // Updating a duplicate's own contents must not change include selection.
+    const selected = this.get(document.getKey());
+    if (!selected || selected.uri === document.uri) this.overwrite(document.getKey(), document);
   }
 
   private initializeDocument(uri: string, base: boolean, globalScope: GlobalScopeTokenizationResult) {
@@ -93,12 +95,12 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
   }
 
   public updateDocument(document: TextDocument, tokenizer: Tokenizer, workespaceFilesSystem: WorkspaceFilesSystem) {
-    const currentChildren = this.getFromUri(document.uri)?.children;
     const globalScope = tokenizer.tokenizeContent(document.getText(), TokenizedScope.global);
-    const newChildren = globalScope.children.filter((child) => !currentChildren?.includes(child));
 
     this.overwriteDocument(this.initializeDocument(document.uri, false, globalScope));
-    this.createChildrenDocument(newChildren, tokenizer, workespaceFilesSystem);
+    // Already-declared includes may have failed indexing and since been repaired.
+    // createChildrenDocument skips includes that are already available.
+    this.createChildrenDocument(globalScope.children, tokenizer, workespaceFilesSystem);
   }
 
   public debug() {
