@@ -16,8 +16,10 @@
   },
   "scripts": {
     "postinstall": "patch-package",
+    "check-standard-lib": "ts-node scripts/GenerateLibDefinitions.ts --check",
     "generate-lib-defs": "ts-node scripts/GenerateLibDefinitions.ts",
-    "test": "node --no-experimental-strip-types ./node_modules/mocha/bin/mocha.js -r ts-node/register \"test/**/*.ts\""
+    "test": "node --no-experimental-strip-types ./node_modules/mocha/bin/mocha.js -r ts-node/register \"test/**/*.ts\"",
+    "update-standard-lib": "ts-node scripts/UpdateStandardLibrary.ts"
   },
   "dependencies": {
     "glob": "^8.0.1",
@@ -30,11 +32,13 @@
     "vscode-textmate": "^9.0.0"
   },
   "devDependencies": {
+    "@types/adm-zip": "^0.5.8",
     "@types/chai": "^4.3.3",
     "@types/glob": "^7.2.0",
     "@types/mocha": "^9.1.1",
     "@types/node": "^17.0.35",
     "@types/sax": "^1.2.4",
+    "adm-zip": "^0.6.1",
     "chai": "^4.3.6",
     "mocha": "^11.1.0",
     "ts-node": "^10.7.0"

@@ -2,7 +2,7 @@ import { join } from "path";
 import { LanguageClient, ServerOptions, TransportKind } from "vscode-languageclient/node";
 
 import type { LanguageClientOptions } from "vscode-languageclient/node";
-import { ExtensionContext } from "vscode";
+import { ExtensionContext, workspace } from "vscode";
 
 let client: LanguageClient;
 const serverConfig = (serverPath: string) => {
@@ -16,8 +16,13 @@ export function activate(context: ExtensionContext) {
     debug: { ...serverConfig(serverPath), options: { execArgv: ["--nolazy", "--inspect=6009"] } },
   };
 
+  const watcher = workspace.createFileSystemWatcher("**/*.[nN][sS][sS]");
+  context.subscriptions.push(watcher);
   const clientOptions: LanguageClientOptions = {
     documentSelector: [{ scheme: "file", language: "nwscript" }],
+    synchronize: {
+      fileEvents: watcher,
+    },
   };
 
   client = new LanguageClient("nwscript", "NWscript Language Server", serverOptions, clientOptions);

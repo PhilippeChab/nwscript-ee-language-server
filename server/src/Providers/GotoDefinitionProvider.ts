@@ -60,51 +60,58 @@ export default class GotoDefinitionProvider extends Provider {
 
     switch (tokenType) {
       case CompletionItemKind.Function:
-      case CompletionItemKind.Constant:
+      case CompletionItemKind.Constant: {
         token = localScope.functionsComplexTokens.find((candidate) => candidate.identifier === rawContent);
         if (token) break;
 
-        const localStandardLibDefinitions = this.server.documentsCollection.get("nwscript");
+        const localStandardLibDefinitions = this.server.standardLibrary.get(liveDocument.uri);
         tokensWithRef = document.getGlobalComplexTokensWithRef();
 
-        if (localStandardLibDefinitions) {
-          tokensWithRef.push({ owner: localStandardLibDefinitions?.uri, tokens: localStandardLibDefinitions?.complexTokens });
+        if (localStandardLibDefinitions.owner) {
+          tokensWithRef.push({ owner: localStandardLibDefinitions?.owner, tokens: localStandardLibDefinitions?.complexTokens });
         }
 
-        loop: for (let i = 0; i < tokensWithRef.length; i++) {
+        for (let i = 0; i < tokensWithRef.length; i++) {
           ref = tokensWithRef[i];
 
           token = ref?.tokens.find((candidate) => candidate.identifier === rawContent);
           if (token) {
-            break loop;
+            break;
           }
         }
         break;
-      case CompletionItemKind.Struct:
+      }
+      case CompletionItemKind.Struct: {
         tokensWithRef = document.getGlobalStructComplexTokensWithRef();
-        loop: for (let i = 0; i < tokensWithRef.length; i++) {
+        const structLibrary = this.server.standardLibrary.get(liveDocument.uri);
+        if (structLibrary.owner) tokensWithRef.push({ owner: structLibrary.owner, tokens: structLibrary.structComplexTokens });
+        for (let i = 0; i < tokensWithRef.length; i++) {
           ref = tokensWithRef[i];
 
           token = ref?.tokens.find((candidate) => candidate.identifier === rawContent);
           if (token) {
-            break loop;
+            break;
           }
         }
         break;
-      case CompletionItemKind.Property:
+      }
+      case CompletionItemKind.Property: {
         const structIdentifer = localScope.functionVariablesComplexTokens.find((candidate) => candidate.identifier === lookBehindRawContent)?.valueType;
 
         tokensWithRef = document.getGlobalStructComplexTokensWithRef();
-        loop: for (let i = 0; i < tokensWithRef.length; i++) {
+        const propertyLibrary = this.server.standardLibrary.get(liveDocument.uri);
+        if (propertyLibrary.owner) tokensWithRef.push({ owner: propertyLibrary.owner, tokens: propertyLibrary.structComplexTokens });
+        for (let i = 0; i < tokensWithRef.length; i++) {
           ref = tokensWithRef[i];
 
           token = (ref as OwnedStructComplexTokens).tokens.find((candidate) => candidate.identifier === structIdentifer)?.properties.find((property) => property.identifier === rawContent);
 
           if (token) {
-            break loop;
+            break;
           }
         }
         break;
+      }
       default:
         token = localScope.functionVariablesComplexTokens.find((candidate) => candidate.identifier === rawContent);
     }

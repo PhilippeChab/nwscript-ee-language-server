@@ -21,7 +21,13 @@ describe("Native compiler diagnostics", function () {
   let config: any;
   let errors: string[];
 
-  before(() => {
+  const requireDiagnostics = (uri: string) => {
+    const diagnostics = published.get(uri);
+    if (!diagnostics) throw new Error(`No diagnostics published for ${uri}`);
+    return diagnostics;
+  };
+
+  before(async () => {
     const bundle = join(__dirname, "..", "out", "diagnostics-provider-test.js");
     buildSync({
       entryPoints: [join(__dirname, "..", "src", "Providers", "DiagnosticsProvider.ts")],
@@ -29,7 +35,7 @@ describe("Native compiler diagnostics", function () {
       bundle: true,
       platform: "node",
     });
-    Provider = require(bundle).default;
+    Provider = (await import(bundle)).default;
   });
 
   beforeEach(() => {
@@ -59,6 +65,7 @@ describe("Native compiler diagnostics", function () {
         getFromUri: (uri: string) => [...documents.values()].find((doc) => doc.uri === uri),
         get: (name: string) => documents.get(name),
       },
+      standardLibrary: { getPath: () => join(workspace, "ovr", "nwscript.nss") },
       workspaceFilesSystem: {
         getWorkspaceRootPath: () => workspace,
         getFilePath: (name: string) => (name === "nwscript" ? join(workspace, "ovr", "nwscript.nss") : null),
@@ -97,7 +104,7 @@ describe("Native compiler diagnostics", function () {
   it("checks semantic errors inside helpers and clears diagnostics after fixing them", async () => {
     const helper = script("helper.nss", 'void foo(int a) {}\nvoid bar() { foo("bad"); }');
     await publish(helper.uri);
-    const diagnostics = published.get(helper.uri)!;
+    const diagnostics = requireDiagnostics(helper.uri);
     expect(diagnostics).to.have.lengthOf(1);
     expect(diagnostics[0].message).to.include("DECLARATION DOES NOT MATCH PARAMETERS");
     expect(diagnostics[0].range.start.line).to.equal(1);
@@ -112,7 +119,7 @@ describe("Native compiler diagnostics", function () {
     const main = script("scripts/main.nss", '#include "helper"\nvoid main() { int x = helper(); }', ["helper", "leaf"]);
     await publish(main.uri);
     expect(published.get(leaf.uri)).to.have.lengthOf(1);
-    expect(published.get(leaf.uri)![0].message).to.include("RETURN TYPE AND FUNCTION TYPE");
+    expect(requireDiagnostics(leaf.uri)[0].message).to.include("RETURN TYPE AND FUNCTION TYPE");
     expect(published.get(main.uri)).to.deep.equal([]);
     writeFileSync(leaf.path, "int leaf() { return 1; }");
     await publish(main.uri);
@@ -125,7 +132,7 @@ describe("Native compiler diagnostics", function () {
     const main = script("main.nss", '#include "missing"\nvoid main() {}');
     await publish(main.uri);
     expect(published.get(main.uri)).to.have.lengthOf(1);
-    expect(published.get(main.uri)![0].message).to.include("FILE NOT FOUND");
+    expect(requireDiagnostics(main.uri)[0].message).to.include("FILE NOT FOUND");
   });
 
   it("validates a conditional script whose include defines main", async () => {
@@ -140,7 +147,7 @@ describe("Native compiler diagnostics", function () {
     const main = script("main.nss", '#include "stock_lib"\nvoid main() { int x = helper(); }');
     await publish(main.uri);
     expect(published.get(main.uri)).to.have.lengthOf(1);
-    expect(published.get(main.uri)![0].message).to.include("stock_lib.nss");
+    expect(requireDiagnostics(main.uri)[0].message).to.include("stock_lib.nss");
   });
 
   it("clears an existing error when the saved document becomes empty", async () => {

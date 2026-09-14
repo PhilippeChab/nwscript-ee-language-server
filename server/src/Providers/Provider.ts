@@ -3,14 +3,12 @@ import type { ServerManager } from "../ServerManager";
 export default class Provider {
   constructor(protected readonly server: ServerManager) {}
 
-  protected getStandardLibComplexTokens() {
-    const documentCollection = this.server.documentsCollection;
+  protected getStandardLibComplexTokens(uri: string) {
+    return this.server.standardLibrary.get(uri).complexTokens;
+  }
 
-    if (documentCollection) {
-      return documentCollection.standardLibComplexTokens;
-    }
-
-    return [];
+  protected getStandardLibStructTokens(uri: string) {
+    return this.server.standardLibrary.get(uri).structComplexTokens;
   }
 
   protected exceptionsWrapper<N>(cb: () => N): N | undefined;
@@ -25,9 +23,8 @@ export default class Provider {
       // Uncomment this when deving
       // this.server.logger.error(e.message);
       // this.server.logger.error(e.stack);
-    } finally {
-      return result || defaultResult;
     }
+    return result || defaultResult;
   }
 
   protected async asyncExceptionsWrapper<N>(cb: () => Promise<N>): Promise<N | undefined>;
@@ -42,9 +39,8 @@ export default class Provider {
       // Uncomment this when deving
       // this.server.logger.error(e.message);
       // this.server.logger.error(e.stack);
-    } finally {
-      return result || defaultResult;
     }
+    return result || defaultResult;
   }
 
   public static register(server: ServerManager) {

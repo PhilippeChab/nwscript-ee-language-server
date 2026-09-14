@@ -2,6 +2,11 @@
 
 All notable changes to the "nwscript-ee-language-server" extension will be documented in this file.
 
+## [Unreleased]
+
+- Use a workspace `nwscript.nss` consistently for editor definitions and compiler source selection, with live updates, deterministic per-folder selection, and bundled fallback.
+- Add a TypeScript updater that checks the latest Beamdog release and automatically updates bundled NWScript definitions, the recorded version, and verified checksums.
+
 ## [2.3.2] Experimental pre-release
 
 - Change the language server license to GPL-3.0-only.

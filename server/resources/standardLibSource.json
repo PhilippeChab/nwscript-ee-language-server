@@ -1,0 +1,9 @@
+{
+  "version": "89.8193.37-17",
+  "releaseNotesUrl": "https://nwn.beamdog.net/docs/CHANGELOG.md",
+  "archiveUrl": "https://nwn.beamdog.net/downloads/nwnee-dedicated-8193.37-17.zip",
+  "archiveSha256": "e46444749cbd1f8238802b8c6d603ba8ed9252e6f1f835f2b5bd4933db6b96f3",
+  "keyPath": "data/nwn_base.key",
+  "resourceName": "nwscript",
+  "sourceSha256": "c14098d0181f921618622f379ff5cb682b8656d5293f218392531eef7a8478ad"
+}

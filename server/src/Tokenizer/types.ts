@@ -41,10 +41,4 @@ export type FunctionParamComplexToken = BaseComplexToken<LanguageFunctionParam>;
 export type StructComplexToken = BaseComplexToken<LanguageStruct>;
 export type StructPropertyComplexToken = BaseComplexToken<LanguageStructProperty>;
 
-export type ComplexToken =
-  | ConstantComplexToken
-  | VariableComplexToken
-  | FunctionParamComplexToken
-  | FunctionComplexToken
-  | StructComplexToken
-  | StructPropertyComplexToken;
+export type ComplexToken = ConstantComplexToken | VariableComplexToken | FunctionParamComplexToken | FunctionComplexToken | StructComplexToken | StructPropertyComplexToken;

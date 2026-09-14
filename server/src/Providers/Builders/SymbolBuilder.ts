@@ -1,14 +1,6 @@
 import { DocumentSymbol, SymbolKind } from "vscode-languageserver";
 
-import type {
-  ComplexToken,
-  ConstantComplexToken,
-  FunctionComplexToken,
-  FunctionParamComplexToken,
-  StructComplexToken,
-  StructPropertyComplexToken,
-  VariableComplexToken,
-} from "../../Tokenizer/types";
+import type { ComplexToken, ConstantComplexToken, FunctionComplexToken, FunctionParamComplexToken, StructComplexToken, StructPropertyComplexToken, VariableComplexToken } from "../../Tokenizer/types";
 import Builder from "./Builder";
 
 export default class SymbolBuilder extends Builder {
@@ -31,33 +23,15 @@ export default class SymbolBuilder extends Builder {
   }
 
   private static buildConstantItem(token: ConstantComplexToken) {
-    return DocumentSymbol.create(
-      token.identifier,
-      undefined,
-      SymbolKind.Constant,
-      { start: token.position, end: token.position },
-      { start: token.position, end: token.position },
-    );
+    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Constant, { start: token.position, end: token.position }, { start: token.position, end: token.position });
   }
 
   private static buildVariableItem(token: VariableComplexToken) {
-    return DocumentSymbol.create(
-      token.identifier,
-      undefined,
-      SymbolKind.Variable,
-      { start: token.position, end: token.position },
-      { start: token.position, end: token.position },
-    );
+    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Variable, { start: token.position, end: token.position }, { start: token.position, end: token.position });
   }
 
   private static buildFunctionParamItem(token: FunctionParamComplexToken) {
-    return DocumentSymbol.create(
-      token.identifier,
-      undefined,
-      SymbolKind.TypeParameter,
-      { start: token.position, end: token.position },
-      { start: token.position, end: token.position },
-    );
+    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.TypeParameter, { start: token.position, end: token.position }, { start: token.position, end: token.position });
   }
 
   private static buildFunctionItem(token: FunctionComplexToken) {
@@ -75,25 +49,12 @@ export default class SymbolBuilder extends Builder {
   }
 
   private static buildStructPropertyItem(token: StructPropertyComplexToken) {
-    return DocumentSymbol.create(
-      token.identifier,
-      undefined,
-      SymbolKind.Property,
-      { start: token.position, end: token.position },
-      { start: token.position, end: token.position },
-    );
+    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Property, { start: token.position, end: token.position }, { start: token.position, end: token.position });
   }
 
   private static buildStructItem(token: StructComplexToken) {
     const symbols = token.properties?.map((child) => SymbolBuilder.buildItem(child));
 
-    return DocumentSymbol.create(
-      token.identifier,
-      undefined,
-      SymbolKind.Struct,
-      { start: token.position, end: token.position },
-      { start: token.position, end: token.position },
-      symbols,
-    );
+    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Struct, { start: token.position, end: token.position }, { start: token.position, end: token.position }, symbols);
   }
 }
