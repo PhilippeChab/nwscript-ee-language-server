@@ -207,6 +207,68 @@ describe("Workspace standard library", function () {
     expect(library.get(document.uri).owner).to.equal(uri(join(root, "nwscript.nss")));
   });
 
+  it("shares one parse per live version between the selected API and document index", () => {
+    const spec = join(root, "nwscript.nss");
+    write(spec, source);
+    const editor = editorServer();
+    const document = TextDocument.create(uri(spec), "nwscript", 1, source);
+    const tokenize = tokenizer.tokenizeContent.bind(tokenizer);
+    let parses = 0;
+    tokenizer.tokenizeContent = (...args: any[]) => {
+      parses++;
+      return tokenize(...args);
+    };
+    try {
+      editor.open(document);
+      expect(parses).to.equal(1);
+      expect(library.get(document.uri).complexTokens).to.equal(editor.server.documentsCollection.getFromUri(document.uri).complexTokens);
+      editor.handlers.change({ document });
+      expect(parses).to.equal(1);
+      TextDocument.update(document, [{ text: "float ChangedFn();\n" }], 2);
+      editor.handlers.change({ document });
+      expect(parses).to.equal(2);
+      expect(library.get(document.uri).complexTokens).to.equal(editor.server.documentsCollection.getFromUri(document.uri).complexTokens);
+      expect(library.get(document.uri).complexTokens[0].identifier).to.equal("ChangedFn");
+    } finally {
+      tokenizer.tokenizeContent = tokenize;
+    }
+  });
+
+  it("shares failed parses while retaining distinct API and document fallback rules", () => {
+    const spec = join(root, "nwscript.nss");
+    write(spec, source);
+    const editor = editorServer();
+    const document = TextDocument.create(uri(spec), "nwscript", 1, source);
+    editor.open(document);
+    const initial = library.get(document.uri);
+    const tokenize = tokenizer.tokenizeContent.bind(tokenizer);
+    let parses = 0;
+    tokenizer.tokenizeContent = (...args: any[]) => {
+      parses++;
+      return tokenize(...args);
+    };
+    try {
+      TextDocument.update(document, [{ text: "int Broken(" }], 2);
+      editor.handlers.change({ document });
+      expect(parses).to.equal(1);
+      expect(library.get(document.uri)).to.equal(initial);
+      expect(editor.server.documentsCollection.getFromUri(document.uri).complexTokens).to.equal(initial.complexTokens);
+      editor.handlers.change({ document });
+      expect(parses).to.equal(1);
+      TextDocument.update(document, [{ text: "" }], 3);
+      editor.handlers.change({ document });
+      expect(parses).to.equal(2);
+      expect(library.get(document.uri)).to.equal(initial);
+      expect(editor.server.documentsCollection.getFromUri(document.uri).complexTokens).to.deep.equal([]);
+      TextDocument.update(document, [{ text: "int Recovered();\n" }], 4);
+      editor.handlers.change({ document });
+      expect(parses).to.equal(3);
+      expect(library.get(document.uri).complexTokens[0].identifier).to.equal("Recovered");
+    } finally {
+      tokenizer.tokenizeContent = tokenize;
+    }
+  });
+
   it("refreshes unsaved changes, retains usable definitions for incomplete edits, and restores disk on close", () => {
     const spec = join(root, "nwscript.nss");
     write(spec, source);

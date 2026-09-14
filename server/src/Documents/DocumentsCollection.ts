@@ -16,7 +16,6 @@ export const STATIC_PREFIX = "static";
 export default class DocumentsCollection extends Dictionnary<string, Document> {
   // Requests identify an exact document; basename lookup is only for includes.
   private readonly documentsByUri = new Map<string, Document>();
-  private readonly liveScopes = new WeakMap<TextDocument, { version: number; scope: GlobalScopeTokenizationResult }>();
   private importChildren = new WeakMap<Document, Set<string>>();
 
   constructor() {
@@ -46,7 +45,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     if (!selected || selected.uri === document.uri) this.overwrite(document.getKey(), document);
   }
 
-  private initializeDocument(uri: string, base: boolean, globalScope: GlobalScopeTokenizationResult) {
+  public initializeDocument(uri: string, base: boolean, globalScope: GlobalScopeTokenizationResult) {
     // nwscript is implicit and selected per requesting workspace, even when an
     // include explicitly names it. Never resolve it through the basename index.
     return new Document(
@@ -136,9 +135,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
   public updateDocument(document: TextDocument, tokenizer: Tokenizer, workespaceFilesSystem: WorkspaceFilesSystem) {
     // willSave and didSave can describe the same document version. Reuse its
     // tokens, but still retry missing includes that may have appeared on disk.
-    const cached = this.liveScopes.get(document);
-    const globalScope = cached?.version === document.version ? cached.scope : tokenizer.tokenizeContent(document.getText(), TokenizedScope.global);
-    this.liveScopes.set(document, { version: document.version, scope: globalScope });
+    const globalScope = tokenizer.tokenizeDocumentGlobalScope(document);
 
     this.overwriteDocument(this.initializeDocument(document.uri, false, globalScope));
     // Already-declared includes may have failed indexing and since been repaired.

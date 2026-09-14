@@ -2,7 +2,7 @@ import { join } from "path";
 import { readFileSync } from "fs";
 
 import type { IGrammar } from "vscode-textmate";
-import type { Position } from "vscode-languageserver-textdocument";
+import type { Position, TextDocument } from "vscode-languageserver-textdocument";
 import { Registry, INITIAL, parseRawGrammar, IToken } from "vscode-textmate";
 import { CompletionItemKind, Range } from "vscode-languageserver";
 
@@ -38,6 +38,7 @@ export type AutoImportContext = {
 // Ideally we would use an AST tree
 // See the Notes section of the README for the explications
 export default class Tokenizer {
+  private readonly documentScopes = new WeakMap<TextDocument, { version: number; scope: GlobalScopeTokenizationResult } | { version: number; error: Error }>();
   private readonly registry: Registry;
   private grammar: IGrammar | null = null;
   private readonly localScopeCache: (IToken[] | undefined)[] | null = null;
@@ -89,11 +90,21 @@ export default class Tokenizer {
     return line.slice(opening.endIndex, closing.startIndex) || undefined;
   }
 
-  public getIncludesFromRaw(lines: string[], tokensArrays: (IToken[] | undefined)[]) {
-    return lines.flatMap((line, index) => {
-      const name = this.getIncludeName(line, tokensArrays[index] || []);
-      return name ? [name] : [];
-    });
+  public tokenizeDocumentGlobalScope(document: TextDocument): GlobalScopeTokenizationResult {
+    const cached = this.documentScopes.get(document);
+    if (cached?.version === document.version) {
+      if ("error" in cached) throw cached.error;
+      return cached.scope;
+    }
+    try {
+      const scope = this.tokenizeContent(document.getText(), TokenizedScope.global);
+      this.documentScopes.set(document, { version: document.version, scope });
+      return scope;
+    } catch (error) {
+      const failure = error instanceof Error ? error : new Error(String(error));
+      this.documentScopes.set(document, { version: document.version, error: failure });
+      throw failure;
+    }
   }
 
   public getAutoImportContextFromRaw(lines: string[], tokensArrays: (IToken[] | undefined)[], position: Position): AutoImportContext | undefined {

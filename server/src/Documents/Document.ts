@@ -2,7 +2,6 @@ import { STATIC_PREFIX } from "./DocumentsCollection";
 
 import type { ComplexToken, StructComplexToken } from "../Tokenizer/types";
 import type DocumentsCollection from "./DocumentsCollection";
-import type { GlobalScopeTokenizationResult } from "../Tokenizer/Tokenizer";
 
 export type OwnedComplexTokens = { owner?: string; tokens: ComplexToken[] };
 export type OwnedStructComplexTokens = { owner?: string; tokens: StructComplexToken[] };
@@ -25,18 +24,6 @@ export default class Document {
   public getIncludeName() {
     const key = this.getKey();
     return this.base ? key.slice(STATIC_PREFIX.length + 1) : key;
-  }
-
-  public withGlobalScope(scope: GlobalScopeTokenizationResult) {
-    return new Document(
-      this.uri,
-      this.base,
-      scope.children.filter((child) => child.toLowerCase() !== "nwscript"),
-      scope.complexTokens,
-      scope.structComplexTokens,
-      this.collection,
-      scope.entryPoints,
-    );
   }
 
   public getChildren(computedChildren: string[] = []): string[] {

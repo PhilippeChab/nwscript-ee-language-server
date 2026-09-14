@@ -224,7 +224,7 @@ describe("Auto-import completion", function () {
   it("recognizes includes by grammar scopes in both indexing and live completion", () => {
     const source = '# include "helper" /* tail */\n// #include "fake"\n/*\n#include "also_fake"\n*/\n#include "unfinished\n';
     const [lines, tokens] = tokenizer.tokenizeContentToRaw(source);
-    expect(tokenizer.getIncludesFromRaw(lines, tokens)).to.deep.equal(["helper"]);
+    expect(tokenizer.tokenizeGlobalScopeFromRaw(lines, tokens).children).to.deep.equal(["helper"]);
     expect(tokenizer.tokenizeContent(source, "global").children).to.deep.equal(["helper"]);
   });
 

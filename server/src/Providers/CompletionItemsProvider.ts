@@ -32,7 +32,7 @@ export default class CompletionItemsProvider extends Provider {
       if (!liveDocument || !indexedDocument) return;
 
       const [lines, rawTokenizedContent] = this.server.tokenizer.tokenizeContentToRaw(liveDocument.getText());
-      const document = indexedDocument.withGlobalScope(this.server.tokenizer.tokenizeGlobalScopeFromRaw(lines, rawTokenizedContent));
+      const document = this.server.documentsCollection.initializeDocument(uri, false, this.server.tokenizer.tokenizeGlobalScopeFromRaw(lines, rawTokenizedContent));
       const localScope = this.server.tokenizer.tokenizeContentFromRaw(lines, rawTokenizedContent, 0, position.line);
       const autoImportContext = this.server.config.completion.autoImport ? this.server.tokenizer.getAutoImportContextFromRaw(lines, rawTokenizedContent, position) : undefined;
 
