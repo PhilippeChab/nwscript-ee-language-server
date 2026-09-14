@@ -190,6 +190,10 @@ export default class ServerManger {
 
   public refreshStandardLibrary() {
     this.standardLibrary.invalidate();
+    this.revalidateOpenDocuments();
+  }
+
+  private revalidateOpenDocuments() {
     for (const document of this.liveDocumentsManager.all()) {
       if (!isStandardLibrary(document.uri)) {
         void this.diagnosticsProvider?.publish(document.uri).catch((error: Error) => this.logger.error(error.message));
@@ -267,15 +271,25 @@ export default class ServerManger {
     });
   }
 
+  private applyConfiguration(settings: unknown) {
+    const previousCompiler = this.config.compiler;
+    this.config = mergeConfiguration(this.config, settings);
+    // Before indexing completes, queued diagnostics will use the new settings.
+    // Afterwards, retry open files even if the client never edits or saves them.
+    if (this.configLoaded && !this.stopping && JSON.stringify(previousCompiler) !== JSON.stringify(this.config.compiler)) {
+      this.revalidateOpenDocuments();
+    }
+  }
+
   private async loadConfig(settings?: unknown) {
     const revision = ++this.configurationRevision;
-    this.config = mergeConfiguration(this.config, settings);
+    this.applyConfiguration(settings);
     if (this.capabilitiesHandler.getSupportsWorkspaceConfiguration()) {
       await this.optionalClientRequest("workspace/configuration", async () => {
         const received = await this.connection.workspace.getConfiguration("nwscript-ee-lsp");
         // The timeout releases startup, but a late response is still useful.
         // A slower previous response must not overwrite a newer update.
-        if (!this.stopping && revision === this.configurationRevision) this.config = mergeConfiguration(this.config, received);
+        if (!this.stopping && revision === this.configurationRevision) this.applyConfiguration(received);
       });
     }
   }

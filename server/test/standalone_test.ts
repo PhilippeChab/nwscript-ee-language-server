@@ -251,6 +251,34 @@ describe("Installed standalone LSP server", function () {
     await client.shutdown();
   });
 
+  it("revalidates open documents when valid compiler paths arrive after the startup timeout", async () => {
+    mkdirSync(join(workspace, "lang/en"), { recursive: true });
+    mkdirSync(join(workspace, "ovr"));
+    writeFileSync(join(workspace, "databuild.txt"), "test\n");
+    writeFileSync(join(workspace, "ovr/nwscript.nss"), "int IntFn(int n);\n");
+    let release: ((settings: unknown) => void) | undefined;
+    const client = await start({
+      initializationOptions: { compiler: { enabled: true, nwnHome: join(workspace, "missing"), nwnInstallation: join(workspace, "missing") } },
+      capabilities: { workspace: { configuration: true } },
+      configuration: async () =>
+        await new Promise<unknown>((resolve) => {
+          release = resolve;
+        }),
+    });
+    await open(client);
+    await client.ready();
+    expect(client.logs.some((log) => log.includes("timed out"))).to.equal(true);
+    await client.waitFor(() => client.logs.some((log) => log.includes("Previous diagnostics have been retained")));
+    expect(client.diagnostics).to.have.length(0);
+    release?.({ compiler: { nwnHome: workspace, nwnInstallation: workspace } });
+    // No edit, save, or reopen: applying the late settings must trigger validation.
+    await client.waitFor(
+      () => client.diagnostics.some((item) => item.uri === params().textDocument.uri && item.diagnostics.some((diagnostic) => diagnostic.message.includes("DECLARATION DOES NOT MATCH PARAMETERS"))),
+      3000,
+    );
+    await client.shutdown();
+  });
+
   it("indexes comma-containing paths and continues past individual file failures", async () => {
     const directory = join(workspace, "comma, directory");
     mkdirSync(directory);
