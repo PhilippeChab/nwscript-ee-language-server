@@ -72,6 +72,23 @@ describe("Auto-import completion", function () {
     expect(items.find((item) => item.label === "IMPORTED_VALUE")?.additionalTextEdits).to.have.length(1);
   });
 
+  for (const enabled of [true, false]) {
+    for (const unfinished of ["void Unfinished(", "void Unfinished(\n int value,\n"]) {
+      it(`preserves completions before an unfinished declaration with autoImport=${String(enabled)}: ${JSON.stringify(unfinished)}`, () => {
+        const valid = "const int IMPORTED_VALUE = 2;\nvoid Existing();\nvoid main()\n{\n int localValue;\n |\n}\n";
+        const { items } = complete(valid + unfinished, {}, enabled, valid.replace("|", ""));
+        for (const name of ["Existing", "localValue", "IMPORTED_VALUE"]) {
+          expect(
+            items.some((item) => item.label === name),
+            name,
+          ).to.equal(true);
+          expect(items.find((item) => item.label === name)).not.to.have.property("additionalTextEdits");
+        }
+        expect(items.some((item) => item.label === "Imported" && item.additionalTextEdits)).to.equal(enabled);
+      });
+    }
+  }
+
   it("preserves CRLF and appends after existing includes", () => {
     const { items, live } = complete('#include "other" // comment\r\n\r\nvoid main()\r\n{\r\n Imp|\r\n}\r\n');
     const edits = items.find((item) => item.label === "Imported")?.additionalTextEdits || [];

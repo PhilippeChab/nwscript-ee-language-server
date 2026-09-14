@@ -463,6 +463,29 @@ describe("Installed standalone LSP server", function () {
     await nullClient.shutdown();
   });
 
+  for (const autoImport of [true, false]) {
+    it(`completes earlier code while a trailing declaration is unfinished (autoImport=${String(autoImport)})`, async () => {
+      const client = await start({ initializationOptions: { compiler: { enabled: false }, completion: { autoImport } } });
+      await client.ready();
+      await open(client);
+      for (const [index, suffix] of ["void Unfinished(", "void Unfinished(\n int value,\n", "void Unfinished();"].entries()) {
+        await client.rpc.sendNotification(DidChangeTextDocumentNotification.type, {
+          textDocument: { ...params().textDocument, version: index + 2 },
+          contentChanges: [{ text: source + suffix }],
+        });
+        const response = await client.rpc.sendRequest(CompletionRequest.type, params());
+        expect(response, suffix).not.to.equal(null);
+        const items = Array.isArray(response) ? response : response?.items || [];
+        expect(
+          items.some((item) => item.label === "Helper"),
+          suffix,
+        ).to.equal(true);
+        expect(items.find((item) => item.label === "Helper")).not.to.have.property("additionalTextEdits");
+      }
+      await client.shutdown();
+    });
+  }
+
   it("indexes edits made between willSave and didSave instead of reusing an older version", async () => {
     const client = await start();
     await client.ready();

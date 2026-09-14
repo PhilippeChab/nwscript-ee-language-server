@@ -231,11 +231,14 @@ export default class Tokenizer {
     return comments;
   }
 
-  private isFunctionDeclaration(lineIndex: number, tokensArrays: (IToken[] | undefined)[]) {
+  private isFunctionDeclaration(lineIndex: number, tokensArrays: (IToken[] | undefined)[], allowIncomplete = false) {
     let isFunctionDeclaration = false;
     let isLastParamsLine = false;
 
     while (!isLastParamsLine) {
+      // An unfinished signature is neither a prototype nor an implementation.
+      // Completion keeps earlier declarations; strict indexing still fails.
+      if (allowIncomplete && lineIndex >= tokensArrays.length) return undefined;
       const tokensArray = this.requireTokens(tokensArrays, lineIndex);
       isLastParamsLine = Boolean(tokensArray.find((token) => token.scopes.includes(LanguageScopes.rightParametersRoundBracket)));
 
@@ -249,21 +252,21 @@ export default class Tokenizer {
     return isFunctionDeclaration;
   }
 
-  private isGlobalFunctionDeclaration(lineIndex: number, tokenIndex: number, token: IToken, tokensArrays: (IToken[] | undefined)[]) {
+  private isGlobalFunctionDeclaration(lineIndex: number, tokenIndex: number, token: IToken, tokensArrays: (IToken[] | undefined)[], allowIncomplete = false) {
     return (
       !(tokenIndex === 0 && lineIndex === 0) && // Not sure why we need this
       !token.scopes.includes(LanguageScopes.block) &&
       token.scopes.includes(LanguageScopes.functionIdentifier) &&
-      this.isFunctionDeclaration(lineIndex, tokensArrays)
+      this.isFunctionDeclaration(lineIndex, tokensArrays, allowIncomplete) === true
     );
   }
 
-  private isLocalFunctionDeclaration(lineIndex: number, tokenIndex: number, token: IToken, tokensArrays: (IToken[] | undefined)[]) {
+  private isLocalFunctionDeclaration(lineIndex: number, tokenIndex: number, token: IToken, tokensArrays: (IToken[] | undefined)[], allowIncomplete = false) {
     return (
       token.scopes.includes(LanguageScopes.functionIdentifier) &&
       !token.scopes.includes(LanguageScopes.block) &&
       !(tokenIndex === 0 && lineIndex === 0) && // Not sure why we need this
-      !this.isFunctionDeclaration(lineIndex, tokensArrays)
+      this.isFunctionDeclaration(lineIndex, tokensArrays, allowIncomplete) === false
     );
   }
 
@@ -287,7 +290,7 @@ export default class Tokenizer {
     );
   }
 
-  private tokenizeLinesForGlobalScope(lines: string[], tokensArrays: (IToken[] | undefined)[], startIndex: number = 0, stopIndex: number = -1) {
+  private tokenizeLinesForGlobalScope(lines: string[], tokensArrays: (IToken[] | undefined)[], startIndex: number = 0, stopIndex: number = -1, allowIncomplete = false) {
     const firstLineIndex = startIndex > lines.length || startIndex < 0 ? 0 : startIndex;
     const lastLineIndex = stopIndex + 10 > lines.length || stopIndex < 0 ? lines.length : stopIndex;
     const scope: GlobalScopeTokenizationResult = {
@@ -341,13 +344,13 @@ export default class Tokenizer {
           }
 
           const identifier = this.getRawTokenContent(line, token);
-          if ((identifier === "main" || identifier === "StartingConditional") && this.isLocalFunctionDeclaration(lineIndex, tokenIndex, token, tokensArrays)) {
+          if ((identifier === "main" || identifier === "StartingConditional") && this.isLocalFunctionDeclaration(lineIndex, tokenIndex, token, tokensArrays, allowIncomplete)) {
             if (!scope.entryPoints) scope.entryPoints = [];
             scope.entryPoints.push(identifier);
             break;
           }
 
-          if (this.isGlobalFunctionDeclaration(lineIndex, tokenIndex, token, tokensArrays)) {
+          if (this.isGlobalFunctionDeclaration(lineIndex, tokenIndex, token, tokensArrays, allowIncomplete)) {
             scope.complexTokens.push({
               position: { line: lineIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
@@ -489,7 +492,7 @@ export default class Tokenizer {
   }
 
   public tokenizeGlobalScopeFromRaw(lines: string[], rawTokenizedContent: (IToken[] | undefined)[]) {
-    return this.tokenizeLinesForGlobalScope(lines, rawTokenizedContent);
+    return this.tokenizeLinesForGlobalScope(lines, rawTokenizedContent, 0, -1, true);
   }
 
   public tokenizeContentToRaw(content: string): [lines: string[], rawTokenizedContent: (IToken[] | undefined)[]] {

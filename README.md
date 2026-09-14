@@ -9,7 +9,7 @@ NWScript: EE Language Server provides language features for NWScript through a V
 
 - Enhanced syntax highlighting
 - Completion
-- Auto-import completion for functions, constants, and struct types from indexed workspace scripts and bundled includes. Accepting a suggestion adds its `#include`; disable with `nwscript-ee-lsp.completion.autoImport`.
+- Auto-import
 - Hover information
 - Goto definition
 - Formatting
@@ -17,8 +17,6 @@ NWScript: EE Language Server provides language features for NWScript through a V
 - Signature help
 - Diagnostics
 - Document Symbols
-
-Auto-import suggestions match the typed prefix and show up to 200 results, with workspace symbols first. Keep typing to narrow the results.
 
 ## Dependencies
 
