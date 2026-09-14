@@ -57,6 +57,11 @@
         "nwscript-ee-lsp.completion": {
           "type": "object",
           "properties": {
+            "autoImport": {
+              "type": "boolean",
+              "default": true,
+              "description": "Suggest symbols from indexed scripts and add their #include when accepting a completion."
+            },
             "addParamsToFunctions": {
               "type": "boolean",
               "default": false,

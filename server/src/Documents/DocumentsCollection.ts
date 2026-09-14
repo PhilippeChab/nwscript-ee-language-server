@@ -82,6 +82,22 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     return this.documentsByUri.get(uri);
   }
 
+  public getImportableDocuments(document: Document) {
+    const included = new Set(document.getChildren());
+    const currentName = document.getIncludeName();
+    const candidates: Document[] = [];
+    this.forEach((candidate) => {
+      const name = candidate.getIncludeName();
+      if (name === currentName || name.toLowerCase() === "nwscript" || included.has(name)) return;
+      if (['"', "\r", "\n", "\\"].some((character) => name.includes(character))) return;
+      // Use the same workspace-over-bundled selection as include resolution.
+      if (candidate.base && this.get(name)) return;
+      if (candidate.getChildren().includes(currentName)) return;
+      candidates.push(candidate);
+    });
+    return candidates;
+  }
+
   public createDocument(uri: string, globalScope: GlobalScopeTokenizationResult) {
     const document = this.initializeDocument(uri, false, globalScope);
     if (isStandardLibrary(uri)) this.overwriteDocument(document);

@@ -4,7 +4,7 @@ import { readFileSync } from "fs";
 import type { IGrammar } from "vscode-textmate";
 import type { Position } from "vscode-languageserver-textdocument";
 import { Registry, INITIAL, parseRawGrammar, IToken } from "vscode-textmate";
-import { CompletionItemKind } from "vscode-languageserver";
+import { CompletionItemKind, Range } from "vscode-languageserver";
 
 import type { ComplexToken, FunctionComplexToken, FunctionParamComplexToken, StructComplexToken, VariableComplexToken } from "./types";
 import { LanguageTypes, LanguageScopes } from "./constants";
@@ -24,6 +24,12 @@ export type GlobalScopeTokenizationResult = {
 export type LocalScopeTokenizationResult = {
   functionsComplexTokens: FunctionComplexToken[];
   functionVariablesComplexTokens: (VariableComplexToken | FunctionParamComplexToken)[];
+};
+
+export type AutoImportContext = {
+  replacementRange: Range;
+  insertionPosition: Position;
+  structsOnly: boolean;
 };
 
 // Naive implementation
@@ -67,6 +73,64 @@ export default class Tokenizer {
 
   private getRawTokenContent(line: string, token: IToken) {
     return line.slice(token.startIndex, token.endIndex);
+  }
+
+  private isCommentToken(token: IToken) {
+    return token.scopes.some((scope) => scope.startsWith("comment."));
+  }
+
+  private getIncludeName(line: string, tokens: IToken[]) {
+    const includeTokens = tokens.filter((token) => token.scopes.includes(LanguageScopes.includeString) && !this.isCommentToken(token));
+    const opening = includeTokens.find((token) => token.scopes.includes(LanguageScopes.stringBegin));
+    const closing = includeTokens.find((token) => token.scopes.includes(LanguageScopes.stringEnd));
+    if (!opening || !closing) return;
+    return line.slice(opening.endIndex, closing.startIndex) || undefined;
+  }
+
+  public getIncludesFromRaw(lines: string[], tokensArrays: (IToken[] | undefined)[]) {
+    return lines.flatMap((line, index) => {
+      const name = this.getIncludeName(line, tokensArrays[index] || []);
+      return name ? [name] : [];
+    });
+  }
+
+  public getAutoImportContextFromRaw(lines: string[], tokensArrays: (IToken[] | undefined)[], position: Position): AutoImportContext | undefined {
+    const line = lines[position.line];
+    const tokens = tokensArrays[position.line];
+    if (line === undefined || !tokens) return;
+    // At a token boundary, completion applies to the text immediately to the left.
+    const character = Math.max(0, position.character - 1);
+    const token = tokens.find((candidate) => candidate.startIndex <= character && candidate.endIndex > character);
+    if (!token || this.isCommentToken(token) || token.scopes.some((scope) => scope.startsWith("string.")) || token.scopes.includes(LanguageScopes.includeDeclaration)) return;
+    const identifierScopes = [LanguageScopes.variableIdentifer, LanguageScopes.constantIdentifer, LanguageScopes.functionIdentifier, LanguageScopes.structIdentifier];
+    const isIdentifier = identifierScopes.some((scope) => token.scopes.includes(scope));
+    const replacementRange = isIdentifier ? Range.create(position.line, token.startIndex, position.line, Math.min(line.length, token.endIndex)) : Range.create(position, position);
+    const previous = tokens.filter((candidate) => candidate.endIndex <= replacementRange.start.character && this.getRawTokenContent(line, candidate).trim()).at(-1);
+    if (token.scopes.includes(LanguageScopes.structProperty) || token.scopes.includes(LanguageScopes.dotAccessStatement) || previous?.scopes.includes(LanguageScopes.dotAccessStatement)) return;
+
+    const insertionPosition = this.getIncludeInsertionPosition(lines, tokensArrays);
+    if (insertionPosition.line > replacementRange.start.line || (insertionPosition.line === replacementRange.start.line && insertionPosition.character > replacementRange.start.character)) return;
+    return {
+      replacementRange,
+      structsOnly: previous !== undefined && this.getRawTokenContent(line, previous) === LanguageTypes.struct,
+      insertionPosition,
+    };
+  }
+
+  private getIncludeInsertionPosition(lines: string[], tokensArrays: (IToken[] | undefined)[]): Position {
+    let headerEnd: Position = { line: 0, character: 0 };
+    for (let lineIndex = 0; lineIndex < lines.length; lineIndex++) {
+      const line = lines[lineIndex];
+      for (const token of tokensArrays[lineIndex] || []) {
+        if (!this.getRawTokenContent(line, token).trim()) continue;
+        if (!this.isCommentToken(token) && !token.scopes.includes(LanguageScopes.includeDeclaration)) {
+          // A closing block comment can share a line with the first declaration.
+          return headerEnd.line === lineIndex ? headerEnd : { line: lineIndex, character: 0 };
+        }
+        headerEnd = { line: lineIndex, character: Math.min(line.length, token.endIndex) };
+      }
+    }
+    return { line: lines.length - 1, character: lines[lines.length - 1].length };
   }
 
   private getTokenIndex(tokensArray: IToken[], targetToken: IToken) {
@@ -246,8 +310,8 @@ export default class Tokenizer {
           }
 
           if (token.scopes.includes(LanguageScopes.includeDeclaration)) {
-            const includeToken = tokensArray.at(-2);
-            if (includeToken) scope.children.push(this.getRawTokenContent(line, includeToken));
+            const name = this.getIncludeName(line, tokensArray);
+            if (name) scope.children.push(name);
             break;
           }
 

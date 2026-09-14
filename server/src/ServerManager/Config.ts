@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 const defaultServerConfiguration = {
   completion: {
+    autoImport: true,
     addParamsToFunctions: false,
   },
   hovering: {

@@ -20,6 +20,22 @@ export default class Document {
     return this.collection.getKey(this.uri, this.base);
   }
 
+  public getIncludeName() {
+    const key = this.getKey();
+    return this.base ? key.slice(STATIC_PREFIX.length + 1) : key;
+  }
+
+  public withChildren(children: string[]) {
+    return new Document(
+      this.uri,
+      this.base,
+      children.filter((child) => child.toLowerCase() !== "nwscript"),
+      this.complexTokens,
+      this.structComplexTokens,
+      this.collection,
+    );
+  }
+
   public getChildren(computedChildren: string[] = []): string[] {
     return this.children.concat(
       this.children.flatMap((child) => {
