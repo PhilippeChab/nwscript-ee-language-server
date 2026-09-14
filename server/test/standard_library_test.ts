@@ -87,7 +87,8 @@ describe("Workspace standard library", function () {
       api.Signature.register(server);
       api.Definition.register(server);
       const params = { textDocument: { uri: script.uri }, position: { line: include ? 3 : 2, character: 8 } };
-      const items = handlers.completion(params);
+      const completion = handlers.completion(params);
+      const items = completion.items || completion;
       expect(items.filter((item: any) => item.label === "CustomFn")).to.have.length(1);
       expect(items.some((item: any) => item.label === "GetObjectByTag")).to.equal(false);
       expect(items.find((item: any) => item.label === "CUSTOM_VALUE").detail).to.include("42");
@@ -179,7 +180,8 @@ describe("Workspace standard library", function () {
     opened.forEach((document, index) => {
       expect(editor.server.documentsCollection.getFromUri(document.uri).uri).to.equal(document.uri);
       const params = { textDocument: { uri: document.uri }, position: { line: 4, character: 8 } };
-      expect(editor.handlers.completion(params).some((item: any) => item.label === `OwnFn${index}`)).to.equal(true);
+      const completion = editor.handlers.completion(params);
+      expect((completion.items || completion).some((item: any) => item.label === `OwnFn${index}`)).to.equal(true);
       expect(editor.handlers.hover(params).contents.value).to.include(`int OwnFn${index}(int n)`);
       expect(editor.handlers.signature({ ...params, position: { line: 4, character: 11 } }).signatures[0].label).to.equal(`int OwnFn${index}(int n)`);
       expect(editor.handlers.definition(params).uri).to.equal(document.uri);

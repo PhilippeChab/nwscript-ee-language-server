@@ -39,17 +39,6 @@ export default class Document {
     );
   }
 
-  public getEntryPoints(computedChildren: string[] = []): string[] {
-    return this.entryPoints.concat(
-      this.children.flatMap((child) => {
-        if (computedChildren.includes(child)) return [];
-        computedChildren.push(child);
-        const childDocument = this.collection.get(child) || this.collection.get(`${STATIC_PREFIX}/${child}`);
-        return childDocument?.getEntryPoints(computedChildren) || [];
-      }),
-    );
-  }
-
   public getChildren(computedChildren: string[] = []): string[] {
     return this.children.concat(
       this.children.flatMap((child) => {

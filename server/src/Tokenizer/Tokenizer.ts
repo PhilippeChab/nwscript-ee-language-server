@@ -28,6 +28,7 @@ export type LocalScopeTokenizationResult = {
 };
 
 export type AutoImportContext = {
+  prefix: string;
   replacementRange: Range;
   insertionPosition: Position;
   structsOnly: boolean;
@@ -112,6 +113,7 @@ export default class Tokenizer {
     const insertionPosition = this.getIncludeInsertionPosition(lines, tokensArrays);
     if (insertionPosition.line > replacementRange.start.line || (insertionPosition.line === replacementRange.start.line && insertionPosition.character > replacementRange.start.character)) return;
     return {
+      prefix: line.slice(replacementRange.start.character, position.character),
       replacementRange,
       structsOnly: previous !== undefined && this.getRawTokenContent(line, previous) === LanguageTypes.struct,
       insertionPosition,

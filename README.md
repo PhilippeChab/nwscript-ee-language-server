@@ -18,6 +18,8 @@ NWScript: EE Language Server provides language features for NWScript through a V
 - Diagnostics
 - Document Symbols
 
+Auto-import suggestions match the typed prefix and show up to 200 results, with workspace symbols first. Keep typing to narrow the results.
+
 ## Dependencies
 
 ### Formatting

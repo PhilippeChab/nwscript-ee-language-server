@@ -55,8 +55,10 @@ describe("Auto-import completion", function () {
         onCompletionResolve: (fn: any) => (handlers.resolve = fn),
       },
     });
-    const items: CompletionItem[] = handlers.complete({ textDocument: { uri: live.uri }, position: live.positionAt(cursor) });
-    return { items, live, resolve: handlers.resolve };
+    const request = () => handlers.complete({ textDocument: { uri: live.uri }, position: live.positionAt(cursor) });
+    const response = request();
+    const items: CompletionItem[] = response.items || response;
+    return { items, live, resolve: handlers.resolve, response, request, collection };
   };
 
   it("adds an include after the header and preserves it during function resolution", () => {
@@ -176,12 +178,12 @@ describe("Auto-import completion", function () {
   });
 
   it("uses bundled includes and honors workspace overrides", () => {
-    const source = "void main()\n{\n Get|\n}";
+    const source = "void main()\n{\n ActionPsionic|\n}";
     const bundled = complete(source);
     expect(bundled.items.some((item) => item.detail?.includes('#include "inc_mf_combat"'))).to.equal(true);
-    const overridden = complete(source, { inc_mf_combat: "void WorkspaceHelper();\n" });
+    const overridden = complete(source, { inc_mf_combat: "void ActionPsionicWorkspaceHelper();\n" });
     const matching = overridden.items.filter((item) => item.detail?.includes('#include "inc_mf_combat"'));
-    expect(matching.map((item) => item.label)).to.deep.equal(["WorkspaceHelper"]);
+    expect(matching.map((item) => item.label)).to.deep.equal(["ActionPsionicWorkspaceHelper"]);
   });
 
   it("does not suggest imports from the current script or implicit nwscript", () => {
@@ -229,5 +231,46 @@ describe("Auto-import completion", function () {
   it("can be disabled", () => {
     const { items } = complete("void main()\n{\n Imp|\n}", {}, false);
     expect(items.some((item) => item.additionalTextEdits)).to.equal(false);
+  });
+
+  it("filters imports by prefix and asks clients to refresh as the prefix changes", () => {
+    const { items, response } = complete("void main()\n{\n imported_v|\n}\n");
+    expect(response.isIncomplete).to.equal(true);
+    expect(items.filter((item) => item.textEdit).map((item) => item.label)).to.deep.equal(["IMPORTED_VALUE"]);
+  });
+
+  it("bounds broad suggestion lists and finds later symbols as the prefix narrows", () => {
+    const scripts = { choices: Array.from({ length: 300 }, (_, index) => `void ImportedChoice${index}();`).join("\n") + "\n" };
+    const broad = complete("void main()\n{\n ImportedChoice|\n}\n", scripts);
+    expect(broad.items.filter((item) => item.textEdit)).to.have.length(200);
+    expect(broad.response.isIncomplete).to.equal(true);
+    const narrow = complete("void main()\n{\n ImportedChoice299|\n}\n", scripts);
+    expect(narrow.items.filter((item) => item.textEdit).map((item) => item.label)).to.deep.equal(["ImportedChoice299"]);
+  });
+
+  it("invalidates cached children when dependencies are added or updated", () => {
+    const fixture = complete("void main()\n{\n Imp|\n}\n", { helper: '#include "later"\nvoid Imported(int value);\n' });
+    const imports = () => fixture.request().items.filter((item: CompletionItem) => item.label === "Imported");
+    expect(imports()).to.have.length(1);
+    fixture.collection.createDocument("file:///workspace/later.nss", tokenizer.tokenizeContent("void main() {}\n", "global"));
+    expect(imports()).to.have.length(0);
+    fixture.collection.updateDocument(TextDocument.create("file:///workspace/later.nss", "nwscript", 2, "// Entry point removed\n"), tokenizer, { getFilePath: () => null });
+    expect(imports()).to.have.length(1);
+    fixture.collection.updateDocument(TextDocument.create("file:///workspace/later.nss", "nwscript", 3, '#include "current"\n'), tokenizer, { getFilePath: () => null });
+    expect(imports()).to.have.length(0);
+  });
+
+  it("reuses the existing child traversal on repeated completion requests", () => {
+    const fixture = complete("void main()\n{\n Imp|\n}\n", { helper: '#include "dependency"\nvoid Imported(int value);\n', dependency: "void Dependency();\n" });
+    const candidate = fixture.collection.get("helper");
+    const getChildren = candidate.getChildren.bind(candidate);
+    let traversals = 0;
+    candidate.getChildren = () => {
+      traversals++;
+      return getChildren();
+    };
+    fixture.request();
+    fixture.request();
+    expect(traversals).to.equal(0);
   });
 });

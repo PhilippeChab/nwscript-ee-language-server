@@ -17,6 +17,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
   // Requests identify an exact document; basename lookup is only for includes.
   private readonly documentsByUri = new Map<string, Document>();
   private readonly liveScopes = new WeakMap<TextDocument, { version: number; scope: GlobalScopeTokenizationResult }>();
+  private importChildren = new WeakMap<Document, Set<string>>();
 
   constructor() {
     super();
@@ -32,11 +33,13 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
   }
 
   private addDocument(document: Document) {
+    this.importChildren = new WeakMap();
     if (!document.base && !this.documentsByUri.has(document.uri)) this.documentsByUri.set(document.uri, document);
     this.add(document.getKey(), document);
   }
 
   private overwriteDocument(document: Document) {
+    this.importChildren = new WeakMap();
     if (!document.base) this.documentsByUri.set(document.uri, document);
     // Updating a duplicate's own contents must not change include selection.
     const selected = this.get(document.getKey());
@@ -83,9 +86,14 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     return this.documentsByUri.get(uri);
   }
 
-  public getImportableDocuments(document: Document) {
+  public getImportableDocuments(document: Document, matches: (candidate: Document) => boolean = () => true) {
     const included = new Set(document.getChildren());
-    const entryPoints = new Set(document.getEntryPoints());
+    const entryPoints = new Set(document.entryPoints);
+    for (const child of included) {
+      const dependency = this.get(child) || this.get(`${STATIC_PREFIX}/${child}`);
+      dependency?.entryPoints.forEach((entryPoint) => entryPoints.add(entryPoint));
+    }
+    const conflicts = (source: Document | undefined) => source?.entryPoints.some((entryPoint) => entryPoints.has(entryPoint));
     const currentName = document.getIncludeName();
     const candidates: Document[] = [];
     this.forEach((candidate) => {
@@ -94,12 +102,22 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       if (['"', "\r", "\n", "\\"].some((character) => name.includes(character))) return;
       // Use the same workspace-over-bundled selection as include resolution.
       if (candidate.base && this.get(name)) return;
-      if (candidate.getChildren().includes(currentName)) return;
+      // Match symbols before walking dependencies or constructing completion edits.
+      if (!matches(candidate)) return;
+      let children = this.importChildren.get(candidate);
+      if (!children) {
+        children = new Set(candidate.getChildren());
+        this.importChildren.set(candidate, children);
+      }
+      if (children.has(currentName) || conflicts(candidate)) return;
       // Already included dependencies do not add another implementation.
-      if (candidate.getEntryPoints([...included]).some((entryPoint) => entryPoints.has(entryPoint))) return;
+      for (const child of children) {
+        if (!included.has(child) && conflicts(this.get(child) || this.get(`${STATIC_PREFIX}/${child}`))) return;
+      }
       candidates.push(candidate);
     });
-    return candidates;
+    // Keep workspace symbols ahead of bundled symbols in bounded completion lists.
+    return candidates.sort((left, right) => Number(left.base) - Number(right.base));
   }
 
   public createDocument(uri: string, globalScope: GlobalScopeTokenizationResult) {

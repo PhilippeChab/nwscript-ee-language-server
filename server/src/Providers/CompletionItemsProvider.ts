@@ -1,13 +1,16 @@
-import { CompletionItem, CompletionParams } from "vscode-languageserver";
+import { CompletionItem, CompletionList, CompletionParams } from "vscode-languageserver";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
 import type { ServerManager } from "../ServerManager";
+import type { ComplexToken } from "../Tokenizer/types";
 import { CompletionItemBuilder } from "./Builders";
 import { AutoImportContext, LocalScopeTokenizationResult } from "../Tokenizer/Tokenizer";
 import { TriggerCharacters } from ".";
 import { Document } from "../Documents";
 import { LanguageTypes } from "../Tokenizer/constants";
 import Provider from "./Provider";
+
+const MAX_AUTO_IMPORT_ITEMS = 200;
 
 export default class CompletionItemsProvider extends Provider {
   constructor(server: ServerManager) {
@@ -51,7 +54,8 @@ export default class CompletionItemsProvider extends Provider {
           .getGlobalStructComplexTokens()
           .concat(this.getStandardLibStructTokens(uri))
           .map((token) => CompletionItemBuilder.buildItem(token));
-        return items.concat(this.getAutoImportCompletionItems(document, liveDocument, autoImportContext, items));
+        const completions = items.concat(this.getAutoImportCompletionItems(document, liveDocument, autoImportContext, items));
+        return autoImportContext ? CompletionList.create(completions, true) : completions;
       }
 
       const items = this.getGlobalScopeCompletionItems(document, localScope).concat(this.getLocalScopeCompletionItems(localScope)).concat(this.getStandardLibCompletionItems(uri));
@@ -61,7 +65,9 @@ export default class CompletionItemsProvider extends Provider {
         seen.add(item.label);
         return true;
       });
-      return visible.concat(this.getAutoImportCompletionItems(document, liveDocument, autoImportContext, visible));
+      const completions = visible.concat(this.getAutoImportCompletionItems(document, liveDocument, autoImportContext, visible));
+      // The client must request again when the typed prefix changes.
+      return autoImportContext ? CompletionList.create(completions, true) : completions;
     };
   }
 
@@ -88,17 +94,34 @@ export default class CompletionItemsProvider extends Provider {
   private getAutoImportCompletionItems(document: Document, liveDocument: TextDocument, context: AutoImportContext | undefined, visible: CompletionItem[]) {
     if (!context) return [];
     const visibleNames = new Set(visible.map((item) => item.label));
-    return this.server.documentsCollection.getImportableDocuments(document).flatMap((candidate) => {
-      const includeName = candidate.getIncludeName();
+    const prefix = context.prefix.toLowerCase();
+    const matchingTokens = new Map<Document, ComplexToken[]>();
+    const candidates = this.server.documentsCollection.getImportableDocuments(document, (candidate) => {
       const tokens = context.structsOnly ? candidate.structComplexTokens : candidate.complexTokens;
       const seen = new Set<string>();
-      return tokens
-        .filter((token) => {
-          if (visibleNames.has(token.identifier) || seen.has(token.identifier) || token.identifier === "main" || token.identifier === "StartingConditional") return false;
-          seen.add(token.identifier);
-          return true;
-        })
-        .map((token) => CompletionItemBuilder.buildAutoImportItem(token, includeName, liveDocument, context, this.server.config));
+      const matches = tokens.filter((token) => {
+        if (
+          !token.identifier.toLowerCase().startsWith(prefix) ||
+          visibleNames.has(token.identifier) ||
+          seen.has(token.identifier) ||
+          token.identifier === "main" ||
+          token.identifier === "StartingConditional"
+        ) {
+          return false;
+        }
+        seen.add(token.identifier);
+        return true;
+      });
+      matchingTokens.set(candidate, matches);
+      return matches.length > 0;
     });
+    const items: CompletionItem[] = [];
+    for (const candidate of candidates) {
+      for (const token of matchingTokens.get(candidate) || []) {
+        items.push(CompletionItemBuilder.buildAutoImportItem(token, candidate.getIncludeName(), liveDocument, context, this.server.config));
+        if (items.length === MAX_AUTO_IMPORT_ITEMS) return items;
+      }
+    }
+    return items;
   }
 }
