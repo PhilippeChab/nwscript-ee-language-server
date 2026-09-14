@@ -218,6 +218,39 @@ describe("Workspace standard library", function () {
     expect(library.get(target)).to.deep.equal(initial);
   });
 
+  for (const [changeEncoded, closeEncoded] of [
+    [true, false],
+    [false, true],
+    [true, true],
+  ]) {
+    it(`normalizes URI encoding for ${changeEncoded ? "encoded" : "literal"} changes and ${closeEncoded ? "encoded" : "literal"} cleanup`, () => {
+      // On Windows the drive separator supplies the colon; elsewhere use a
+      // legal colon-containing directory so the same test runs on every OS.
+      const directory = process.platform === "win32" ? root : join(root, "api:custom");
+      const spec = join(directory, "nwscript.nss");
+      write(spec, "int SavedFn();\n");
+      const canonical = uri(spec);
+      const encoded = canonical.slice(0, 7) + canonical.slice(7).replace(/:/g, "%3A");
+      expect(encoded).not.to.equal(canonical);
+      expect(library.get(encoded).complexTokens[0].identifier).to.equal("SavedFn");
+      const changeUri = changeEncoded ? encoded : canonical;
+      library.change(TextDocument.create(changeUri, "nwscript", 1, "int UnsavedFn();\n"));
+      for (const requestUri of [canonical, encoded]) {
+        expect(library.get(requestUri).complexTokens[0].identifier).to.equal("UnsavedFn");
+      }
+      library.change(TextDocument.create(changeUri, "nwscript", 2, "int Broken("));
+      expect(library.get(encoded).complexTokens[0].identifier).to.equal("UnsavedFn");
+      expect(errors).to.have.length(1);
+      library.close(closeEncoded ? encoded : canonical);
+      expect(library.get(canonical).complexTokens[0].identifier).to.equal("SavedFn");
+      // Closing must clear failed-content and diagnostic caches too, so the
+      // same incomplete text in a new editing session is handled afresh.
+      library.change(TextDocument.create(changeUri, "nwscript", 3, "int Broken("));
+      expect(library.get(encoded).complexTokens[0].identifier).to.equal("SavedFn");
+      expect(errors).to.have.length(2);
+    });
+  }
+
   it("handles creation, external changes, deletion, and an invalid initial file", () => {
     const spec = join(root, "nwscript.nss");
     const target = uri(join(root, "test.nss"));

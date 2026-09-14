@@ -28,18 +28,25 @@ export default class StandardLibrary {
     this.disk.clear();
   }
 
+  private uriKey(uri: string) {
+    // Clients can percent-encode characters (including Windows drive colons)
+    // that Node leaves literal. Decode to a path before serializing the key.
+    return pathToFileURL(fileURLToPath(uri)).href;
+  }
+
   public change(document: TextDocument) {
     if (!isStandardLibrary(document.uri)) return;
-    this.live.set(document.uri, document.getText());
+    this.live.set(this.uriKey(document.uri), document.getText());
     this.invalidate();
   }
 
   public close(uri: string) {
-    this.live.delete(uri);
+    const key = this.uriKey(uri);
+    this.live.delete(key);
     // Discard unsaved snapshots when reverting to disk, including failed reads.
-    this.snapshots.delete(uri);
-    this.failures.delete(uri);
-    this.attempted.delete(uri);
+    this.snapshots.delete(key);
+    this.failures.delete(key);
+    this.attempted.delete(key);
     this.invalidate();
   }
 
