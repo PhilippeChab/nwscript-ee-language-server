@@ -1,4 +1,4 @@
-import { ClientCapabilities, ServerCapabilities, TextDocumentSyncKind } from "vscode-languageserver";
+import { ClientCapabilities, ServerCapabilities, TextDocumentSyncKind, MarkupKind } from "vscode-languageserver";
 import { TriggerCharacters } from "../Providers";
 
 export default class CapabilitiesHandler {
@@ -45,6 +45,18 @@ export default class CapabilitiesHandler {
 
   public getSupportsWorkspaceFolders(): boolean {
     return (this.clientCapabilities.workspace && !!this.clientCapabilities.workspace.workspaceFolders) || false;
+  }
+
+  public getSupportsMarkdownHover(): boolean {
+    return this.clientCapabilities.textDocument?.hover?.contentFormat?.includes(MarkupKind.Markdown) === true;
+  }
+
+  public getSupportsHierarchicalSymbols(): boolean {
+    return this.clientCapabilities.textDocument?.documentSymbol?.hierarchicalDocumentSymbolSupport === true;
+  }
+
+  public getSupportsConfigurationRegistration(): boolean {
+    return this.clientCapabilities.workspace?.didChangeConfiguration?.dynamicRegistration === true;
   }
 
   public getSupportsWorkspaceConfiguration(): boolean {

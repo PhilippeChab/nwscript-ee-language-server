@@ -4,6 +4,8 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 
 ## [Unreleased]
 
+- Add a standalone, npm-installable language server for use with LSP-compatible editors.
+- Improve language-server startup, shutdown, and diagnostic delivery across editors.
 - Use a workspace `nwscript.nss` consistently for editor definitions and compiler source selection, with live updates, deterministic per-folder selection, and bundled fallback.
 - Add a TypeScript updater that checks the latest Beamdog release and automatically updates bundled NWScript definitions, the recorded version, and verified checksums.
 

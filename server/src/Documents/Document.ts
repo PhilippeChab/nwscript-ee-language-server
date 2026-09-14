@@ -128,20 +128,20 @@ export default class Document {
   }
 
   public debug() {
-    console.log("'''''''''''''''''''''");
-    console.log(this.getKey());
-    console.log("--------------------");
-    console.log("getChildren");
-    console.log(JSON.stringify(this.getChildren(), null, 2));
-    console.log("getGlobalComplexTokensWithRef");
-    console.log(JSON.stringify(this.getGlobalComplexTokensWithRef(), null, 2));
-    console.log("getGlobalComplexTokens");
-    console.log(JSON.stringify(this.getGlobalComplexTokens(), null, 2));
-    console.log("getGlobalStructComplexTokensWithRef");
-    console.log(JSON.stringify(this.getGlobalStructComplexTokensWithRef(), null, 2));
-    console.log("getGlobalStructComplexTokens");
-    console.log(JSON.stringify(this.getGlobalStructComplexTokens(), null, 2));
-    console.log("'''''''''''''''''''''");
-    console.log("");
+    console.error("'''''''''''''''''''''");
+    console.error(this.getKey());
+    console.error("--------------------");
+    console.error("getChildren");
+    console.error(JSON.stringify(this.getChildren(), null, 2));
+    console.error("getGlobalComplexTokensWithRef");
+    console.error(JSON.stringify(this.getGlobalComplexTokensWithRef(), null, 2));
+    console.error("getGlobalComplexTokens");
+    console.error(JSON.stringify(this.getGlobalComplexTokens(), null, 2));
+    console.error("getGlobalStructComplexTokensWithRef");
+    console.error(JSON.stringify(this.getGlobalStructComplexTokensWithRef(), null, 2));
+    console.error("getGlobalStructComplexTokens");
+    console.error(JSON.stringify(this.getGlobalStructComplexTokens(), null, 2));
+    console.error("'''''''''''''''''''''");
+    console.error("");
   }
 }

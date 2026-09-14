@@ -97,12 +97,16 @@ export default class ClangFormatter extends Formatter {
       child.stdout.on("data", (chunk: string) => (stdout += chunk));
       child.stderr.on("data", (chunk: string) => (stderr += chunk));
 
-      child.on("error", (e: any) => {
-        this.logger.error(e.message);
-        reject(e);
+      let spawnFailed = false;
+      child.on("error", (e: Error) => {
+        spawnFailed = true;
+        const error = new Error(`Cannot run clang-format at "${this.executable}". Install clang-format or set formatter.executable to its absolute path: ${e.message}`);
+        this.logger.error(error.message);
+        reject(error);
       });
 
       child.on("close", (code) => {
+        if (spawnFailed) return;
         if (code !== 0 || stderr.length !== 0) {
           this.logger.error(stderr);
           reject(new Error(stderr));

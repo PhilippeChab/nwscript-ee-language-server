@@ -1,7 +1,7 @@
 import { DidChangeConfigurationNotification, DidChangeConfigurationParams } from "vscode-languageserver";
 import { ServerManager } from "../ServerManager";
 
-type ConfigCallback = () => void;
+type ConfigCallback = (settings: unknown) => void;
 
 export default class ConfigurationProvider {
   constructor(private readonly server: ServerManager, private readonly configChangeCallback: ConfigCallback) {
@@ -9,12 +9,14 @@ export default class ConfigurationProvider {
   }
 
   private async registerCallback() {
-    await this.server.connection.client.register(DidChangeConfigurationNotification.type);
+    if (this.server.capabilitiesHandler.getSupportsConfigurationRegistration()) {
+      await this.server.optionalClientRequest("client/registerCapability", async () => await this.server.connection.client.register(DidChangeConfigurationNotification.type));
+    }
   }
 
   // This needs to be an arrow function to keep the context
-  private readonly handleDidChangeConfiguration = (_: DidChangeConfigurationParams) => {
-    this.configChangeCallback();
+  private readonly handleDidChangeConfiguration = (params: DidChangeConfigurationParams) => {
+    this.configChangeCallback(params.settings);
   };
 
   public static async register(server: ServerManager, configChangeCallback: ConfigCallback) {

@@ -27,5 +27,29 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Type Check
         run: yarn compile
-      - name: Run Tests Suite
+      - name: Install clang-format (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+      - name: Install clang-format (macOS)
+        if: runner.os == 'macOS'
+        run: command -v clang-format || brew install clang-format
+      - name: Locate clang-format (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          if (-not (Get-Command clang-format -ErrorAction SilentlyContinue)) {
+            if (-not (Test-Path 'C:\Program Files\LLVM\bin\clang-format.exe')) { choco install llvm -y --no-progress }
+            'C:\Program Files\LLVM\bin' >> $env:GITHUB_PATH
+          }
+      - name: Lint
+        run: yarn lint
+      - name: Run Tests Suite (including installed standalone server)
         run: yarn test
+      - name: Test Neovim client (Linux)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          curl --fail --location https://github.com/neovim/neovim/releases/download/v0.11.3/nvim-linux-x86_64.tar.gz -o "$RUNNER_TEMP/nvim.tar.gz"
+          tar -xzf "$RUNNER_TEMP/nvim.tar.gz" -C "$RUNNER_TEMP"
+          npm install --prefix "$RUNNER_TEMP/nwscript-client" --ignore-scripts --no-audit --no-fund ./dist/*.tgz
+          "$RUNNER_TEMP/nvim-linux-x86_64/bin/nvim" --headless -u NONE -l server/test/neovim.lua "$RUNNER_TEMP/nwscript-client/node_modules/nwscript-ee-language-server/bin/nwscript-ee-language-server.cjs"

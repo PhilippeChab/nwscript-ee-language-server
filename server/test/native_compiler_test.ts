@@ -113,6 +113,44 @@ describe("Native compiler diagnostics", function () {
     expect(published.get(helper.uri)).to.deep.equal([]);
   });
 
+  it("clears diagnostics when disabled and ignores an in-flight compiler result", async () => {
+    const helper = script("helper.nss", 'void foo(int a) {}\nvoid bar() { foo("bad"); }');
+    await publish(helper.uri);
+    expect(requireDiagnostics(helper.uri)).to.have.length(1);
+    const pending = provider.publish(helper.uri);
+    config.compiler = { ...config.compiler, enabled: false };
+    await publish(helper.uri);
+    await pending;
+    expect(requireDiagnostics(helper.uri)).to.deep.equal([]);
+  });
+
+  it("does not publish results compiled with superseded configuration", async () => {
+    const helper = script("helper.nss", 'void foo(int a) {}\nvoid bar() { foo("bad"); }');
+    const pending = provider.publish(helper.uri);
+    config.compiler = { ...config.compiler, nwnHome: join(workspace, "different-home") };
+    await pending;
+    expect(published.has(helper.uri)).to.equal(false);
+  });
+
+  it("does not restore stale diagnostics after an in-flight source is emptied", async () => {
+    const helper = script("helper.nss", 'void foo(int a) {}\nvoid bar() { foo("bad"); }');
+    const pending = provider.publish(helper.uri);
+    writeFileSync(helper.path, "");
+    await publish(helper.uri);
+    await pending;
+    expect(requireDiagnostics(helper.uri)).to.deep.equal([]);
+  });
+
+  it("clears diagnostics for unopened includes when the compiler is disabled", async () => {
+    const leaf = script("leaf.nss", 'int leaf() { return "wrong"; }');
+    const main = script("main.nss", '#include "leaf"\nvoid main() { int n = leaf(); }', ["leaf"]);
+    await publish(main.uri);
+    expect(requireDiagnostics(leaf.uri)).to.have.length(1);
+    config.compiler = { ...config.compiler, enabled: false };
+    provider.configurationChanged();
+    expect(requireDiagnostics(leaf.uri)).to.deep.equal([]);
+  });
+
   it("resolves transitive includes in separate directories and reports the owning file", async () => {
     const leaf = script("constants/leaf.nss", 'int leaf() { return "wrong"; }');
     script("libraries/helper.nss", '#include "leaf"\nint helper() { return leaf(); }', ["leaf"]);

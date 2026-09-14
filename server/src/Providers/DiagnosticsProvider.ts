@@ -1,11 +1,12 @@
 import { spawn } from "child_process";
 import { type, tmpdir } from "os";
-import { copyFileSync, mkdtempSync, rmSync, statSync } from "fs";
+import { copyFileSync, mkdtempSync, rmSync, statSync, readFileSync } from "fs";
 import { join, dirname, basename } from "path";
 import { fileURLToPath } from "url";
 import { Diagnostic, DiagnosticSeverity } from "vscode-languageserver";
 
 import Provider from "./Provider";
+import type { ServerConfiguration } from "../ServerManager/Config";
 import { isStandardLibrary } from "../Documents/StandardLibrary";
 
 const compilerDiagnostic = /(?:^|:\s)([^:\r\n]+?\.nss)(?:\((\d+)\))?:\s*(ERROR|WARNING):\s*(.*)/;
@@ -18,7 +19,25 @@ enum OS {
 
 type FilesDiagnostics = { [uri: string]: Diagnostic[] };
 export default class DiagnoticsProvider extends Provider {
-  private generateDiagnostics(uris: string[], files: FilesDiagnostics, severity: DiagnosticSeverity) {
+  private nextValidation = 0;
+  private readonly latestValidation = new Map<string, number>();
+  private readonly publishedUris = new Set<string>();
+
+  private sendDiagnostics(uri: string, diagnostics: Diagnostic[]) {
+    if (diagnostics.length) this.publishedUris.add(uri);
+    else this.publishedUris.delete(uri);
+    void this.server.connection.sendDiagnostics({ uri, diagnostics });
+  }
+
+  public configurationChanged() {
+    // Results from any previous configuration are no longer authoritative.
+    this.latestValidation.clear();
+    if (!this.server.config.compiler.enabled) {
+      for (const uri of this.publishedUris) this.sendDiagnostics(uri, []);
+    }
+  }
+
+  private generateDiagnostics(uris: string[], files: FilesDiagnostics, sources: Map<string, string[]>, severity: DiagnosticSeverity) {
     return (line: string) => {
       const match = compilerDiagnostic.exec(line);
       if (!match) return;
@@ -27,12 +46,13 @@ export default class DiagnoticsProvider extends Provider {
       const uri = matchingUri || uris[0];
 
       if (uri) {
-        const linePosition = matchingUri ? Math.max(0, Number(match[2] || 1) - 1) : 0;
+        const sourceLines = sources.get(uri) || [""];
+        const linePosition = matchingUri ? Math.min(sourceLines.length - 1, Math.max(0, Number(match[2] || 1) - 1)) : 0;
         const diagnostic = {
           severity,
           range: {
             start: { line: linePosition, character: 0 },
-            end: { line: linePosition, character: Number.MAX_VALUE },
+            end: { line: linePosition, character: sourceLines[linePosition].length },
           },
           message: `${matchingUri ? "" : `${match[1].trim()}(${match[2] || 1}): `}${match[4].replace(/\s+\[<?[\d.]+ms\]$/, "").trim()}`,
         };
@@ -46,7 +66,7 @@ export default class DiagnoticsProvider extends Provider {
     return ([...Object.values(OS).filter((item) => isNaN(Number(item)))] as string[]).includes(type());
   }
 
-  private getExecutablePath(os: OS | null) {
+  private getExecutablePath(os: ServerConfiguration["compiler"]["os"]) {
     const specifiedOs = os || type();
 
     switch (specifiedOs) {
@@ -63,10 +83,16 @@ export default class DiagnoticsProvider extends Provider {
 
   public async publish(uri: string) {
     return await new Promise<boolean>((resolve) => {
+      const compilerSettings = JSON.stringify(this.server.config.compiler);
       const { enabled, nwnHome, reportWarnings, nwnInstallation, verbose, os } = this.server.config.compiler;
-      if (!enabled || isStandardLibrary(uri)) {
+      if (!enabled) {
+        this.configurationChanged();
         return resolve(true);
       }
+      if (isStandardLibrary(uri)) return resolve(true);
+      const validation = ++this.nextValidation;
+      this.latestValidation.set(uri, validation);
+      const isCurrent = (target: string) => this.latestValidation.get(target) === validation && compilerSettings === JSON.stringify(this.server.config.compiler);
 
       if (!this.hasSupportedOS()) {
         const errorMessage = "Unsupported OS. Cannot provide diagnostics.";
@@ -84,13 +110,13 @@ export default class DiagnoticsProvider extends Provider {
       }
 
       const fail = (reason: string) => {
-        this.server.logger.error(`Unable to validate ${uri}: ${reason}. Previous diagnostics have been retained.`);
+        if (isCurrent(uri)) this.server.logger.error(`Unable to validate ${uri}: ${reason}. Previous diagnostics have been retained.`);
         resolve(false);
       };
       try {
         // The upstream resource resolver treats zero-byte files as missing.
         if (statSync(fileURLToPath(uri)).size === 0) {
-          void this.server.connection.sendDiagnostics({ uri, diagnostics: [] });
+          this.sendDiagnostics(uri, []);
           resolve(true);
           return;
         }
@@ -109,6 +135,8 @@ export default class DiagnoticsProvider extends Provider {
           uris.push(fileUri);
         }
       });
+
+      for (const target of uris) this.latestValidation.set(target, validation);
 
       if (verbose) {
         this.server.logger.info(`Compiling ${document.uri}:`);
@@ -141,6 +169,7 @@ export default class DiagnoticsProvider extends Provider {
       // documents together so compilation uses the same includes as navigation.
       // Copies also isolate the compiler's automatic deletion of adjacent NDBs.
       let stagingDirectory: string | undefined;
+      const sources = new Map<string, string[]>();
       try {
         stagingDirectory = mkdtempSync(join(tmpdir(), "nwscript-compile-"));
         const selected = new Map<string, string>();
@@ -151,6 +180,11 @@ export default class DiagnoticsProvider extends Provider {
         }
         if (languageSpec) selected.set("nwscript.nss", languageSpec);
         for (const [name, path] of selected) copyFileSync(path, join(stagingDirectory, name));
+        // Match diagnostic ranges to the exact saved text sent to the compiler.
+        // JavaScript string lengths are UTF-16 offsets, as required by LSP.
+        for (const selectedUri of uris) {
+          sources.set(selectedUri, readFileSync(join(stagingDirectory, basename(fileURLToPath(selectedUri)).toLowerCase()), "utf8").split(/\r\n|\r|\n/));
+        }
         args.push("-c", join(stagingDirectory, basename(fileURLToPath(uri)).toLowerCase()));
       } catch (error) {
         if (stagingDirectory) rmSync(stagingDirectory, { recursive: true, force: true });
@@ -181,6 +215,10 @@ export default class DiagnoticsProvider extends Provider {
         cleanup();
         // A failed spawn also emits close after its error event.
         if (child.pid === undefined) return;
+        if (!uris.some(isCurrent)) {
+          resolve(true);
+          return;
+        }
         if (signal) {
           const error = new Error(`Compiler terminated by ${signal}`);
           fail(error.message);
@@ -220,11 +258,11 @@ export default class DiagnoticsProvider extends Provider {
           return;
         }
 
-        errors.forEach(this.generateDiagnostics(uris, files, DiagnosticSeverity.Error));
-        if (reportWarnings) warnings.forEach(this.generateDiagnostics(uris, files, DiagnosticSeverity.Warning));
+        errors.forEach(this.generateDiagnostics(uris, files, sources, DiagnosticSeverity.Error));
+        if (reportWarnings) warnings.forEach(this.generateDiagnostics(uris, files, sources, DiagnosticSeverity.Warning));
 
         for (const [uri, diagnostics] of Object.entries(files)) {
-          void this.server.connection.sendDiagnostics({ uri, diagnostics });
+          if (isCurrent(uri)) this.sendDiagnostics(uri, diagnostics);
         }
         resolve(true);
       });

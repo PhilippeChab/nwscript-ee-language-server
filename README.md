@@ -3,7 +3,7 @@
 ![Build](https://github.com/PhilippeChab/nwscript-ee-language-server/actions/workflows/build.yml/badge.svg)
 ![Tests](https://github.com/PhilippeChab/nwscript-ee-language-server/actions/workflows/tests.yml/badge.svg)
 
-NWScript: EE Language Server is a Visual Studio Code extension for the NWScript language.
+NWScript: EE Language Server provides language features for NWScript through a Visual Studio Code extension or an installable standalone LSP server.
 
 ## Features
 
@@ -30,6 +30,10 @@ Neverwinter Nights home and installation folders.
 ## Usage
 
 Simply open a project with nss files and the extension installed.
+
+### Other editors
+
+Install the standalone archive from GitHub Releases with npm and launch `nwscript-ee-language-server --stdio`. See the [standalone installation and configuration guide](server/README.md) for Neovim and generic LSP clients.
 
 ### Formatting
 
@@ -100,7 +104,8 @@ I personally use the [One Dark Pro](https://marketplace.visualstudio.com/items?i
 - Install Node.js 24 (the version in `.nvmrc`). With nvm, run `nvm install` and `nvm use` in the project root.
 - Invoke `npm install -g yarn@1.22.22 @vscode/vsce` to install Yarn Classic and the VS Code packaging tool.
 - In the project root directory, invoke `yarn install --frozen-lockfile`. The postinstall script also installs the client and server dependencies using their committed lockfiles.
-- Run `yarn compile`, `yarn test`, and `yarn build` to type-check, test, and bundle the extension. CI uses the same Node and Yarn versions.
+- Install `clang-format` and make it available on PATH (or set `CLANG_FORMAT` to its absolute path) for the packaged-server integration tests.
+- Run `yarn compile`, `yarn lint`, `yarn test`, and `yarn build` to type-check, test, and bundle the extension. CI uses the same Node and Yarn versions.
 - In the project root directory, invoke `vsce package` which will produce a .vsix file.
 - To install, in VS Code on the extension pane, click on the three dots at the top right then select `Install From VSIX` and navigate to the package you just produced.
 
