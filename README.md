@@ -9,6 +9,7 @@ NWScript: EE Language Server provides language features for NWScript through a V
 
 - Enhanced syntax highlighting
 - Completion
+- Auto-import
 - Hover information
 - Goto definition
 - Formatting

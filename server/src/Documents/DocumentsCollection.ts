@@ -16,7 +16,7 @@ export const STATIC_PREFIX = "static";
 export default class DocumentsCollection extends Dictionnary<string, Document> {
   // Requests identify an exact document; basename lookup is only for includes.
   private readonly documentsByUri = new Map<string, Document>();
-  private readonly liveScopes = new WeakMap<TextDocument, { version: number; scope: GlobalScopeTokenizationResult }>();
+  private importChildren = new WeakMap<Document, Set<string>>();
 
   constructor() {
     super();
@@ -32,18 +32,20 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
   }
 
   private addDocument(document: Document) {
+    this.importChildren = new WeakMap();
     if (!document.base && !this.documentsByUri.has(document.uri)) this.documentsByUri.set(document.uri, document);
     this.add(document.getKey(), document);
   }
 
   private overwriteDocument(document: Document) {
+    this.importChildren = new WeakMap();
     if (!document.base) this.documentsByUri.set(document.uri, document);
     // Updating a duplicate's own contents must not change include selection.
     const selected = this.get(document.getKey());
     if (!selected || selected.uri === document.uri) this.overwrite(document.getKey(), document);
   }
 
-  private initializeDocument(uri: string, base: boolean, globalScope: GlobalScopeTokenizationResult) {
+  public initializeDocument(uri: string, base: boolean, globalScope: GlobalScopeTokenizationResult) {
     // nwscript is implicit and selected per requesting workspace, even when an
     // include explicitly names it. Never resolve it through the basename index.
     return new Document(
@@ -53,6 +55,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       globalScope.complexTokens,
       globalScope.structComplexTokens,
       this,
+      globalScope.entryPoints,
     );
   }
 
@@ -82,6 +85,40 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     return this.documentsByUri.get(uri);
   }
 
+  public getImportableDocuments(document: Document, matches: (candidate: Document) => boolean = () => true) {
+    const included = new Set(document.getChildren());
+    const entryPoints = new Set(document.entryPoints);
+    for (const child of included) {
+      const dependency = this.get(child) || this.get(`${STATIC_PREFIX}/${child}`);
+      dependency?.entryPoints.forEach((entryPoint) => entryPoints.add(entryPoint));
+    }
+    const conflicts = (source: Document | undefined) => source?.entryPoints.some((entryPoint) => entryPoints.has(entryPoint));
+    const currentName = document.getIncludeName();
+    const candidates: Document[] = [];
+    this.forEach((candidate) => {
+      const name = candidate.getIncludeName();
+      if (name === currentName || name.toLowerCase() === "nwscript" || included.has(name)) return;
+      if (['"', "\r", "\n", "\\"].some((character) => name.includes(character))) return;
+      // Use the same workspace-over-bundled selection as include resolution.
+      if (candidate.base && this.get(name)) return;
+      // Match symbols before walking dependencies or constructing completion edits.
+      if (!matches(candidate)) return;
+      let children = this.importChildren.get(candidate);
+      if (!children) {
+        children = new Set(candidate.getChildren());
+        this.importChildren.set(candidate, children);
+      }
+      if (children.has(currentName) || conflicts(candidate)) return;
+      // Already included dependencies do not add another implementation.
+      for (const child of children) {
+        if (!included.has(child) && conflicts(this.get(child) || this.get(`${STATIC_PREFIX}/${child}`))) return;
+      }
+      candidates.push(candidate);
+    });
+    // Keep workspace symbols ahead of bundled symbols in bounded completion lists.
+    return candidates.sort((left, right) => Number(left.base) - Number(right.base));
+  }
+
   public createDocument(uri: string, globalScope: GlobalScopeTokenizationResult) {
     const document = this.initializeDocument(uri, false, globalScope);
     if (isStandardLibrary(uri)) this.overwriteDocument(document);
@@ -98,9 +135,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
   public updateDocument(document: TextDocument, tokenizer: Tokenizer, workespaceFilesSystem: WorkspaceFilesSystem) {
     // willSave and didSave can describe the same document version. Reuse its
     // tokens, but still retry missing includes that may have appeared on disk.
-    const cached = this.liveScopes.get(document);
-    const globalScope = cached?.version === document.version ? cached.scope : tokenizer.tokenizeContent(document.getText(), TokenizedScope.global);
-    this.liveScopes.set(document, { version: document.version, scope: globalScope });
+    const globalScope = tokenizer.tokenizeDocumentGlobalScope(document);
 
     this.overwriteDocument(this.initializeDocument(document.uri, false, globalScope));
     // Already-declared includes may have failed indexing and since been repaired.

@@ -217,16 +217,17 @@ export default class ServerManger {
     this.diagnosticsProvider = DiagnosticsProvider.register(this) as DiagnosticsProvider;
   }
 
-  private registerStandardLibraryDocument(document: TextDocument) {
-    this.standardLibrary.change(document);
-    // Retain the workspace API's last usable snapshot independently of whether
-    // this opened file supplies that API.
-    this.standardLibrary.get(document.uri);
+  private updateDocument(document: TextDocument) {
+    if (isStandardLibrary(document.uri)) {
+      this.standardLibrary.change(document);
+      // Retain the selected API's last usable snapshot independently of this
+      // document's own scope, which may be empty or supply a different API.
+      this.standardLibrary.get(document.uri);
+    }
     try {
       this.documentsCollection.updateDocument(document, this.tokenizer, this.workspaceFilesSystem);
     } catch (error) {
-      // An unfinished declaration must not prevent registering a newly opened
-      // document. Keep an existing document's last usable scope when possible.
+      // Register unfinished new documents; retain existing usable scopes.
       if (!this.documentsCollection.getFromUri(document.uri)) {
         this.documentsCollection.createDocument(document.uri, { children: [], complexTokens: [], structComplexTokens: [] });
       }
@@ -234,23 +235,10 @@ export default class ServerManger {
     }
   }
 
-  private updateDocument(document: TextDocument) {
-    try {
-      if (!this.documentsCollection.getFromUri(document.uri)) {
-        this.documentsCollection.createDocuments(document.uri, document.getText(), this.tokenizer, this.workspaceFilesSystem);
-      } else {
-        this.documentsCollection.updateDocument(document, this.tokenizer, this.workspaceFilesSystem);
-      }
-    } catch (error) {
-      this.logger.error(`Cannot index ${document.uri}: ${error instanceof Error ? error.message : String(error)}`);
-      if (!this.documentsCollection.getFromUri(document.uri)) this.documentsCollection.createDocument(document.uri, { children: [], complexTokens: [], structComplexTokens: [] });
-    }
-  }
-
   private registerLiveDocumentsEvents() {
     this.liveDocumentsManager.onDidChangeContent((event) => {
       if (isStandardLibrary(event.document.uri)) {
-        this.registerStandardLibraryDocument(event.document);
+        this.updateDocument(event.document);
       }
     });
     this.liveDocumentsManager.onDidClose((event) => this.standardLibrary.close(event.document.uri));
@@ -266,11 +254,7 @@ export default class ServerManger {
     });
 
     this.liveDocumentsManager.onDidOpen((event) => {
-      if (isStandardLibrary(event.document.uri)) {
-        this.registerStandardLibraryDocument(event.document);
-      } else {
-        this.updateDocument(event.document);
-      }
+      this.updateDocument(event.document);
       void this.diagnosticsProvider?.publish(event.document.uri);
     });
   }

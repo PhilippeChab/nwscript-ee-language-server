@@ -2,9 +2,9 @@ import { join } from "path";
 import { readFileSync } from "fs";
 
 import type { IGrammar } from "vscode-textmate";
-import type { Position } from "vscode-languageserver-textdocument";
+import type { Position, TextDocument } from "vscode-languageserver-textdocument";
 import { Registry, INITIAL, parseRawGrammar, IToken } from "vscode-textmate";
-import { CompletionItemKind } from "vscode-languageserver";
+import { CompletionItemKind, Range } from "vscode-languageserver";
 
 import type { ComplexToken, FunctionComplexToken, FunctionParamComplexToken, StructComplexToken, VariableComplexToken } from "./types";
 import { LanguageTypes, LanguageScopes } from "./constants";
@@ -19,6 +19,7 @@ export type GlobalScopeTokenizationResult = {
   complexTokens: ComplexToken[];
   structComplexTokens: StructComplexToken[];
   children: string[];
+  entryPoints?: string[];
 };
 
 export type LocalScopeTokenizationResult = {
@@ -26,10 +27,18 @@ export type LocalScopeTokenizationResult = {
   functionVariablesComplexTokens: (VariableComplexToken | FunctionParamComplexToken)[];
 };
 
+export type AutoImportContext = {
+  prefix: string;
+  replacementRange: Range;
+  insertionPosition: Position;
+  structsOnly: boolean;
+};
+
 // Naive implementation
 // Ideally we would use an AST tree
 // See the Notes section of the README for the explications
 export default class Tokenizer {
+  private readonly documentScopes = new WeakMap<TextDocument, { version: number; scope: GlobalScopeTokenizationResult } | { version: number; error: Error }>();
   private readonly registry: Registry;
   private grammar: IGrammar | null = null;
   private readonly localScopeCache: (IToken[] | undefined)[] | null = null;
@@ -67,6 +76,75 @@ export default class Tokenizer {
 
   private getRawTokenContent(line: string, token: IToken) {
     return line.slice(token.startIndex, token.endIndex);
+  }
+
+  private isCommentToken(token: IToken) {
+    return token.scopes.some((scope) => scope.startsWith("comment."));
+  }
+
+  private getIncludeName(line: string, tokens: IToken[]) {
+    const includeTokens = tokens.filter((token) => token.scopes.includes(LanguageScopes.includeString) && !this.isCommentToken(token));
+    const opening = includeTokens.find((token) => token.scopes.includes(LanguageScopes.stringBegin));
+    const closing = includeTokens.find((token) => token.scopes.includes(LanguageScopes.stringEnd));
+    if (!opening || !closing) return;
+    return line.slice(opening.endIndex, closing.startIndex) || undefined;
+  }
+
+  public tokenizeDocumentGlobalScope(document: TextDocument): GlobalScopeTokenizationResult {
+    const cached = this.documentScopes.get(document);
+    if (cached?.version === document.version) {
+      if ("error" in cached) throw cached.error;
+      return cached.scope;
+    }
+    try {
+      const scope = this.tokenizeContent(document.getText(), TokenizedScope.global);
+      this.documentScopes.set(document, { version: document.version, scope });
+      return scope;
+    } catch (error) {
+      const failure = error instanceof Error ? error : new Error(String(error));
+      this.documentScopes.set(document, { version: document.version, error: failure });
+      throw failure;
+    }
+  }
+
+  public getAutoImportContextFromRaw(lines: string[], tokensArrays: (IToken[] | undefined)[], position: Position): AutoImportContext | undefined {
+    const line = lines[position.line];
+    const tokens = tokensArrays[position.line];
+    if (line === undefined || !tokens) return;
+    // At a token boundary, completion applies to the text immediately to the left.
+    const character = Math.max(0, position.character - 1);
+    const token = tokens.find((candidate) => candidate.startIndex <= character && candidate.endIndex > character);
+    if (!token || this.isCommentToken(token) || token.scopes.some((scope) => scope.startsWith("string.")) || token.scopes.includes(LanguageScopes.includeDeclaration)) return;
+    const identifierScopes = [LanguageScopes.variableIdentifer, LanguageScopes.constantIdentifer, LanguageScopes.functionIdentifier, LanguageScopes.structIdentifier];
+    const isIdentifier = identifierScopes.some((scope) => token.scopes.includes(scope));
+    const replacementRange = isIdentifier ? Range.create(position.line, token.startIndex, position.line, Math.min(line.length, token.endIndex)) : Range.create(position, position);
+    const previous = tokens.filter((candidate) => candidate.endIndex <= replacementRange.start.character && this.getRawTokenContent(line, candidate).trim()).at(-1);
+    if (token.scopes.includes(LanguageScopes.structProperty) || token.scopes.includes(LanguageScopes.dotAccessStatement) || previous?.scopes.includes(LanguageScopes.dotAccessStatement)) return;
+
+    const insertionPosition = this.getIncludeInsertionPosition(lines, tokensArrays);
+    if (insertionPosition.line > replacementRange.start.line || (insertionPosition.line === replacementRange.start.line && insertionPosition.character > replacementRange.start.character)) return;
+    return {
+      prefix: line.slice(replacementRange.start.character, position.character),
+      replacementRange,
+      structsOnly: previous !== undefined && this.getRawTokenContent(line, previous) === LanguageTypes.struct,
+      insertionPosition,
+    };
+  }
+
+  private getIncludeInsertionPosition(lines: string[], tokensArrays: (IToken[] | undefined)[]): Position {
+    let headerEnd: Position = { line: 0, character: 0 };
+    for (let lineIndex = 0; lineIndex < lines.length; lineIndex++) {
+      const line = lines[lineIndex];
+      for (const token of tokensArrays[lineIndex] || []) {
+        if (!this.getRawTokenContent(line, token).trim()) continue;
+        if (!this.isCommentToken(token) && !token.scopes.includes(LanguageScopes.includeDeclaration)) {
+          // A closing block comment can share a line with the first declaration.
+          return headerEnd.line === lineIndex ? headerEnd : { line: lineIndex, character: 0 };
+        }
+        headerEnd = { line: lineIndex, character: Math.min(line.length, token.endIndex) };
+      }
+    }
+    return { line: lines.length - 1, character: lines[lines.length - 1].length };
   }
 
   private getTokenIndex(tokensArray: IToken[], targetToken: IToken) {
@@ -209,7 +287,7 @@ export default class Tokenizer {
     );
   }
 
-  private tokenizeLinesForGlobalScope(lines: string[], tokensArrays: (IToken[] | undefined)[], startIndex: number = 0, stopIndex: number = -1) {
+  private tokenizeLinesForGlobalScope(lines: string[], tokensArrays: (IToken[] | undefined)[], startIndex: number = 0, stopIndex: number = -1, allowIncomplete = false) {
     const firstLineIndex = startIndex > lines.length || startIndex < 0 ? 0 : startIndex;
     const lastLineIndex = stopIndex + 10 > lines.length || stopIndex < 0 ? lines.length : stopIndex;
     const scope: GlobalScopeTokenizationResult = {
@@ -224,67 +302,81 @@ export default class Tokenizer {
       const tokensArray = tokensArrays[lineIndex];
 
       if (tokensArray) {
-        const lastIndex = tokensArray.length - 1;
-        const lastToken = tokensArray[lastIndex];
-        for (let tokenIndex = 0; tokenIndex < tokensArray.length; tokenIndex++) {
-          const token = tokensArray[tokenIndex];
+        try {
+          const lastIndex = tokensArray.length - 1;
+          const lastToken = tokensArray[lastIndex];
+          for (let tokenIndex = 0; tokenIndex < tokensArray.length; tokenIndex++) {
+            const token = tokensArray[tokenIndex];
 
-          if (currentStruct) {
-            if (token.scopes.includes(LanguageScopes.blockTermination)) {
-              scope.structComplexTokens.push(currentStruct);
-              currentStruct = null;
-            } else if (lastIndex > 0 && tokensArray[1].scopes.includes(LanguageScopes.type)) {
-              currentStruct.properties.push({
-                position: { line: lineIndex, character: tokensArray[3].startIndex },
-                identifier: this.getRawTokenContent(line, tokensArray[3]),
-                tokenType: CompletionItemKind.Property,
-                valueType: this.getTokenLanguageType(line, tokensArray, 1),
-              });
+            if (currentStruct) {
+              if (token.scopes.includes(LanguageScopes.blockTermination)) {
+                scope.structComplexTokens.push(currentStruct);
+                currentStruct = null;
+              } else if (lastIndex > 0 && tokensArray[1].scopes.includes(LanguageScopes.type)) {
+                currentStruct.properties.push({
+                  position: { line: lineIndex, character: tokensArray[3].startIndex },
+                  identifier: this.getRawTokenContent(line, tokensArray[3]),
+                  tokenType: CompletionItemKind.Property,
+                  valueType: this.getTokenLanguageType(line, tokensArray, 1),
+                });
+              }
+
+              break;
             }
 
-            break;
-          }
+            if (token.scopes.includes(LanguageScopes.includeDeclaration)) {
+              const name = this.getIncludeName(line, tokensArray);
+              if (name) scope.children.push(name);
+              break;
+            }
 
-          if (token.scopes.includes(LanguageScopes.includeDeclaration)) {
-            const includeToken = tokensArray.at(-2);
-            if (includeToken) scope.children.push(this.getRawTokenContent(line, includeToken));
-            break;
-          }
+            if (this.isGlobalConstant(token)) {
+              scope.complexTokens.push({
+                position: { line: lineIndex, character: token.startIndex },
+                identifier: this.getRawTokenContent(line, token),
+                tokenType: CompletionItemKind.Constant,
+                valueType: this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
+                value: this.getConstantValue(line, tokensArray),
+              });
+              break;
+            }
 
-          if (this.isGlobalConstant(token)) {
-            scope.complexTokens.push({
-              position: { line: lineIndex, character: token.startIndex },
-              identifier: this.getRawTokenContent(line, token),
-              tokenType: CompletionItemKind.Constant,
-              valueType: this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
-              value: this.getConstantValue(line, tokensArray),
-            });
-            break;
-          }
+            const identifier = this.getRawTokenContent(line, token);
+            if ((identifier === "main" || identifier === "StartingConditional") && this.isLocalFunctionDeclaration(lineIndex, tokenIndex, token, tokensArrays)) {
+              if (!scope.entryPoints) scope.entryPoints = [];
+              scope.entryPoints.push(identifier);
+              break;
+            }
 
-          if (this.isGlobalFunctionDeclaration(lineIndex, tokenIndex, token, tokensArrays)) {
-            scope.complexTokens.push({
-              position: { line: lineIndex, character: token.startIndex },
-              identifier: this.getRawTokenContent(line, token),
-              tokenType: CompletionItemKind.Function,
-              returnType:
-                tokenIndex === 0 ? this.getTokenLanguageType(lines[lineIndex - 1], this.requireTokens(tokensArrays, lineIndex - 1), 0) : this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
-              params: this.getFunctionParams(lineIndex, lines, tokensArrays),
-              comments: this.getFunctionComments(lines, tokensArrays, tokenIndex === 0 ? lineIndex - 2 : lineIndex - 1),
-            });
+            if (this.isGlobalFunctionDeclaration(lineIndex, tokenIndex, token, tokensArrays)) {
+              scope.complexTokens.push({
+                position: { line: lineIndex, character: token.startIndex },
+                identifier: this.getRawTokenContent(line, token),
+                tokenType: CompletionItemKind.Function,
+                returnType:
+                  tokenIndex === 0 ? this.getTokenLanguageType(lines[lineIndex - 1], this.requireTokens(tokensArrays, lineIndex - 1), 0) : this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
+                params: this.getFunctionParams(lineIndex, lines, tokensArrays),
+                comments: this.getFunctionComments(lines, tokensArrays, tokenIndex === 0 ? lineIndex - 2 : lineIndex - 1),
+              });
 
-            break;
-          }
+              break;
+            }
 
-          if (this.isStructDeclaration(token, lastToken, lineIndex, tokensArrays)) {
-            currentStruct = {
-              position: { line: lineIndex, character: token.startIndex },
-              identifier: this.getRawTokenContent(line, token),
-              tokenType: CompletionItemKind.Struct,
-              properties: [],
-            };
-            break;
+            if (this.isStructDeclaration(token, lastToken, lineIndex, tokensArrays)) {
+              currentStruct = {
+                position: { line: lineIndex, character: token.startIndex },
+                identifier: this.getRawTokenContent(line, token),
+                tokenType: CompletionItemKind.Struct,
+                properties: [],
+              };
+              break;
+            }
           }
+        } catch (error) {
+          if (!allowIncomplete) throw error;
+          // Live text can end between any two tokens of a declaration. Retain
+          // completed declarations and resume at the next line. Strict indexing
+          // still reports the failure so its last usable snapshot is preserved.
         }
       }
     }
@@ -401,6 +493,10 @@ export default class Tokenizer {
 
   public tokenizeContentFromRaw(lines: string[], rawTokenizedContent: (IToken[] | undefined)[], startIndex: number = 0, stopIndex: number = -1) {
     return this.tokenizeLinesForLocalScope(lines, rawTokenizedContent, startIndex, stopIndex);
+  }
+
+  public tokenizeGlobalScopeFromRaw(lines: string[], rawTokenizedContent: (IToken[] | undefined)[]) {
+    return this.tokenizeLinesForGlobalScope(lines, rawTokenizedContent, 0, -1, true);
   }
 
   public tokenizeContentToRaw(content: string): [lines: string[], rawTokenizedContent: (IToken[] | undefined)[]] {

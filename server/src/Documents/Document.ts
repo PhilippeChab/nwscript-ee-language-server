@@ -14,10 +14,16 @@ export default class Document {
     readonly complexTokens: ComplexToken[],
     readonly structComplexTokens: StructComplexToken[],
     private readonly collection: DocumentsCollection,
+    readonly entryPoints: string[] = [],
   ) {}
 
   public getKey() {
     return this.collection.getKey(this.uri, this.base);
+  }
+
+  public getIncludeName() {
+    const key = this.getKey();
+    return this.base ? key.slice(STATIC_PREFIX.length + 1) : key;
   }
 
   public getChildren(computedChildren: string[] = []): string[] {

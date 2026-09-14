@@ -12,7 +12,7 @@ export type StandardLibraryDefinitions = GlobalScopeTokenizationResult & { owner
 /** One selected source per workspace folder; never merge a custom API with the bundled API. */
 export default class StandardLibrary {
   private readonly bundled: StandardLibraryDefinitions;
-  private readonly live = new Map<string, string>();
+  private readonly live = new Map<string, TextDocument>();
   private readonly selections = new Map<string, string | null>();
   private readonly snapshots = new Map<string, { content: string; definitions: StandardLibraryDefinitions }>();
   private readonly failures = new Map<string, string>();
@@ -36,7 +36,7 @@ export default class StandardLibrary {
 
   public change(document: TextDocument) {
     if (!isStandardLibrary(document.uri)) return;
-    this.live.set(this.uriKey(document.uri), document.getText());
+    this.live.set(this.uriKey(document.uri), document);
     this.invalidate();
   }
 
@@ -70,13 +70,14 @@ export default class StandardLibrary {
     const owner = pathToFileURL(path).href;
     const previous = this.snapshots.get(owner);
     try {
-      if (!this.live.has(owner) && !this.disk.has(owner)) this.disk.set(owner, readFileSync(fileURLToPath(owner), "utf8"));
-      const content = this.live.get(owner) ?? this.disk.get(owner);
+      const liveDocument = this.live.get(owner);
+      if (!liveDocument && !this.disk.has(owner)) this.disk.set(owner, readFileSync(fileURLToPath(owner), "utf8"));
+      const content = liveDocument?.getText() ?? this.disk.get(owner);
       if (content === undefined) throw new Error("No source content available");
       if (previous?.content === content) return previous.definitions;
       if (this.attempted.get(owner) === content) return previous?.definitions ?? this.bundled;
       this.attempted.set(owner, content);
-      const scope = this.tokenizer.tokenizeContent(content, TokenizedScope.global);
+      const scope = liveDocument ? this.tokenizer.tokenizeDocumentGlobalScope(liveDocument) : this.tokenizer.tokenizeContent(content, TokenizedScope.global);
       if (!scope.complexTokens.length && !scope.structComplexTokens.length) throw new Error("No declarations could be parsed");
       const definitions = { ...scope, owner };
       this.snapshots.set(owner, { content, definitions });

@@ -1,20 +1,40 @@
-import { CompletionItem, CompletionItemKind } from "vscode-languageserver";
+import { CompletionItem, CompletionItemKind, TextEdit } from "vscode-languageserver";
+import { TextDocument } from "vscode-languageserver-textdocument";
 
 import type { ComplexToken, ConstantComplexToken, FunctionComplexToken, FunctionParamComplexToken, StructComplexToken, StructPropertyComplexToken, VariableComplexToken } from "../../Tokenizer/types";
 import { ServerConfiguration } from "../../ServerManager/Config";
+import type { AutoImportContext } from "../../Tokenizer/Tokenizer";
 import Builder from "./Builder";
 
 export default class CompletionItemBuilder extends Builder {
+  public static buildAutoImportItem(token: ComplexToken, includeName: string, document: TextDocument, context: AutoImportContext, serverConfig: ServerConfiguration): CompletionItem {
+    const item = this.buildItem(token);
+    const insertionText = this.buildResolvedItem(item, serverConfig).label;
+    const { insertionPosition, replacementRange } = context;
+    const eol = document.getText().includes("\r\n") ? "\r\n" : "\n";
+    const includeText = `${insertionPosition.character > 0 ? eol : ""}#include "${includeName}"${eol}`;
+    const samePosition = insertionPosition.line === replacementRange.start.line && insertionPosition.character === replacementRange.start.character;
+
+    return {
+      ...item,
+      detail: `${item.detail || token.identifier} — #include "${includeName}"`,
+      filterText: token.identifier,
+      // At the start of a file the include and identifier share an edit position.
+      // Combine them so additionalTextEdits never overlap the completion edit.
+      textEdit: TextEdit.replace(replacementRange, `${samePosition ? includeText : ""}${insertionText}`),
+      additionalTextEdits: samePosition ? undefined : [TextEdit.insert(insertionPosition, includeText)],
+    };
+  }
+
   public static buildResolvedItem(item: CompletionItem, serverConfig: ServerConfiguration): CompletionItem {
     if (serverConfig.completion.addParamsToFunctions && item.kind === CompletionItemKind.Function) {
       const params = item.data as FunctionParamComplexToken[];
 
       return {
+        ...item,
         label: `${item.label}(${params.reduce((acc, param, index) => {
           return `${acc}${this.handleLanguageType(param.valueType)} ${param.identifier}${index === params.length - 1 ? "" : ", "}`;
         }, "")})`,
-        kind: item.kind,
-        detail: item.detail,
       };
     }
 

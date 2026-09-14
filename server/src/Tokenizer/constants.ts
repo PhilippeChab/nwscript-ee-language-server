@@ -20,6 +20,9 @@ export enum LanguageTypes {
 
 export enum LanguageScopes {
   includeDeclaration = "meta.preprocessor.include.nss",
+  includeString = "string.quoted.double.include.nss",
+  stringBegin = "punctuation.definition.string.begin.nss",
+  stringEnd = "punctuation.definition.string.end.nss",
   structIdentifier = "storage.type.struct-defined.nss",
   structProperty = "entity.other.attribute-name.nss",
   variableIdentifer = "variable.language.nss",
