@@ -15,7 +15,9 @@ connection.onInitialized(() => {
 });
 
 connection.onShutdown(() => server?.down());
-connection.onExit(() => {
+// The transport can close without an LSP exit notification. down() sends worker
+// termination signals synchronously, even when process exit cannot await it.
+process.once("exit", () => {
   void server?.down();
 });
 

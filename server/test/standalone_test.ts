@@ -4,7 +4,7 @@ import { execFileSync, fork } from "child_process";
 import { once } from "events";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "fs";
 import { join, resolve } from "path";
-import { tmpdir } from "os";
+import { tmpdir, cpus } from "os";
 import { pathToFileURL } from "url";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import {
@@ -67,7 +67,7 @@ describe("Installed standalone LSP server", function () {
   });
 
   async function start(options: ClientOptions = {}) {
-    const client = new LspClient(cli, temporary, { initializationOptions: { compiler: { enabled: false } }, ...options });
+    const client = new LspClient(options.ipc ? join(packageRoot, "server/out/server.js") : cli, temporary, { initializationOptions: { compiler: { enabled: false } }, ...options });
     clients.push(client);
     await client.initialize(workspace);
     return client;
@@ -115,6 +115,14 @@ describe("Installed standalone LSP server", function () {
     expect(symbols?.[0]).to.have.property("location");
     expect(client.requests).to.deep.equal([]);
     await client.ready();
+    await client.shutdown();
+  });
+
+  it("supports the VS Code IPC transport with background indexing and clean shutdown", async () => {
+    const client = await start({ ipc: true, capabilities: { workspace: { configuration: true } }, configuration: () => ({ compiler: { enabled: false } }) });
+    await client.ready();
+    await open(client);
+    await features(client);
     await client.shutdown();
   });
 
@@ -389,6 +397,36 @@ describe("Installed standalone LSP server", function () {
       await client.shutdown();
       for (const pid of pids) expect(() => process.kill(pid, 0)).to.throw();
     } finally {
+      writeFileSync(indexer, original);
+    }
+  });
+
+  it("stops owned indexing workers when the stdio client disconnects without shutdown", async () => {
+    const indexer = join(packageRoot, "server/out/indexer.js");
+    const original = readFileSync(indexer);
+    const pidDirectory = join(workspace, "workers");
+    mkdirSync(pidDirectory);
+    let pids: number[] = [];
+    const alive = (pid: number) => {
+      try {
+        process.kill(pid, 0);
+        return true;
+      } catch {
+        return false;
+      }
+    };
+    try {
+      writeFileSync(indexer, `require("fs").writeFileSync(require("path").join(${JSON.stringify(pidDirectory)}, process.pid + ".pid"), String(process.pid)); setInterval(() => {}, 1000);`);
+      const client = await start();
+      await client.waitFor(() => readdirSync(pidDirectory).length === Math.min(2, cpus().length || 1));
+      pids = readdirSync(pidDirectory).map((file) => Number(readFileSync(join(pidDirectory, file), "utf8")));
+      const closed = once(client.child, "close");
+      client.child.stdin.end();
+      await closed;
+      for (let attempt = 0; attempt < 50 && pids.some(alive); attempt++) await new Promise<void>((resolve) => setTimeout(resolve, 20));
+      expect(pids.filter(alive)).to.deep.equal([]);
+    } finally {
+      for (const pid of pids) if (alive(pid)) process.kill(pid);
       writeFileSync(indexer, original);
     }
   });

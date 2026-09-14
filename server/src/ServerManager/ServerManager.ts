@@ -94,7 +94,7 @@ export default class ServerManger {
       }, 3000);
       this.pendingClientRequests.add(cancel);
       void Promise.resolve()
-        .then(request)
+        .then(() => (this.stopping ? undefined : request()))
         .then(finish, (error: unknown) => {
           if (this.pendingClientRequests.has(cancel) && !this.stopping) {
             this.logger.error(`Client request ${name} failed: ${error instanceof Error ? error.message : String(error)}`);
@@ -278,8 +278,9 @@ export default class ServerManger {
     this.config = mergeConfiguration(this.config, settings, fullResponse ? this.initialConfiguration : undefined);
     // Before indexing completes, queued diagnostics will use the new settings.
     // Afterwards, retry open files even if the client never edits or saves them.
-    if (this.configLoaded && !this.stopping && JSON.stringify(previousCompiler) !== JSON.stringify(this.config.compiler)) {
-      this.revalidateOpenDocuments();
+    if (!this.stopping && JSON.stringify(previousCompiler) !== JSON.stringify(this.config.compiler)) {
+      this.diagnosticsProvider?.configurationChanged();
+      if (this.configLoaded) this.revalidateOpenDocuments();
     }
   }
 

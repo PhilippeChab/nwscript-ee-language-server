@@ -19,6 +19,24 @@ enum OS {
 
 type FilesDiagnostics = { [uri: string]: Diagnostic[] };
 export default class DiagnoticsProvider extends Provider {
+  private nextValidation = 0;
+  private readonly latestValidation = new Map<string, number>();
+  private readonly publishedUris = new Set<string>();
+
+  private sendDiagnostics(uri: string, diagnostics: Diagnostic[]) {
+    if (diagnostics.length) this.publishedUris.add(uri);
+    else this.publishedUris.delete(uri);
+    void this.server.connection.sendDiagnostics({ uri, diagnostics });
+  }
+
+  public configurationChanged() {
+    // Results from any previous configuration are no longer authoritative.
+    this.latestValidation.clear();
+    if (!this.server.config.compiler.enabled) {
+      for (const uri of this.publishedUris) this.sendDiagnostics(uri, []);
+    }
+  }
+
   private generateDiagnostics(uris: string[], files: FilesDiagnostics, sources: Map<string, string[]>, severity: DiagnosticSeverity) {
     return (line: string) => {
       const match = compilerDiagnostic.exec(line);
@@ -65,10 +83,16 @@ export default class DiagnoticsProvider extends Provider {
 
   public async publish(uri: string) {
     return await new Promise<boolean>((resolve) => {
+      const compilerSettings = JSON.stringify(this.server.config.compiler);
       const { enabled, nwnHome, reportWarnings, nwnInstallation, verbose, os } = this.server.config.compiler;
-      if (!enabled || isStandardLibrary(uri)) {
+      if (!enabled) {
+        this.configurationChanged();
         return resolve(true);
       }
+      if (isStandardLibrary(uri)) return resolve(true);
+      const validation = ++this.nextValidation;
+      this.latestValidation.set(uri, validation);
+      const isCurrent = (target: string) => this.latestValidation.get(target) === validation && compilerSettings === JSON.stringify(this.server.config.compiler);
 
       if (!this.hasSupportedOS()) {
         const errorMessage = "Unsupported OS. Cannot provide diagnostics.";
@@ -86,13 +110,13 @@ export default class DiagnoticsProvider extends Provider {
       }
 
       const fail = (reason: string) => {
-        this.server.logger.error(`Unable to validate ${uri}: ${reason}. Previous diagnostics have been retained.`);
+        if (isCurrent(uri)) this.server.logger.error(`Unable to validate ${uri}: ${reason}. Previous diagnostics have been retained.`);
         resolve(false);
       };
       try {
         // The upstream resource resolver treats zero-byte files as missing.
         if (statSync(fileURLToPath(uri)).size === 0) {
-          void this.server.connection.sendDiagnostics({ uri, diagnostics: [] });
+          this.sendDiagnostics(uri, []);
           resolve(true);
           return;
         }
@@ -111,6 +135,8 @@ export default class DiagnoticsProvider extends Provider {
           uris.push(fileUri);
         }
       });
+
+      for (const target of uris) this.latestValidation.set(target, validation);
 
       if (verbose) {
         this.server.logger.info(`Compiling ${document.uri}:`);
@@ -189,6 +215,10 @@ export default class DiagnoticsProvider extends Provider {
         cleanup();
         // A failed spawn also emits close after its error event.
         if (child.pid === undefined) return;
+        if (!uris.some(isCurrent)) {
+          resolve(true);
+          return;
+        }
         if (signal) {
           const error = new Error(`Compiler terminated by ${signal}`);
           fail(error.message);
@@ -232,7 +262,7 @@ export default class DiagnoticsProvider extends Provider {
         if (reportWarnings) warnings.forEach(this.generateDiagnostics(uris, files, sources, DiagnosticSeverity.Warning));
 
         for (const [uri, diagnostics] of Object.entries(files)) {
-          void this.server.connection.sendDiagnostics({ uri, diagnostics });
+          if (isCurrent(uri)) this.sendDiagnostics(uri, diagnostics);
         }
         resolve(true);
       });

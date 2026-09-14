@@ -59,8 +59,11 @@ registration, and progress requests have a three-second timeout; a rejected or
 unanswered request is logged and does not prevent startup. A configuration
 response arriving after the timeout still applies unless a newer update has
 superseded it or shutdown has begun. Compiler-setting changes after startup
-revalidate open documents without requiring another save. Shutdown cancels
-pending startup requests and waits for indexing workers to terminate. Indexing
+revalidate open documents without requiring another save. Superseded compiler
+results are discarded; disabling the compiler clears its published diagnostics,
+including those on unopened includes. Shutdown cancels
+pending startup requests and waits for indexing workers to terminate. Worker
+cleanup also runs if the stdio connection closes without shutdown. Indexing
 uses at most four workers and continues past unreadable or malformed files.
 
 Editor-specific setup is limited to associating `.nss` files with NWScript,
