@@ -3,6 +3,7 @@ import { join } from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 import * as clustering from "cluster";
 import type { Connection, InitializeParams } from "vscode-languageserver";
+import type { TextDocument } from "vscode-languageserver-textdocument";
 
 import {
   CompletionItemsProvider,
@@ -143,12 +144,27 @@ export default class ServerManger {
     this.diagnosticsProvider = DiagnosticsProvider.register(this) as DiagnosticsProvider;
   }
 
+  private registerStandardLibraryDocument(document: TextDocument) {
+    this.standardLibrary.change(document);
+    // Retain the workspace API's last usable snapshot independently of whether
+    // this opened file supplies that API.
+    this.standardLibrary.get(document.uri);
+    try {
+      this.documentsCollection.updateDocument(document, this.tokenizer, this.workspaceFilesSystem);
+    } catch (error) {
+      // An unfinished declaration must not prevent registering a newly opened
+      // document. Keep an existing document's last usable scope when possible.
+      if (!this.documentsCollection.getFromUri(document.uri)) {
+        this.documentsCollection.createDocument(document.uri, { children: [], complexTokens: [], structComplexTokens: [] });
+      }
+      this.logger.error(`Cannot index ${document.uri}: ${error instanceof Error ? error.message : String(error)}`);
+    }
+  }
+
   private registerLiveDocumentsEvents() {
     this.liveDocumentsManager.onDidChangeContent((event) => {
-      this.standardLibrary.change(event.document);
       if (isStandardLibrary(event.document.uri)) {
-        const definitions = this.standardLibrary.get(event.document.uri);
-        if (definitions.owner === event.document.uri) this.documentsCollection.createDocument(event.document.uri, definitions);
+        this.registerStandardLibraryDocument(event.document);
       }
     });
     this.liveDocumentsManager.onDidClose((event) => this.standardLibrary.close(event.document.uri));
@@ -162,9 +178,7 @@ export default class ServerManger {
 
     this.liveDocumentsManager.onDidOpen((event) => {
       if (isStandardLibrary(event.document.uri)) {
-        this.standardLibrary.change(event.document);
-        const definitions = this.standardLibrary.get(event.document.uri);
-        if (definitions.owner === event.document.uri) this.documentsCollection.createDocument(event.document.uri, definitions);
+        this.registerStandardLibraryDocument(event.document);
       } else {
         this.documentsCollection?.createDocuments(event.document.uri, event.document.getText(), this.tokenizer, this.workspaceFilesSystem);
       }

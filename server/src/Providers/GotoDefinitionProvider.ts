@@ -64,7 +64,7 @@ export default class GotoDefinitionProvider extends Provider {
         token = localScope.functionsComplexTokens.find((candidate) => candidate.identifier === rawContent);
         if (token) break;
 
-        const localStandardLibDefinitions = this.server.standardLibrary.get(document.uri);
+        const localStandardLibDefinitions = this.server.standardLibrary.get(liveDocument.uri);
         tokensWithRef = document.getGlobalComplexTokensWithRef();
 
         if (localStandardLibDefinitions.owner) {
@@ -83,7 +83,7 @@ export default class GotoDefinitionProvider extends Provider {
       }
       case CompletionItemKind.Struct: {
         tokensWithRef = document.getGlobalStructComplexTokensWithRef();
-        const structLibrary = this.server.standardLibrary.get(document.uri);
+        const structLibrary = this.server.standardLibrary.get(liveDocument.uri);
         if (structLibrary.owner) tokensWithRef.push({ owner: structLibrary.owner, tokens: structLibrary.structComplexTokens });
         for (let i = 0; i < tokensWithRef.length; i++) {
           ref = tokensWithRef[i];
@@ -99,7 +99,7 @@ export default class GotoDefinitionProvider extends Provider {
         const structIdentifer = localScope.functionVariablesComplexTokens.find((candidate) => candidate.identifier === lookBehindRawContent)?.valueType;
 
         tokensWithRef = document.getGlobalStructComplexTokensWithRef();
-        const propertyLibrary = this.server.standardLibrary.get(document.uri);
+        const propertyLibrary = this.server.standardLibrary.get(liveDocument.uri);
         if (propertyLibrary.owner) tokensWithRef.push({ owner: propertyLibrary.owner, tokens: propertyLibrary.structComplexTokens });
         for (let i = 0; i < tokensWithRef.length; i++) {
           ref = tokensWithRef[i];

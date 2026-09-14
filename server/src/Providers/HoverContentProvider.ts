@@ -53,11 +53,11 @@ export default class HoverContentProvider extends Provider {
         token = tokens.find((candidate) => candidate.identifier === rawContent);
         if (token) break;
 
-        tokens = this.getStandardLibComplexTokens(document.uri);
+        tokens = this.getStandardLibComplexTokens(liveDocument.uri);
         token = tokens.find((candidate) => candidate.identifier === rawContent);
         break;
       case CompletionItemKind.Struct:
-        tokens = document.getGlobalStructComplexTokens().concat(this.getStandardLibStructTokens(document.uri));
+        tokens = document.getGlobalStructComplexTokens().concat(this.getStandardLibStructTokens(liveDocument.uri));
         token = tokens.find((candidate) => candidate.identifier === rawContent);
         break;
       case CompletionItemKind.Property: {
@@ -65,7 +65,7 @@ export default class HoverContentProvider extends Provider {
 
         token = document
           .getGlobalStructComplexTokens()
-          .concat(this.getStandardLibStructTokens(document.uri))
+          .concat(this.getStandardLibStructTokens(liveDocument.uri))
           .find((candidate) => candidate.identifier === structIdentifer)
           ?.properties.find((property) => property.identifier === rawContent);
         break;

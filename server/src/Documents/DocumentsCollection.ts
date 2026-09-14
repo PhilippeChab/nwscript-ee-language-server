@@ -14,6 +14,9 @@ const STATIC_RESOURCES_FOLDERS = ["base_scripts", "ovr"];
 export const STATIC_PREFIX = "static";
 
 export default class DocumentsCollection extends Dictionnary<string, Document> {
+  // Requests identify an exact document; basename lookup is only for includes.
+  private readonly documentsByUri = new Map<string, Document>();
+
   constructor() {
     super();
 
@@ -28,10 +31,12 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
   }
 
   private addDocument(document: Document) {
+    if (!document.base && !this.documentsByUri.has(document.uri)) this.documentsByUri.set(document.uri, document);
     this.add(document.getKey(), document);
   }
 
   private overwriteDocument(document: Document) {
+    if (!document.base) this.documentsByUri.set(document.uri, document);
     this.overwrite(document.getKey(), document);
   }
 
@@ -71,7 +76,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
   }
 
   public getFromUri(uri: string) {
-    return this.get(this.getKey(uri, false));
+    return this.documentsByUri.get(uri);
   }
 
   public createDocument(uri: string, globalScope: GlobalScopeTokenizationResult) {

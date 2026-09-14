@@ -36,6 +36,7 @@ describe("Workspace standard library", function () {
           export { default as Signature } from './Providers/SignatureHelpProvider';
           export { default as Definition } from './Providers/GotoDefinitionProvider';
           export { default as Workspace } from './Providers/WorkspaceProvider';
+          export { default as Manager } from './ServerManager/ServerManager';
           export { defaultServerConfiguration as config } from './ServerManager/Config';`,
         resolveDir: join(__dirname, "../src"),
         loader: "ts",
@@ -95,6 +96,112 @@ describe("Workspace standard library", function () {
       expect(errors).to.deep.equal([]);
     });
   }
+
+  function editorServer() {
+    const handlers: any = {};
+    const documents = new Map<string, TextDocument>();
+    const server = Object.assign(Object.create(api.Manager.prototype), {
+      standardLibrary: library,
+      documentsCollection: new api.Collection(),
+      tokenizer,
+      workspaceFilesSystem: files,
+      config: api.config,
+      logger: { error: (message: string) => errors.push(message) },
+      liveDocumentsManager: {
+        get: (target: string) => documents.get(target),
+        onDidOpen: (fn: any) => (handlers.open = fn),
+        onDidChangeContent: (fn: any) => (handlers.change = fn),
+        onDidClose: () => {},
+        onDidSave: () => {},
+        onWillSave: () => {},
+      },
+      connection: {
+        onCompletion: (fn: any) => (handlers.completion = fn),
+        onCompletionResolve: () => {},
+        onHover: (fn: any) => (handlers.hover = fn),
+        onSignatureHelp: (fn: any) => (handlers.signature = fn),
+        onDefinition: (fn: any) => (handlers.definition = fn),
+      },
+    });
+    server.registerLiveDocumentsEvents();
+    api.Completion.register(server);
+    api.Hover.register(server);
+    api.Signature.register(server);
+    api.Definition.register(server);
+    const open = (document: TextDocument) => {
+      documents.set(document.uri, document);
+      handlers.open({ document });
+    };
+    return { server, handlers, open, documents };
+  }
+
+  it("uses the requesting URI for hover and definition with duplicate script basenames across workspaces", () => {
+    const a = join(root, "a");
+    const b = join(root, "b");
+    write(join(a, "nwscript.nss"), "int CustomFn(int n);\n");
+    write(join(b, "nwscript.nss"), "float CustomFn(string text);\n");
+    files.setWorkspaceFolders([
+      { name: "a", uri: uri(a) },
+      { name: "b", uri: uri(b) },
+    ]);
+    const editor = editorServer();
+    const content = 'void main()\n{\n    CustomFn("x");\n}\n';
+    const first = TextDocument.create(uri(join(a, "test.nss")), "nwscript", 1, content);
+    const second = TextDocument.create(uri(join(b, "test.nss")), "nwscript", 1, content);
+    editor.open(first);
+    editor.open(second);
+    expect(editor.server.documentsCollection.getFromUri(first.uri).uri).to.equal(first.uri);
+    expect(editor.server.documentsCollection.getFromUri(second.uri).uri).to.equal(second.uri);
+    // Protect provider selection even if a basename-based reference belongs to
+    // another document, independently of the collection's exact-URI lookup.
+    const wrongDocument = editor.server.documentsCollection.getFromUri(first.uri);
+    editor.server.documentsCollection.getFromUri = () => wrongDocument;
+    const params = { textDocument: { uri: second.uri }, position: { line: 2, character: 8 } };
+    expect(editor.handlers.hover(params).contents.value).to.include("float CustomFn(string text)");
+    expect(editor.handlers.definition(params).uri).to.equal(uri(join(b, "nwscript.nss")));
+    expect(errors).to.deep.equal([]);
+  });
+
+  it("registers selected, unselected, and outside-workspace specifications independently across editor features", () => {
+    const workspace = join(root, "workspace");
+    files.setWorkspaceFolders([{ name: "workspace", uri: uri(workspace) }]);
+    const paths = [join(workspace, "nwscript.nss"), join(workspace, "sub", "nwscript.nss"), join(root, "outside", "nwscript.nss")];
+    const editor = editorServer();
+    const opened = paths.map((path, index) => {
+      const content = `// Header ${index}\nint OwnFn${index}(int n);\nvoid main()\n{\n    OwnFn${index}(1);\n}\n`;
+      write(path, content);
+      const document = TextDocument.create(uri(path), "nwscript", 1, content);
+      editor.open(document);
+      return document;
+    });
+    opened.forEach((document, index) => {
+      expect(editor.server.documentsCollection.getFromUri(document.uri).uri).to.equal(document.uri);
+      const params = { textDocument: { uri: document.uri }, position: { line: 4, character: 8 } };
+      expect(editor.handlers.completion(params).some((item: any) => item.label === `OwnFn${index}`)).to.equal(true);
+      expect(editor.handlers.hover(params).contents.value).to.include(`int OwnFn${index}(int n)`);
+      expect(editor.handlers.signature({ ...params, position: { line: 4, character: 11 } }).signatures[0].label).to.equal(`int OwnFn${index}(int n)`);
+      expect(editor.handlers.definition(params).uri).to.equal(document.uri);
+    });
+    expect(library.get(uri(join(workspace, "test.nss"))).owner).to.equal(uri(paths[0]));
+    const changed = TextDocument.create(opened[1].uri, "nwscript", 2, "float EditedFn();\n");
+    editor.handlers.change({ document: changed });
+    expect(editor.server.documentsCollection.getFromUri(changed.uri).complexTokens[0].identifier).to.equal("EditedFn");
+    expect(editor.server.documentsCollection.getFromUri(opened[0].uri).complexTokens[0].identifier).to.equal("OwnFn0");
+    expect(errors).to.deep.equal([]);
+  });
+
+  it("registers an initially incomplete unselected specification and recovers after editing", () => {
+    write(join(root, "nwscript.nss"), source);
+    const path = join(root, "sub", "nwscript.nss");
+    write(path, "int Broken(");
+    const editor = editorServer();
+    const document = TextDocument.create(uri(path), "nwscript", 1, "int Broken(");
+    expect(() => editor.open(document)).not.to.throw();
+    expect(editor.server.documentsCollection.getFromUri(document.uri).uri).to.equal(document.uri);
+    editor.handlers.change({ document: TextDocument.create(document.uri, "nwscript", 2, "int Recovered();\n") });
+    expect(editor.server.documentsCollection.getFromUri(document.uri).complexTokens[0].identifier).to.equal("Recovered");
+    expect(library.get(document.uri).owner).to.equal(uri(join(root, "nwscript.nss")));
+  });
 
   it("refreshes unsaved changes, retains usable definitions for incomplete edits, and restores disk on close", () => {
     const spec = join(root, "nwscript.nss");
