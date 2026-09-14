@@ -38,7 +38,7 @@ export default class SignatureHelpProvider extends Provider {
       const functionComplexToken =
         localScope.functionsComplexTokens.find((token) => token.identifier === rawContent) ||
         document.getGlobalComplexTokens().find((token) => token.identifier === rawContent) ||
-        this.getStandardLibComplexTokens().find((token) => token.identifier === rawContent);
+        this.getStandardLibComplexTokens(uri).find((token) => token.identifier === rawContent);
 
       if (functionComplexToken) {
         return SignatureHelpBuilder.buildFunctionItem(functionComplexToken as FunctionComplexToken, activeParameter);

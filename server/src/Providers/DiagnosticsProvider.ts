@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import { Diagnostic, DiagnosticSeverity } from "vscode-languageserver";
 
 import Provider from "./Provider";
+import { isStandardLibrary } from "../Documents/StandardLibrary";
 
 const compilerDiagnostic = /(?:^|:\s)([^:\r\n]+?\.nss)(?:\((\d+)\))?:\s*(ERROR|WARNING):\s*(.*)/;
 
@@ -63,7 +64,7 @@ export default class DiagnoticsProvider extends Provider {
   public async publish(uri: string) {
     return await new Promise<boolean>((resolve) => {
       const { enabled, nwnHome, reportWarnings, nwnInstallation, verbose, os } = this.server.config.compiler;
-      if (!enabled || uri.includes("nwscript.nss")) {
+      if (!enabled || isStandardLibrary(uri)) {
         return resolve(true);
       }
 
@@ -132,7 +133,7 @@ export default class DiagnoticsProvider extends Provider {
       }
       const includeDirectories = new Set(uris.map((uri) => dirname(fileURLToPath(uri))));
       includeDirectories.add(this.server.workspaceFilesSystem.getWorkspaceRootPath());
-      const languageSpec = this.server.workspaceFilesSystem.getFilePath("nwscript");
+      const languageSpec = this.server.standardLibrary.getPath(uri);
       if (languageSpec) includeDirectories.add(dirname(languageSpec));
       args.push("--dirs", [...includeDirectories].join(","));
       // Directory ordering cannot express arbitrary per-file selections, and the

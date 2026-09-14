@@ -3,7 +3,7 @@
 .gitignore
 .yarnrc
 **/tsconfig.json
-**/.eslintrc.json
+**/.eslintrc.*
 **/*.ts
 **/*.map
 shared.webpack.config.js

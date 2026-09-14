@@ -1,15 +1,7 @@
 import { CompletionItemKind } from "vscode-languageserver";
 
 import { LanguageTypes } from "../../Tokenizer/constants";
-import type {
-  ComplexToken,
-  ConstantComplexToken,
-  VariableComplexToken,
-  FunctionParamComplexToken,
-  FunctionComplexToken,
-  StructPropertyComplexToken,
-  StructComplexToken,
-} from "../../Tokenizer/types";
+import type { ComplexToken, ConstantComplexToken, VariableComplexToken, FunctionParamComplexToken, FunctionComplexToken, StructPropertyComplexToken, StructComplexToken } from "../../Tokenizer/types";
 
 export default abstract class Builder {
   protected static handleLanguageType(type: string) {

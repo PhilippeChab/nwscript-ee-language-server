@@ -11,7 +11,7 @@ connection.onInitialize(async (params: InitializeParams) => {
 });
 
 connection.onInitialized(() => {
-  server.up();
+  void server.up().catch((error: Error) => connection.console.error(error.message));
 });
 
 connection.onShutdown(() => server.down());

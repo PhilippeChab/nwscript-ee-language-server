@@ -21,8 +21,20 @@ export default class DocumentManager {
     this.documents.onDidOpen(cb);
   }
 
+  public onDidChangeContent(cb: (e: TextDocumentChangeEvent<TextDocument>) => any) {
+    this.documents.onDidChangeContent(cb);
+  }
+
+  public onDidClose(cb: (e: TextDocumentChangeEvent<TextDocument>) => any) {
+    this.documents.onDidClose(cb);
+  }
+
   public get(uri: string) {
     return this.documents.get(uri);
+  }
+
+  public all() {
+    return this.documents.all();
   }
 
   public listen(connection: Connection) {

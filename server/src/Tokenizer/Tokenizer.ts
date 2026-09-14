@@ -51,6 +51,12 @@ export default class Tokenizer {
     });
   }
 
+  private requireTokens(tokensArrays: (IToken[] | undefined)[], lineIndex: number) {
+    const tokens = tokensArrays[lineIndex];
+    if (!tokens) throw new Error(`Missing tokens at line ${lineIndex + 1}`);
+    return tokens;
+  }
+
   private getTokenIndexAtPosition(tokensArray: IToken[], position: Position) {
     return tokensArray.findIndex((token) => token.startIndex <= position.character && token.endIndex >= position.character);
   }
@@ -94,7 +100,7 @@ export default class Tokenizer {
     do {
       lineIndex = lineIndex + 1;
       line = lines[lineIndex];
-      tokensArray = tokensArrays[lineIndex]!;
+      tokensArray = this.requireTokens(tokensArrays, lineIndex);
 
       params = params.concat(this.getInlineFunctionParams(line, lineIndex, tokensArray));
     } while (!Boolean(tokensArray.find((token) => token.scopes.includes(LanguageScopes.rightParametersRoundBracket))));
@@ -149,10 +155,10 @@ export default class Tokenizer {
 
   private isFunctionDeclaration(lineIndex: number, tokensArrays: (IToken[] | undefined)[]) {
     let isFunctionDeclaration = false;
-    let tokensArray = tokensArrays[lineIndex]!;
     let isLastParamsLine = false;
 
     while (!isLastParamsLine) {
+      const tokensArray = this.requireTokens(tokensArrays, lineIndex);
       isLastParamsLine = Boolean(tokensArray.find((token) => token.scopes.includes(LanguageScopes.rightParametersRoundBracket)));
 
       if (isLastParamsLine && Boolean(tokensArray.find((token) => token.scopes.includes(LanguageScopes.terminatorStatement) && !token.scopes.includes(LanguageScopes.block)))) {
@@ -160,7 +166,6 @@ export default class Tokenizer {
       }
 
       lineIndex = lineIndex + 1;
-      tokensArray = tokensArrays[lineIndex]!;
     }
 
     return isFunctionDeclaration;
@@ -241,7 +246,8 @@ export default class Tokenizer {
           }
 
           if (token.scopes.includes(LanguageScopes.includeDeclaration)) {
-            scope.children.push(this.getRawTokenContent(line, tokensArray.at(-2)!));
+            const includeToken = tokensArray.at(-2);
+            if (includeToken) scope.children.push(this.getRawTokenContent(line, includeToken));
             break;
           }
 
@@ -261,7 +267,8 @@ export default class Tokenizer {
               position: { line: lineIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
               tokenType: CompletionItemKind.Function,
-              returnType: tokenIndex === 0 ? this.getTokenLanguageType(lines[lineIndex - 1], tokensArrays[lineIndex - 1]!, 0) : this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
+              returnType:
+                tokenIndex === 0 ? this.getTokenLanguageType(lines[lineIndex - 1], this.requireTokens(tokensArrays, lineIndex - 1), 0) : this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
               params: this.getFunctionParams(lineIndex, lines, tokensArrays),
               comments: this.getFunctionComments(lines, tokensArrays, tokenIndex === 0 ? lineIndex - 2 : lineIndex - 1),
             });
@@ -360,7 +367,8 @@ export default class Tokenizer {
               position: { line: lineIndex, character: token.startIndex },
               identifier: this.getRawTokenContent(line, token),
               tokenType: CompletionItemKind.Function,
-              returnType: tokenIndex === 0 ? this.getTokenLanguageType(lines[lineIndex - 1], tokensArrays[lineIndex - 1]!, 0) : this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
+              returnType:
+                tokenIndex === 0 ? this.getTokenLanguageType(lines[lineIndex - 1], this.requireTokens(tokensArrays, lineIndex - 1), 0) : this.getTokenLanguageType(line, tokensArray, tokenIndex - 2),
               params: this.getFunctionParams(lineIndex, lines, tokensArrays),
               comments: this.getFunctionComments(lines, tokensArrays, tokenIndex === 0 ? lineIndex - 2 : lineIndex - 1),
               variables: currentFunctionVariables,

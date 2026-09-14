@@ -25,7 +25,7 @@ export default class HoverContentProvider extends Provider {
       const document = this.server.documentsCollection.getFromUri(uri);
       if (!liveDocument || !document) return;
 
-      let token = this.resolveToken(position, document, liveDocument);
+      const token = this.resolveToken(position, document, liveDocument);
 
       if (token) {
         return {
@@ -53,21 +53,23 @@ export default class HoverContentProvider extends Provider {
         token = tokens.find((candidate) => candidate.identifier === rawContent);
         if (token) break;
 
-        tokens = this.server.documentsCollection.standardLibComplexTokens;
+        tokens = this.getStandardLibComplexTokens(document.uri);
         token = tokens.find((candidate) => candidate.identifier === rawContent);
         break;
       case CompletionItemKind.Struct:
-        tokens = document.getGlobalStructComplexTokens();
+        tokens = document.getGlobalStructComplexTokens().concat(this.getStandardLibStructTokens(document.uri));
         token = tokens.find((candidate) => candidate.identifier === rawContent);
         break;
-      case CompletionItemKind.Property:
+      case CompletionItemKind.Property: {
         const structIdentifer = localScope?.functionVariablesComplexTokens.find((candidate) => candidate.identifier === lookBehindRawContent)?.valueType;
 
         token = document
           .getGlobalStructComplexTokens()
+          .concat(this.getStandardLibStructTokens(document.uri))
           .find((candidate) => candidate.identifier === structIdentifer)
           ?.properties.find((property) => property.identifier === rawContent);
         break;
+      }
       default:
         token = localScope.functionVariablesComplexTokens.find((candidate) => candidate.identifier === rawContent);
     }

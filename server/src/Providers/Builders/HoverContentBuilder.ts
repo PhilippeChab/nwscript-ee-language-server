@@ -1,14 +1,6 @@
 import { MarkupContent, MarkupKind } from "vscode-languageserver";
 
-import type {
-  ComplexToken,
-  ConstantComplexToken,
-  FunctionComplexToken,
-  FunctionParamComplexToken,
-  StructComplexToken,
-  StructPropertyComplexToken,
-  VariableComplexToken,
-} from "../../Tokenizer/types";
+import type { ComplexToken, ConstantComplexToken, FunctionComplexToken, FunctionParamComplexToken, StructComplexToken, StructPropertyComplexToken, VariableComplexToken } from "../../Tokenizer/types";
 import { ServerConfiguration } from "../../ServerManager/Config";
 import Builder from "./Builder";
 
@@ -47,9 +39,7 @@ export default class HoverContentBuilder extends Builder {
     return this.buildMarkdown(
       [
         `${this.handleLanguageType(token.returnType)} ${token.identifier}(${token.params.reduce((acc, param, index) => {
-          return `${acc}${this.handleLanguageType(param.valueType)} ${param.identifier}${
-            param.defaultValue ? ` = ${param.defaultValue}` : ""
-          }${index === token.params.length - 1 ? "" : ", "}`;
+          return `${acc}${this.handleLanguageType(param.valueType)} ${param.identifier}${param.defaultValue ? ` = ${param.defaultValue}` : ""}${index === token.params.length - 1 ? "" : ", "}`;
         }, "")})`,
       ],
       serverConfig.hovering.addCommentsToFunctions ? ["```nwscript", ...token.comments, "```"] : [],
@@ -62,12 +52,7 @@ export default class HoverContentBuilder extends Builder {
   }
 
   private static buildStructItem(token: StructComplexToken) {
-    return this.buildMarkdown([
-      `struct ${token.identifier}`,
-      "{",
-      ...token.properties.map((property) => `\t${property.valueType} ${property.identifier}`),
-      "}",
-    ]);
+    return this.buildMarkdown([`struct ${token.identifier}`, "{", ...token.properties.map((property) => `\t${property.valueType} ${property.identifier}`), "}"]);
   }
 
   private static buildMarkdown(content: string[] | string, prepend: string[] = [], postpend: string[] = []) {

@@ -1,12 +1,8 @@
 import { describe, before } from "mocha";
 import { expect } from "chai";
-import { readFileSync, writeFileSync } from "fs";
+import { readFileSync } from "fs";
 import { normalize, join } from "path";
-import Tokenizer, {
-  GlobalScopeTokenizationResult,
-  LocalScopeTokenizationResult,
-  TokenizedScope,
-} from "../src/Tokenizer/Tokenizer";
+import Tokenizer, { GlobalScopeTokenizationResult, LocalScopeTokenizationResult, TokenizedScope } from "../src/Tokenizer/Tokenizer";
 
 const format = (data: any) => JSON.parse(JSON.stringify(data));
 
@@ -20,15 +16,9 @@ describe("Tokenization", () => {
   before("Read static data", async () => {
     tokenizer = await new Tokenizer(true).loadGrammar();
     staticCode = readFileSync(normalize(join(__dirname, "./static/test.nss"))).toString();
-    staticGlobalTokens = JSON.parse(
-      readFileSync(normalize(join(__dirname, "./static/globalScopeTokens.json"))).toString(),
-    ) as GlobalScopeTokenizationResult;
-    staticLocalTokensWithContext = JSON.parse(
-      readFileSync(normalize(join(__dirname, "./static/localScopeTokensWithContext.json"))).toString(),
-    ) as LocalScopeTokenizationResult;
-    staticLocalTokensWithoutContext = JSON.parse(
-      readFileSync(normalize(join(__dirname, "./static/localScopeTokensWithoutContext.json"))).toString(),
-    ) as LocalScopeTokenizationResult;
+    staticGlobalTokens = JSON.parse(readFileSync(normalize(join(__dirname, "./static/globalScopeTokens.json"))).toString()) as GlobalScopeTokenizationResult;
+    staticLocalTokensWithContext = JSON.parse(readFileSync(normalize(join(__dirname, "./static/localScopeTokensWithContext.json"))).toString()) as LocalScopeTokenizationResult;
+    staticLocalTokensWithoutContext = JSON.parse(readFileSync(normalize(join(__dirname, "./static/localScopeTokensWithoutContext.json"))).toString()) as LocalScopeTokenizationResult;
   });
 
   describe("Global Scope", () => {
@@ -57,9 +47,7 @@ describe("Tokenization", () => {
     });
 
     it("should equal static function variables tokens", () => {
-      expect(definitions.functionVariablesComplexTokens).to.be.deep.equal(
-        staticLocalTokensWithContext.functionVariablesComplexTokens,
-      );
+      expect(definitions.functionVariablesComplexTokens).to.be.deep.equal(staticLocalTokensWithContext.functionVariablesComplexTokens);
     });
 
     it("should equal static function tokens", () => {
@@ -74,9 +62,7 @@ describe("Tokenization", () => {
     });
 
     it("should equal static function variables tokens", () => {
-      expect(definitions.functionVariablesComplexTokens).to.be.deep.equal(
-        staticLocalTokensWithoutContext.functionVariablesComplexTokens,
-      );
+      expect(definitions.functionVariablesComplexTokens).to.be.deep.equal(staticLocalTokensWithoutContext.functionVariablesComplexTokens);
     });
 
     it("should equal static function tokens", () => {

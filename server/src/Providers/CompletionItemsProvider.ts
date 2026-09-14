@@ -36,6 +36,7 @@ export default class CompletionItemsProvider extends Provider {
 
         return document
           .getGlobalStructComplexTokens()
+          .concat(this.getStandardLibStructTokens(uri))
           .find((token) => token.identifier === structIdentifer)
           ?.properties.map((property) => {
             return CompletionItemBuilder.buildItem(property);
@@ -43,10 +44,19 @@ export default class CompletionItemsProvider extends Provider {
       }
 
       if (this.server.tokenizer.getActionTargetAtPosition(lines, rawTokenizedContent, position, -2).rawContent === LanguageTypes.struct) {
-        return document.getGlobalStructComplexTokens().map((token) => CompletionItemBuilder.buildItem(token));
+        return document
+          .getGlobalStructComplexTokens()
+          .concat(this.getStandardLibStructTokens(uri))
+          .map((token) => CompletionItemBuilder.buildItem(token));
       }
 
-      return this.getGlobalScopeCompletionItems(document, localScope).concat(this.getLocalScopeCompletionItems(localScope)).concat(this.getStandardLibCompletionItems());
+      const items = this.getGlobalScopeCompletionItems(document, localScope).concat(this.getLocalScopeCompletionItems(localScope)).concat(this.getStandardLibCompletionItems(uri));
+      const seen = new Set<string>();
+      return items.filter((item) => {
+        if (seen.has(item.label)) return false;
+        seen.add(item.label);
+        return true;
+      });
     };
   }
 
@@ -66,7 +76,7 @@ export default class CompletionItemsProvider extends Provider {
     return functionVariablesCompletionItems.concat(functionsCompletionItems);
   }
 
-  private getStandardLibCompletionItems() {
-    return this.getStandardLibComplexTokens().map((token) => CompletionItemBuilder.buildItem(token));
+  private getStandardLibCompletionItems(uri: string) {
+    return this.getStandardLibComplexTokens(uri).map((token) => CompletionItemBuilder.buildItem(token));
   }
 }

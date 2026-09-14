@@ -1,7 +1,6 @@
 import { cpus } from "os";
 import { join } from "path";
-import { readFileSync } from "fs";
-import { pathToFileURL } from "url";
+import { fileURLToPath, pathToFileURL } from "url";
 import * as clustering from "cluster";
 import type { Connection, InitializeParams } from "vscode-languageserver";
 
@@ -19,7 +18,7 @@ import {
 } from "../Providers";
 import { DocumentsCollection, LiveDocumentsManager } from "../Documents";
 import { Tokenizer } from "../Tokenizer";
-import { TokenizedScope } from "../Tokenizer/Tokenizer";
+import StandardLibrary, { isStandardLibrary } from "../Documents/StandardLibrary";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { Logger } from "../Logger";
 import { defaultServerConfiguration } from "./Config";
@@ -36,6 +35,7 @@ export default class ServerManger {
   public documentsCollection: DocumentsCollection;
   public documentsWaitingForPublish: string[] = [];
   public tokenizer: Tokenizer;
+  public standardLibrary: StandardLibrary;
 
   private diagnosticsProvider: DiagnosticsProvider | null = null;
 
@@ -43,16 +43,17 @@ export default class ServerManger {
     this.connection = connection;
     this.logger = new Logger(connection.console);
     this.capabilitiesHandler = new CapabilitiesHandler(params.capabilities);
-    this.workspaceFilesSystem = new WorkspaceFilesSystem(params.rootPath!, params.workspaceFolders!);
+    this.workspaceFilesSystem = new WorkspaceFilesSystem(params.rootUri ? fileURLToPath(params.rootUri) : params.rootPath ?? null, params.workspaceFolders ?? null);
     this.liveDocumentsManager = new LiveDocumentsManager();
     this.documentsCollection = new DocumentsCollection();
     this.tokenizer = new Tokenizer();
+    this.standardLibrary = new StandardLibrary(this.workspaceFilesSystem, this.tokenizer, (message) => this.logger.error(message));
 
     this.liveDocumentsManager.listen(this.connection);
   }
 
   public async initialize() {
-    this.tokenizer.loadGrammar();
+    await this.tokenizer.loadGrammar();
     this.registerProviders();
     this.registerLiveDocumentsEvents();
 
@@ -69,8 +70,8 @@ export default class ServerManger {
     WorkspaceProvider.register(this);
 
     if (this.capabilitiesHandler.getSupportsWorkspaceConfiguration()) {
-      await ConfigurationProvider.register(this, async () => {
-        await this.loadConfig();
+      await ConfigurationProvider.register(this, () => {
+        void this.loadConfig().catch((error: Error) => this.logger.error(error.message));
       });
     }
 
@@ -85,17 +86,22 @@ export default class ServerManger {
     }
 
     let filesIndexedCount = 0;
-    const filesPath = this.workspaceFilesSystem.getFilesPath();
-    const nwscriptPath = filesPath.find((path) => path.includes("nwscript.nss"));
+    const filesPath = this.workspaceFilesSystem.getFilesPath().filter((path) => !isStandardLibrary(path));
     const progressReporter = await this.connection.window.createWorkDoneProgress();
     const filesCount = filesPath.length;
-    this.logger.info(`Indexing files ...`);
+    this.logger.info("Indexing files ...");
 
     progressReporter.begin("Indexing files for NWScript: EE Language Server ...", 0);
+    if (!filesCount) {
+      progressReporter.done();
+      this.configLoaded = true;
+      void this.diagnosticsProvider?.processDocumentsWaitingForPublish();
+      return;
+    }
     const partCount = Math.ceil(filesCount / numCPUs);
     for (let i = 0; i < Math.min(numCPUs, filesCount); i++) {
       const worker = cluster.fork();
-      worker.send(filesPath.slice(i * partCount, Math.min((i + 1) * partCount, filesCount - 1)).join(","));
+      worker.send(filesPath.slice(i * partCount, Math.min((i + 1) * partCount, filesCount)).join(","));
       worker.on("message", (message: string) => {
         const { filePath, globalScope } = JSON.parse(message);
         this.documentsCollection?.createDocument(pathToFileURL(filePath).href, globalScope);
@@ -109,18 +115,21 @@ export default class ServerManger {
         progressReporter?.done();
         this.logger.info(`Indexed ${filesIndexedCount} files.`);
         this.configLoaded = true;
-        this.diagnosticsProvider?.processDocumentsWaitingForPublish();
-
-        if (nwscriptPath) {
-          const fileContent = readFileSync(nwscriptPath).toString();
-          const globalScope = this.tokenizer?.tokenizeContent(fileContent, TokenizedScope.global)!;
-          this.documentsCollection?.createDocument(pathToFileURL(nwscriptPath).href, globalScope);
-        }
+        void this.diagnosticsProvider?.processDocumentsWaitingForPublish();
       }
     });
   }
 
   public down() {}
+
+  public refreshStandardLibrary() {
+    this.standardLibrary.invalidate();
+    for (const document of this.liveDocumentsManager.all()) {
+      if (!isStandardLibrary(document.uri)) {
+        void this.diagnosticsProvider?.publish(document.uri).catch((error: Error) => this.logger.error(error.message));
+      }
+    }
+  }
 
   private registerProviders() {
     CompletionItemsProvider.register(this);
@@ -135,12 +144,31 @@ export default class ServerManger {
   }
 
   private registerLiveDocumentsEvents() {
-    this.liveDocumentsManager.onDidSave((event) => this.diagnosticsProvider?.publish(event.document.uri));
-    this.liveDocumentsManager.onWillSave((event) => this.documentsCollection?.updateDocument(event.document, this.tokenizer, this.workspaceFilesSystem));
+    this.liveDocumentsManager.onDidChangeContent((event) => {
+      this.standardLibrary.change(event.document);
+      if (isStandardLibrary(event.document.uri)) {
+        const definitions = this.standardLibrary.get(event.document.uri);
+        if (definitions.owner === event.document.uri) this.documentsCollection.createDocument(event.document.uri, definitions);
+      }
+    });
+    this.liveDocumentsManager.onDidClose((event) => this.standardLibrary.close(event.document.uri));
+    this.liveDocumentsManager.onDidSave((event) => {
+      if (isStandardLibrary(event.document.uri)) this.refreshStandardLibrary();
+      else void this.diagnosticsProvider?.publish(event.document.uri);
+    });
+    this.liveDocumentsManager.onWillSave((event) => {
+      if (!isStandardLibrary(event.document.uri)) this.documentsCollection?.updateDocument(event.document, this.tokenizer, this.workspaceFilesSystem);
+    });
 
     this.liveDocumentsManager.onDidOpen((event) => {
-      this.documentsCollection?.createDocuments(event.document.uri, event.document.getText(), this.tokenizer, this.workspaceFilesSystem);
-      this.diagnosticsProvider?.publish(event.document.uri);
+      if (isStandardLibrary(event.document.uri)) {
+        this.standardLibrary.change(event.document);
+        const definitions = this.standardLibrary.get(event.document.uri);
+        if (definitions.owner === event.document.uri) this.documentsCollection.createDocument(event.document.uri, definitions);
+      } else {
+        this.documentsCollection?.createDocuments(event.document.uri, event.document.getText(), this.tokenizer, this.workspaceFilesSystem);
+      }
+      void this.diagnosticsProvider?.publish(event.document.uri);
     });
   }
 

@@ -1,14 +1,6 @@
 import { CompletionItem, CompletionItemKind } from "vscode-languageserver";
 
-import type {
-  ComplexToken,
-  ConstantComplexToken,
-  FunctionComplexToken,
-  FunctionParamComplexToken,
-  StructComplexToken,
-  StructPropertyComplexToken,
-  VariableComplexToken,
-} from "../../Tokenizer/types";
+import type { ComplexToken, ConstantComplexToken, FunctionComplexToken, FunctionParamComplexToken, StructComplexToken, StructPropertyComplexToken, VariableComplexToken } from "../../Tokenizer/types";
 import { ServerConfiguration } from "../../ServerManager/Config";
 import Builder from "./Builder";
 
@@ -19,9 +11,7 @@ export default class CompletionItemBuilder extends Builder {
 
       return {
         label: `${item.label}(${params.reduce((acc, param, index) => {
-          return `${acc}${this.handleLanguageType(param.valueType)} ${param.identifier}${
-            index === params.length - 1 ? "" : ", "
-          }`;
+          return `${acc}${this.handleLanguageType(param.valueType)} ${param.identifier}${index === params.length - 1 ? "" : ", "}`;
         }, "")})`,
         kind: item.kind,
         detail: item.detail,
@@ -80,9 +70,7 @@ export default class CompletionItemBuilder extends Builder {
       label: token.identifier,
       kind: token.tokenType,
       detail: `(method) (${token.params.reduce((acc, param, index) => {
-        return `${acc}${param.identifier}: ${this.handleLanguageType(param.valueType)}${
-          index === token.params.length - 1 ? "" : ", "
-        }`;
+        return `${acc}${param.identifier}: ${this.handleLanguageType(param.valueType)}${index === token.params.length - 1 ? "" : ", "}`;
       }, "")}): ${this.handleLanguageType(token.returnType)}`,
       data: token.params,
     };

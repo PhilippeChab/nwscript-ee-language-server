@@ -10,14 +10,10 @@ export default class SignatureHelpBuilder extends Builder {
       signatures: [
         SignatureInformation.create(
           `${this.handleLanguageType(token.returnType)} ${token.identifier}(${token.params.reduce((acc, param, index) => {
-            return `${acc}${this.handleLanguageType(param.valueType)} ${param.identifier}${
-              index === token.params.length - 1 ? "" : ", "
-            }`;
+            return `${acc}${this.handleLanguageType(param.valueType)} ${param.identifier}${index === token.params.length - 1 ? "" : ", "}`;
           }, "")})`,
           undefined,
-          ...token.params.map<ParameterInformation>((param) =>
-            ParameterInformation.create(`${param.valueType} ${param.identifier}`),
-          ),
+          ...token.params.map<ParameterInformation>((param) => ParameterInformation.create(`${param.valueType} ${param.identifier}`)),
         ),
       ],
       activeSignature: 0,

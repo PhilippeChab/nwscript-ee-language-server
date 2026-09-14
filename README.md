@@ -106,7 +106,19 @@ I personally use the [One Dark Pro](https://marketplace.visualstudio.com/items?i
 
 ### Generating the language library definitions
 
-Replace `/server/scripts/nwscript.nss` by its new version, `/server/scripts/base_scripts/` files by their new versions, `/server/scripts/ovr/` includes by their new versions and execute `yarn run generate-lib-defs` in the server root directory.
+Check for the latest Beamdog release and automatically update the bundled standard library:
+
+```sh
+yarn --cwd server update-standard-lib
+```
+
+The TypeScript updater discovers the latest release, verifies its archive, regenerates definitions, and records the new version and checksums. Use `--pinned` to reproduce the recorded version, or `check-standard-lib` to verify local definitions without network access. See [standard library update instructions](server/resources/STANDARD_LIBRARY.md) for details and offline use.
+
+To regenerate all libraries, also replace `/server/scripts/base_scripts/` and `/server/scripts/ovr/` with extracted game scripts, then run `yarn --cwd server generate-lib-defs`.
+
+A workspace `nwscript.nss` replaces the bundled standard library for completion, hover, signature help, and Go to Definition without needing an `#include`. Compiler diagnostics use the same selected file from disk. Each workspace folder selects its own file: a root-level file wins, then the shallowest subdirectory, then lexical path order. Selection matches the exact filename, case-insensitively.
+
+Unsaved edits update editor definitions. External changes, creation, deletion, and workspace folder changes are picked up automatically. If a file becomes unreadable or cannot be parsed, the server logs the problem and retains its last usable definitions; if none exist, it uses the bundle. Removing the file restores bundled definitions (or selects the next workspace candidate). Closing a file discards unsaved definitions and reloads disk contents. See [standard library behavior](server/resources/STANDARD_LIBRARY.md#workspace-and-custom-versions) for details.
 
 ## Notes
 

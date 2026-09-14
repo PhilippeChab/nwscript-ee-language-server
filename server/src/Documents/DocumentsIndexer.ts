@@ -15,12 +15,16 @@ const generateTokens = async (filesPath: string[]) => {
     const fileContent = readFileSync(filePath).toString();
     const globalScope = tokenizer.tokenizeContent(fileContent, TokenizedScope.global);
 
-    process?.send!(JSON.stringify({ filePath, globalScope }));
+    if (!process.send) throw new Error("Indexer requires an IPC channel");
+    process.send(JSON.stringify({ filePath, globalScope }));
   }
 
   exit(0);
 };
 
 process.on("message", (filesPath: string) => {
-  generateTokens(filesPath.split(","));
+  void generateTokens(filesPath.split(",")).catch((error: Error) => {
+    console.error(error.message);
+    exit(1);
+  });
 });

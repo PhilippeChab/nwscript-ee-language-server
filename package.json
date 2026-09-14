@@ -166,7 +166,7 @@
     "compile:client": "tsc -b ./client/tsconfig.json",
     "compile:server": "tsc -b ./server/tsconfig.json",
     "watch": "tsc -b -w",
-    "lint": "eslint ./client/src ./server/src --ext .ts",
+    "lint": "eslint .eslintrc.cjs ./client/src ./server/src ./server/scripts ./server/test --ext .ts --max-warnings 0",
     "postinstall": "yarn --cwd client install --frozen-lockfile && yarn --cwd server install --frozen-lockfile",
     "test": "cd server && yarn test && cd ..",
     "clean": "rimraf client/out && rimraf server/out"
