@@ -369,4 +369,30 @@ describe("Workspace standard library", function () {
     library.invalidate();
     expect(library.get(target)).to.equal(snapshot);
   });
+  it("does not rescan the workspace for already-indexed includes on document updates", () => {
+    const path = join(root, "helper.nss");
+    write(path, "int Helper(int n);\n");
+    const document = TextDocument.create(uri(join(root, "sample.nss")), "nwscript", 1, '#include "helper"\nvoid main() {}\n');
+    const collection = new api.Collection();
+    collection.createDocuments(document.uri, document.getText(), tokenizer, files);
+    let searches = 0;
+    const getFilePath = files.getFilePath.bind(files);
+    files.getFilePath = (name: string) => {
+      searches++;
+      return getFilePath(name);
+    };
+    collection.updateDocument(document, tokenizer, files);
+    expect(searches).to.equal(0);
+    expect(collection.getFromUri(document.uri).getChildren()).to.include("helper");
+  });
+
+  it("recovers an include created on disk even when the parent document version is unchanged", () => {
+    const document = TextDocument.create(uri(join(root, "sample.nss")), "nwscript", 1, '#include "later"\nvoid main() {}\n');
+    const collection = new api.Collection();
+    collection.updateDocument(document, tokenizer, files);
+    expect(collection.get("later")).to.equal(undefined);
+    write(join(root, "later.nss"), "int LaterFunction();\n");
+    collection.updateDocument(document, tokenizer, files);
+    expect(collection.get("later").complexTokens[0].identifier).to.equal("LaterFunction");
+  });
 });

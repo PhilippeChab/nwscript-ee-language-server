@@ -7,6 +7,8 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 - Add a standalone npm-installable release archive with the `nwscript-ee-language-server --stdio` command, bundled runtime resources, and Neovim setup instructions.
 - Support initialization options and configuration updates from clients without workspace configuration or workspace-folder capabilities; align compiler warning defaults with the VS Code extension.
 - Add installed-server tests to the normal TypeScript test suite and CI platform matrix, plus a Neovim integration check.
+- Avoid repeated workspace searches and tokenization during saves while still recovering missing includes.
+- Discard stale compiler results, clear disabled diagnostics, and stop indexing workers when the stdio connection closes.
 - Use valid UTF-16 diagnostic ranges based on the compiled source, fixing rejected diagnostics in strict LSP clients such as Zed.
 - Bound optional client requests, cancel startup during shutdown, limit indexing workers, and isolate individual indexing failures. Negotiate plain-text hover and flat document symbols for clients without richer capabilities.
 

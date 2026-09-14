@@ -463,6 +463,23 @@ describe("Installed standalone LSP server", function () {
     await nullClient.shutdown();
   });
 
+  it("indexes edits made between willSave and didSave instead of reusing an older version", async () => {
+    const client = await start();
+    await client.ready();
+    await open(client);
+    await client.rpc.sendNotification("textDocument/willSave", { textDocument: params().textDocument, reason: 1 });
+    // Created after background indexing, so only the updated parent's include
+    // traversal can make this new function available.
+    writeFileSync(join(workspace, "later.nss"), "int LaterFunction();\n");
+    const changed = '#include "later"\n' + source;
+    writeFileSync(join(workspace, "sample.nss"), changed);
+    await client.rpc.sendNotification(DidChangeTextDocumentNotification.type, { textDocument: { ...params().textDocument, version: 2 }, contentChanges: [{ text: changed }] });
+    await client.rpc.sendNotification(DidSaveTextDocumentNotification.type, { textDocument: params().textDocument });
+    const completion = await client.rpc.sendRequest(CompletionRequest.type, { ...params(), position: { line: 2, character: 16 } });
+    expect(JSON.stringify(completion)).to.include("LaterFunction");
+    await client.shutdown();
+  });
+
   it("provides native diagnostics and clears them on save without willSave support", async () => {
     mkdirSync(join(workspace, "lang/en"), { recursive: true });
     mkdirSync(join(workspace, "ovr"));
