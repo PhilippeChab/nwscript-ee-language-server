@@ -53,6 +53,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       globalScope.complexTokens,
       globalScope.structComplexTokens,
       this,
+      globalScope.entryPoints,
     );
   }
 
@@ -84,6 +85,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
 
   public getImportableDocuments(document: Document) {
     const included = new Set(document.getChildren());
+    const entryPoints = new Set(document.getEntryPoints());
     const currentName = document.getIncludeName();
     const candidates: Document[] = [];
     this.forEach((candidate) => {
@@ -93,6 +95,8 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       // Use the same workspace-over-bundled selection as include resolution.
       if (candidate.base && this.get(name)) return;
       if (candidate.getChildren().includes(currentName)) return;
+      // Already included dependencies do not add another implementation.
+      if (candidate.getEntryPoints([...included]).some((entryPoint) => entryPoints.has(entryPoint))) return;
       candidates.push(candidate);
     });
     return candidates;

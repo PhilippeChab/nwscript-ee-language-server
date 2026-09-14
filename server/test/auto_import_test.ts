@@ -99,6 +99,67 @@ describe("Auto-import completion", function () {
     expect(removed.items.find((item) => item.label === "Imported")?.additionalTextEdits).to.have.length(1);
   });
 
+  for (const declaration of [
+    { source: "const int IMPORTED_VALUE = 42;", identifier: "IMPORTED_VALUE", prefix: "IMPORTED_V" },
+    { source: "void Imported(int value);", identifier: "Imported", prefix: "Import" },
+    { source: "struct ImportedStruct {\n int localValue;\n};", identifier: "ImportedStruct", prefix: "struct ImportedS" },
+  ]) {
+    it(`uses the unsaved ${declaration.identifier} declaration instead of a conflicting import`, () => {
+      const saved = "void main()\n{\n}\n";
+      const source = `${declaration.source}\nvoid main()\n{\n ${declaration.prefix}|\n}\n`;
+      const { items } = complete(source, {}, true, saved);
+      const matches = items.filter((item) => item.label === declaration.identifier);
+      expect(matches).to.have.length(1);
+      expect(matches[0]).not.to.have.property("additionalTextEdits");
+      expect(matches[0]).not.to.have.property("textEdit");
+    });
+  }
+
+  it("offers imports again after a global declaration is removed without saving", () => {
+    const { items } = complete("void main()\n{\n IMPORTED_V|\n}\n", {}, true, "const int IMPORTED_VALUE = 42;\nvoid main()\n{\n}\n");
+    expect(items.find((item) => item.label === "IMPORTED_VALUE")?.additionalTextEdits).to.have.length(1);
+  });
+
+  for (const entryPoint of ["void main() {}", "int StartingConditional() { return 1; }"]) {
+    it(`excludes all symbols from a source with a conflicting ${entryPoint}`, () => {
+      const { items } = complete(
+        `void Caller()\n{\n Imp|\n}\n${entryPoint}\n`,
+        { executable: `void ImportedFromExecutable();\nconst int EXECUTABLE_VALUE = 1;\n${entryPoint}\n` },
+        true,
+        "void Caller() {}\n",
+      );
+      expect(items.some((item) => item.detail?.includes('#include "executable"'))).to.equal(false);
+      expect(items.find((item) => item.label === "Imported")?.additionalTextEdits).to.have.length(1);
+    });
+  }
+
+  it("detects entry point conflicts through includes on both sides", () => {
+    const { items } = complete('#include "current_entry"\nvoid Caller()\n{\n Imp|\n}\n', {
+      current_entry: "void main() {}\n",
+      other_entry: "void main() {}\n",
+      executable: '#include "other_entry"\nvoid ImportedFromExecutable();\n',
+    });
+    expect(items.some((item) => item.label === "ImportedFromExecutable")).to.equal(false);
+  });
+
+  it("does not treat an entry point prototype as an implementation", () => {
+    const { items } = complete("void main()\n{\n Imp|\n}\n", { helper: "void main();\nvoid Imported(int value);\n" });
+    expect(items.find((item) => item.label === "Imported")?.additionalTextEdits).to.have.length(1);
+  });
+
+  it("allows a candidate whose entry point comes only from an already included dependency", () => {
+    const { items } = complete('#include "shared_entry"\nvoid Caller()\n{\n Imp|\n}\n', {
+      shared_entry: "void main() {}\n",
+      helper: '#include "shared_entry"\nvoid Imported(int value);\n',
+    });
+    expect(items.find((item) => item.label === "Imported")?.additionalTextEdits).to.have.length(1);
+  });
+
+  it("allows an entry point when the requesting script no longer has one", () => {
+    const { items } = complete("void Caller()\n{\n Imp|\n}\n", { helper: "void Imported(int value);\nvoid main() {}\n" }, true, "void main() {}\n");
+    expect(items.find((item) => item.label === "Imported")?.additionalTextEdits).to.have.length(1);
+  });
+
   for (const source of ["Imp|", "|", "// Header\nImp|"]) {
     it(`applies a completion and include at the same position in ${JSON.stringify(source)}`, () => {
       const { items, live, resolve } = complete(source);

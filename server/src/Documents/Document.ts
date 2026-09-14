@@ -2,6 +2,7 @@ import { STATIC_PREFIX } from "./DocumentsCollection";
 
 import type { ComplexToken, StructComplexToken } from "../Tokenizer/types";
 import type DocumentsCollection from "./DocumentsCollection";
+import type { GlobalScopeTokenizationResult } from "../Tokenizer/Tokenizer";
 
 export type OwnedComplexTokens = { owner?: string; tokens: ComplexToken[] };
 export type OwnedStructComplexTokens = { owner?: string; tokens: StructComplexToken[] };
@@ -14,6 +15,7 @@ export default class Document {
     readonly complexTokens: ComplexToken[],
     readonly structComplexTokens: StructComplexToken[],
     private readonly collection: DocumentsCollection,
+    readonly entryPoints: string[] = [],
   ) {}
 
   public getKey() {
@@ -25,14 +27,26 @@ export default class Document {
     return this.base ? key.slice(STATIC_PREFIX.length + 1) : key;
   }
 
-  public withChildren(children: string[]) {
+  public withGlobalScope(scope: GlobalScopeTokenizationResult) {
     return new Document(
       this.uri,
       this.base,
-      children.filter((child) => child.toLowerCase() !== "nwscript"),
-      this.complexTokens,
-      this.structComplexTokens,
+      scope.children.filter((child) => child.toLowerCase() !== "nwscript"),
+      scope.complexTokens,
+      scope.structComplexTokens,
       this.collection,
+      scope.entryPoints,
+    );
+  }
+
+  public getEntryPoints(computedChildren: string[] = []): string[] {
+    return this.entryPoints.concat(
+      this.children.flatMap((child) => {
+        if (computedChildren.includes(child)) return [];
+        computedChildren.push(child);
+        const childDocument = this.collection.get(child) || this.collection.get(`${STATIC_PREFIX}/${child}`);
+        return childDocument?.getEntryPoints(computedChildren) || [];
+      }),
     );
   }
 

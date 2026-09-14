@@ -19,6 +19,7 @@ export type GlobalScopeTokenizationResult = {
   complexTokens: ComplexToken[];
   structComplexTokens: StructComplexToken[];
   children: string[];
+  entryPoints?: string[];
 };
 
 export type LocalScopeTokenizationResult = {
@@ -326,6 +327,13 @@ export default class Tokenizer {
             break;
           }
 
+          const identifier = this.getRawTokenContent(line, token);
+          if ((identifier === "main" || identifier === "StartingConditional") && this.isLocalFunctionDeclaration(lineIndex, tokenIndex, token, tokensArrays)) {
+            if (!scope.entryPoints) scope.entryPoints = [];
+            scope.entryPoints.push(identifier);
+            break;
+          }
+
           if (this.isGlobalFunctionDeclaration(lineIndex, tokenIndex, token, tokensArrays)) {
             scope.complexTokens.push({
               position: { line: lineIndex, character: token.startIndex },
@@ -465,6 +473,10 @@ export default class Tokenizer {
 
   public tokenizeContentFromRaw(lines: string[], rawTokenizedContent: (IToken[] | undefined)[], startIndex: number = 0, stopIndex: number = -1) {
     return this.tokenizeLinesForLocalScope(lines, rawTokenizedContent, startIndex, stopIndex);
+  }
+
+  public tokenizeGlobalScopeFromRaw(lines: string[], rawTokenizedContent: (IToken[] | undefined)[]) {
+    return this.tokenizeLinesForGlobalScope(lines, rawTokenizedContent);
   }
 
   public tokenizeContentToRaw(content: string): [lines: string[], rawTokenizedContent: (IToken[] | undefined)[]] {
