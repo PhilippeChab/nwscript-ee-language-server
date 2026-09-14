@@ -468,7 +468,7 @@ describe("Installed standalone LSP server", function () {
       const client = await start({ initializationOptions: { compiler: { enabled: false }, completion: { autoImport } } });
       await client.ready();
       await open(client);
-      for (const [index, suffix] of ["void Unfinished(", "void Unfinished(\n int value,\n", "void Unfinished();"].entries()) {
+      for (const [index, suffix] of ["void Unfinished(", "void Unfinished(\n int value,\n", "void Unfinished();", "struct Unfinished {\n int ", "struct Unfinished {\n int field;\n};"].entries()) {
         await client.rpc.sendNotification(DidChangeTextDocumentNotification.type, {
           textDocument: { ...params().textDocument, version: index + 2 },
           contentChanges: [{ text: source + suffix }],

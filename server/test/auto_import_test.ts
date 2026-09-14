@@ -73,7 +73,7 @@ describe("Auto-import completion", function () {
   });
 
   for (const enabled of [true, false]) {
-    for (const unfinished of ["void Unfinished(", "void Unfinished(\n int value,\n"]) {
+    for (const unfinished of ["void Unfinished(", "void Unfinished(\n int value,\n", "struct Unfinished {\n int ", "struct Unfinished {\n int field;\n float ", "const int "]) {
       it(`preserves completions before an unfinished declaration with autoImport=${String(enabled)}: ${JSON.stringify(unfinished)}`, () => {
         const valid = "const int IMPORTED_VALUE = 2;\nvoid Existing();\nvoid main()\n{\n int localValue;\n |\n}\n";
         const { items } = complete(valid + unfinished, {}, enabled, valid.replace("|", ""));
@@ -88,6 +88,28 @@ describe("Auto-import completion", function () {
       });
     }
   }
+
+  it("retains valid globals at every editing prefix of trailing declarations", () => {
+    const valid = '#include "helper"\nconst int VISIBLE = 1;\nvoid Existing();\nvoid main() {}\n';
+    for (const declaration of ["struct Example {\n int field;\n float other;\n};", 'void Example(\n int value,\n string text = "value");', "const int EXAMPLE = 1;"]) {
+      for (let length = 0; length <= declaration.length; length++) {
+        const [lines, raw] = tokenizer.tokenizeContentToRaw(valid + declaration.slice(0, length));
+        const scope = tokenizer.tokenizeGlobalScopeFromRaw(lines, raw);
+        expect(scope.children).to.deep.equal(["helper"]);
+        expect(scope.entryPoints).to.deep.equal(["main"]);
+        expect(scope.complexTokens.map((token: any) => token.identifier)).to.include.members(["VISIBLE", "Existing"]);
+      }
+    }
+  });
+
+  it("resumes after an incomplete struct field and keeps strict indexing unchanged", () => {
+    const source = "struct Example {\n int first;\n int \n float last;\n};\nconst int AFTER = 1;\n";
+    const [lines, raw] = tokenizer.tokenizeContentToRaw(source);
+    const scope = tokenizer.tokenizeGlobalScopeFromRaw(lines, raw);
+    expect(scope.structComplexTokens[0].properties.map((token: any) => token.identifier)).to.deep.equal(["first", "last"]);
+    expect(scope.complexTokens.map((token: any) => token.identifier)).to.deep.equal(["AFTER"]);
+    expect(() => tokenizer.tokenizeContent(source, "global")).to.throw();
+  });
 
   it("preserves CRLF and appends after existing includes", () => {
     const { items, live } = complete('#include "other" // comment\r\n\r\nvoid main()\r\n{\r\n Imp|\r\n}\r\n');
