@@ -60,6 +60,9 @@ export function mergeConfiguration(current: ServerConfiguration, settings: unkno
   // clang-format supports arbitrary style keys beyond the bundled defaults.
   const formatter = isObject(input.formatter) ? input.formatter : {};
   if (isObject(formatter.style)) result.formatter.style = { ...result.formatter.style, ...formatter.style };
+  // This setting stays nullable even after an explicit OS has been selected.
+  const compiler = isObject(input.compiler) ? input.compiler : {};
+  if (compiler.os === null) result.compiler.os = null;
   if (result.compiler.os !== null && !["Linux", "Darwin", "Windows_NT"].includes(result.compiler.os)) result.compiler.os = current.compiler.os;
   return result;
 }

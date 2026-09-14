@@ -55,7 +55,9 @@ The server uses standard LSP JSON-RPC framing, full document synchronization, an
 UTF-16 positions. Hover falls back to plain text and document symbols to the flat
 format unless the client advertises the richer formats. Optional configuration,
 registration, and progress requests have a three-second timeout; a rejected or
-unanswered request is logged and does not prevent startup. Shutdown cancels
+unanswered request is logged and does not prevent startup. A configuration
+response arriving after the timeout still applies unless a newer update has
+superseded it or shutdown has begun. Shutdown cancels
 pending startup requests and waits for indexing workers to terminate. Indexing
 uses at most four workers and continues past unreadable or malformed files.
 

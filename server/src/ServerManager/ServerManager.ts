@@ -271,9 +271,12 @@ export default class ServerManger {
     const revision = ++this.configurationRevision;
     this.config = mergeConfiguration(this.config, settings);
     if (this.capabilitiesHandler.getSupportsWorkspaceConfiguration()) {
-      const received = await this.optionalClientRequest("workspace/configuration", async () => await this.connection.workspace.getConfiguration("nwscript-ee-lsp"));
-      // A slower previous response must not overwrite a newer update.
-      if (!this.stopping && revision === this.configurationRevision) this.config = mergeConfiguration(this.config, received);
+      await this.optionalClientRequest("workspace/configuration", async () => {
+        const received = await this.connection.workspace.getConfiguration("nwscript-ee-lsp");
+        // The timeout releases startup, but a late response is still useful.
+        // A slower previous response must not overwrite a newer update.
+        if (!this.stopping && revision === this.configurationRevision) this.config = mergeConfiguration(this.config, received);
+      });
     }
   }
 }

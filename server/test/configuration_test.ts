@@ -25,6 +25,12 @@ describe("Standalone configuration", () => {
     expect(defaultServerConfiguration.formatter.style.ColumnLimit).to.equal(250);
   });
 
+  it("can reset an explicit compiler OS to automatic detection", () => {
+    const initial = mergeConfiguration(defaultServerConfiguration, { compiler: { os: "Linux" } });
+    expect(initial.compiler.os).to.equal("Linux");
+    expect(mergeConfiguration(initial, { compiler: { os: null } }).compiler.os).to.equal(null);
+  });
+
   it("retains valid settings when a client sends malformed section values", () => {
     const config = mergeConfiguration(defaultServerConfiguration, {
       compiler: { enabled: "false", nwnHome: null, os: "unsupported" },

@@ -227,6 +227,30 @@ describe("Installed standalone LSP server", function () {
     await client.shutdown();
   });
 
+  it("applies a late configuration response after startup has timed out", async () => {
+    let release: ((settings: unknown) => void) | undefined;
+    const client = await start({
+      capabilities: { workspace: { configuration: true } },
+      configuration: async () =>
+        await new Promise<unknown>((resolve) => {
+          release = resolve;
+        }),
+    });
+    await client.ready();
+    expect(client.logs.some((log) => log.includes("timed out"))).to.equal(true);
+    await open(client);
+    release?.({ hovering: { addCommentsToFunctions: true } });
+    // Receiving a response and applying it is asynchronous on the server.
+    let hover = "";
+    for (let attempt = 0; attempt < 50; attempt++) {
+      hover = content(await client.rpc.sendRequest(HoverRequest.type, params()))?.value || "";
+      if (hover.includes("Helper documentation")) break;
+      await new Promise<void>((resolve) => setTimeout(resolve, 20));
+    }
+    expect(hover).to.include("Helper documentation");
+    await client.shutdown();
+  });
+
   it("indexes comma-containing paths and continues past individual file failures", async () => {
     const directory = join(workspace, "comma, directory");
     mkdirSync(directory);
