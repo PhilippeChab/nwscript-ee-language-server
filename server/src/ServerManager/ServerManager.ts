@@ -123,8 +123,10 @@ export default class ServerManger {
     try {
       const paths = [...new Set(this.workspaceFilesSystem.getFilesPath().filter((path) => !isStandardLibrary(path)))];
       this.logger.info("Indexing files ...");
-      // Avoid spawning one Node.js process for every CPU on large machines.
-      const count = Math.min(4, cpus().length || 1, paths.length);
+      // Amortize worker startup on small projects, but allow larger workspaces
+      // to use more CPUs without spawning a process for every CPU on big hosts.
+      const workerLimit = Math.max(4, Math.min(8, Math.ceil(paths.length / 500)));
+      const count = Math.min(workerLimit, cpus().length || 1, paths.length);
       const size = count ? Math.ceil(paths.length / count) : 0;
       await Promise.all(
         Array.from({ length: count }, async (_, index) => {

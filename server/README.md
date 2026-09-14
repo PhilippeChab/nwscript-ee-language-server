@@ -64,11 +64,12 @@ results are discarded; disabling the compiler clears its published diagnostics,
 including those on unopened includes. Shutdown cancels
 pending startup requests and waits for indexing workers to terminate. Worker
 cleanup also runs if the stdio connection closes without shutdown. Indexing
-uses at most four workers and continues past unreadable or malformed files.
+uses up to four workers for smaller workspaces and grows to at most eight for
+larger ones, bounded by available CPUs. It continues past unreadable or malformed
+files.
 
-Editor-specific setup is limited to associating `.nss` files with NWScript,
-launching the server, and supplying settings. Neovim below is one example, not a
-runtime dependency. The server contains no Neovim-specific behavior.
+Configure your editor to associate `.nss` files with the `nwscript` language ID
+and launch the command above with the settings below.
 
 ```json
 {
