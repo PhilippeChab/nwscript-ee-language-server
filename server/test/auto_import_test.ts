@@ -70,6 +70,16 @@ describe("Auto-import completion", function () {
     return { items, live, resolve: handlers.resolve, response, request, collection };
   };
 
+  it("does not offer initializer calls as declarations from indexed scripts", () => {
+    const { items } = complete("void main() { Fact| }", {
+      factory: "int Factory(int value) { return value; }",
+      consumer: '#include "factory"\nint FIRST = Factory(1);\nint SECOND = Factory(2);',
+    });
+    const factories = items.filter((item) => item.label === "Factory");
+    expect(factories).to.have.length(1);
+    expect(factories[0].additionalTextEdits?.[0].newText).to.equal('#include "factory"\n');
+  });
+
   for (const name of ["main", "StartingConditional"]) {
     for (const declaration of [`const int ${name} = 1;`, `int ${name};`, `struct ${name} { int field; };`]) {
       it(`checks entry points against imported declarations: ${declaration}`, () => {

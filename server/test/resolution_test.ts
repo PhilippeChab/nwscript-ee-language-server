@@ -56,6 +56,17 @@ describe("Document and signature resolution", () => {
     });
   }
 
+  for (const expression of ["Make(1)", "Make(Other(1))", "Make(1) + Other(2)", "Make(\n 1\n)"]) {
+    it(`keeps global initializer calls out of function declarations: ${expression}`, () => {
+      const source = `int FIRST = ${expression};\nint SECOND = Make(2);\nvoid After() {}`;
+      const scope = tokenizer.tokenizeContent(source, "document");
+      expect(scope.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["FIRST", "SECOND", "After"]);
+      const [lines, raw] = tokenizer.tokenizeContentToRaw(source);
+      const local = tokenizer.tokenizeContentFromRaw(lines, raw, 0, lines.length - 1, lines.at(-1).length);
+      expect(local.functionsComplexTokens.map((token: any) => token.identifier)).to.deep.equal(["After"]);
+    });
+  }
+
   it("retains declared types across aligned whitespace", () => {
     const scope = tokenizer.tokenizeContent("const int   VALUE = 1;\nfloat\t\tOther();", "document");
     expect(scope.globalDeclarations[0].valueType).to.equal("int");

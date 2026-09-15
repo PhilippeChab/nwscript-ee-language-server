@@ -12,6 +12,7 @@ import {
   DidChangeConfigurationNotification,
   HoverRequest,
   DefinitionRequest,
+  SignatureHelpRequest,
   CompletionRequest,
   DocumentFormattingRequest,
   DocumentSymbolRequest,
@@ -512,6 +513,70 @@ describe("Installed standalone LSP server", function () {
       await client.shutdown();
     });
   }
+
+  for (const included of [true, false]) {
+    it(`resolves struct factory calls in global initializers to their declaration (included=${String(included)})`, async () => {
+      const declarations = "struct Data { int field; };\nstruct Data Make(int value) { struct Data result; result.field = value; return result; }\nint Identity(int value) { return value; }\n";
+      writeFileSync(join(workspace, "helper.nss"), declarations);
+      const text = `${
+        included ? '#include "helper"\n' : declarations
+      }struct Data FIRST = Make(1);\nstruct Data SECOND = Make(2);\nstruct Data THIRD = Make(Identity(3));\nvoid main() { struct Data local = Make(4); }\n`;
+      const uri = params().textDocument.uri;
+      writeFileSync(join(workspace, "sample.nss"), text);
+      const client = await start();
+      await client.ready();
+      await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+      const document = TextDocument.create(uri, "nwscript", 1, text);
+      for (const call of ["Make(1)", "Make(2)", "Make(Identity(3))", "Make(4)"]) {
+        const target = { textDocument: { uri }, position: document.positionAt(text.indexOf(call) + 2) };
+        const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, target);
+        expect(definition).to.deep.equal({
+          uri: included ? pathToFileURL(join(workspace, "helper.nss")).href : uri,
+          range: { start: { line: 1, character: 12 }, end: { line: 1, character: 12 } },
+        });
+        expect(content(await client.rpc.sendRequest(HoverRequest.type, target))?.value).to.include("struct Data Make(int value)");
+        for (let character = 0; character <= "Make".length; character++) {
+          const atCharacter = { ...target, position: document.positionAt(text.indexOf(call) + character) };
+          expect(await client.rpc.sendRequest(DefinitionRequest.type, atCharacter)).to.deep.equal(definition);
+          expect(content(await client.rpc.sendRequest(HoverRequest.type, atCharacter))?.value).to.include("struct Data Make(int value)");
+        }
+        const signature = await client.rpc.sendRequest(SignatureHelpRequest.type, { ...target, position: document.positionAt(text.indexOf(call) + "Make(".length) });
+        expect(signature?.signatures[0].label).to.equal("struct Data Make(int value)");
+        const completions: any = await client.rpc.sendRequest(CompletionRequest.type, target);
+        const items = completions.items || completions;
+        expect(items.filter((item: any) => item.label === "Make")).to.have.length(1);
+      }
+      const nested = { textDocument: { uri }, position: document.positionAt(text.indexOf("Identity(3)") + 2) };
+      expect(content(await client.rpc.sendRequest(HoverRequest.type, nested))?.value).to.include("int Identity(int value)");
+      const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, nested);
+      expect(definition.range.start).to.deep.equal({ line: 2, character: 4 });
+      expect(definition.uri).to.equal(included ? pathToFileURL(join(workspace, "helper.nss")).href : uri);
+      const signature = await client.rpc.sendRequest(SignatureHelpRequest.type, { ...nested, position: document.positionAt(text.indexOf("Identity(3)") + "Identity(".length) });
+      expect(signature?.signatures[0].label).to.equal("int Identity(int value)");
+      await client.shutdown();
+    });
+  }
+
+  it("resolves every character of struct types, parameters, variables and fields", async () => {
+    const text = "struct Data { int field; };\nvoid Fn(struct Data param) { struct Data local; local.field = param.field; }\n";
+    const uri = params().textDocument.uri;
+    writeFileSync(join(workspace, "sample.nss"), text);
+    const client = await start();
+    await client.ready();
+    await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+    const document = TextDocument.create(uri, "nwscript", 1, text);
+    for (const name of ["Data", "param", "local", "field"]) {
+      const declaration = document.positionAt(text.indexOf(name));
+      for (let occurrence = text.indexOf(name); occurrence >= 0; occurrence = text.indexOf(name, occurrence + name.length)) {
+        for (let character = 0; character <= name.length; character++) {
+          const target = { textDocument: { uri }, position: document.positionAt(occurrence + character) };
+          expect(await client.rpc.sendRequest(DefinitionRequest.type, target), `${name} at ${occurrence}+${character}`).to.deep.equal({ uri, range: { start: declaration, end: declaration } });
+          expect(content(await client.rpc.sendRequest(HoverRequest.type, target))?.value).to.include(name);
+        }
+      }
+    }
+    await client.shutdown();
+  });
 
   for (const rootName of ["global", "local"]) {
     it(`resolves nested members of a ${rootName} struct across providers`, async () => {
