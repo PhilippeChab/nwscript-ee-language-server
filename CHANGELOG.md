@@ -4,9 +4,17 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 
 ## [Unreleased]
 
-- Add a standalone, npm-installable language server for use with LSP-compatible editors.
+## [3.0.0]
+
+- Add a standalone, npm-installable language server for use with LSP-compatible editors. The standalone server requires Node.js 24 or newer.
+- Add auto-import completion for functions, constants, and struct types from workspace scripts and bundled includes. Accepting a suggestion adds its `#include`; disable with `nwscript-ee-lsp.completion.autoImport`.
+- Keep completion available while declarations are unfinished, and suppress suggestions inside comments and strings.
+- Improve hover, go-to-definition, and signature help for struct members, declaration sites, nested calls, and shadowed names.
+- Refresh workspace symbols after external file changes and deletions, and normalize script names and document URIs consistently.
 - Improve language-server startup, shutdown, and diagnostic delivery across editors.
+- Handle formatter process failures without crashing the language server.
 - Use a workspace `nwscript.nss` consistently for editor definitions and compiler source selection, with live updates, deterministic per-folder selection, and bundled fallback.
+- Refresh bundled include indexes with declaration metadata for auto-import conflict detection.
 - Add a TypeScript updater that checks the latest Beamdog release and automatically updates bundled NWScript definitions, the recorded version, and verified checksums.
 
 ## [2.3.2] Experimental pre-release
