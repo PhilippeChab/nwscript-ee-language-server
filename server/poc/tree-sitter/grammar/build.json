@@ -1,0 +1,10 @@
+{
+  "treeSitterCli": "0.25.10",
+  "abi": 14,
+  "emscriptenImage": "emscripten/emsdk:4.0.4",
+  "files": {
+    "grammar.js": "ab4f13ab3ffaaa18e26bead4b76718a4d3a2edcff7f33a3ab6240a55ce2d6a78",
+    "tree-sitter.json": "244c84ff2b78a02f072b474a14162008f0636b6ac0b207d75cd60fb0f7c63bf1",
+    "tree-sitter-nwscript.wasm": "98b165f54f353771064a8151eb58ef8c5f62aaf452182a1b8fdc833b2b9bc28a"
+  }
+}
