@@ -9,7 +9,8 @@
     "lint": "node ../../../node_modules/eslint/bin/eslint.js --config .eslintrc.cjs . --ext .ts --max-warnings 0",
     "inspect": "tsx inspect.ts",
     "grammar:record": "tsx record-grammar.ts",
-    "benchmark": "tsx benchmark.ts"
+    "benchmark": "tsx benchmark.ts",
+    "compare": "node compare.cjs"
   },
   "devDependencies": {
     "@types/emscripten": "1.41.5",

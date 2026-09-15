@@ -4,7 +4,7 @@ The target is the bundled official compiler from neverwinter.nim 2.3.1, revision
 
 ## Committed checks
 
-`conformance.json` contains 111 explicit source cases and two independent expectations: whether the syntax tree contains errors and the compiler outcome. Tests invoke the bundled compiler with its real language specification and check both the exit status and compilation summary. The include-at-EOF case explicitly records the compiler's **skipped** outcome; it is not counted as a successful compilation.
+`conformance.json` contains 111 explicit source cases and two independent expectations: whether the syntax tree contains errors and the compiler outcome. Tests invoke the bundled compiler with the checked-in `compiler-language.nss` specification (the eight engine types and API constants needed by these cases) and check both the exit status and compilation summary. The include-at-EOF case explicitly records the compiler's **skipped** outcome; it is not counted as a successful compilation.
 
 | Area | Cases examined and resulting grammar rules |
 | --- | --- |
@@ -26,13 +26,16 @@ Tree-sitter sometimes attaches the next function's signature/body to an earlier 
 
 The repaired tree supplies every provider. Strict indexing still fails and keeps its existing fallback behavior. An edit after this exceptional recovery starts from a fresh tree, avoiding reuse of a tree whose parser input was masked; ordinary edits remain incremental.
 
+A deterministic edit sweep checks 805 delete/insert/restore sequences through valid code, interrupted declarations, raw strings, comments, Unicode, and CRLF. Incremental trees, indexes, scopes, call contexts, member paths, and action targets match fresh parsing at three positions after each edit.
+
 Committed tests cover void/primitive/struct returns, same-line/LF/CRLF boundaries, exact declaration positions, subsequent repairs, incremental-versus-fresh parsing, and unfinished comments. A standalone LSP test verifies definition, hover, completion and signature help on the recovered function. These checks replace the previous test that documented losing `Later()`.
 
 ## Corpus and integration results
 
 - 662 repository tests pass, including the newly installed-server recovery case.
-- 158 parser checks pass, including the 111 compiler-backed cases and all 39 upstream corpus files.
+- 161 parser checks pass, including the 111 compiler-backed cases and all 39 upstream corpus files.
 - An additional local audit parses 1,186 extracted bundled scripts and 74 FRU source files without syntax errors. Those private/extracted files are not committed; these results supplement the reproducible tests.
+- Comparing exported declarations (including types, parameters, defaults and source positions, excluding comments) against 3.0.1 across those 1,260 scripts found only two differences: Tree-sitter retains the prototype after a line comment ending in a backslash in `nw_i0_spells`, and correctly reads a third struct parameter in `nwnx_effect`. The source text confirms both improvements; regression tests preserve them.
 - Regenerating the standard library matches the shipped JSON byte for byte.
 - The hashed grammar source files have explicit LF checkout attributes, fixing the Windows manifest mismatch without disabling its assertion.
 
@@ -50,16 +53,31 @@ Local Node 24/WASM measurements used five warm-up iterations and 30 measured ite
 
 Large-file index extraction and context scans remain measurable work. This audit supports the parser migration for the tested language and editor behavior; it does not establish a universal latency guarantee or exhaustive correctness for every malformed input.
 
-## Checkpoint and remaining work
+## Comparison with the released parser
 
-Rebased `poc/tree-sitter-tokenizer` onto `main` at `2275b80` (3.0.1, merged PR #105) for draft PR #104. All provider fixes and their regression tests are retained; function navigation now queries the Tree-sitter syntax tree. The production tokenizer uses Tree-sitter, the narrowed grammar and interrupted-signature recovery are implemented, and the rebuilt WASM and its provenance manifest are included. Existing semantic resolution and compiler validation remain separate from syntax parsing.
+Run `yarn --cwd server/poc/tree-sitter compare /absolute/path/to/3.0.1-checkout /absolute/path/to/script.nss ...`. The baseline checkout needs its own installed dependencies. The script bundles each revision's tokenizer into its own ignored `server/out` directory and loads that revision's own grammar and runtime.
 
-Local validation completed: 662 repository tests, 158 parser checks, TypeScript compilation, parser harness type checking, root and harness lint, production build, and byte-for-byte standard-library regeneration. The benchmark harness is included so the timing probe can be repeated.
+Both parsers perform the same index, local-scope, member-path and action-target work at EOF. Cold means the first request on a new document; warm repeats without changes; edit appends a space and requests again. Five iterations warm up the process and twenty supply the samples. Startup, include traversal, provider rendering and UI latency are excluded. These differ from the earlier component measurements above.
 
-Before taking the PR out of draft:
+Local Node 24 / WSL Linux p95, milliseconds (3.0.1 → Tree-sitter):
 
-- Rerun platform CI on this checkpoint, especially Windows. The prior Windows run exposed CRLF conversion of hashed grammar sources; this checkpoint adds LF checkout attributes, but a new Windows CI result is still required.
-- Repeat Neovim integration and manual Zed checks against a newly packaged build. Those editor checks were not repeated for this checkpoint; the current standalone server tests do pass.
-- Review large-file indexing/context-query costs and the exceptional recovery path. The measurements above are local component timings, not a comparison against the previous parser or an editor latency guarantee.
+| Source | Cold request | Repeated request | Request after edit |
+| --- | ---: | ---: | ---: |
+| `cmds_player.nss`, 286 characters | 1.91 → 0.42 | 1.31 → 0.17 | 0.51 → 0.22 |
+| `nwnx_redis.nss`, 132,444 characters | 77.79 → 50.51 | 76.64 → 32.63 | 81.83 → 44.77 |
+| Engine API, 680,621 characters | 466.99 → 319.96 | 462.43 → 98.78 | 459.19 → 302.87 |
+| 200 interrupted declarations | 26.51 → 17.09 | 27.18 → 6.28 | 26.90 → 17.44 |
 
-This checkpoint has not been installed in the user's editor or released. It records completed work and the remaining verification; it is not a merge-readiness claim.
+Tree-sitter was faster on the four inputs in that comparison. A separate 67-character smoke run had sub-millisecond timings with mixed results (cold p95 0.43 → 0.47 ms, warm 0.76 → 0.26 ms, edit 0.31 → 0.69 ms); small-file timings do not establish a universal speedup. Large-file cold requests and reindexing still cost hundreds of milliseconds; this is an improvement over the baseline, not a claim that all requests are instantaneous. No extra production caches or performance refactor were introduced to obtain these results.
+
+## Current status
+
+The branch is rebased onto `main` at `2275b80` (3.0.1, merged PR #105), with all provider fixes retained. The conformance suite initially failed in clean CI because it used an ignored local API source. It now uses a checked-in minimal language specification; all 111 compiler outcomes remain identical to the prior full-API run.
+
+The production build and all four platform test jobs passed on `7abd922`: Linux, Windows, Intel macOS and Apple Silicon. That revision includes the CI fixture fix and the 805-edit recovery sweep. Subsequent changes add the two corpus regression tests, comparison tooling and this report; check the PR for their latest CI status.
+
+Local validation: 662 repository tests, 161 parser checks, root and harness type checking/lint, production build, and byte-identical standard-library regeneration. A freshly installed standalone package also passed the headless Neovim test for initialization, diagnostics, completion, hover, definition, formatting and shutdown.
+
+Manual Zed UI validation remains incomplete. A separate temporary QA workspace was opened with a project-scoped command pointing at the freshly installed package; Zed stopped at its workspace-trust prompt, before starting the server. The normal installed server and user settings were not replaced. The grammar query tests and standalone LSP tests do not substitute for that UI check.
+
+The language/recovery audit and comparative performance investigation are complete for the stated corpus and cases. The PR remains a draft pending the manual Zed check and latest CI. This is not a proof of correctness for every possible malformed program.
