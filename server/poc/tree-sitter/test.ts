@@ -280,7 +280,7 @@ before(() => {
   mkdirSync(join(compilerWorkspace, "ovr"));
   mkdirSync(join(compilerWorkspace, "lang/en"), { recursive: true });
   writeFileSync(join(compilerWorkspace, "databuild.txt"), "test\n");
-  copyFileSync(join(__dirname, "../../scripts/nwscript.nss"), join(compilerWorkspace, "ovr/nwscript.nss"));
+  copyFileSync(join(__dirname, "compiler-language.nss"), join(compilerWorkspace, "ovr/nwscript.nss"));
   writeFileSync(join(compilerWorkspace, "ovr/helper.nss"), "void main(){}");
 });
 after(() => {
@@ -349,3 +349,43 @@ for (const comment of ["/* unfinished", "/** unfinished *", "/* unfinished **", 
     assert.equal(parsed.isInCommentOrString(document(source).positionAt(source.length)), true);
   });
 }
+
+void test("matches fresh parsing through 805 damaged edit and restore sequences", () => {
+  const seeds = [
+    'struct Data { int value; };\nint Fn(struct Data data, int n = 0) { string unicode="😀"; return data.value + n; }\nvoid main() { struct Data data; Fn(data, 1); }',
+    "int Broken(\nint Later(int parameter) { return parameter; }\nvoid main() { Later(1); }",
+    'const string TEXT = r"raw ""text""";\r\nint Fn(int n) { /* comment */ return n; }',
+  ];
+  let count = 0;
+  for (const seed of seeds) {
+    const parsed = SyntaxDocument.create(document(seed));
+    try {
+      for (let start = 0; start < seed.length; start += 2) {
+        for (const replacement of ["", "\n", "/*", "int ", '"']) {
+          const modified = seed.slice(0, start) + replacement + seed.slice(Math.min(start + 3, seed.length));
+          const live = document(modified, count + 2);
+          parsed.update(live);
+          const fresh = SyntaxDocument.create(live);
+          try {
+            assert.equal(parsed.rootNode.toString(), fresh.rootNode.toString());
+            assert.deepEqual(parsed.getIndex(), fresh.getIndex());
+            for (const offset of [0, start, modified.length]) {
+              const position = live.positionAt(offset);
+              assert.deepEqual(parsed.getLocalScope(position), fresh.getLocalScope(position));
+              assert.deepEqual(parsed.getCallContext(position), fresh.getCallContext(position));
+              assert.deepEqual(parsed.getMemberPath(position), fresh.getMemberPath(position));
+              assert.deepEqual(parsed.getActionTarget(position), fresh.getActionTarget(position));
+            }
+          } finally {
+            fresh.dispose();
+          }
+          parsed.update(document(seed, count + 3));
+          count++;
+        }
+      }
+    } finally {
+      parsed.dispose();
+    }
+  }
+  assert.equal(count, 805);
+});
