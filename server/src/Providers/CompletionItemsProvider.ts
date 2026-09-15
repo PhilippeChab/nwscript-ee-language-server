@@ -28,6 +28,7 @@ export default class CompletionItemsProvider extends Provider {
       const context = this.getDocumentContext(uri, position);
       if (!context) return;
       const { liveDocument, document, lines, rawTokenizedContent, localScope } = context;
+      if (this.server.tokenizer.isInCommentOrStringFromRaw(rawTokenizedContent, position)) return [];
       const autoImportContext = this.server.config.completion.autoImport ? this.server.tokenizer.getAutoImportContextFromRaw(lines, rawTokenizedContent, position) : undefined;
 
       const memberPath = this.server.tokenizer.getMemberAccessFromRaw(lines, rawTokenizedContent, position);

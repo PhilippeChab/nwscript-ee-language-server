@@ -89,7 +89,7 @@ export default class Tokenizer {
     // At a token boundary, completion applies to the text immediately to the left.
     const character = Math.max(0, position.character - 1);
     const token = tokens.find((candidate) => candidate.startIndex <= character && candidate.endIndex > character);
-    if (!token || this.isCommentToken(token) || token.scopes.some((scope) => scope.startsWith("string.")) || token.scopes.includes(LanguageScopes.includeDeclaration)) return;
+    if (!token || this.isInCommentOrStringFromRaw(tokensArrays, position) || token.scopes.includes(LanguageScopes.includeDeclaration)) return;
     const identifierScopes = [LanguageScopes.variableIdentifer, LanguageScopes.constantIdentifer, LanguageScopes.functionIdentifier, LanguageScopes.structIdentifier];
     const isIdentifier = identifierScopes.some((scope) => token.scopes.includes(scope));
     const replacementRange = isIdentifier ? Range.create(position.line, token.startIndex, position.line, Math.min(line.length, token.endIndex)) : Range.create(position, position);
@@ -104,6 +104,14 @@ export default class Tokenizer {
       structsOnly: previous !== undefined && this.getRawTokenContent(line, previous) === LanguageTypes.struct,
       insertionPosition,
     };
+  }
+
+  public isInCommentOrStringFromRaw(tokensArrays: (IToken[] | undefined)[], position: Position): boolean {
+    const character = Math.max(0, position.character - 1);
+    const token = tokensArrays[position.line]?.find((candidate) => candidate.startIndex <= character && candidate.endIndex > character);
+    if (!token) return false;
+    if (position.character === token.endIndex && token.scopes.includes(LanguageScopes.stringEnd)) return false;
+    return this.isCommentToken(token) || token.scopes.some((scope) => scope.startsWith("string."));
   }
 
   public tokenizeContent(content: string, mode: TokenizationMode.document, startIndex?: number, stopIndex?: number): DocumentTokenizationResult;
@@ -287,12 +295,12 @@ export default class Tokenizer {
         if (!this.getRawTokenContent(line, token).trim()) continue;
         if (!this.isCommentToken(token) && !token.scopes.includes(LanguageScopes.includeDeclaration)) {
           // A closing block comment can share a line with the first declaration.
-          return headerEnd.line === lineIndex ? headerEnd : { line: lineIndex, character: 0 };
+          return headerEnd.character === 0 || headerEnd.line === lineIndex ? headerEnd : { line: headerEnd.line + 1, character: 0 };
         }
         headerEnd = { line: lineIndex, character: Math.min(line.length, token.endIndex) };
       }
     }
-    return { line: lines.length - 1, character: lines[lines.length - 1].length };
+    return headerEnd.character > 0 && headerEnd.line + 1 < lines.length ? { line: headerEnd.line + 1, character: 0 } : headerEnd;
   }
 
   private getTokenIndex(tokensArray: IToken[], targetToken: IToken) {

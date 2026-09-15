@@ -3831,6 +3831,39 @@ U[a-fA-F0-9]{,8} )</string>
         <array>
           <dict>
             <key>begin</key>
+            <string>(?&lt;=\b[rR])"</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.begin.nss</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>"(?!")</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.end.nss</string>
+              </dict>
+            </dict>
+            <key>name</key>
+            <string>string.quoted.raw.nss</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>match</key>
+                <string>""</string>
+                <key>name</key>
+                <string>constant.character.escape.nss</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>begin</key>
             <string>"</string>
             <key>beginCaptures</key>
             <dict>
