@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 34,
@@ -7,8 +7,9 @@
             },
             "identifier": "X2_CI_CRAFTSKILL_CONV",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "\"x2_p_craftskills\""
+            "valueType": "string",
+            "value": "\"x2_p_craftskills\"",
+            "isConst": true
         },
         {
             "position": {
@@ -17,8 +18,9 @@
             },
             "identifier": "X2_CI_BREWPOTION_FEAT_ID",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "944"
+            "valueType": "int",
+            "value": "944",
+            "isConst": true
         },
         {
             "position": {
@@ -27,8 +29,9 @@
             },
             "identifier": "X2_CI_BREWPOTION_MAXLEVEL",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "3"
+            "valueType": "int",
+            "value": "3",
+            "isConst": true
         },
         {
             "position": {
@@ -37,8 +40,9 @@
             },
             "identifier": "X2_CI_BREWPOTION_COSTMODIFIER",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "50"
+            "valueType": "int",
+            "value": "50",
+            "isConst": true
         },
         {
             "position": {
@@ -47,8 +51,9 @@
             },
             "identifier": "X2_CI_BREWPOTION_NEWITEM_RESREF",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "\"x2_it_pcpotion\""
+            "valueType": "string",
+            "value": "\"x2_it_pcpotion\"",
+            "isConst": true
         },
         {
             "position": {
@@ -57,8 +62,9 @@
             },
             "identifier": "X2_CI_SCRIBESCROLL_FEAT_ID",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "945"
+            "valueType": "int",
+            "value": "945",
+            "isConst": true
         },
         {
             "position": {
@@ -67,8 +73,9 @@
             },
             "identifier": "X2_CI_SCRIBESCROLL_COSTMODIFIER",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "25"
+            "valueType": "int",
+            "value": "25",
+            "isConst": true
         },
         {
             "position": {
@@ -77,8 +84,9 @@
             },
             "identifier": "X2_CI_SCRIBESCROLL_NEWITEM_RESREF",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "\"x2_it_pcscroll\""
+            "valueType": "string",
+            "value": "\"x2_it_pcscroll\"",
+            "isConst": true
         },
         {
             "position": {
@@ -87,8 +95,9 @@
             },
             "identifier": "X2_CI_CRAFTWAND_FEAT_ID",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "946"
+            "valueType": "int",
+            "value": "946",
+            "isConst": true
         },
         {
             "position": {
@@ -97,8 +106,9 @@
             },
             "identifier": "X2_CI_CRAFTWAND_MAXLEVEL",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "4"
+            "valueType": "int",
+            "value": "4",
+            "isConst": true
         },
         {
             "position": {
@@ -107,8 +117,9 @@
             },
             "identifier": "X2_CI_CRAFTWAND_COSTMODIFIER",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "750"
+            "valueType": "int",
+            "value": "750",
+            "isConst": true
         },
         {
             "position": {
@@ -117,8 +128,9 @@
             },
             "identifier": "X2_CI_CRAFTWAND_NEWITEM_RESREF",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "\"x2_it_pcwand\""
+            "valueType": "string",
+            "value": "\"x2_it_pcwand\"",
+            "isConst": true
         },
         {
             "position": {
@@ -128,7 +140,8 @@
             "identifier": "X2_CI_CRAFTING_WP_2DA",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"des_crft_weapon\""
+            "value": "\"des_crft_weapon\"",
+            "isConst": true
         },
         {
             "position": {
@@ -138,7 +151,8 @@
             "identifier": "X2_CI_CRAFTING_AR_2DA",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"des_crft_armor\""
+            "value": "\"des_crft_armor\"",
+            "isConst": true
         },
         {
             "position": {
@@ -148,7 +162,8 @@
             "identifier": "X2_CI_CRAFTING_MAT_2DA",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"des_crft_mat\""
+            "value": "\"des_crft_mat\"",
+            "isConst": true
         },
         {
             "position": {
@@ -158,7 +173,8 @@
             "identifier": "X2_CI_CRAFTING_SP_2DA",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"des_crft_spells\""
+            "value": "\"des_crft_spells\"",
+            "isConst": true
         },
         {
             "position": {
@@ -167,8 +183,9 @@
             },
             "identifier": "X2_CI_CRAFTINGSKILL_CTOKENBASE",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "13220"
+            "valueType": "int",
+            "value": "13220",
+            "isConst": true
         },
         {
             "position": {
@@ -177,8 +194,9 @@
             },
             "identifier": "X2_CI_CRAFTINGSKILL_DC_CTOKENBASE",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "14220"
+            "valueType": "int",
+            "value": "14220",
+            "isConst": true
         },
         {
             "position": {
@@ -187,8 +205,9 @@
             },
             "identifier": "X2_CI_CRAFTINGSKILL_GP_CTOKENBASE",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "14320"
+            "valueType": "int",
+            "value": "14320",
+            "isConst": true
         },
         {
             "position": {
@@ -197,8 +216,9 @@
             },
             "identifier": "X2_CI_MODIFYARMOR_GP_CTOKENBASE",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "14420"
+            "valueType": "int",
+            "value": "14420",
+            "isConst": true
         },
         {
             "position": {
@@ -207,8 +227,9 @@
             },
             "identifier": "X2_CI_CRAFTING_ITEMS_PER_ROW",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "5"
+            "valueType": "int",
+            "value": "5",
+            "isConst": true
         },
         {
             "position": {
@@ -217,8 +238,9 @@
             },
             "identifier": "X2_CI_2DA_SCROLLS",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "\"des_crft_scroll\""
+            "valueType": "string",
+            "value": "\"des_crft_scroll\"",
+            "isConst": true
         },
         {
             "position": {
@@ -228,7 +250,8 @@
             "identifier": "X2_CI_CRAFTMODE_INVALID",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0"
+            "value": "0",
+            "isConst": true
         },
         {
             "position": {
@@ -238,7 +261,8 @@
             "identifier": "X2_CI_CRAFTMODE_CONTAINER",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "isConst": true
         },
         {
             "position": {
@@ -248,7 +272,8 @@
             "identifier": "X2_CI_CRAFTMODE_BASE_ITEM",
             "tokenType": 21,
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "isConst": true
         },
         {
             "position": {
@@ -258,7 +283,8 @@
             "identifier": "X2_CI_CRAFTMODE_ASSEMBLE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "3"
+            "value": "3",
+            "isConst": true
         },
         {
             "position": {
@@ -268,7 +294,8 @@
             "identifier": "X2_CI_MAGICTYPE_INVALID",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0"
+            "value": "0",
+            "isConst": true
         },
         {
             "position": {
@@ -278,7 +305,8 @@
             "identifier": "X2_CI_MAGICTYPE_ARCANE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "isConst": true
         },
         {
             "position": {
@@ -288,7 +316,8 @@
             "identifier": "X2_CI_MAGICTYPE_DIVINE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "isConst": true
         },
         {
             "position": {
@@ -298,7 +327,8 @@
             "identifier": "X2_CI_MODMODE_INVALID",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0"
+            "value": "0",
+            "isConst": true
         },
         {
             "position": {
@@ -308,7 +338,8 @@
             "identifier": "X2_CI_MODMODE_ARMOR",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "isConst": true
         },
         {
             "position": {
@@ -318,7 +349,8 @@
             "identifier": "X2_CI_MODMODE_WEAPON",
             "tokenType": 21,
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "isConst": true
         },
         {
             "position": {
@@ -327,7 +359,7 @@
             },
             "identifier": "CIGetIsCraftFeatBaseItem",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "int",
             "params": [
                 {
                     "position": {
@@ -339,10 +371,15 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 96,
+                "character": 46
+            },
             "comments": [
                 "// *  Returns TRUE if an item is a Craft Base Item",
                 "// *  to be used in spellscript that can be cast on items - i.e light"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -351,7 +388,7 @@
             },
             "identifier": "CICraftCheckBrewPotion",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "int",
             "params": [
                 {
                     "position": {
@@ -372,11 +409,16 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 101,
+                "character": 65
+            },
             "comments": [
                 "// *  Checks if the last spell cast was used to brew potion and will do the brewing process.",
                 "// *  Returns TRUE if the spell was indeed used to brew a potion (regardless of the actual outcome of the brewing process)",
                 "// *  Meant to be used in spellscripts only"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -385,7 +427,7 @@
             },
             "identifier": "CICraftCheckScribeScroll",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "int",
             "params": [
                 {
                     "position": {
@@ -406,11 +448,16 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 106,
+                "character": 67
+            },
             "comments": [
                 "// *  Checks if the last spell cast was used to scribe a scroll and handles the scribe scroll process",
                 "// *  Returns TRUE if the spell was indeed used to scribe a scroll (regardless of the actual outcome)",
                 "// *  Meant to be used in spellscripts only"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -440,9 +487,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 109,
+                "character": 56
+            },
             "comments": [
                 "// *   Create a new potion item based on the spell nSpellID  on the creator"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -472,9 +524,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 112,
+                "character": 57
+            },
             "comments": [
                 "// *   Create a new scroll item based on the spell nSpellID on the creator"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -483,7 +540,7 @@
             },
             "identifier": "CIGetSpellWasUsedForItemCreation",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "int",
             "params": [
                 {
                     "position": {
@@ -495,11 +552,55 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 118,
+                "character": 59
+            },
             "comments": [
                 "// *  Checks if the caster intends to use his item creation feats and",
                 "// *  calls appropriate item creation subroutine if conditions are met (spell cast on correct item, etc).",
                 "// *  Returns TRUE if the spell was used for an item creation feat"
-            ]
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 123,
+                "character": 6
+            },
+            "identifier": "CIGetSpellInnateLevel",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 123,
+                        "character": 32
+                    },
+                    "identifier": "nSpellID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 123,
+                        "character": 46
+                    },
+                    "identifier": "bDefaultZeroToOne",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                }
+            ],
+            "signatureEnd": {
+                "line": 123,
+                "character": 72
+            },
+            "comments": [
+                "// *  Returns the innate level of a spell. If bDefaultZeroToOne is given",
+                "// *  Level 0 spell will be returned as level 1 spells"
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -557,6 +658,10 @@
                     "defaultValue": "OBJECT_INVALID"
                 }
             ],
+            "signatureEnd": {
+                "line": 140,
+                "character": 111
+            },
             "comments": [
                 "// * Makes oPC do a Craft check using nSkill to create the item supplied in sResRe",
                 "// * If oContainer is specified, the item will be created there.",
@@ -566,7 +671,8 @@
                 "// *  sResRef   - ResRef of the item to be crafted",
                 "// *  nDC       - DC to beat to succeed",
                 "// *  oContainer - if a container is specified, create item inside"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -575,7 +681,7 @@
             },
             "identifier": "CIGetIsSpellRestrictedFromCraftFeat",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "int",
             "params": [
                 {
                     "position": {
@@ -596,9 +702,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 143,
+                "character": 68
+            },
             "comments": [
                 "// *  Returns TRUE if a spell is prevented from being used with one of the crafting feats"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -637,12 +748,973 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 146,
+                "character": 83
+            },
             "comments": [
                 "// *  Return craftitemstructdata"
-            ]
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 154,
+                "character": 4
+            },
+            "identifier": "CI_GetClassMagicType",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 154,
+                        "character": 29
+                    },
+                    "identifier": "nClass",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 154,
+                "character": 36
+            },
+            "comments": [
+                "// *  Return the type of magic as one of the following constants",
+                "// *  const int X2_CI_MAGICTYPE_INVALID = 0;",
+                "// *  const int X2_CI_MAGICTYPE_ARCANE  = 1;",
+                "// *  const int X2_CI_MAGICTYPE_DIVINE  = 2;",
+                "// *  Parameters:",
+                "// *    nClass - CLASS_TYPE_* constant"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 176,
+                "character": 7
+            },
+            "identifier": "GetMaterialComponentTag",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 176,
+                        "character": 35
+                    },
+                    "identifier": "nPropID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 176,
+                "character": 43
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 228,
+                "character": 4
+            },
+            "identifier": "CIGetCraftGPCost",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 228,
+                        "character": 25
+                    },
+                    "identifier": "nLevel",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 228,
+                        "character": 37
+                    },
+                    "identifier": "nMod",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 228,
+                "character": 42
+            },
+            "comments": [
+                "// -----------------------------------------------------------------------------",
+                "// Wrapper for the crafting cost calculation, returns GP required",
+                "// -----------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 250,
+                "character": 7
+            },
+            "identifier": "CICraftCraftWand",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 250,
+                        "character": 31
+                    },
+                    "identifier": "oCreator",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 250,
+                        "character": 45
+                    },
+                    "identifier": "nSpellID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 250,
+                "character": 55
+            },
+            "comments": [
+                "// -----------------------------------------------------------------------------",
+                "// Georg, 2003-06-12",
+                "// Create a new playermade wand object with properties matching nSpellID",
+                "// and return it",
+                "// -----------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 570,
+                "character": 4
+            },
+            "identifier": "CICraftCheckCraftWand",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 570,
+                        "character": 33
+                    },
+                    "identifier": "oSpellTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 570,
+                        "character": 54
+                    },
+                    "identifier": "oCaster",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 570,
+                "character": 62
+            },
+            "comments": [
+                "// -----------------------------------------------------------------------------",
+                "// Returns TRUE if the player used the last spell to craft a wand",
+                "// -----------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 801,
+                "character": 4
+            },
+            "identifier": "CIDoCraftItemFromConversation",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 801,
+                        "character": 38
+                    },
+                    "identifier": "nNumber",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 801,
+                "character": 46
+            },
+            "comments": [
+                "// -----------------------------------------------------------------------------",
+                "// georg, 2003-06-13 (",
+                "// Craft an item. This is only to be called from the crafting conversation",
+                "// spawned by x2_s2_crafting!!!",
+                "// -----------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 952,
+                "character": 4
+            },
+            "identifier": "CIGetItemPartModificationCost",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 952,
+                        "character": 41
+                    },
+                    "identifier": "oOldItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 952,
+                        "character": 55
+                    },
+                    "identifier": "nPart",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 952,
+                "character": 61
+            },
+            "comments": [
+                "// -----------------------------------------------------------------------------",
+                "// Return the cost",
+                "// -----------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 968,
+                "character": 4
+            },
+            "identifier": "CIGetItemPartModificationDC",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 968,
+                        "character": 39
+                    },
+                    "identifier": "oOldItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 968,
+                        "character": 53
+                    },
+                    "identifier": "nPart",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 968,
+                "character": 59
+            },
+            "comments": [
+                "// -----------------------------------------------------------------------------",
+                "// Return the DC for modifying a certain armor part on oOldItem",
+                "// -----------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 979,
+                "character": 4
+            },
+            "identifier": "CIGetArmorModificationCost",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 979,
+                        "character": 38
+                    },
+                    "identifier": "oOldItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 979,
+                        "character": 55
+                    },
+                    "identifier": "oNewItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 979,
+                "character": 64
+            },
+            "comments": [
+                "// -----------------------------------------------------------------------------",
+                "// returns the dc",
+                "// dc to modify oOlditem to look like oNewItem",
+                "// -----------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1004,
+                "character": 4
+            },
+            "identifier": "CIGetArmorModificationDC",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 1004,
+                        "character": 36
+                    },
+                    "identifier": "oOldItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1004,
+                        "character": 53
+                    },
+                    "identifier": "oNewItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1004,
+                "character": 62
+            },
+            "comments": [
+                "// -----------------------------------------------------------------------------",
+                "// returns the cost in gold piece that it would",
+                "// cost to modify oOlditem to look like oNewItem",
+                "// -----------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1057,
+                "character": 4
+            },
+            "identifier": "CIGetCraftingReceipeRow",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 1057,
+                        "character": 32
+                    },
+                    "identifier": "nMode",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 1057,
+                        "character": 46
+                    },
+                    "identifier": "oMajor",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1057,
+                        "character": 61
+                    },
+                    "identifier": "oMinor",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1057,
+                        "character": 73
+                    },
+                    "identifier": "nSkill",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1057,
+                "character": 80
+            },
+            "comments": [
+                "// -----------------------------------------------------------------------------",
+                "// Retrieve the row in des_crft_bmat too look up receipe",
+                "// -----------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1087,
+                "character": 5
+            },
+            "identifier": "CISetupCraftingConversation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1087,
+                        "character": 40
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1087,
+                        "character": 49
+                    },
+                    "identifier": "nNumber",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 1087,
+                        "character": 62
+                    },
+                    "identifier": "nSkill",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 1087,
+                        "character": 74
+                    },
+                    "identifier": "nReceipe",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 1087,
+                        "character": 91
+                    },
+                    "identifier": "oMajor",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1087,
+                        "character": 106
+                    },
+                    "identifier": "oMinor",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1087,
+                        "character": 118
+                    },
+                    "identifier": "nMode",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1087,
+                "character": 124
+            },
+            "comments": [
+                "// -----------------------------------------------------------------------------",
+                "// used to set all variable required for the crafting conversation",
+                "// (Used materials, number of choises, 2da row, skill and mode)",
+                "// -----------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1104,
+                "character": 28
+            },
+            "identifier": "CIGetCraftingModeFromTarget",
+            "tokenType": 3,
+            "returnType": "craft_receipe_struct",
+            "params": [
+                {
+                    "position": {
+                        "line": 1104,
+                        "character": 63
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1104,
+                        "character": 74
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1104,
+                        "character": 90
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1104,
+                "character": 113
+            },
+            "comments": [
+                "// -----------------------------------------------------------------------------",
+                "// oItem - The item used for crafting",
+                "// -----------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1259,
+                "character": 4
+            },
+            "identifier": "CIGetInModWeaponOrArmorConv",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 1259,
+                        "character": 39
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1259,
+                "character": 43
+            },
+            "comments": [
+                "// -----------------------------------------------------------------------------",
+                "//                 *** Crafting Conversation Functions ***",
+                "// -----------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1265,
+                "character": 5
+            },
+            "identifier": "CISetCurrentModMode",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1265,
+                        "character": 32
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1265,
+                        "character": 41
+                    },
+                    "identifier": "nMode",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1265,
+                "character": 47
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1277,
+                "character": 4
+            },
+            "identifier": "CIGetCurrentModMode",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 1277,
+                        "character": 31
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1277,
+                "character": 35
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1283,
+                "character": 7
+            },
+            "identifier": "CIGetCurrentModBackup",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 1283,
+                        "character": 36
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1283,
+                "character": 40
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1288,
+                "character": 7
+            },
+            "identifier": "CIGetCurrentModItem",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 1288,
+                        "character": 34
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1288,
+                "character": 38
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1294,
+                "character": 5
+            },
+            "identifier": "CISetCurrentModBackup",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1294,
+                        "character": 34
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1294,
+                        "character": 46
+                    },
+                    "identifier": "oBackup",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1294,
+                "character": 54
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1299,
+                "character": 5
+            },
+            "identifier": "CISetCurrentModItem",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1299,
+                        "character": 32
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1299,
+                        "character": 44
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1299,
+                "character": 50
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1311,
+                "character": 5
+            },
+            "identifier": "CISetCurrentModPart",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1311,
+                        "character": 32
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1311,
+                        "character": 41
+                    },
+                    "identifier": "nPart",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 1311,
+                        "character": 52
+                    },
+                    "identifier": "nStrRef",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1311,
+                "character": 60
+            },
+            "comments": [
+                "// -----------------------------------------------------------------------------",
+                "// * This does multiple things:",
+                "//   -  store the part currently modified",
+                "//   -  setup the custom token for the conversation",
+                "//   -  zoom the camera to that part",
+                "// -----------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1393,
+                "character": 4
+            },
+            "identifier": "CIGetCurrentModPart",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 1393,
+                        "character": 31
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1393,
+                "character": 35
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1399,
+                "character": 5
+            },
+            "identifier": "CISetDefaultModItemCamera",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1399,
+                        "character": 38
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1399,
+                "character": 42
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1426,
+                "character": 5
+            },
+            "identifier": "CIUpdateModItemCostDC",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1426,
+                        "character": 34
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1426,
+                        "character": 43
+                    },
+                    "identifier": "nDC",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 1426,
+                        "character": 52
+                    },
+                    "identifier": "nCost",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1426,
+                "character": 58
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1436,
+                "character": 4
+            },
+            "identifier": "CIGetWeaponModificationCost",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 1436,
+                        "character": 39
+                    },
+                    "identifier": "oOldItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1436,
+                        "character": 56
+                    },
+                    "identifier": "oNewItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1436,
+                "character": 65
+            },
+            "comments": [
+                "// dc to modify oOlditem to look like oNewItem"
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [
+    "structDeclarations": [
         {
             "position": {
                 "line": 18,
@@ -652,49 +1724,49 @@
             "tokenType": 22,
             "properties": [
                 {
+                    "identifier": "nRow",
                     "position": {
                         "line": 20,
-                        "character": 8
+                        "character": 11
                     },
-                    "identifier": "   ",
-                    "tokenType": 10,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "tokenType": 10
                 },
                 {
+                    "identifier": "sResRef",
                     "position": {
                         "line": 21,
                         "character": 11
                     },
-                    "identifier": "sResRef",
-                    "tokenType": 10,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "tokenType": 10
                 },
                 {
+                    "identifier": "nDC",
                     "position": {
                         "line": 22,
-                        "character": 8
+                        "character": 11
                     },
-                    "identifier": "   ",
-                    "tokenType": 10,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "tokenType": 10
                 },
                 {
+                    "identifier": "nCost",
                     "position": {
                         "line": 23,
-                        "character": 8
+                        "character": 11
                     },
-                    "identifier": "   ",
-                    "tokenType": 10,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "tokenType": 10
                 },
                 {
+                    "identifier": "sLabel",
                     "position": {
                         "line": 24,
                         "character": 11
                     },
-                    "identifier": "sLabel",
-                    "tokenType": 10,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "tokenType": 10
                 }
             ]
         },
@@ -707,31 +1779,31 @@
             "tokenType": 22,
             "properties": [
                 {
+                    "identifier": "nMode",
                     "position": {
                         "line": 29,
                         "character": 8
                     },
-                    "identifier": "nMode",
-                    "tokenType": 10,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "tokenType": 10
                 },
                 {
+                    "identifier": "oMajor",
                     "position": {
                         "line": 30,
                         "character": 11
                     },
-                    "identifier": "oMajor",
-                    "tokenType": 10,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "tokenType": 10
                 },
                 {
+                    "identifier": "oMinor",
                     "position": {
                         "line": 31,
                         "character": 11
                     },
-                    "identifier": "oMinor",
-                    "tokenType": 10,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "tokenType": 10
                 }
             ]
         }
@@ -739,5 +1811,1420 @@
     "children": [
         "x2_inc_itemprop",
         "x2_inc_switches"
+    ],
+    "includePositions": [
+        {
+            "line": 15,
+            "character": 0
+        },
+        {
+            "line": 16,
+            "character": 0
+        }
+    ],
+    "localDeclarations": [
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 125,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sRet",
+            "position": {
+                "line": 178,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 186,
+                "character": 36
+            },
+            "identifier": "oItem",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nBt",
+            "position": {
+                "line": 188,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 201,
+                "character": 32
+            },
+            "identifier": "oCreator",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 201,
+                "character": 46
+            },
+            "identifier": "nSpellID",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "nPropID",
+            "position": {
+                "line": 204,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oTarget",
+            "position": {
+                "line": 206,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "ipProp",
+            "position": {
+                "line": 218,
+                "character": 21
+            },
+            "valueType": "itemproperty",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nLvlRow",
+            "position": {
+                "line": 230,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCLevel",
+            "position": {
+                "line": 231,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 240,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPropID",
+            "position": {
+                "line": 252,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oTarget",
+            "position": {
+                "line": 254,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "ipProp",
+            "position": {
+                "line": 267,
+                "character": 21
+            },
+            "valueType": "itemproperty",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nType",
+            "position": {
+                "line": 272,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "ipLimit",
+            "position": {
+                "line": 273,
+                "character": 21
+            },
+            "valueType": "itemproperty",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCharges",
+            "position": {
+                "line": 296,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 322,
+                "character": 34
+            },
+            "identifier": "oCreator",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 322,
+                "character": 48
+            },
+            "identifier": "nSpellID",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "nPropID",
+            "position": {
+                "line": 324,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oTarget",
+            "position": {
+                "line": 325,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sMat",
+            "position": {
+                "line": 327,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oMat",
+            "position": {
+                "line": 330,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nClass",
+            "position": {
+                "line": 343,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sClass",
+            "position": {
+                "line": 344,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sResRef",
+            "position": {
+                "line": 373,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 390,
+                "character": 34
+            },
+            "identifier": "oSpellTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 390,
+                "character": 55
+            },
+            "identifier": "oCaster",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "oSpellTarget",
+            "position": {
+                "line": 393,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oCaster",
+            "position": {
+                "line": 394,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nID",
+            "position": {
+                "line": 395,
+                "character": 11
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nLevel",
+            "position": {
+                "line": 396,
+                "character": 11
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCost",
+            "position": {
+                "line": 428,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nExperienceCost",
+            "position": {
+                "line": 429,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nGoldCost",
+            "position": {
+                "line": 430,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 441,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMinXPForLevel",
+            "position": {
+                "line": 442,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nNewXP",
+            "position": {
+                "line": 443,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPotion",
+            "position": {
+                "line": 458,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 484,
+                "character": 36
+            },
+            "identifier": "oSpellTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 484,
+                "character": 57
+            },
+            "identifier": "oCaster",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nID",
+            "position": {
+                "line": 486,
+                "character": 9
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nLevel",
+            "position": {
+                "line": 509,
+                "character": 9
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCost",
+            "position": {
+                "line": 510,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fExperienceCost",
+            "position": {
+                "line": 511,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nGoldCost",
+            "position": {
+                "line": 512,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 523,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMinXPForLevel",
+            "position": {
+                "line": 524,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nNewXP",
+            "position": {
+                "line": 525,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oScroll",
+            "position": {
+                "line": 539,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nID",
+            "position": {
+                "line": 573,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nLevel",
+            "position": {
+                "line": 593,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCost",
+            "position": {
+                "line": 607,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nExperienceCost",
+            "position": {
+                "line": 608,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nGoldCost",
+            "position": {
+                "line": 609,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 621,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMinXPForLevel",
+            "position": {
+                "line": 622,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nNewXP",
+            "position": {
+                "line": 623,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oWand",
+            "position": {
+                "line": 637,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 666,
+                "character": 44
+            },
+            "identifier": "oSpellTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "oCaster",
+            "position": {
+                "line": 668,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nBt",
+            "position": {
+                "line": 700,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 701,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 741,
+                "character": 34
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 741,
+                "character": 43
+            },
+            "identifier": "nSkill",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 741,
+                "character": 58
+            },
+            "identifier": "sResRef",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 741,
+                "character": 71
+            },
+            "identifier": "nDC",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 741,
+                "character": 83
+            },
+            "identifier": "oContainer",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        },
+        {
+            "identifier": "bSuccess",
+            "position": {
+                "line": 743,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oNew",
+            "position": {
+                "line": 744,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bFix",
+            "position": {
+                "line": 749,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nBase",
+            "position": {
+                "line": 765,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oRet",
+            "position": {
+                "line": 780,
+                "character": 19
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sNumber",
+            "position": {
+                "line": 803,
+                "character": 12
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPC",
+            "position": {
+                "line": 804,
+                "character": 12
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oMajor",
+            "position": {
+                "line": 806,
+                "character": 12
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oMinor",
+            "position": {
+                "line": 807,
+                "character": 12
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nSkill",
+            "position": {
+                "line": 808,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMode",
+            "position": {
+                "line": 809,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sResult",
+            "position": {
+                "line": 810,
+                "character": 12
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "s2DA",
+            "position": {
+                "line": 811,
+                "character": 12
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nDC",
+            "position": {
+                "line": 812,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRow",
+            "position": {
+                "line": 861,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "stItem",
+            "position": {
+                "line": 862,
+                "character": 22
+            },
+            "valueType": "craft_struct",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oContainer",
+            "position": {
+                "line": 863,
+                "character": 9
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oRet",
+            "position": {
+                "line": 875,
+                "character": 9
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 918,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 925,
+                "character": 55
+            },
+            "identifier": "s2DA",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 925,
+                "character": 65
+            },
+            "identifier": "nRow",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 925,
+                "character": 75
+            },
+            "identifier": "nItemNo",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "stRet",
+            "position": {
+                "line": 927,
+                "character": 23
+            },
+            "valueType": "craft_struct",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sNumber",
+            "position": {
+                "line": 928,
+                "character": 10
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sLabel",
+            "position": {
+                "line": 931,
+                "character": 10
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nStrRef",
+            "position": {
+                "line": 936,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 954,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 970,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nTotal",
+            "position": {
+                "line": 981,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPart",
+            "position": {
+                "line": 982,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nTotal",
+            "position": {
+                "line": 1006,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPart",
+            "position": {
+                "line": 1007,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nDC",
+            "position": {
+                "line": 1008,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1032,
+                "character": 44
+            },
+            "identifier": "nSpellID",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 1032,
+                "character": 58
+            },
+            "identifier": "nFeatID",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "sCol",
+            "position": {
+                "line": 1034,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sRet",
+            "position": {
+                "line": 1048,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 1049,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMinorId",
+            "position": {
+                "line": 1061,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMajorId",
+            "position": {
+                "line": 1062,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nLookUpRow",
+            "position": {
+                "line": 1067,
+                "character": 11
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sTag",
+            "position": {
+                "line": 1068,
+                "character": 14
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 1074,
+                "character": 11
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "stStruct",
+            "position": {
+                "line": 1106,
+                "character": 30
+            },
+            "valueType": "craft_receipe_struct",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bCraftCont",
+            "position": {
+                "line": 1145,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oTest",
+            "position": {
+                "line": 1159,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCount",
+            "position": {
+                "line": 1160,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bMajor",
+            "position": {
+                "line": 1161,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bMinor",
+            "position": {
+                "line": 1162,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fFacing",
+            "position": {
+                "line": 1319,
+                "character": 14
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fPitch",
+            "position": {
+                "line": 1333,
+                "character": 14
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fDistance",
+            "position": {
+                "line": 1339,
+                "character": 15
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCost",
+            "position": {
+                "line": 1383,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nDC",
+            "position": {
+                "line": 1384,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fDistance",
+            "position": {
+                "line": 1401,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fPitch",
+            "position": {
+                "line": 1402,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fFacing",
+            "position": {
+                "line": 1403,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nTotal",
+            "position": {
+                "line": 1438,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPart",
+            "position": {
+                "line": 1439,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
+    ],
+    "memberReferences": [
+        {
+            "identifier": "sResRef",
+            "position": {
+                "line": 875,
+                "character": 57
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nDC",
+            "position": {
+                "line": 875,
+                "character": 73
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nCost",
+            "position": {
+                "line": 888,
+                "character": 31
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nCost",
+            "position": {
+                "line": 897,
+                "character": 38
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nCost",
+            "position": {
+                "line": 905,
+                "character": 34
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nRow",
+            "position": {
+                "line": 930,
+                "character": 9
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "sLabel",
+            "position": {
+                "line": 941,
+                "character": 9
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nDC",
+            "position": {
+                "line": 942,
+                "character": 9
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nCost",
+            "position": {
+                "line": 943,
+                "character": 9
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "sResRef",
+            "position": {
+                "line": 944,
+                "character": 9
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "oMajor",
+            "position": {
+                "line": 1111,
+                "character": 16
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nMode",
+            "position": {
+                "line": 1112,
+                "character": 16
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nMode",
+            "position": {
+                "line": 1118,
+                "character": 14
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nMode",
+            "position": {
+                "line": 1128,
+                "character": 21
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "oMajor",
+            "position": {
+                "line": 1129,
+                "character": 21
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "oMinor",
+            "position": {
+                "line": 1130,
+                "character": 21
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nMode",
+            "position": {
+                "line": 1153,
+                "character": 17
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "oMajor",
+            "position": {
+                "line": 1154,
+                "character": 17
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nMode",
+            "position": {
+                "line": 1167,
+                "character": 21
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "oMajor",
+            "position": {
+                "line": 1176,
+                "character": 29
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "oMinor",
+            "position": {
+                "line": 1181,
+                "character": 29
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nMode",
+            "position": {
+                "line": 1186,
+                "character": 29
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "oMajor",
+            "position": {
+                "line": 1187,
+                "character": 29
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nMode",
+            "position": {
+                "line": 1200,
+                "character": 25
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nMode",
+            "position": {
+                "line": 1206,
+                "character": 25
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nMode",
+            "position": {
+                "line": 1212,
+                "character": 25
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nMode",
+            "position": {
+                "line": 1219,
+                "character": 25
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nMode",
+            "position": {
+                "line": 1231,
+                "character": 16
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "oMajor",
+            "position": {
+                "line": 1232,
+                "character": 16
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nMode",
+            "position": {
+                "line": 1241,
+                "character": 23
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nMode",
+            "position": {
+                "line": 1248,
+                "character": 23
+            },
+            "tokenType": 18
+        }
     ]
 }

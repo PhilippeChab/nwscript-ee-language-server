@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 2,
@@ -8,7 +8,8 @@
             "identifier": "DB_NAME",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"XP2\""
+            "value": "\"XP2\"",
+            "isConst": true
         },
         {
             "position": {
@@ -38,11 +39,16 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 7,
+                "character": 46
+            },
             "comments": [
                 "// * Wrapper function for setting important variables in Chapter 2",
                 "// * This will eventually be modified to set the variables on the",
                 "// * database."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -63,11 +69,16 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 11,
+                "character": 33
+            },
             "comments": [
                 "// * Wrapper function for setting important variables in Chapter 2",
                 "// * This will eventually be modified to set the variables on the",
                 "// * database."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -97,11 +108,16 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 15,
+                "character": 52
+            },
             "comments": [
                 "// * Wrapper function for setting important variables in Chapter 2",
                 "// * This will eventually be modified to set the variables on the",
                 "// * database."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -122,11 +138,16 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 19,
+                "character": 39
+            },
             "comments": [
                 "// * Wrapper function for setting important variables in Chapter 2",
                 "// * This will eventually be modified to set the variables on the",
                 "// * database."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -137,10 +158,15 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
+            "signatureEnd": {
+                "line": 22,
+                "character": 20
+            },
             "comments": [
                 "// * Only needed while things are being implemented",
                 "// * Should be called ????;"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -161,9 +187,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 24,
+                "character": 43
+            },
             "comments": [
                 "// * Copies the specified variable from the Module to the database"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -184,10 +215,15 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 27,
+                "character": 36
+            },
             "comments": [
                 "// * Copies all henchmen over",
                 "// *"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -217,10 +253,15 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 30,
+                "character": 54
+            },
             "comments": [
                 "// * Restore henchmen. THis function should be called after all other",
                 "// * database fetches because it destroys the database."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -250,10 +291,15 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 33,
+                "character": 51
+            },
             "comments": [
                 "// * Call this function as a wrapper for retrieving a henchman from hell",
                 "// * the henchmen should have been loaded in"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -274,14 +320,999 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 36,
+                "character": 44
+            },
             "comments": [
                 "// * ReStores all important variables that the",
                 "// * the henchmen may have on them  from db"
-            ]
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 105,
+                "character": 5
+            },
+            "identifier": "ReturnToChapter2",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "signatureEnd": {
+                "line": 105,
+                "character": 23
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 150,
+                "character": 4
+            },
+            "identifier": "PCBetrayedNathyrra",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 150,
+                "character": 24
+            },
+            "comments": [
+                "// * Returns whether player betrayed nathyrra"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 160,
+                "character": 4
+            },
+            "identifier": "PCBetrayedValen",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 160,
+                "character": 21
+            },
+            "comments": [
+                "// * Returns whether player betrayed nathyrra"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 170,
+                "character": 5
+            },
+            "identifier": "StoreInt",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 170,
+                        "character": 21
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 170,
+                "character": 30
+            },
+            "comments": [
+                "// * Store/Restore used as a quick short-cut to save and the load the GetModule() globals"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 174,
+                "character": 5
+            },
+            "identifier": "RestoreInt",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 174,
+                        "character": 23
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 174,
+                "character": 32
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 180,
+                "character": 5
+            },
+            "identifier": "StoreIntFromObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 180,
+                        "character": 31
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 180,
+                        "character": 48
+                    },
+                    "identifier": "oSelf",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 180,
+                "character": 54
+            },
+            "comments": [
+                "// * gets an int from an object other than the module"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 185,
+                "character": 5
+            },
+            "identifier": "RestoreIntFromObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 185,
+                        "character": 33
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 185,
+                        "character": 50
+                    },
+                    "identifier": "oSelf",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 185,
+                "character": 56
+            },
+            "comments": [
+                "// * gets an int from an object other than the module"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 190,
+                "character": 5
+            },
+            "identifier": "StoreString",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 190,
+                        "character": 24
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 190,
+                "character": 33
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 194,
+                "character": 5
+            },
+            "identifier": "RestoreString",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 194,
+                        "character": 26
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 194,
+                "character": 35
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 203,
+                "character": 5
+            },
+            "identifier": "StoreHenchmenVariables",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 203,
+                        "character": 35
+                    },
+                    "identifier": "oHench",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 203,
+                "character": 42
+            },
+            "comments": [
+                "// * Stores all important variables that the",
+                "// * the henchmen may have on them  into the database",
+                "// * Must be careful in this function to avoid strings that are too long..."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 252,
+                "character": 7
+            },
+            "identifier": "WrapCopyItem",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 252,
+                        "character": 27
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 252,
+                        "character": 41
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 252,
+                        "character": 54
+                    },
+                    "identifier": "bIgnoreCursedAndNoDrop",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                }
+            ],
+            "signatureEnd": {
+                "line": 252,
+                "character": 83
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 273,
+                "character": 5
+            },
+            "identifier": "CopyInventory",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 273,
+                        "character": 26
+                    },
+                    "identifier": "oSource",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 273,
+                        "character": 42
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 273,
+                        "character": 55
+                    },
+                    "identifier": "bIgnoreCursedAndNoDrop",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                }
+            ],
+            "signatureEnd": {
+                "line": 273,
+                "character": 84
+            },
+            "comments": [
+                "// * copies everything from oSource's inventory into oTarget",
+                "// * can be used with either Creatures or Stores",
+                "// * does not destroy original",
+                "// bIgnoreCursedAndNoDrop - set this flag to true if you don't want things like henchmen items copied"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 301,
+                "character": 5
+            },
+            "identifier": "RemoveInventory",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 301,
+                        "character": 28
+                    },
+                    "identifier": "oStore",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 301,
+                "character": 35
+            },
+            "comments": [
+                "// * used at start of c2 and c3 to \"blank\" the genie store."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 318,
+                "character": 5
+            },
+            "identifier": "CopyOriginalFourInventory",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "signatureEnd": {
+                "line": 318,
+                "character": 32
+            },
+            "comments": [
+                "// * Copies the original 4 henchmen inventories into the Pool of Lost Souls"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 336,
+                "character": 5
+            },
+            "identifier": "StorePoolOfLostSouls",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 336,
+                        "character": 33
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 336,
+                "character": 37
+            },
+            "comments": [
+                "// * Copies the Pool of Lost Souls"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 349,
+                "character": 7
+            },
+            "identifier": "RestorePoolOfLostSouls",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 349,
+                        "character": 37
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 349,
+                "character": 41
+            },
+            "comments": [
+                "// * Copies the Pool of Lost Souls  into the place of the existing one in the module"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 360,
+                "character": 5
+            },
+            "identifier": "StoreWeaponInt",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 360,
+                        "character": 27
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 360,
+                        "character": 39
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 360,
+                "character": 48
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 370,
+                "character": 5
+            },
+            "identifier": "RestoreWeaponInt",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 370,
+                        "character": 29
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 370,
+                        "character": 41
+                    },
+                    "identifier": "sVarName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 370,
+                "character": 50
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 376,
+                "character": 5
+            },
+            "identifier": "StoreWeaponVars",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 376,
+                        "character": 28
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 376,
+                "character": 32
+            },
+            "comments": [
+                "// * stores the variables for the intelligent weapon"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 389,
+                "character": 5
+            },
+            "identifier": "RestoreWeaponVars",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 389,
+                        "character": 30
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 389,
+                "character": 34
+            },
+            "comments": [
+                "// * restores weapon variables"
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
+    "structDeclarations": [],
     "children": [
         "x0_i0_henchman"
+    ],
+    "includePositions": [
+        {
+            "line": 0,
+            "character": 0
+        }
+    ],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 42,
+                "character": 25
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 42,
+                "character": 39
+            },
+            "identifier": "nValue",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 50,
+                "character": 24
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 59,
+                "character": 28
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 59,
+                "character": 45
+            },
+            "identifier": "sValue",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 68,
+                "character": 30
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 38
+            },
+            "identifier": "sVar",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 89,
+                "character": 28
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 91,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oHench",
+            "position": {
+                "line": 92,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 113,
+                "character": 33
+            },
+            "identifier": "lLoc",
+            "tokenType": 25,
+            "valueType": "location"
+        },
+        {
+            "position": {
+                "line": 113,
+                "character": 46
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nMax",
+            "position": {
+                "line": 115,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 116,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oHench",
+            "position": {
+                "line": 117,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 132,
+                "character": 30
+            },
+            "identifier": "sTag",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 132,
+                "character": 43
+            },
+            "identifier": "sMemory",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "identifier": "oPC",
+            "position": {
+                "line": 135,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "lPC",
+            "position": {
+                "line": 136,
+                "character": 13
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eVis",
+            "position": {
+                "line": 137,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oDeekin",
+            "position": {
+                "line": 139,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCount",
+            "position": {
+                "line": 144,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sTag",
+            "position": {
+                "line": 205,
+                "character": 12
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sRandomOnes",
+            "position": {
+                "line": 213,
+                "character": 12
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 229,
+                "character": 37
+            },
+            "identifier": "oHench",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "sTag",
+            "position": {
+                "line": 231,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sOneLiner",
+            "position": {
+                "line": 239,
+                "character": 12
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bAllowedToCopy",
+            "position": {
+                "line": 254,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 275,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 278,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oJunkItem",
+            "position": {
+                "line": 292,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 303,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sTag",
+            "position": {
+                "line": 304,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oCritter",
+            "position": {
+                "line": 323,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oStore",
+            "position": {
+                "line": 324,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oStore",
+            "position": {
+                "line": 338,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oRothe",
+            "position": {
+                "line": 342,
+                "character": 19
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oStore",
+            "position": {
+                "line": 351,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "lStore",
+            "position": {
+                "line": 352,
+                "character": 13
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oNewStore",
+            "position": {
+                "line": 354,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sName",
+            "position": {
+                "line": 365,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nValue",
+            "position": {
+                "line": 366,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nValue",
+            "position": {
+                "line": 372,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
     ]
 }

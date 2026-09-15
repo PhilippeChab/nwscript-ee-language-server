@@ -1,7 +1,106 @@
 {
-    "complexTokens": [],
-    "structComplexTokens": [],
+    "globalDeclarations": [],
+    "structDeclarations": [],
     "children": [
         "x2_inc_craft"
+    ],
+    "includePositions": [
+        {
+            "line": 17,
+            "character": 0
+        }
+    ],
+    "entryPointDeclarations": [
+        {
+            "position": {
+                "line": 18,
+                "character": 4
+            },
+            "identifier": "StartingConditional",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 18,
+                "character": 25
+            },
+            "comments": [],
+            "implementation": true
+        }
+    ],
+    "localDeclarations": [
+        {
+            "identifier": "iResult",
+            "position": {
+                "line": 20,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nNumber",
+            "position": {
+                "line": 21,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPC",
+            "position": {
+                "line": 22,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nSkill",
+            "position": {
+                "line": 23,
+                "character": 14
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "s2DA",
+            "position": {
+                "line": 24,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRow",
+            "position": {
+                "line": 34,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "stItem",
+            "position": {
+                "line": 35,
+                "character": 24
+            },
+            "valueType": "craft_struct",
+            "tokenType": 6
+        }
+    ],
+    "memberReferences": [
+        {
+            "identifier": "nCost",
+            "position": {
+                "line": 37,
+                "character": 38
+            },
+            "tokenType": 18
+        }
     ]
 }

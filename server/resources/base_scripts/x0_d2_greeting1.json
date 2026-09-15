@@ -1,7 +1,31 @@
 {
-    "complexTokens": [],
-    "structComplexTokens": [],
+    "globalDeclarations": [],
+    "structDeclarations": [],
     "children": [
         "NW_I0_GENERIC"
+    ],
+    "includePositions": [
+        {
+            "line": 5,
+            "character": 0
+        }
+    ],
+    "entryPointDeclarations": [
+        {
+            "position": {
+                "line": 7,
+                "character": 4
+            },
+            "identifier": "StartingConditional",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 7,
+                "character": 25
+            },
+            "comments": [],
+            "implementation": true
+        }
     ]
 }

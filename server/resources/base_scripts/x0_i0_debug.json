@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 23,
@@ -19,9 +19,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 23,
+                "character": 29
+            },
             "comments": [
                 "// * displays debug info added since November 2002."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -42,11 +47,16 @@
                     "valueType": "talent"
                 }
             ],
+            "signatureEnd": {
+                "line": 28,
+                "character": 39
+            },
             "comments": [
                 "// TYPO! Use DebugPrintTalentID(talent tTalent) instead.",
                 "// This function is commented out for release; use PrintString for",
                 "// debugging."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -67,11 +77,16 @@
                     "valueType": "talent"
                 }
             ],
+            "signatureEnd": {
+                "line": 33,
+                "character": 39
+            },
             "comments": [
                 "// Prints a log string with the ID of the passed in talent.",
                 "// This function is commented out for release; use PrintString for",
                 "// debugging."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -92,13 +107,56 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 38,
+                "character": 34
+            },
             "comments": [
                 "// Inserts a debug print string into the client log file.",
                 "// This function is commented out for release; use PrintString for",
                 "// debugging."
-            ]
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 44,
+                "character": 21
+            },
+            "identifier": "sString",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 49,
+                "character": 31
+            },
+            "identifier": "tTalent",
+            "tokenType": 25,
+            "valueType": "talent"
+        },
+        {
+            "position": {
+                "line": 56,
+                "character": 31
+            },
+            "identifier": "tTalent",
+            "tokenType": 25,
+            "valueType": "talent"
+        },
+        {
+            "position": {
+                "line": 62,
+                "character": 26
+            },
+            "identifier": "sString",
+            "tokenType": 25,
+            "valueType": "string"
+        }
+    ]
 }

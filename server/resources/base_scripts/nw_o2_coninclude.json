@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 32,
@@ -8,7 +8,8 @@
             "identifier": "RANGE_1_MIN",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0"
+            "value": "0",
+            "isConst": true
         },
         {
             "position": {
@@ -18,7 +19,8 @@
             "identifier": "RANGE_1_MAX",
             "tokenType": 21,
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "isConst": true
         },
         {
             "position": {
@@ -28,7 +30,8 @@
             "identifier": "RANGE_2_MIN",
             "tokenType": 21,
             "valueType": "int",
-            "value": "6"
+            "value": "6",
+            "isConst": true
         },
         {
             "position": {
@@ -38,7 +41,8 @@
             "identifier": "RANGE_2_MAX",
             "tokenType": 21,
             "valueType": "int",
-            "value": "8"
+            "value": "8",
+            "isConst": true
         },
         {
             "position": {
@@ -48,7 +52,8 @@
             "identifier": "RANGE_3_MIN",
             "tokenType": 21,
             "valueType": "int",
-            "value": "9"
+            "value": "9",
+            "isConst": true
         },
         {
             "position": {
@@ -58,7 +63,8 @@
             "identifier": "RANGE_3_MAX",
             "tokenType": 21,
             "valueType": "int",
-            "value": "10"
+            "value": "10",
+            "isConst": true
         },
         {
             "position": {
@@ -68,7 +74,8 @@
             "identifier": "RANGE_4_MIN",
             "tokenType": 21,
             "valueType": "int",
-            "value": "11"
+            "value": "11",
+            "isConst": true
         },
         {
             "position": {
@@ -78,7 +85,8 @@
             "identifier": "RANGE_4_MAX",
             "tokenType": 21,
             "valueType": "int",
-            "value": "13"
+            "value": "13",
+            "isConst": true
         },
         {
             "position": {
@@ -88,7 +96,8 @@
             "identifier": "RANGE_5_MIN",
             "tokenType": 21,
             "valueType": "int",
-            "value": "14"
+            "value": "14",
+            "isConst": true
         },
         {
             "position": {
@@ -98,7 +107,8 @@
             "identifier": "RANGE_5_MAX",
             "tokenType": 21,
             "valueType": "int",
-            "value": "16"
+            "value": "16",
+            "isConst": true
         },
         {
             "position": {
@@ -108,7 +118,8 @@
             "identifier": "RANGE_6_MIN",
             "tokenType": 21,
             "valueType": "int",
-            "value": "17"
+            "value": "17",
+            "isConst": true
         },
         {
             "position": {
@@ -118,7 +129,8 @@
             "identifier": "RANGE_6_MAX",
             "tokenType": 21,
             "valueType": "int",
-            "value": "100"
+            "value": "100",
+            "isConst": true
         },
         {
             "position": {
@@ -128,7 +140,41 @@
             "identifier": "NUMBER_LOW_ONE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "100"
+            "value": "100",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 50,
+                "character": 48
+            },
+            "identifier": "NUMBER_MED_ONE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "60",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 50,
+                "character": 82
+            },
+            "identifier": "NUMBER_HIGH_ONE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "40",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 50,
+                "character": 117
+            },
+            "identifier": "NUMBER_BOSS_ONE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "100",
+            "isConst": true
         },
         {
             "position": {
@@ -138,7 +184,41 @@
             "identifier": "NUMBER_LOW_TWO",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0"
+            "value": "0",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 51,
+                "character": 48
+            },
+            "identifier": "NUMBER_MED_TWO",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "30",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 51,
+                "character": 82
+            },
+            "identifier": "NUMBER_HIGH_TWO",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "40",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 51,
+                "character": 117
+            },
+            "identifier": "NUMBER_BOSS_TWO",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0",
+            "isConst": true
         },
         {
             "position": {
@@ -148,7 +228,41 @@
             "identifier": "NUMBER_LOW_THREE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0"
+            "value": "0",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 52,
+                "character": 48
+            },
+            "identifier": "NUMBER_MED_THREE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "10",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 52,
+                "character": 82
+            },
+            "identifier": "NUMBER_HIGH_THREE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "20",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 52,
+                "character": 117
+            },
+            "identifier": "NUMBER_BOSS_THREE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0",
+            "isConst": true
         },
         {
             "position": {
@@ -158,7 +272,8 @@
             "identifier": "NUMBER_BOOK_ONE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "75"
+            "value": "75",
+            "isConst": true
         },
         {
             "position": {
@@ -168,7 +283,8 @@
             "identifier": "NUMBER_BOOK_TWO",
             "tokenType": 21,
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "isConst": true
         },
         {
             "position": {
@@ -178,7 +294,8 @@
             "identifier": "NUMBER_BOOK_THREE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "isConst": true
         },
         {
             "position": {
@@ -188,7 +305,30 @@
             "identifier": "LOW_MOD_GOLD",
             "tokenType": 21,
             "valueType": "float",
-            "value": "0.5"
+            "value": "0.5",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 59,
+                "character": 50
+            },
+            "identifier": "MEDIUM_MOD_GOLD",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "1.0",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 59,
+                "character": 85
+            },
+            "identifier": "HIGH_MOD_GOLD",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "3.0",
+            "isConst": true
         },
         {
             "position": {
@@ -198,7 +338,30 @@
             "identifier": "LOW_PROB_BOOK",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 61,
+                "character": 47
+            },
+            "identifier": "MEDIUM_PROB_BOOK",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 61,
+                "character": 82
+            },
+            "identifier": "HIGH_PROB_BOOK",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1",
+            "isConst": true
         },
         {
             "position": {
@@ -208,7 +371,30 @@
             "identifier": "LOW_PROB_ANIMAL",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0"
+            "value": "0",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 62,
+                "character": 47
+            },
+            "identifier": "MEDIUM_PROB_ANIMAL",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 62,
+                "character": 82
+            },
+            "identifier": "HIGH_PROB_ANIMAL",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "0",
+            "isConst": true
         },
         {
             "position": {
@@ -218,7 +404,30 @@
             "identifier": "LOW_PROB_JUNK",
             "tokenType": 21,
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 63,
+                "character": 47
+            },
+            "identifier": "MEDIUM_PROB_JUNK",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 63,
+                "character": 83
+            },
+            "identifier": "HIGH_PROB_JUNK",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "1",
+            "isConst": true
         },
         {
             "position": {
@@ -228,7 +437,30 @@
             "identifier": "LOW_PROB_GOLD",
             "tokenType": 21,
             "valueType": "int",
-            "value": "43"
+            "value": "43",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 64,
+                "character": 47
+            },
+            "identifier": "MEDIUM_PROB_GOLD",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "38",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 64,
+                "character": 82
+            },
+            "identifier": "HIGH_PROB_GOLD",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "15",
+            "isConst": true
         },
         {
             "position": {
@@ -238,7 +470,30 @@
             "identifier": "LOW_PROB_GEM",
             "tokenType": 21,
             "valueType": "int",
-            "value": "9"
+            "value": "9",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 65,
+                "character": 47
+            },
+            "identifier": "MEDIUM_PROB_GEM",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "15",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 65,
+                "character": 82
+            },
+            "identifier": "HIGH_PROB_GEM",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "15",
+            "isConst": true
         },
         {
             "position": {
@@ -248,7 +503,30 @@
             "identifier": "LOW_PROB_JEWEL",
             "tokenType": 21,
             "valueType": "int",
-            "value": "4"
+            "value": "4",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 66,
+                "character": 47
+            },
+            "identifier": "MEDIUM_PROB_JEWEL",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "6",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 66,
+                "character": 81
+            },
+            "identifier": "HIGH_PROB_JEWEL",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "15",
+            "isConst": true
         },
         {
             "position": {
@@ -258,7 +536,30 @@
             "identifier": "LOW_PROB_ARCANE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "3"
+            "value": "3",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 67,
+                "character": 47
+            },
+            "identifier": "MEDIUM_PROB_ARCANE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 67,
+                "character": 81
+            },
+            "identifier": "HIGH_PROB_ARCANE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3",
+            "isConst": true
         },
         {
             "position": {
@@ -268,7 +569,30 @@
             "identifier": "LOW_PROB_DIVINE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "3"
+            "value": "3",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 68,
+                "character": 47
+            },
+            "identifier": "MEDIUM_PROB_DIVINE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 68,
+                "character": 82
+            },
+            "identifier": "HIGH_PROB_DIVINE",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3",
+            "isConst": true
         },
         {
             "position": {
@@ -278,7 +602,30 @@
             "identifier": "LOW_PROB_AMMO",
             "tokenType": 21,
             "valueType": "int",
-            "value": "10"
+            "value": "10",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 69,
+                "character": 47
+            },
+            "identifier": "MEDIUM_PROB_AMMO",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 69,
+                "character": 82
+            },
+            "identifier": "HIGH_PROB_AMMO",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3",
+            "isConst": true
         },
         {
             "position": {
@@ -288,7 +635,30 @@
             "identifier": "LOW_PROB_KIT",
             "tokenType": 21,
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 70,
+                "character": 47
+            },
+            "identifier": "MEDIUM_PROB_KIT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 70,
+                "character": 82
+            },
+            "identifier": "HIGH_PROB_KIT",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "5",
+            "isConst": true
         },
         {
             "position": {
@@ -298,7 +668,30 @@
             "identifier": "LOW_PROB_POTION",
             "tokenType": 21,
             "valueType": "int",
-            "value": "17"
+            "value": "17",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 71,
+                "character": 47
+            },
+            "identifier": "MEDIUM_PROB_POTION",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "20",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 71,
+                "character": 82
+            },
+            "identifier": "HIGH_PROB_POTION",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "9",
+            "isConst": true
         },
         {
             "position": {
@@ -308,7 +701,30 @@
             "identifier": "LOW_PROB_TABLE2",
             "tokenType": 21,
             "valueType": "int",
-            "value": "3"
+            "value": "3",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 72,
+                "character": 47
+            },
+            "identifier": "MEDIUM_PROB_TABLE2",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "3",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 72,
+                "character": 81
+            },
+            "identifier": "HIGH_PROB_TABLE2",
+            "tokenType": 21,
+            "valueType": "int",
+            "value": "30",
+            "isConst": true
         },
         {
             "position": {
@@ -317,8 +733,9 @@
             },
             "identifier": "TREASURE_LOW",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "1"
+            "valueType": "int",
+            "value": "1",
+            "isConst": true
         },
         {
             "position": {
@@ -327,8 +744,9 @@
             },
             "identifier": "TREASURE_MEDIUM",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "2"
+            "valueType": "int",
+            "value": "2",
+            "isConst": true
         },
         {
             "position": {
@@ -337,8 +755,9 @@
             },
             "identifier": "TREASURE_HIGH",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "3"
+            "valueType": "int",
+            "value": "3",
+            "isConst": true
         },
         {
             "position": {
@@ -347,8 +766,9 @@
             },
             "identifier": "TREASURE_BOSS",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "4"
+            "valueType": "int",
+            "value": "4",
+            "isConst": true
         },
         {
             "position": {
@@ -357,8 +777,9 @@
             },
             "identifier": "TREASURE_BOOK",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "5"
+            "valueType": "int",
+            "value": "5",
+            "isConst": true
         },
         {
             "position": {
@@ -368,7 +789,8 @@
             "identifier": "JUMP_LEVEL",
             "tokenType": 21,
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "isConst": true
         },
         {
             "position": {
@@ -408,9 +830,14 @@
                     "defaultValue": "0"
                 }
             ],
+            "signatureEnd": {
+                "line": 94,
+                "character": 83
+            },
             "comments": [
                 "//* Declarations"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -450,7 +877,12 @@
                     "defaultValue": "0"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 95,
+                "character": 87
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -490,7 +922,12 @@
                     "defaultValue": "0"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 96,
+                "character": 88
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -530,7 +967,12 @@
                     "defaultValue": "0"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 97,
+                "character": 88
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -570,7 +1012,12 @@
                     "defaultValue": "0"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 98,
+                "character": 89
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -610,7 +1057,12 @@
                     "defaultValue": "0"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 99,
+                "character": 89
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -650,7 +1102,12 @@
                     "defaultValue": "0"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 100,
+                "character": 90
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -671,9 +1128,4538 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 101,
+                "character": 47
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 109,
+                "character": 5
+            },
+            "identifier": "dbSpeak",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 109,
+                        "character": 20
+                    },
+                    "identifier": "s",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 109,
+                "character": 22
+            },
+            "comments": [
+                "// * Comment the speakstring in to debug treasure generation"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 115,
+                "character": 5
+            },
+            "identifier": "dbCreateItemOnObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 115,
+                        "character": 33
+                    },
+                    "identifier": "sItemTemplate",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 115,
+                        "character": 55
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                },
+                {
+                    "position": {
+                        "line": 115,
+                        "character": 82
+                    },
+                    "identifier": "nStackSize",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "1"
+                }
+            ],
+            "signatureEnd": {
+                "line": 115,
+                "character": 97
+            },
+            "comments": [
+                "//* made this function to help with debugging"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 162,
+                "character": 7
+            },
+            "identifier": "GetLastOpener",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [],
+            "signatureEnd": {
+                "line": 162,
+                "character": 22
+            },
+            "comments": [
+                "// * Returns the object that either last opened the container or destroyed it"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 193,
+                "character": 4
+            },
+            "identifier": "GetRange",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 193,
+                        "character": 17
+                    },
+                    "identifier": "nCategory",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 193,
+                        "character": 32
+                    },
+                    "identifier": "nHD",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 193,
+                "character": 36
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By:  Brent",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 229,
+                "character": 4
+            },
+            "identifier": "GetNumberOfItems",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 229,
+                        "character": 25
+                    },
+                    "identifier": "nTreasureType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 229,
+                "character": 39
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By:  Brent",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 305,
+                "character": 9
+            },
+            "identifier": "CreateBook",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 305,
+                        "character": 27
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 305,
+                "character": 35
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 322,
+                "character": 9
+            },
+            "identifier": "CreateAnimalPart",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 322,
+                        "character": 33
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 322,
+                "character": 41
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 337,
+                "character": 9
+            },
+            "identifier": "CreateJunk",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 337,
+                        "character": 27
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 337,
+                "character": 35
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 358,
+                "character": 9
+            },
+            "identifier": "CreateGold",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 358,
+                        "character": 27
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 358,
+                        "character": 43
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 358,
+                        "character": 60
+                    },
+                    "identifier": "nTreasureType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 358,
+                        "character": 79
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 358,
+                "character": 93
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 401,
+                "character": 9
+            },
+            "identifier": "CreateGem",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 401,
+                        "character": 26
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 401,
+                        "character": 42
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 401,
+                        "character": 59
+                    },
+                    "identifier": "nTreasureType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 401,
+                        "character": 78
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 401,
+                "character": 92
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 485,
+                "character": 9
+            },
+            "identifier": "CreateJewel",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 485,
+                        "character": 28
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 485,
+                        "character": 44
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 485,
+                        "character": 61
+                    },
+                    "identifier": "nTreasureType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 485,
+                        "character": 80
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 485,
+                "character": 94
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 559,
+                "character": 8
+            },
+            "identifier": "TrimLevel",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 559,
+                        "character": 22
+                    },
+                    "identifier": "nScroll",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 559,
+                        "character": 35
+                    },
+                    "identifier": "nLevel",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 559,
+                "character": 42
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 579,
+                "character": 9
+            },
+            "identifier": "CreateArcaneScroll",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 579,
+                        "character": 35
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 579,
+                        "character": 51
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 579,
+                        "character": 68
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 579,
+                "character": 82
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 641,
+                "character": 9
+            },
+            "identifier": "CreateDivineScroll",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 641,
+                        "character": 35
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 641,
+                        "character": 51
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 641,
+                        "character": 68
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 641,
+                "character": 80
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 708,
+                "character": 9
+            },
+            "identifier": "CreateAmmo",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 708,
+                        "character": 27
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 708,
+                        "character": 43
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 708,
+                        "character": 60
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 708,
+                "character": 72
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 794,
+                "character": 9
+            },
+            "identifier": "CreateTrapKit",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 794,
+                        "character": 30
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 794,
+                        "character": 46
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 794,
+                        "character": 63
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 794,
+                "character": 77
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 945,
+                "character": 9
+            },
+            "identifier": "CreateHealingKit",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 945,
+                        "character": 33
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 945,
+                        "character": 49
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 945,
+                        "character": 66
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 945,
+                "character": 80
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1012,
+                "character": 9
+            },
+            "identifier": "CreateLockPick",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1012,
+                        "character": 31
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1012,
+                        "character": 47
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1012,
+                        "character": 64
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1012,
+                "character": 78
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1087,
+                "character": 9
+            },
+            "identifier": "CreateKit",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1087,
+                        "character": 26
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1087,
+                        "character": 42
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1087,
+                        "character": 59
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1087,
+                "character": 73
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1100,
+                "character": 9
+            },
+            "identifier": "CreatePotion",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1100,
+                        "character": 29
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1100,
+                        "character": 45
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1100,
+                        "character": 62
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1100,
+                "character": 76
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1234,
+                "character": 13
+            },
+            "identifier": "CreateGenericMiscItem",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1234,
+                        "character": 42
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1234,
+                        "character": 58
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1234,
+                        "character": 75
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1234,
+                "character": 87
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1489,
+                "character": 13
+            },
+            "identifier": "CreateGenericClassItem",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1489,
+                        "character": 43
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1489,
+                        "character": 59
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1489,
+                        "character": 76
+                    },
+                    "identifier": "nSpecific",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1489,
+                "character": 89
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1566,
+                "character": 13
+            },
+            "identifier": "CreateGenericRodStaffWand",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1566,
+                        "character": 46
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1566,
+                        "character": 62
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1566,
+                        "character": 79
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1566,
+                "character": 93
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 2253,
+                "character": 13
+            },
+            "identifier": "CreateGenericSimple",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 2253,
+                        "character": 40
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 2253,
+                        "character": 56
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 2253,
+                        "character": 73
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 2253,
+                "character": 87
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 2420,
+                "character": 13
+            },
+            "identifier": "CreateGenericMartial",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 2420,
+                        "character": 41
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 2420,
+                        "character": 57
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 2420,
+                        "character": 74
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 2420,
+                "character": 88
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 2736,
+                "character": 13
+            },
+            "identifier": "CreateGenericLightArmor",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 2736,
+                        "character": 44
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 2736,
+                        "character": 60
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 2736,
+                        "character": 77
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 2736,
+                "character": 91
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 2835,
+                "character": 13
+            },
+            "identifier": "CreateGenericMediumArmor",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 2835,
+                        "character": 45
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 2835,
+                        "character": 61
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 2835,
+                        "character": 78
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 2835,
+                "character": 92
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 2962,
+                "character": 13
+            },
+            "identifier": "CreateGenericHeavyArmor",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 2962,
+                        "character": 44
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 2962,
+                        "character": 60
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 2962,
+                        "character": 77
+                    },
+                    "identifier": "nModifier",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 2962,
+                "character": 91
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 3071,
+                "character": 13
+            },
+            "identifier": "CreateSpecificMiscItem",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 3071,
+                        "character": 43
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 3071,
+                        "character": 58
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 3071,
+                "character": 70
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 3193,
+                "character": 13
+            },
+            "identifier": "CreateSpecificRodStaffWand",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 3193,
+                        "character": 47
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 3193,
+                        "character": 63
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 3193,
+                "character": 75
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 3269,
+                "character": 13
+            },
+            "identifier": "CreateSpecificSimple",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 3269,
+                        "character": 41
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 3269,
+                        "character": 57
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 3269,
+                "character": 69
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 3408,
+                "character": 13
+            },
+            "identifier": "CreateSpecificMartial",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 3408,
+                        "character": 42
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 3408,
+                        "character": 58
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 3408,
+                "character": 70
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 3602,
+                "character": 13
+            },
+            "identifier": "CreateSpecificExotic",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 3602,
+                        "character": 41
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 3602,
+                        "character": 57
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 3602,
+                "character": 69
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 3733,
+                "character": 13
+            },
+            "identifier": "CreateSpecificLightArmor",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 3733,
+                        "character": 45
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 3733,
+                        "character": 61
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 3733,
+                "character": 73
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 3831,
+                "character": 13
+            },
+            "identifier": "CreateSpecificMediumArmor",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 3831,
+                        "character": 46
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 3831,
+                        "character": 62
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 3831,
+                "character": 74
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 3918,
+                "character": 13
+            },
+            "identifier": "CreateSpecificHeavyArmor",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 3918,
+                        "character": 45
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 3918,
+                        "character": 61
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 3918,
+                "character": 73
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 4011,
+                "character": 9
+            },
+            "identifier": "CreateTable2Item",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 4011,
+                        "character": 33
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 4011,
+                        "character": 49
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 4011,
+                        "character": 66
+                    },
+                    "identifier": "nSpecific",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 4011,
+                "character": 78
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 4254,
+                "character": 5
+            },
+            "identifier": "GenerateTreasure",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 4254,
+                        "character": 26
+                    },
+                    "identifier": "nTreasureType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 4254,
+                        "character": 48
+                    },
+                    "identifier": "oLastOpener",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 4254,
+                        "character": 68
+                    },
+                    "identifier": "oCreateOn",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 4254,
+                "character": 78
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By:  Andrew",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 4389,
+                "character": 5
+            },
+            "identifier": "GenerateLowTreasure",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 4389,
+                        "character": 32
+                    },
+                    "identifier": "oLastOpener",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 4389,
+                        "character": 52
+                    },
+                    "identifier": "oCreateOn",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
+                }
+            ],
+            "signatureEnd": {
+                "line": 4389,
+                "character": 77
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 4393,
+                "character": 5
+            },
+            "identifier": "GenerateMediumTreasure",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 4393,
+                        "character": 35
+                    },
+                    "identifier": "oLastOpener",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 4393,
+                        "character": 55
+                    },
+                    "identifier": "oCreateOn",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
+                }
+            ],
+            "signatureEnd": {
+                "line": 4393,
+                "character": 80
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 4397,
+                "character": 5
+            },
+            "identifier": "GenerateHighTreasure",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 4397,
+                        "character": 33
+                    },
+                    "identifier": "oLastOpener",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 4397,
+                        "character": 53
+                    },
+                    "identifier": "oCreateOn",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
+                }
+            ],
+            "signatureEnd": {
+                "line": 4397,
+                "character": 78
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 4401,
+                "character": 5
+            },
+            "identifier": "GenerateBossTreasure",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 4401,
+                        "character": 33
+                    },
+                    "identifier": "oLastOpener",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 4401,
+                        "character": 53
+                    },
+                    "identifier": "oCreateOn",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
+                }
+            ],
+            "signatureEnd": {
+                "line": 4401,
+                "character": 78
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 4405,
+                "character": 5
+            },
+            "identifier": "GenerateBookTreasure",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 4405,
+                        "character": 33
+                    },
+                    "identifier": "oLastOpener",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 4405,
+                        "character": 53
+                    },
+                    "identifier": "oCreateOn",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
+                }
+            ],
+            "signatureEnd": {
+                "line": 4405,
+                "character": 78
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 4423,
+                "character": 5
+            },
+            "identifier": "GenerateNPCTreasure",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 4423,
+                        "character": 29
+                    },
+                    "identifier": "nTreasureValue",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "1"
+                },
+                {
+                    "position": {
+                        "line": 4423,
+                        "character": 54
+                    },
+                    "identifier": "oTreasureGetter",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                },
+                {
+                    "position": {
+                        "line": 4423,
+                        "character": 90
+                    },
+                    "identifier": "oKiller",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "signatureEnd": {
+                "line": 4423,
+                "character": 110
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 4487,
+                "character": 5
+            },
+            "identifier": "ShoutDisturbed",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "signatureEnd": {
+                "line": 4487,
+                "character": 21
+            },
+            "comments": [
+                "// * Container shouts if disturbed"
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "identifier": "sRoot",
+            "position": {
+                "line": 132,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 139,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMin",
+            "position": {
+                "line": 195,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMax",
+            "position": {
+                "line": 195,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nItems",
+            "position": {
+                "line": 231,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 232,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbThreeItems",
+            "position": {
+                "line": 234,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbTwoItems",
+            "position": {
+                "line": 235,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbOneItems",
+            "position": {
+                "line": 236,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nBook1",
+            "position": {
+                "line": 307,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sRes",
+            "position": {
+                "line": 308,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sRes",
+            "position": {
+                "line": 325,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nResult",
+            "position": {
+                "line": 326,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sRes",
+            "position": {
+                "line": 339,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "NUM_ITEMS",
+            "position": {
+                "line": 340,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nResult",
+            "position": {
+                "line": 341,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nKit",
+            "position": {
+                "line": 342,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 360,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nAmount",
+            "position": {
+                "line": 361,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMod",
+            "position": {
+                "line": 387,
+                "character": 14
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 403,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sGem",
+            "position": {
+                "line": 404,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 407,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 421,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 438,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 448,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 458,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 470,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 487,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sJewel",
+            "position": {
+                "line": 488,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 492,
+                "character": 14
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 501,
+                "character": 14
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 511,
+                "character": 14
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 522,
+                "character": 14
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 533,
+                "character": 14
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 544,
+                "character": 14
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMax",
+            "position": {
+                "line": 560,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMaxSpells",
+            "position": {
+                "line": 581,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 582,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nScroll",
+            "position": {
+                "line": 583,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nLevel",
+            "position": {
+                "line": 584,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sRes",
+            "position": {
+                "line": 628,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 643,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sScroll",
+            "position": {
+                "line": 644,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 647,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 658,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 674,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 691,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 710,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sAmmo",
+            "position": {
+                "line": 711,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 715,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 725,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 738,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 765,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 796,
+                "character": 10
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sKit",
+            "position": {
+                "line": 797,
+                "character": 13
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 800,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 810,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 830,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 855,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 882,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 908,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 947,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sKit",
+            "position": {
+                "line": 948,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 951,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 959,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 969,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 979,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 989,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 999,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 1014,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sKit",
+            "position": {
+                "line": 1015,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1018,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1033,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1047,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1057,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1066,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1075,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sPotion",
+            "position": {
+                "line": 1102,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 1103,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1107,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1120,
+                "character": 15
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1146,
+                "character": 15
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1171,
+                "character": 15
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1196,
+                "character": 15
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 1236,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 1237,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1240,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1256,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1289,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1342,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1398,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1447,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1528,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 1529,
+                "character": 25
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 1568,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 1569,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1573,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1583,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1593,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1604,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1623,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1642,
+                "character": 44
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1642,
+                "character": 60
+            },
+            "identifier": "oAdventurer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1642,
+                "character": 77
+            },
+            "identifier": "nModifier",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "0"
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 1644,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 1645,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1649,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1667,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1689,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1711,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1735,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1757,
+                "character": 45
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1757,
+                "character": 61
+            },
+            "identifier": "oAdventurer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1757,
+                "character": 78
+            },
+            "identifier": "nModifier",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "0"
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 1760,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 1761,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1765,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1776,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1792,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1826,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1862,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1900,
+                "character": 45
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1900,
+                "character": 61
+            },
+            "identifier": "oAdventurer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1900,
+                "character": 78
+            },
+            "identifier": "nModifier",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "0"
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 1902,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 1903,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1907,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1922,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1941,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1962,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 1989,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 2016,
+                "character": 46
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 2016,
+                "character": 62
+            },
+            "identifier": "oAdventurer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 2016,
+                "character": 79
+            },
+            "identifier": "nModifier",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "0"
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 2019,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 2020,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2033,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2046,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2064,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 2094,
+                "character": 46
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 2094,
+                "character": 62
+            },
+            "identifier": "oAdventurer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 2094,
+                "character": 79
+            },
+            "identifier": "nModifier",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "0"
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 2096,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 2097,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2101,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2114,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2128,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2142,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2160,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 2179,
+                "character": 47
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 2179,
+                "character": 63
+            },
+            "identifier": "oAdventurer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 2179,
+                "character": 80
+            },
+            "identifier": "nModifier",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "0"
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 2182,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 2183,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2195,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2208,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2226,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 2255,
+                "character": 18
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 2256,
+                "character": 15
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2260,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2280,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2304,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2330,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2368,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2401,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 2422,
+                "character": 18
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 2424,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2428,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2453,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2481,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2510,
+                "character": 20
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2551,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2579,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 2604,
+                "character": 40
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 2604,
+                "character": 56
+            },
+            "identifier": "oAdventurer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 2604,
+                "character": 73
+            },
+            "identifier": "nModifier",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "0"
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 2606,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 2608,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2612,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2629,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2654,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2671,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2696,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2717,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 2738,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 2740,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2744,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2757,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2774,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2790,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2807,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2820,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 2837,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 2838,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2841,
+                "character": 21
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2858,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2883,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2900,
+                "character": 23
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2922,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2941,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 2964,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 2965,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2969,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2980,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 2994,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3011,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3034,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3053,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 3073,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 3074,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3083,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3094,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3115,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3142,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3165,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 3195,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 3196,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3210,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3222,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3237,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3253,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 3271,
+                "character": 18
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 3272,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3286,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3303,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3333,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3368,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 3410,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 3411,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3420,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3431,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3453,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3489,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3539,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 3604,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 3605,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3609,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3620,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3633,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3655,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3679,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3704,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 3735,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 3736,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3745,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3755,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3772,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3793,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3812,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 3833,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 3834,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3848,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3861,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3878,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3898,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 3920,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 3921,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3935,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3949,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3970,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 3991,
+                "character": 22
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 4014,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbMisc",
+            "position": {
+                "line": 4015,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbClass",
+            "position": {
+                "line": 4016,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbRodStaffWand",
+            "position": {
+                "line": 4017,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbSimple",
+            "position": {
+                "line": 4018,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbMartial",
+            "position": {
+                "line": 4019,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbExotic",
+            "position": {
+                "line": 4020,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbLight",
+            "position": {
+                "line": 4021,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbMedium",
+            "position": {
+                "line": 4022,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbHeavy",
+            "position": {
+                "line": 4023,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nSpecialRanger",
+            "position": {
+                "line": 4025,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nClass",
+            "position": {
+                "line": 4030,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 4170,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbBook",
+            "position": {
+                "line": 4276,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbAnimal",
+            "position": {
+                "line": 4277,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbJunk",
+            "position": {
+                "line": 4278,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbGold",
+            "position": {
+                "line": 4279,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbGem",
+            "position": {
+                "line": 4280,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbJewel",
+            "position": {
+                "line": 4281,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbArcane",
+            "position": {
+                "line": 4282,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbDivine",
+            "position": {
+                "line": 4283,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbAmmo",
+            "position": {
+                "line": 4284,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbKit",
+            "position": {
+                "line": 4285,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbPotion",
+            "position": {
+                "line": 4286,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProbTable2",
+            "position": {
+                "line": 4287,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nSpecific",
+            "position": {
+                "line": 4289,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 4290,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nNumberItems",
+            "position": {
+                "line": 4291,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 4355,
+                "character": 9
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oTarget",
+            "position": {
+                "line": 4491,
+                "character": 19
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oAttacker",
+            "position": {
+                "line": 4498,
+                "character": 18
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oTarget",
+            "position": {
+                "line": 4507,
+                "character": 19
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oAttacker",
+            "position": {
+                "line": 4514,
+                "character": 18
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 4538,
+                "character": 32
+            },
+            "identifier": "oCharacter",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nClass",
+            "position": {
+                "line": 4540,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nTotal",
+            "position": {
+                "line": 4541,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nClass1",
+            "position": {
+                "line": 4568,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nClass2",
+            "position": {
+                "line": 4569,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nClass3",
+            "position": {
+                "line": 4570,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nState1",
+            "position": {
+                "line": 4572,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nState2",
+            "position": {
+                "line": 4573,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nUseClass",
+            "position": {
+                "line": 4591,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
+    ]
 }

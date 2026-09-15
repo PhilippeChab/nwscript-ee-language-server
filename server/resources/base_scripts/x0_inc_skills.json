@@ -1,13 +1,13 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 15,
-                "character": 25
+                "character": 4
             },
-            "identifier": "22",
+            "identifier": "mySKILL_CRAFT_TRAP",
             "tokenType": 21,
-            "valueType": "=",
+            "valueType": "int",
             "value": "22"
         },
         {
@@ -667,7 +667,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 97,
+                "character": 81
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -706,7 +711,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 98,
+                "character": 80
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -727,7 +737,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 100,
+                "character": 51
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -748,7 +763,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 101,
+                "character": 57
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -759,7 +779,12 @@
             "tokenType": 3,
             "returnType": "string",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 103,
+                "character": 37
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -798,9 +823,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 106,
+                "character": 63
+            },
             "comments": [
                 "// * destroys the indicated number of items"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -839,11 +869,234 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 109,
+                "character": 80
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 170,
+                "character": 5
+            },
+            "identifier": "ClearTrapMaking",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "signatureEnd": {
+                "line": 170,
+                "character": 22
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By:",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
+    "structDeclarations": [],
     "children": [
         "nw_i0_plot"
+    ],
+    "includePositions": [
+        {
+            "line": 13,
+            "character": 0
+        }
+    ],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 125,
+                "character": 37
+            },
+            "identifier": "sComponent",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 125,
+                "character": 56
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 125,
+                "character": 65
+            },
+            "identifier": "nTrapDifficulty",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 127,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nFound",
+            "position": {
+                "line": 128,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 149,
+                "character": 36
+            },
+            "identifier": "sComponent",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 149,
+                "character": 55
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 149,
+                "character": 64
+            },
+            "identifier": "nTrapDifficulty",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 176,
+                "character": 36
+            },
+            "identifier": "sComponent",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 176,
+                "character": 55
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 176,
+                "character": 64
+            },
+            "identifier": "nTrapDifficulty",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "sTrapKit",
+            "position": {
+                "line": 178,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nDifficulty",
+            "position": {
+                "line": 179,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 499,
+                "character": 41
+            },
+            "identifier": "sComponent",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 600,
+                "character": 46
+            },
+            "identifier": "sComponent",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 615,
+                "character": 28
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 615,
+                "character": 43
+            },
+            "identifier": "sItem",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 615,
+                "character": 53
+            },
+            "identifier": "nNumItems",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "nCount",
+            "position": {
+                "line": 617,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 618,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nStackSize",
+            "position": {
+                "line": 626,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
     ]
 }

@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 1,
@@ -7,8 +7,9 @@
             },
             "identifier": "NW_DYNAMIC_LIGHT_MODULE_GLOBAL_LATITUDE",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "\"MODULE_GLOBAL_LATITUDE\""
+            "valueType": "string",
+            "value": "\"MODULE_GLOBAL_LATITUDE\"",
+            "isConst": true
         },
         {
             "position": {
@@ -17,8 +18,9 @@
             },
             "identifier": "NW_DYNAMIC_LIGHT_MODULE_GLOBAL_LATITUDE_DEFAULT",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "45.0"
+            "valueType": "float",
+            "value": "45.0",
+            "isConst": true
         },
         {
             "position": {
@@ -27,8 +29,9 @@
             },
             "identifier": "NW_DYNAMIC_LIGHT_GLOBE_ROTATION_AXIAL_TILT",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "23.5"
+            "valueType": "float",
+            "value": "23.5",
+            "isConst": true
         },
         {
             "position": {
@@ -37,8 +40,9 @@
             },
             "identifier": "NW_DYNAMIC_LIGHT_MOON_ROTATION_AXIAL_TILT",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "5.1"
+            "valueType": "float",
+            "value": "5.1",
+            "isConst": true
         },
         {
             "position": {
@@ -47,8 +51,9 @@
             },
             "identifier": "NW_DYNAMIC_LIGHT_FADE_TIME",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "10.0"
+            "valueType": "float",
+            "value": "10.0",
+            "isConst": true
         },
         {
             "position": {
@@ -57,8 +62,9 @@
             },
             "identifier": "NW_DYNAMIC_LIGHT_FADE_TIME_OVERLAP",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "2.0"
+            "valueType": "float",
+            "value": "2.0",
+            "isConst": true
         },
         {
             "position": {
@@ -68,7 +74,8 @@
             "identifier": "NW_DYNAMIC_LIGHT_SUN_REDSHIFT_COLOR_RED",
             "tokenType": 21,
             "valueType": "float",
-            "value": "1.0"
+            "value": "1.0",
+            "isConst": true
         },
         {
             "position": {
@@ -78,7 +85,8 @@
             "identifier": "NW_DYNAMIC_LIGHT_SUN_REDSHIFT_COLOR_GREEN",
             "tokenType": 21,
             "valueType": "float",
-            "value": "0.8"
+            "value": "0.8",
+            "isConst": true
         },
         {
             "position": {
@@ -88,7 +96,8 @@
             "identifier": "NW_DYNAMIC_LIGHT_SUN_REDSHIFT_COLOR_BLUE",
             "tokenType": 21,
             "valueType": "float",
-            "value": "0.6"
+            "value": "0.6",
+            "isConst": true
         },
         {
             "position": {
@@ -98,7 +107,8 @@
             "identifier": "NW_DYNAMIC_LIGHT_SUN_REDSHIFT_DIFFUSE_MODIFIER",
             "tokenType": 21,
             "valueType": "float",
-            "value": "1.0"
+            "value": "1.0",
+            "isConst": true
         },
         {
             "position": {
@@ -108,7 +118,8 @@
             "identifier": "NW_DYNAMIC_LIGHT_SUN_REDSHIFT_AMBIENT_MODIFIER",
             "tokenType": 21,
             "valueType": "float",
-            "value": "0.1"
+            "value": "0.1",
+            "isConst": true
         },
         {
             "position": {
@@ -118,7 +129,8 @@
             "identifier": "NW_DYNAMIC_LIGHT_SUN_REDSHIFT_FOG_MODIFIER",
             "tokenType": 21,
             "valueType": "float",
-            "value": "0.75"
+            "value": "0.75",
+            "isConst": true
         },
         {
             "position": {
@@ -128,7 +140,8 @@
             "identifier": "NW_DYNAMIC_LIGHT_ORIGINAL_AREA_FOG_COLOR",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"NW_DYNAMIC_LIGHT_ORIGINAL_AREA_FOG_COLOR\""
+            "value": "\"NW_DYNAMIC_LIGHT_ORIGINAL_AREA_FOG_COLOR\"",
+            "isConst": true
         },
         {
             "position": {
@@ -138,7 +151,8 @@
             "identifier": "NW_DYNAMIC_LIGHT_ORIGINAL_AREA_AMBIENT_COLOR",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"NW_DYNAMIC_LIGHT_ORIGINAL_AREA_AMBIENT_COLOR\""
+            "value": "\"NW_DYNAMIC_LIGHT_ORIGINAL_AREA_AMBIENT_COLOR\"",
+            "isConst": true
         },
         {
             "position": {
@@ -148,7 +162,8 @@
             "identifier": "NW_DYNAMIC_LIGHT_ORIGINAL_AREA_DIFFUSE_COLOR",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"NW_DYNAMIC_LIGHT_ORIGINAL_AREA_DIFFUSE_COLOR\""
+            "value": "\"NW_DYNAMIC_LIGHT_ORIGINAL_AREA_DIFFUSE_COLOR\"",
+            "isConst": true
         },
         {
             "position": {
@@ -158,7 +173,8 @@
             "identifier": "NW_DYNAMIC_LIGHT_ORIGINAL_AREA_ENTER_SCRIPT",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"NW_DYNAMIC_LIGHT_ORIGINAL_AREA_ENTER_SCRIPT\""
+            "value": "\"NW_DYNAMIC_LIGHT_ORIGINAL_AREA_ENTER_SCRIPT\"",
+            "isConst": true
         },
         {
             "position": {
@@ -168,7 +184,8 @@
             "identifier": "NW_DYNAMIC_LIGHT_RUNNING",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"NW_DYNAMIC_LIGHT_RUNNING\""
+            "value": "\"NW_DYNAMIC_LIGHT_RUNNING\"",
+            "isConst": true
         },
         {
             "position": {
@@ -178,9 +195,1089 @@
             "identifier": "NW_DYNAMIC_LIGHT_AZIMUTH_OFFSET",
             "tokenType": 21,
             "valueType": "float",
-            "value": "22.5"
+            "value": "30.0",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 28,
+                "character": 12
+            },
+            "identifier": "NW_DYNAMIC_LIGHT_HORIZONTAL_OFFSET",
+            "tokenType": 21,
+            "valueType": "float",
+            "value": "5.0",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 31,
+                "character": 6
+            },
+            "identifier": "dot",
+            "tokenType": 3,
+            "returnType": "float",
+            "params": [
+                {
+                    "position": {
+                        "line": 31,
+                        "character": 17
+                    },
+                    "identifier": "a",
+                    "tokenType": 25,
+                    "valueType": "vector"
+                },
+                {
+                    "position": {
+                        "line": 31,
+                        "character": 27
+                    },
+                    "identifier": "b",
+                    "tokenType": 25,
+                    "valueType": "vector"
+                }
+            ],
+            "signatureEnd": {
+                "line": 31,
+                "character": 29
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 36,
+                "character": 6
+            },
+            "identifier": "saturate",
+            "tokenType": 3,
+            "returnType": "float",
+            "params": [
+                {
+                    "position": {
+                        "line": 36,
+                        "character": 21
+                    },
+                    "identifier": "value",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "signatureEnd": {
+                "line": 36,
+                "character": 27
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 45,
+                "character": 7
+            },
+            "identifier": "VectorToString",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 45,
+                        "character": 29
+                    },
+                    "identifier": "vVector",
+                    "tokenType": 25,
+                    "valueType": "vector"
+                },
+                {
+                    "position": {
+                        "line": 45,
+                        "character": 42
+                    },
+                    "identifier": "nDecimals",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "2"
+                }
+            ],
+            "signatureEnd": {
+                "line": 45,
+                "character": 54
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 81,
+                "character": 7
+            },
+            "identifier": "SphericalInterpolate",
+            "tokenType": 3,
+            "returnType": "vector",
+            "params": [
+                {
+                    "position": {
+                        "line": 81,
+                        "character": 35
+                    },
+                    "identifier": "v0",
+                    "tokenType": 25,
+                    "valueType": "vector"
+                },
+                {
+                    "position": {
+                        "line": 81,
+                        "character": 46
+                    },
+                    "identifier": "v1",
+                    "tokenType": 25,
+                    "valueType": "vector"
+                },
+                {
+                    "position": {
+                        "line": 81,
+                        "character": 56
+                    },
+                    "identifier": "alpha",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "signatureEnd": {
+                "line": 81,
+                "character": 62
+            },
+            "comments": [
+                "// Notice: input vectors must be normalized."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 98,
+                "character": 7
+            },
+            "identifier": "IntRGBToVector",
+            "tokenType": 3,
+            "returnType": "vector",
+            "params": [
+                {
+                    "position": {
+                        "line": 98,
+                        "character": 26
+                    },
+                    "identifier": "nRGB",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 98,
+                "character": 31
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 107,
+                "character": 4
+            },
+            "identifier": "VectorRGBToInt",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 107,
+                        "character": 26
+                    },
+                    "identifier": "vVector",
+                    "tokenType": 25,
+                    "valueType": "vector"
+                }
+            ],
+            "signatureEnd": {
+                "line": 107,
+                "character": 34
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 115,
+                "character": 5
+            },
+            "identifier": "PrintDebugMessage",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 115,
+                        "character": 30
+                    },
+                    "identifier": "sMsg",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 115,
+                "character": 35
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 121,
+                "character": 7
+            },
+            "identifier": "GetSunlightDirectionFromTime",
+            "tokenType": 3,
+            "returnType": "vector",
+            "params": [
+                {
+                    "position": {
+                        "line": 121,
+                        "character": 42
+                    },
+                    "identifier": "fLatitude",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 121,
+                        "character": 59
+                    },
+                    "identifier": "fTimeOffset",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "signatureEnd": {
+                "line": 121,
+                "character": 71
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 155,
+                "character": 7
+            },
+            "identifier": "GetMoonlightDirectionFromTime",
+            "tokenType": 3,
+            "returnType": "vector",
+            "params": [
+                {
+                    "position": {
+                        "line": 155,
+                        "character": 43
+                    },
+                    "identifier": "fLatitude",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 155,
+                        "character": 60
+                    },
+                    "identifier": "fTimeOffset",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "signatureEnd": {
+                "line": 155,
+                "character": 72
+            },
+            "comments": [
+                "// Note: since skyboxes always have a moon, this is intentionally naive."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 198,
+                "character": 7
+            },
+            "identifier": "ApplyRedshiftToColor",
+            "tokenType": 3,
+            "returnType": "vector",
+            "params": [
+                {
+                    "position": {
+                        "line": 198,
+                        "character": 35
+                    },
+                    "identifier": "vColor",
+                    "tokenType": 25,
+                    "valueType": "vector"
+                },
+                {
+                    "position": {
+                        "line": 198,
+                        "character": 49
+                    },
+                    "identifier": "fRedshift",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "signatureEnd": {
+                "line": 198,
+                "character": 59
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 221,
+                "character": 5
+            },
+            "identifier": "ApplyRedshift",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 221,
+                        "character": 26
+                    },
+                    "identifier": "oArea",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 221,
+                        "character": 39
+                    },
+                    "identifier": "fSunAzimuth",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 221,
+                        "character": 58
+                    },
+                    "identifier": "fFadeTime",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "signatureEnd": {
+                "line": 221,
+                "character": 68
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 240,
+                "character": 5
+            },
+            "identifier": "AutoUpdateLight",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 240,
+                        "character": 25
+                    },
+                    "identifier": "bRecursive",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 240,
+                "character": 36
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 291,
+                "character": 5
+            },
+            "identifier": "InitializeAllAreas",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "signatureEnd": {
+                "line": 291,
+                "character": 25
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 313,
+                "character": 5
+            },
+            "identifier": "ResetAllAreas",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "signatureEnd": {
+                "line": 313,
+                "character": 20
+            },
+            "comments": [],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "memberReferences": [
+        {
+            "identifier": "x",
+            "position": {
+                "line": 33,
+                "character": 13
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 33,
+                "character": 19
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 33,
+                "character": 25
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 33,
+                "character": 31
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 33,
+                "character": 37
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 33,
+                "character": 44
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 57,
+                "character": 33
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 60,
+                "character": 33
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 64,
+                "character": 33
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 110,
+                "character": 36
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 111,
+                "character": 36
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 112,
+                "character": 36
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 131,
+                "character": 12
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 131,
+                "character": 25
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 169,
+                "character": 13
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 169,
+                "character": 27
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 200,
+                "character": 32
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 200,
+                "character": 43
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 200,
+                "character": 54
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 203,
+                "character": 31
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 203,
+                "character": 108
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 203,
+                "character": 188
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 205,
+                "character": 41
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 205,
+                "character": 52
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 205,
+                "character": 63
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 208,
+                "character": 18
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 209,
+                "character": 26
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 210,
+                "character": 18
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 211,
+                "character": 26
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 212,
+                "character": 18
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 213,
+                "character": 26
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 274,
+                "character": 52
+            },
+            "tokenType": 18
+        }
+    ],
+    "localDeclarations": [
+        {
+            "identifier": "sReturn",
+            "position": {
+                "line": 47,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "n",
+            "position": {
+                "line": 48,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nFloatLength",
+            "position": {
+                "line": 51,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fCompare",
+            "position": {
+                "line": 52,
+                "character": 14
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fCoord",
+            "position": {
+                "line": 53,
+                "character": 14
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fCosDeltaAngle",
+            "position": {
+                "line": 84,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vOrthonormal",
+            "position": {
+                "line": 90,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fInterpolatedAngle",
+            "position": {
+                "line": 93,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fRelativeTimeOfYear",
+            "position": {
+                "line": 123,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fSunVerticalPeakAngle",
+            "position": {
+                "line": 124,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vSunrise",
+            "position": {
+                "line": 128,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vSunset",
+            "position": {
+                "line": 130,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vNoon",
+            "position": {
+                "line": 133,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fRelativeTime",
+            "position": {
+                "line": 140,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fRelativeTimeOfYear",
+            "position": {
+                "line": 157,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fRelativeTimeOfMonth",
+            "position": {
+                "line": 159,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fMoonVerticalPeakAngle",
+            "position": {
+                "line": 161,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vMoonrise",
+            "position": {
+                "line": 165,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vMoonset",
+            "position": {
+                "line": 168,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vPeak",
+            "position": {
+                "line": 171,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fRelativeTime",
+            "position": {
+                "line": 178,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fBrightness",
+            "position": {
+                "line": 200,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fMax",
+            "position": {
+                "line": 207,
+                "character": 14
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fRedshift",
+            "position": {
+                "line": 223,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vColorFog",
+            "position": {
+                "line": 227,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vColorAmbient",
+            "position": {
+                "line": 228,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vColorDiffuse",
+            "position": {
+                "line": 229,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fFadeTime",
+            "position": {
+                "line": 242,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fGlobalLatitude",
+            "position": {
+                "line": 251,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vSunDirection",
+            "position": {
+                "line": 256,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vMoonDirection",
+            "position": {
+                "line": 257,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oArea",
+            "position": {
+                "line": 262,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oArea",
+            "position": {
+                "line": 294,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nFogColor",
+            "position": {
+                "line": 299,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nAmbientColor",
+            "position": {
+                "line": 301,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nDiffuseColor",
+            "position": {
+                "line": 303,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sEventScript",
+            "position": {
+                "line": 305,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oArea",
+            "position": {
+                "line": 316,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nFogColor",
+            "position": {
+                "line": 321,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nAmbientColor",
+            "position": {
+                "line": 324,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nDiffuseColor",
+            "position": {
+                "line": 327,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sEventScript",
+            "position": {
+                "line": 330,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        }
+    ]
 }

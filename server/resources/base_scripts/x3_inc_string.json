@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 22,
@@ -8,7 +8,8 @@
             "identifier": "STRING_COLOR_BLACK",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"000\""
+            "value": "\"000\"",
+            "isConst": true
         },
         {
             "position": {
@@ -18,7 +19,8 @@
             "identifier": "STRING_COLOR_BLUE",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"007\""
+            "value": "\"007\"",
+            "isConst": true
         },
         {
             "position": {
@@ -28,7 +30,8 @@
             "identifier": "STRING_COLOR_GREEN",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"070\""
+            "value": "\"070\"",
+            "isConst": true
         },
         {
             "position": {
@@ -38,7 +41,8 @@
             "identifier": "STRING_COLOR_PINK",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"755\""
+            "value": "\"755\"",
+            "isConst": true
         },
         {
             "position": {
@@ -48,7 +52,8 @@
             "identifier": "STRING_COLOR_RED",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"700\""
+            "value": "\"700\"",
+            "isConst": true
         },
         {
             "position": {
@@ -58,7 +63,8 @@
             "identifier": "STRING_COLOR_ROSE",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"744\""
+            "value": "\"744\"",
+            "isConst": true
         },
         {
             "position": {
@@ -68,7 +74,8 @@
             "identifier": "STRING_COLOR_WHITE",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"777\""
+            "value": "\"777\"",
+            "isConst": true
         },
         {
             "position": {
@@ -98,6 +105,10 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 47,
+                "character": 53
+            },
             "comments": [
                 "// FILE: x3_inc_string      FUNCTION: StringToRGBString()",
                 "//",
@@ -111,7 +122,8 @@
                 "//     white == \"777\"",
                 "//     black == \"000\"",
                 "// The STRING_COLOR_* constants may be used for sRGB."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -152,6 +164,10 @@
                     "defaultValue": "FALSE"
                 }
             ],
+            "signatureEnd": {
+                "line": 56,
+                "character": 85
+            },
             "comments": [
                 "// FILE: x3_inc_string       FUNCTION: StringParse()",
                 "//",
@@ -159,7 +175,8 @@
                 "// sDelimiter and will return all the characters it encountered before",
                 "// the delimiter occurred.",
                 "// If bRightToLeft is set to TRUE then it will parse from right to left instead."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -209,6 +226,10 @@
                     "defaultValue": "FALSE"
                 }
             ],
+            "signatureEnd": {
+                "line": 68,
+                "character": 108
+            },
             "comments": [
                 "// FILE: x3_inc_string        FUNCTION: StringRemoveParsed()",
                 "//",
@@ -219,7 +240,8 @@
                 "//",
                 "// No check is made that sParsed actually matches sSource; all that matters",
                 "// about sParsed is its length."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -258,13 +280,231 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 74,
+                "character": 67
+            },
             "comments": [
                 "// FILE: x3_inc_string         FUNCTION: StringReplace()",
                 "//",
                 "// This function will replace any occurrence of sFind in sSource with sReplace."
-            ]
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 88,
+                "character": 32
+            },
+            "identifier": "sString",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 88,
+                "character": 48
+            },
+            "identifier": "sRGB",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "identifier": "sColorCodes",
+            "position": {
+                "line": 91,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 110,
+                "character": 26
+            },
+            "identifier": "sSource",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 110,
+                "character": 42
+            },
+            "identifier": "sDelimiter",
+            "tokenType": 25,
+            "valueType": "string",
+            "defaultValue": "\" \""
+        },
+        {
+            "position": {
+                "line": 110,
+                "character": 64
+            },
+            "identifier": "bRightToLeft",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "FALSE"
+        },
+        {
+            "identifier": "nDelimIndex",
+            "position": {
+                "line": 113,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nLastDelim",
+            "position": {
+                "line": 123,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRetLength",
+            "position": {
+                "line": 130,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 144,
+                "character": 33
+            },
+            "identifier": "sSource",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 144,
+                "character": 49
+            },
+            "identifier": "sParsed",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 144,
+                "character": 65
+            },
+            "identifier": "sDelimiter",
+            "tokenType": 25,
+            "valueType": "string",
+            "defaultValue": "\" \""
+        },
+        {
+            "position": {
+                "line": 144,
+                "character": 87
+            },
+            "identifier": "bRightToLeft",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "FALSE"
+        },
+        {
+            "identifier": "nDelimLength",
+            "position": {
+                "line": 146,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nStart",
+            "position": {
+                "line": 151,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nEnd",
+            "position": {
+                "line": 162,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 176,
+                "character": 28
+            },
+            "identifier": "sSource",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 176,
+                "character": 44
+            },
+            "identifier": "sFind",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 176,
+                "character": 58
+            },
+            "identifier": "sReplace",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "identifier": "nFindLength",
+            "position": {
+                "line": 178,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPosition",
+            "position": {
+                "line": 179,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sRetVal",
+            "position": {
+                "line": 180,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nFound",
+            "position": {
+                "line": 183,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
+    ]
 }

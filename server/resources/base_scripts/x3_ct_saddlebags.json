@@ -1,7 +1,51 @@
 {
-    "complexTokens": [],
-    "structComplexTokens": [],
+    "globalDeclarations": [],
+    "structDeclarations": [],
     "children": [
         "x3_inc_horse"
+    ],
+    "includePositions": [
+        {
+            "line": 14,
+            "character": 0
+        }
+    ],
+    "entryPointDeclarations": [
+        {
+            "position": {
+                "line": 16,
+                "character": 4
+            },
+            "identifier": "StartingConditional",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 16,
+                "character": 25
+            },
+            "comments": [],
+            "implementation": true
+        }
+    ],
+    "localDeclarations": [
+        {
+            "identifier": "oHorse",
+            "position": {
+                "line": 18,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPC",
+            "position": {
+                "line": 19,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        }
     ]
 }

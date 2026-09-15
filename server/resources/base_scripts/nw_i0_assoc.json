@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 18,
@@ -19,9 +19,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 18,
+                "character": 34
+            },
             "comments": [
                 "// * Function Declarations"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -42,7 +47,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 19,
+                "character": 23
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -53,7 +63,12 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 20,
+                "character": 12
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -74,7 +89,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 21,
+                "character": 27
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -85,7 +105,12 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 22,
+                "character": 36
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -96,7 +121,12 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 23,
+                "character": 22
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -107,7 +137,12 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 24,
+                "character": 21
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -118,11 +153,271 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 25,
+                "character": 16
+            },
+            "comments": [],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
+    "structDeclarations": [],
     "children": [
         "nw_i0_generic"
+    ],
+    "includePositions": [
+        {
+            "line": 15,
+            "character": 0
+        }
+    ],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 30,
+                "character": 21
+            },
+            "identifier": "s",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "identifier": "nClass",
+            "position": {
+                "line": 38,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oLastObject",
+            "position": {
+                "line": 64,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "evOrder",
+            "position": {
+                "line": 81,
+                "character": 10
+            },
+            "valueType": "event",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oMaster",
+            "position": {
+                "line": 110,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "SOCIAL_RANGE",
+            "position": {
+                "line": 111,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 159,
+                "character": 19
+            },
+            "identifier": "bIsBusy",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 176,
+                "character": 27
+            },
+            "identifier": "sVoice",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "identifier": "oTarget",
+            "position": {
+                "line": 196,
+                "character": 14
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fFacing",
+            "position": {
+                "line": 197,
+                "character": 11
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vPosition",
+            "position": {
+                "line": 199,
+                "character": 10
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vOldPosition",
+            "position": {
+                "line": 200,
+                "character": 13
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vPos",
+            "position": {
+                "line": 201,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        }
+    ],
+    "memberReferences": [
+        {
+            "identifier": "x",
+            "position": {
+                "line": 208,
+                "character": 7
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 208,
+                "character": 16
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 209,
+                "character": 7
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 209,
+                "character": 16
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 214,
+                "character": 7
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 214,
+                "character": 16
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 215,
+                "character": 7
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 215,
+                "character": 16
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 220,
+                "character": 7
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 220,
+                "character": 16
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 221,
+                "character": 7
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 221,
+                "character": 16
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 226,
+                "character": 7
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 226,
+                "character": 16
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 227,
+                "character": 7
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 227,
+                "character": 16
+            },
+            "tokenType": 18
+        }
     ]
 }

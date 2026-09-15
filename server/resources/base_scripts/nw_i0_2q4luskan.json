@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 16,
@@ -49,9 +49,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 21,
+                "character": 43
+            },
             "comments": [
                 "//Function to determine what plot item to hand to the character"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -81,9 +86,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 23,
+                "character": 67
+            },
             "comments": [
                 "//Test if the object has the specified plot item"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -104,9 +114,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 25,
+                "character": 44
+            },
             "comments": [
                 "//Pass in one of nine predetermined way points to move the character to."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -136,9 +151,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 27,
+                "character": 65
+            },
             "comments": [
                 "//Set a generic plot flag on a specific character"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -159,9 +179,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 29,
+                "character": 45
+            },
             "comments": [
                 "//Get the generic plot flag off of a character"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -183,9 +208,14 @@
                     "defaultValue": "OBJECT_SELF"
                 }
             ],
+            "signatureEnd": {
+                "line": 31,
+                "character": 45
+            },
             "comments": [
                 "//Returns true if a PC can be seen"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -216,9 +246,14 @@
                     "defaultValue": "OBJECT_INVALID"
                 }
             ],
+            "signatureEnd": {
+                "line": 33,
+                "character": 87
+            },
             "comments": [
                 "//Sets the animation on the creature and makes them face the PC if object left invalid."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -229,9 +264,14 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
+            "signatureEnd": {
+                "line": 35,
+                "character": 26
+            },
             "comments": [
                 "//This is a plot specific function used to generate potions for Colmarr's Machine."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -261,9 +301,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 37,
+                "character": 48
+            },
             "comments": [
                 "//Set the new state of the machine after the lever is pressed."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -284,9 +329,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 39,
+                "character": 35
+            },
             "comments": [
                 "//Get the state of one lever"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -297,9 +347,14 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
+            "signatureEnd": {
+                "line": 41,
+                "character": 20
+            },
             "comments": [
                 "//Makes the NPC face the nearest PC"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -320,9 +375,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 43,
+                "character": 40
+            },
             "comments": [
                 "//Make the nearest PC say the stated string"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -371,9 +431,14 @@
                     "defaultValue": "FALSE"
                 }
             ],
+            "signatureEnd": {
+                "line": 45,
+                "character": 104
+            },
             "comments": [
                 "//Creates a creature with a specific string at a specified location"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -566,6 +631,325 @@
             "value": "0x0000000F"
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 60,
+                "character": 25
+            },
+            "identifier": "nPlotItemConstant",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 89,
+                "character": 29
+            },
+            "identifier": "oItemPossesser",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 89,
+                "character": 49
+            },
+            "identifier": "nPlotItemConstant",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 128,
+                "character": 28
+            },
+            "identifier": "nPlotPointIndex",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "sTag",
+            "position": {
+                "line": 130,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oWay",
+            "position": {
+                "line": 132,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 152,
+                "character": 39
+            },
+            "identifier": "oNPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 152,
+                "character": 49
+            },
+            "identifier": "nPlotStateIndex",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "sTag",
+            "position": {
+                "line": 154,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 158,
+                "character": 40
+            },
+            "identifier": "oNPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "sTag",
+            "position": {
+                "line": 160,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 176,
+                "character": 23
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "position": {
+                "line": 198,
+                "character": 35
+            },
+            "identifier": "nAnimationConstant",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 198,
+                "character": 62
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "vFace",
+            "position": {
+                "line": 204,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oEngine",
+            "position": {
+                "line": 251,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPotion",
+            "position": {
+                "line": 252,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oLocation",
+            "position": {
+                "line": 253,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "lSpawn",
+            "position": {
+                "line": 254,
+                "character": 13
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPlot",
+            "position": {
+                "line": 257,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 320,
+                "character": 25
+            },
+            "identifier": "nCondition",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 320,
+                "character": 41
+            },
+            "identifier": "bValid",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "oEngine",
+            "position": {
+                "line": 322,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPlot",
+            "position": {
+                "line": 325,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 339,
+                "character": 24
+            },
+            "identifier": "nCondition",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "oEngine",
+            "position": {
+                "line": 341,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPlot",
+            "position": {
+                "line": 344,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vFace",
+            "position": {
+                "line": 355,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 359,
+                "character": 32
+            },
+            "identifier": "sString",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "identifier": "oPC",
+            "position": {
+                "line": 361,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 365,
+                "character": 26
+            },
+            "identifier": "nObjectType",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 365,
+                "character": 46
+            },
+            "identifier": "sTemplate",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 365,
+                "character": 66
+            },
+            "identifier": "lLoc",
+            "tokenType": 25,
+            "valueType": "location"
+        },
+        {
+            "position": {
+                "line": 365,
+                "character": 76
+            },
+            "identifier": "bUseAppearAnimation",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "FALSE"
+        },
+        {
+            "identifier": "oVoid",
+            "position": {
+                "line": 367,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        }
+    ]
 }

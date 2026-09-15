@@ -564,7 +564,8 @@
             },
             "identifier": "epicFocus",
             "tokenType": 25,
-            "valueType": "int"
+            "valueType": "int",
+            "defaultValue": "FALSE"
         },
         {
             "position": {
@@ -627,7 +628,8 @@
             },
             "identifier": "createIfNonExistent",
             "tokenType": 25,
-            "valueType": "int"
+            "valueType": "int",
+            "defaultValue": "FALSE"
         },
         {
             "position": {

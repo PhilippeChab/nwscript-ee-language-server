@@ -1,7 +1,310 @@
 {
-    "complexTokens": [],
-    "structComplexTokens": [],
+    "globalDeclarations": [
+        {
+            "position": {
+                "line": 37,
+                "character": 5
+            },
+            "identifier": "AttemptToEquipItem",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 37,
+                        "character": 31
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 37,
+                        "character": 45
+                    },
+                    "identifier": "oHench",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 37,
+                "character": 52
+            },
+            "comments": [
+                "// * will attempt to equip the specific item",
+                "// * in one of its misc slots"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 70,
+                "character": 5
+            },
+            "identifier": "CopyEquipped",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 70,
+                        "character": 25
+                    },
+                    "identifier": "oContainer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 70,
+                        "character": 44
+                    },
+                    "identifier": "oHench",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 70,
+                "character": 51
+            },
+            "comments": [
+                "// * Copy equipped items from oHench to oContainer"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 5
+            },
+            "identifier": "DestroyEquipped",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 82,
+                        "character": 28
+                    },
+                    "identifier": "oHench",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 82,
+                "character": 35
+            },
+            "comments": [
+                "// * destroy all equipped items when henchmen inventory is returned."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 101,
+                "character": 5
+            },
+            "identifier": "CopyUnequipped",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 101,
+                        "character": 27
+                    },
+                    "identifier": "oContainer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 101,
+                        "character": 46
+                    },
+                    "identifier": "oHench",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 101,
+                "character": 53
+            },
+            "comments": [
+                "// * copy unequipped items from henchman to 'invisible container'"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 115,
+                "character": 5
+            },
+            "identifier": "CopyBack",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 115,
+                        "character": 21
+                    },
+                    "identifier": "oContainer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 115,
+                        "character": 40
+                    },
+                    "identifier": "oHench",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 115,
+                "character": 47
+            },
+            "comments": [
+                "//* copies equipment back to henchmen"
+            ],
+            "implementation": true
+        }
+    ],
+    "structDeclarations": [],
     "children": [
         "nw_i0_generic"
+    ],
+    "includePositions": [
+        {
+            "line": 32,
+            "character": 0
+        }
+    ],
+    "localDeclarations": [
+        {
+            "identifier": "nBaseType",
+            "position": {
+                "line": 39,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nSlot",
+            "position": {
+                "line": 40,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oCurrentItem",
+            "position": {
+                "line": 53,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nValue",
+            "position": {
+                "line": 55,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nNewValue",
+            "position": {
+                "line": 60,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 72,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 73,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 84,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 85,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oSelf",
+            "position": {
+                "line": 93,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 103,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 117,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oNewItem",
+            "position": {
+                "line": 124,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        }
     ]
 }

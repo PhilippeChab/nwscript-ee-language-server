@@ -1,5 +1,43 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
+        {
+            "position": {
+                "line": 20,
+                "character": 5
+            },
+            "identifier": "debug",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 20,
+                        "character": 18
+                    },
+                    "identifier": "s",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 20,
+                        "character": 28
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "signatureEnd": {
+                "line": 20,
+                "character": 49
+            },
+            "comments": [
+                "// PERFORMANCE: Actual calls to debug should be removed at end"
+            ],
+            "implementation": true
+        },
         {
             "position": {
                 "line": 28,
@@ -8,7 +46,8 @@
             "identifier": "LEISURE_THRESHHOLD",
             "tokenType": 21,
             "valueType": "int",
-            "value": "100"
+            "value": "100",
+            "isConst": true
         },
         {
             "position": {
@@ -18,7 +57,8 @@
             "identifier": "EVENT_NEEDMOREPATRONS",
             "tokenType": 21,
             "valueType": "int",
-            "value": "5000"
+            "value": "5000",
+            "isConst": true
         },
         {
             "position": {
@@ -27,8 +67,9 @@
             },
             "identifier": "EVENT_IT_SHOUTS",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "5001"
+            "valueType": "int",
+            "value": "5001",
+            "isConst": true
         },
         {
             "position": {
@@ -37,8 +78,9 @@
             },
             "identifier": "EVENT_NOTIT_SHOUTS",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "5002"
+            "valueType": "int",
+            "value": "5002",
+            "isConst": true
         },
         {
             "position": {
@@ -48,7 +90,8 @@
             "identifier": "EVENT_IAMTHEHUNTER",
             "tokenType": 21,
             "valueType": "int",
-            "value": "5003"
+            "value": "5003",
+            "isConst": true
         },
         {
             "position": {
@@ -58,7 +101,8 @@
             "identifier": "LISTEN_MOVETOTOWNHUB",
             "tokenType": 21,
             "valueType": "int",
-            "value": "999"
+            "value": "999",
+            "isConst": true
         },
         {
             "position": {
@@ -68,7 +112,8 @@
             "identifier": "LISTEN_SOMEONEISIT",
             "tokenType": 21,
             "valueType": "int",
-            "value": "998"
+            "value": "998",
+            "isConst": true
         },
         {
             "position": {
@@ -77,8 +122,9 @@
             },
             "identifier": "LISTEN_IHUNTYOU",
             "tokenType": 21,
-            "valueType": " ",
-            "value": "997"
+            "valueType": "int",
+            "value": "997",
+            "isConst": true
         },
         {
             "position": {
@@ -88,7 +134,8 @@
             "identifier": "LISTEN_IAMNOTIT",
             "tokenType": 21,
             "valueType": "int",
-            "value": "996"
+            "value": "996",
+            "isConst": true
         },
         {
             "position": {
@@ -98,7 +145,8 @@
             "identifier": "LISTEN_GOAWAY",
             "tokenType": 21,
             "valueType": "int",
-            "value": "995"
+            "value": "995",
+            "isConst": true
         },
         {
             "position": {
@@ -108,7 +156,8 @@
             "identifier": "PLOT_COST_ALE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "isConst": true
         },
         {
             "position": {
@@ -118,7 +167,8 @@
             "identifier": "PLOT_COST_SPIRITS",
             "tokenType": 21,
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "isConst": true
         },
         {
             "position": {
@@ -128,7 +178,8 @@
             "identifier": "PLOT_COST_WINE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "10"
+            "value": "10",
+            "isConst": true
         },
         {
             "position": {
@@ -138,7 +189,8 @@
             "identifier": "fDelayBetweenBarmaidAskingForDrinks",
             "tokenType": 21,
             "valueType": "float",
-            "value": "60.0"
+            "value": "60.0",
+            "isConst": true
         },
         {
             "position": {
@@ -148,7 +200,8 @@
             "identifier": "FPATRONDELAY",
             "tokenType": 21,
             "valueType": "float",
-            "value": "40.0"
+            "value": "40.0",
+            "isConst": true
         },
         {
             "position": {
@@ -158,7 +211,8 @@
             "identifier": "DISTANCE_TALKHUB",
             "tokenType": 21,
             "valueType": "float",
-            "value": "4.0"
+            "value": "4.0",
+            "isConst": true
         },
         {
             "position": {
@@ -168,7 +222,8 @@
             "identifier": "DISTANCE_OBJECT_TALK",
             "tokenType": 21,
             "valueType": "float",
-            "value": "10.0"
+            "value": "10.0",
+            "isConst": true
         },
         {
             "position": {
@@ -178,7 +233,8 @@
             "identifier": "JOB_BARMAID",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1000"
+            "value": "1000",
+            "isConst": true
         },
         {
             "position": {
@@ -208,7 +264,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 58,
+                "character": 77
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -238,7 +299,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 59,
+                "character": 78
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -249,7 +315,12 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 61,
+                "character": 55
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -259,7 +330,8 @@
             "identifier": "JOB_BLACKSMITH",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1001"
+            "value": "1001",
+            "isConst": true
         },
         {
             "position": {
@@ -269,7 +341,8 @@
             "identifier": "JOB_GUARD1",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1002"
+            "value": "1002",
+            "isConst": true
         },
         {
             "position": {
@@ -279,7 +352,8 @@
             "identifier": "JOB_PATRON",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1003"
+            "value": "1003",
+            "isConst": true
         },
         {
             "position": {
@@ -289,7 +363,8 @@
             "identifier": "JOB_TAG_NOTIT",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1004"
+            "value": "1004",
+            "isConst": true
         },
         {
             "position": {
@@ -299,7 +374,8 @@
             "identifier": "JOB_TAG_IT",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1005"
+            "value": "1005",
+            "isConst": true
         },
         {
             "position": {
@@ -309,7 +385,8 @@
             "identifier": "JOB_FRIEND",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1006"
+            "value": "1006",
+            "isConst": true
         },
         {
             "position": {
@@ -319,7 +396,8 @@
             "identifier": "JOB_WANDER",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1007"
+            "value": "1007",
+            "isConst": true
         },
         {
             "position": {
@@ -329,7 +407,8 @@
             "identifier": "JOB_HUNTER",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1008"
+            "value": "1008",
+            "isConst": true
         },
         {
             "position": {
@@ -339,7 +418,8 @@
             "identifier": "JOB_GUARD2",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1009"
+            "value": "1009",
+            "isConst": true
         },
         {
             "position": {
@@ -349,7 +429,8 @@
             "identifier": "TASK_WORK_CLEANING",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1000"
+            "value": "1000",
+            "isConst": true
         },
         {
             "position": {
@@ -359,7 +440,8 @@
             "identifier": "TASK_WORK_ANVIL",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1001"
+            "value": "1001",
+            "isConst": true
         },
         {
             "position": {
@@ -369,7 +451,8 @@
             "identifier": "TASK_WORK_LAMPPOST",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1002"
+            "value": "1002",
+            "isConst": true
         },
         {
             "position": {
@@ -379,7 +462,8 @@
             "identifier": "TASK_LEISURE_READBOOK",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1003"
+            "value": "1003",
+            "isConst": true
         },
         {
             "position": {
@@ -389,7 +473,8 @@
             "identifier": "TASK_LEISURE_SIT",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1004"
+            "value": "1004",
+            "isConst": true
         },
         {
             "position": {
@@ -410,10 +495,15 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 98,
+                "character": 28
+            },
             "comments": [
                 "// * Only returns true if the object is ready",
                 "// * to be given more actions or to be interrupted"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -440,7 +530,8 @@
                     },
                     "identifier": "sLocalIntName",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 },
                 {
                     "position": {
@@ -449,12 +540,18 @@
                     },
                     "identifier": "nLocalIntCannotEqualThisNumber",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "10"
                 }
             ],
+            "signatureEnd": {
+                "line": 100,
+                "character": 104
+            },
             "comments": [
                 "// Will go up to a valid bar patron (not associates)."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -476,7 +573,12 @@
                     "defaultValue": "OBJECT_SELF"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 101,
+                "character": 38
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -498,9 +600,14 @@
                     "defaultValue": "OBJECT_SELF"
                 }
             ],
+            "signatureEnd": {
+                "line": 103,
+                "character": 40
+            },
             "comments": [
                 "// Can a player be seen?"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -522,10 +629,15 @@
                     "defaultValue": "OBJECT_SELF"
                 }
             ],
+            "signatureEnd": {
+                "line": 106,
+                "character": 46
+            },
             "comments": [
                 "//* Returns true if the ambient is currently working on a task assigned by",
                 "// * (a) Placeable Objects"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -556,9 +668,14 @@
                     "defaultValue": "OBJECT_SELF"
                 }
             ],
+            "signatureEnd": {
+                "line": 108,
+                "character": 58
+            },
             "comments": [
                 "// * sets ambient on"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -580,10 +697,15 @@
                     "defaultValue": "OBJECT_SELF"
                 }
             ],
+            "signatureEnd": {
+                "line": 111,
+                "character": 47
+            },
             "comments": [
                 "// * Transit is set when the character is walking between areas",
                 "// * like the barmaid going home during the day"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -614,10 +736,15 @@
                     "defaultValue": "OBJECT_SELF"
                 }
             ],
+            "signatureEnd": {
+                "line": 114,
+                "character": 59
+            },
             "comments": [
                 "// * Transit is set when the character is walking between areas",
                 "// * like the barmaid going home during the day"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -628,9 +755,14 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
+            "signatureEnd": {
+                "line": 119,
+                "character": 34
+            },
             "comments": [
                 "// * Plays a random animation"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -651,9 +783,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 121,
+                "character": 31
+            },
             "comments": [
                 "// * bar patron job task"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -700,13 +837,19 @@
                     },
                     "identifier": "sResRef",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"\""
                 }
             ],
+            "signatureEnd": {
+                "line": 124,
+                "character": 95
+            },
             "comments": [
                 "// * CALLED FROM : Spawn In Script",
                 "// * PURPOSE: Defines why this NPC exists"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -728,7 +871,12 @@
                     "defaultValue": "OBJECT_SELF"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 125,
+                "character": 40
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -750,9 +898,14 @@
                     "defaultValue": "OBJECT_SELF"
                 }
             ],
+            "signatureEnd": {
+                "line": 128,
+                "character": 38
+            },
             "comments": [
                 "// * IMPORTANT: Main performing a job function for creatures"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -783,7 +936,12 @@
                     "defaultValue": "OBJECT_SELF"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 130,
+                "character": 62
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -814,7 +972,12 @@
                     "defaultValue": "OBJECT_SELF"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 131,
+                "character": 62
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -836,7 +999,12 @@
                     "defaultValue": "OBJECT_SELF"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 132,
+                "character": 44
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -847,9 +1015,14 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
+            "signatureEnd": {
+                "line": 134,
+                "character": 16
+            },
             "comments": [
                 "// * Creates a rat (called by Rat 'see baddy' and Garbage scripts)"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -879,10 +1052,15 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 138,
+                "character": 38
+            },
             "comments": [
                 "// ******************HUB FUNCTIONS******************************",
                 "// * makes oNPC face oToFace"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -903,9 +1081,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 140,
+                "character": 36
+            },
             "comments": [
                 "// * TownHub: Makes patron leave randomly, or if another hub asks for him"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -926,9 +1109,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 142,
+                "character": 44
+            },
             "comments": [
                 "// * Creatures true if this is an acceptable creature for use in the conversation hub"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -939,10 +1127,15 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
+            "signatureEnd": {
+                "line": 145,
+                "character": 20
+            },
             "comments": [
                 "// * returns true if there is no player in the area",
                 "// * has to be ran from an object"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -991,12 +1184,822 @@
                     "defaultValue": "OBJECT_SELF"
                 }
             ],
+            "signatureEnd": {
+                "line": 152,
+                "character": 101
+            },
             "comments": [
                 "// * Asks the appropriate creature to perform a LEISURE or WORK task",
                 "// * The object MUST be the nearest object to be able to comply with the request"
-            ]
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 367,
+                "character": 5
+            },
+            "identifier": "CreateCritter",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 367,
+                        "character": 26
+                    },
+                    "identifier": "sResRef",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 367,
+                        "character": 44
+                    },
+                    "identifier": "lLoc",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 367,
+                        "character": 59
+                    },
+                    "identifier": "lGoHere",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 367,
+                        "character": 72
+                    },
+                    "identifier": "nGold",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 367,
+                "character": 78
+            },
+            "comments": [
+                "// * Create creature creates sResref at lLoc and tells it go to lGoHere",
+                "// * nGold is the amount of new gold spawned on the creature"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 469,
+                "character": 5
+            },
+            "identifier": "HeadTurn",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 469,
+                        "character": 21
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 469,
+                "character": 29
+            },
+            "comments": [
+                "// * called from objects when NPC's leisure is too high to want to use object"
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 165,
+                "character": 16
+            },
+            "identifier": "nJob",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 165,
+                "character": 29
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "position": {
+                "line": 165,
+                "character": 56
+            },
+            "identifier": "nTownTalker",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "FALSE"
+        },
+        {
+            "position": {
+                "line": 165,
+                "character": 84
+            },
+            "identifier": "sResRef",
+            "tokenType": 25,
+            "valueType": "string",
+            "defaultValue": "\"\""
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 180,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oCritter",
+            "position": {
+                "line": 183,
+                "character": 19
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eShout",
+            "position": {
+                "line": 200,
+                "character": 18
+            },
+            "valueType": "event",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eShout",
+            "position": {
+                "line": 205,
+                "character": 18
+            },
+            "valueType": "event",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oTrigger",
+            "position": {
+                "line": 235,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oInTrigger",
+            "position": {
+                "line": 236,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bInTrigger",
+            "position": {
+                "line": 237,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 251,
+                "character": 18
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "position": {
+                "line": 256,
+                "character": 18
+            },
+            "identifier": "oSelf",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "identifier": "nAction",
+            "position": {
+                "line": 260,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oFriend",
+            "position": {
+                "line": 303,
+                "character": 19
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oCreature",
+            "position": {
+                "line": 306,
+                "character": 23
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oCreature",
+            "position": {
+                "line": 369,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 374,
+                "character": 25
+            },
+            "identifier": "oSelf",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "oMyConversationHub",
+            "position": {
+                "line": 377,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "ACT_WANDER",
+            "position": {
+                "line": 388,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "ACT_LEAVE",
+            "position": {
+                "line": 389,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nAction",
+            "position": {
+                "line": 391,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oDoor",
+            "position": {
+                "line": 400,
+                "character": 19
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "lMyLoc",
+            "position": {
+                "line": 405,
+                "character": 25
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sResRef",
+            "position": {
+                "line": 407,
+                "character": 23
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "lLoc",
+            "position": {
+                "line": 408,
+                "character": 25
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oInvisiblePlaceable",
+            "position": {
+                "line": 409,
+                "character": 23
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oBar",
+            "position": {
+                "line": 423,
+                "character": 19
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nAnimationType",
+            "position": {
+                "line": 448,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nAnimation",
+            "position": {
+                "line": 448,
+                "character": 24
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fSpeed",
+            "position": {
+                "line": 449,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nAnimation",
+            "position": {
+                "line": 471,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 500,
+                "character": 29
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 500,
+                "character": 42
+            },
+            "identifier": "nPoints",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "eDumb",
+            "position": {
+                "line": 502,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 519,
+                "character": 29
+            },
+            "identifier": "sDrink",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 519,
+                "character": 41
+            },
+            "identifier": "nAmount",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "oTalker",
+            "position": {
+                "line": 521,
+                "character": 10
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 578,
+                "character": 17
+            },
+            "identifier": "nTask",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 578,
+                "character": 30
+            },
+            "identifier": "fActivationThreshold",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 578,
+                "character": 58
+            },
+            "identifier": "fMoveThisClose",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 578,
+                "character": 81
+            },
+            "identifier": "oSelf",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "identifier": "oClosest",
+            "position": {
+                "line": 583,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oSelf",
+            "position": {
+                "line": 647,
+                "character": 23
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 685,
+                "character": 26
+            },
+            "identifier": "nValue",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 685,
+                "character": 40
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "identifier": "nCurrentLeisure",
+            "position": {
+                "line": 687,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 690,
+                "character": 26
+            },
+            "identifier": "nValue",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 690,
+                "character": 40
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "identifier": "nCurrentLeisure",
+            "position": {
+                "line": 692,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 695,
+                "character": 22
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "identifier": "nLeisure",
+            "position": {
+                "line": 698,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 719,
+                "character": 22
+            },
+            "identifier": "oMe",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "identifier": "oPC",
+            "position": {
+                "line": 722,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 747,
+                "character": 19
+            },
+            "identifier": "oNPC",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "position": {
+                "line": 764,
+                "character": 26
+            },
+            "identifier": "oSelf",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "position": {
+                "line": 775,
+                "character": 24
+            },
+            "identifier": "bTrue",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 775,
+                "character": 38
+            },
+            "identifier": "oSelf",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "position": {
+                "line": 785,
+                "character": 27
+            },
+            "identifier": "oSelf",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "position": {
+                "line": 797,
+                "character": 25
+            },
+            "identifier": "bTrue",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 797,
+                "character": 39
+            },
+            "identifier": "oSelf",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "position": {
+                "line": 809,
+                "character": 20
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nIsInConv",
+            "position": {
+                "line": 811,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 843,
+                "character": 36
+            },
+            "identifier": "oMe",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 843,
+                "character": 48
+            },
+            "identifier": "sLocalIntName",
+            "tokenType": 25,
+            "valueType": "string",
+            "defaultValue": "\"\""
+        },
+        {
+            "position": {
+                "line": 843,
+                "character": 70
+            },
+            "identifier": "nLocalIntCannotEqualThisNumber",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "10"
+        },
+        {
+            "identifier": "nCount",
+            "position": {
+                "line": 846,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oNearest",
+            "position": {
+                "line": 847,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPerson",
+            "position": {
+                "line": 855,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oRat",
+            "position": {
+                "line": 891,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oSelf",
+            "position": {
+                "line": 895,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 899,
+                "character": 17
+            },
+            "identifier": "oNPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 899,
+                "character": 30
+            },
+            "identifier": "oToFace",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 904,
+                "character": 29
+            },
+            "identifier": "oFirst",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "oNewPlace",
+            "position": {
+                "line": 908,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPersonAtOther",
+            "position": {
+                "line": 913,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 925,
+                "character": 34
+            },
+            "identifier": "oCreature",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "oPC",
+            "position": {
+                "line": 935,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        }
+    ]
 }

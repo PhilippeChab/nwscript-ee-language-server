@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 37,
@@ -8,7 +8,8 @@
             "identifier": "sDaelinTag",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"NW_HEN_DAE\""
+            "value": "\"NW_HEN_DAE\"",
+            "isConst": true
         },
         {
             "position": {
@@ -18,7 +19,8 @@
             "identifier": "sSharwynTag",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"NW_HEN_SHA\""
+            "value": "\"NW_HEN_SHA\"",
+            "isConst": true
         },
         {
             "position": {
@@ -28,7 +30,8 @@
             "identifier": "sLinuTag",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"NW_HEN_LIN\""
+            "value": "\"NW_HEN_LIN\"",
+            "isConst": true
         },
         {
             "position": {
@@ -38,7 +41,8 @@
             "identifier": "sGallowTag",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"NW_HEN_GAL\""
+            "value": "\"NW_HEN_GAL\"",
+            "isConst": true
         },
         {
             "position": {
@@ -48,7 +52,8 @@
             "identifier": "sGrimTag",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"NW_HEN_GRI\""
+            "value": "\"NW_HEN_GRI\"",
+            "isConst": true
         },
         {
             "position": {
@@ -58,7 +63,8 @@
             "identifier": "sBoddyTag",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"NW_HEN_BOD\""
+            "value": "\"NW_HEN_BOD\"",
+            "isConst": true
         },
         {
             "position": {
@@ -68,7 +74,8 @@
             "identifier": "INT_NUM_HENCHMEN",
             "tokenType": 21,
             "valueType": "int",
-            "value": "6"
+            "value": "6",
+            "isConst": true
         },
         {
             "position": {
@@ -78,9 +85,1329 @@
             "identifier": "INT_FUDGE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "3"
+            "value": "3",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 57,
+                "character": 7
+            },
+            "identifier": "PC",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [],
+            "signatureEnd": {
+                "line": 57,
+                "character": 11
+            },
+            "comments": [
+                "// * debug function for displaying strings. Returns the first pc in the area"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 74,
+                "character": 5
+            },
+            "identifier": "SetDidDie",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 74,
+                        "character": 19
+                    },
+                    "identifier": "bDie",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 74,
+                "character": 24
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By: Brent",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////",
+                "// * this is turned off again when the player talks to",
+                "// * his henchman after finding him again."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 78,
+                "character": 4
+            },
+            "identifier": "GetDidDie",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 78,
+                "character": 15
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 104,
+                "character": 5
+            },
+            "identifier": "SetBeenHired",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 104,
+                        "character": 22
+                    },
+                    "identifier": "bHired",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                },
+                {
+                    "position": {
+                        "line": 104,
+                        "character": 42
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "signatureEnd": {
+                "line": 104,
+                "character": 62
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By: Brent",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 108,
+                "character": 4
+            },
+            "identifier": "GetBeenHired",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 108,
+                        "character": 24
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "signatureEnd": {
+                "line": 108,
+                "character": 44
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 115,
+                "character": 5
+            },
+            "identifier": "SetWorkingForPlayer",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 115,
+                        "character": 32
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 115,
+                "character": 36
+            },
+            "comments": [
+                "// * This local is on the player",
+                "// * it is true if this particular henchman",
+                "// * is working for the player"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 119,
+                "character": 4
+            },
+            "identifier": "GetWorkingForPlayer",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 119,
+                        "character": 31
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 119,
+                "character": 35
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 126,
+                "character": 7
+            },
+            "identifier": "GetFormerMaster",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 126,
+                        "character": 30
+                    },
+                    "identifier": "oHench",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "signatureEnd": {
+                "line": 126,
+                "character": 51
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 130,
+                "character": 5
+            },
+            "identifier": "SetFormerMaster",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 130,
+                        "character": 28
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 130,
+                        "character": 40
+                    },
+                    "identifier": "oHench",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 130,
+                "character": 47
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 151,
+                "character": 5
+            },
+            "identifier": "SetStoryVar",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 151,
+                        "character": 21
+                    },
+                    "identifier": "nChapter",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 151,
+                        "character": 35
+                    },
+                    "identifier": "nVal",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 151,
+                        "character": 48
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "signatureEnd": {
+                "line": 151,
+                "character": 68
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By:  Brent",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 156,
+                "character": 4
+            },
+            "identifier": "GetStoryVar",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 156,
+                        "character": 20
+                    },
+                    "identifier": "nChapter",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 156,
+                        "character": 37
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "signatureEnd": {
+                "line": 156,
+                "character": 57
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 175,
+                "character": 5
+            },
+            "identifier": "SetGreetingVar",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 175,
+                        "character": 24
+                    },
+                    "identifier": "nChapter",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 175,
+                        "character": 41
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 175,
+                "character": 45
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By:  Brent",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 179,
+                "character": 4
+            },
+            "identifier": "GetGreetingVar",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 179,
+                        "character": 23
+                    },
+                    "identifier": "nChapter",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 179,
+                        "character": 40
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 179,
+                "character": 44
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 197,
+                "character": 7
+            },
+            "identifier": "STR_PersonalItem",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 197,
+                        "character": 31
+                    },
+                    "identifier": "oThing",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "signatureEnd": {
+                "line": 197,
+                "character": 50
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By: Brent",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 201,
+                "character": 7
+            },
+            "identifier": "STR_QuestItem",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 201,
+                        "character": 25
+                    },
+                    "identifier": "nChapter",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 201,
+                        "character": 42
+                    },
+                    "identifier": "oThing",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "signatureEnd": {
+                "line": 201,
+                "character": 61
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 205,
+                "character": 7
+            },
+            "identifier": "STR_RewardItem",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 205,
+                        "character": 26
+                    },
+                    "identifier": "nChapter",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 205,
+                        "character": 43
+                    },
+                    "identifier": "oThing",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "signatureEnd": {
+                "line": 205,
+                "character": 62
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 221,
+                "character": 5
+            },
+            "identifier": "DestroyAllPersonalItems",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 221,
+                        "character": 36
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 221,
+                "character": 40
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By: Brent",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 271,
+                "character": 5
+            },
+            "identifier": "GivePersonalItem",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 271,
+                        "character": 29
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 271,
+                        "character": 41
+                    },
+                    "identifier": "oHench",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "signatureEnd": {
+                "line": 271,
+                "character": 60
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By: Brent",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 282,
+                "character": 4
+            },
+            "identifier": "HasPersonalItem",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 282,
+                        "character": 27
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 282,
+                "character": 31
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 312,
+                "character": 5
+            },
+            "identifier": "StripAllPersonalItemsFromEveryone",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "signatureEnd": {
+                "line": 312,
+                "character": 40
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By: Brent",
+                "//:: Created On: April 9 2002",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 348,
+                "character": 4
+            },
+            "identifier": "GetCanLevelUp",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 348,
+                        "character": 25
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 348,
+                        "character": 37
+                    },
+                    "identifier": "meLevel",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "signatureEnd": {
+                "line": 348,
+                "character": 59
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By: Brent",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 377,
+                "character": 5
+            },
+            "identifier": "CopyLocals",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 377,
+                        "character": 23
+                    },
+                    "identifier": "oSource",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 377,
+                        "character": 39
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 377,
+                "character": 47
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By:   Brent",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 408,
+                "character": 7
+            },
+            "identifier": "DoLevelUp",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 408,
+                        "character": 24
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 408,
+                        "character": 36
+                    },
+                    "identifier": "MeLevel",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "signatureEnd": {
+                "line": 408,
+                "character": 58
+            },
+            "comments": [
+                "// * assumes that a succesful GetCanLevelUp has already",
+                "// * been tested.    Will level up character to one level",
+                "// * less than player.",
+                "// * meLevel defaults to object self unless another object is passed in",
+                "// * returns the new creature"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 468,
+                "character": 4
+            },
+            "identifier": "HasChapterQuestItem",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 468,
+                        "character": 28
+                    },
+                    "identifier": "nChapter",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 468,
+                        "character": 45
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 468,
+                "character": 49
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By:  Brent",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 478,
+                "character": 5
+            },
+            "identifier": "DestroyChapterQuestItem",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 478,
+                        "character": 33
+                    },
+                    "identifier": "nChapter",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 478,
+                        "character": 50
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 478,
+                "character": 54
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 487,
+                "character": 5
+            },
+            "identifier": "DestroyChapterRewardItem",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 487,
+                        "character": 34
+                    },
+                    "identifier": "nChapter",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 487,
+                        "character": 51
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 487,
+                "character": 55
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 499,
+                "character": 5
+            },
+            "identifier": "GiveChapterRewardItem",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 499,
+                        "character": 31
+                    },
+                    "identifier": "nChapter",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 499,
+                        "character": 48
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 499,
+                "character": 52
+            },
+            "comments": [
+                "//* Change March 27 2002",
+                "// * Change February 14 2002:",
+                "// *  - Destroying Previous Chapter Reward Items"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 518,
+                "character": 4
+            },
+            "identifier": "HasChapterRewardItem",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 518,
+                        "character": 29
+                    },
+                    "identifier": "nChapter",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 518,
+                        "character": 46
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 518,
+                "character": 50
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 541,
+                "character": 4
+            },
+            "identifier": "GetChapter",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 541,
+                "character": 16
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By:   Brent",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 585,
+                "character": 7
+            },
+            "identifier": "GetMyArea",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 585,
+                        "character": 24
+                    },
+                    "identifier": "oThing",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                }
+            ],
+            "signatureEnd": {
+                "line": 585,
+                "character": 43
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 590,
+                "character": 4
+            },
+            "identifier": "EndModule",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 590,
+                "character": 15
+            },
+            "comments": [
+                "// * returns true if this is an end module"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 595,
+                "character": 5
+            },
+            "identifier": "SpawnHenchman",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "signatureEnd": {
+                "line": 595,
+                "character": 20
+            },
+            "comments": [
+                "// * Spawns appropriate henchman into C1e, C2e, or C4"
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "identifier": "oDied",
+            "position": {
+                "line": 80,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 223,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 224,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 236,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 284,
+                "character": 9
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oChapter1Reward",
+            "position": {
+                "line": 285,
+                "character": 9
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oChapter2Reward",
+            "position": {
+                "line": 286,
+                "character": 9
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "iResult",
+            "position": {
+                "line": 287,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPC",
+            "position": {
+                "line": 314,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oHench",
+            "position": {
+                "line": 321,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMasterLevel",
+            "position": {
+                "line": 350,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMyLevel",
+            "position": {
+                "line": 351,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMasterLevel",
+            "position": {
+                "line": 410,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nLevel",
+            "position": {
+                "line": 411,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sLevel",
+            "position": {
+                "line": 429,
+                "character": 10
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oMaster",
+            "position": {
+                "line": 435,
+                "character": 10
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sNewFile",
+            "position": {
+                "line": 437,
+                "character": 10
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oNew",
+            "position": {
+                "line": 441,
+                "character": 10
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 470,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 480,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 489,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nReward",
+            "position": {
+                "line": 501,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nOldChapter",
+            "position": {
+                "line": 510,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 520,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sChapter",
+            "position": {
+                "line": 543,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nChapter",
+            "position": {
+                "line": 547,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sTag",
+            "position": {
+                "line": 591,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPC",
+            "position": {
+                "line": 597,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sLevel",
+            "position": {
+                "line": 598,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sTestHench",
+            "position": {
+                "line": 612,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 616,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oHen",
+            "position": {
+                "line": 617,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        }
+    ]
 }

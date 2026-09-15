@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 23,
@@ -8,7 +8,8 @@
             "identifier": "DC_EASY",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0"
+            "value": "0",
+            "isConst": true
         },
         {
             "position": {
@@ -18,7 +19,8 @@
             "identifier": "DC_MEDIUM",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "isConst": true
         },
         {
             "position": {
@@ -28,7 +30,8 @@
             "identifier": "DC_HARD",
             "tokenType": 21,
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "isConst": true
         },
         {
             "position": {
@@ -38,7 +41,8 @@
             "identifier": "DC_SUPERIOR",
             "tokenType": 21,
             "valueType": "int",
-            "value": "3"
+            "value": "3",
+            "isConst": true
         },
         {
             "position": {
@@ -48,7 +52,8 @@
             "identifier": "DC_MASTER",
             "tokenType": 21,
             "valueType": "int",
-            "value": "4"
+            "value": "4",
+            "isConst": true
         },
         {
             "position": {
@@ -58,7 +63,8 @@
             "identifier": "DC_LEGENDARY",
             "tokenType": 21,
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "isConst": true
         },
         {
             "position": {
@@ -68,7 +74,8 @@
             "identifier": "DC_EPIC",
             "tokenType": 21,
             "valueType": "int",
-            "value": "6"
+            "value": "6",
+            "isConst": true
         },
         {
             "position": {
@@ -78,7 +85,8 @@
             "identifier": "G_CLASSCHANCE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "70"
+            "value": "70",
+            "isConst": true
         },
         {
             "position": {
@@ -88,7 +96,8 @@
             "identifier": "XP_VERY_LOW",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "isConst": true
         },
         {
             "position": {
@@ -98,7 +107,8 @@
             "identifier": "XP_LOW",
             "tokenType": 21,
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "isConst": true
         },
         {
             "position": {
@@ -108,7 +118,8 @@
             "identifier": "XP_MEDIUM_LOW",
             "tokenType": 21,
             "valueType": "int",
-            "value": "3"
+            "value": "3",
+            "isConst": true
         },
         {
             "position": {
@@ -118,7 +129,8 @@
             "identifier": "XP_MEDIUM",
             "tokenType": 21,
             "valueType": "int",
-            "value": "4"
+            "value": "4",
+            "isConst": true
         },
         {
             "position": {
@@ -128,7 +140,8 @@
             "identifier": "XP_MEDIUM_HIGH",
             "tokenType": 21,
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "isConst": true
         },
         {
             "position": {
@@ -138,7 +151,8 @@
             "identifier": "XP_HIGH",
             "tokenType": 21,
             "valueType": "int",
-            "value": "6"
+            "value": "6",
+            "isConst": true
         },
         {
             "position": {
@@ -148,7 +162,8 @@
             "identifier": "XP_VERY_HIGH",
             "tokenType": 21,
             "valueType": "int",
-            "value": "7"
+            "value": "7",
+            "isConst": true
         },
         {
             "position": {
@@ -158,7 +173,8 @@
             "identifier": "XP_EPIC",
             "tokenType": 21,
             "valueType": "int",
-            "value": "8"
+            "value": "8",
+            "isConst": true
         },
         {
             "position": {
@@ -188,9 +204,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 49,
+                "character": 45
+            },
             "comments": [
                 "// * returns true if the player can afford to lose the indicated amount of XP without losing  a level"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -211,7 +232,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 51,
+                "character": 39
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -222,7 +248,12 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 52,
+                "character": 12
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -243,7 +274,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 53,
+                "character": 25
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -254,7 +290,12 @@
             "tokenType": 3,
             "returnType": "object",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 54,
+                "character": 20
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -265,7 +306,12 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 55,
+                "character": 14
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -286,7 +332,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 56,
+                "character": 33
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -297,7 +348,12 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 57,
+                "character": 18
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -325,10 +381,16 @@
                     },
                     "identifier": "sTag",
                     "tokenType": 25,
-                    "valueType": "string"
+                    "valueType": "string",
+                    "defaultValue": "\"NW_EXIT\""
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 58,
+                "character": 55
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -358,7 +420,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 59,
+                "character": 39
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -394,10 +461,16 @@
                     },
                     "identifier": "bDestroy",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 60,
+                "character": 65
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -408,7 +481,12 @@
             "tokenType": 3,
             "returnType": "object",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 61,
+                "character": 21
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -429,7 +507,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 62,
+                "character": 31
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -468,12 +551,17 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 68,
+                "character": 46
+            },
             "comments": [
                 "// Provide a scaled skill check DC based on the DC_* constant passed in",
                 "// DC      -  DC_EASY  DC_MEDIUM  DC_HARD  DC_SUPERIOR  DC_MASTER  DC_LEGENDARY  DC_EPIC",
                 "// nSkill  - SKILL_* constant",
                 "// oTarget - creature that is going to perform the check;"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -503,7 +591,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 69,
+                "character": 39
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -533,7 +626,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 70,
+                "character": 39
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -578,10 +676,16 @@
                     },
                     "identifier": "QuestAlignment",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "ALIGNMENT_NEUTRAL"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 71,
+                "character": 104
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -626,7 +730,8 @@
                     },
                     "identifier": "QuestAlignment",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "ALIGNMENT_NEUTRAL"
                 },
                 {
                     "position": {
@@ -635,10 +740,16 @@
                     },
                     "identifier": "bAllParty",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 72,
+                "character": 124
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -674,10 +785,16 @@
                     },
                     "identifier": "bAllParty",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 73,
+                "character": 56
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -688,7 +805,12 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 74,
+                "character": 25
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -699,7 +821,12 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 75,
+                "character": 25
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -710,7 +837,12 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 76,
+                "character": 22
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -721,7 +853,12 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 77,
+                "character": 23
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -732,7 +869,12 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 78,
+                "character": 26
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -743,18 +885,12 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
-            "comments": []
-        },
-        {
-            "position": {
-                "line": 80,
-                "character": 4
+            "signatureEnd": {
+                "line": 79,
+                "character": 29
             },
-            "identifier": "CheckIntelligenceNormal",
-            "tokenType": 3,
-            "returnType": "int",
-            "params": [],
-            "comments": []
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -765,7 +901,12 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 81,
+                "character": 27
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -776,7 +917,12 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 82,
+                "character": 21
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -797,9 +943,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 84,
+                "character": 29
+            },
             "comments": [
                 "// Return the wisdom of oTarget"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -820,9 +971,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 86,
+                "character": 35
+            },
             "comments": [
                 "// Return the Intelligence of the Target"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -843,9 +999,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 88,
+                "character": 31
+            },
             "comments": [
                 "// Return the Charisma of the Target"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -875,9 +1036,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 90,
+                "character": 44
+            },
             "comments": [
                 "// Return the numer of items oTarget possesses from type sItem (Tag)"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -916,9 +1082,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 92,
+                "character": 60
+            },
             "comments": [
                 "// Gives the item with the ResRef sItem to creature oTarget nNumItems times"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -957,9 +1128,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 94,
+                "character": 60
+            },
             "comments": [
                 "// Remove nNumItems Items of Type sItem (Tag) from oTarget"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -980,10 +1156,15 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 97,
+                "character": 35
+            },
             "comments": [
                 "// * plays the correct character theme",
                 "// * assumes OBJECT_SELF is in the area"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -994,10 +1175,15 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
+            "signatureEnd": {
+                "line": 100,
+                "character": 19
+            },
             "comments": [
                 "// * plays the old theme for the area",
                 "// * assumes OBJECT_SELF is in the area"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1027,7 +1213,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 101,
+                "character": 46
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1066,7 +1257,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 102,
+                "character": 59
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1087,9 +1283,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 104,
+                "character": 32
+            },
             "comments": [
                 "// * removes all negative effects"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1139,9 +1340,14 @@
                     "defaultValue": "0"
                 }
             ],
+            "signatureEnd": {
+                "line": 106,
+                "character": 100
+            },
             "comments": [
                 "// * starts store using appraise skill"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1191,9 +1397,14 @@
                     "defaultValue": "0"
                 }
             ],
+            "signatureEnd": {
+                "line": 108,
+                "character": 103
+            },
             "comments": [
                 "// * starts store with favorable appraise check"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1232,9 +1443,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 110,
+                "character": 50
+            },
             "comments": [
                 "//Do a DC check and modify the skill by the Target's Strength modifier"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1255,9 +1471,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 112,
+                "character": 40
+            },
             "comments": [
                 "//Check to see if target is PC and not DM"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1307,9 +1528,14 @@
                     "defaultValue": "100"
                 }
             ],
+            "signatureEnd": {
+                "line": 114,
+                "character": 84
+            },
             "comments": [
                 "//Reward Experience based on an entry in the des_xp_rewards 2da file"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1330,9 +1556,43 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 116,
+                "character": 40
+            },
             "comments": [
                 "//Both speak a string ref as well as play the associate sound file"
-            ]
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 121,
+                "character": 4
+            },
+            "identifier": "GetNPCEasyMark",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 121,
+                        "character": 26
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 121,
+                "character": 34
+            },
+            "comments": [
+                "// * returns a value that will be subtracted from the",
+                "// * oTarget's DC to resist APpraise or Persuasion"
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1353,9 +1613,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 395,
+                "character": 43
+            },
             "comments": [
                 "//  Returns the adjusted Reaction for the purposes of store pricing."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1394,7 +1659,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 401,
+                "character": 100
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1415,9 +1685,1383 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 406,
+                "character": 39
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 648,
+                "character": 4
+            },
+            "identifier": "HasGold",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 648,
+                        "character": 16
+                    },
+                    "identifier": "nAmount",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 648,
+                        "character": 32
+                    },
+                    "identifier": "oGoldHolder",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 648,
+                "character": 44
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By:",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "identifier": "nCharmMod",
+            "position": {
+                "line": 123,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 171,
+                "character": 35
+            },
+            "identifier": "oStore",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 171,
+                "character": 50
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 171,
+                "character": 59
+            },
+            "identifier": "nBonusMarkUp",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "0"
+        },
+        {
+            "position": {
+                "line": 171,
+                "character": 81
+            },
+            "identifier": "nBonusMarkDown",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "0"
+        },
+        {
+            "identifier": "STATE_FAILED",
+            "position": {
+                "line": 173,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "STATE_TIE",
+            "position": {
+                "line": 174,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "STATE_WON",
+            "position": {
+                "line": 175,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sTag",
+            "position": {
+                "line": 176,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPlayerSkillRank",
+            "position": {
+                "line": 178,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nNPCSkillRank",
+            "position": {
+                "line": 180,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nAdjust",
+            "position": {
+                "line": 186,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nState",
+            "position": {
+                "line": 208,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPreviousRank",
+            "position": {
+                "line": 209,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 307,
+                "character": 38
+            },
+            "identifier": "oStore",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 307,
+                "character": 53
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 307,
+                "character": 62
+            },
+            "identifier": "nBonusMarkUp",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "0"
+        },
+        {
+            "position": {
+                "line": 307,
+                "character": 84
+            },
+            "identifier": "nBonusMarkDown",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "0"
+        },
+        {
+            "identifier": "STATE_WON",
+            "position": {
+                "line": 309,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sTag",
+            "position": {
+                "line": 310,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPlayerSkillRank",
+            "position": {
+                "line": 312,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nNPCSkillRank",
+            "position": {
+                "line": 314,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nAdjust",
+            "position": {
+                "line": 317,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nState",
+            "position": {
+                "line": 319,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPreviousRank",
+            "position": {
+                "line": 320,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 362,
+                "character": 28
+            },
+            "identifier": "nTheme",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "oArea",
+            "position": {
+                "line": 364,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMusicNight",
+            "position": {
+                "line": 365,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMusicDay",
+            "position": {
+                "line": 366,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oArea",
+            "position": {
+                "line": 382,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMusicNight",
+            "position": {
+                "line": 384,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMusicDay",
+            "position": {
+                "line": 385,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 411,
+                "character": 35
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "tTalent",
+            "position": {
+                "line": 413,
+                "character": 11
+            },
+            "valueType": "talent",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bResult",
+            "position": {
+                "line": 424,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 434,
+                "character": 23
+            },
+            "identifier": "s",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "identifier": "sAreaTag",
+            "position": {
+                "line": 462,
+                "character": 14
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPortal",
+            "position": {
+                "line": 499,
+                "character": 18
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sTag",
+            "position": {
+                "line": 504,
+                "character": 20
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oClicker",
+            "position": {
+                "line": 505,
+                "character": 21
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oTarget",
+            "position": {
+                "line": 506,
+                "character": 21
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 548,
+                "character": 25
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "eVis",
+            "position": {
+                "line": 552,
+                "character": 15
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 589,
+                "character": 20
+            },
+            "identifier": "bRun",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 589,
+                "character": 40
+            },
+            "identifier": "sTag",
+            "tokenType": 25,
+            "valueType": "string",
+            "defaultValue": "\"NW_EXIT\""
+        },
+        {
+            "identifier": "oWay",
+            "position": {
+                "line": 591,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 614,
+                "character": 19
+            },
+            "identifier": "oCreature",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 614,
+                "character": 37
+            },
+            "identifier": "s",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 631,
+                "character": 18
+            },
+            "identifier": "nAmount",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 631,
+                "character": 34
+            },
+            "identifier": "oGoldHolder",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 631,
+                "character": 51
+            },
+            "identifier": "bDestroy",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 693,
+                "character": 23
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 715,
+                "character": 15
+            },
+            "identifier": "DC",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 715,
+                "character": 23
+            },
+            "identifier": "nSkill",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 715,
+                "character": 38
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nLevel",
+            "position": {
+                "line": 722,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nTest",
+            "position": {
+                "line": 723,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCharmMod",
+            "position": {
+                "line": 751,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nDC",
+            "position": {
+                "line": 755,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 777,
+                "character": 20
+            },
+            "identifier": "DC",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 777,
+                "character": 31
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nShift",
+            "position": {
+                "line": 779,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 798,
+                "character": 20
+            },
+            "identifier": "DC",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 798,
+                "character": 31
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nShift",
+            "position": {
+                "line": 800,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 825,
+                "character": 21
+            },
+            "identifier": "sJournalTag",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 825,
+                "character": 38
+            },
+            "identifier": "nPercentage",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 825,
+                "character": 58
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 825,
+                "character": 71
+            },
+            "identifier": "QuestAlignment",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "ALIGNMENT_NEUTRAL"
+        },
+        {
+            "identifier": "nRewardMod",
+            "position": {
+                "line": 828,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nXP",
+            "position": {
+                "line": 834,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 869,
+                "character": 21
+            },
+            "identifier": "sJournalTag",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 869,
+                "character": 38
+            },
+            "identifier": "nPercentage",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 869,
+                "character": 58
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 869,
+                "character": 71
+            },
+            "identifier": "QuestAlignment",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "ALIGNMENT_NEUTRAL"
+        },
+        {
+            "position": {
+                "line": 869,
+                "character": 109
+            },
+            "identifier": "bAllParty",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "identifier": "oPartyMember",
+            "position": {
+                "line": 875,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 903,
+                "character": 18
+            },
+            "identifier": "GP",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 903,
+                "character": 29
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 903,
+                "character": 41
+            },
+            "identifier": "bAllParty",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "identifier": "oPartyMember",
+            "position": {
+                "line": 911,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1067,
+                "character": 21
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1071,
+                "character": 27
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1075,
+                "character": 23
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1097,
+                "character": 23
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1097,
+                "character": 38
+            },
+            "identifier": "sItem",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "identifier": "nNumItems",
+            "position": {
+                "line": 1099,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 1100,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1130,
+                "character": 25
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1130,
+                "character": 40
+            },
+            "identifier": "sItem",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 1130,
+                "character": 50
+            },
+            "identifier": "nNumItems",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "nCount",
+            "position": {
+                "line": 1132,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 1133,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1164,
+                "character": 25
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1164,
+                "character": 40
+            },
+            "identifier": "sItem",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 1164,
+                "character": 50
+            },
+            "identifier": "nNumItems",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "nCount",
+            "position": {
+                "line": 1166,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 1167,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1192,
+                "character": 36
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nFactionAdjustment",
+            "position": {
+                "line": 1194,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oTargetLawChaos",
+            "position": {
+                "line": 1202,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oTargetGoodEvil",
+            "position": {
+                "line": 1203,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oSourceLawChaos",
+            "position": {
+                "line": 1204,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oSourceGoodEvil",
+            "position": {
+                "line": 1205,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "APB",
+            "position": {
+                "line": 1206,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nTargetCharismaMod",
+            "position": {
+                "line": 1207,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1225,
+                "character": 36
+            },
+            "identifier": "oTargetCreature",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1225,
+                "character": 60
+            },
+            "identifier": "oMemberOfSourceFaction",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1225,
+                "character": 88
+            },
+            "identifier": "nAdjustment",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "oFaction",
+            "position": {
+                "line": 1227,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1249,
+                "character": 30
+            },
+            "identifier": "oFleeing",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "eVis",
+            "position": {
+                "line": 1251,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1271,
+                "character": 24
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1271,
+                "character": 35
+            },
+            "identifier": "sLocalName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "identifier": "nValue",
+            "position": {
+                "line": 1273,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oMember",
+            "position": {
+                "line": 1274,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1300,
+                "character": 25
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1300,
+                "character": 36
+            },
+            "identifier": "sLocalName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 1300,
+                "character": 52
+            },
+            "identifier": "nValue",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "oMember",
+            "position": {
+                "line": 1302,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1315,
+                "character": 26
+            },
+            "identifier": "oDead",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "oTarget",
+            "position": {
+                "line": 1318,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eVisual",
+            "position": {
+                "line": 1319,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bValid",
+            "position": {
+                "line": 1320,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eBad",
+            "position": {
+                "line": 1322,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1359,
+                "character": 19
+            },
+            "identifier": "DC",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 1359,
+                "character": 27
+            },
+            "identifier": "nSkill",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 1359,
+                "character": 42
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nLevel",
+            "position": {
+                "line": 1366,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nTest",
+            "position": {
+                "line": 1367,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1398,
+                "character": 27
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1398,
+                "character": 36
+            },
+            "identifier": "nPenalty",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "nXP",
+            "position": {
+                "line": 1400,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 1401,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMin",
+            "position": {
+                "line": 1403,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nNewXP",
+            "position": {
+                "line": 1405,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1410,
+                "character": 32
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1429,
+                "character": 25
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1429,
+                "character": 34
+            },
+            "identifier": "nRow",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 1429,
+                "character": 44
+            },
+            "identifier": "bAllParty",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 1429,
+                "character": 66
+            },
+            "identifier": "nPercentage",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "100"
+        },
+        {
+            "identifier": "fPercent",
+            "position": {
+                "line": 1432,
+                "character": 9
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPlotXP",
+            "position": {
+                "line": 1433,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nReward",
+            "position": {
+                "line": 1434,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oParty",
+            "position": {
+                "line": 1437,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1459,
+                "character": 32
+            },
+            "identifier": "nStrRef",
+            "tokenType": 25,
+            "valueType": "int"
+        }
+    ]
 }

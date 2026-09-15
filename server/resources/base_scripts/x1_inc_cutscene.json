@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 61,
@@ -28,13 +28,18 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 61,
+                "character": 42
+            },
             "comments": [
                 "// Used to shift the entire cutscene a length of time. Used internally here,",
                 "// but very handy for cutscenes that are complete, but need to be changed",
                 "// after the fact. From the point it is called, it just shifts the cutscene",
                 "// accordingly. Can be used (and should be) for non-cutscene delays in a",
                 "// script (ie - commands that aren't here or regular DelayCommands in a script.)"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -55,10 +60,15 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 65,
+                "character": 34
+            },
             "comments": [
                 "// Used to clear commandable state FALSE in the event there are too many",
                 "// Used in this include only."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -107,12 +117,17 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 71,
+                "character": 85
+            },
             "comments": [
                 "// Used to remove all effects from an object.",
                 "// Example: CutRemoveEffects(10.5, GetObjectByTag(\"guard1\")); would",
                 "// remove all effects from guard1 after a 10.5 second delay.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -179,6 +194,10 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 81,
+                "character": 131
+            },
             "comments": [
                 "// Used for a conversation file when you need to have an NPC speak",
                 "// via a conversation instead of bubble text. The fDelay is used",
@@ -188,7 +207,8 @@
                 "//  conversation file \"my_conv\" of the NPC, after a 5 sec delay, and",
                 "// the conversation subject would be the PC.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -246,13 +266,18 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 88,
+                "character": 101
+            },
             "comments": [
                 "// Used for bubble text type speaking.",
                 "// Example: CutSpeakString(0.0, GetObjectByTag(\"drow_priest\"), \"I like",
                 "// green eggs and ham.\"); would have the object drow_priest speak the",
                 "// line \"I like green eggs and ham.\" after no delay.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -319,84 +344,17 @@
                     "defaultValue": "TRUE"
                 }
             ],
-            "comments": [
-                "// Used if you need a cutscene participant to do an animation.",
-                "// Example: CutPlayAnimation(<cutscene>, 26.0, oPC, ANIMATION_FIREFORGET_BOW, 3.0);",
-                "// would have the PC bow for 3 seconds after a 26 second delay.",
-                "//"
-            ]
-        },
-        {
-            "position": {
-                "line": 100,
-                "character": 5
+            "signatureEnd": {
+                "line": 94,
+                "character": 116
             },
-            "identifier": "CutPlayAnimation",
-            "tokenType": 3,
-            "returnType": "void",
-            "params": [
-                {
-                    "position": {
-                        "line": 100,
-                        "character": 26
-                    },
-                    "identifier": "nCutscene",
-                    "tokenType": 25,
-                    "valueType": "int"
-                },
-                {
-                    "position": {
-                        "line": 100,
-                        "character": 43
-                    },
-                    "identifier": "fDelay",
-                    "tokenType": 25,
-                    "valueType": "float"
-                },
-                {
-                    "position": {
-                        "line": 100,
-                        "character": 58
-                    },
-                    "identifier": "oObject",
-                    "tokenType": 25,
-                    "valueType": "object"
-                },
-                {
-                    "position": {
-                        "line": 100,
-                        "character": 71
-                    },
-                    "identifier": "nAnimation",
-                    "tokenType": 25,
-                    "valueType": "int"
-                },
-                {
-                    "position": {
-                        "line": 100,
-                        "character": 89
-                    },
-                    "identifier": "fLength",
-                    "tokenType": 25,
-                    "valueType": "float"
-                },
-                {
-                    "position": {
-                        "line": 100,
-                        "character": 102
-                    },
-                    "identifier": "iShift",
-                    "tokenType": 25,
-                    "valueType": "int",
-                    "defaultValue": "TRUE"
-                }
-            ],
             "comments": [
                 "// Used if you need a cutscene participant to do an animation.",
                 "// Example: CutPlayAnimation(<cutscene>, 26.0, oPC, ANIMATION_FIREFORGET_BOW, 3.0);",
                 "// would have the PC bow for 3 seconds after a 26 second delay.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -454,13 +412,18 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 107,
+                "character": 97
+            },
             "comments": [
                 "// Used to jump the PC to a location.",
                 "// Example: CutJumpToLocation(20.0, oPC, GetLocation(GetWaypointByTag",
                 "// (\"wp_jump\")); would jump the PC to the wp_jump waypoint after a 20",
                 "// second delay.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -518,13 +481,18 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 114,
+                "character": 96
+            },
             "comments": [
                 "// Used to jump the PC or NPC to an object.",
                 "// Example: CutJumpToObject(20.0, oPC, GetObject(GetObjectByTag",
                 "// (\"invis_object\")); would jump the PC to the invis_object after a 20",
                 "// second delay.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -591,12 +559,17 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 120,
+                "character": 112
+            },
             "comments": [
                 "// Used to move the PC or NPC to an object.",
                 "// Example: CutActionMoveToObject(2.0, oPC, oTable, TRUE); would have the",
                 "// PC run to oTable after a 2 second delay. TRUE = run, FALSE = walk.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -663,12 +636,17 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 126,
+                "character": 113
+            },
             "comments": [
                 "// Used to move the PC or NPC to a location.",
                 "// Example: CutActionMoveToLocation(2.0, oPC, lTable, FALSE); would have the",
                 "// PC walk to lTable after a 2 second delay. TRUE = run, FALSE = walk.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -753,6 +731,10 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 135,
+                "character": 133
+            },
             "comments": [
                 "// Used to delay object create. Pass the type, the sTemplate, the location,",
                 "// and the effect you wish to have appear when the object is created",
@@ -761,7 +743,8 @@
                 "// would create a placeable with the resref of \"resref\" at the location",
                 "// lLoc after 2.3 seconds, with the VFX_FNF_HOLY_STRIKE effect.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -819,12 +802,17 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 141,
+                "character": 96
+            },
             "comments": [
                 "// Used to set the facing of a creature.",
                 "// EXAMPLE CutSetFacingPoint(22.5, oPC, \"creature_tag\"); would",
                 "// have the PC face \"creature_tag\" object after a 22.5 second delay.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -873,13 +861,18 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 148,
+                "character": 84
+            },
             "comments": [
                 "// Used to fade out and back in, with a black screen section of",
                 "// 2 seconds in between.",
                 "// EXAMPLE: CallFadeOutAndIn(35.0, oPC); would Fade the screen",
                 "// out and back in on the PC, after a delay of 35 seconds.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -928,12 +921,17 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 154,
+                "character": 83
+            },
             "comments": [
                 "// Used to fade out.",
                 "// EXAMPLE: CallFadeToBlack(35.0, oPC); would Fade the screen",
                 "// out on the PC, after a delay of 35 seconds.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -982,12 +980,17 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 160,
+                "character": 85
+            },
             "comments": [
                 "// Used to fade in.",
                 "// EXAMPLE: CallFadeFromBlack(35.0, oPC); would Fade the screen",
                 "// in on the PC, after a delay of 35 seconds.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1081,6 +1084,10 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 174,
+                "character": 152
+            },
             "comments": [
                 "// Used to set the camera for cutscene dramatics.",
                 "// EXAMPLE: To set a camera with the following settings on the PC,",
@@ -1094,7 +1101,8 @@
                 "//   CutSetCamera(30.0, oPC, CAMERA_MODE_TOP_DOWN, 170.0, 5.0, 50.0,",
                 "//                CAMERA_TRANSITION_TYPE_MEDIUM);",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1143,12 +1151,17 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 180,
+                "character": 87
+            },
             "comments": [
                 "// Used to clear the actions of the subject.",
                 "// EXAMPLE: CutClearAllActions(3.2, GetObjectByTag(\"guard\"));",
                 "//   would clear the actions of \"guard\" after a 3.2 second delay.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1233,6 +1246,10 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 189,
+                "character": 143
+            },
             "comments": [
                 "// Used to apply a visual effect at a location. The PC is passed to",
                 "// determine if the cutscene has been aborted or not.",
@@ -1241,7 +1258,8 @@
                 "//   would have a holy strike visual appear at lLoc after a 98.3 second delay.",
                 "//   The duration is instant, lasting the default time.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1317,6 +1335,10 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 197,
+                "character": 126
+            },
             "comments": [
                 "// Used to apply a visual effect to an object.",
                 "// EXAMPLE: CutApplyEffectToObject(98.3, oPC, DURATION_TYPE_TEMPORARY,",
@@ -1324,7 +1346,8 @@
                 "//   would have a PETRIFY visual appear to the PC after a 98.3 second delay.",
                 "//   The duration is temporary, lasting 4 seconds.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1400,10 +1423,15 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 201,
+                "character": 130
+            },
             "comments": [
                 "//For all other effects (NOT VISUAL EFFECTS)",
                 "//Used to apply a NON visual effect to an object."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1461,13 +1489,18 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 208,
+                "character": 93
+            },
             "comments": [
                 "// Used to apply a knockdown effect to an object.",
                 "// EXAMPLE: CutKnockdown(98.3, oPC, 4.0);",
                 "//   would have a knockdown appear on the PC after a 98.3 second delay.",
                 "//   The duration is always temporary, this one lasting 4 seconds.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1525,6 +1558,10 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 216,
+                "character": 88
+            },
             "comments": [
                 "// Used to apply a death effect to an object.",
                 "// EXAMPLE: CutDeath(98.3, oPC, TRUE);",
@@ -1532,7 +1569,8 @@
                 "//   The duration is always instant. TRUE is used if you want a",
                 "//   spectacular death. Set FALSE otherwise.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1608,6 +1646,10 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 225,
+                "character": 138
+            },
             "comments": [
                 "// Used to cast a fake spell at an object.",
                 "// EXAMPLE: CutActionCastFakeSpellAtObject(23.0, oPC, SPELL_SUNBEAM, oTarget,",
@@ -1616,7 +1658,8 @@
                 "//            projectile path. This would happen after a 23",
                 "//            second delay.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1692,6 +1735,10 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 234,
+                "character": 139
+            },
             "comments": [
                 "// Used to cast a fake spell at a location.",
                 "// EXAMPLE: CutActionCastFakeSpellAtLocation(23.0, oPC, SPELL_SUNBEAM, lLoc,",
@@ -1700,7 +1747,8 @@
                 "//            projectile path. This would happen after a 23",
                 "//            second delay.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1749,6 +1797,10 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 242,
+                "character": 79
+            },
             "comments": [
                 "// Used to set the PC's location so they can be jumped around as though",
                 "// they are the camera.",
@@ -1756,7 +1808,8 @@
                 "//   on the PC, as a variable, as a location to be returned to later. This",
                 "//   would happen after a 23 second delay.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1805,13 +1858,18 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 249,
+                "character": 83
+            },
             "comments": [
                 "// Used to recall the PC's location so they can be jumped back to their",
                 "// original location, stored by CutGetLocation.",
                 "// EXAMPLE: CutRestoreLocation(23.0, oPC); would return the PC",
                 "//   to their original spot. This would happen after a 23 second delay.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1869,12 +1927,17 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 255,
+                "character": 95
+            },
             "comments": [
                 "// Used to turn cutscene mode on or off.",
                 "// EXAMPLE: CutSetCutsceneMode(10.0, oPC, TRUE); would turn cutscene mode",
                 "//   on after 10 seconds for the PC.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1932,12 +1995,17 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 261,
+                "character": 95
+            },
             "comments": [
                 "// Used to turn plot flags on or off.",
                 "// EXAMPLE: CutSetPlotFlag(10.0, oObject, 1); would turn plot flag to",
                 "//   on after 10 seconds for the object.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1986,13 +2054,18 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 268,
+                "character": 85
+            },
             "comments": [
                 "// Used to destroy objects. Make sure they are destroyable first with the",
                 "// CutSetPlotFlag function.",
                 "// EXAMPLE: CutDestroyObject(10.0, oObject); would destroy the object",
                 "//   after 10 seconds.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2041,12 +2114,17 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 274,
+                "character": 85
+            },
             "comments": [
                 "// Used to store the camera position.",
                 "// EXAMPLE: CutStoreCameraFacing(10.0, oPC); would set the current",
                 "//   camera settings at the 10.0 mark.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2095,12 +2173,17 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 280,
+                "character": 87
+            },
             "comments": [
                 "// Used to restore the camera position.",
                 "// EXAMPLE: CutRestoreCameraFacing(10.0, oPC); would set the old",
                 "//   camera settings back at the 10.0 mark.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2149,13 +2232,18 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 287,
+                "character": 79
+            },
             "comments": [
                 "// Used to set the screen to black.  This is very useful in covering up",
                 "// and cutscene jumps that happen in the same area as the play area.",
                 "// EXAMPLE: CutBlackScreen(10.0, oPC); would set the screen to black",
                 "//   at the 10.0 mark.",
                 "//"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2204,14 +2292,3284 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 293,
+                "character": 76
+            },
             "comments": [
                 "// Used to remove the screen to black.",
                 "// EXAMPLE: CutStopFade(10.0, oPC); would set the screen back from black",
                 "//   at the 10.0 mark.",
                 "//"
-            ]
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 326,
+                "character": 5
+            },
+            "identifier": "CallRemoveEffects",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 326,
+                        "character": 27
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 326,
+                        "character": 45
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 326,
+                "character": 53
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 363,
+                "character": 5
+            },
+            "identifier": "CallActionStartConversation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 363,
+                        "character": 37
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 363,
+                        "character": 55
+                    },
+                    "identifier": "oNPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 363,
+                        "character": 68
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 363,
+                        "character": 80
+                    },
+                    "identifier": "szConversationFile",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 363,
+                "character": 99
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 390,
+                "character": 5
+            },
+            "identifier": "CallSpeakString",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 390,
+                        "character": 25
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 390,
+                        "character": 43
+                    },
+                    "identifier": "oSpeaker",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 390,
+                        "character": 60
+                    },
+                    "identifier": "szString",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 390,
+                "character": 69
+            },
+            "comments": [
+                "// Private function used to implement CutSpeakString"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 417,
+                "character": 5
+            },
+            "identifier": "CallPlayAnimation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 417,
+                        "character": 27
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 417,
+                        "character": 45
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 417,
+                        "character": 58
+                    },
+                    "identifier": "nAnimation",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 417,
+                        "character": 76
+                    },
+                    "identifier": "fLength",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "signatureEnd": {
+                "line": 417,
+                "character": 84
+            },
+            "comments": [
+                "// Private function used to implement CutPlayAnimation."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 443,
+                "character": 5
+            },
+            "identifier": "CallJumpToLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 443,
+                        "character": 28
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 443,
+                        "character": 46
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 443,
+                        "character": 60
+                    },
+                    "identifier": "lLoc",
+                    "tokenType": 25,
+                    "valueType": "location"
+                }
+            ],
+            "signatureEnd": {
+                "line": 443,
+                "character": 65
+            },
+            "comments": [
+                "// Private function used to implement CutJumpToLocation"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 470,
+                "character": 5
+            },
+            "identifier": "CallJumpToObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 470,
+                        "character": 26
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 470,
+                        "character": 44
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 470,
+                        "character": 56
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 470,
+                "character": 64
+            },
+            "comments": [
+                "// Private function used to implement CutJumpToObject"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 499,
+                "character": 5
+            },
+            "identifier": "CallActionMoveToObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 499,
+                        "character": 32
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 499,
+                        "character": 50
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 499,
+                        "character": 62
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 499,
+                        "character": 75
+                    },
+                    "identifier": "iRun",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 499,
+                "character": 80
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 540,
+                "character": 5
+            },
+            "identifier": "CallActionMoveToLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 540,
+                        "character": 34
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 540,
+                        "character": 52
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 540,
+                        "character": 66
+                    },
+                    "identifier": "lLoc",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 540,
+                        "character": 76
+                    },
+                    "identifier": "iRun",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 540,
+                "character": 81
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 581,
+                "character": 5
+            },
+            "identifier": "CallCreateObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 581,
+                        "character": 26
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 581,
+                        "character": 41
+                    },
+                    "identifier": "iType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 581,
+                        "character": 55
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 581,
+                        "character": 67
+                    },
+                    "identifier": "sName",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 581,
+                        "character": 83
+                    },
+                    "identifier": "lLoc",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 581,
+                        "character": 93
+                    },
+                    "identifier": "iEffect",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 581,
+                "character": 101
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 605,
+                "character": 5
+            },
+            "identifier": "CallSetFacingPoint",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 605,
+                        "character": 28
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 605,
+                        "character": 46
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 605,
+                        "character": 58
+                    },
+                    "identifier": "szTag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 605,
+                "character": 64
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 630,
+                "character": 5
+            },
+            "identifier": "CallFadeOutAndIn",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 630,
+                        "character": 26
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 630,
+                        "character": 44
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 630,
+                "character": 52
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 653,
+                "character": 5
+            },
+            "identifier": "CallFadeToBlack",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 653,
+                        "character": 25
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 653,
+                        "character": 43
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 653,
+                "character": 51
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 673,
+                "character": 5
+            },
+            "identifier": "CallFadeFromBlack",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 673,
+                        "character": 27
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 673,
+                        "character": 45
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 673,
+                "character": 53
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 693,
+                "character": 5
+            },
+            "identifier": "CallSetCamera",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 693,
+                        "character": 23
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 693,
+                        "character": 41
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 693,
+                        "character": 54
+                    },
+                    "identifier": "iCameraType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 693,
+                        "character": 73
+                    },
+                    "identifier": "fFacing",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 693,
+                        "character": 88
+                    },
+                    "identifier": "fZoom",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 693,
+                        "character": 101
+                    },
+                    "identifier": "fPitch",
+                    "tokenType": 25,
+                    "valueType": "float"
+                },
+                {
+                    "position": {
+                        "line": 693,
+                        "character": 113
+                    },
+                    "identifier": "nSpeed",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 693,
+                "character": 120
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 722,
+                "character": 5
+            },
+            "identifier": "CallClearAllActions",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 722,
+                        "character": 29
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 722,
+                        "character": 47
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 722,
+                "character": 55
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 749,
+                "character": 5
+            },
+            "identifier": "CallApplyEffectAtLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 749,
+                        "character": 35
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 749,
+                        "character": 53
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 749,
+                        "character": 66
+                    },
+                    "identifier": "iDur",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 749,
+                        "character": 76
+                    },
+                    "identifier": "iEffect",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 749,
+                        "character": 94
+                    },
+                    "identifier": "lLoc",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 749,
+                        "character": 106
+                    },
+                    "identifier": "fDur",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "signatureEnd": {
+                "line": 749,
+                "character": 111
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 781,
+                "character": 5
+            },
+            "identifier": "CallApplyEffectToObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 781,
+                        "character": 33
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 781,
+                        "character": 48
+                    },
+                    "identifier": "iDur",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 781,
+                        "character": 58
+                    },
+                    "identifier": "iEffect",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 781,
+                        "character": 74
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 781,
+                        "character": 89
+                    },
+                    "identifier": "fDur",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "signatureEnd": {
+                "line": 781,
+                "character": 94
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 811,
+                "character": 5
+            },
+            "identifier": "CallApplyEffectToObject2",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 811,
+                        "character": 34
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 811,
+                        "character": 49
+                    },
+                    "identifier": "iDur",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 811,
+                        "character": 62
+                    },
+                    "identifier": "eEffect",
+                    "tokenType": 25,
+                    "valueType": "effect"
+                },
+                {
+                    "position": {
+                        "line": 811,
+                        "character": 78
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 811,
+                        "character": 93
+                    },
+                    "identifier": "fDur",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "signatureEnd": {
+                "line": 811,
+                "character": 98
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 835,
+                "character": 5
+            },
+            "identifier": "CallKnockdown",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 835,
+                        "character": 23
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 835,
+                        "character": 41
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 835,
+                        "character": 56
+                    },
+                    "identifier": "fDur",
+                    "tokenType": 25,
+                    "valueType": "float"
+                }
+            ],
+            "signatureEnd": {
+                "line": 835,
+                "character": 61
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 865,
+                "character": 5
+            },
+            "identifier": "CallDeath",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 865,
+                        "character": 19
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 865,
+                        "character": 37
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 865,
+                        "character": 50
+                    },
+                    "identifier": "iSpec",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 865,
+                "character": 56
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 896,
+                "character": 5
+            },
+            "identifier": "CallActionCastFakeSpellAtObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 896,
+                        "character": 41
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 896,
+                        "character": 56
+                    },
+                    "identifier": "iSpell",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 896,
+                        "character": 71
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 896,
+                        "character": 87
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 896,
+                        "character": 100
+                    },
+                    "identifier": "iPath",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 896,
+                "character": 106
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 925,
+                "character": 5
+            },
+            "identifier": "CallActionCastFakeSpellAtLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 925,
+                        "character": 43
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 925,
+                        "character": 58
+                    },
+                    "identifier": "iSpell",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 925,
+                        "character": 73
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 925,
+                        "character": 91
+                    },
+                    "identifier": "lLoc",
+                    "tokenType": 25,
+                    "valueType": "location"
+                },
+                {
+                    "position": {
+                        "line": 925,
+                        "character": 101
+                    },
+                    "identifier": "iPath",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 925,
+                "character": 107
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 953,
+                "character": 5
+            },
+            "identifier": "CallSetLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 953,
+                        "character": 25
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 953,
+                        "character": 43
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 953,
+                "character": 47
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 980,
+                "character": 5
+            },
+            "identifier": "CallRestoreLocation",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 980,
+                        "character": 29
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 980,
+                        "character": 47
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 980,
+                "character": 51
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1024,
+                "character": 5
+            },
+            "identifier": "CallSetCutsceneMode",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1024,
+                        "character": 29
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 1024,
+                        "character": 47
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1024,
+                        "character": 56
+                    },
+                    "identifier": "iValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1024,
+                "character": 63
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1060,
+                "character": 5
+            },
+            "identifier": "CallSetPlotFlag",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1060,
+                        "character": 25
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 1060,
+                        "character": 43
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 1060,
+                        "character": 56
+                    },
+                    "identifier": "iValue",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1060,
+                "character": 63
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1081,
+                "character": 5
+            },
+            "identifier": "CallDestroyObject",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1081,
+                        "character": 27
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 1081,
+                        "character": 45
+                    },
+                    "identifier": "oObject",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1081,
+                "character": 53
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1103,
+                "character": 5
+            },
+            "identifier": "CallStoreCameraFacing",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1103,
+                        "character": 31
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 1103,
+                        "character": 49
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1103,
+                "character": 53
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1124,
+                "character": 5
+            },
+            "identifier": "CallRestoreCameraFacing",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1124,
+                        "character": 33
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 1124,
+                        "character": 51
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1124,
+                "character": 55
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1145,
+                "character": 5
+            },
+            "identifier": "CallBlackScreen",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1145,
+                        "character": 25
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 1145,
+                        "character": 43
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1145,
+                "character": 47
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 1167,
+                "character": 5
+            },
+            "identifier": "CallStopFade",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 1167,
+                        "character": 22
+                    },
+                    "identifier": "nCutscene",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 1167,
+                        "character": 40
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 1167,
+                "character": 44
+            },
+            "comments": [
+                "// Private function used to implement the same function with the \"Cut\" prefix in",
+                "// place of the \"Call\" prefix."
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 100,
+                "character": 26
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 100,
+                "character": 43
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 100,
+                "character": 58
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 100,
+                "character": 71
+            },
+            "identifier": "nAnimation",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 100,
+                "character": 89
+            },
+            "identifier": "fLength",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 100,
+                "character": 102
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 305,
+                "character": 22
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 305,
+                "character": 35
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "fShift",
+            "position": {
+                "line": 307,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 317,
+                "character": 30
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "eEff",
+            "position": {
+                "line": 332,
+                "character": 19
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eEff1",
+            "position": {
+                "line": 342,
+                "character": 15
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 356,
+                "character": 26
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 356,
+                "character": 43
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 356,
+                "character": 58
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 356,
+                "character": 71
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 384,
+                "character": 36
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 384,
+                "character": 53
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 384,
+                "character": 68
+            },
+            "identifier": "oNPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 384,
+                "character": 81
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 384,
+                "character": 93
+            },
+            "identifier": "szConversationFile",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 384,
+                "character": 117
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 410,
+                "character": 24
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 410,
+                "character": 41
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 410,
+                "character": 56
+            },
+            "identifier": "oSpeaker",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 410,
+                "character": 73
+            },
+            "identifier": "szString",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 410,
+                "character": 87
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 436,
+                "character": 26
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 436,
+                "character": 43
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 436,
+                "character": 58
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 436,
+                "character": 71
+            },
+            "identifier": "nAnimation",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 436,
+                "character": 89
+            },
+            "identifier": "fLength",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 436,
+                "character": 102
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 463,
+                "character": 27
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 463,
+                "character": 44
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 463,
+                "character": 59
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 463,
+                "character": 73
+            },
+            "identifier": "lLoc",
+            "tokenType": 25,
+            "valueType": "location"
+        },
+        {
+            "position": {
+                "line": 463,
+                "character": 83
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 491,
+                "character": 25
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 491,
+                "character": 42
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 491,
+                "character": 57
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 491,
+                "character": 69
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 491,
+                "character": 82
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 532,
+                "character": 31
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 532,
+                "character": 48
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 532,
+                "character": 63
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 532,
+                "character": 75
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 532,
+                "character": 88
+            },
+            "identifier": "iRun",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 532,
+                "character": 98
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 573,
+                "character": 33
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 573,
+                "character": 50
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 573,
+                "character": 65
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 573,
+                "character": 79
+            },
+            "identifier": "lLoc",
+            "tokenType": 25,
+            "valueType": "location"
+        },
+        {
+            "position": {
+                "line": 573,
+                "character": 89
+            },
+            "identifier": "iRun",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 573,
+                "character": 99
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 597,
+                "character": 25
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 597,
+                "character": 42
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 597,
+                "character": 57
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 597,
+                "character": 66
+            },
+            "identifier": "iType",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 597,
+                "character": 80
+            },
+            "identifier": "sName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 597,
+                "character": 96
+            },
+            "identifier": "lLoc",
+            "tokenType": 25,
+            "valueType": "location"
+        },
+        {
+            "position": {
+                "line": 597,
+                "character": 106
+            },
+            "identifier": "iEffect",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 597,
+                "character": 119
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 622,
+                "character": 27
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 622,
+                "character": 44
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 622,
+                "character": 59
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 622,
+                "character": 71
+            },
+            "identifier": "szTag",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 622,
+                "character": 82
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 645,
+                "character": 25
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 645,
+                "character": 42
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 645,
+                "character": 57
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 645,
+                "character": 70
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 665,
+                "character": 24
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 665,
+                "character": 41
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 665,
+                "character": 56
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 665,
+                "character": 69
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 685,
+                "character": 26
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 685,
+                "character": 43
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 685,
+                "character": 58
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 685,
+                "character": 71
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 714,
+                "character": 22
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 714,
+                "character": 39
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 714,
+                "character": 54
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 714,
+                "character": 67
+            },
+            "identifier": "iCameraType",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 714,
+                "character": 86
+            },
+            "identifier": "fFacing",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 714,
+                "character": 101
+            },
+            "identifier": "fZoom",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 714,
+                "character": 114
+            },
+            "identifier": "fPitch",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 714,
+                "character": 126
+            },
+            "identifier": "nSpeed",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 714,
+                "character": 138
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 741,
+                "character": 28
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 741,
+                "character": 45
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 741,
+                "character": 60
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 741,
+                "character": 73
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "identifier": "eEffect",
+            "position": {
+                "line": 755,
+                "character": 19
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eEffect1",
+            "position": {
+                "line": 761,
+                "character": 15
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 773,
+                "character": 34
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 773,
+                "character": 51
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 773,
+                "character": 66
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 773,
+                "character": 79
+            },
+            "identifier": "iDur",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 773,
+                "character": 89
+            },
+            "identifier": "iEffect",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 773,
+                "character": 107
+            },
+            "identifier": "lLoc",
+            "tokenType": 25,
+            "valueType": "location"
+        },
+        {
+            "position": {
+                "line": 773,
+                "character": 119
+            },
+            "identifier": "fDur",
+            "tokenType": 25,
+            "valueType": "float",
+            "defaultValue": "0.0"
+        },
+        {
+            "position": {
+                "line": 773,
+                "character": 135
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "identifier": "eEffect",
+            "position": {
+                "line": 787,
+                "character": 19
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eEffect1",
+            "position": {
+                "line": 793,
+                "character": 15
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 804,
+                "character": 32
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 804,
+                "character": 49
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 804,
+                "character": 61
+            },
+            "identifier": "iDur",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 804,
+                "character": 71
+            },
+            "identifier": "iEffect",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 804,
+                "character": 87
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 804,
+                "character": 102
+            },
+            "identifier": "fDur",
+            "tokenType": 25,
+            "valueType": "float",
+            "defaultValue": "0.0"
+        },
+        {
+            "position": {
+                "line": 804,
+                "character": 118
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 828,
+                "character": 33
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 828,
+                "character": 50
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 828,
+                "character": 62
+            },
+            "identifier": "iDur",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 828,
+                "character": 75
+            },
+            "identifier": "eEffect",
+            "tokenType": 25,
+            "valueType": "effect"
+        },
+        {
+            "position": {
+                "line": 828,
+                "character": 91
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 828,
+                "character": 106
+            },
+            "identifier": "fDur",
+            "tokenType": 25,
+            "valueType": "float",
+            "defaultValue": "0.0"
+        },
+        {
+            "position": {
+                "line": 828,
+                "character": 122
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "identifier": "eEffect",
+            "position": {
+                "line": 841,
+                "character": 19
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eEffect",
+            "position": {
+                "line": 847,
+                "character": 15
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 857,
+                "character": 22
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 857,
+                "character": 39
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 857,
+                "character": 54
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 857,
+                "character": 69
+            },
+            "identifier": "fDur",
+            "tokenType": 25,
+            "valueType": "float",
+            "defaultValue": "3.0"
+        },
+        {
+            "position": {
+                "line": 857,
+                "character": 85
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "identifier": "eEffect",
+            "position": {
+                "line": 871,
+                "character": 19
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eEffect1",
+            "position": {
+                "line": 877,
+                "character": 15
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 888,
+                "character": 18
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 888,
+                "character": 35
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 888,
+                "character": 50
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 888,
+                "character": 63
+            },
+            "identifier": "iSpec",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "FALSE"
+        },
+        {
+            "position": {
+                "line": 888,
+                "character": 82
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 917,
+                "character": 40
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 917,
+                "character": 57
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 917,
+                "character": 69
+            },
+            "identifier": "iSpell",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 917,
+                "character": 84
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 917,
+                "character": 100
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 917,
+                "character": 113
+            },
+            "identifier": "iPath",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 917,
+                "character": 124
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 945,
+                "character": 42
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 945,
+                "character": 59
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 945,
+                "character": 71
+            },
+            "identifier": "iSpell",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 945,
+                "character": 86
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 945,
+                "character": 104
+            },
+            "identifier": "lLoc",
+            "tokenType": 25,
+            "valueType": "location"
+        },
+        {
+            "position": {
+                "line": 945,
+                "character": 114
+            },
+            "identifier": "iPath",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 945,
+                "character": 125
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 972,
+                "character": 24
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 972,
+                "character": 41
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 972,
+                "character": 56
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 972,
+                "character": 65
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "identifier": "lLoc",
+            "position": {
+                "line": 986,
+                "character": 21
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "lLoc1",
+            "position": {
+                "line": 999,
+                "character": 17
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 1016,
+                "character": 28
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 1016,
+                "character": 45
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 1016,
+                "character": 60
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1016,
+                "character": 69
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 1053,
+                "character": 28
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 1053,
+                "character": 45
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 1053,
+                "character": 60
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1053,
+                "character": 69
+            },
+            "identifier": "iValue",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 1053,
+                "character": 81
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 1074,
+                "character": 24
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 1074,
+                "character": 41
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 1074,
+                "character": 56
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1074,
+                "character": 69
+            },
+            "identifier": "iValue",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 1074,
+                "character": 81
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 1096,
+                "character": 26
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 1096,
+                "character": 43
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 1096,
+                "character": 58
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1096,
+                "character": 71
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 1117,
+                "character": 30
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 1117,
+                "character": 47
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 1117,
+                "character": 62
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1117,
+                "character": 71
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 1138,
+                "character": 32
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 1138,
+                "character": 49
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 1138,
+                "character": 64
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1138,
+                "character": 73
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 1160,
+                "character": 24
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 1160,
+                "character": 41
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 1160,
+                "character": 56
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1160,
+                "character": 65
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 1181,
+                "character": 21
+            },
+            "identifier": "nCutscene",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 1181,
+                "character": 38
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 1181,
+                "character": 53
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 1181,
+                "character": 62
+            },
+            "identifier": "iShift",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        }
+    ]
 }

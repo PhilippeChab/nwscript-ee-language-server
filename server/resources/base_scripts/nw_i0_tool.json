@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 17,
@@ -39,8 +39,433 @@
             "tokenType": 21,
             "valueType": "int",
             "value": "70"
+        },
+        {
+            "position": {
+                "line": 37,
+                "character": 4
+            },
+            "identifier": "HasItem",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 37,
+                        "character": 19
+                    },
+                    "identifier": "oCreature",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 37,
+                        "character": 37
+                    },
+                    "identifier": "s",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 37,
+                "character": 39
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 54,
+                "character": 5
+            },
+            "identifier": "TakeGold",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 54,
+                        "character": 18
+                    },
+                    "identifier": "nAmount",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 54,
+                        "character": 34
+                    },
+                    "identifier": "oGoldHolder",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 54,
+                        "character": 51
+                    },
+                    "identifier": "bDestroy",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "signatureEnd": {
+                "line": 54,
+                "character": 65
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By: Brent",
+                "//:: Created On: November 2001",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 71,
+                "character": 4
+            },
+            "identifier": "HasGold",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 16
+                    },
+                    "identifier": "nAmount",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 71,
+                        "character": 32
+                    },
+                    "identifier": "oGoldHolder",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 71,
+                "character": 44
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By:",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 87,
+                "character": 4
+            },
+            "identifier": "AutoDC",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 87,
+                        "character": 15
+                    },
+                    "identifier": "DC",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 87,
+                        "character": 23
+                    },
+                    "identifier": "nSkill",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 87,
+                        "character": 38
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 87,
+                "character": 46
+            },
+            "comments": [
+                "///////////////////////////////////////////////////////////////////////////////",
+                "//",
+                "//  AutoDC",
+                "//",
+                "///////////////////////////////////////////////////////////////////////////////",
+                "//  Returns a pass value based on the object's level and the suggested DC",
+                "// December 20 2001: Changed so that the difficulty is determined by the",
+                "// NPC's Hit Dice",
+                "///////////////////////////////////////////////////////////////////////////////",
+                "//  Created By: Brent, September 13 2001",
+                "///////////////////////////////////////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 135,
+                "character": 5
+            },
+            "identifier": "DoGiveXP",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 21
+                    },
+                    "identifier": "sJournalTag",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 38
+                    },
+                    "identifier": "nPercentage",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 58
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 135,
+                        "character": 71
+                    },
+                    "identifier": "QuestAlignment",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "ALIGNMENT_NEUTRAL"
+                }
+            ],
+            "signatureEnd": {
+                "line": 135,
+                "character": 104
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 180,
+                "character": 5
+            },
+            "identifier": "RewardPartyGP",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 180,
+                        "character": 23
+                    },
+                    "identifier": "GP",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 180,
+                        "character": 34
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 180,
+                        "character": 46
+                    },
+                    "identifier": "bAllParty",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "signatureEnd": {
+                "line": 180,
+                "character": 61
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 213,
+                "character": 5
+            },
+            "identifier": "RewardPartyXP",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 213,
+                        "character": 23
+                    },
+                    "identifier": "XP",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 213,
+                        "character": 34
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 213,
+                        "character": 46
+                    },
+                    "identifier": "bAllParty",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "signatureEnd": {
+                "line": 213,
+                "character": 61
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 244,
+                "character": 4
+            },
+            "identifier": "CheckPartyForItem",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 244,
+                        "character": 29
+                    },
+                    "identifier": "oMember",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 244,
+                        "character": 45
+                    },
+                    "identifier": "sItem",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 244,
+                "character": 51
+            },
+            "comments": [],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "identifier": "nLevel",
+            "position": {
+                "line": 94,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nTest",
+            "position": {
+                "line": 95,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRewardMod",
+            "position": {
+                "line": 138,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nXP",
+            "position": {
+                "line": 144,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPartyMember",
+            "position": {
+                "line": 188,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPartyMember",
+            "position": {
+                "line": 221,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPartyMember",
+            "position": {
+                "line": 246,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        }
+    ]
 }

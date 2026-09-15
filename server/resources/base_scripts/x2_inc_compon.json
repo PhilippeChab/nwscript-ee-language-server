@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 15,
@@ -8,7 +8,8 @@
             "identifier": "MIN_SKILL_LEVEL",
             "tokenType": 21,
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "isConst": true
         },
         {
             "position": {
@@ -29,9 +30,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 19,
+                "character": 37
+            },
             "comments": [
                 "// * Drops craft items if killed or bashed"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -42,11 +48,126 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
+            "signatureEnd": {
+                "line": 21,
+                "character": 27
+            },
             "comments": [
                 "// * handles dropping crafting items if a placeable is bashed"
-            ]
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 24,
+                "character": 29
+            },
+            "identifier": "oSlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "oSelf",
+            "position": {
+                "line": 31,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nAppearance",
+            "position": {
+                "line": 32,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sCol",
+            "position": {
+                "line": 34,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sNumCol",
+            "position": {
+                "line": 35,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bDoor",
+            "position": {
+                "line": 36,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nNum",
+            "position": {
+                "line": 37,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sResRef",
+            "position": {
+                "line": 57,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sNum",
+            "position": {
+                "line": 59,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 66,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "lLoc",
+            "position": {
+                "line": 67,
+                "character": 21
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oKiller",
+            "position": {
+                "line": 86,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        }
+    ]
 }

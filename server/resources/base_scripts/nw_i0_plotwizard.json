@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 24,
@@ -28,9 +28,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 24,
+                "character": 55
+            },
             "comments": [
                 "// Give the specified amount of experience to everyone in oPC's party."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -69,11 +74,16 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 33,
+                "character": 67
+            },
             "comments": [
                 "// Set the local integer variable sVarName to nValue",
                 "// for all players in oPC's party.",
                 "// If the local int is already greater than nValue, do nothing."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -103,11 +113,16 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 43,
+                "character": 64
+            },
             "comments": [
                 "// Set the local integer variable sVarName to nValue",
                 "// for all players in the PC Speaker's party.",
                 "// If the local int is already greater than nValue, do nothing."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -164,7 +179,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 45,
+                "character": 129
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -212,9 +232,268 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 47,
+                "character": 111
+            },
+            "comments": [],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 52,
+                "character": 34
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 52,
+                "character": 43
+            },
+            "identifier": "nExperience",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "oPartyMember",
+            "position": {
+                "line": 54,
+                "character": 9
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCurrentXP",
+            "position": {
+                "line": 63,
+                "character": 10
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nNewXP",
+            "position": {
+                "line": 64,
+                "character": 10
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 90,
+                "character": 34
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 90,
+                "character": 46
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 90,
+                "character": 60
+            },
+            "identifier": "nValue",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "oPartyMember",
+            "position": {
+                "line": 92,
+                "character": 9
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 103,
+                "character": 43
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 103,
+                "character": 57
+            },
+            "identifier": "nValue",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 108,
+                "character": 54
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 108,
+                "character": 71
+            },
+            "identifier": "sJournalTag",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 108,
+                "character": 88
+            },
+            "identifier": "nState",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 108,
+                "character": 103
+            },
+            "identifier": "sItemTag",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 108,
+                "character": 117
+            },
+            "identifier": "nExperience",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 110,
+                "character": 9
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sTag",
+            "position": {
+                "line": 111,
+                "character": 9
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPC",
+            "position": {
+                "line": 114,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nOriginalState",
+            "position": {
+                "line": 119,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPartyMember",
+            "position": {
+                "line": 120,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 134,
+                "character": 53
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 134,
+                "character": 70
+            },
+            "identifier": "sJournalTag",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 134,
+                "character": 87
+            },
+            "identifier": "nState",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 134,
+                "character": 99
+            },
+            "identifier": "nExperience",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "oPC",
+            "position": {
+                "line": 136,
+                "character": 9
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nOriginalState",
+            "position": {
+                "line": 147,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oPartyMember",
+            "position": {
+                "line": 148,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        }
+    ]
 }

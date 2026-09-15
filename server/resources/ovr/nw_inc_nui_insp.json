@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 2,
@@ -8,11 +8,458 @@
             "identifier": "NuiInspectorWindowId",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"nw_nui_inspector\""
+            "value": "\"nw_nui_inspector\"",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 4,
+                "character": 5
+            },
+            "identifier": "HandleWindowInspectorEvent",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "signatureEnd": {
+                "line": 4,
+                "character": 33
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 144,
+                "character": 5
+            },
+            "identifier": "MakeWindowInspector",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 144,
+                        "character": 32
+                    },
+                    "identifier": "pc",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 144,
+                "character": 35
+            },
+            "comments": [],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
+    "structDeclarations": [],
     "children": [
         "nw_inc_nui"
+    ],
+    "includePositions": [
+        {
+            "line": 0,
+            "character": 0
+        }
+    ],
+    "localDeclarations": [
+        {
+            "identifier": "oPlayer",
+            "position": {
+                "line": 6,
+                "character": 9
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nInspectorToken",
+            "position": {
+                "line": 8,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nToken",
+            "position": {
+                "line": 14,
+                "character": 9
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sEvent",
+            "position": {
+                "line": 15,
+                "character": 9
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sElem",
+            "position": {
+                "line": 16,
+                "character": 9
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nIdx",
+            "position": {
+                "line": 17,
+                "character": 9
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sWndId",
+            "position": {
+                "line": 18,
+                "character": 9
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "jPayld",
+            "position": {
+                "line": 19,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "msg",
+            "position": {
+                "line": 24,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nTargetToken",
+            "position": {
+                "line": 36,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "wndlst",
+            "position": {
+                "line": 43,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nth",
+            "position": {
+                "line": 44,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "itertoken",
+            "position": {
+                "line": 45,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "name",
+            "position": {
+                "line": 51,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "updateview",
+            "position": {
+                "line": 70,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "labels",
+            "position": {
+                "line": 85,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "watchval",
+            "position": {
+                "line": 86,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 88,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bind",
+            "position": {
+                "line": 90,
+                "character": 13
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "ourval",
+            "position": {
+                "line": 92,
+                "character": 11
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "theirval",
+            "position": {
+                "line": 93,
+                "character": 11
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bindlabels_bool",
+            "position": {
+                "line": 105,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bindvalues_bool",
+            "position": {
+                "line": 106,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bindlabels_readonly",
+            "position": {
+                "line": 107,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bindvalues_readonly",
+            "position": {
+                "line": 108,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nth",
+            "position": {
+                "line": 110,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bind",
+            "position": {
+                "line": 111,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "prefix",
+            "position": {
+                "line": 115,
+                "character": 13
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bval",
+            "position": {
+                "line": 118,
+                "character": 13
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "val",
+            "position": {
+                "line": 126,
+                "character": 17
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "col",
+            "position": {
+                "line": 147,
+                "character": 7
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "row",
+            "position": {
+                "line": 152,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "template",
+            "position": {
+                "line": 162,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "value",
+            "position": {
+                "line": 164,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "row",
+            "position": {
+                "line": 168,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "template",
+            "position": {
+                "line": 183,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "label",
+            "position": {
+                "line": 185,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "value",
+            "position": {
+                "line": 189,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "row",
+            "position": {
+                "line": 193,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "row",
+            "position": {
+                "line": 206,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "refreshBtn",
+            "position": {
+                "line": 208,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "root",
+            "position": {
+                "line": 214,
+                "character": 7
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nui",
+            "position": {
+                "line": 216,
+                "character": 7
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "token",
+            "position": {
+                "line": 224,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
     ]
 }

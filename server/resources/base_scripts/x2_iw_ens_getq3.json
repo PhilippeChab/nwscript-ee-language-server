@@ -1,7 +1,42 @@
 {
-    "complexTokens": [],
-    "structComplexTokens": [],
+    "globalDeclarations": [],
+    "structDeclarations": [],
     "children": [
         "x2_inc_intweapon"
+    ],
+    "includePositions": [
+        {
+            "line": 9,
+            "character": 0
+        }
+    ],
+    "entryPointDeclarations": [
+        {
+            "position": {
+                "line": 11,
+                "character": 4
+            },
+            "identifier": "StartingConditional",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 11,
+                "character": 25
+            },
+            "comments": [],
+            "implementation": true
+        }
+    ],
+    "localDeclarations": [
+        {
+            "identifier": "iResult",
+            "position": {
+                "line": 13,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
     ]
 }
