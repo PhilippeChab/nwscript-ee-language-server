@@ -41,7 +41,7 @@ Committed tests cover void/primitive/struct returns, same-line/LF/CRLF boundarie
 
 ## Timing probe
 
-Run `yarn --cwd server/tree-sitter benchmark /absolute/path/to/script.nss` to reproduce the probe.
+The migration-only timing scripts are preserved in [commit cdd19b0](https://github.com/PhilippeChab/nwscript-ee-language-server/tree/cdd19b0/server/tree-sitter). In that checkout, run `yarn --cwd server/tree-sitter benchmark /absolute/path/to/script.nss` to reproduce the probe.
 
 Local Node 24/WASM measurements used five warm-up iterations and 30 measured iterations. Each iteration created and indexed a document, appended a newline and reindexed it, then requested local scope, action target, and call context at EOF. These are component measurements, not end-to-end editor latency or comparisons with the old parser.
 
@@ -55,7 +55,7 @@ Large-file index extraction and context scans remain measurable work. This audit
 
 ## Comparison with the released parser
 
-Run `yarn --cwd server/tree-sitter compare /absolute/path/to/3.0.1-checkout /absolute/path/to/script.nss ...`. The baseline checkout needs its own installed dependencies. The script bundles each revision's tokenizer into its own ignored `server/out` directory and loads that revision's own grammar and runtime.
+In the same historical checkout, run `yarn --cwd server/tree-sitter compare /absolute/path/to/3.0.1-checkout /absolute/path/to/script.nss ...`. The baseline checkout needs its own installed dependencies. The script bundles each revision's tokenizer into its own ignored `server/out` directory and loads that revision's own grammar and runtime.
 
 Both parsers perform the same index, local-scope, member-path and action-target work at EOF. Cold means the first request on a new document; warm repeats without changes; edit appends a space and requests again. Five iterations warm up the process and twenty supply the samples. Startup, include traversal, provider rendering and UI latency are excluded. These differ from the earlier component measurements above.
 

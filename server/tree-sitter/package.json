@@ -8,9 +8,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "node ../../node_modules/eslint/bin/eslint.js --config .eslintrc.cjs . --ext .ts --max-warnings 0",
     "inspect": "tsx inspect.ts",
-    "grammar:record": "tsx record-grammar.ts",
-    "benchmark": "tsx benchmark.ts",
-    "compare": "node compare.cjs"
+    "grammar:record": "tsx record-grammar.ts"
   },
   "devDependencies": {
     "@types/emscripten": "1.41.5",
