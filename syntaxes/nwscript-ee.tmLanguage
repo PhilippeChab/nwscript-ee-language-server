@@ -275,7 +275,7 @@
       <key>dot-access</key>
       <dict>
         <key>match</key>
-        <string>(\.)(?:[ \t]*([a-zA-Z_][a-zA-Z_0-9]*\b(?!\s*\()))?</string>
+        <string>(\.)(?![0-9])(?:[ \t]*([a-zA-Z_][a-zA-Z_0-9]*\b(?!\s*\()))?</string>
         <key>captures</key>
         <dict>
           <key>1</key>
@@ -3730,7 +3730,7 @@ U[a-fA-F0-9]{,8} )</string>
         <array>
           <dict>
             <key>match</key>
-            <string>(const){0,1} *\b(action|effect|event|float|int|itemproperty|location|object|string|talent|vector|void|json|sqlquery|cassowary)\b (?(1)([a-zA-Z0-9_]+)|)</string>
+            <string>(const){0,1} *\b(action|effect|event|float|int|itemproperty|location|object|string|talent|vector|void|json|sqlquery|cassowary)\b(?:[ \t]+|$)(?(1)([a-zA-Z0-9_]+)|)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -3829,6 +3829,39 @@ U[a-fA-F0-9]{,8} )</string>
       <dict>
         <key>patterns</key>
         <array>
+          <dict>
+            <key>begin</key>
+            <string>(?&lt;=\b[rR])"</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.begin.nss</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>"(?!")</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.end.nss</string>
+              </dict>
+            </dict>
+            <key>name</key>
+            <string>string.quoted.raw.nss</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>match</key>
+                <string>""</string>
+                <key>name</key>
+                <string>constant.character.escape.nss</string>
+              </dict>
+            </array>
+          </dict>
           <dict>
             <key>begin</key>
             <string>"</string>

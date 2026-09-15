@@ -23,61 +23,11 @@ export default class DiagnoticsProvider extends Provider {
   private readonly latestValidation = new Map<string, number>();
   private readonly publishedUris = new Set<string>();
 
-  private sendDiagnostics(uri: string, diagnostics: Diagnostic[]) {
-    if (diagnostics.length) this.publishedUris.add(uri);
-    else this.publishedUris.delete(uri);
-    void this.server.connection.sendDiagnostics({ uri, diagnostics });
-  }
-
   public configurationChanged() {
     // Results from any previous configuration are no longer authoritative.
     this.latestValidation.clear();
     if (!this.server.config.compiler.enabled) {
       for (const uri of this.publishedUris) this.sendDiagnostics(uri, []);
-    }
-  }
-
-  private generateDiagnostics(uris: string[], files: FilesDiagnostics, sources: Map<string, string[]>, severity: DiagnosticSeverity) {
-    return (line: string) => {
-      const match = compilerDiagnostic.exec(line);
-      if (!match) return;
-
-      const matchingUri = uris.find((uri) => basename(fileURLToPath(uri)).toLowerCase() === match[1].trim().toLowerCase());
-      const uri = matchingUri || uris[0];
-
-      if (uri) {
-        const sourceLines = sources.get(uri) || [""];
-        const linePosition = matchingUri ? Math.min(sourceLines.length - 1, Math.max(0, Number(match[2] || 1) - 1)) : 0;
-        const diagnostic = {
-          severity,
-          range: {
-            start: { line: linePosition, character: 0 },
-            end: { line: linePosition, character: sourceLines[linePosition].length },
-          },
-          message: `${matchingUri ? "" : `${match[1].trim()}(${match[2] || 1}): `}${match[4].replace(/\s+\[<?[\d.]+ms\]$/, "").trim()}`,
-        };
-
-        files[uri].push(diagnostic);
-      }
-    };
-  }
-
-  private hasSupportedOS() {
-    return ([...Object.values(OS).filter((item) => isNaN(Number(item)))] as string[]).includes(type());
-  }
-
-  private getExecutablePath(os: ServerConfiguration["compiler"]["os"]) {
-    const specifiedOs = os || type();
-
-    switch (specifiedOs) {
-      case OS.linux:
-        return "../resources/compiler/linux/nwn_script_comp";
-      case OS.mac:
-        return "../resources/compiler/mac/nwn_script_comp";
-      case OS.windows:
-        return "../resources/compiler/windows/nwn_script_comp.exe";
-      default:
-        return "";
     }
   }
 
@@ -139,7 +89,7 @@ export default class DiagnoticsProvider extends Provider {
       for (const target of uris) this.latestValidation.set(target, validation);
 
       if (verbose) {
-        this.server.logger.info(`Compiling ${document.uri}:`);
+        this.server.logger.debug(`Compiling ${document.uri}:`);
       }
       // The compiler command:
       //  - y; continue on error
@@ -151,13 +101,13 @@ export default class DiagnoticsProvider extends Provider {
         args.push("--userdirectory");
         args.push(nwnHome);
       } else if (verbose) {
-        this.server.logger.info("Trying to resolve Neverwinter Nights home directory automatically.");
+        this.server.logger.debug("Trying to resolve Neverwinter Nights home directory automatically.");
       }
       if (Boolean(nwnInstallation)) {
         args.push("--root");
         args.push(nwnInstallation);
       } else if (verbose) {
-        this.server.logger.info("Trying to resolve Neverwinter Nights installation directory automatically.");
+        this.server.logger.debug("Trying to resolve Neverwinter Nights installation directory automatically.");
       }
       const includeDirectories = new Set(uris.map((uri) => dirname(fileURLToPath(uri))));
       includeDirectories.add(this.server.workspaceFilesSystem.getWorkspaceRootPath());
@@ -198,8 +148,8 @@ export default class DiagnoticsProvider extends Provider {
       let stderr = "";
 
       if (verbose) {
-        this.server.logger.info(this.getExecutablePath(os));
-        this.server.logger.info(JSON.stringify(args, null, 4));
+        this.server.logger.debug(this.getExecutablePath(os));
+        this.server.logger.debug(JSON.stringify(args, null, 4));
       }
 
       const child = spawn(join(__dirname, this.getExecutablePath(os)), args, { stdio: ["ignore", "ignore", "pipe"] });
@@ -233,7 +183,7 @@ export default class DiagnoticsProvider extends Provider {
 
         lines.forEach((line) => {
           if (verbose) {
-            this.server.logger.info(line);
+            this.server.logger.debug(line);
           }
 
           // Diagnostics
@@ -247,7 +197,7 @@ export default class DiagnoticsProvider extends Provider {
         });
 
         if (verbose) {
-          this.server.logger.info("Done.\n");
+          this.server.logger.debug("Done.\n");
         }
 
         if (code !== 0 && !errors.some((line) => compilerDiagnostic.test(line))) {
@@ -271,5 +221,55 @@ export default class DiagnoticsProvider extends Provider {
 
   public async processDocumentsWaitingForPublish() {
     return await Promise.all(this.server.documentsWaitingForPublish.map(async (uri) => await this.publish(uri)));
+  }
+
+  private sendDiagnostics(uri: string, diagnostics: Diagnostic[]) {
+    if (diagnostics.length) this.publishedUris.add(uri);
+    else this.publishedUris.delete(uri);
+    void this.server.connection.sendDiagnostics({ uri, diagnostics });
+  }
+
+  private generateDiagnostics(uris: string[], files: FilesDiagnostics, sources: Map<string, string[]>, severity: DiagnosticSeverity) {
+    return (line: string) => {
+      const match = compilerDiagnostic.exec(line);
+      if (!match) return;
+
+      const matchingUri = uris.find((uri) => basename(fileURLToPath(uri)).toLowerCase() === match[1].trim().toLowerCase());
+      const uri = matchingUri || uris[0];
+
+      if (uri) {
+        const sourceLines = sources.get(uri) || [""];
+        const linePosition = matchingUri ? Math.min(sourceLines.length - 1, Math.max(0, Number(match[2] || 1) - 1)) : 0;
+        const diagnostic = {
+          severity,
+          range: {
+            start: { line: linePosition, character: 0 },
+            end: { line: linePosition, character: sourceLines[linePosition].length },
+          },
+          message: `${matchingUri ? "" : `${match[1].trim()}(${match[2] || 1}): `}${match[4].replace(/\s+\[<?[\d.]+ms\]$/, "").trim()}`,
+        };
+
+        files[uri].push(diagnostic);
+      }
+    };
+  }
+
+  private hasSupportedOS() {
+    return ([...Object.values(OS).filter((item) => isNaN(Number(item)))] as string[]).includes(type());
+  }
+
+  private getExecutablePath(os: ServerConfiguration["compiler"]["os"]) {
+    const specifiedOs = os || type();
+
+    switch (specifiedOs) {
+      case OS.linux:
+        return "../resources/compiler/linux/nwn_script_comp";
+      case OS.mac:
+        return "../resources/compiler/mac/nwn_script_comp";
+      case OS.windows:
+        return "../resources/compiler/windows/nwn_script_comp.exe";
+      default:
+        return "";
+    }
   }
 }

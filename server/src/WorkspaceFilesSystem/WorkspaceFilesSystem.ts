@@ -1,9 +1,13 @@
-import { join, normalize, relative, isAbsolute, sep } from "path";
+import { basename, join, normalize, relative, isAbsolute, sep } from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 import { GlobSync } from "glob";
 import { WorkspaceFolder } from "vscode-languageserver";
 
 export const FILES_EXTENSION = ".nss";
+export const resourceName = (path: string) =>
+  basename(path)
+    .replace(/\.nss$/i, "")
+    .toLowerCase();
 
 export default class WorkspaceFilesSystem {
   constructor(private readonly rootPath: string | null, private workspaceFolders: WorkspaceFolder[] | null) {}
@@ -13,7 +17,7 @@ export default class WorkspaceFilesSystem {
   }
 
   public getWorkspaceFolders() {
-    return this.workspaceFolders || [];
+    return this.workspaceFolders ?? (this.rootPath ? [{ name: basename(this.rootPath), uri: pathToFileURL(this.rootPath).href }] : []);
   }
 
   public getRoots() {
@@ -38,21 +42,13 @@ export default class WorkspaceFilesSystem {
     return files.length ? join(root, files[0]) : null;
   }
 
-  private normalizedAbsolutePath(...parts: string[]) {
-    return normalize(join(this.getWorkspaceRootPath(), ...parts));
-  }
-
   public getFilesPath() {
-    return this.getRoots().flatMap((root) => new GlobSync(`**/*${FILES_EXTENSION}`, { cwd: root, nodir: true }).found.map((filename) => join(root, filename)));
+    return this.getRoots().flatMap((root) => new GlobSync(`**/*${FILES_EXTENSION}`, { cwd: root, nodir: true, nocase: true }).found.map((filename) => join(root, filename)));
   }
 
   public getFilePath(filename: string) {
-    const path = new GlobSync(`**/${filename}${FILES_EXTENSION}`, { cwd: this.getWorkspaceRootPath(), nodir: true }).found[0];
-    if (path) {
-      return this.normalizedAbsolutePath(path);
-    }
-
-    return null;
+    // Match literal resource names, not glob expressions, across every root.
+    return this.getFilesPath().find((path) => resourceName(path) === filename.toLowerCase()) || null;
   }
 
   public getGlobPaths(glob: string) {
@@ -61,5 +57,9 @@ export default class WorkspaceFilesSystem {
 
   public getWorkspaceRootPath() {
     return this.getRoots()[0] || this.rootPath || process.cwd();
+  }
+
+  private normalizedAbsolutePath(...parts: string[]) {
+    return normalize(join(this.getWorkspaceRootPath(), ...parts));
   }
 }

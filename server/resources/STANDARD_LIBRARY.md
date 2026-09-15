@@ -36,7 +36,14 @@ The extracted source is written to the ignored server/scripts/nwscript.nss. Arch
 
 `yarn --cwd server check-standard-lib` verifies the extracted source checksum and compares regenerated definitions byte for byte without writes or network access. A mismatch exits unsuccessfully. Use `yarn --cwd server generate-lib-defs --standard-only` to regenerate directly from that source.
 
-These commands do not require the base_scripts or ovr source directories. The original generate-lib-defs command without flags still generates all three libraries and requires those separately extracted directories. Updating those other include libraries remains a separate operation.
+Regenerate the bundled `base_scripts` and `ovr` indexes from the same checksum-verified archive:
+
+```sh
+yarn --cwd server generate-lib-defs --archive /absolute/path/to/recorded-release.zip
+yarn --cwd server generate-lib-defs --archive /absolute/path/to/recorded-release.zip --check
+```
+
+This extracts the currently bundled resource names directly from KEY/BIF data and parses all sources before writing. It retains constant modifiers, function implementations, entry-point declarations, include positions, local declarations, and member accesses needed for import conflict checks. Function parameters and default values use the same declaration reader as variables and struct fields. It does not require extracted source directories. The original command without flags still supports separately extracted `server/scripts/base_scripts` and `server/scripts/ovr` directories.
 
 ## Workspace and custom versions
 

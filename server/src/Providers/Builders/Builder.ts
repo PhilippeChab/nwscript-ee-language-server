@@ -5,7 +5,7 @@ import type { ComplexToken, ConstantComplexToken, VariableComplexToken, Function
 
 export default abstract class Builder {
   protected static handleLanguageType(type: string) {
-    if (!(type in LanguageTypes)) {
+    if (!Object.prototype.hasOwnProperty.call(LanguageTypes, type)) {
       return `struct ${type}`;
     }
 

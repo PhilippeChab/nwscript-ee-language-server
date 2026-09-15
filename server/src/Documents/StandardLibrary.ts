@@ -1,13 +1,14 @@
+import { normalizeDocumentUri } from "../Utils";
 import { readFileSync } from "fs";
 import { basename, join } from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 import type { TextDocument } from "vscode-languageserver-textdocument";
 import type { Tokenizer } from "../Tokenizer";
-import { GlobalScopeTokenizationResult, TokenizedScope } from "../Tokenizer/Tokenizer";
+import { DocumentTokenizationResult, TokenizationMode } from "../Tokenizer/Tokenizer";
 import type WorkspaceFilesSystem from "../WorkspaceFilesSystem/WorkspaceFilesSystem";
 
-export const isStandardLibrary = (uri: string) => basename(uri).toLowerCase() === "nwscript.nss";
-export type StandardLibraryDefinitions = GlobalScopeTokenizationResult & { owner?: string };
+export const isStandardLibrary = (uri: string) => basename(fileURLToPath(uri)).toLowerCase() === "nwscript.nss";
+export type StandardLibraryDefinitions = DocumentTokenizationResult & { owner?: string };
 
 /** One selected source per workspace folder; never merge a custom API with the bundled API. */
 export default class StandardLibrary {
@@ -28,20 +29,14 @@ export default class StandardLibrary {
     this.disk.clear();
   }
 
-  private uriKey(uri: string) {
-    // Clients can percent-encode characters (including Windows drive colons)
-    // that Node leaves literal. Decode to a path before serializing the key.
-    return pathToFileURL(fileURLToPath(uri)).href;
-  }
-
   public change(document: TextDocument) {
     if (!isStandardLibrary(document.uri)) return;
-    this.live.set(this.uriKey(document.uri), document);
+    this.live.set(normalizeDocumentUri(document.uri), document);
     this.invalidate();
   }
 
   public close(uri: string) {
-    const key = this.uriKey(uri);
+    const key = normalizeDocumentUri(uri);
     this.live.delete(key);
     // Discard unsaved snapshots when reverting to disk, including failed reads.
     this.snapshots.delete(key);
@@ -77,8 +72,8 @@ export default class StandardLibrary {
       if (previous?.content === content) return previous.definitions;
       if (this.attempted.get(owner) === content) return previous?.definitions ?? this.bundled;
       this.attempted.set(owner, content);
-      const scope = liveDocument ? this.tokenizer.tokenizeDocumentGlobalScope(liveDocument) : this.tokenizer.tokenizeContent(content, TokenizedScope.global);
-      if (!scope.complexTokens.length && !scope.structComplexTokens.length) throw new Error("No declarations could be parsed");
+      const scope = liveDocument ? this.tokenizer.tokenizeDocument(liveDocument) : this.tokenizer.tokenizeContent(content, TokenizationMode.document);
+      if (!scope.globalDeclarations.length && !scope.structDeclarations.length) throw new Error("No declarations could be parsed");
       const definitions = { ...scope, owner };
       this.snapshots.set(owner, { content, definitions });
       this.failures.delete(owner);

@@ -4,7 +4,7 @@ import { get } from "https";
 import { join } from "path";
 import AdmZip from "adm-zip";
 import { Tokenizer } from "../src/Tokenizer";
-import { TokenizedScope } from "../src/Tokenizer/Tokenizer";
+import { TokenizationMode } from "../src/Tokenizer/Tokenizer";
 
 const downloadsUrl = "https://nwn.beamdog.net/downloads/";
 const releaseNotesUrl = "https://nwn.beamdog.net/docs/CHANGELOG.md";
@@ -66,13 +66,18 @@ async function download(url: string): Promise<Buffer> {
   });
 }
 
-export function extractSource(data: Buffer, metadata: SourceMetadata) {
+export function extractSources(data: Buffer, metadata: SourceMetadata, resourceNames: string[]) {
   if (sha256(data) !== metadata.archiveSha256) throw new Error("Archive SHA-256 mismatch");
   const archive = new AdmZip(data);
+  const contents = new Map<string, Buffer>();
   const read = (name: string) => {
+    const cached = contents.get(name);
+    if (cached) return cached;
     const entries = archive.getEntries().filter((entry) => entry.entryName === name);
     if (entries.length !== 1) throw new Error(`Expected exactly one archive entry: ${name}`);
-    return entries[0].getData();
+    const content = entries[0].getData();
+    contents.set(name, content);
+    return content;
   };
   const key = read(metadata.keyPath);
   if (key.subarray(0, 8).toString() !== "KEY V1  ") throw new Error("Unsupported KEY format");
@@ -80,37 +85,47 @@ export function extractSource(data: Buffer, metadata: SourceMetadata) {
   const count = key.readUInt32LE(12);
   const bifOffset = key.readUInt32LE(16);
   const resourceOffset = key.readUInt32LE(20);
-  const matches: number[] = [];
+  const matches = new Map(resourceNames.map((name) => [name, [] as number[]]));
   for (let i = 0; i < count; i++) {
     const offset = resourceOffset + i * 22;
     const name = key
       .subarray(offset, offset + 16)
       .toString("ascii")
       .replace(/\0.*$/, "");
-    if (name === metadata.resourceName && key.readUInt16LE(offset + 16) === 2009) matches.push(key.readUInt32LE(offset + 18));
+    if (key.readUInt16LE(offset + 16) === 2009) matches.get(name)?.push(key.readUInt32LE(offset + 18));
   }
-  if (matches.length !== 1) throw new Error(`Expected one nwscript.nss resource, found ${matches.length}`);
-  // KEY resource IDs encode the BIF index above the 20-bit resource index.
-  const resourceId = matches[0];
-  const bifIndex = resourceId >>> 20;
-  if (bifIndex >= bifCount) throw new Error("Invalid BIF index");
-  const entryOffset = bifOffset + bifIndex * 12;
-  const nameOffset = key.readUInt32LE(entryOffset + 4);
-  const nameLength = key.readUInt16LE(entryOffset + 8);
-  const bifPath = key
-    .subarray(nameOffset, nameOffset + nameLength)
-    .toString("ascii")
-    .replace(/\0.*$/, "")
-    .replace(/\\/g, "/");
-  const bif = read(bifPath);
-  if (bif.subarray(0, 8).toString() !== "BIFFV1  ") throw new Error("Unsupported BIF format");
-  const index = resourceId & 0xfffff;
-  if (index >= bif.readUInt32LE(8)) throw new Error("Invalid BIF resource index");
-  const offset = bif.readUInt32LE(16) + index * 16;
-  const start = bif.readUInt32LE(offset + 4);
-  const size = bif.readUInt32LE(offset + 8);
-  if ((bif.readUInt32LE(offset) & 0xfffff) !== index || bif.readUInt32LE(offset + 12) !== 2009 || start + size > bif.length) throw new Error("Invalid NSS resource entry");
-  return bif.subarray(start, start + size);
+  const sources = new Map<string, Buffer>();
+  for (const [name, ids] of matches) {
+    if (ids.length !== 1) throw new Error(`Expected one ${name}.nss resource, found ${ids.length}`);
+    // KEY resource IDs encode the BIF index above the 20-bit resource index.
+    const resourceId = ids[0];
+    const bifIndex = resourceId >>> 20;
+    if (bifIndex >= bifCount) throw new Error("Invalid BIF index");
+    const entryOffset = bifOffset + bifIndex * 12;
+    const nameOffset = key.readUInt32LE(entryOffset + 4);
+    const nameLength = key.readUInt16LE(entryOffset + 8);
+    const bifPath = key
+      .subarray(nameOffset, nameOffset + nameLength)
+      .toString("ascii")
+      .replace(/\0.*$/, "")
+      .replace(/\\/g, "/");
+    const bif = read(bifPath);
+    if (bif.subarray(0, 8).toString() !== "BIFFV1  ") throw new Error("Unsupported BIF format");
+    const index = resourceId & 0xfffff;
+    if (index >= bif.readUInt32LE(8)) throw new Error("Invalid BIF resource index");
+    const offset = bif.readUInt32LE(16) + index * 16;
+    const start = bif.readUInt32LE(offset + 4);
+    const size = bif.readUInt32LE(offset + 8);
+    if ((bif.readUInt32LE(offset) & 0xfffff) !== index || bif.readUInt32LE(offset + 12) !== 2009 || start + size > bif.length) throw new Error("Invalid NSS resource entry");
+    sources.set(name, bif.subarray(start, start + size));
+  }
+  return sources;
+}
+
+export function extractSource(data: Buffer, metadata: SourceMetadata) {
+  const source = extractSources(data, metadata, [metadata.resourceName]).get(metadata.resourceName);
+  if (!source) throw new Error(`Missing script resource: ${metadata.resourceName}`);
+  return source;
 }
 
 // Network/extraction/tokenization all finish before any repository file is changed.
@@ -139,8 +154,8 @@ export async function updateStandardLibrary(options: { scripts?: string; pinned?
   if (metadata.version === current.version && sha256(source) !== current.sourceSha256) throw new Error("nwscript.nss SHA-256 mismatch for the recorded version");
   metadata.sourceSha256 = sha256(source);
   const tokenizer = await new Tokenizer(true).loadGrammar();
-  const definitions = tokenizer.tokenizeContent(source.toString("utf8"), TokenizedScope.global);
-  if (!definitions.complexTokens.length) throw new Error("No standard library declarations could be parsed");
+  const definitions = tokenizer.tokenizeContent(source.toString("utf8"), TokenizationMode.document);
+  if (!definitions.globalDeclarations.length) throw new Error("No standard library declarations could be parsed");
   const updates: [string, Buffer][] = [
     [sourcePath, source],
     [join(scripts, "../resources/standardLibDefinitions.json"), Buffer.from(JSON.stringify(definitions, null, 4))],

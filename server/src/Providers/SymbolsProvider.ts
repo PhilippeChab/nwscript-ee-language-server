@@ -2,7 +2,6 @@ import { CompletionItemKind, DocumentSymbolParams, DocumentSymbol, SymbolInforma
 
 import type { ServerManager } from "../ServerManager";
 import { SymbolBuilder } from "./Builders";
-import { TokenizedScope } from "../Tokenizer/Tokenizer";
 import Provider from "./Provider";
 
 export default class SymbolsProvider extends Provider {
@@ -18,13 +17,11 @@ export default class SymbolsProvider extends Provider {
         textDocument: { uri },
       } = params;
 
-      const liveDocument = this.server.liveDocumentsManager.get(uri);
-      const document = this.server.documentsCollection.getFromUri(uri);
-      if (!liveDocument || !document) return;
-
-      const localScope = this.server.tokenizer.tokenizeContent(liveDocument.getText(), TokenizedScope.local);
-      const constantSymbols = document.complexTokens.filter((token) => token.tokenType === CompletionItemKind.Constant).map((token) => SymbolBuilder.buildItem(token));
-      const structSymbols = document.structComplexTokens.map((token) => SymbolBuilder.buildItem(token));
+      const context = this.getDocumentContext(uri);
+      if (!context) return;
+      const { document, localScope } = context;
+      const constantSymbols = document.globalDeclarations.filter((token) => token.tokenType === CompletionItemKind.Constant).map((token) => SymbolBuilder.buildItem(token));
+      const structSymbols = document.structDeclarations.map((token) => SymbolBuilder.buildItem(token));
 
       const symbols = constantSymbols.concat(structSymbols.concat(localScope.functionsComplexTokens.map((token) => SymbolBuilder.buildItem(token))));
       if (this.server.capabilitiesHandler.getSupportsHierarchicalSymbols()) return symbols;

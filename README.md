@@ -120,7 +120,7 @@ yarn --cwd server update-standard-lib
 
 The TypeScript updater discovers the latest release, verifies its archive, regenerates definitions, and records the new version and checksums. Use `--pinned` to reproduce the recorded version, or `check-standard-lib` to verify local definitions without network access. See [standard library update instructions](server/resources/STANDARD_LIBRARY.md) for details and offline use.
 
-To regenerate all libraries, also replace `/server/scripts/base_scripts/` and `/server/scripts/ovr/` with extracted game scripts, then run `yarn --cwd server generate-lib-defs`.
+To regenerate the bundled include indexes from the recorded game archive, run `yarn --cwd server generate-lib-defs --archive /absolute/path/to/recorded-release.zip`. Add `--check` to verify them without writing.
 
 A workspace `nwscript.nss` replaces the bundled standard library for completion, hover, signature help, and Go to Definition without needing an `#include`. Compiler diagnostics use the same selected file from disk. Each workspace folder selects its own file: a root-level file wins, then the shallowest subdirectory, then lexical path order. Selection matches the exact filename, case-insensitively.
 
