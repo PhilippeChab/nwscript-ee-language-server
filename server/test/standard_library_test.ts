@@ -189,8 +189,8 @@ describe("Workspace standard library", function () {
     expect(library.get(uri(join(workspace, "test.nss"))).owner).to.equal(uri(paths[0]));
     const changed = TextDocument.create(opened[1].uri, "nwscript", 2, "float EditedFn();\n");
     editor.handlers.change({ document: changed });
-    expect(editor.server.documentsCollection.getFromUri(changed.uri).complexTokens[0].identifier).to.equal("EditedFn");
-    expect(editor.server.documentsCollection.getFromUri(opened[0].uri).complexTokens[0].identifier).to.equal("OwnFn0");
+    expect(editor.server.documentsCollection.getFromUri(changed.uri).globalDeclarations[0].identifier).to.equal("EditedFn");
+    expect(editor.server.documentsCollection.getFromUri(opened[0].uri).globalDeclarations[0].identifier).to.equal("OwnFn0");
     expect(errors).to.deep.equal([]);
   });
 
@@ -203,7 +203,7 @@ describe("Workspace standard library", function () {
     expect(() => editor.open(document)).not.to.throw();
     expect(editor.server.documentsCollection.getFromUri(document.uri).uri).to.equal(document.uri);
     editor.handlers.change({ document: TextDocument.create(document.uri, "nwscript", 2, "int Recovered();\n") });
-    expect(editor.server.documentsCollection.getFromUri(document.uri).complexTokens[0].identifier).to.equal("Recovered");
+    expect(editor.server.documentsCollection.getFromUri(document.uri).globalDeclarations[0].identifier).to.equal("Recovered");
     expect(library.get(document.uri).owner).to.equal(uri(join(root, "nwscript.nss")));
   });
 
@@ -221,14 +221,14 @@ describe("Workspace standard library", function () {
     try {
       editor.open(document);
       expect(parses).to.equal(1);
-      expect(library.get(document.uri).complexTokens).to.equal(editor.server.documentsCollection.getFromUri(document.uri).complexTokens);
+      expect(library.get(document.uri).globalDeclarations).to.equal(editor.server.documentsCollection.getFromUri(document.uri).globalDeclarations);
       editor.handlers.change({ document });
       expect(parses).to.equal(1);
       TextDocument.update(document, [{ text: "float ChangedFn();\n" }], 2);
       editor.handlers.change({ document });
       expect(parses).to.equal(2);
-      expect(library.get(document.uri).complexTokens).to.equal(editor.server.documentsCollection.getFromUri(document.uri).complexTokens);
-      expect(library.get(document.uri).complexTokens[0].identifier).to.equal("ChangedFn");
+      expect(library.get(document.uri).globalDeclarations).to.equal(editor.server.documentsCollection.getFromUri(document.uri).globalDeclarations);
+      expect(library.get(document.uri).globalDeclarations[0].identifier).to.equal("ChangedFn");
     } finally {
       tokenizer.tokenizeContent = tokenize;
     }
@@ -252,18 +252,18 @@ describe("Workspace standard library", function () {
       editor.handlers.change({ document });
       expect(parses).to.equal(1);
       expect(library.get(document.uri)).to.equal(initial);
-      expect(editor.server.documentsCollection.getFromUri(document.uri).complexTokens).to.equal(initial.complexTokens);
+      expect(editor.server.documentsCollection.getFromUri(document.uri).globalDeclarations).to.equal(initial.globalDeclarations);
       editor.handlers.change({ document });
       expect(parses).to.equal(1);
       TextDocument.update(document, [{ text: "" }], 3);
       editor.handlers.change({ document });
       expect(parses).to.equal(2);
       expect(library.get(document.uri)).to.equal(initial);
-      expect(editor.server.documentsCollection.getFromUri(document.uri).complexTokens).to.deep.equal([]);
+      expect(editor.server.documentsCollection.getFromUri(document.uri).globalDeclarations).to.deep.equal([]);
       TextDocument.update(document, [{ text: "int Recovered();\n" }], 4);
       editor.handlers.change({ document });
       expect(parses).to.equal(3);
-      expect(library.get(document.uri).complexTokens[0].identifier).to.equal("Recovered");
+      expect(library.get(document.uri).globalDeclarations[0].identifier).to.equal("Recovered");
     } finally {
       tokenizer.tokenizeContent = tokenize;
     }
@@ -275,9 +275,9 @@ describe("Workspace standard library", function () {
     const target = uri(join(root, "test.nss"));
     const initial = library.get(target);
     library.change(TextDocument.create(uri(spec), "nwscript", 1, "// Edited\nfloat ChangedFn();\n"));
-    expect(library.get(target).complexTokens.map((token: any) => token.identifier)).to.deep.equal(["ChangedFn"]);
+    expect(library.get(target).globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["ChangedFn"]);
     library.change(TextDocument.create(uri(spec), "nwscript", 2, "int Broken("));
-    expect(library.get(target).complexTokens[0].identifier).to.equal("ChangedFn");
+    expect(library.get(target).globalDeclarations[0].identifier).to.equal("ChangedFn");
     library.get(target);
     expect(errors).to.have.length(1);
     library.close(uri(spec));
@@ -296,23 +296,23 @@ describe("Workspace standard library", function () {
       const spec = join(directory, "nwscript.nss");
       write(spec, "int SavedFn();\n");
       const canonical = uri(spec);
-      const encoded = canonical.slice(0, 7) + canonical.slice(7).replace(/:/g, "%3A");
+      const encoded = canonical.slice(0, 7) + canonical.slice(7).replace(/:/g, "%3A").replace("nwscript.nss", "%6Ewscript.nss");
       expect(encoded).not.to.equal(canonical);
-      expect(library.get(encoded).complexTokens[0].identifier).to.equal("SavedFn");
+      expect(library.get(encoded).globalDeclarations[0].identifier).to.equal("SavedFn");
       const changeUri = changeEncoded ? encoded : canonical;
       library.change(TextDocument.create(changeUri, "nwscript", 1, "int UnsavedFn();\n"));
       for (const requestUri of [canonical, encoded]) {
-        expect(library.get(requestUri).complexTokens[0].identifier).to.equal("UnsavedFn");
+        expect(library.get(requestUri).globalDeclarations[0].identifier).to.equal("UnsavedFn");
       }
       library.change(TextDocument.create(changeUri, "nwscript", 2, "int Broken("));
-      expect(library.get(encoded).complexTokens[0].identifier).to.equal("UnsavedFn");
+      expect(library.get(encoded).globalDeclarations[0].identifier).to.equal("UnsavedFn");
       expect(errors).to.have.length(1);
       library.close(closeEncoded ? encoded : canonical);
-      expect(library.get(canonical).complexTokens[0].identifier).to.equal("SavedFn");
+      expect(library.get(canonical).globalDeclarations[0].identifier).to.equal("SavedFn");
       // Closing must clear failed-content and diagnostic caches too, so the
       // same incomplete text in a new editing session is handled afresh.
       library.change(TextDocument.create(changeUri, "nwscript", 3, "int Broken("));
-      expect(library.get(encoded).complexTokens[0].identifier).to.equal("SavedFn");
+      expect(library.get(encoded).globalDeclarations[0].identifier).to.equal("SavedFn");
       expect(errors).to.have.length(2);
     });
   }
@@ -330,7 +330,7 @@ describe("Workspace standard library", function () {
     expect(library.get(target).owner).to.equal(uri(spec));
     write(spec, "int ExternalFn();\n");
     library.invalidate();
-    expect(library.get(target).complexTokens[0].identifier).to.equal("ExternalFn");
+    expect(library.get(target).globalDeclarations[0].identifier).to.equal("ExternalFn");
     rmSync(spec);
     library.invalidate();
     expect(library.get(target).owner).to.equal(undefined);
@@ -406,6 +406,11 @@ describe("Workspace standard library", function () {
       capabilitiesHandler: { getSupportsWorkspaceFolders: () => true },
       workspaceFilesSystem: files,
       standardLibrary: library,
+      documentsCollection: new api.Collection(),
+      refreshWorkspaceDocuments: () => {
+        refreshes++;
+        library.invalidate();
+      },
       refreshStandardLibrary: () => {
         refreshes++;
         library.invalidate();
@@ -457,6 +462,6 @@ describe("Workspace standard library", function () {
     expect(collection.get("later")).to.equal(undefined);
     write(join(root, "later.nss"), "int LaterFunction();\n");
     collection.updateDocument(document, tokenizer, files);
-    expect(collection.get("later").complexTokens[0].identifier).to.equal("LaterFunction");
+    expect(collection.get("later").globalDeclarations[0].identifier).to.equal("LaterFunction");
   });
 });

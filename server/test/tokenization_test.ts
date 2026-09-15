@@ -2,29 +2,31 @@ import { describe, before } from "mocha";
 import { expect } from "chai";
 import { readFileSync } from "fs";
 import { normalize, join } from "path";
-import Tokenizer, { GlobalScopeTokenizationResult, LocalScopeTokenizationResult, TokenizedScope } from "../src/Tokenizer/Tokenizer";
+import Tokenizer, { DocumentTokenizationResult, LocalScopeTokenizationResult, TokenizationMode } from "../src/Tokenizer/Tokenizer";
 
-const format = (data: any) => JSON.parse(JSON.stringify(data));
+// Preserve the legacy editor-token comparisons; declaration-order metadata is
+// exercised by the import behavior tests, including first-signature parameters.
+const format = (data: any) => JSON.parse(JSON.stringify(data, (key, value) => (key === "signatureEnd" ? undefined : value)));
 
 describe("Tokenization", () => {
   let tokenizer: Tokenizer;
   let staticCode: string;
-  let staticGlobalTokens: GlobalScopeTokenizationResult;
+  let staticGlobalTokens: DocumentTokenizationResult;
   let staticLocalTokensWithContext: LocalScopeTokenizationResult;
   let staticLocalTokensWithoutContext: LocalScopeTokenizationResult;
 
   before("Read static data", async () => {
     tokenizer = await new Tokenizer(true).loadGrammar();
     staticCode = readFileSync(normalize(join(__dirname, "./static/test.nss"))).toString();
-    staticGlobalTokens = JSON.parse(readFileSync(normalize(join(__dirname, "./static/globalScopeTokens.json"))).toString()) as GlobalScopeTokenizationResult;
+    staticGlobalTokens = JSON.parse(readFileSync(normalize(join(__dirname, "./static/globalScopeTokens.json"))).toString()) as DocumentTokenizationResult;
     staticLocalTokensWithContext = JSON.parse(readFileSync(normalize(join(__dirname, "./static/localScopeTokensWithContext.json"))).toString()) as LocalScopeTokenizationResult;
     staticLocalTokensWithoutContext = JSON.parse(readFileSync(normalize(join(__dirname, "./static/localScopeTokensWithoutContext.json"))).toString()) as LocalScopeTokenizationResult;
   });
 
   describe("Global Scope", () => {
-    let definitions: GlobalScopeTokenizationResult;
+    let definitions: DocumentTokenizationResult;
     before("Tokenize Content", () => {
-      definitions = format(tokenizer.tokenizeContent(staticCode, TokenizedScope.global));
+      definitions = format(tokenizer.tokenizeContent(staticCode, TokenizationMode.document));
     });
 
     it("should equal static children", () => {
@@ -32,18 +34,18 @@ describe("Tokenization", () => {
     });
 
     it("should equal static struct tokens", () => {
-      expect(definitions.structComplexTokens).to.be.deep.equal(staticGlobalTokens.structComplexTokens);
+      expect(definitions.structDeclarations).to.be.deep.equal(staticGlobalTokens.structDeclarations);
     });
 
     it("should equal static constant and function tokens", () => {
-      expect(definitions.complexTokens).to.be.deep.equal(staticGlobalTokens.complexTokens);
+      expect(definitions.globalDeclarations).to.be.deep.equal(staticGlobalTokens.globalDeclarations);
     });
   });
 
   describe("Local Scope with current function context", () => {
     let definitions: LocalScopeTokenizationResult;
     before("Tokenize Content", () => {
-      definitions = format(tokenizer.tokenizeContent(staticCode, TokenizedScope.local, 0, 293));
+      definitions = format(tokenizer.tokenizeContent(staticCode, TokenizationMode.local, 0, 292));
     });
 
     it("should equal static function variables tokens", () => {
@@ -58,7 +60,7 @@ describe("Tokenization", () => {
   describe("Local Scope with entire file context", () => {
     let definitions: LocalScopeTokenizationResult;
     before("Tokenize Content", () => {
-      definitions = format(tokenizer.tokenizeContent(staticCode, TokenizedScope.local));
+      definitions = format(tokenizer.tokenizeContent(staticCode, TokenizationMode.local));
     });
 
     it("should equal static function variables tokens", () => {

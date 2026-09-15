@@ -44,6 +44,26 @@ describe("Formatter Unicode offsets", () => {
     return new ClangFormatter({ getWorkspaceRootPath: () => process.cwd() } as any, true, false, [], "clang-format", {}, { info: () => {}, error: () => {} } as any);
   }
 
+  for (const output of [
+    "<replacements><replacement>text</replacement></replacements>",
+    '<replacements><replacement offset="bad" length="1">text</replacement></replacements>',
+    '<replacements><replacement offset="-1" length="1">text</replacement></replacements>',
+    '<replacements><replacement offset="9999" length="1">text</replacement></replacements>',
+    '<replacements><replacement offset="1" length="1">',
+  ]) {
+    it(`rejects malformed formatter output without throwing outside the request: ${output}`, async () => {
+      mockCompiler(output);
+      const document = TextDocument.create(testUri, "nwscript", 1, "void main() {}");
+      let failure: unknown;
+      try {
+        await formatter().formatDocument(document, null);
+      } catch (error) {
+        failure = error;
+      }
+      expect(failure).to.be.instanceOf(Error);
+    });
+  }
+
   it("applies byte-offset replacements after NWN color codes without deleting code", async () => {
     const source = '// "<c ¤|>"\r\n// "<c ¥ÿ>"\r\n// "<c¡¡¡>"\r\n// "<cÔ ¶>"\r\n// "<c|  >"\r\n// "<cÿ? >"\r\n// 😀\r\nvoid testFunction() {int nFoo=1;}\r\n';
     const document = TextDocument.create(testUri, "nwscript", 1, source);

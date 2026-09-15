@@ -12,6 +12,7 @@ import {
   DidChangeConfigurationNotification,
   HoverRequest,
   DefinitionRequest,
+  SignatureHelpRequest,
   CompletionRequest,
   DocumentFormattingRequest,
   DocumentSymbolRequest,
@@ -375,13 +376,349 @@ describe("Installed standalone LSP server", function () {
     expect(code).to.equal(0);
     expect(messages[0].error).to.include("ENOENT");
     expect(messages[1].filePath).to.equal(filePath);
-    expect(messages[1].globalScope?.complexTokens.some((token) => token.identifier === "Helper")).to.equal(true);
+    expect(messages[1].documentTokens?.globalDeclarations.some((token) => token.identifier === "Helper")).to.equal(true);
     const client = await start();
     await client.ready();
     expect(client.logs).to.include("Indexed 3 files.");
     await open(client);
     await features(client);
     await client.shutdown();
+  });
+
+  it("resolves a local variable shadowing a global variable in all editor providers", async () => {
+    // NWScript permits shadowing global variables; global constants cannot be shadowed.
+    const text = 'int VALUE = 1;\nvoid main() {\n string VALUE = "local";\n string result = VALUE;\n}\n';
+    const uri = params().textDocument.uri;
+    writeFileSync(join(workspace, "sample.nss"), text);
+    const client = await start();
+    await client.ready();
+    await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+    const request = { textDocument: { uri }, position: { line: 3, character: 19 } };
+    const completion: any = await client.rpc.sendRequest(CompletionRequest.type, request);
+    const items = completion.items || completion;
+    expect(items.filter((item: any) => item.label === "VALUE").map((item: any) => item.detail)).to.deep.equal(["(variable) VALUE: string"]);
+    const hover = await client.rpc.sendRequest(HoverRequest.type, request);
+    expect(content(hover)?.value).to.include("string VALUE");
+    const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, request);
+    expect(definition.range.start).to.deep.equal({ line: 2, character: 8 });
+    await client.shutdown();
+  });
+
+  for (const body of ['string value = "local"; string copy = value;', '\n string value = "local";\n string copy = value;\n', '{ string value = "local"; string copy = value; } int copy = value;']) {
+    it(`prefers a body-local declaration over its parameter: ${JSON.stringify(body)}`, async () => {
+      const text = `void Fn(int value) { ${body} }`;
+      const uri = params().textDocument.uri;
+      writeFileSync(join(workspace, "sample.nss"), text);
+      const client = await start({ initializationOptions: { compiler: { enabled: false }, completion: { autoImport: false } } });
+      await client.ready();
+      await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+      const document = TextDocument.create(uri, "nwscript", 1, text);
+      const local = text.indexOf("string value") + "string ".length;
+      const parameter = text.indexOf("int value") + "int ".length;
+      const uses = [
+        [text.indexOf("copy = value") + "copy = ".length, local, "string"],
+        [parameter, parameter, "int"],
+      ] as const;
+      for (const [offset, declaration, type] of uses) {
+        const request = { textDocument: { uri }, position: document.positionAt(offset + 2) };
+        expect(content(await client.rpc.sendRequest(HoverRequest.type, request))?.value).to.equal(`${type} value`);
+        const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, request);
+        expect(definition.range.start).to.deep.equal(document.positionAt(declaration));
+      }
+      const request = { textDocument: { uri }, position: document.positionAt(uses[0][0] + 2) };
+      const completions: any = await client.rpc.sendRequest(CompletionRequest.type, request);
+      expect(completions.filter((item: any) => item.label === "value").map((item: any) => item.detail)).to.deep.equal(["(variable) value: string"]);
+      if (body.startsWith("{")) {
+        const outside = { textDocument: { uri }, position: document.positionAt(text.lastIndexOf("value") + 2) };
+        expect(content(await client.rpc.sendRequest(HoverRequest.type, outside))?.value).to.equal("int value");
+        const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, outside);
+        expect(definition.range.start).to.deep.equal(document.positionAt(parameter));
+      }
+      await client.shutdown();
+    });
+  }
+
+  for (const name of ["VALUE", "value"]) {
+    it(`resolves ${name} after a shadowing block ends and hides other functions' locals`, async () => {
+      const text = 'int VALUE = 1;\nvoid Previous() { string hidden; }\nvoid main() {\n { string VALUE = "local"; }\n int result = VALUE;\n}'.split("VALUE").join(name);
+      const uri = params().textDocument.uri;
+      writeFileSync(join(workspace, "sample.nss"), text);
+      const client = await start({ initializationOptions: { compiler: { enabled: false }, completion: { autoImport: false } } });
+      await client.ready();
+      await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+      const request = { textDocument: { uri }, position: { line: 4, character: 19 } };
+      const items: any = await client.rpc.sendRequest(CompletionRequest.type, request);
+      expect(items.some((item: any) => item.label === "hidden")).to.equal(false);
+      expect(items.find((item: any) => item.label === name)?.detail).to.equal("(constant) 1: int");
+      expect(content(await client.rpc.sendRequest(HoverRequest.type, request))?.value).to.equal(`int ${name} = 1`);
+      const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, request);
+      expect(definition.range.start).to.deep.equal({ line: 0, character: 4 });
+      await client.shutdown();
+    });
+  }
+
+  for (const signature of [
+    "int Fn(int value);",
+    "int Fn(\n    int value\n);",
+    "int Fn(int\n value);",
+    "int Fn(int /*type*/ value);",
+    "int Fn(int\n value) { return value; }",
+    "int\n Fn(int value);",
+  ]) {
+    it(`keeps prototype parameters scoped to their signature: ${JSON.stringify(signature)}`, async () => {
+      const text = `string value;\n${signature}\nvoid main() { string copy = value; }\n`;
+      const uri = params().textDocument.uri;
+      writeFileSync(join(workspace, "sample.nss"), text);
+      const client = await start();
+      await client.ready();
+      await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+      const document = TextDocument.create(uri, "nwscript", 1, text);
+      const parameterOffset = text.indexOf("value", text.indexOf("Fn"));
+      const parameter = { textDocument: { uri }, position: document.positionAt(parameterOffset + 2) };
+      expect(content(await client.rpc.sendRequest(HoverRequest.type, parameter))?.value).to.equal("int value");
+      const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, parameter);
+      expect(definition.range.start).to.deep.equal(document.positionAt(parameterOffset));
+      const outside = { textDocument: { uri }, position: document.positionAt(text.lastIndexOf("value") + 2) };
+      expect(content(await client.rpc.sendRequest(HoverRequest.type, outside))?.value).to.include("string value");
+      const globalDefinition: any = await client.rpc.sendRequest(DefinitionRequest.type, outside);
+      expect(globalDefinition.range.start).to.deep.equal({ line: 0, character: 7 });
+      await client.shutdown();
+    });
+  }
+
+  for (const declaration of ["struct Data {\n int field;\n};", "struct Data { int field; };", "struct Data { int first, field; };"]) {
+    it(`resolves struct field declaration sites without selecting a same-named global: ${JSON.stringify(declaration)}`, async () => {
+      const text = `string field;\n${declaration}\nstruct Other { float field; };\nvoid main() { string copy = field; }\n`;
+      const uri = params().textDocument.uri;
+      writeFileSync(join(workspace, "sample.nss"), text);
+      const client = await start();
+      await client.ready();
+      await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+      const document = TextDocument.create(uri, "nwscript", 1, text);
+      const fields = [
+        [text.indexOf("field", text.indexOf("Data")), "int field"],
+        [text.indexOf("field", text.indexOf("Other")), "float field"],
+      ] as const;
+      for (const [offset, hover] of fields) {
+        const target = { textDocument: { uri }, position: document.positionAt(offset + 2) };
+        expect(content(await client.rpc.sendRequest(HoverRequest.type, target))?.value).to.equal(hover);
+        const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, target);
+        expect(definition.uri).to.equal(uri);
+        expect(definition.range.start).to.deep.equal(document.positionAt(offset));
+      }
+      const global = { textDocument: { uri }, position: document.positionAt(text.lastIndexOf("field") + 2) };
+      expect(content(await client.rpc.sendRequest(HoverRequest.type, global))?.value).to.include("string field");
+      const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, global);
+      expect(definition.range.start).to.deep.equal({ line: 0, character: 7 });
+      await client.shutdown();
+    });
+  }
+
+  for (const included of [true, false]) {
+    it(`resolves struct factory calls in global initializers to their declaration (included=${String(included)})`, async () => {
+      const declarations = "struct Data { int field; };\nstruct Data Make(int value) { struct Data result; result.field = value; return result; }\nint Identity(int value) { return value; }\n";
+      writeFileSync(join(workspace, "helper.nss"), declarations);
+      const text = `${
+        included ? '#include "helper"\n' : declarations
+      }struct Data FIRST = Make(1);\nstruct Data SECOND = Make(2);\nstruct Data THIRD = Make(Identity(3));\nvoid main() { struct Data local = Make(4); }\n`;
+      const uri = params().textDocument.uri;
+      writeFileSync(join(workspace, "sample.nss"), text);
+      const client = await start();
+      await client.ready();
+      await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+      const document = TextDocument.create(uri, "nwscript", 1, text);
+      for (const call of ["Make(1)", "Make(2)", "Make(Identity(3))", "Make(4)"]) {
+        const target = { textDocument: { uri }, position: document.positionAt(text.indexOf(call) + 2) };
+        const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, target);
+        expect(definition).to.deep.equal({
+          uri: included ? pathToFileURL(join(workspace, "helper.nss")).href : uri,
+          range: { start: { line: 1, character: 12 }, end: { line: 1, character: 12 } },
+        });
+        expect(content(await client.rpc.sendRequest(HoverRequest.type, target))?.value).to.include("struct Data Make(int value)");
+        for (let character = 0; character <= "Make".length; character++) {
+          const atCharacter = { ...target, position: document.positionAt(text.indexOf(call) + character) };
+          expect(await client.rpc.sendRequest(DefinitionRequest.type, atCharacter)).to.deep.equal(definition);
+          expect(content(await client.rpc.sendRequest(HoverRequest.type, atCharacter))?.value).to.include("struct Data Make(int value)");
+        }
+        const signature = await client.rpc.sendRequest(SignatureHelpRequest.type, { ...target, position: document.positionAt(text.indexOf(call) + "Make(".length) });
+        expect(signature?.signatures[0].label).to.equal("struct Data Make(int value)");
+        const completions: any = await client.rpc.sendRequest(CompletionRequest.type, target);
+        const items = completions.items || completions;
+        expect(items.filter((item: any) => item.label === "Make")).to.have.length(1);
+      }
+      const nested = { textDocument: { uri }, position: document.positionAt(text.indexOf("Identity(3)") + 2) };
+      expect(content(await client.rpc.sendRequest(HoverRequest.type, nested))?.value).to.include("int Identity(int value)");
+      const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, nested);
+      expect(definition.range.start).to.deep.equal({ line: 2, character: 4 });
+      expect(definition.uri).to.equal(included ? pathToFileURL(join(workspace, "helper.nss")).href : uri);
+      const signature = await client.rpc.sendRequest(SignatureHelpRequest.type, { ...nested, position: document.positionAt(text.indexOf("Identity(3)") + "Identity(".length) });
+      expect(signature?.signatures[0].label).to.equal("int Identity(int value)");
+      await client.shutdown();
+    });
+  }
+
+  it("resolves every character of struct types, parameters, variables and fields", async () => {
+    const text = "struct Data { int field; };\nvoid Fn(struct Data param) { struct Data local; local.field = param.field; }\n";
+    const uri = params().textDocument.uri;
+    writeFileSync(join(workspace, "sample.nss"), text);
+    const client = await start();
+    await client.ready();
+    await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+    const document = TextDocument.create(uri, "nwscript", 1, text);
+    for (const name of ["Data", "param", "local", "field"]) {
+      const declaration = document.positionAt(text.indexOf(name));
+      for (let occurrence = text.indexOf(name); occurrence >= 0; occurrence = text.indexOf(name, occurrence + name.length)) {
+        for (let character = 0; character <= name.length; character++) {
+          const target = { textDocument: { uri }, position: document.positionAt(occurrence + character) };
+          expect(await client.rpc.sendRequest(DefinitionRequest.type, target), `${name} at ${occurrence}+${character}`).to.deep.equal({ uri, range: { start: declaration, end: declaration } });
+          expect(content(await client.rpc.sendRequest(HoverRequest.type, target))?.value).to.include(name);
+        }
+      }
+    }
+    await client.shutdown();
+  });
+
+  for (const rootName of ["global", "local"]) {
+    it(`resolves nested members of a ${rootName} struct across providers`, async () => {
+      writeFileSync(join(workspace, "helper.nss"), "struct Inner { int field; };\nstruct Outer { struct Inner child; };\n");
+      const text = `#include "helper"\nstruct Outer global;\nvoid main() {\n struct Outer local;\n ${rootName}.child.field = 1;\n}\n`;
+      const uri = params().textDocument.uri;
+      writeFileSync(join(workspace, "sample.nss"), text);
+      const client = await start();
+      await client.ready();
+      await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+      const dot = { textDocument: { uri }, position: { line: 4, character: rootName.length + 8 }, context: { triggerKind: 2 as const, triggerCharacter: "." } };
+      const fields: any = await client.rpc.sendRequest(CompletionRequest.type, dot);
+      expect(fields.map((item: any) => item.label)).to.deep.equal(["field"]);
+      const member = { textDocument: { uri }, position: { line: 4, character: rootName.length + 10 } };
+      const manual: any = await client.rpc.sendRequest(CompletionRequest.type, member);
+      expect(manual.map((item: any) => item.label)).to.deep.equal(["field"]);
+      expect(content(await client.rpc.sendRequest(HoverRequest.type, member))?.value).to.equal("int field");
+      const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, member);
+      expect(definition.uri).to.equal(pathToFileURL(join(workspace, "helper.nss")).href);
+      expect(definition.range.start).to.deep.equal({ line: 0, character: 19 });
+      await client.shutdown();
+    });
+  }
+
+  for (const access of ["global", "local", "nested.field"]) {
+    it(`resolves built-in vector fields through ${access}`, async () => {
+      const text = `struct Container { vector field; };\nvector global;\nstruct Container nested;\nvoid main() {\n vector local;\n ${access}.x = 1.0;\n}\n`;
+      const uri = params().textDocument.uri;
+      writeFileSync(join(workspace, "sample.nss"), text);
+      const client = await start();
+      await client.ready();
+      await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+      const member = { textDocument: { uri }, position: { line: 5, character: access.length + 3 } };
+      const fields: any = await client.rpc.sendRequest(CompletionRequest.type, member);
+      expect(fields.map((item: any) => item.label)).to.deep.equal(["x", "y", "z"]);
+      expect(content(await client.rpc.sendRequest(HoverRequest.type, member))?.value).to.equal("float x");
+      expect(await client.rpc.sendRequest(DefinitionRequest.type, member)).to.equal(null);
+      await client.shutdown();
+    });
+  }
+
+  for (const scope of ["global", "local"]) {
+    it(`does not resolve a parenthesized member as an unrelated ${scope} variable`, async () => {
+      const declaration = 'string x = "unrelated";';
+      const text = `${scope === "global" ? declaration : ""}\nvoid main() {\n ${scope === "local" ? declaration : ""}\n vector v;\n float result = (v).x;\n string copy = x;\n}\n`;
+      const uri = params().textDocument.uri;
+      writeFileSync(join(workspace, "sample.nss"), text);
+      const client = await start();
+      await client.ready();
+      await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+      const member = { textDocument: { uri }, position: { line: 4, character: 21 } };
+      for (const character of [20, 21]) {
+        const completion = { textDocument: { uri }, position: { line: 4, character } };
+        expect(await client.rpc.sendRequest(CompletionRequest.type, completion)).to.deep.equal([]);
+      }
+      expect(await client.rpc.sendRequest(HoverRequest.type, member)).to.equal(null);
+      expect(await client.rpc.sendRequest(DefinitionRequest.type, member)).to.equal(null);
+      await client.rpc.sendNotification("textDocument/didChange", { textDocument: { uri, version: 2 }, contentChanges: [{ text: text.replace("(v).x", "(v). x") }] });
+      for (const character of [20, 21, 22]) {
+        expect(await client.rpc.sendRequest(CompletionRequest.type, { textDocument: { uri }, position: { line: 4, character } })).to.deep.equal([]);
+      }
+      const variable = { textDocument: { uri }, position: { line: 5, character: 16 } };
+      expect(content(await client.rpc.sendRequest(HoverRequest.type, variable))?.value).to.include("string x");
+      const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, variable);
+      expect(definition.range.start.line).to.equal(scope === "global" ? 0 : 2);
+      await client.shutdown();
+    });
+  }
+
+  it("does not restore removed workspace symbols when their open document closes", async () => {
+    const added = mkdtempSync(join(temporary, "remaining "));
+    const uri = pathToFileURL(join(added, "current.nss")).href;
+    const text = "void main() {\n Helper\n}\n";
+    writeFileSync(join(added, "current.nss"), text);
+    const client = await start({ capabilities: { workspace: { workspaceFolders: true } } });
+    await client.ready();
+    const helperUri = pathToFileURL(join(workspace, "helper.nss")).href;
+    await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri: helperUri, languageId: "nwscript", version: 1, text: helper } });
+    await client.rpc.sendNotification("workspace/didChangeWorkspaceFolders", {
+      event: {
+        removed: [{ uri: pathToFileURL(workspace).href, name: "removed" }],
+        added: [{ uri: pathToFileURL(added).href, name: "remaining" }],
+      },
+    });
+    await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+    const complete = async () => {
+      const result: any = await client.rpc.sendRequest(CompletionRequest.type, { textDocument: { uri }, position: { line: 1, character: 7 } });
+      return (result.items || result).map((item: any) => item.label);
+    };
+    expect(await complete()).not.to.include("Helper");
+    await client.rpc.sendNotification("textDocument/didClose", { textDocument: { uri: helperUri } });
+    expect(await complete()).not.to.include("Helper");
+    await client.shutdown();
+  });
+
+  it("discards late index results from removed workspace folders", async () => {
+    const indexer = join(packageRoot, "server/out/indexer.js");
+    const original = readFileSync(indexer);
+    const release = join(temporary, "release-indexer");
+    const added = mkdtempSync(join(temporary, "added "));
+    const uri = pathToFileURL(join(added, "current.nss")).href;
+    const text = "void main() {\n Ghost\n}\n";
+    writeFileSync(join(added, "current.nss"), text);
+    try {
+      writeFileSync(
+        indexer,
+        `
+        process.once("message", paths => {
+          const timer = setInterval(() => {
+            if (!require("fs").existsSync(${JSON.stringify(release)})) return;
+            clearInterval(timer);
+            for (const filePath of paths) process.send({ filePath, documentTokens: {
+              children: [], structDeclarations: [], globalDeclarations: [{
+                identifier: "GhostFromRemovedFolder", tokenType: 3, returnType: "void",
+                params: [], comments: [], position: { line: 0, character: 5 }
+              }]
+            }});
+            process.disconnect();
+          }, 20);
+        });
+      `,
+      );
+      const client = await start({ capabilities: { workspace: { workspaceFolders: true } } });
+      await client.waitFor(() => client.logs.includes("Indexing files ..."));
+      await client.rpc.sendNotification("workspace/didChangeWorkspaceFolders", {
+        event: {
+          removed: [{ uri: pathToFileURL(workspace).href, name: "old" }],
+          added: [{ uri: pathToFileURL(added).href, name: "new" }],
+        },
+      });
+      await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+      // A request after the notifications ensures the folder change has been handled.
+      await client.rpc.sendRequest(CompletionRequest.type, { textDocument: { uri }, position: { line: 1, character: 6 } });
+      writeFileSync(release, "");
+      await client.ready();
+      const result = await client.rpc.sendRequest(CompletionRequest.type, { textDocument: { uri }, position: { line: 1, character: 6 } });
+      expect(JSON.stringify(result)).not.to.include("GhostFromRemovedFolder");
+      await client.shutdown();
+    } finally {
+      writeFileSync(indexer, original);
+      rmSync(release, { force: true });
+    }
   });
 
   it("waits for active indexing workers to exit during shutdown", async () => {
@@ -485,6 +822,115 @@ describe("Installed standalone LSP server", function () {
       await client.shutdown();
     });
   }
+
+  it("keeps running when a formatter exits before consuming a large document", async () => {
+    // Node rejects clang-format's arguments before consuming stdin on all platforms.
+    const client = await start({ initializationOptions: { compiler: { enabled: false }, formatter: { executable: process.execPath } } });
+    await client.ready();
+    await open(client);
+    const uri = pathToFileURL(join(workspace, "large.nss")).href;
+    await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text: `/*${"x".repeat(1024 * 1024)}*/\nvoid main() {}` } });
+    const result = await client.rpc.sendRequest(DocumentFormattingRequest.type, { textDocument: { uri }, options: { tabSize: 4, insertSpaces: true } });
+    expect(result).to.equal(null);
+    await features(client);
+    await client.shutdown();
+  });
+
+  for (const encoded of [false, true]) {
+    it(`refreshes external changes, deletion, and creation with encoded URI=${String(encoded)}`, async () => {
+      const client = await start();
+      await client.ready();
+      await open(client);
+      const canonicalUri = pathToFileURL(join(workspace, "helper.nss")).href;
+      const helperUri = encoded ? canonicalUri.replace("helper.nss", "%68elper.nss").replace(/\/([A-Za-z]):/, "/$1%3A") : canonicalUri;
+      const completion = async () => JSON.stringify(await client.rpc.sendRequest(CompletionRequest.type, params()));
+      expect(await completion()).to.include('"label":"Helper"');
+      writeFileSync(join(workspace, "helper.nss"), "void Updated() {}\n");
+      await client.rpc.sendNotification("workspace/didChangeWatchedFiles", { changes: [{ uri: helperUri, type: 2 }] });
+      expect(await completion())
+        .to.include('"label":"Updated"')
+        .and.not.include('"label":"Helper"');
+      rmSync(join(workspace, "helper.nss"));
+      await client.rpc.sendNotification("workspace/didChangeWatchedFiles", { changes: [{ uri: helperUri, type: 3 }] });
+      expect(await completion()).not.to.include('"label":"Updated"');
+      writeFileSync(join(workspace, "helper.nss"), "void Created() {}\n");
+      await client.rpc.sendNotification("workspace/didChangeWatchedFiles", { changes: [{ uri: helperUri, type: 1 }] });
+      expect(await completion()).to.include('"label":"Created"');
+      await client.shutdown();
+    });
+  }
+
+  it("preserves the live document when a watcher uses an equivalent URI", async () => {
+    const client = await start();
+    await client.ready();
+    await open(client);
+    const canonical = pathToFileURL(join(workspace, "helper.nss")).href;
+    const alternate = canonical.replace("helper.nss", "%68elper.nss").replace(/\/([A-Za-z]):/, "/$1%3A");
+    await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri: alternate, languageId: "nwscript", version: 1, text: "void Unsaved() {}" } });
+    await client.rpc.sendNotification("workspace/didChangeWatchedFiles", { changes: [{ uri: canonical, type: 2 }] });
+    const completion = async () => JSON.stringify(await client.rpc.sendRequest(CompletionRequest.type, params()));
+    expect(await completion())
+      .to.include('"label":"Unsaved"')
+      .and.not.include('"label":"Helper"');
+    await client.rpc.sendNotification("textDocument/didClose", { textDocument: { uri: alternate } });
+    expect(await completion())
+      .to.include('"label":"Helper"')
+      .and.not.include('"label":"Unsaved"');
+    await client.shutdown();
+  });
+
+  it("resolves case-insensitive includes, uppercase extensions, and prototype-like filenames", async () => {
+    writeFileSync(join(workspace, "UPPER.NSS"), "void UpperFunction() {}\n");
+    writeFileSync(join(workspace, "constructor.nss"), "void ConstructorFunction() {}\n");
+    const client = await start();
+    await client.ready();
+    const text = '#include "HELPER"\n#include "UPPER"\n#include "CONSTRUCTOR"\nvoid main() {\n \n}\n';
+    await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { ...params().textDocument, languageId: "nwscript", version: 1, text } });
+    const response = await client.rpc.sendRequest(CompletionRequest.type, { ...params(), position: { line: 4, character: 1 } });
+    const items = Array.isArray(response) ? response : response?.items || [];
+    for (const label of ["Helper", "UpperFunction", "ConstructorFunction"]) {
+      expect(items.find((item) => item.label === label)?.label).to.equal(label);
+      expect(items.find((item) => item.label === label)).not.to.have.property("additionalTextEdits");
+    }
+    await client.shutdown();
+  });
+
+  it("indexes added workspace folders and removes their imports when detached", async () => {
+    const added = join(temporary, "added-workspace");
+    mkdirSync(added, { recursive: true });
+    const folder = { name: "added", uri: pathToFileURL(added).href };
+    writeFileSync(join(added, "fresh.nss"), "void HelperFromFolder() {}\n");
+    const client = await start({ capabilities: { workspace: { workspaceFolders: true } } });
+    await client.ready();
+    await open(client);
+    await client.rpc.sendNotification("workspace/didChangeWorkspaceFolders", { event: { added: [folder], removed: [] } });
+    const request = async () => JSON.stringify(await client.rpc.sendRequest(CompletionRequest.type, params()));
+    expect(await request())
+      .to.include("HelperFromFolder")
+      .and.include('"label":"Helper"');
+    await client.rpc.sendNotification("workspace/didChangeWorkspaceFolders", { event: { added: [], removed: [folder] } });
+    expect(await request()).not.to.include("HelperFromFolder");
+    await client.shutdown();
+  });
+
+  it("uses live global values and locations consistently across editor providers", async () => {
+    const client = await start();
+    await client.ready();
+    const saved = "const int LIVE_VALUE = 1;\nvoid main() {\n LIVE_VALUE;\n}\n";
+    await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { ...params().textDocument, languageId: "nwscript", version: 1, text: saved } });
+    const changed = "\n" + saved.replace("= 1", "= 2");
+    await client.rpc.sendNotification(DidChangeTextDocumentNotification.type, { textDocument: { ...params().textDocument, version: 2 }, contentChanges: [{ text: changed }] });
+    const target = { ...params(), position: { line: 3, character: 6 } };
+    expect(JSON.stringify(await client.rpc.sendRequest(CompletionRequest.type, target))).to.include("(constant) 2: int");
+    expect(content(await client.rpc.sendRequest(HoverRequest.type, target))?.value).to.include("LIVE_VALUE = 2");
+    expect(await client.rpc.sendRequest(DefinitionRequest.type, target)).to.deep.equal({
+      uri: params().textDocument.uri,
+      range: { start: { line: 1, character: 10 }, end: { line: 1, character: 10 } },
+    });
+    const symbols = await client.rpc.sendRequest(DocumentSymbolRequest.type, { textDocument: params().textDocument });
+    expect(JSON.stringify(symbols)).to.include('"line":1');
+    await client.shutdown();
+  });
 
   it("indexes edits made between willSave and didSave instead of reusing an older version", async () => {
     const client = await start();

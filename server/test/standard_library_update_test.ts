@@ -4,28 +4,37 @@ import AdmZip from "adm-zip";
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "fs";
 import { tmpdir } from "os";
 import { join } from "path";
-import { latestRelease, publishedChecksum, sha256, updateStandardLibrary } from "../scripts/UpdateStandardLibrary";
+import { extractSources, latestRelease, publishedChecksum, sha256, updateStandardLibrary } from "../scripts/UpdateStandardLibrary";
 
-function archiveFor(source: Buffer) {
-  const key = Buffer.alloc(118);
+function archiveFor(source: Buffer, additional: Record<string, Buffer> = {}) {
+  const entries = Object.entries({ nwscript: source, ...additional });
+  const key = Buffer.alloc(96 + entries.length * 22);
   key.write("KEY V1  ");
   key.writeUInt32LE(1, 8);
-  key.writeUInt32LE(1, 12);
+  key.writeUInt32LE(entries.length, 12);
   key.writeUInt32LE(64, 16);
   key.writeUInt32LE(96, 20);
   key.writeUInt32LE(76, 68);
   key.writeUInt16LE(14, 72);
   key.write("data/test.bif\0", 76);
-  key.write("nwscript", 96);
-  key.writeUInt16LE(2009, 112);
-  const bif = Buffer.alloc(36 + source.length);
+  let start = 20 + entries.length * 16;
+  const bif = Buffer.alloc(start + entries.reduce((size, [, content]) => size + content.length, 0));
   bif.write("BIFFV1  ");
-  bif.writeUInt32LE(1, 8);
+  bif.writeUInt32LE(entries.length, 8);
   bif.writeUInt32LE(20, 16);
-  bif.writeUInt32LE(36, 24);
-  bif.writeUInt32LE(source.length, 28);
-  bif.writeUInt32LE(2009, 32);
-  source.copy(bif, 36);
+  entries.forEach(([name, content], index) => {
+    const resourceOffset = 96 + index * 22;
+    key.write(name, resourceOffset);
+    key.writeUInt16LE(2009, resourceOffset + 16);
+    key.writeUInt32LE(index, resourceOffset + 18);
+    const offset = 20 + index * 16;
+    bif.writeUInt32LE(index, offset);
+    bif.writeUInt32LE(start, offset + 4);
+    bif.writeUInt32LE(content.length, offset + 8);
+    bif.writeUInt32LE(2009, offset + 12);
+    content.copy(bif, start);
+    start += content.length;
+  });
   const zip = new AdmZip();
   zip.addFile("data/nwn_base.key", key);
   zip.addFile("data/test.bif", bif);
@@ -79,6 +88,16 @@ describe("Standard library updater", () => {
   });
   afterEach(() => rmSync(root, { recursive: true, force: true }));
 
+  it("extracts multiple bundled scripts and rejects missing resources", () => {
+    const helper = Buffer.from("const int VALUE = 1;\nvoid Imported() {}\n");
+    const archive = archiveFor(source, { helper });
+    const pinned = { ...metadata, archiveSha256: sha256(archive) };
+    const extracted = extractSources(archive, pinned, ["helper", "nwscript"]);
+    expect(extracted.get("helper")?.equals(helper)).to.equal(true);
+    expect(extracted.get("nwscript")?.equals(source)).to.equal(true);
+    expect(() => extractSources(archive, pinned, ["helper", "missing"])).to.throw("Expected one missing.nss resource");
+  });
+
   it("discovers a newer release numerically and updates source, metadata, and definitions together", async () => {
     expect(await updateStandardLibrary({ scripts, download })).to.deep.equal({ updated: true, version: "89.8193.37-17" });
     const saved = JSON.parse(readFileSync(join(root, "resources/standardLibSource.json"), "utf8"));
@@ -86,8 +105,8 @@ describe("Standard library updater", () => {
     expect(saved.archiveSha256).to.equal(sha256(latestArchive));
     expect(readFileSync(join(scripts, "nwscript.nss")).equals(source)).to.equal(true);
     const definitions = JSON.parse(readFileSync(join(root, "resources/standardLibDefinitions.json"), "utf8"));
-    expect(definitions.complexTokens.map((token: any) => token.identifier)).to.deep.equal(["NewFn"]);
-    expect(definitions.complexTokens[0].params[0].defaultValue).to.equal("7");
+    expect(definitions.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["NewFn"]);
+    expect(definitions.globalDeclarations[0].params[0].defaultValue).to.equal("7");
   });
 
   it("checks upstream when already current without redownloading the archive or changing files", async () => {

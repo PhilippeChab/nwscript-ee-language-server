@@ -93,12 +93,29 @@ describe("Native compiler diagnostics", function () {
     return { path, uri };
   }
 
+  it("permits repeated and nested factory calls in global struct initializers", async () => {
+    script(
+      "factory.nss",
+      "struct Data { int field; };\nstruct Data Make(int value);\nstruct Data Make(int value) { struct Data result; result.field = value; return result; }\nint Identity(int value) { return value; }",
+    );
+    const main = script("main.nss", '#include "factory"\nstruct Data FIRST = Make(1);\nstruct Data SECOND = Make(Identity(2));\nvoid main() { struct Data local = Make(3); }', ["factory"]);
+    await publish(main.uri);
+    expect(published.get(main.uri)).to.deep.equal([]);
+    expect(errors).to.deep.equal([]);
+  });
+
   it("validates a standalone include without writing compiler artifacts", async () => {
     const helper = script("lib/helper.nss", "int helper(int n) { return n * 2; }");
     await publish(helper.uri);
     expect(published.get(helper.uri)).to.deep.equal([]);
     expect(existsSync(helper.path.replace(/\.nss$/, ".ncs"))).to.equal(false);
     expect(existsSync(helper.path.replace(/\.nss$/, ".ndb"))).to.equal(false);
+  });
+
+  it("permits a body-local variable to shadow a parameter with a different type", async () => {
+    const helper = script("shadow.nss", 'void Fn(int value) { string value = "local"; string copy = value; }');
+    await publish(helper.uri);
+    expect(requireDiagnostics(helper.uri)).to.deep.equal([]);
   });
 
   it("checks semantic errors inside helpers and clears diagnostics after fixing them", async () => {
