@@ -45,11 +45,11 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       children.map((child) => child.name),
       documentTokens.globalDeclarations,
       documentTokens.structDeclarations,
-      this,
       children.map((child) => child.position),
       documentTokens.localDeclarations,
       documentTokens.memberReferences,
       documentTokens.entryPointDeclarations,
+      this,
     );
   }
 

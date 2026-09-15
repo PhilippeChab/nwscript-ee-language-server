@@ -17,11 +17,11 @@ export default class Document {
     readonly children: string[],
     readonly globalDeclarations: ComplexToken[],
     readonly structDeclarations: StructComplexToken[],
-    private readonly collection: DocumentsCollection,
     readonly includePositions: (Position | undefined)[] = [],
     readonly localDeclarations: ComplexToken[] = [],
     readonly memberReferences: ComplexToken[] = [],
     readonly entryPointDeclarations: FunctionComplexToken[] = [],
+    private readonly collection: DocumentsCollection,
   ) {
     // Type uses are already represented by parsed declaration types. Retain
     // their identity so shared dependencies still follow include-once ordering.
