@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 14,
@@ -8,7 +8,8 @@
             "identifier": "GFF_FIELD_TYPE_STRUCT",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"struct\""
+            "value": "\"struct\"",
+            "isConst": true
         },
         {
             "position": {
@@ -18,7 +19,8 @@
             "identifier": "GFF_FIELD_TYPE_LIST",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"list\""
+            "value": "\"list\"",
+            "isConst": true
         },
         {
             "position": {
@@ -28,7 +30,8 @@
             "identifier": "GFF_FIELD_TYPE_BYTE",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"byte\""
+            "value": "\"byte\"",
+            "isConst": true
         },
         {
             "position": {
@@ -38,7 +41,8 @@
             "identifier": "GFF_FIELD_TYPE_CHAR",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"char\""
+            "value": "\"char\"",
+            "isConst": true
         },
         {
             "position": {
@@ -48,7 +52,8 @@
             "identifier": "GFF_FIELD_TYPE_WORD",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"word\""
+            "value": "\"word\"",
+            "isConst": true
         },
         {
             "position": {
@@ -58,7 +63,8 @@
             "identifier": "GFF_FIELD_TYPE_SHORT",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"short\""
+            "value": "\"short\"",
+            "isConst": true
         },
         {
             "position": {
@@ -68,7 +74,8 @@
             "identifier": "GFF_FIELD_TYPE_DWORD",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"dword\""
+            "value": "\"dword\"",
+            "isConst": true
         },
         {
             "position": {
@@ -78,7 +85,8 @@
             "identifier": "GFF_FIELD_TYPE_INT",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"int\""
+            "value": "\"int\"",
+            "isConst": true
         },
         {
             "position": {
@@ -88,7 +96,8 @@
             "identifier": "GFF_FIELD_TYPE_DWORD64",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"dword64\""
+            "value": "\"dword64\"",
+            "isConst": true
         },
         {
             "position": {
@@ -98,7 +107,8 @@
             "identifier": "GFF_FIELD_TYPE_INT64",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"int64\""
+            "value": "\"int64\"",
+            "isConst": true
         },
         {
             "position": {
@@ -108,7 +118,8 @@
             "identifier": "GFF_FIELD_TYPE_FLOAT",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"float\""
+            "value": "\"float\"",
+            "isConst": true
         },
         {
             "position": {
@@ -118,7 +129,8 @@
             "identifier": "GFF_FIELD_TYPE_DOUBLE",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"double\""
+            "value": "\"double\"",
+            "isConst": true
         },
         {
             "position": {
@@ -128,7 +140,8 @@
             "identifier": "GFF_FIELD_TYPE_RESREF",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"resref\""
+            "value": "\"resref\"",
+            "isConst": true
         },
         {
             "position": {
@@ -138,7 +151,8 @@
             "identifier": "GFF_FIELD_TYPE_STRING",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"cexostring\""
+            "value": "\"cexostring\"",
+            "isConst": true
         },
         {
             "position": {
@@ -148,7 +162,8 @@
             "identifier": "GFF_FIELD_TYPE_LOC_STRING",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"cexolocstring\""
+            "value": "\"cexolocstring\"",
+            "isConst": true
         },
         {
             "position": {
@@ -169,11 +184,16 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 34,
+                "character": 37
+            },
             "comments": [
                 "// Create a empty object of the given type. You need to manually fill in all",
                 "// GFF data with GffAddXXX. This will require understanding of the GFF file format",
                 "// and what data fields each object type requires."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -203,9 +223,14 @@
                     "valueType": "json"
                 }
             ],
+            "signatureEnd": {
+                "line": 36,
+                "character": 40
+            },
             "comments": [
                 "// Create a combined area format(CAF) object. You need to manually create the ARE and GIT objects with their required data fields."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -226,10 +251,15 @@
                     "valueType": "json"
                 }
             ],
+            "signatureEnd": {
+                "line": 40,
+                "character": 31
+            },
             "comments": [
                 "// Returns the OBJECT_TYPE_* of jGff.",
                 "// Note: Will return 0 for invalid object types, including areas."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -250,9 +280,14 @@
                     "valueType": "json"
                 }
             ],
+            "signatureEnd": {
+                "line": 42,
+                "character": 27
+            },
             "comments": [
                 "// Returns TRUE if jGff is a combined area format(CAF) object."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -292,11 +327,16 @@
                     "defaultValue": "\"\""
                 }
             ],
+            "signatureEnd": {
+                "line": 47,
+                "character": 66
+            },
             "comments": [
                 "// Returns TRUE if a field named sLabel of sType exists in jGff.",
                 "// * sLabel: Can be a json pointer(path) without the starting /, see the documentation of JsonPointer() for details.",
                 "// * sType: An optional GFF_FIELD_TYPE_*, leave empty to check if sLabel exists regardless of type."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -345,7 +385,12 @@
                     "defaultValue": "-1"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 58,
+                "character": 73
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -384,7 +429,12 @@
                     "valueType": "json"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 59,
+                "character": 53
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -423,7 +473,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 60,
+                "character": 48
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -462,7 +517,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 61,
+                "character": 48
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -501,7 +561,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 62,
+                "character": 48
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -540,7 +605,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 63,
+                "character": 49
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -579,9 +649,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 65,
+                "character": 49
+            },
             "comments": [
                 "// Note: Only data of type int32 will fit, because that's all that NWScript supports."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -620,7 +695,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 66,
+                "character": 47
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -659,9 +739,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 68,
+                "character": 51
+            },
             "comments": [
                 "// Note: Only data of type int32 will fit, because that's all that NWScript supports."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -700,9 +785,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 70,
+                "character": 49
+            },
             "comments": [
                 "// Note: Only data of type int32 will fit, because that's all that NWScript supports."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -741,7 +831,12 @@
                     "valueType": "float"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 71,
+                "character": 51
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -780,9 +875,14 @@
                     "valueType": "float"
                 }
             ],
+            "signatureEnd": {
+                "line": 73,
+                "character": 52
+            },
             "comments": [
                 "// Note: Only data of type float will fit, because that's all that NWScript supports."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -821,7 +921,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 74,
+                "character": 53
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -860,7 +965,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 75,
+                "character": 53
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -909,7 +1019,12 @@
                     "defaultValue": "-1"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 76,
+                "character": 74
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -948,7 +1063,12 @@
                     "valueType": "json"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 87,
+                "character": 61
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -987,7 +1107,12 @@
                     "valueType": "json"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 88,
+                "character": 57
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1026,7 +1151,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 89,
+                "character": 52
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1065,7 +1195,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 90,
+                "character": 52
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1104,7 +1239,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 91,
+                "character": 52
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1143,7 +1283,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 92,
+                "character": 53
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1182,9 +1327,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 94,
+                "character": 53
+            },
             "comments": [
                 "// Note: Only data of type int32 will fit, because that's all that NWScript supports."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1223,7 +1373,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 95,
+                "character": 51
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1262,9 +1417,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 97,
+                "character": 55
+            },
             "comments": [
                 "// Note: Only data of type int32 will fit, because that's all that NWScript supports."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1303,9 +1463,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 99,
+                "character": 53
+            },
             "comments": [
                 "// Note: Only data of type int32 will fit, because that's all that NWScript supports."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1344,7 +1509,12 @@
                     "valueType": "float"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 100,
+                "character": 55
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1383,9 +1553,14 @@
                     "valueType": "float"
                 }
             ],
+            "signatureEnd": {
+                "line": 102,
+                "character": 56
+            },
             "comments": [
                 "// Note: Only data of type float will fit, because that's all that NWScript supports."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -1424,7 +1599,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 103,
+                "character": 57
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1463,7 +1643,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 104,
+                "character": 57
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1512,7 +1697,12 @@
                     "defaultValue": "-1"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 105,
+                "character": 78
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1542,7 +1732,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 116,
+                "character": 46
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1572,7 +1767,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 117,
+                "character": 44
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1602,7 +1802,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 118,
+                "character": 44
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1632,7 +1837,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 119,
+                "character": 44
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1662,7 +1872,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 120,
+                "character": 44
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1692,7 +1907,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 121,
+                "character": 45
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1722,7 +1942,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 122,
+                "character": 45
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1752,7 +1977,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 123,
+                "character": 43
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1782,7 +2012,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 124,
+                "character": 47
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1812,7 +2047,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 125,
+                "character": 45
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1842,7 +2082,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 126,
+                "character": 45
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1872,7 +2117,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 127,
+                "character": 46
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1902,7 +2152,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 128,
+                "character": 46
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1932,7 +2187,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 129,
+                "character": 46
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1962,7 +2222,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 130,
+                "character": 49
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -1992,9 +2257,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 155,
+                "character": 43
+            },
             "comments": [
                 "// Returns the struct as JsonObject() on success."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2024,9 +2294,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 157,
+                "character": 41
+            },
             "comments": [
                 "// Returns a JsonArray() with all the list elements on success."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2056,9 +2331,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 159,
+                "character": 41
+            },
             "comments": [
                 "// Returns a JsonInt() on success."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2088,9 +2368,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 161,
+                "character": 41
+            },
             "comments": [
                 "// Returns a JsonInt() on success."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2120,9 +2405,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 163,
+                "character": 41
+            },
             "comments": [
                 "// Returns a JsonInt() on success."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2152,9 +2442,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 165,
+                "character": 42
+            },
             "comments": [
                 "// Returns a JsonInt() on success."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2184,9 +2479,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 167,
+                "character": 42
+            },
             "comments": [
                 "// Returns a JsonInt() on success."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2216,9 +2516,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 169,
+                "character": 40
+            },
             "comments": [
                 "// Returns a JsonInt() on success."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2248,9 +2553,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 171,
+                "character": 44
+            },
             "comments": [
                 "// Returns a JsonInt() on success."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2280,9 +2590,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 173,
+                "character": 42
+            },
             "comments": [
                 "// Returns a JsonInt() on success."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2312,9 +2627,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 175,
+                "character": 42
+            },
             "comments": [
                 "// Returns a JsonFloat() on success."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2344,9 +2664,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 177,
+                "character": 43
+            },
             "comments": [
                 "// Returns a JsonFloat() on success."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2376,9 +2701,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 179,
+                "character": 43
+            },
             "comments": [
                 "// Returns a JsonString() on success."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2408,9 +2738,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 181,
+                "character": 43
+            },
             "comments": [
                 "// Returns a JsonString() on success."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -2440,13 +2775,1946 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 185,
+                "character": 46
+            },
             "comments": [
                 "// Returns a JsonObject() on success.",
                 "//   Key \"0\" will have a JsonString() with the string, if set.",
                 "//   Key \"id\" will have a JsonInt() with the strref, if set."
-            ]
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 189,
+                "character": 5
+            },
+            "identifier": "AddPatchOperation",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 189,
+                        "character": 28
+                    },
+                    "identifier": "jPatchArray",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 189,
+                        "character": 48
+                    },
+                    "identifier": "sOp",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 189,
+                        "character": 60
+                    },
+                    "identifier": "sPath",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 189,
+                        "character": 72
+                    },
+                    "identifier": "jValue",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "signatureEnd": {
+                "line": 189,
+                "character": 79
+            },
+            "comments": [
+                "// *** Internal Helper Functions"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 198,
+                "character": 5
+            },
+            "identifier": "GffAddField",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 198,
+                        "character": 22
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 198,
+                        "character": 35
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 198,
+                        "character": 50
+                    },
+                    "identifier": "sType",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 198,
+                        "character": 62
+                    },
+                    "identifier": "jValue",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 198,
+                        "character": 74
+                    },
+                    "identifier": "nType",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "-1"
+                }
+            ],
+            "signatureEnd": {
+                "line": 198,
+                "character": 85
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 209,
+                "character": 5
+            },
+            "identifier": "GffReplaceField",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 209,
+                        "character": 26
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 209,
+                        "character": 39
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 209,
+                        "character": 54
+                    },
+                    "identifier": "sType",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 209,
+                        "character": 66
+                    },
+                    "identifier": "jValue",
+                    "tokenType": 25,
+                    "valueType": "json"
+                }
+            ],
+            "signatureEnd": {
+                "line": 209,
+                "character": 73
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 217,
+                "character": 5
+            },
+            "identifier": "GffRemoveField",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 217,
+                        "character": 25
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 217,
+                        "character": 38
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 217,
+                        "character": 53
+                    },
+                    "identifier": "sType",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 217,
+                "character": 59
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 225,
+                "character": 5
+            },
+            "identifier": "GffGetFieldType",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 225,
+                        "character": 26
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 225,
+                        "character": 39
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 225,
+                "character": 46
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 230,
+                "character": 5
+            },
+            "identifier": "GffGetFieldValue",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 230,
+                        "character": 27
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 230,
+                        "character": 40
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 230,
+                "character": 47
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 235,
+                "character": 5
+            },
+            "identifier": "GffGetField",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 235,
+                        "character": 22
+                    },
+                    "identifier": "jGff",
+                    "tokenType": 25,
+                    "valueType": "json"
+                },
+                {
+                    "position": {
+                        "line": 235,
+                        "character": 35
+                    },
+                    "identifier": "sLabel",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 235,
+                        "character": 50
+                    },
+                    "identifier": "sType",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 235,
+                "character": 56
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 246,
+                "character": 5
+            },
+            "identifier": "GffLocString",
+            "tokenType": 3,
+            "returnType": "json",
+            "params": [
+                {
+                    "position": {
+                        "line": 246,
+                        "character": 25
+                    },
+                    "identifier": "v",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 246,
+                        "character": 32
+                    },
+                    "identifier": "nStrRef",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "-1"
+                }
+            ],
+            "signatureEnd": {
+                "line": 246,
+                "character": 45
+            },
+            "comments": [],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "identifier": "jOperation",
+            "position": {
+                "line": 191,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "jField",
+            "position": {
+                "line": 200,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "jPatch",
+            "position": {
+                "line": 211,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "jPatch",
+            "position": {
+                "line": 219,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "jType",
+            "position": {
+                "line": 237,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "jLocString",
+            "position": {
+                "line": 248,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 258,
+                "character": 25
+            },
+            "identifier": "nObjectType",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "ot",
+            "position": {
+                "line": 260,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "ret",
+            "position": {
+                "line": 272,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 277,
+                "character": 24
+            },
+            "identifier": "jARE",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 277,
+                "character": 35
+            },
+            "identifier": "jGIT",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "identifier": "jCAF",
+            "position": {
+                "line": 279,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 287,
+                "character": 26
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "identifier": "jDataType",
+            "position": {
+                "line": 289,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sObjectType",
+            "position": {
+                "line": 294,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 309,
+                "character": 22
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 314,
+                "character": 27
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 314,
+                "character": 40
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 314,
+                "character": 55
+            },
+            "identifier": "sType",
+            "tokenType": 25,
+            "valueType": "string",
+            "defaultValue": "\"\""
+        },
+        {
+            "identifier": "jFieldType",
+            "position": {
+                "line": 316,
+                "character": 9
+            },
+            "valueType": "json",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 321,
+                "character": 23
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 321,
+                "character": 36
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 321,
+                "character": 49
+            },
+            "identifier": "jStruct",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 321,
+                "character": 62
+            },
+            "identifier": "nType",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "-1"
+        },
+        {
+            "position": {
+                "line": 326,
+                "character": 21
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 326,
+                "character": 34
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 326,
+                "character": 47
+            },
+            "identifier": "jList",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 331,
+                "character": 21
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 331,
+                "character": 34
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 331,
+                "character": 46
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 336,
+                "character": 21
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 336,
+                "character": 34
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 336,
+                "character": 46
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 341,
+                "character": 21
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 341,
+                "character": 34
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 341,
+                "character": 46
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 346,
+                "character": 22
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 346,
+                "character": 35
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 346,
+                "character": 47
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 351,
+                "character": 22
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 351,
+                "character": 35
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 351,
+                "character": 47
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 356,
+                "character": 20
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 356,
+                "character": 33
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 356,
+                "character": 45
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 361,
+                "character": 24
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 361,
+                "character": 37
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 361,
+                "character": 49
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 366,
+                "character": 22
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 366,
+                "character": 35
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 366,
+                "character": 47
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 371,
+                "character": 22
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 371,
+                "character": 35
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 371,
+                "character": 49
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 376,
+                "character": 23
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 376,
+                "character": 36
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 376,
+                "character": 50
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 381,
+                "character": 23
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 381,
+                "character": 36
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 381,
+                "character": 51
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 386,
+                "character": 23
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 386,
+                "character": 36
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 386,
+                "character": 51
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 391,
+                "character": 26
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 391,
+                "character": 39
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 391,
+                "character": 54
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 391,
+                "character": 61
+            },
+            "identifier": "nStrRef",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "-1"
+        },
+        {
+            "position": {
+                "line": 397,
+                "character": 27
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 397,
+                "character": 40
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 397,
+                "character": 53
+            },
+            "identifier": "jStruct",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 402,
+                "character": 25
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 402,
+                "character": 38
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 402,
+                "character": 51
+            },
+            "identifier": "jList",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 407,
+                "character": 25
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 407,
+                "character": 38
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 407,
+                "character": 50
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 412,
+                "character": 25
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 412,
+                "character": 38
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 412,
+                "character": 50
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 417,
+                "character": 25
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 417,
+                "character": 38
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 417,
+                "character": 50
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 422,
+                "character": 26
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 422,
+                "character": 39
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 422,
+                "character": 51
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 427,
+                "character": 26
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 427,
+                "character": 39
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 427,
+                "character": 51
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 432,
+                "character": 24
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 432,
+                "character": 37
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 432,
+                "character": 49
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 437,
+                "character": 28
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 437,
+                "character": 41
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 437,
+                "character": 53
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 442,
+                "character": 26
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 442,
+                "character": 39
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 442,
+                "character": 51
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 447,
+                "character": 26
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 447,
+                "character": 39
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 447,
+                "character": 53
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 452,
+                "character": 27
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 452,
+                "character": 40
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 452,
+                "character": 54
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 457,
+                "character": 27
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 457,
+                "character": 40
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 457,
+                "character": 55
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 462,
+                "character": 27
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 462,
+                "character": 40
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 462,
+                "character": 55
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 467,
+                "character": 30
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 467,
+                "character": 43
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 467,
+                "character": 58
+            },
+            "identifier": "v",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 467,
+                "character": 65
+            },
+            "identifier": "nStrRef",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "-1"
+        },
+        {
+            "position": {
+                "line": 473,
+                "character": 26
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 473,
+                "character": 39
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 478,
+                "character": 24
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 478,
+                "character": 37
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 483,
+                "character": 24
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 483,
+                "character": 37
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 488,
+                "character": 24
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 488,
+                "character": 37
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 493,
+                "character": 24
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 493,
+                "character": 37
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 498,
+                "character": 25
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 498,
+                "character": 38
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 503,
+                "character": 25
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 503,
+                "character": 38
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 508,
+                "character": 23
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 508,
+                "character": 36
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 513,
+                "character": 27
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 513,
+                "character": 40
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 518,
+                "character": 25
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 518,
+                "character": 38
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 523,
+                "character": 25
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 523,
+                "character": 38
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 528,
+                "character": 26
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 528,
+                "character": 39
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 533,
+                "character": 26
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 533,
+                "character": 39
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 538,
+                "character": 26
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 538,
+                "character": 39
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 543,
+                "character": 29
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 543,
+                "character": 42
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 549,
+                "character": 23
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 549,
+                "character": 36
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 554,
+                "character": 21
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 554,
+                "character": 34
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 559,
+                "character": 21
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 559,
+                "character": 34
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 564,
+                "character": 21
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 564,
+                "character": 34
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 569,
+                "character": 21
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 569,
+                "character": 34
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 574,
+                "character": 22
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 574,
+                "character": 35
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 579,
+                "character": 22
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 579,
+                "character": 35
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 584,
+                "character": 20
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 584,
+                "character": 33
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 589,
+                "character": 24
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 589,
+                "character": 37
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 594,
+                "character": 22
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 594,
+                "character": 35
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 599,
+                "character": 22
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 599,
+                "character": 35
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 604,
+                "character": 23
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 604,
+                "character": 36
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 609,
+                "character": 23
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 609,
+                "character": 36
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 614,
+                "character": 23
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 614,
+                "character": 36
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 619,
+                "character": 26
+            },
+            "identifier": "jGff",
+            "tokenType": 25,
+            "valueType": "json"
+        },
+        {
+            "position": {
+                "line": 619,
+                "character": 39
+            },
+            "identifier": "sLabel",
+            "tokenType": 25,
+            "valueType": "string"
+        }
+    ]
 }

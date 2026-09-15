@@ -1,7 +1,42 @@
 {
-    "complexTokens": [],
-    "structComplexTokens": [],
+    "globalDeclarations": [],
+    "structDeclarations": [],
     "children": [
         "NW_I0_PLOT"
+    ],
+    "includePositions": [
+        {
+            "line": 0,
+            "character": 0
+        }
+    ],
+    "entryPointDeclarations": [
+        {
+            "position": {
+                "line": 2,
+                "character": 4
+            },
+            "identifier": "StartingConditional",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 2,
+                "character": 25
+            },
+            "comments": [],
+            "implementation": true
+        }
+    ],
+    "localDeclarations": [
+        {
+            "identifier": "l_iResult",
+            "position": {
+                "line": 4,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
     ]
 }

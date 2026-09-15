@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 14,
@@ -28,9 +28,160 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 14,
+                "character": 45
+            },
+            "comments": [],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 16,
+                "character": 26
+            },
+            "identifier": "oCreature",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 16,
+                "character": 41
+            },
+            "identifier": "iHP",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "sOchre1",
+            "position": {
+                "line": 18,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sOchre3",
+            "position": {
+                "line": 20,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sOchre5",
+            "position": {
+                "line": 22,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "iHitDice",
+            "position": {
+                "line": 25,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "iDifficulty",
+            "position": {
+                "line": 26,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "iDamage",
+            "position": {
+                "line": 27,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "ePoof1",
+            "position": {
+                "line": 29,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "ePoof2",
+            "position": {
+                "line": 30,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eLevelDown",
+            "position": {
+                "line": 31,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eDamage",
+            "position": {
+                "line": 31,
+                "character": 23
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oClone1",
+            "position": {
+                "line": 33,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oClone2",
+            "position": {
+                "line": 34,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "lSpawn",
+            "position": {
+                "line": 36,
+                "character": 13
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sResRef",
+            "position": {
+                "line": 37,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        }
+    ]
 }

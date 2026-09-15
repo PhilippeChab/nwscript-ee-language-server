@@ -1,8 +1,47 @@
 {
-    "complexTokens": [],
-    "structComplexTokens": [],
+    "globalDeclarations": [],
+    "structDeclarations": [],
     "children": [
         "NW_I0_Plot",
         "NW_J_RESCUE"
+    ],
+    "includePositions": [
+        {
+            "line": 0,
+            "character": 0
+        },
+        {
+            "line": 1,
+            "character": 0
+        }
+    ],
+    "entryPointDeclarations": [
+        {
+            "position": {
+                "line": 3,
+                "character": 4
+            },
+            "identifier": "StartingConditional",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 3,
+                "character": 25
+            },
+            "comments": [],
+            "implementation": true
+        }
+    ],
+    "localDeclarations": [
+        {
+            "identifier": "bCondition",
+            "position": {
+                "line": 5,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
     ]
 }

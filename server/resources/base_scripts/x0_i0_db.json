@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 16,
@@ -7,7 +7,7 @@
             },
             "identifier": "dbGetCampaignFloat",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "float",
             "params": [
                 {
                     "position": {
@@ -34,12 +34,18 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
+            "signatureEnd": {
+                "line": 16,
+                "character": 97
+            },
             "comments": [
                 "// * retrieve float"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -48,7 +54,7 @@
             },
             "identifier": "dbGetCampaignInt",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "int",
             "params": [
                 {
                     "position": {
@@ -75,10 +81,16 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 17,
+                "character": 95
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -114,10 +126,16 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 18,
+                "character": 100
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -126,7 +144,7 @@
             },
             "identifier": "dbGetCampaignString",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "string",
             "params": [
                 {
                     "position": {
@@ -153,10 +171,16 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 19,
+                "character": 98
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -165,7 +189,7 @@
             },
             "identifier": "dbGetCampaignVector",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "vector",
             "params": [
                 {
                     "position": {
@@ -192,10 +216,16 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 20,
+                "character": 98
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -240,9 +270,14 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
+            "signatureEnd": {
+                "line": 29,
+                "character": 111
+            },
             "comments": [
                 "// Campaign variable table database control.",
                 "// Use the set functions to add/change a variable to a campaign database.",
@@ -251,7 +286,8 @@
                 "// The database name must be the same for both set and get functions. It IS case sensitive.",
                 "// The var name must be unique acrossed the entire database.",
                 "// If you want a variable to pertain to a specific player in the game, provide a player object."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -296,10 +332,16 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 30,
+                "character": 109
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -344,10 +386,16 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 31,
+                "character": 118
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -392,10 +440,16 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 32,
+                "character": 112
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -440,10 +494,16 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 33,
+                "character": 112
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -452,7 +512,7 @@
             },
             "identifier": "dbStoreCampaignObject",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "int",
             "params": [
                 {
                     "position": {
@@ -488,13 +548,19 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
+            "signatureEnd": {
+                "line": 37,
+                "character": 114
+            },
             "comments": [
                 "// Stores an object with the given id.",
                 "// Returns 0 if it failled, 1 if it worked."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -549,16 +615,433 @@
                     },
                     "identifier": "oPlayer",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
+            "signatureEnd": {
+                "line": 41,
+                "character": 155
+            },
             "comments": [
                 "// Use RetrieveCampaign with the given id to restore it.",
                 "// If you specify an owner, the object will try to be created in their repository",
                 "// If the owner can't handle the item (or if it's a creature) it will be created on the ground."
-            ]
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 46,
+                "character": 35
+            },
+            "identifier": "sCampaignName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 46,
+                "character": 57
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 46,
+                "character": 74
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        },
+        {
+            "position": {
+                "line": 51,
+                "character": 33
+            },
+            "identifier": "sCampaignName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 51,
+                "character": 55
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 51,
+                "character": 72
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        },
+        {
+            "position": {
+                "line": 56,
+                "character": 38
+            },
+            "identifier": "sCampaignName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 56,
+                "character": 60
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 56,
+                "character": 77
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        },
+        {
+            "position": {
+                "line": 60,
+                "character": 36
+            },
+            "identifier": "sCampaignName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 60,
+                "character": 58
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 60,
+                "character": 75
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        },
+        {
+            "position": {
+                "line": 64,
+                "character": 36
+            },
+            "identifier": "sCampaignName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 64,
+                "character": 58
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 64,
+                "character": 75
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        },
+        {
+            "position": {
+                "line": 70,
+                "character": 31
+            },
+            "identifier": "sCampaignName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 70,
+                "character": 53
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 70,
+                "character": 69
+            },
+            "identifier": "flFloat",
+            "tokenType": 25,
+            "valueType": "float"
+        },
+        {
+            "position": {
+                "line": 70,
+                "character": 88
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        },
+        {
+            "position": {
+                "line": 74,
+                "character": 29
+            },
+            "identifier": "sCampaignName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 74,
+                "character": 51
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 74,
+                "character": 65
+            },
+            "identifier": "nInt",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 74,
+                "character": 86
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        },
+        {
+            "position": {
+                "line": 78,
+                "character": 34
+            },
+            "identifier": "sCampaignName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 78,
+                "character": 56
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 78,
+                "character": 75
+            },
+            "identifier": "locLocation",
+            "tokenType": 25,
+            "valueType": "location"
+        },
+        {
+            "position": {
+                "line": 78,
+                "character": 95
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 32
+            },
+            "identifier": "sCampaignName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 54
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 71
+            },
+            "identifier": "sString",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 89
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        },
+        {
+            "position": {
+                "line": 86,
+                "character": 32
+            },
+            "identifier": "sCampaignName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 86,
+                "character": 54
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 86,
+                "character": 71
+            },
+            "identifier": "vVector",
+            "tokenType": 25,
+            "valueType": "vector"
+        },
+        {
+            "position": {
+                "line": 86,
+                "character": 89
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        },
+        {
+            "position": {
+                "line": 93,
+                "character": 39
+            },
+            "identifier": "sCampaignName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 93,
+                "character": 61
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 93,
+                "character": 80
+            },
+            "identifier": "locLocation",
+            "tokenType": 25,
+            "valueType": "location"
+        },
+        {
+            "position": {
+                "line": 93,
+                "character": 100
+            },
+            "identifier": "oOwner",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        },
+        {
+            "position": {
+                "line": 93,
+                "character": 132
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        },
+        {
+            "position": {
+                "line": 99,
+                "character": 36
+            },
+            "identifier": "sCampaignName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 99,
+                "character": 58
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 99,
+                "character": 75
+            },
+            "identifier": "oObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 99,
+                "character": 91
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        }
+    ]
 }

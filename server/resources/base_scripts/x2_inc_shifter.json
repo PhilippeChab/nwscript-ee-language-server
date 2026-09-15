@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 19,
@@ -8,7 +8,8 @@
             "identifier": "SHIFTER_DC_VERY_EASY",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0"
+            "value": "0",
+            "isConst": true
         },
         {
             "position": {
@@ -18,7 +19,8 @@
             "identifier": "SHIFTER_DC_EASY",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "isConst": true
         },
         {
             "position": {
@@ -28,7 +30,8 @@
             "identifier": "SHIFTER_DC_EASY_MEDIUM",
             "tokenType": 21,
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "isConst": true
         },
         {
             "position": {
@@ -38,7 +41,8 @@
             "identifier": "SHIFTER_DC_NORMAL",
             "tokenType": 21,
             "valueType": "int",
-            "value": "3"
+            "value": "3",
+            "isConst": true
         },
         {
             "position": {
@@ -48,7 +52,8 @@
             "identifier": "SHIFTER_DC_HARD",
             "tokenType": 21,
             "valueType": "int",
-            "value": "4"
+            "value": "4",
+            "isConst": true
         },
         {
             "position": {
@@ -58,7 +63,8 @@
             "identifier": "X2_GW2_EPIC_THRESHOLD",
             "tokenType": 21,
             "valueType": "int",
-            "value": "11"
+            "value": "11",
+            "isConst": true
         },
         {
             "position": {
@@ -68,7 +74,8 @@
             "identifier": "X2_GW3_EPIC_THRESHOLD",
             "tokenType": 21,
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "isConst": true
         },
         {
             "position": {
@@ -79,12 +86,17 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
+            "signatureEnd": {
+                "line": 36,
+                "character": 45
+            },
             "comments": [
                 "// * Returns and decrements the number of times this ability can be used",
                 "// * while in this shape. See x2_s2_gwildshp for more information",
                 "// * Do not place this on any spellscript that is not called",
                 "// * exclusively from Greater Wildshape"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -105,6 +117,10 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 48,
+                "character": 50
+            },
             "comments": [
                 "// * Introduces an artifical limit on the special abilities of the Greater",
                 "// * Wildshape forms,in order to work around the engine limitation",
@@ -116,7 +132,8 @@
                 "// *  Stonegaze(Basilisk) :    1+ 1 use per 5 levels",
                 "// *  MindBlast(Illithid) :    1+ 1 use per 3 levels",
                 "// *  Domination(Vampire) :    1+ 1 use per 5 levels"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -157,13 +174,18 @@
                     "defaultValue": "FALSE"
                 }
             ],
+            "signatureEnd": {
+                "line": 55,
+                "character": 102
+            },
             "comments": [
                 "// * Used for the scaling DC of various shifter abilities.",
                 "// * Parameters:",
                 "// * oPC              - The Shifter",
                 "// * nShifterDCConst  - SHIFTER_DC_EASY, SHIFTER_DC_NORMAL, SHIFTER_DC_HARD",
                 "// * bAddDruidLevels  - Take druid levels into account"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -184,10 +206,15 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 59,
+                "character": 47
+            },
             "comments": [
                 "// * Returns TRUE if the shifter's current weapon should be merged onto his",
                 "// * newly equipped melee weapon"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -208,10 +235,15 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 63,
+                "character": 47
+            },
             "comments": [
                 "// * Returns TRUE if the shifter's current armor should be merged onto his",
                 "// * creature hide after shifting."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -232,12 +264,165 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 67,
+                "character": 47
+            },
             "comments": [
                 "// * Returns TRUE if the shifter's current items (gloves, belt, etc) should",
                 "// * be merged onto his creature hide after shiftng."
-            ]
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 76,
+                "character": 41
+            },
+            "identifier": "nSpellId",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "sId",
+            "position": {
+                "line": 78,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nLevel",
+            "position": {
+                "line": 79,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sId",
+            "position": {
+                "line": 125,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nLimit",
+            "position": {
+                "line": 126,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 144,
+                "character": 28
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 144,
+                "character": 37
+            },
+            "identifier": "nShifterDCConst",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "SHIFTER_DC_NORMAL"
+        },
+        {
+            "position": {
+                "line": 144,
+                "character": 78
+            },
+            "identifier": "bAddDruidLevels",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "FALSE"
+        },
+        {
+            "identifier": "nDC",
+            "position": {
+                "line": 146,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nLevel",
+            "position": {
+                "line": 151,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 190,
+                "character": 28
+            },
+            "identifier": "nPolymorphConstant",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 192,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 201,
+                "character": 28
+            },
+            "identifier": "nPolymorphConstant",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 203,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 212,
+                "character": 28
+            },
+            "identifier": "nPolymorphConstant",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 214,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
+    ]
 }

@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 17,
@@ -37,9 +37,161 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 17,
+                "character": 60
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 54,
+                "character": 4
+            },
+            "identifier": "GetMartialClass",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 54,
+                        "character": 27
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 54,
+                "character": 31
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 60,
+                "character": 5
+            },
+            "identifier": "MoveAllAssociatesTo",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 60,
+                        "character": 32
+                    },
+                    "identifier": "oDest",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 60,
+                        "character": 46
+                    },
+                    "identifier": "oMaster",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 60,
+                "character": 54
+            },
+            "comments": [
+                "// * moves all associates of oMaster to oDest."
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 97,
+                "character": 4
+            },
+            "identifier": "GetPCTotalLevel",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 97,
+                        "character": 27
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 97,
+                "character": 31
+            },
+            "comments": [
+                "// * adds up all three class levels (i.e., returns hit die)"
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 31,
+                "character": 24
+            },
+            "identifier": "sMonster",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 31,
+                "character": 38
+            },
+            "identifier": "nPercent",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 31,
+                "character": 52
+            },
+            "identifier": "nNumber",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "nLevel",
+            "position": {
+                "line": 56,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 62,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oHench",
+            "position": {
+                "line": 63,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        }
+    ]
 }

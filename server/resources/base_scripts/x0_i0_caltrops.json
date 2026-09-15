@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 21,
@@ -19,16 +19,83 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 21,
+                "character": 37
+            },
             "comments": [
                 "// Apply the caltrops effect to the specified target.",
                 "// Caltrops do 1 point of damage up to 25 total points, then",
                 "// are destroyed. ",
                 "// This is applied from within the area of effect object."
-            ]
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
+    "structDeclarations": [],
     "children": [
         "nw_i0_spells"
+    ],
+    "includePositions": [
+        {
+            "line": 11,
+            "character": 0
+        }
+    ],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 28,
+                "character": 29
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nDam",
+            "position": {
+                "line": 30,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eDam",
+            "position": {
+                "line": 32,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fDelay",
+            "position": {
+                "line": 34,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nDamageDone",
+            "position": {
+                "line": 47,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oCaltrops",
+            "position": {
+                "line": 52,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        }
     ]
 }

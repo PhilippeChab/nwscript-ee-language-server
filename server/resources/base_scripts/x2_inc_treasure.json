@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 14,
@@ -8,7 +8,8 @@
             "identifier": "X2_DTS_CLASS_LOW",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0"
+            "value": "0",
+            "isConst": true
         },
         {
             "position": {
@@ -18,7 +19,8 @@
             "identifier": "X2_DTS_CLASS_MEDIUM",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "isConst": true
         },
         {
             "position": {
@@ -28,7 +30,8 @@
             "identifier": "X2_DTS_CLASS_HIGH",
             "tokenType": 21,
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "isConst": true
         },
         {
             "position": {
@@ -38,7 +41,8 @@
             "identifier": "X2_DTS_TYPE_DISP",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "isConst": true
         },
         {
             "position": {
@@ -48,7 +52,8 @@
             "identifier": "X2_DTS_TYPE_AMMO",
             "tokenType": 21,
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "isConst": true
         },
         {
             "position": {
@@ -58,7 +63,8 @@
             "identifier": "X2_DTS_TYPE_GOLD",
             "tokenType": 21,
             "valueType": "int",
-            "value": "4"
+            "value": "4",
+            "isConst": true
         },
         {
             "position": {
@@ -68,7 +74,8 @@
             "identifier": "X2_DTS_TYPE_ITEM",
             "tokenType": 21,
             "valueType": "int",
-            "value": "8"
+            "value": "8",
+            "isConst": true
         },
         {
             "position": {
@@ -78,7 +85,8 @@
             "identifier": "X2_DTS_BASECHANCE_TREAS",
             "tokenType": 21,
             "valueType": "int",
-            "value": "50"
+            "value": "50",
+            "isConst": true
         },
         {
             "position": {
@@ -88,7 +96,8 @@
             "identifier": "X2_DTS_MAXITEMS",
             "tokenType": 21,
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "isConst": true
         },
         {
             "position": {
@@ -98,7 +107,8 @@
             "identifier": "X2_DTS_STACKVAR",
             "tokenType": 21,
             "valueType": "int",
-            "value": "50"
+            "value": "50",
+            "isConst": true
         },
         {
             "position": {
@@ -108,7 +118,8 @@
             "identifier": "X2_DTS_2DA_DISP",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"des_treas_disp\""
+            "value": "\"des_treas_disp\"",
+            "isConst": true
         },
         {
             "position": {
@@ -118,7 +129,8 @@
             "identifier": "X2_DTS_2DA_AMMO",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"des_treas_ammo\""
+            "value": "\"des_treas_ammo\"",
+            "isConst": true
         },
         {
             "position": {
@@ -128,7 +140,8 @@
             "identifier": "X2_DTS_2DA_GOLD",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"des_treas_gold\""
+            "value": "\"des_treas_gold\"",
+            "isConst": true
         },
         {
             "position": {
@@ -138,7 +151,8 @@
             "identifier": "X2_DTS_2DA_ITEM",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"des_treas_items\""
+            "value": "\"des_treas_items\"",
+            "isConst": true
         },
         {
             "position": {
@@ -148,7 +162,8 @@
             "identifier": "X2_DTS_2DA_ENHANCEMENTS",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"des_treas_enh\""
+            "value": "\"des_treas_enh\"",
+            "isConst": true
         },
         {
             "position": {
@@ -158,7 +173,8 @@
             "identifier": "X2_DTS_2DA_CONF",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"des_conf_treas\""
+            "value": "\"des_conf_treas\"",
+            "isConst": true
         },
         {
             "position": {
@@ -207,6 +223,10 @@
                     "defaultValue": "5"
                 }
             ],
+            "signatureEnd": {
+                "line": 54,
+                "character": 98
+            },
             "comments": [
                 "// Generate random, disposeable treasure on the container",
                 "// oContainer - Valid object with inventory",
@@ -220,7 +240,8 @@
                 "// Example:",
                 "//     Generate Low Class Ammo and Gold+Gems",
                 "//     DTSGenerateTreasureOnContainer (oChest, X2_DTS_CLASS_LOW, X2_DTS_TYPE_AMMO | X2_DTS_TYPE_GOLD);"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -260,12 +281,17 @@
                     "defaultValue": "FALSE"
                 }
             ],
+            "signatureEnd": {
+                "line": 60,
+                "character": 104
+            },
             "comments": [
                 "// Generates one random, character specific item on container",
                 "// Treasure is optimized to suit a characters needs",
                 "// if bIgnoreFeats is set TRUE, the system will not use Feats (i.e. Weapon Focus)",
                 "// to determine a baseitem to spawn"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -287,10 +313,15 @@
                     "defaultValue": "0"
                 }
             ],
+            "signatureEnd": {
+                "line": 65,
+                "character": 41
+            },
             "comments": [
                 "// Initializes the treasure system by loading x2_conf_tras.2da",
                 "// nConfigIndex - RowIndex of the configuration to load"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -330,10 +361,15 @@
                     "defaultValue": "FALSE"
                 }
             ],
+            "signatureEnd": {
+                "line": 69,
+                "character": 88
+            },
             "comments": [
                 "// Sets the area wide chance for treasure Generation ...",
                 "// if bDisable = TRUE, then no random treasure is generated at all"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -363,16 +399,1099 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 75,
+                "character": 67
+            },
             "comments": [
                 "// Enchantes the weapon passed in oItem with a scaled enhancement bonus",
                 "// nLevel should be the level of the player who is going to receive",
                 "// the item. Lookup is done via  des_treas_enh.2da.",
                 "// returns TRUE on success"
-            ]
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 85,
+                "character": 5
+            },
+            "identifier": "DTSDebug",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 85,
+                        "character": 21
+                    },
+                    "identifier": "s",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 85,
+                "character": 23
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 93,
+                "character": 7
+            },
+            "identifier": "DTSGet2DAStringOrDefault",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 93,
+                        "character": 39
+                    },
+                    "identifier": "s2DA",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 93,
+                        "character": 52
+                    },
+                    "identifier": "sColumn",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 93,
+                        "character": 65
+                    },
+                    "identifier": "nRow",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 93,
+                        "character": 78
+                    },
+                    "identifier": "sDefault",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 93,
+                "character": 87
+            },
+            "comments": [
+                "// Get a 2da String or the supplied default if string is empty"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 106,
+                "character": 7
+            },
+            "identifier": "DTSGet2DANameByType",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 106,
+                        "character": 31
+                    },
+                    "identifier": "nType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 106,
+                "character": 37
+            },
+            "comments": [
+                "// Maps the X2_DTS_TYPE_* value given in nType to a 2da name"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 142,
+                "character": 7
+            },
+            "identifier": "DTSGet2DAColNameByClass",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 142,
+                        "character": 35
+                    },
+                    "identifier": "nClass",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 142,
+                "character": 42
+            },
+            "comments": [
+                "// Maps the X2_DTS_CLASS_* value given in nType to row name in the 2da"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 157,
+                "character": 4
+            },
+            "identifier": "DTSGetNoOfRowsInTreasureTable",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 157,
+                        "character": 38
+                    },
+                    "identifier": "nType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 157,
+                        "character": 49
+                    },
+                    "identifier": "nClass",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "1"
+                },
+                {
+                    "position": {
+                        "line": 157,
+                        "character": 68
+                    },
+                    "identifier": "sCol",
+                    "tokenType": 25,
+                    "valueType": "string",
+                    "defaultValue": "\"\""
+                }
+            ],
+            "signatureEnd": {
+                "line": 157,
+                "character": 78
+            },
+            "comments": [
+                "// Returns the number of entries available for random treasure of a given type and class",
+                "// nType   - X2_DTS_TYPE_*",
+                "// nClass  - X2_DTS_CLASS_* (default = X2_DTS_CLASS_LOW)",
+                "// sCol    - used when X2_DTS_TYPE_ITEM is specified"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 181,
+                "character": 4
+            },
+            "identifier": "DTSGetBaseChance",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 181,
+                        "character": 28
+                    },
+                    "identifier": "oArea",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 181,
+                "character": 34
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 204,
+                "character": 4
+            },
+            "identifier": "DTSGetMaxItems",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 204,
+                "character": 20
+            },
+            "comments": [
+                "// Returns the maximum number of items to generate according to the configuration",
+                "// If no configuration is used, default is X2_DTS_MAXITEMS (2)"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 218,
+                "character": 6
+            },
+            "identifier": "DTSGetStackVariation",
+            "tokenType": 3,
+            "returnType": "float",
+            "params": [],
+            "signatureEnd": {
+                "line": 218,
+                "character": 28
+            },
+            "comments": [
+                "// Returns the stack variation to use when generation stacked items",
+                "// If no configuration is used, default is X2_DTS_STACKVAR (0.5)",
+                "// Stacks are calculated (Stack* X2_DTS_STACKVAR) + Random (Stack *X2_DTS_STACKVAR)"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 282,
+                "character": 7
+            },
+            "identifier": "DTSCreateItemOnObject",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 282,
+                        "character": 36
+                    },
+                    "identifier": "sItemTemplate",
+                    "tokenType": 25,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 282,
+                        "character": 58
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 282,
+                "character": 66
+            },
+            "comments": [
+                "//This is a wrapper for CreateItemOnObject which can handle the stack number",
+                "//given on"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 318,
+                "character": 7
+            },
+            "identifier": "DTSGetRandomItemResRef",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 318,
+                        "character": 34
+                    },
+                    "identifier": "nType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 318,
+                        "character": 45
+                    },
+                    "identifier": "nClass",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 318,
+                "character": 52
+            },
+            "comments": [
+                "// Returns a single random item resref from the approriate 2da",
+                "// nType   - X2_DTS_TYPE_*  - Type of Treasure (i.e. disposeable, ammo)",
+                "// nClass  - X2_DTS_CLASS_* - Class of Treasure (i.e. high, medium, low)"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 334,
+                "character": 7
+            },
+            "identifier": "DTSGetFeatSpecificItemResRef",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [
+                {
+                    "position": {
+                        "line": 334,
+                        "character": 40
+                    },
+                    "identifier": "nFeatID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 334,
+                "character": 48
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 347,
+                "character": 4
+            },
+            "identifier": "DTSGetHighestClass",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 347,
+                        "character": 30
+                    },
+                    "identifier": "oCreature",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 347,
+                "character": 40
+            },
+            "comments": [
+                "// Returns the Highest class of a creature"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 382,
+                "character": 4
+            },
+            "identifier": "DTSDetermineFeatToUse",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 382,
+                        "character": 33
+                    },
+                    "identifier": "oAdventurer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 382,
+                        "character": 50
+                    },
+                    "identifier": "bDontUseFeats",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
+                }
+            ],
+            "signatureEnd": {
+                "line": 382,
+                "character": 72
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 550,
+                "character": 5
+            },
+            "identifier": "DTSGenerateTreasureItems",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 550,
+                        "character": 37
+                    },
+                    "identifier": "oContainer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 550,
+                        "character": 56
+                    },
+                    "identifier": "oOpener",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 550,
+                        "character": 69
+                    },
+                    "identifier": "nClass",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 550,
+                        "character": 81
+                    },
+                    "identifier": "nType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 550,
+                "character": 87
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 592,
+                "character": 4
+            },
+            "identifier": "DTSGetNumberofPartyMembers",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 592,
+                        "character": 38
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 592,
+                "character": 42
+            },
+            "comments": [],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
+    "structDeclarations": [],
     "children": [
         "x2_inc_itemprop"
+    ],
+    "includePositions": [
+        {
+            "line": 13,
+            "character": 0
+        }
+    ],
+    "localDeclarations": [
+        {
+            "identifier": "sRet",
+            "position": {
+                "line": 95,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sLookUp",
+            "position": {
+                "line": 108,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sDefault",
+            "position": {
+                "line": 109,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sRet",
+            "position": {
+                "line": 132,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "s2DA",
+            "position": {
+                "line": 159,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 160,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sColName",
+            "position": {
+                "line": 167,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nChance",
+            "position": {
+                "line": 185,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nItems",
+            "position": {
+                "line": 206,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fStackV",
+            "position": {
+                "line": 220,
+                "character": 9
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 233,
+                "character": 46
+            },
+            "identifier": "nLevel",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 233,
+                "character": 61
+            },
+            "identifier": "oItem",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "bRanged",
+            "position": {
+                "line": 242,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sCol",
+            "position": {
+                "line": 243,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nBonus",
+            "position": {
+                "line": 253,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "ip",
+            "position": {
+                "line": 256,
+                "character": 17
+            },
+            "valueType": "itemproperty",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nStack",
+            "position": {
+                "line": 286,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nStackSize",
+            "position": {
+                "line": 287,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 288,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sNum",
+            "position": {
+                "line": 291,
+                "character": 14
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMaxStackSize",
+            "position": {
+                "line": 293,
+                "character": 11
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 296,
+                "character": 11
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nStackSize",
+            "position": {
+                "line": 298,
+                "character": 11
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "s2DA",
+            "position": {
+                "line": 320,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sRowName",
+            "position": {
+                "line": 322,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMax",
+            "position": {
+                "line": 325,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRand",
+            "position": {
+                "line": 328,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sRet",
+            "position": {
+                "line": 329,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sCol",
+            "position": {
+                "line": 336,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRand",
+            "position": {
+                "line": 337,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 339,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nClass1",
+            "position": {
+                "line": 349,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nClass2",
+            "position": {
+                "line": 350,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nClass3",
+            "position": {
+                "line": 351,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRangeStart",
+            "position": {
+                "line": 386,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRangeStop",
+            "position": {
+                "line": 387,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 388,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHighest",
+            "position": {
+                "line": 486,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 552,
+                "character": 10
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nChance",
+            "position": {
+                "line": 553,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oCount",
+            "position": {
+                "line": 594,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCount",
+            "position": {
+                "line": 595,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 627,
+                "character": 44
+            },
+            "identifier": "oContainer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 627,
+                "character": 63
+            },
+            "identifier": "oOpener",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 627,
+                "character": 76
+            },
+            "identifier": "nClass",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 627,
+                "character": 88
+            },
+            "identifier": "nType",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "5"
+        },
+        {
+            "identifier": "nCount",
+            "position": {
+                "line": 629,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMax",
+            "position": {
+                "line": 630,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 664,
+                "character": 47
+            },
+            "identifier": "oContainer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 664,
+                "character": 66
+            },
+            "identifier": "oAdventurer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 664,
+                "character": 83
+            },
+            "identifier": "bIgnoreFeats",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "FALSE"
+        },
+        {
+            "identifier": "nFeat",
+            "position": {
+                "line": 667,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sItem",
+            "position": {
+                "line": 668,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oRet",
+            "position": {
+                "line": 669,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 685,
+                "character": 24
+            },
+            "identifier": "nConfigIndex",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "0"
+        },
+        {
+            "identifier": "nBaseChance",
+            "position": {
+                "line": 687,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMaxItems",
+            "position": {
+                "line": 688,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nStackVariation",
+            "position": {
+                "line": 690,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fStackVariation",
+            "position": {
+                "line": 691,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "s2DA",
+            "position": {
+                "line": 697,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 715,
+                "character": 42
+            },
+            "identifier": "oArea",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 715,
+                "character": 53
+            },
+            "identifier": "nBaseChance",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 715,
+                "character": 70
+            },
+            "identifier": "bDisabled",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "FALSE"
+        }
     ]
 }

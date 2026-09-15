@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 21,
@@ -8,7 +8,8 @@
             "identifier": "sCombatCondVarname",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"X0_COMBAT_CONDITION\""
+            "value": "\"X0_COMBAT_CONDITION\"",
+            "isConst": true
         },
         {
             "position": {
@@ -18,7 +19,8 @@
             "identifier": "X0_COMBAT_FLAG_RANGED",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000001"
+            "value": "0x00000001",
+            "isConst": true
         },
         {
             "position": {
@@ -28,7 +30,8 @@
             "identifier": "X0_COMBAT_FLAG_DEFENSIVE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000002"
+            "value": "0x00000002",
+            "isConst": true
         },
         {
             "position": {
@@ -38,7 +41,8 @@
             "identifier": "X0_COMBAT_FLAG_COWARDLY",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000004"
+            "value": "0x00000004",
+            "isConst": true
         },
         {
             "position": {
@@ -48,7 +52,8 @@
             "identifier": "X0_COMBAT_FLAG_AMBUSHER",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000008"
+            "value": "0x00000008",
+            "isConst": true
         },
         {
             "position": {
@@ -75,12 +80,18 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
+            "signatureEnd": {
+                "line": 33,
+                "character": 61
+            },
             "comments": [
                 "// Determine whether the specified X0_COMBAT_FLAG_* is set on the target"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -107,7 +118,8 @@
                     },
                     "identifier": "bValid",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 },
                 {
                     "position": {
@@ -116,12 +128,18 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
+            "signatureEnd": {
+                "line": 36,
+                "character": 79
+            },
             "comments": [
                 "// Set one of the X0_COMBAT_FLAG_* values on the target"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -142,6 +160,10 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 47,
+                "character": 34
+            },
             "comments": [
                 "// This function checks for the special tactics flags and",
                 "// chooses tactics appropriately for each.",
@@ -152,7 +174,8 @@
                 "// to a single creature for the most part!",
                 "//",
                 "// Returns TRUE on success, FALSE on failure."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -173,6 +196,10 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 63,
+                "character": 40
+            },
             "comments": [
                 "// Special tactics for ranged fighters.",
                 "// The caller will attempt to stay in ranged distance and",
@@ -188,7 +215,8 @@
                 "// tactics until they are again at a ranged distance from",
                 "// their target.",
                 "// Returns TRUE on success, FALSE on failure."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -209,6 +237,10 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 73,
+                "character": 42
+            },
             "comments": [
                 "// Special tactics for ambushers.",
                 "// Ambushers will first attempt to get out of sight",
@@ -218,7 +250,8 @@
                 "// Once hidden, they will then attempt to attack the target using",
                 "// standard AI.",
                 "// Returns TRUE on success, FALSE on failure."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -239,6 +272,10 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 85,
+                "character": 42
+            },
             "comments": [
                 "// Special tactics for cowardly creatures",
                 "// Cowards act as follows:",
@@ -250,7 +287,8 @@
                 "//   out of sight of the target, run to it.",
                 "// - otherwise, run away randomly from the target.",
                 "// Returns TRUE on success, FALSE on failure."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -271,17 +309,364 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 92,
+                "character": 43
+            },
             "comments": [
                 "// Special tactics for defensive fighters",
                 "// This will attempt to use the active defensive feats such as",
                 "// Knockdown and Expertise, and also use Parry mode, when these",
                 "// are appropriate. Falls through to standard combat on failure.",
                 "// Returns TRUE on success, FALSE on failure."
-            ]
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
+    "structDeclarations": [],
     "children": [
         "x0_i0_talent"
+    ],
+    "includePositions": [
+        {
+            "line": 13,
+            "character": 0
+        }
+    ],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 100,
+                "character": 27
+            },
+            "identifier": "nCond",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 100,
+                "character": 41
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "position": {
+                "line": 106,
+                "character": 28
+            },
+            "identifier": "nCond",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 106,
+                "character": 39
+            },
+            "identifier": "bValid",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 106,
+                "character": 59
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "identifier": "nCurrentCond",
+            "position": {
+                "line": 108,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 120,
+                "character": 26
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 156,
+                "character": 32
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "bFoundBetterTarget",
+            "position": {
+                "line": 163,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oRangedEnemy",
+            "position": {
+                "line": 167,
+                "character": 19
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nAttempts",
+            "position": {
+                "line": 177,
+                "character": 16
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRand",
+            "position": {
+                "line": 202,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nFeat",
+            "position": {
+                "line": 203,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 232,
+                "character": 34
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "bIsSeen",
+            "position": {
+                "line": 234,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bTried",
+            "position": {
+                "line": 235,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 279,
+                "character": 34
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "sitCurrent",
+            "position": {
+                "line": 282,
+                "character": 22
+            },
+            "valueType": "sSituation",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oLastEnemy",
+            "position": {
+                "line": 294,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nNth",
+            "position": {
+                "line": 304,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oSafe",
+            "position": {
+                "line": 305,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 330,
+                "character": 35
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nFeat",
+            "position": {
+                "line": 332,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nSkill",
+            "position": {
+                "line": 333,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRand",
+            "position": {
+                "line": 338,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMySize",
+            "position": {
+                "line": 340,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bHasExpertise",
+            "position": {
+                "line": 360,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bHasImprovedExpertise",
+            "position": {
+                "line": 361,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nBAB",
+            "position": {
+                "line": 363,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nAC",
+            "position": {
+                "line": 364,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oEnemy",
+            "position": {
+                "line": 389,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nParrySkill",
+            "position": {
+                "line": 395,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nAC",
+            "position": {
+                "line": 396,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
+    ],
+    "memberReferences": [
+        {
+            "identifier": "ENEMY_NUM",
+            "position": {
+                "line": 283,
+                "character": 22
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "ALLY_NUM",
+            "position": {
+                "line": 283,
+                "character": 53
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "ENEMY_NUM",
+            "position": {
+                "line": 285,
+                "character": 23
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "ALLY_NUM",
+            "position": {
+                "line": 285,
+                "character": 53
+            },
+            "tokenType": 18
+        }
     ]
 }

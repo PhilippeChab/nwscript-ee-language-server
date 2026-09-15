@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 19,
@@ -46,7 +46,12 @@
                     "valueType": "string"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 19,
+                "character": 87
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -85,7 +90,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 20,
+                "character": 74
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -133,7 +143,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 21,
+                "character": 81
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -172,7 +187,40 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 22,
+                "character": 68
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 25,
+                "character": 5
+            },
+            "identifier": "dbSpeak",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 25,
+                        "character": 20
+                    },
+                    "identifier": "s",
+                    "tokenType": 25,
+                    "valueType": "string"
+                }
+            ],
+            "signatureEnd": {
+                "line": 25,
+                "character": 22
+            },
+            "comments": [
+                "// * Lab Functions"
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -183,11 +231,836 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
-            "comments": []
+            "signatureEnd": {
+                "line": 29,
+                "character": 22
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 4
+            },
+            "identifier": "nNumberOfCombos",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 82,
+                "character": 21
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 99,
+                "character": 5
+            },
+            "identifier": "PlaySuccessVisual",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 99,
+                        "character": 30
+                    },
+                    "identifier": "oVisual",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 99,
+                "character": 38
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By: Brent",
+                "//:: Created On: November 2001",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 119,
+                "character": 4
+            },
+            "identifier": "IsMisc",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 119,
+                        "character": 18
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 119,
+                "character": 24
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 146,
+                "character": 4
+            },
+            "identifier": "GetItemPosition",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 146,
+                        "character": 27
+                    },
+                    "identifier": "oMagicalItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 146,
+                "character": 40
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By:",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 185,
+                "character": 4
+            },
+            "identifier": "GetIsMagical",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 185,
+                        "character": 24
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 185,
+                "character": 30
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 211,
+                "character": 4
+            },
+            "identifier": "IsValidBaseItem",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 211,
+                        "character": 27
+                    },
+                    "identifier": "oItem",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 211,
+                        "character": 38
+                    },
+                    "identifier": "nIndex",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 211,
+                "character": 45
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By: Brent",
+                "//:: Created On: November 2001",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 240,
+                "character": 5
+            },
+            "identifier": "SetValidItem",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 240,
+                        "character": 22
+                    },
+                    "identifier": "nPos",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 240,
+                "character": 27
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 244,
+                "character": 8
+            },
+            "identifier": "SetValidItemCost",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 244,
+                        "character": 29
+                    },
+                    "identifier": "nPos",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 244,
+                "character": 34
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 248,
+                "character": 6
+            },
+            "identifier": "SetValidItemCostToken",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 248,
+                        "character": 32
+                    },
+                    "identifier": "nPos",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 248,
+                "character": 37
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 253,
+                "character": 7
+            },
+            "identifier": "GetValidItem",
+            "tokenType": 3,
+            "returnType": "string",
+            "params": [],
+            "signatureEnd": {
+                "line": 253,
+                "character": 21
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 257,
+                "character": 4
+            },
+            "identifier": "GetValidItemCost",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 257,
+                "character": 22
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 273,
+                "character": 4
+            },
+            "identifier": "CanAfford",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 273,
+                        "character": 21
+                    },
+                    "identifier": "oBuyer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 273,
+                "character": 28
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 294,
+                "character": 4
+            },
+            "identifier": "GetForgeMatch",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 294,
+                        "character": 22
+                    },
+                    "identifier": "nPos",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 294,
+                "character": 27
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 314,
+                "character": 4
+            },
+            "identifier": "HasAnyItemOfBaseType",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 314,
+                        "character": 29
+                    },
+                    "identifier": "nBaseType",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 314,
+                        "character": 44
+                    },
+                    "identifier": "nAC",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 314,
+                        "character": 55
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 314,
+                "character": 59
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By:",
+                "//:: Created On:",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 359,
+                "character": 4
+            },
+            "identifier": "GetBackpackMatch",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 359,
+                        "character": 25
+                    },
+                    "identifier": "nPos",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 359,
+                        "character": 38
+                    },
+                    "identifier": "oPC",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 359,
+                "character": 42
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 395,
+                "character": 4
+            },
+            "identifier": "GetIsValidCombination",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 395,
+                        "character": 30
+                    },
+                    "identifier": "bDeleteItem",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 395,
+                        "character": 50
+                    },
+                    "identifier": "oContainer",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
+                }
+            ],
+            "signatureEnd": {
+                "line": 395,
+                "character": 76
+            },
+            "comments": [],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
+    "structDeclarations": [],
     "children": [
         "nw_i0_plot"
+    ],
+    "includePositions": [
+        {
+            "line": 15,
+            "character": 0
+        }
+    ],
+    "localDeclarations": [
+        {
+            "identifier": "eVis",
+            "position": {
+                "line": 101,
+                "character": 9
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nBaseType",
+            "position": {
+                "line": 121,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 148,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMatch",
+            "position": {
+                "line": 149,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 319,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bReturnValue",
+            "position": {
+                "line": 320,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bValid",
+            "position": {
+                "line": 321,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sReagentTag",
+            "position": {
+                "line": 361,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nArmorValue",
+            "position": {
+                "line": 367,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nBaseType",
+            "position": {
+                "line": 368,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sReagent1",
+            "position": {
+                "line": 397,
+                "character": 11
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sReagent2",
+            "position": {
+                "line": 397,
+                "character": 22
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oItem",
+            "position": {
+                "line": 405,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bValid",
+            "position": {
+                "line": 406,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 407,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nArrayPosition",
+            "position": {
+                "line": 408,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oDeleteItem1",
+            "position": {
+                "line": 409,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oDeleteItem2",
+            "position": {
+                "line": 409,
+                "character": 25
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oMagicalItem",
+            "position": {
+                "line": 431,
+                "character": 12
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oReagent",
+            "position": {
+                "line": 432,
+                "character": 12
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "sArrayReagent1",
+            "position": {
+                "line": 464,
+                "character": 19
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oContainer",
+            "position": {
+                "line": 526,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 562,
+                "character": 38
+            },
+            "identifier": "oidObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 562,
+                "character": 56
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 562,
+                "character": 70
+            },
+            "identifier": "nVarNum",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "sFullVarName",
+            "position": {
+                "line": 564,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 580,
+                "character": 36
+            },
+            "identifier": "oidObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 580,
+                "character": 54
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 580,
+                "character": 68
+            },
+            "identifier": "nVarNum",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 580,
+                "character": 84
+            },
+            "identifier": "nValue",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "identifier": "sFullVarName",
+            "position": {
+                "line": 582,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 599,
+                "character": 32
+            },
+            "identifier": "oidObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 599,
+                "character": 50
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 599,
+                "character": 64
+            },
+            "identifier": "nVarNum",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "sFullVarName",
+            "position": {
+                "line": 601,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 617,
+                "character": 33
+            },
+            "identifier": "oidObject",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 617,
+                "character": 51
+            },
+            "identifier": "sVarName",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 617,
+                "character": 65
+            },
+            "identifier": "nVarNum",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 617,
+                "character": 78
+            },
+            "identifier": "nValue",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "sFullVarName",
+            "position": {
+                "line": 619,
+                "character": 15
+            },
+            "valueType": "string",
+            "tokenType": 6
+        }
     ]
 }

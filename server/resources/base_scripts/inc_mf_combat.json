@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 15,
@@ -19,7 +19,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 15,
+                "character": 41
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -40,12 +45,263 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 17,
+                "character": 44
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 19,
+                "character": 5
+            },
+            "identifier": "DetermineMindflayerCombat",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 19,
+                        "character": 38
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
+                }
+            ],
+            "signatureEnd": {
+                "line": 19,
+                "character": 63
+            },
+            "comments": [],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
+    "structDeclarations": [],
     "children": [
         "NW_I0_GENERIC",
         "NW_I0_SPELLS"
+    ],
+    "includePositions": [
+        {
+            "line": 12,
+            "character": 0
+        },
+        {
+            "line": 13,
+            "character": 0
+        }
+    ],
+    "localDeclarations": [
+        {
+            "identifier": "eEffect",
+            "position": {
+                "line": 23,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nTargetStunned",
+            "position": {
+                "line": 24,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oTarget",
+            "position": {
+                "line": 145,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 283,
+                "character": 28
+            },
+            "identifier": "oSpellTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nHD",
+            "position": {
+                "line": 288,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nStunTime",
+            "position": {
+                "line": 289,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nDC",
+            "position": {
+                "line": 290,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fDelay",
+            "position": {
+                "line": 291,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "lTargetLocation",
+            "position": {
+                "line": 295,
+                "character": 13
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oTarget",
+            "position": {
+                "line": 296,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eCone",
+            "position": {
+                "line": 297,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eVis",
+            "position": {
+                "line": 298,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 339,
+                "character": 31
+            },
+            "identifier": "oSpellTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nDuration",
+            "position": {
+                "line": 343,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nDC",
+            "position": {
+                "line": 344,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "lTargetLocation",
+            "position": {
+                "line": 345,
+                "character": 13
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oTarget",
+            "position": {
+                "line": 346,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eGaze",
+            "position": {
+                "line": 347,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eVis",
+            "position": {
+                "line": 348,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eDur",
+            "position": {
+                "line": 349,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eVisDur",
+            "position": {
+                "line": 350,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eLink",
+            "position": {
+                "line": 352,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fDelay",
+            "position": {
+                "line": 364,
+                "character": 22
+            },
+            "valueType": "float",
+            "tokenType": 6
+        }
     ]
 }

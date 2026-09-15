@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 17,
@@ -8,7 +8,8 @@
             "identifier": "BEHOLDER_RAY_DEATH",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "isConst": true
         },
         {
             "position": {
@@ -18,7 +19,8 @@
             "identifier": "BEHOLDER_RAY_TK",
             "tokenType": 21,
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "isConst": true
         },
         {
             "position": {
@@ -28,7 +30,8 @@
             "identifier": "BEHOLDER_RAY_PETRI",
             "tokenType": 21,
             "valueType": "int",
-            "value": "3"
+            "value": "3",
+            "isConst": true
         },
         {
             "position": {
@@ -38,7 +41,8 @@
             "identifier": "BEHOLDER_RAY_CHARM",
             "tokenType": 21,
             "valueType": "int",
-            "value": "4"
+            "value": "4",
+            "isConst": true
         },
         {
             "position": {
@@ -48,7 +52,8 @@
             "identifier": "BEHOLDER_RAY_SLOW",
             "tokenType": 21,
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "isConst": true
         },
         {
             "position": {
@@ -58,7 +63,8 @@
             "identifier": "BEHOLDER_RAY_WOUND",
             "tokenType": 21,
             "valueType": "int",
-            "value": "6"
+            "value": "6",
+            "isConst": true
         },
         {
             "position": {
@@ -68,7 +74,8 @@
             "identifier": "BEHOLDER_RAY_FEAR",
             "tokenType": 21,
             "valueType": "int",
-            "value": "7"
+            "value": "7",
+            "isConst": true
         },
         {
             "position": {
@@ -77,7 +84,7 @@
             },
             "identifier": "GetAntiMagicRayMakesSense",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "int",
             "params": [
                 {
                     "position": {
@@ -89,7 +96,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 38,
+                "character": 50
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -98,7 +110,7 @@
             },
             "identifier": "OpenAntiMagicEye",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "void",
             "params": [
                 {
                     "position": {
@@ -110,7 +122,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 39,
+                "character": 50
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -119,7 +136,7 @@
             },
             "identifier": "CloseAntiMagicEye",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "void",
             "params": [
                 {
                     "position": {
@@ -131,7 +148,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 40,
+                "character": 50
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -140,7 +162,7 @@
             },
             "identifier": "BehGetTargetThreatRating",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "int",
             "params": [
                 {
                     "position": {
@@ -152,7 +174,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 41,
+                "character": 50
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -161,7 +188,7 @@
             },
             "identifier": "BehDetermineHasEffect",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "int",
             "params": [
                 {
                     "position": {
@@ -182,7 +209,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 42,
+                "character": 62
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -191,7 +223,7 @@
             },
             "identifier": "BehDoFireBeam",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "void",
             "params": [
                 {
                     "position": {
@@ -212,7 +244,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 43,
+                "character": 60
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -233,10 +270,15 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 45,
+                "character": 62
+            },
+            "comments": [],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [
+    "structDeclarations": [
         {
             "position": {
                 "line": 25,
@@ -246,72 +288,445 @@
             "tokenType": 22,
             "properties": [
                 {
+                    "identifier": "oTarget1",
                     "position": {
                         "line": 27,
                         "character": 15
                     },
-                    "identifier": "oTarget1",
-                    "tokenType": 10,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "tokenType": 10
                 },
                 {
+                    "identifier": "nRating1",
                     "position": {
                         "line": 28,
                         "character": 12
                     },
-                    "identifier": "nRating1",
-                    "tokenType": 10,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "tokenType": 10
                 },
                 {
+                    "identifier": "oTarget2",
                     "position": {
                         "line": 29,
                         "character": 15
                     },
-                    "identifier": "oTarget2",
-                    "tokenType": 10,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "tokenType": 10
                 },
                 {
+                    "identifier": "nRating2",
                     "position": {
                         "line": 30,
                         "character": 12
                     },
-                    "identifier": "nRating2",
-                    "tokenType": 10,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "tokenType": 10
                 },
                 {
+                    "identifier": "oTarget3",
                     "position": {
                         "line": 31,
                         "character": 15
                     },
-                    "identifier": "oTarget3",
-                    "tokenType": 10,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "tokenType": 10
                 },
                 {
+                    "identifier": "nRating3",
                     "position": {
                         "line": 32,
                         "character": 12
                     },
-                    "identifier": "nRating3",
-                    "tokenType": 10,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "tokenType": 10
                 },
                 {
+                    "identifier": "nCount",
                     "position": {
                         "line": 33,
                         "character": 12
                     },
-                    "identifier": "nCount",
-                    "tokenType": 10,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "tokenType": 10
                 }
             ]
         }
     ],
     "children": [
         "x0_i0_spells"
+    ],
+    "includePositions": [
+        {
+            "line": 15,
+            "character": 0
+        }
+    ],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 47,
+                "character": 37
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "bRet",
+            "position": {
+                "line": 49,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nType",
+            "position": {
+                "line": 50,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eTest",
+            "position": {
+                "line": 52,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMag",
+            "position": {
+                "line": 56,
+                "character": 10
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 89,
+                "character": 30
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 99,
+                "character": 30
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 106,
+                "character": 30
+            },
+            "identifier": "nRay",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 106,
+                "character": 43
+            },
+            "identifier": "oCreature",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 130,
+                "character": 36
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 137,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 171,
+                "character": 51
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "stRet",
+            "position": {
+                "line": 174,
+                "character": 34
+            },
+            "valueType": "beholder_target_struct",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oMaster",
+            "position": {
+                "line": 175,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oSumm",
+            "position": {
+                "line": 176,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oHench1",
+            "position": {
+                "line": 177,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMaster",
+            "position": {
+                "line": 178,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nSumm",
+            "position": {
+                "line": 179,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHench1",
+            "position": {
+                "line": 180,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCount",
+            "position": {
+                "line": 181,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oHench1",
+            "position": {
+                "line": 202,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 238,
+                "character": 23
+            },
+            "identifier": "nRay",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 238,
+                "character": 36
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "bHit",
+            "position": {
+                "line": 247,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nProj",
+            "position": {
+                "line": 248,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "lFail",
+            "position": {
+                "line": 274,
+                "character": 17
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vFail",
+            "position": {
+                "line": 275,
+                "character": 15
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        }
+    ],
+    "memberReferences": [
+        {
+            "identifier": "oTarget1",
+            "position": {
+                "line": 211,
+                "character": 10
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nRating1",
+            "position": {
+                "line": 212,
+                "character": 10
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "oTarget2",
+            "position": {
+                "line": 215,
+                "character": 14
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nRating2",
+            "position": {
+                "line": 216,
+                "character": 14
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "oTarget2",
+            "position": {
+                "line": 220,
+                "character": 14
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nRating2",
+            "position": {
+                "line": 221,
+                "character": 14
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "oTarget3",
+            "position": {
+                "line": 227,
+                "character": 14
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nRating3",
+            "position": {
+                "line": 228,
+                "character": 14
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "nCount",
+            "position": {
+                "line": 230,
+                "character": 10
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 280,
+                "character": 17
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 281,
+                "character": 17
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 282,
+                "character": 17
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 292,
+                "character": 20
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 293,
+                "character": 20
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 294,
+                "character": 20
+            },
+            "tokenType": 18
+        }
     ]
 }

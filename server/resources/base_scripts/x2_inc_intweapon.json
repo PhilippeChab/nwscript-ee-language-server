@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 21,
@@ -8,7 +8,8 @@
             "identifier": "X2_IW_INTERJECTION_CHANCE_EQUIP",
             "tokenType": 21,
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "isConst": true
         },
         {
             "position": {
@@ -18,7 +19,8 @@
             "identifier": "X2_IW_INTERJECTION_TYPE_EQUIP",
             "tokenType": 21,
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "isConst": true
         },
         {
             "position": {
@@ -28,7 +30,8 @@
             "identifier": "X2_IW_INTERJECTION_EQUIP_COUNT",
             "tokenType": 21,
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "isConst": true
         },
         {
             "position": {
@@ -38,7 +41,8 @@
             "identifier": "X2_IW_INTERJECTION_CHANCE_UNEQUIP",
             "tokenType": 21,
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "isConst": true
         },
         {
             "position": {
@@ -48,7 +52,8 @@
             "identifier": "X2_IW_INTERJECTION_TYPE_UNEQUIP",
             "tokenType": 21,
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "isConst": true
         },
         {
             "position": {
@@ -58,7 +63,8 @@
             "identifier": "X2_IW_INTERJECTION_UNEQUIP_COUNT",
             "tokenType": 21,
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "isConst": true
         },
         {
             "position": {
@@ -68,7 +74,8 @@
             "identifier": "X2_IW_INTERJECTION_CHANCE_BATTLECRY",
             "tokenType": 21,
             "valueType": "int",
-            "value": "8"
+            "value": "8",
+            "isConst": true
         },
         {
             "position": {
@@ -78,7 +85,8 @@
             "identifier": "X2_IW_INTERJECTION_TYPE_BATTLECRY",
             "tokenType": 21,
             "valueType": "int",
-            "value": "3"
+            "value": "3",
+            "isConst": true
         },
         {
             "position": {
@@ -88,7 +96,8 @@
             "identifier": "X2_IW_INTERJECTION_BATTLECRY_COUNT",
             "tokenType": 21,
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "isConst": true
         },
         {
             "position": {
@@ -98,7 +107,8 @@
             "identifier": "X2_IW_INTERJECTION_CHANCE_ONHIT_CRE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "isConst": true
         },
         {
             "position": {
@@ -108,7 +118,8 @@
             "identifier": "X2_IW_INTERJECTION_TYPE_ONHIT_CRE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "4"
+            "value": "4",
+            "isConst": true
         },
         {
             "position": {
@@ -118,7 +129,8 @@
             "identifier": "X2_IW_INTERJECTION_TYPE_TRIGGER",
             "tokenType": 21,
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "isConst": true
         },
         {
             "position": {
@@ -128,7 +140,8 @@
             "identifier": "X2_IW_CURSE_ENHANCEMENT_DURATION",
             "tokenType": 21,
             "valueType": "int",
-            "value": "10"
+            "value": "10",
+            "isConst": true
         },
         {
             "position": {
@@ -149,9 +162,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 45,
+                "character": 44
+            },
             "comments": [
                 "// *   Return the Dialog ResRef Name of the intelligent weapon passed in."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -160,7 +178,7 @@
             },
             "identifier": "IWSWrapper",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "void",
             "params": [
                 {
                     "position": {
@@ -181,9 +199,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 48,
+                "character": 49
+            },
             "comments": [
                 "// *   Wrapper to use IWSpawnInWeaponCreature with Delaycommand"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -223,9 +246,14 @@
                     "defaultValue": "TRUE"
                 }
             ],
+            "signatureEnd": {
+                "line": 51,
+                "character": 81
+            },
             "comments": [
                 "// *   Spawns in a null human creature for oWeapon worn by oPlayer."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -234,7 +262,7 @@
             },
             "identifier": "IWStartIntelligentWeaponConversation",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "void",
             "params": [
                 {
                     "position": {
@@ -255,10 +283,15 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 55,
+                "character": 74
+            },
             "comments": [
                 "// *    Start a conversation with the intelligent weapon. This will make the",
                 "// *   weapon jump out of the players hands onto a null human and start the conv."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -267,7 +300,7 @@
             },
             "identifier": "IWEndIntelligentWeaponConversation",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "void",
             "params": [
                 {
                     "position": {
@@ -288,11 +321,16 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 60,
+                "character": 82
+            },
             "comments": [
                 "// *   End an intelligent weapon conversation, despawning the null human that wields",
                 "// *   the weapon and moving the weapon back into the players hands. This should be",
                 "// *   called on the OnEnd and OnAbort scripts of the weapon dialog"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -301,7 +339,7 @@
             },
             "identifier": "IWGetIsInIntelligentWeaponConversation",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "int",
             "params": [
                 {
                     "position": {
@@ -313,10 +351,15 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 64,
+                "character": 61
+            },
             "comments": [
                 "// *   Returns TRUE if oPlayer is currently engaged in a conversation with his",
                 "// *   intelligent weapon"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -325,7 +368,7 @@
             },
             "identifier": "IWSetConversationCondition",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "void",
             "params": [
                 {
                     "position": {
@@ -355,9 +398,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 67,
+                "character": 71
+            },
             "comments": [
                 "// *   Sets the starting conditions for the next intelligent weapon conversation"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -366,7 +414,7 @@
             },
             "identifier": "IWGetConversationCondition",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "int",
             "params": [
                 {
                     "position": {
@@ -387,9 +435,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 70,
+                "character": 59
+            },
             "comments": [
                 "// *   Gets the starting conditions for current intelligent weapon conversation"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -398,7 +451,7 @@
             },
             "identifier": "IWClearConversationConditions",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "void",
             "params": [
                 {
                     "position": {
@@ -410,9 +463,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 73,
+                "character": 52
+            },
             "comments": [
                 "// *   Clear current intelligent weapon starting conditions"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -421,7 +479,7 @@
             },
             "identifier": "IWSetCreatureHadOneLiner",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "void",
             "params": [
                 {
                     "position": {
@@ -442,7 +500,12 @@
                     "valueType": "int"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 75,
+                "character": 61
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -451,7 +514,7 @@
             },
             "identifier": "IWPlayRandomEquipComment",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "void",
             "params": [
                 {
                     "position": {
@@ -472,7 +535,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 77,
+                "character": 62
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -481,7 +549,7 @@
             },
             "identifier": "IWPlayRandomUnequipComment",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "void",
             "params": [
                 {
                     "position": {
@@ -502,7 +570,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 79,
+                "character": 64
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -511,7 +584,7 @@
             },
             "identifier": "IWPlayRandomHitQuote",
             "tokenType": 3,
-            "returnType": " ",
+            "returnType": "void",
             "params": [
                 {
                     "position": {
@@ -541,7 +614,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 81,
+                "character": 75
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -562,7 +640,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 83,
+                "character": 53
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -589,14 +672,20 @@
                     },
                     "identifier": "nLevel",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "1"
                 }
             ],
+            "signatureEnd": {
+                "line": 88,
+                "character": 62
+            },
             "comments": [
                 "// * Transforms the weapon passed in oWeapon into an intelligent weapon, preserving",
                 "// * all item properties stored on the weapon.",
                 "// * nLevel - The power level of the weapon - unused at the moment (1 = default)"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -636,7 +725,12 @@
                     "defaultValue": "FALSE"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 90,
+                "character": 86
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -657,7 +751,12 @@
                     "valueType": "object"
                 }
             ],
-            "comments": []
+            "signatureEnd": {
+                "line": 92,
+                "character": 47
+            },
+            "comments": [],
+            "implementation": true
         },
         {
             "position": {
@@ -697,10 +796,15 @@
                     "defaultValue": "1"
                 }
             ],
+            "signatureEnd": {
+                "line": 96,
+                "character": 72
+            },
             "comments": [
                 "// * Sets the number of times a player has talked to the intelligent weapon",
                 "// * This information is stored on the player"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -730,10 +834,15 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 100,
+                "character": 52
+            },
             "comments": [
                 "// * Gets the number of times a player has talked to the intelligent weapon",
                 "// * This information is stored on the player"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -772,10 +881,15 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 104,
+                "character": 72
+            },
             "comments": [
                 "// * Sets the asked flag for question no. nQuestion, in sWeaponTag's conversation",
                 "// * on the Player"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -814,10 +928,15 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 108,
+                "character": 71
+            },
             "comments": [
                 "// * Returns the asked flag for question no. nQuestion, in sWeaponTag's conversation",
                 "// * on the Player"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -828,10 +947,15 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
+            "signatureEnd": {
+                "line": 112,
+                "character": 25
+            },
             "comments": [
                 "// * Helper Function. Returns TRUE if we currently play Hordes of the Underdark",
                 "// * Chapter 1"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -842,10 +966,15 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
+            "signatureEnd": {
+                "line": 116,
+                "character": 25
+            },
             "comments": [
                 "// * Helper Function. Returns TRUE if we currently play Hordes of the Underdark",
                 "// * Chapter 2"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -856,15 +985,751 @@
             "tokenType": 3,
             "returnType": "int",
             "params": [],
+            "signatureEnd": {
+                "line": 120,
+                "character": 25
+            },
             "comments": [
                 "// * Helper Function. Returns TRUE if we currently play Hordes of the Underdark",
                 "// * Chapter 3"
-            ]
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 285,
+                "character": 5
+            },
+            "identifier": "IWGetCreatureHadOneLiner",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 285,
+                        "character": 37
+                    },
+                    "identifier": "oCreature",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 285,
+                "character": 47
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 347,
+                "character": 5
+            },
+            "identifier": "IWPlayTriggerQuote",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 347,
+                        "character": 31
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 347,
+                        "character": 47
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 347,
+                        "character": 60
+                    },
+                    "identifier": "nID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 347,
+                "character": 64
+            },
+            "comments": [
+                "// ----------------------------------------------------------------------------",
+                "// Play a Trigger Quote",
+                "// ----------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 354,
+                "character": 5
+            },
+            "identifier": "IWSetIntelligentWeaponEquipped",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 354,
+                        "character": 43
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 354,
+                        "character": 59
+                    },
+                    "identifier": "oWeapon",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 354,
+                "character": 67
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 462,
+                "character": 5
+            },
+            "identifier": "IWClearConversationCondition",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 462,
+                        "character": 41
+                    },
+                    "identifier": "oPlayer",
+                    "tokenType": 25,
+                    "valueType": "object"
+                }
+            ],
+            "signatureEnd": {
+                "line": 462,
+                "character": 49
+            },
+            "comments": [
+                "// ----------------------------------------------------------------------------",
+                "// Someone made a typo....",
+                "// ----------------------------------------------------------------------------"
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
+    "structDeclarations": [],
     "children": [
         "x2_inc_itemprop",
         "x2_i0_spells"
+    ],
+    "includePositions": [
+        {
+            "line": 15,
+            "character": 0
+        },
+        {
+            "line": 16,
+            "character": 0
+        }
+    ],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 125,
+                "character": 36
+            },
+            "identifier": "oWeapon",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 133,
+                "character": 38
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 133,
+                "character": 54
+            },
+            "identifier": "oWeapon",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 133,
+                "character": 67
+            },
+            "identifier": "bEquip",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 168,
+                "character": 23
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 168,
+                "character": 39
+            },
+            "identifier": "oWeapon",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 177,
+                "character": 49
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 177,
+                "character": 64
+            },
+            "identifier": "oWeapon",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "oCreate",
+            "position": {
+                "line": 182,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 193,
+                "character": 47
+            },
+            "identifier": "oWeaponCreature",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 193,
+                "character": 72
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 213,
+                "character": 50
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 215,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 223,
+                "character": 39
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 223,
+                "character": 51
+            },
+            "identifier": "nType",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 223,
+                "character": 62
+            },
+            "identifier": "nValue",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 232,
+                "character": 42
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 241,
+                "character": 38
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 241,
+                "character": 50
+            },
+            "identifier": "nType",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 243,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 252,
+                "character": 38
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 252,
+                "character": 53
+            },
+            "identifier": "oWeapon",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 266,
+                "character": 40
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 266,
+                "character": 55
+            },
+            "identifier": "oWeapon",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 280,
+                "character": 37
+            },
+            "identifier": "oCreature",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 280,
+                "character": 52
+            },
+            "identifier": "bValue",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 292,
+                "character": 33
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 292,
+                "character": 49
+            },
+            "identifier": "oWeapon",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 292,
+                "character": 65
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nRacial",
+            "position": {
+                "line": 330,
+                "character": 15
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 366,
+                "character": 46
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "oRet",
+            "position": {
+                "line": 368,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 377,
+                "character": 38
+            },
+            "identifier": "oWeapon",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 377,
+                "character": 51
+            },
+            "identifier": "nLevel",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "1"
+        },
+        {
+            "identifier": "ipOnHit",
+            "position": {
+                "line": 383,
+                "character": 15
+            },
+            "valueType": "itemproperty",
+            "tokenType": 6
+        },
+        {
+            "identifier": "ipTalkTo",
+            "position": {
+                "line": 385,
+                "character": 15
+            },
+            "valueType": "itemproperty",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 393,
+                "character": 26
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 393,
+                "character": 42
+            },
+            "identifier": "sWeaponTag",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 393,
+                "character": 58
+            },
+            "identifier": "nNumTimes",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "1"
+        },
+        {
+            "position": {
+                "line": 402,
+                "character": 25
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 402,
+                "character": 41
+            },
+            "identifier": "sWeaponTag",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 404,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 412,
+                "character": 31
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 412,
+                "character": 47
+            },
+            "identifier": "sWeaponTag",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 412,
+                "character": 62
+            },
+            "identifier": "nQuestion",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 421,
+                "character": 30
+            },
+            "identifier": "oPlayer",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 421,
+                "character": 46
+            },
+            "identifier": "sWeaponTag",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "position": {
+                "line": 421,
+                "character": 61
+            },
+            "identifier": "nQuestion",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "nRet",
+            "position": {
+                "line": 423,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bRet",
+            "position": {
+                "line": 434,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bRet",
+            "position": {
+                "line": 445,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bRet",
+            "position": {
+                "line": 455,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 470,
+                "character": 39
+            },
+            "identifier": "oWeapon",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "ip",
+            "position": {
+                "line": 472,
+                "character": 17
+            },
+            "valueType": "itemproperty",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nFound",
+            "position": {
+                "line": 473,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 494,
+                "character": 42
+            },
+            "identifier": "oWeapon",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 494,
+                "character": 55
+            },
+            "identifier": "nAddition",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 494,
+                "character": 70
+            },
+            "identifier": "bRemove",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "FALSE"
+        },
+        {
+            "identifier": "nCurse",
+            "position": {
+                "line": 503,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "ip",
+            "position": {
+                "line": 512,
+                "character": 17
+            },
+            "valueType": "itemproperty",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nEnhancement",
+            "position": {
+                "line": 513,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "ip2",
+            "position": {
+                "line": 519,
+                "character": 17
+            },
+            "valueType": "itemproperty",
+            "tokenType": 6
+        },
+        {
+            "identifier": "ip3",
+            "position": {
+                "line": 520,
+                "character": 17
+            },
+            "valueType": "itemproperty",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fTime",
+            "position": {
+                "line": 522,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        }
     ]
 }

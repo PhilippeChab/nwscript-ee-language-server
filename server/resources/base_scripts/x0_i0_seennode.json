@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 16,
@@ -19,12 +19,28 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 16,
+                "character": 35
+            },
             "comments": [
                 "// Returns a string, the variable name for determining if this",
                 "// 'conversation node' has been seen in script."
-            ]
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 19,
+                "character": 28
+            },
+            "identifier": "nNode",
+            "tokenType": 25,
+            "valueType": "int"
+        }
+    ]
 }

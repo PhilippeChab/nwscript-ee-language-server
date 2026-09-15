@@ -88,7 +88,17 @@
                 }
             ],
             "comments": [],
-            "variables": []
+            "variables": [
+                {
+                    "position": {
+                        "line": 262,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -119,7 +129,17 @@
                 }
             ],
             "comments": [],
-            "variables": []
+            "variables": [
+                {
+                    "position": {
+                        "line": 251,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -141,7 +161,17 @@
                 }
             ],
             "comments": [],
-            "variables": []
+            "variables": [
+                {
+                    "position": {
+                        "line": 243,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -153,7 +183,17 @@
             "returnType": "int",
             "params": [],
             "comments": [],
-            "variables": []
+            "variables": [
+                {
+                    "position": {
+                        "line": 234,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -185,7 +225,17 @@
                 }
             ],
             "comments": [],
-            "variables": []
+            "variables": [
+                {
+                    "position": {
+                        "line": 225,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -216,7 +266,26 @@
                 }
             ],
             "comments": [],
-            "variables": []
+            "variables": [
+                {
+                    "position": {
+                        "line": 215,
+                        "character": 15
+                    },
+                    "identifier": "sPad",
+                    "tokenType": 6,
+                    "valueType": "string"
+                },
+                {
+                    "position": {
+                        "line": 214,
+                        "character": 12
+                    },
+                    "identifier": "i",
+                    "tokenType": 6,
+                    "valueType": "int"
+                }
+            ]
         },
         {
             "position": {
@@ -248,7 +317,17 @@
                 }
             ],
             "comments": [],
-            "variables": []
+            "variables": [
+                {
+                    "position": {
+                        "line": 192,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -279,7 +358,26 @@
                 }
             ],
             "comments": [],
-            "variables": []
+            "variables": [
+                {
+                    "position": {
+                        "line": 173,
+                        "character": 37
+                    },
+                    "identifier": "skillFeat",
+                    "tokenType": 6,
+                    "valueType": "NWNX_SkillRanks_SkillFeat"
+                },
+                {
+                    "position": {
+                        "line": 167,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         },
         {
             "position": {
@@ -301,7 +399,17 @@
                 }
             ],
             "comments": [],
-            "variables": []
+            "variables": [
+                {
+                    "position": {
+                        "line": 157,
+                        "character": 11
+                    },
+                    "identifier": "sFunc",
+                    "tokenType": 6,
+                    "valueType": "string"
+                }
+            ]
         }
     ],
     "functionVariablesComplexTokens": [

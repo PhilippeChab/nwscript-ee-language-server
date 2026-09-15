@@ -1,5 +1,5 @@
 {
-  "complexTokens": [
+  "globalDeclarations": [
       {
           "position": {
               "line": 7,
@@ -8,7 +8,8 @@
           "identifier": "NWNX_SkillRanks",
           "tokenType": 21,
           "valueType": "string",
-          "value": "\"NWNX_SkillRanks\""
+          "value": "\"NWNX_SkillRanks\"",
+          "isConst": true
       },
       {
           "position": {
@@ -18,7 +19,8 @@
           "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_STRENGTH",
           "tokenType": 21,
           "valueType": "int",
-          "value": "1"
+          "value": "1",
+          "isConst": true
       },
       {
           "position": {
@@ -28,7 +30,8 @@
           "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_DEXTERITY",
           "tokenType": 21,
           "valueType": "int",
-          "value": "2"
+          "value": "2",
+          "isConst": true
       },
       {
           "position": {
@@ -38,7 +41,8 @@
           "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_CONSTITUTION",
           "tokenType": 21,
           "valueType": "int",
-          "value": "4"
+          "value": "4",
+          "isConst": true
       },
       {
           "position": {
@@ -48,7 +52,8 @@
           "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_INTELLIGENCE",
           "tokenType": 21,
           "valueType": "int",
-          "value": "8"
+          "value": "8",
+          "isConst": true
       },
       {
           "position": {
@@ -58,7 +63,8 @@
           "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_WISDOM",
           "tokenType": 21,
           "valueType": "int",
-          "value": "16"
+          "value": "16",
+          "isConst": true
       },
       {
           "position": {
@@ -68,7 +74,8 @@
           "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_CHARISMA",
           "tokenType": 21,
           "valueType": "int",
-          "value": "32"
+          "value": "32",
+          "isConst": true
       },
       {
           "position": {
@@ -78,7 +85,8 @@
           "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_CALC_MIN",
           "tokenType": 21,
           "valueType": "int",
-          "value": "64"
+          "value": "64",
+          "isConst": true
       },
       {
           "position": {
@@ -88,7 +96,8 @@
           "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_CALC_MAX",
           "tokenType": 21,
           "valueType": "int",
-          "value": "128"
+          "value": "128",
+          "isConst": true
       },
       {
           "position": {
@@ -98,7 +107,8 @@
           "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_CALC_AVERAGE",
           "tokenType": 21,
           "valueType": "int",
-          "value": "256"
+          "value": "256",
+          "isConst": true
       },
       {
           "position": {
@@ -108,7 +118,8 @@
           "identifier": "NWNX_SKILLRANKS_KEY_ABILITY_CALC_SUM",
           "tokenType": 21,
           "valueType": "int",
-          "value": "512"
+          "value": "512",
+          "isConst": true
       },
       {
           "position": {
@@ -116,6 +127,7 @@
               "character": 4
           },
           "identifier": "NWNX_SkillRanks_GetSkillFeatCountForSkill",
+          "implementation": true,
           "tokenType": 3,
           "returnType": "int",
           "params": [
@@ -140,6 +152,7 @@
               "character": 33
           },
           "identifier": "NWNX_SkillRanks_GetSkillFeat",
+          "implementation": true,
           "tokenType": 3,
           "returnType": "NWNX_SkillRanks_SkillFeat",
           "params": [
@@ -175,6 +188,7 @@
               "character": 0
           },
           "identifier": "NWNX_SkillRanks_GetSkillFeatForSkillByIndex",
+          "implementation": true,
           "tokenType": 3,
           "returnType": "NWNX_SkillRanks_SkillFeat",
           "params": [
@@ -211,6 +225,7 @@
               "character": 0
           },
           "identifier": "NWNX_SkillRanks_SetSkillFeat",
+          "implementation": true,
           "tokenType": 3,
           "returnType": "void",
           "params": [
@@ -246,6 +261,7 @@
               "character": 0
           },
           "identifier": "NWNX_SkillRanks_AddSkillFeatClass",
+          "implementation": true,
           "tokenType": 3,
           "returnType": "NWNX_SkillRanks_SkillFeat",
           "params": [
@@ -284,6 +300,7 @@
               "character": 5
           },
           "identifier": "NWNX_SkillRanks_SetSkillFeatFocusModifier",
+          "implementation": true,
           "tokenType": 3,
           "returnType": "void",
           "params": [
@@ -322,6 +339,7 @@
               "character": 4
           },
           "identifier": "NWNX_SkillRanks_GetBlindnessPenalty",
+          "implementation": true,
           "tokenType": 3,
           "returnType": "int",
           "params": [],
@@ -336,6 +354,7 @@
               "character": 5
           },
           "identifier": "NWNX_SkillRanks_SetBlindnessPenalty",
+          "implementation": true,
           "tokenType": 3,
           "returnType": "void",
           "params": [
@@ -361,6 +380,7 @@
               "character": 4
           },
           "identifier": "NWNX_SkillRanks_GetAreaModifier",
+          "implementation": true,
           "tokenType": 3,
           "returnType": "int",
           "params": [
@@ -396,6 +416,7 @@
               "character": 5
           },
           "identifier": "NWNX_SkillRanks_SetAreaModifier",
+          "implementation": true,
           "tokenType": 3,
           "returnType": "void",
           "params": [
@@ -435,7 +456,7 @@
           ]
       }
   ],
-  "structComplexTokens": [
+  "structDeclarations": [
       {
           "position": {
               "line": 35,

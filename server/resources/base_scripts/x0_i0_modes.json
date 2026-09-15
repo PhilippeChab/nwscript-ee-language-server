@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 18,
@@ -8,7 +8,8 @@
             "identifier": "sModeVarname",
             "tokenType": 21,
             "valueType": "string",
-            "value": "\"NW_MODES_CONDITION\""
+            "value": "\"NW_MODES_CONDITION\"",
+            "isConst": true
         },
         {
             "position": {
@@ -18,7 +19,8 @@
             "identifier": "NW_MODE_STEALTH",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000001"
+            "value": "0x00000001",
+            "isConst": true
         },
         {
             "position": {
@@ -28,7 +30,8 @@
             "identifier": "NW_MODE_DETECT",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000002"
+            "value": "0x00000002",
+            "isConst": true
         },
         {
             "position": {
@@ -55,12 +58,18 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
+            "signatureEnd": {
+                "line": 30,
+                "character": 58
+            },
             "comments": [
                 "// TRUE if the given creature has the given mode active"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -87,7 +96,8 @@
                     },
                     "identifier": "bActive",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
                 },
                 {
                     "position": {
@@ -96,12 +106,18 @@
                     },
                     "identifier": "oCreature",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
+            "signatureEnd": {
+                "line": 33,
+                "character": 77
+            },
             "comments": [
                 "// Mark that the given creature has the given mode active or not"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -112,9 +128,14 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
+            "signatureEnd": {
+                "line": 36,
+                "character": 21
+            },
             "comments": [
                 "// If stealth mode is active, turn on the appropriate skills."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -125,11 +146,75 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
+            "signatureEnd": {
+                "line": 39,
+                "character": 20
+            },
             "comments": [
                 "// If detect mode is active, turn on the appropriate skills."
-            ]
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 47,
+                "character": 22
+            },
+            "identifier": "nMode",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 47,
+                "character": 36
+            },
+            "identifier": "oCreature",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "position": {
+                "line": 64,
+                "character": 23
+            },
+            "identifier": "nMode",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 64,
+                "character": 34
+            },
+            "identifier": "bActive",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "TRUE"
+        },
+        {
+            "position": {
+                "line": 64,
+                "character": 55
+            },
+            "identifier": "oCreature",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "identifier": "nCurrentModes",
+            "position": {
+                "line": 77,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
+    ]
 }

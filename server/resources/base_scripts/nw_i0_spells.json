@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 12,
@@ -8,7 +8,8 @@
             "identifier": "NW_I0_SPELLS_MAX_BREACH",
             "tokenType": 21,
             "valueType": "int",
-            "value": "33"
+            "value": "33",
+            "isConst": true
         },
         {
             "position": {
@@ -47,9 +48,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 15,
+                "character": 76
+            },
             "comments": [
                 "// * Function for doing electrical traps"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -89,6 +95,10 @@
                     "defaultValue": "0.0"
                 }
             ],
+            "signatureEnd": {
+                "line": 23,
+                "character": 69
+            },
             "comments": [
                 "// * Used to route the resist magic checks into this function to check for spell countering by SR, Globes or Mantles.",
                 "//   Return value if oCaster or oTarget is an invalid object: FALSE",
@@ -96,7 +106,8 @@
                 "//   Return value if spell resisted: 1",
                 "//   Return value if spell resisted via magic immunity: 2",
                 "//   Return value if spell resisted via spell absorption: 3"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -127,10 +138,15 @@
                     "defaultValue": "1"
                 }
             ],
+            "signatureEnd": {
+                "line": 35,
+                "character": 72
+            },
             "comments": [
                 "// * Will pass back a linked effect for all the protection from alignment spells.  The power represents the multiplier of strength.",
                 "// * That is instead of +3 AC and +2 Saves a  power of 2 will yield +6 AC and +4 Saves."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -141,9 +157,14 @@
             "tokenType": 3,
             "returnType": "effect",
             "params": [],
+            "signatureEnd": {
+                "line": 38,
+                "character": 30
+            },
             "comments": [
                 "// * Will pass back a linked effect for all of the doom effects."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -182,9 +203,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 41,
+                "character": 70
+            },
             "comments": [
                 "// * Searchs through a persons effects and removes those from a particular spell by a particular caster."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -214,9 +240,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 44,
+                "character": 60
+            },
             "comments": [
                 "// * Searchs through a persons effects and removes all those of a specific type."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -246,9 +277,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 47,
+                "character": 71
+            },
             "comments": [
                 "// * Returns the time in seconds that the effect should be delayed before application."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -280,9 +316,14 @@
                     "defaultValue": "1.1"
                 }
             ],
+            "signatureEnd": {
+                "line": 50,
+                "character": 71
+            },
             "comments": [
                 "// * This allows the application of a random delay to effects based on time parameters passed in.  Min default = 0.4, Max default = 1.1"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -312,9 +353,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 53,
+                "character": 58
+            },
             "comments": [
                 "// * Get Difficulty Duration"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -344,9 +390,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 56,
+                "character": 56
+            },
             "comments": [
                 "// * Get Scaled Effect"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -385,9 +436,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 59,
+                "character": 64
+            },
             "comments": [
                 "// * Remove all spell protections of a specific type"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -408,10 +464,15 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 63,
+                "character": 46
+            },
             "comments": [
                 "// * Performs a spell breach up to nTotal spells are removed and nSR spell",
                 "// * resistance is lowered."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -432,9 +493,14 @@
                     "valueType": "string"
                 }
             ],
+            "signatureEnd": {
+                "line": 66,
+                "character": 41
+            },
             "comments": [
                 "//* Assigns a debug string to the Area of Effect Creator"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -445,9 +511,14 @@
             "tokenType": 3,
             "returnType": "void",
             "params": [],
+            "signatureEnd": {
+                "line": 69,
+                "character": 26
+            },
             "comments": [
                 "// * Plays a random dragon battlecry based on age."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -468,9 +539,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 72,
+                "character": 32
+            },
             "comments": [
                 "// * Returns true if Target is a humanoid"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -519,14 +595,1191 @@
                     "defaultValue": "-1"
                 }
             ],
+            "signatureEnd": {
+                "line": 79,
+                "character": 74
+            },
             "comments": [
                 "// * Performs a spell breach up to nTotal spell are removed and",
                 "// * nSR spell resistance is  lowered. nSpellId can be used to override",
                 "// * the originating spell ID. If not specified, SPELL_GREATER_SPELL_BREACH",
                 "// * is used"
-            ]
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 119,
+                "character": 5
+            },
+            "identifier": "spellsCure",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 119,
+                        "character": 20
+                    },
+                    "identifier": "nDamage",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 119,
+                        "character": 33
+                    },
+                    "identifier": "nMaxExtraDamage",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 119,
+                        "character": 54
+                    },
+                    "identifier": "nMaximized",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 119,
+                        "character": 70
+                    },
+                    "identifier": "vfx_impactHurt",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 119,
+                        "character": 90
+                    },
+                    "identifier": "vfx_impactHeal",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 119,
+                        "character": 110
+                    },
+                    "identifier": "nSpellID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 119,
+                "character": 119
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 258,
+                "character": 4
+            },
+            "identifier": "GetDragonFearDC",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 258,
+                        "character": 24
+                    },
+                    "identifier": "nAge",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 258,
+                "character": 29
+            },
+            "comments": [
+                "//:://////////////////////////////////////////////",
+                "//:: Created By: Brent",
+                "//:: Created On: Sep 13, 2002",
+                "//:://////////////////////////////////////////////"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 338,
+                "character": 4
+            },
+            "identifier": "CalcNumberOfAttacks",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 338,
+                "character": 25
+            },
+            "comments": [
+                "//------------------------------------------------------------------------------",
+                "// Kovi function: calculates the appropriate base number of attacks",
+                "// for spells that increase this (tensers, divine power)",
+                "//------------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 363,
+                "character": 5
+            },
+            "identifier": "RemoveTempHitPoints",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [],
+            "signatureEnd": {
+                "line": 363,
+                "character": 26
+            },
+            "comments": [
+                "//------------------------------------------------------------------------------",
+                "// GZ: gets rids of temporary hit points so that they will not stack",
+                "//------------------------------------------------------------------------------"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 380,
+                "character": 5
+            },
+            "identifier": "RemoveEffectsFromSpell",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 380,
+                        "character": 35
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 380,
+                        "character": 48
+                    },
+                    "identifier": "SpellID",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 380,
+                "character": 56
+            },
+            "comments": [
+                "// * Kovi. removes any effects from this type of spell",
+                "// * i.e., used in Mage Armor to remove any previous",
+                "// * mage armors"
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 419,
+                "character": 4
+            },
+            "identifier": "MySavingThrow",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 419,
+                        "character": 22
+                    },
+                    "identifier": "nSavingThrow",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 419,
+                        "character": 43
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object"
+                },
+                {
+                    "position": {
+                        "line": 419,
+                        "character": 56
+                    },
+                    "identifier": "nDC",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 419,
+                        "character": 65
+                    },
+                    "identifier": "nSaveType",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "SAVING_THROW_TYPE_NONE"
+                },
+                {
+                    "position": {
+                        "line": 419,
+                        "character": 106
+                    },
+                    "identifier": "oSaveVersus",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                },
+                {
+                    "position": {
+                        "line": 419,
+                        "character": 139
+                    },
+                    "identifier": "fDelay",
+                    "tokenType": 25,
+                    "valueType": "float",
+                    "defaultValue": "0.0"
+                }
+            ],
+            "signatureEnd": {
+                "line": 419,
+                "character": 152
+            },
+            "comments": [],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 83,
+                "character": 24
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nRacial",
+            "position": {
+                "line": 85,
+                "character": 7
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oTarget",
+            "position": {
+                "line": 122,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nHeal",
+            "position": {
+                "line": 123,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nMetaMagic",
+            "position": {
+                "line": 124,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eHeal",
+            "position": {
+                "line": 125,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eDam",
+            "position": {
+                "line": 125,
+                "character": 18
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nExtraDamage",
+            "position": {
+                "line": 127,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eVis2",
+            "position": {
+                "line": 168,
+                "character": 15
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nTouch",
+            "position": {
+                "line": 178,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eVis",
+            "position": {
+                "line": 190,
+                "character": 27
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 212,
+                "character": 26
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 212,
+                "character": 39
+            },
+            "identifier": "nTotal",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 212,
+                "character": 51
+            },
+            "identifier": "nSR",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 212,
+                "character": 60
+            },
+            "identifier": "nSpellId",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "-1"
+        },
+        {
+            "identifier": "eSR",
+            "position": {
+                "line": 218,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eDur",
+            "position": {
+                "line": 219,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eVis",
+            "position": {
+                "line": 221,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCnt",
+            "position": {
+                "line": 222,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nIdx",
+            "position": {
+                "line": 222,
+                "character": 14
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eLink",
+            "position": {
+                "line": 233,
+                "character": 15
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nDC",
+            "position": {
+                "line": 263,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "n",
+            "position": {
+                "line": 340,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nBAB1",
+            "position": {
+                "line": 341,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nBAB2",
+            "position": {
+                "line": 345,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nBAB3",
+            "position": {
+                "line": 349,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nOldBAB",
+            "position": {
+                "line": 352,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nNewBAB",
+            "position": {
+                "line": 353,
+                "character": 6
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eProtection",
+            "position": {
+                "line": 365,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCnt",
+            "position": {
+                "line": 366,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eLook",
+            "position": {
+                "line": 382,
+                "character": 9
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 390,
+                "character": 25
+            },
+            "identifier": "oCaster",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 390,
+                "character": 41
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 390,
+                "character": 56
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float",
+            "defaultValue": "0.0"
+        },
+        {
+            "identifier": "nResist",
+            "position": {
+                "line": 396,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eSR",
+            "position": {
+                "line": 397,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eGlobe",
+            "position": {
+                "line": 398,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eMantle",
+            "position": {
+                "line": 399,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eVis",
+            "position": {
+                "line": 433,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "bValid",
+            "position": {
+                "line": 434,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nSpellID",
+            "position": {
+                "line": 435,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 501,
+                "character": 45
+            },
+            "identifier": "nAlignment",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 501,
+                "character": 61
+            },
+            "identifier": "nPower",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "1"
+        },
+        {
+            "identifier": "nFinal",
+            "position": {
+                "line": 503,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eAC",
+            "position": {
+                "line": 504,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eSave",
+            "position": {
+                "line": 506,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eImmune",
+            "position": {
+                "line": 508,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eDur",
+            "position": {
+                "line": 510,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eDur2",
+            "position": {
+                "line": 520,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eLink",
+            "position": {
+                "line": 521,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eSaves",
+            "position": {
+                "line": 531,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eAttack",
+            "position": {
+                "line": 532,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eDamage",
+            "position": {
+                "line": 533,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eSkill",
+            "position": {
+                "line": 534,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eDur",
+            "position": {
+                "line": 535,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eLink",
+            "position": {
+                "line": 537,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 545,
+                "character": 28
+            },
+            "identifier": "nSpell_ID",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 545,
+                "character": 46
+            },
+            "identifier": "oCaster",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 545,
+                "character": 62
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "bValid",
+            "position": {
+                "line": 548,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eAOE",
+            "position": {
+                "line": 549,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 571,
+                "character": 30
+            },
+            "identifier": "nEffectTypeID",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 571,
+                "character": 52
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "bValid",
+            "position": {
+                "line": 575,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eAOE",
+            "position": {
+                "line": 576,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 592,
+                "character": 35
+            },
+            "identifier": "SpellTargetLocation",
+            "tokenType": 25,
+            "valueType": "location"
+        },
+        {
+            "position": {
+                "line": 592,
+                "character": 63
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "fDelay",
+            "position": {
+                "line": 594,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 598,
+                "character": 27
+            },
+            "identifier": "fMinimumTime",
+            "tokenType": 25,
+            "valueType": "float",
+            "defaultValue": "0.4"
+        },
+        {
+            "position": {
+                "line": 598,
+                "character": 53
+            },
+            "identifier": "MaximumTime",
+            "tokenType": 25,
+            "valueType": "float",
+            "defaultValue": "1.1"
+        },
+        {
+            "identifier": "fRandom",
+            "position": {
+                "line": 600,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nRandom",
+            "position": {
+                "line": 607,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 616,
+                "character": 26
+            },
+            "identifier": "nActualDuration",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 616,
+                "character": 50
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nDiff",
+            "position": {
+                "line": 619,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nNew",
+            "position": {
+                "line": 620,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 639,
+                "character": 30
+            },
+            "identifier": "eStandard",
+            "tokenType": 25,
+            "valueType": "effect"
+        },
+        {
+            "position": {
+                "line": 639,
+                "character": 48
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "identifier": "nDiff",
+            "position": {
+                "line": 641,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eNew",
+            "position": {
+                "line": 642,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oMaster",
+            "position": {
+                "line": 643,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 673,
+                "character": 26
+            },
+            "identifier": "nSpell_ID",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 673,
+                "character": 44
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 673,
+                "character": 57
+            },
+            "identifier": "nCount",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "eProtection",
+            "position": {
+                "line": 676,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCnt",
+            "position": {
+                "line": 677,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 711,
+                "character": 33
+            },
+            "identifier": "nLastChecked",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 752,
+                "character": 33
+            },
+            "identifier": "sString",
+            "tokenType": 25,
+            "valueType": "string"
+        },
+        {
+            "identifier": "oTarget",
+            "position": {
+                "line": 754,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 771,
+                "character": 32
+            },
+            "identifier": "ngDamageMaster",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 771,
+                "character": 52
+            },
+            "identifier": "nSaveDC",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 771,
+                "character": 65
+            },
+            "identifier": "nSecondary",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "oTarget",
+            "position": {
+                "line": 774,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "o2ndTarget",
+            "position": {
+                "line": 775,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eLightning",
+            "position": {
+                "line": 776,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nDamageMaster",
+            "position": {
+                "line": 777,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nDamage",
+            "position": {
+                "line": 778,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eDam",
+            "position": {
+                "line": 779,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "eVis",
+            "position": {
+                "line": 780,
+                "character": 11
+            },
+            "valueType": "effect",
+            "tokenType": 6
+        },
+        {
+            "identifier": "lTarget",
+            "position": {
+                "line": 781,
+                "character": 13
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCount",
+            "position": {
+                "line": 782,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
+    ]
 }

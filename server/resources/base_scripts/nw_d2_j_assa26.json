@@ -1,8 +1,65 @@
 {
-    "complexTokens": [],
-    "structComplexTokens": [],
+    "globalDeclarations": [],
+    "structDeclarations": [],
     "children": [
         "NW_J_ASSASSIN",
         "nw_i0_plot"
+    ],
+    "includePositions": [
+        {
+            "line": 0,
+            "character": 0
+        },
+        {
+            "line": 1,
+            "character": 0
+        }
+    ],
+    "entryPointDeclarations": [
+        {
+            "position": {
+                "line": 3,
+                "character": 4
+            },
+            "identifier": "StartingConditional",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [],
+            "signatureEnd": {
+                "line": 3,
+                "character": 25
+            },
+            "comments": [],
+            "implementation": true
+        }
+    ],
+    "localDeclarations": [
+        {
+            "identifier": "iJob1",
+            "position": {
+                "line": 5,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oVictim",
+            "position": {
+                "line": 8,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "iJob2",
+            "position": {
+                "line": 9,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
     ]
 }

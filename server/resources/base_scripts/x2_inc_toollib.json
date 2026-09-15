@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 20,
@@ -8,7 +8,8 @@
             "identifier": "X2_TL_GROUNDTILE_ICE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "426"
+            "value": "426",
+            "isConst": true
         },
         {
             "position": {
@@ -18,7 +19,8 @@
             "identifier": "X2_TL_GROUNDTILE_WATER",
             "tokenType": 21,
             "valueType": "int",
-            "value": "401"
+            "value": "401",
+            "isConst": true
         },
         {
             "position": {
@@ -28,7 +30,8 @@
             "identifier": "X2_TL_GROUNDTILE_GRASS",
             "tokenType": 21,
             "valueType": "int",
-            "value": "402"
+            "value": "402",
+            "isConst": true
         },
         {
             "position": {
@@ -38,7 +41,8 @@
             "identifier": "X2_TL_GROUNDTILE_LAVA_FOUNTAIN",
             "tokenType": 21,
             "valueType": "int",
-            "value": "349"
+            "value": "349",
+            "isConst": true
         },
         {
             "position": {
@@ -48,7 +52,8 @@
             "identifier": "X2_TL_GROUNDTILE_LAVA",
             "tokenType": 21,
             "valueType": "int",
-            "value": "350"
+            "value": "350",
+            "isConst": true
         },
         {
             "position": {
@@ -58,7 +63,8 @@
             "identifier": "X2_TL_GROUNDTILE_CAVEFLOOR",
             "tokenType": 21,
             "valueType": "int",
-            "value": "406"
+            "value": "406",
+            "isConst": true
         },
         {
             "position": {
@@ -68,7 +74,8 @@
             "identifier": "X2_TL_GROUNDTILE_SEWER_WATER",
             "tokenType": 21,
             "valueType": "int",
-            "value": "461"
+            "value": "461",
+            "isConst": true
         },
         {
             "position": {
@@ -104,7 +111,8 @@
                     },
                     "identifier": "nIterations",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "3"
                 },
                 {
                     "position": {
@@ -113,7 +121,8 @@
                     },
                     "identifier": "fDelay",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "0.1f"
                 },
                 {
                     "position": {
@@ -122,7 +131,8 @@
                     },
                     "identifier": "fZOffset",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "6.0f"
                 },
                 {
                     "position": {
@@ -135,10 +145,15 @@
                     "defaultValue": "-2.0f"
                 }
             ],
+            "signatureEnd": {
+                "line": 30,
+                "character": 129
+            },
             "comments": [
                 "// Create a rising or falling pillar with a certain visual effect. Looks cool",
                 "// but quite expensive on the graphics engine, so don't get too mad with it"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -196,6 +211,10 @@
                     "defaultValue": "-0.4f"
                 }
             ],
+            "signatureEnd": {
+                "line": 41,
+                "character": 114
+            },
             "comments": [
                 "// change the type of the ground or (by default) sub ground tiles (i.e. water) to the specified type",
                 "// Valid values are",
@@ -206,7 +225,8 @@
                 "// const int X2_TL_GROUNDTILE_LAVA = 350;",
                 "// const int X2_TL_GROUNDTILE_CAVEFLOOR = 406;",
                 "// const int X2_TL_GROUNDTILE_SEWER_WATER = 461;"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -245,9 +265,14 @@
                     "valueType": "int"
                 }
             ],
+            "signatureEnd": {
+                "line": 43,
+                "character": 66
+            },
             "comments": [
                 "// remove any ground area tiles created with TLChangeAreaGroundTiles in current area"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -268,9 +293,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 46,
+                "character": 43
+            },
             "comments": [
                 "// patch 1.67 version of TLResetAreaGroundTiles, auto determines height and width of the area"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -310,11 +340,367 @@
                     "defaultValue": "-0.4f"
                 }
             ],
+            "signatureEnd": {
+                "line": 49,
+                "character": 91
+            },
             "comments": [
                 "// patch 1.67 version of TLChangeAreaGroundTiles, auto determines height and width of the area"
-            ]
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 54,
+                "character": 37
+            },
+            "identifier": "oArea",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 61,
+                "character": 35
+            },
+            "identifier": "oArea",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 61,
+                "character": 46
+            },
+            "identifier": "nColumns",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 61,
+                "character": 60
+            },
+            "identifier": "nRows",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "identifier": "oTile",
+            "position": {
+                "line": 63,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 77,
+                "character": 38
+            },
+            "identifier": "oArea",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 77,
+                "character": 49
+            },
+            "identifier": "nGroundTileConst",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 77,
+                "character": 73
+            },
+            "identifier": "fZOffset",
+            "tokenType": 25,
+            "valueType": "float",
+            "defaultValue": "-0.4f"
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 36
+            },
+            "identifier": "oArea",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 47
+            },
+            "identifier": "nGroundTileConst",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 69
+            },
+            "identifier": "nColumns",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 83
+            },
+            "identifier": "nRows",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 82,
+                "character": 96
+            },
+            "identifier": "fZOffset",
+            "tokenType": 25,
+            "valueType": "float",
+            "defaultValue": "-0.4f"
+        },
+        {
+            "identifier": "oTile",
+            "position": {
+                "line": 86,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vPos",
+            "position": {
+                "line": 88,
+                "character": 11
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fFace",
+            "position": {
+                "line": 92,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "lLoc",
+            "position": {
+                "line": 93,
+                "character": 13
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "i",
+            "position": {
+                "line": 96,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "j",
+            "position": {
+                "line": 96,
+                "character": 11
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 115,
+                "character": 21
+            },
+            "identifier": "nVFX",
+            "tokenType": 25,
+            "valueType": "int"
+        },
+        {
+            "position": {
+                "line": 115,
+                "character": 36
+            },
+            "identifier": "lStart",
+            "tokenType": 25,
+            "valueType": "location"
+        },
+        {
+            "position": {
+                "line": 115,
+                "character": 48
+            },
+            "identifier": "nIterations",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "3"
+        },
+        {
+            "position": {
+                "line": 115,
+                "character": 69
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float",
+            "defaultValue": "0.1f"
+        },
+        {
+            "position": {
+                "line": 115,
+                "character": 88
+            },
+            "identifier": "fZOffset",
+            "tokenType": 25,
+            "valueType": "float",
+            "defaultValue": "6.0f"
+        },
+        {
+            "position": {
+                "line": 115,
+                "character": 110
+            },
+            "identifier": "fStepSize",
+            "tokenType": 25,
+            "valueType": "float",
+            "defaultValue": "-2.0f"
+        },
+        {
+            "identifier": "vLoc",
+            "position": {
+                "line": 117,
+                "character": 12
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "vNew",
+            "position": {
+                "line": 118,
+                "character": 12
+            },
+            "valueType": "vector",
+            "tokenType": 6
+        },
+        {
+            "identifier": "lNew",
+            "position": {
+                "line": 120,
+                "character": 14
+            },
+            "valueType": "location",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nCount",
+            "position": {
+                "line": 121,
+                "character": 9
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
+    ],
+    "memberReferences": [
+        {
+            "identifier": "x",
+            "position": {
+                "line": 89,
+                "character": 9
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 90,
+                "character": 9
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 91,
+                "character": 9
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 99,
+                "character": 13
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 103,
+                "character": 17
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "y",
+            "position": {
+                "line": 103,
+                "character": 26
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 110,
+                "character": 13
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "x",
+            "position": {
+                "line": 110,
+                "character": 22
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 119,
+                "character": 10
+            },
+            "tokenType": 18
+        },
+        {
+            "identifier": "z",
+            "position": {
+                "line": 134,
+                "character": 15
+            },
+            "tokenType": 18
+        }
+    ]
 }

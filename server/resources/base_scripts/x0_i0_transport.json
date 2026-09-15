@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 30,
@@ -25,7 +25,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -34,7 +35,8 @@
                     },
                     "identifier": "bRun",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -43,9 +45,14 @@
                     },
                     "identifier": "fDelay",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "10.0"
                 }
             ],
+            "signatureEnd": {
+                "line": 30,
+                "character": 96
+            },
             "comments": [
                 "// Target goes to specified destination object intelligently.",
                 "// If location is in same area, walk (or run) there.",
@@ -53,7 +60,8 @@
                 "//     most appropriate door, area transition, or waypoint, ",
                 "//     then jump.",
                 "// If either of these fail, jump after fDelay seconds."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -80,7 +88,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -89,7 +98,8 @@
                     },
                     "identifier": "bRun",
                     "tokenType": 25,
-                    "valueType": "int"
+                    "valueType": "int",
+                    "defaultValue": "FALSE"
                 },
                 {
                     "position": {
@@ -98,13 +108,19 @@
                     },
                     "identifier": "fDelay",
                     "tokenType": 25,
-                    "valueType": "float"
+                    "valueType": "float",
+                    "defaultValue": "10.0"
                 }
             ],
+            "signatureEnd": {
+                "line": 34,
+                "character": 100
+            },
             "comments": [
                 "// Target goes to specified location intelligently. See",
                 "// TravelToObject for description."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -122,12 +138,18 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 }
             ],
+            "signatureEnd": {
+                "line": 37,
+                "character": 49
+            },
             "comments": [
                 "// Find nearest exit to target (either door or waypoint)."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -145,7 +167,8 @@
                     },
                     "identifier": "oTarget",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
                 },
                 {
                     "position": {
@@ -154,12 +177,18 @@
                     },
                     "identifier": "oTargetArea",
                     "tokenType": 25,
-                    "valueType": "object"
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
                 }
             ],
+            "signatureEnd": {
+                "line": 40,
+                "character": 81
+            },
             "comments": [
                 "// Find best exit based on desired target area"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -189,11 +218,16 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 45,
+                "character": 54
+            },
             "comments": [
                 "// Transport a player and his/her associates to a waypoint.",
                 "// This does NOT transport the rest of the player's party,",
                 "// only their henchman, summoned, dominated, etc."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -223,11 +257,16 @@
                     "valueType": "location"
                 }
             ],
+            "signatureEnd": {
+                "line": 50,
+                "character": 51
+            },
             "comments": [
                 "// Transport a player and his/her associates to a location.",
                 "// This does NOT transport the rest of the player's party,",
                 "// only their henchman, summoned, dominated, etc."
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -257,9 +296,14 @@
                     "valueType": "object"
                 }
             ],
+            "signatureEnd": {
+                "line": 53,
+                "character": 52
+            },
             "comments": [
                 "// Transport an entire party to a waypoint"
-            ]
+            ],
+            "implementation": true
         },
         {
             "position": {
@@ -289,11 +333,472 @@
                     "valueType": "location"
                 }
             ],
+            "signatureEnd": {
+                "line": 56,
+                "character": 54
+            },
             "comments": [
                 "// Transport an entire party to a location"
-            ]
+            ],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 142,
+                "character": 7
+            },
+            "identifier": "GetBestExitByType",
+            "tokenType": 3,
+            "returnType": "object",
+            "params": [
+                {
+                    "position": {
+                        "line": 142,
+                        "character": 32
+                    },
+                    "identifier": "oTarget",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_SELF"
+                },
+                {
+                    "position": {
+                        "line": 142,
+                        "character": 60
+                    },
+                    "identifier": "oTargetArea",
+                    "tokenType": 25,
+                    "valueType": "object",
+                    "defaultValue": "OBJECT_INVALID"
+                },
+                {
+                    "position": {
+                        "line": 142,
+                        "character": 92
+                    },
+                    "identifier": "nObjType",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "OBJECT_TYPE_DOOR"
+                }
+            ],
+            "signatureEnd": {
+                "line": 142,
+                "character": 118
+            },
+            "comments": [
+                "// Private function: find the best exit of the desired type."
+            ],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "position": {
+                "line": 69,
+                "character": 27
+            },
+            "identifier": "oDest",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 69,
+                "character": 41
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "position": {
+                "line": 69,
+                "character": 66
+            },
+            "identifier": "bRun",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "FALSE"
+        },
+        {
+            "position": {
+                "line": 69,
+                "character": 84
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float",
+            "defaultValue": "10.0"
+        },
+        {
+            "position": {
+                "line": 76,
+                "character": 31
+            },
+            "identifier": "lDest",
+            "tokenType": 25,
+            "valueType": "location"
+        },
+        {
+            "position": {
+                "line": 76,
+                "character": 45
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "position": {
+                "line": 76,
+                "character": 70
+            },
+            "identifier": "bRun",
+            "tokenType": 25,
+            "valueType": "int",
+            "defaultValue": "FALSE"
+        },
+        {
+            "position": {
+                "line": 76,
+                "character": 88
+            },
+            "identifier": "fDelay",
+            "tokenType": 25,
+            "valueType": "float",
+            "defaultValue": "10.0"
+        },
+        {
+            "identifier": "oDestArea",
+            "position": {
+                "line": 78,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oBestExit",
+            "position": {
+                "line": 83,
+                "character": 15
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nObjType",
+            "position": {
+                "line": 86,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 99,
+                "character": 29
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "identifier": "oCurArea",
+            "position": {
+                "line": 101,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oNearDoor",
+            "position": {
+                "line": 103,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nTrig",
+            "position": {
+                "line": 108,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oNearTrig",
+            "position": {
+                "line": 109,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fMaxDist",
+            "position": {
+                "line": 120,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fDoorDist",
+            "position": {
+                "line": 121,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "fTrigDist",
+            "position": {
+                "line": 122,
+                "character": 10
+            },
+            "valueType": "float",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oCurrentArea",
+            "position": {
+                "line": 144,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nDoor",
+            "position": {
+                "line": 145,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oDoor",
+            "position": {
+                "line": 147,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oNearestDoor",
+            "position": {
+                "line": 148,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oDestArea",
+            "position": {
+                "line": 149,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oBestDoor",
+            "position": {
+                "line": 151,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oBestDestArea",
+            "position": {
+                "line": 152,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 190,
+                "character": 26
+            },
+            "identifier": "oTarget",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_SELF"
+        },
+        {
+            "position": {
+                "line": 190,
+                "character": 54
+            },
+            "identifier": "oTargetArea",
+            "tokenType": 25,
+            "valueType": "object",
+            "defaultValue": "OBJECT_INVALID"
+        },
+        {
+            "identifier": "oBestDoor",
+            "position": {
+                "line": 196,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oBestTrigger",
+            "position": {
+                "line": 207,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 230,
+                "character": 32
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 230,
+                "character": 44
+            },
+            "identifier": "oWaypoint",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 241,
+                "character": 32
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 241,
+                "character": 46
+            },
+            "identifier": "oLoc",
+            "tokenType": 25,
+            "valueType": "location"
+        },
+        {
+            "identifier": "oHench",
+            "position": {
+                "line": 252,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oDomin",
+            "position": {
+                "line": 253,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oFamil",
+            "position": {
+                "line": 254,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oSummon",
+            "position": {
+                "line": 255,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "identifier": "oAnimalComp",
+            "position": {
+                "line": 256,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        },
+        {
+            "position": {
+                "line": 283,
+                "character": 35
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 283,
+                "character": 47
+            },
+            "identifier": "oWaypoint",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 292,
+                "character": 35
+            },
+            "identifier": "oPC",
+            "tokenType": 25,
+            "valueType": "object"
+        },
+        {
+            "position": {
+                "line": 292,
+                "character": 49
+            },
+            "identifier": "oLoc",
+            "tokenType": 25,
+            "valueType": "location"
+        },
+        {
+            "identifier": "oPartyMem",
+            "position": {
+                "line": 294,
+                "character": 11
+            },
+            "valueType": "object",
+            "tokenType": 6
+        }
+    ]
 }

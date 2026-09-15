@@ -1,5 +1,5 @@
 {
-    "complexTokens": [
+    "globalDeclarations": [
         {
             "position": {
                 "line": 18,
@@ -8,7 +8,8 @@
             "identifier": "NW_ASC_DISTANCE_2_METERS",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000001"
+            "value": "0x00000001",
+            "isConst": true
         },
         {
             "position": {
@@ -18,7 +19,8 @@
             "identifier": "NW_ASC_DISTANCE_4_METERS",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000002"
+            "value": "0x00000002",
+            "isConst": true
         },
         {
             "position": {
@@ -28,7 +30,8 @@
             "identifier": "NW_ASC_DISTANCE_6_METERS",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000004"
+            "value": "0x00000004",
+            "isConst": true
         },
         {
             "position": {
@@ -38,7 +41,8 @@
             "identifier": "NW_ASC_HEAL_AT_75",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000008"
+            "value": "0x00000008",
+            "isConst": true
         },
         {
             "position": {
@@ -48,7 +52,8 @@
             "identifier": "NW_ASC_HEAL_AT_50",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000010"
+            "value": "0x00000010",
+            "isConst": true
         },
         {
             "position": {
@@ -58,7 +63,8 @@
             "identifier": "NW_ASC_HEAL_AT_25",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000020"
+            "value": "0x00000020",
+            "isConst": true
         },
         {
             "position": {
@@ -68,7 +74,8 @@
             "identifier": "NW_ASC_AGGRESSIVE_BUFF",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000040"
+            "value": "0x00000040",
+            "isConst": true
         },
         {
             "position": {
@@ -78,7 +85,8 @@
             "identifier": "NW_ASC_AGGRESSIVE_SEARCH",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000080"
+            "value": "0x00000080",
+            "isConst": true
         },
         {
             "position": {
@@ -88,7 +96,8 @@
             "identifier": "NW_ASC_AGGRESSIVE_STEALTH",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000100"
+            "value": "0x00000100",
+            "isConst": true
         },
         {
             "position": {
@@ -98,7 +107,8 @@
             "identifier": "NW_ASC_RETRY_OPEN_LOCKS",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000200"
+            "value": "0x00000200",
+            "isConst": true
         },
         {
             "position": {
@@ -108,7 +118,8 @@
             "identifier": "NW_ASC_OVERKIll_CASTING",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000400"
+            "value": "0x00000400",
+            "isConst": true
         },
         {
             "position": {
@@ -118,7 +129,8 @@
             "identifier": "NW_ASC_POWER_CASTING",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00000800"
+            "value": "0x00000800",
+            "isConst": true
         },
         {
             "position": {
@@ -128,7 +140,8 @@
             "identifier": "NW_ASC_SCALED_CASTING",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00001000"
+            "value": "0x00001000",
+            "isConst": true
         },
         {
             "position": {
@@ -138,7 +151,8 @@
             "identifier": "NW_ASC_USE_CUSTOM_DIALOGUE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00002000"
+            "value": "0x00002000",
+            "isConst": true
         },
         {
             "position": {
@@ -148,7 +162,8 @@
             "identifier": "NW_ASC_DISARM_TRAPS",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00004000"
+            "value": "0x00004000",
+            "isConst": true
         },
         {
             "position": {
@@ -158,7 +173,8 @@
             "identifier": "NW_ASC_USE_RANGED_WEAPON",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x00008000"
+            "value": "0x00008000",
+            "isConst": true
         },
         {
             "position": {
@@ -168,7 +184,8 @@
             "identifier": "NW_ASC_MODE_DEFEND_MASTER",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x04000000"
+            "value": "0x04000000",
+            "isConst": true
         },
         {
             "position": {
@@ -178,7 +195,8 @@
             "identifier": "NW_ASC_MODE_STAND_GROUND",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x08000000"
+            "value": "0x08000000",
+            "isConst": true
         },
         {
             "position": {
@@ -188,7 +206,8 @@
             "identifier": "NW_ASC_MASTER_GONE",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x10000000"
+            "value": "0x10000000",
+            "isConst": true
         },
         {
             "position": {
@@ -198,7 +217,8 @@
             "identifier": "NW_ASC_MASTER_REVOKED",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x20000000"
+            "value": "0x20000000",
+            "isConst": true
         },
         {
             "position": {
@@ -208,7 +228,8 @@
             "identifier": "NW_ASC_IS_BUSY",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x40000000"
+            "value": "0x40000000",
+            "isConst": true
         },
         {
             "position": {
@@ -218,9 +239,92 @@
             "identifier": "NW_ASC_HAVE_MASTER",
             "tokenType": 21,
             "valueType": "int",
-            "value": "0x80000000"
+            "value": "0x80000000",
+            "isConst": true
+        },
+        {
+            "position": {
+                "line": 47,
+                "character": 5
+            },
+            "identifier": "SetAssociateState",
+            "tokenType": 3,
+            "returnType": "void",
+            "params": [
+                {
+                    "position": {
+                        "line": 47,
+                        "character": 27
+                    },
+                    "identifier": "nCondition",
+                    "tokenType": 25,
+                    "valueType": "int"
+                },
+                {
+                    "position": {
+                        "line": 47,
+                        "character": 43
+                    },
+                    "identifier": "bValid",
+                    "tokenType": 25,
+                    "valueType": "int",
+                    "defaultValue": "TRUE"
+                }
+            ],
+            "signatureEnd": {
+                "line": 47,
+                "character": 57
+            },
+            "comments": [],
+            "implementation": true
+        },
+        {
+            "position": {
+                "line": 62,
+                "character": 4
+            },
+            "identifier": "GetAssociateState",
+            "tokenType": 3,
+            "returnType": "int",
+            "params": [
+                {
+                    "position": {
+                        "line": 62,
+                        "character": 26
+                    },
+                    "identifier": "nCondition",
+                    "tokenType": 25,
+                    "valueType": "int"
+                }
+            ],
+            "signatureEnd": {
+                "line": 62,
+                "character": 37
+            },
+            "comments": [],
+            "implementation": true
         }
     ],
-    "structComplexTokens": [],
-    "children": []
+    "structDeclarations": [],
+    "children": [],
+    "localDeclarations": [
+        {
+            "identifier": "nPlot",
+            "position": {
+                "line": 49,
+                "character": 8
+            },
+            "valueType": "int",
+            "tokenType": 6
+        },
+        {
+            "identifier": "nPlot",
+            "position": {
+                "line": 73,
+                "character": 12
+            },
+            "valueType": "int",
+            "tokenType": 6
+        }
+    ]
 }
