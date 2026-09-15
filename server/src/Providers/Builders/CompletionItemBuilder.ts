@@ -41,9 +41,9 @@ export default class CompletionItemBuilder extends Builder {
     return item;
   }
 
-  public static buildItem(token: ComplexToken): CompletionItem {
+  public static buildItem(token: ComplexToken, implicitConstants = false): CompletionItem {
     if (this.isConstantToken(token)) {
-      return this.buildConstantItem(token);
+      return token.isConst || implicitConstants ? this.buildConstantItem(token) : this.buildVariableItem({ ...token, tokenType: CompletionItemKind.Variable });
     } else if (this.isVariableToken(token)) {
       return this.buildVariableItem(token);
     } else if (this.isFunctionParameterToken(token)) {

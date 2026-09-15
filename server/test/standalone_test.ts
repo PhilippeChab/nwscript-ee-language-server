@@ -450,7 +450,7 @@ describe("Installed standalone LSP server", function () {
       const request = { textDocument: { uri }, position: { line: 4, character: 19 } };
       const items: any = await client.rpc.sendRequest(CompletionRequest.type, request);
       expect(items.some((item: any) => item.label === "hidden")).to.equal(false);
-      expect(items.find((item: any) => item.label === name)?.detail).to.equal("(constant) 1: int");
+      expect(items.find((item: any) => item.label === name)?.detail).to.equal(`(variable) ${name}: int`);
       expect(content(await client.rpc.sendRequest(HoverRequest.type, request))?.value).to.equal(`int ${name} = 1`);
       const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, request);
       expect(definition.range.start).to.deep.equal({ line: 0, character: 4 });

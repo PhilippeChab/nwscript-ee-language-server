@@ -1,6 +1,7 @@
 import { CompletionItemKind, DocumentSymbolParams, DocumentSymbol, SymbolInformation } from "vscode-languageserver";
 
 import type { ServerManager } from "../ServerManager";
+import { isStandardLibrary } from "../Documents/StandardLibrary";
 import { SymbolBuilder } from "./Builders";
 import Provider from "./Provider";
 
@@ -20,7 +21,7 @@ export default class SymbolsProvider extends Provider {
       const context = this.getDocumentContext(uri);
       if (!context) return;
       const { document, localScope } = context;
-      const constantSymbols = document.globalDeclarations.filter((token) => token.tokenType === CompletionItemKind.Constant).map((token) => SymbolBuilder.buildItem(token));
+      const constantSymbols = document.globalDeclarations.filter((token) => token.tokenType === CompletionItemKind.Constant).map((token) => SymbolBuilder.buildItem(token, isStandardLibrary(uri)));
       const structSymbols = document.structDeclarations.map((token) => SymbolBuilder.buildItem(token));
 
       const symbols = constantSymbols.concat(structSymbols.concat(localScope.functionsComplexTokens.map((token) => SymbolBuilder.buildItem(token))));

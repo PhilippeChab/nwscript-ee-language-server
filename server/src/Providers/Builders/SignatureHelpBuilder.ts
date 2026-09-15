@@ -6,14 +6,13 @@ import Builder from "./Builder";
 
 export default class SignatureHelpBuilder extends Builder {
   static buildFunctionItem(token: FunctionComplexToken, activeParameter: number | undefined): SignatureHelp {
+    const parameters = token.params.map((param) => this.formatParameter(param));
     return {
       signatures: [
         SignatureInformation.create(
-          `${this.handleLanguageType(token.returnType)} ${token.identifier}(${token.params.reduce((acc, param, index) => {
-            return `${acc}${this.handleLanguageType(param.valueType)} ${param.identifier}${index === token.params.length - 1 ? "" : ", "}`;
-          }, "")})`,
+          `${this.handleLanguageType(token.returnType)} ${token.identifier}(${parameters.join(", ")})`,
           undefined,
-          ...token.params.map<ParameterInformation>((param) => ParameterInformation.create(`${param.valueType} ${param.identifier}`)),
+          ...parameters.map<ParameterInformation>((label) => ParameterInformation.create(label)),
         ),
       ],
       activeSignature: 0,

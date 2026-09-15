@@ -50,11 +50,7 @@ export default class HoverContentBuilder extends Builder {
 
   private static buildFunctionItem(token: FunctionComplexToken, serverConfig: ServerConfiguration) {
     return this.buildMarkdown(
-      [
-        `${this.handleLanguageType(token.returnType)} ${token.identifier}(${token.params.reduce((acc, param, index) => {
-          return `${acc}${this.handleLanguageType(param.valueType)} ${param.identifier}${param.defaultValue ? ` = ${param.defaultValue}` : ""}${index === token.params.length - 1 ? "" : ", "}`;
-        }, "")})`,
-      ],
+      [`${this.handleLanguageType(token.returnType)} ${token.identifier}(${token.params.map((param) => this.formatParameter(param)).join(", ")})`],
       serverConfig.hovering.addCommentsToFunctions ? ["```nwscript", ...token.comments, "```"] : [],
       [],
     );
