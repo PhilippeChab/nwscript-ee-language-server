@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { readFileSync, readdirSync } from "node:fs";
+import { readFileSync, readdirSync, mkdtempSync, mkdirSync, copyFileSync, writeFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
-import { before, test } from "node:test";
+import { after, before, test } from "node:test";
+import { tmpdir } from "node:os";
+import { spawnSync } from "node:child_process";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { CompletionItemKind } from "vscode-languageserver";
 import Tokenizer from "../../src/Tokenizer/Tokenizer";
@@ -178,7 +180,7 @@ void test("reads every upstream corpus fixture without syntax errors", async (t)
   }
 });
 
-void test("exposes incomplete early-error recovery rather than manufacturing a later declaration", async (t) => {
+void test("recovers later declarations after an unfinished signature", async (t) => {
   const parsed = await parse(t, "void Broken(\nvoid Later(){}\nvoid main(){}");
   assert.equal(parsed.rootNode.hasError, true);
   assert.deepEqual(
@@ -187,7 +189,7 @@ void test("exposes incomplete early-error recovery rather than manufacturing a l
   );
   assert.equal(
     parsed.getIndex().globalDeclarations.some((token) => token.identifier === "Later"),
-    false,
+    true,
   );
 });
 
@@ -264,3 +266,86 @@ void test("shares syntax and indexes per live version while isolating different 
 void test("ships the WASM runtime from the pinned runtime dependency", () => {
   assert.deepEqual(readFileSync(join(__dirname, "../../resources/web-tree-sitter.wasm")), readFileSync(join(__dirname, "../../node_modules/web-tree-sitter/tree-sitter.wasm")));
 });
+
+const conformance = JSON.parse(readFileSync(join(__dirname, "conformance.json"), "utf8")) as {
+  name: string;
+  source: string;
+  syntax: boolean;
+  compiler: "successful" | "errored" | "skipped";
+  category: string;
+}[];
+let compilerWorkspace: string;
+before(() => {
+  compilerWorkspace = mkdtempSync(join(tmpdir(), "nwscript parser conformance "));
+  mkdirSync(join(compilerWorkspace, "ovr"));
+  mkdirSync(join(compilerWorkspace, "lang/en"), { recursive: true });
+  writeFileSync(join(compilerWorkspace, "databuild.txt"), "test\n");
+  copyFileSync(join(__dirname, "../../scripts/nwscript.nss"), join(compilerWorkspace, "ovr/nwscript.nss"));
+  writeFileSync(join(compilerWorkspace, "ovr/helper.nss"), "void main(){}");
+});
+after(() => {
+  if (compilerWorkspace) rmSync(compilerWorkspace, { recursive: true, force: true });
+});
+for (const fixture of conformance) {
+  void test(`compiler-backed syntax: ${fixture.name}`, async (t) => {
+    const parsed = await parse(t, fixture.source);
+    assert.equal(!parsed.rootNode.hasError, fixture.syntax, parsed.rootNode.toString());
+    const file = join(compilerWorkspace, "case.nss");
+    writeFileSync(file, fixture.source);
+    const platform = process.platform === "win32" ? "windows" : process.platform === "darwin" ? "mac" : "linux";
+    const executable = join(__dirname, "../../resources/compiler", platform, `nwn_script_comp${process.platform === "win32" ? ".exe" : ""}`);
+    const result = spawnSync(executable, ["-y", "-s", "-j", "1", "--userdirectory", compilerWorkspace, "--root", compilerWorkspace, "--dirs", compilerWorkspace, "-c", file], {
+      encoding: "utf8",
+      timeout: 20000,
+    });
+    assert.equal(result.error, undefined);
+    assert.equal(result.signal, null);
+    assert.equal(result.status, fixture.compiler === "errored" ? 1 : 0, result.stderr);
+    assert.match(result.stderr, fixture.compiler === "skipped" ? /1 skipped/ : fixture.compiler === "successful" ? /1 successful/ : /1 errored/);
+  });
+}
+
+for (const returnType of ["void", "int", "string", "struct Data"]) {
+  for (const separator of [" ", "\n", "\r\n"]) {
+    void test(`recovers a ${returnType} function after a damaged signature (${JSON.stringify(separator)})`, async (t) => {
+      const body = returnType === "void" ? "" : returnType === "int" ? "return 1;" : returnType === "string" ? 'return "ok";' : "struct Data value; return value;";
+      const source = `struct Data{int field;};\n${returnType} Broken(${separator}${returnType} Later(int parameter){${body}}\nvoid main(){Later(1);}`;
+      const parsed = await parse(t, source);
+      const later = parsed.getIndex().globalDeclarations.find((token) => token.identifier === "Later");
+      assert.ok(later && "params" in later);
+      assert.deepEqual(later.position, document(source).positionAt(source.indexOf("Later")));
+      assert.equal(later.params[0].identifier, "parameter");
+      assert.equal(later.implementation, true);
+      assert.equal(
+        parsed.getIndex().globalDeclarations.some((token) => token.identifier === "Broken"),
+        false,
+      );
+      assert.throws(() => parsed.getIndex(true));
+      const fixed = source.replace(`${returnType} Broken(${separator}`, "");
+      parsed.update(document(fixed, 2));
+      const fresh = await parse(t, fixed);
+      assert.equal(parsed.rootNode.toString(), fresh.rootNode.toString());
+      assert.deepEqual(parsed.getIndex(), fresh.getIndex());
+    });
+  }
+}
+
+void test("incremental edits after recovered signatures match fresh parsing", async (t) => {
+  const source = "void Broken(\nvoid Later(int parameter){}\nvoid main(){Later(1);}";
+  const parsed = await parse(t, source);
+  for (let length = 0; length <= source.length; length++) {
+    const edited = source.slice(0, length);
+    parsed.update(document(edited, length + 2));
+    const fresh = await parse(t, edited);
+    assert.equal(parsed.rootNode.toString(), fresh.rootNode.toString(), edited);
+    assert.deepEqual(parsed.getIndex(), fresh.getIndex(), edited);
+  }
+});
+
+for (const comment of ["/* unfinished", "/** unfinished *", "/* unfinished **", "/* first */ /* second"]) {
+  void test(`retains completion suppression inside ${comment}`, async (t) => {
+    const source = `void main(){${comment}`;
+    const parsed = await parse(t, source);
+    assert.equal(parsed.isInCommentOrString(document(source).positionAt(source.length)), true);
+  });
+}

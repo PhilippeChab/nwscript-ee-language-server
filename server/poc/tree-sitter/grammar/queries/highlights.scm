@@ -1,5 +1,5 @@
 (comment) @comment
-[(primitive_type) (nwn_type)] @type.builtin
+[(primitive_type) (void_type) (nwn_type)] @type.builtin
 [(string_literal) (raw_string_literal) (hashed_string_literal) (raw_string_content) (string_content) (string_start) (hashed_string_start)] @string
 (number_literal) @number
 (function_definition declarator: (identifier) @function)

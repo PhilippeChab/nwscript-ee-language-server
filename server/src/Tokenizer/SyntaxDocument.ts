@@ -6,6 +6,7 @@ import type { TextDocument } from "vscode-languageserver-textdocument";
 import type { DocumentTokenizationResult, LocalScopeTokenizationResult, AutoImportContext } from "./contracts";
 import type { FunctionComplexToken, FunctionParamComplexToken, VariableComplexToken } from "./types";
 import { LanguageTypes } from "./constants";
+import { recoverDeclarations } from "./recoverDeclarations";
 // Select the CJS runtime so bundled Node entry points retain their module filename.
 import TreeSitter = require("web-tree-sitter");
 const { Language, Parser } = TreeSitter;
@@ -22,6 +23,7 @@ export default class SyntaxDocument {
 
   private readonly resources: { tree: Tree; parser: SyntaxParser };
   private index?: DocumentTokenizationResult;
+  private recovered = false;
 
   private source: string;
 
@@ -43,7 +45,10 @@ export default class SyntaxDocument {
       parser.delete();
       throw new Error("Tree-sitter did not produce a syntax tree");
     }
-    return new SyntaxDocument(document, parser, tree);
+    const recovered = recoverDeclarations(parser, tree, document.getText());
+    const syntax = new SyntaxDocument(document, parser, recovered);
+    syntax.recovered = recovered !== tree;
+    return syntax;
   }
 
   public get rootNode() {
@@ -79,11 +84,13 @@ export default class SyntaxDocument {
       oldEndPosition: this.point(before, oldEnd),
       newEndPosition: this.point(after, newEnd),
     });
-    const next = this.parser.parse(after, this.tree);
+    // Recovery trees contain masked damaged prefixes; do not reuse them for edits.
+    const next = this.parser.parse(after, this.recovered ? undefined : this.tree);
     if (!next) throw new Error("Tree-sitter did not produce an updated syntax tree");
     this.tree.delete();
-    this.tree = next;
-    this.resources.tree = next;
+    this.tree = recoverDeclarations(this.parser, next, after);
+    this.recovered = this.tree !== next;
+    this.resources.tree = this.tree;
     this.index = undefined;
     this.source = after;
     this.document = document;
@@ -107,7 +114,8 @@ export default class SyntaxDocument {
   public getIndex(strict = false): DocumentTokenizationResult {
     if (
       strict &&
-      (this.rootNode.namedChildren.some((node) => node?.isError && node.namedChildren.some((child) => child?.type === "primitive_type")) ||
+      (this.recovered ||
+        this.rootNode.namedChildren.some((node) => node?.isError && node.namedChildren.some((child) => child?.type === "primitive_type" || child?.type === "void_type")) ||
         this.rootNode.descendantsOfType(["struct_declarator", "function_argument_list"]).some((node) => node?.hasError))
     ) {
       throw new Error("Incomplete declaration");
@@ -293,7 +301,7 @@ export default class SyntaxDocument {
     const literal = this.ancestor(node, ["string_literal", "raw_string_literal", "hashed_string_literal"]);
     if (literal) return offset < literal.endIndex || literal.hasError;
     const comment = this.ancestor(node, ["comment"]);
-    if (comment) return offset < comment.endIndex || comment.text.startsWith("//");
+    if (comment) return offset < comment.endIndex || comment.text.startsWith("//") || !comment.text.endsWith("*/");
     return Boolean(this.ancestor(node, ["raw_string_start", "raw_string_content", "raw_string_escape", "string_start", "string_content", "hashed_string_start"]));
   }
 
