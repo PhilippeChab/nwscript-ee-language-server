@@ -10,10 +10,10 @@ Compared with `main` at `85e4089`:
 
 | Parsing code | Before | This draft |
 | --- | ---: | ---: |
-| Tokenizer implementation and index/context contracts | 679 lines | 516 lines across `Tokenizer`, `SyntaxDocument`, `recoverDeclarations`, and `contracts` |
-| Including language constants and the old Oniguruma loader | 742 lines | 535 lines |
+| Tokenizer implementation and index/context contracts | 695 lines | 531 lines across `Tokenizer`, `SyntaxDocument`, `recoverDeclarations`, and `contracts` |
+| Including language constants and the old Oniguruma loader | 758 lines | 550 lines |
 
-These counts include the new adapter and moved types, not just the remaining `Tokenizer.ts`. The production parsing code is about 28% smaller. The separately maintained Tree-sitter grammar is additional source; this is not a claim that the entire repository shrinks by that percentage.
+These counts include the new adapter and moved types, not just the remaining `Tokenizer.ts`. The production parsing code is about 27% smaller. The separately maintained Tree-sitter grammar is additional source; this is not a claim that the entire repository shrinks by that percentage.
 
 Removed code includes TextMate rule-stack management, highlighting-scope predicates, scanning for declaration types and function-signature boundaries, variable initializer reconstruction, and manually maintained block-scope frames. Syntax nodes supply declaration kinds, types, fields, defaults, parameter lists, and enclosing blocks.
 
@@ -53,7 +53,7 @@ The inspector uses the same production parser and prints its index, syntax-error
 
 ## Validation
 
-All 617 repository tests pass against the replacement, including the installed standalone LSP tests and the native compiler corpus checks. Existing test expectations are preserved. Direct parser tests now call the syntax-document API, parse-count spies observe `parseContent`, and the package license assertion names the new runtime.
+All 662 repository tests pass against the replacement, including the installed standalone LSP tests and the native compiler corpus checks. Existing test expectations are preserved. Direct parser tests now call the syntax-document API, parse-count spies observe `parseContent`, and the package license assertion names the new runtime.
 
 The additional 158 parser checks also use the production implementation. They cover the existing index contract, incomplete declarations and strings, prototype parameters, struct fields, nested scopes and calls, Unicode/CRLF positions, incremental edits against fresh parses, document/version isolation, all 39 upstream corpus fixtures, grammar/runtime artifact consistency, and four Zed query files. Type checking and lint run for both packages. The standard-library regeneration check also matches the shipped JSON byte for byte. The headless Neovim client test passes against the packaged replacement. CI runs these checks on Windows, Linux, Intel macOS, and Apple Silicon; local validation is Linux only.
 

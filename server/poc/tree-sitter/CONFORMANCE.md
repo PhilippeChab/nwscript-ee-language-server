@@ -30,7 +30,7 @@ Committed tests cover void/primitive/struct returns, same-line/LF/CRLF boundarie
 
 ## Corpus and integration results
 
-- 617 repository tests pass, including the newly installed-server recovery case.
+- 662 repository tests pass, including the newly installed-server recovery case.
 - 158 parser checks pass, including the 111 compiler-backed cases and all 39 upstream corpus files.
 - An additional local audit parses 1,186 extracted bundled scripts and 74 FRU source files without syntax errors. Those private/extracted files are not committed; these results supplement the reproducible tests.
 - Regenerating the standard library matches the shipped JSON byte for byte.
@@ -52,9 +52,9 @@ Large-file index extraction and context scans remain measurable work. This audit
 
 ## Checkpoint and remaining work
 
-Checkpoint on `poc/tree-sitter-tokenizer` for draft PR #104. The production tokenizer uses Tree-sitter, the narrowed grammar and interrupted-signature recovery are implemented, and the rebuilt WASM and its provenance manifest are included. Existing semantic resolution and compiler validation remain separate from syntax parsing.
+Rebased `poc/tree-sitter-tokenizer` onto `main` at `2275b80` (3.0.1, merged PR #105) for draft PR #104. All provider fixes and their regression tests are retained; function navigation now queries the Tree-sitter syntax tree. The production tokenizer uses Tree-sitter, the narrowed grammar and interrupted-signature recovery are implemented, and the rebuilt WASM and its provenance manifest are included. Existing semantic resolution and compiler validation remain separate from syntax parsing.
 
-Local validation completed: 617 repository tests, 158 parser checks, TypeScript compilation, parser harness type checking, root and harness lint, production build, and byte-for-byte standard-library regeneration. The benchmark harness is included so the timing probe can be repeated.
+Local validation completed: 662 repository tests, 158 parser checks, TypeScript compilation, parser harness type checking, root and harness lint, production build, and byte-for-byte standard-library regeneration. The benchmark harness is included so the timing probe can be repeated.
 
 Before taking the PR out of draft:
 
