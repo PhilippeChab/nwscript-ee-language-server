@@ -452,7 +452,7 @@ describe("Auto-import completion", function () {
   it("preserves CRLF and appends after existing includes", () => {
     const { items, live } = complete('#include "other" // comment\r\n\r\nvoid main()\r\n{\r\n Imp|\r\n}\r\n');
     const edits = items.find((item) => item.label === "Imported")?.additionalTextEdits || [];
-    expect(TextDocument.applyEdits(live, edits)).to.include('// comment\r\n\r\n#include "helper"\r\nvoid main()');
+    expect(TextDocument.applyEdits(live, edits)).to.include('// comment\r\n#include "helper"\r\n\r\nvoid main()');
   });
 
   for (const include of ['#include "helper"', '#include "wrapper"', '# include "helper" // trailing comment', '#include "helper" /* trailing comment */']) {
@@ -638,6 +638,35 @@ describe("Auto-import completion", function () {
       expect(items.some((item) => item.additionalTextEdits)).to.equal(false);
     });
   }
+
+  for (const enabled of [true, false]) {
+    for (const expression of ['"Imp|"', 'r"Imp|"', 'R"line\nImp|"', 'r"quoted ""Imp|"""', 'r"backslash \\ Imp|"']) {
+      it(`suppresses all completions inside ${expression} with autoImport=${String(enabled)}`, () => {
+        expect(complete(`void main() { string value = ${expression}; }`, {}, enabled).items).to.deep.equal([]);
+      });
+    }
+  }
+
+  for (const eol of ["\n", "\r\n"]) {
+    it(`inserts before existing leading blank lines: ${JSON.stringify(eol)}`, () => {
+      const { items, live } = complete(`${eol}${eol}void main() { Imp| }`);
+      const item = items.find((candidate) => candidate.label === "Imported");
+      expect(item?.additionalTextEdits?.[0].range.start).to.deep.equal({ line: 0, character: 0 });
+      expect(TextDocument.applyEdits(live, item?.additionalTextEdits || [])).to.equal(`#include "helper"${eol}${eol}${eol}void main() { Imp }`);
+    });
+  }
+
+  it("inserts immediately below an existing include, before its blank separator", () => {
+    const { items, live } = complete('#include "other"\n\nvoid main() { Imp| }');
+    const edits = items.find((item) => item.label === "Imported")?.additionalTextEdits || [];
+    expect(edits[0].range.start).to.deep.equal({ line: 1, character: 0 });
+    expect(TextDocument.applyEdits(live, edits)).to.equal('#include "other"\n#include "helper"\n\nvoid main() { Imp }');
+  });
+
+  it("resumes code completion after a raw string ending in a backslash", () => {
+    const { items } = complete('void main() { string value = r"path\\"; Imp| }');
+    expect(items.some((item) => item.label === "Imported")).to.equal(true);
+  });
 
   it("supports struct type completions", () => {
     const { items } = complete("void main()\n{\n struct Imp|\n}");
