@@ -82,7 +82,7 @@ Notes:
 
 - Diagnostics are provided by compiling the file with the [nwn_script_comp](https://github.com/niv/neverwinter.nim/blob/master/nwn_script_comp.nim) compiled executable.
 - The compiler executable is provided for Windows, Darwin and Linux operating systems.
-- Diagnostics are currently published when opening or saving a file.s
+- Diagnostics are currently published when opening or saving a file.
 - You can set the `verbose` setting to `true` if you wish to see detailed logs of the compilation process.
 
 ## Building and running
