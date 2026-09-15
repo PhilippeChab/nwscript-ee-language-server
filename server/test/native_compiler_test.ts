@@ -101,6 +101,12 @@ describe("Native compiler diagnostics", function () {
     expect(existsSync(helper.path.replace(/\.nss$/, ".ndb"))).to.equal(false);
   });
 
+  it("permits a body-local variable to shadow a parameter with a different type", async () => {
+    const helper = script("shadow.nss", 'void Fn(int value) { string value = "local"; string copy = value; }');
+    await publish(helper.uri);
+    expect(requireDiagnostics(helper.uri)).to.deep.equal([]);
+  });
+
   it("checks semantic errors inside helpers and clears diagnostics after fixing them", async () => {
     const helper = script("helper.nss", 'void foo(int a) {}\nvoid bar() { foo("bad"); }');
     await publish(helper.uri);

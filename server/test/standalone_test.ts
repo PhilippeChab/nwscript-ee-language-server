@@ -403,6 +403,40 @@ describe("Installed standalone LSP server", function () {
     await client.shutdown();
   });
 
+  for (const body of ['string value = "local"; string copy = value;', '\n string value = "local";\n string copy = value;\n', '{ string value = "local"; string copy = value; } int copy = value;']) {
+    it(`prefers a body-local declaration over its parameter: ${JSON.stringify(body)}`, async () => {
+      const text = `void Fn(int value) { ${body} }`;
+      const uri = params().textDocument.uri;
+      writeFileSync(join(workspace, "sample.nss"), text);
+      const client = await start({ initializationOptions: { compiler: { enabled: false }, completion: { autoImport: false } } });
+      await client.ready();
+      await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+      const document = TextDocument.create(uri, "nwscript", 1, text);
+      const local = text.indexOf("string value") + "string ".length;
+      const parameter = text.indexOf("int value") + "int ".length;
+      const uses = [
+        [text.indexOf("copy = value") + "copy = ".length, local, "string"],
+        [parameter, parameter, "int"],
+      ] as const;
+      for (const [offset, declaration, type] of uses) {
+        const request = { textDocument: { uri }, position: document.positionAt(offset + 2) };
+        expect(content(await client.rpc.sendRequest(HoverRequest.type, request))?.value).to.equal(`${type} value`);
+        const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, request);
+        expect(definition.range.start).to.deep.equal(document.positionAt(declaration));
+      }
+      const request = { textDocument: { uri }, position: document.positionAt(uses[0][0] + 2) };
+      const completions: any = await client.rpc.sendRequest(CompletionRequest.type, request);
+      expect(completions.filter((item: any) => item.label === "value").map((item: any) => item.detail)).to.deep.equal(["(variable) value: string"]);
+      if (body.startsWith("{")) {
+        const outside = { textDocument: { uri }, position: document.positionAt(text.lastIndexOf("value") + 2) };
+        expect(content(await client.rpc.sendRequest(HoverRequest.type, outside))?.value).to.equal("int value");
+        const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, outside);
+        expect(definition.range.start).to.deep.equal(document.positionAt(parameter));
+      }
+      await client.shutdown();
+    });
+  }
+
   for (const name of ["VALUE", "value"]) {
     it(`resolves ${name} after a shadowing block ends and hides other functions' locals`, async () => {
       const text = 'int VALUE = 1;\nvoid Previous() { string hidden; }\nvoid main() {\n { string VALUE = "local"; }\n int result = VALUE;\n}'.split("VALUE").join(name);
