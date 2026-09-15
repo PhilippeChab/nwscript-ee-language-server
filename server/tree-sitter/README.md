@@ -59,11 +59,9 @@ The compiler-backed cases use the checked-in `compiler-language.nss`, so a clean
 
 The additional 161 parser checks also use the production implementation. They cover the existing index contract, incomplete declarations and strings, prototype parameters, struct fields, nested scopes and calls, Unicode/CRLF positions, incremental edits against fresh parses, document/version isolation, all 39 upstream corpus fixtures, grammar/runtime artifact consistency, and four Zed query files. Type checking and lint run for both packages. The standard-library regeneration check also matches the shipped JSON byte for byte. The headless Neovim client test passes against the packaged replacement. CI runs these checks on Windows, Linux, Intel macOS, and Apple Silicon; automated local validation runs on Linux. A Windows Zed 1.19.2 / WSL smoke check also passed in FRU; see the conformance report for the exact cases.
 
-## Conformance and recovery audit
+## Language conformance
 
-The [audit report](CONFORMANCE.md) documents the native-compiler review, 111 compiler-backed cases, real-source corpus checks, declaration recovery, and timing measurements. The inherited C-derived rules have been removed, and the earlier lost-declaration case is now covered by passing parser and installed-server regression tests.
-
-The compiler still owns semantic validity. A syntax-clean tree does not establish correct types, names, or control flow. Exceptional recovery reparses damaged signatures; ordinary edits remain incremental. Index extraction and some context queries still scan syntax nodes, so very large files incur additional work. The audit includes those measured costs.
+The [conformance guide](CONFORMANCE.md) explains the compiler-backed fixtures, the distinction between syntax and semantic validity, and recovery checks. Grammar changes should include cases verified against the bundled compiler.
 
 The packaged server includes both the WebAssembly parsing runtime (`web-tree-sitter.wasm`) and the generated NWScript grammar (`tree-sitter-nwscript.wasm`). The `web-tree-sitter` package connects them to Node.js; parsing runs locally without a browser or network service. Editor syntax highlighting remains separate.
 
