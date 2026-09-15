@@ -37,7 +37,7 @@ export default class HoverContentBuilder extends Builder {
   }
 
   private static buildConstantItem(token: ConstantComplexToken) {
-    return this.buildMarkdown(`${this.handleLanguageType(token.valueType)} ${token.identifier} = ${token.value}`);
+    return this.buildMarkdown(`${token.isConst ? "const " : ""}${this.handleLanguageType(token.valueType)} ${token.identifier}${token.value !== "" ? ` = ${token.value}` : ""}`);
   }
 
   private static buildVariableItem(token: VariableComplexToken) {

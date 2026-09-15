@@ -15,6 +15,7 @@ describe("Document and signature resolution", () => {
         contents: `export { Tokenizer } from './Tokenizer';
         export { default as Collection } from './Documents/DocumentsCollection';
         export { default as Signature } from './Providers/SignatureHelpProvider';
+        export { default as Definition } from './Providers/GotoDefinitionProvider';
         export { HoverContentBuilder } from './Providers/Builders';
         export { defaultServerConfiguration as config } from './ServerManager/Config';`,
         resolveDir: join(__dirname, "../src"),
@@ -27,6 +28,53 @@ describe("Document and signature resolution", () => {
     api = require(bundle);
     tokenizer = await new api.Tokenizer().loadGrammar();
   });
+
+  it("omits absent global initializers from hover while preserving zero and empty strings", () => {
+    const scope = tokenizer.tokenizeContent('int Global; int Zero = 0; string Empty = ""; const int Constant = 1;', "document");
+    for (const markdown of [true, false]) {
+      const expected = ["int Global", "int Zero = 0", 'string Empty = ""', "const int Constant = 1"];
+      expect(scope.globalDeclarations.map((token: any) => api.HoverContentBuilder.buildItem(token, api.config, markdown).value)).to.deep.equal(
+        expected.map((value) => (markdown ? `\`\`\`nwscript\r\n${value}\r\n\`\`\`` : value)),
+      );
+    }
+  });
+
+  for (const source of [
+    "int Fn(int value);\nvoid Before() { Fn(1); }\nint Fn(int value) { return value; }\nvoid After() { Fn(2); }",
+    "int Fn(int value) { return value; }\nvoid Before() { Fn(1); }\nint Fn(int value);\nvoid After() { Fn(2); }",
+    "int Fn(int value); int Fn(int value); void Before() { Fn(1); } int Fn(int value) { return Fn(value); }",
+    "int\nFn(int value);\nvoid Before() { Fn(1); }\nint\nFn(int value) { return value; }",
+    "int Fn(int value) { return Fn(value); }",
+    "int Fn(int value); void Before() { Fn(1); }",
+  ]) {
+    for (const newline of ["\n", "\r\n"]) {
+      it(`navigates function calls and toggles prototype/implementation: ${JSON.stringify(source)}, newline=${JSON.stringify(newline)}`, () => {
+        const document = TextDocument.create(workspaceUri("navigation.nss"), "nwscript", 1, source.replace(/\n/g, newline));
+        const implementation = document.getText().indexOf("Fn(int value) {");
+        const prototype = document.getText().indexOf("Fn(int value);");
+        let handler: any;
+        api.Definition.register({
+          tokenizer,
+          documentsCollection: new api.Collection(),
+          liveDocumentsManager: { get: (uri: string) => (uri === document.uri ? document : undefined) },
+          standardLibrary: { get: () => ({ globalDeclarations: [], structDeclarations: [] }) },
+          connection: { onDefinition: (fn: any) => (handler = fn) },
+          logger: {
+            error: (message: string) => {
+              throw new Error(message);
+            },
+          },
+        });
+        for (const occurrence of document.getText().matchAll(/Fn/g)) {
+          const offset = occurrence.index ?? 0;
+          const onImplementation = implementation === offset;
+          const target = onImplementation && prototype >= 0 ? prototype : implementation >= 0 ? implementation : prototype;
+          const expected = document.positionAt(target);
+          expect(handler({ textDocument: { uri: document.uri }, position: document.positionAt(offset + 1) })).to.deep.equal({ uri: document.uri, range: { start: expected, end: expected } });
+        }
+      });
+    }
+  }
 
   it("indexes every same-line declaration with its own signature and value", () => {
     const scope = tokenizer.tokenizeContent("void First(int a) {} int Second(string b); void main() {} const int ONE = 1; const int TWO = 2;", "document");

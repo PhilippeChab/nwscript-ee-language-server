@@ -255,6 +255,22 @@ export default class Tokenizer {
     return calls.reverse().find((call) => call.identifier !== undefined);
   }
 
+  public getFunctionNavigationTarget(document: TextDocument, identifier: string, position?: Position): Position | undefined {
+    const [lines, raw] = this.tokenizeContentToRaw(document.getText());
+    const declarations: { position: Position; implementation: boolean }[] = [];
+    for (const [line, tokens] of raw.entries()) {
+      for (const [index, token] of (tokens || []).entries()) {
+        if (this.getRawTokenContent(lines[line], token) !== identifier || !this.isFunctionDeclarationIdentifier(line, index, token, lines, raw)) continue;
+        declarations.push({ position: { line, character: token.startIndex }, implementation: !this.isFunctionDeclaration(line, index, raw) });
+      }
+    }
+    const current = declarations.find(({ position: start }) => position?.line === start.line && position.character >= start.character && position.character <= start.character + identifier.length);
+    const implementation = declarations.find((declaration) => declaration.implementation);
+    const prototype = declarations.find((declaration) => !declaration.implementation);
+    // Calls and prototypes prefer a body; clicking the body's name toggles to a prototype.
+    return (current?.implementation ? prototype || implementation : implementation || prototype)?.position;
+  }
+
   public async loadGrammar() {
     this.grammar = await this.registry.loadGrammar("source.nss");
 
