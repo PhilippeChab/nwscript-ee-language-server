@@ -45,7 +45,8 @@ describe("Installed standalone LSP server", function () {
   const formatter = process.env.CLANG_FORMAT || "clang-format";
 
   before(function () {
-    this.timeout(60000);
+    // Packaging and npm installation can exceed a minute on Windows CI.
+    this.timeout(180000);
     const archive = packageStandalone();
     temporary = mkdtempSync(join(tmpdir(), "nwscript package & spaces "));
     const install = join(temporary, "install");
