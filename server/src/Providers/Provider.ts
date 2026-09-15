@@ -33,13 +33,15 @@ export default class Provider {
 
   protected resolveValue(context: NonNullable<ReturnType<Provider["getDocumentContext"]>>, name: string | undefined): { token: ComplexToken; owner?: string } | undefined {
     const { document, localScope, liveDocument } = context;
-    const local = localScope.functionVariablesComplexTokens.find((token) => token.identifier === name) || localScope.functionsComplexTokens.find((token) => token.identifier === name);
+    const local = localScope.functionVariablesComplexTokens.find((token) => token.identifier === name);
     if (local) return { token: local, owner: liveDocument.uri };
     const library = this.server.standardLibrary.get(liveDocument.uri);
     for (const { owner, tokens } of [...document.getGlobalComplexTokensWithRef(), { owner: library.owner, tokens: library.globalDeclarations }]) {
       const token = tokens.find((candidate) => candidate.identifier === name);
       if (token) return { token, owner };
     }
+    const fn = localScope.functionsComplexTokens.find((token) => token.identifier === name);
+    if (fn) return { token: fn, owner: liveDocument.uri };
   }
 
   protected resolveMemberStruct(context: NonNullable<ReturnType<Provider["getDocumentContext"]>>, path: string[]) {

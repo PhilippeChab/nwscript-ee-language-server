@@ -4,6 +4,7 @@ import { TextDocument } from "vscode-languageserver-textdocument";
 import type { ServerManager } from "../ServerManager";
 import { CompletionItemBuilder } from "./Builders";
 import { AutoImportContext, LocalScopeTokenizationResult } from "../Tokenizer/Tokenizer";
+import { isStandardLibrary } from "../Documents/StandardLibrary";
 import { Document } from "../Documents";
 import { LanguageTypes } from "../Tokenizer/constants";
 import Provider from "./Provider";
@@ -45,7 +46,7 @@ export default class CompletionItemsProvider extends Provider {
         return autoImportContext ? CompletionList.create(completions, true) : completions;
       }
 
-      const items = this.getLocalScopeCompletionItems(localScope).concat(this.getGlobalScopeCompletionItems(document, localScope)).concat(this.getStandardLibCompletionItems(uri));
+      const items = this.getLocalScopeCompletionItems(localScope, document).concat(this.getGlobalScopeCompletionItems(document, localScope)).concat(this.getStandardLibCompletionItems(uri));
       const seen = new Set<string>();
       const visible = items.filter((item) => {
         if (seen.has(item.label)) return false;
@@ -64,18 +65,20 @@ export default class CompletionItemsProvider extends Provider {
         [],
         localScope.functionsComplexTokens.map((token) => token.identifier),
       )
-      .map((token) => CompletionItemBuilder.buildItem(token));
+      .map((token) => CompletionItemBuilder.buildItem(token, isStandardLibrary(document.uri)));
   }
 
-  private getLocalScopeCompletionItems(localScope: LocalScopeTokenizationResult) {
+  private getLocalScopeCompletionItems(localScope: LocalScopeTokenizationResult, document: Document) {
     const functionVariablesCompletionItems = localScope.functionVariablesComplexTokens.map((token) => CompletionItemBuilder.buildItem(token));
-    const functionsCompletionItems = localScope.functionsComplexTokens.map((token) => CompletionItemBuilder.buildItem(token));
+    const functionsCompletionItems = localScope.functionsComplexTokens.map((token) =>
+      CompletionItemBuilder.buildItem(document.globalDeclarations.find((declaration) => declaration.identifier === token.identifier) || token),
+    );
 
     return functionVariablesCompletionItems.concat(functionsCompletionItems);
   }
 
   private getStandardLibCompletionItems(uri: string) {
-    return this.getStandardLibComplexTokens(uri).map((token) => CompletionItemBuilder.buildItem(token));
+    return this.getStandardLibComplexTokens(uri).map((token) => CompletionItemBuilder.buildItem(token, true));
   }
 
   private getAutoImportCompletionItems(document: Document, liveDocument: TextDocument, context: AutoImportContext | undefined, visible: CompletionItem[]) {

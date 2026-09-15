@@ -4,6 +4,15 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 
 ## [Unreleased]
 
+## [3.0.1]
+
+- Preserve `const` in hover text and omit the assignment marker for declarations without an initializer.
+- Correct variable and parameter icons in completion and the document outline, while preserving implicit API constants.
+- Navigate from function calls to implementations, including closed helper scripts, and switch between prototype and implementation declarations.
+- Keep function documentation, defaults, and parameter names consistent across hover, completion, and signature help.
+- Include default values and matching struct type labels in signature help.
+- Show prototype-only functions in the outline and prevent repeated completion resolution from duplicating parameter lists.
+
 ## [3.0.0]
 
 - Add a standalone, npm-installable language server for use with LSP-compatible editors. The standalone server requires Node.js 24 or newer.

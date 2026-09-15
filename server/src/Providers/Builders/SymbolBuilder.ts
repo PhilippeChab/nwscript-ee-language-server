@@ -1,12 +1,12 @@
-import { DocumentSymbol, SymbolKind } from "vscode-languageserver";
+import { CompletionItemKind, DocumentSymbol, SymbolKind } from "vscode-languageserver";
 
 import type { ComplexToken, ConstantComplexToken, FunctionComplexToken, FunctionParamComplexToken, StructComplexToken, StructPropertyComplexToken, VariableComplexToken } from "../../Tokenizer/types";
 import Builder from "./Builder";
 
 export default class SymbolBuilder extends Builder {
-  public static buildItem(token: ComplexToken): DocumentSymbol {
+  public static buildItem(token: ComplexToken, implicitConstants = false): DocumentSymbol {
     if (this.isConstantToken(token)) {
-      return this.buildConstantItem(token);
+      return token.isConst || implicitConstants ? this.buildConstantItem(token) : this.buildVariableItem({ ...token, tokenType: CompletionItemKind.Variable });
     } else if (this.isVariableToken(token)) {
       return this.buildVariableItem(token);
     } else if (this.isFunctionParameterToken(token)) {
@@ -31,7 +31,7 @@ export default class SymbolBuilder extends Builder {
   }
 
   private static buildFunctionParamItem(token: FunctionParamComplexToken) {
-    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.TypeParameter, { start: token.position, end: token.position }, { start: token.position, end: token.position });
+    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Variable, { start: token.position, end: token.position }, { start: token.position, end: token.position });
   }
 
   private static buildFunctionItem(token: FunctionComplexToken) {

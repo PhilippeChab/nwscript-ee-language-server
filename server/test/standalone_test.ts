@@ -120,6 +120,26 @@ describe("Installed standalone LSP server", function () {
     await client.shutdown();
   });
 
+  it("navigates consistently into closed, open, unsaved and reclosed helpers", async () => {
+    const client = await start();
+    await client.ready();
+    await open(client);
+    const helperUri = pathToFileURL(join(workspace, "helper.nss")).href;
+    const target = async () => {
+      const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, params());
+      expect(definition.uri).to.equal(helperUri);
+      return definition.range.start;
+    };
+    expect(await target()).to.deep.equal({ line: 2, character: 4 });
+    await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri: helperUri, languageId: "nwscript", version: 1, text: helper } });
+    expect(await target()).to.deep.equal({ line: 2, character: 4 });
+    await client.rpc.sendNotification(DidChangeTextDocumentNotification.type, { textDocument: { uri: helperUri, version: 2 }, contentChanges: [{ text: "\n" + helper }] });
+    expect(await target()).to.deep.equal({ line: 3, character: 4 });
+    await client.rpc.sendNotification("textDocument/didClose", { textDocument: { uri: helperUri } });
+    expect(await target()).to.deep.equal({ line: 2, character: 4 });
+    await client.shutdown();
+  });
+
   it("supports the VS Code IPC transport with background indexing and clean shutdown", async () => {
     const client = await start({ ipc: true, capabilities: { workspace: { configuration: true } }, configuration: () => ({ compiler: { enabled: false } }) });
     await client.ready();
@@ -450,7 +470,7 @@ describe("Installed standalone LSP server", function () {
       const request = { textDocument: { uri }, position: { line: 4, character: 19 } };
       const items: any = await client.rpc.sendRequest(CompletionRequest.type, request);
       expect(items.some((item: any) => item.label === "hidden")).to.equal(false);
-      expect(items.find((item: any) => item.label === name)?.detail).to.equal("(constant) 1: int");
+      expect(items.find((item: any) => item.label === name)?.detail).to.equal(`(variable) ${name}: int`);
       expect(content(await client.rpc.sendRequest(HoverRequest.type, request))?.value).to.equal(`int ${name} = 1`);
       const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, request);
       expect(definition.range.start).to.deep.equal({ line: 0, character: 4 });

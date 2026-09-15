@@ -4,6 +4,10 @@ import { LanguageTypes } from "../../Tokenizer/constants";
 import type { ComplexToken, ConstantComplexToken, VariableComplexToken, FunctionParamComplexToken, FunctionComplexToken, StructPropertyComplexToken, StructComplexToken } from "../../Tokenizer/types";
 
 export default abstract class Builder {
+  protected static formatParameter(param: FunctionParamComplexToken) {
+    return `${this.handleLanguageType(param.valueType)} ${param.identifier}${param.defaultValue !== undefined ? ` = ${param.defaultValue}` : ""}`;
+  }
+
   protected static handleLanguageType(type: string) {
     if (!Object.prototype.hasOwnProperty.call(LanguageTypes, type)) {
       return `struct ${type}`;

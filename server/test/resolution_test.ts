@@ -15,7 +15,11 @@ describe("Document and signature resolution", () => {
         contents: `export { Tokenizer } from './Tokenizer';
         export { default as Collection } from './Documents/DocumentsCollection';
         export { default as Signature } from './Providers/SignatureHelpProvider';
-        export { HoverContentBuilder } from './Providers/Builders';
+        export { default as Definition } from './Providers/GotoDefinitionProvider';
+        export { default as Hover } from './Providers/HoverContentProvider';
+        export { default as Completion } from './Providers/CompletionItemsProvider';
+        export { default as Symbols } from './Providers/SymbolsProvider';
+        export { HoverContentBuilder, SignatureHelpBuilder, CompletionItemBuilder } from './Providers/Builders';
         export { defaultServerConfiguration as config } from './ServerManager/Config';`,
         resolveDir: join(__dirname, "../src"),
         loader: "ts",
@@ -27,6 +31,170 @@ describe("Document and signature resolution", () => {
     api = require(bundle);
     tokenizer = await new api.Tokenizer().loadGrammar();
   });
+
+  it("omits absent global initializers from hover while preserving zero and empty strings", () => {
+    const scope = tokenizer.tokenizeContent('int Global; int Zero = 0; string Empty = ""; const int Constant = 1;', "document");
+    for (const markdown of [true, false]) {
+      const expected = ["int Global", "int Zero = 0", 'string Empty = ""', "const int Constant = 1"];
+      expect(scope.globalDeclarations.map((token: any) => api.HoverContentBuilder.buildItem(token, api.config, markdown).value)).to.deep.equal(
+        expected.map((value) => (markdown ? `\`\`\`nwscript\r\n${value}\r\n\`\`\`` : value)),
+      );
+    }
+  });
+
+  for (const source of [
+    "int Fn(int value);\nvoid Before() { Fn(1); }\nint Fn(int value) { return value; }\nvoid After() { Fn(2); }",
+    "int Fn(int value) { return value; }\nvoid Before() { Fn(1); }\nint Fn(int value);\nvoid After() { Fn(2); }",
+    "int Fn(int value); int Fn(int value); void Before() { Fn(1); } int Fn(int value) { return Fn(value); }",
+    "int\nFn(int value);\nvoid Before() { Fn(1); }\nint\nFn(int value) { return value; }",
+    "int Fn(int value) { return Fn(value); }",
+    "int Fn(int value); void Before() { Fn(1); }",
+  ]) {
+    for (const newline of ["\n", "\r\n"]) {
+      it(`navigates function calls and toggles prototype/implementation: ${JSON.stringify(source)}, newline=${JSON.stringify(newline)}`, () => {
+        const document = TextDocument.create(workspaceUri("navigation.nss"), "nwscript", 1, source.replace(/\n/g, newline));
+        const implementation = document.getText().indexOf("Fn(int value) {");
+        const prototype = document.getText().indexOf("Fn(int value);");
+        let handler: any;
+        api.Definition.register({
+          tokenizer,
+          documentsCollection: new api.Collection(),
+          liveDocumentsManager: { get: (uri: string) => (uri === document.uri ? document : undefined) },
+          standardLibrary: { get: () => ({ globalDeclarations: [], structDeclarations: [] }) },
+          connection: { onDefinition: (fn: any) => (handler = fn) },
+          logger: {
+            error: (message: string) => {
+              throw new Error(message);
+            },
+          },
+        });
+        for (const occurrence of document.getText().matchAll(/Fn/g)) {
+          const offset = occurrence.index ?? 0;
+          const onImplementation = implementation === offset;
+          const target = onImplementation && prototype >= 0 ? prototype : implementation >= 0 ? implementation : prototype;
+          const expected = document.positionAt(target);
+          expect(handler({ textDocument: { uri: document.uri }, position: document.positionAt(offset + 1) })).to.deep.equal({ uri: document.uri, range: { start: expected, end: expected } });
+        }
+      });
+    }
+  }
+
+  function editor(source: string, filename = "details.nss", library: any = { globalDeclarations: [], structDeclarations: [] }) {
+    const document = TextDocument.create(workspaceUri(filename), "nwscript", 1, source);
+    const handlers: any = {};
+    const server = {
+      tokenizer,
+      documentsCollection: new api.Collection(),
+      liveDocumentsManager: { get: () => document },
+      standardLibrary: { get: () => library },
+      config: { ...api.config, completion: { ...api.config.completion, autoImport: false }, hovering: { addCommentsToFunctions: true } },
+      capabilitiesHandler: { getSupportsMarkdownHover: () => true, getSupportsHierarchicalSymbols: () => true },
+      connection: {
+        onHover: (fn: any) => (handlers.hover = fn),
+        onSignatureHelp: (fn: any) => (handlers.signature = fn),
+        onCompletion: (fn: any) => (handlers.completion = fn),
+        onCompletionResolve: () => {},
+        onDocumentSymbol: (fn: any) => (handlers.symbols = fn),
+      },
+      logger: {
+        error: (message: string) => {
+          throw new Error(message);
+        },
+      },
+    };
+    for (const provider of [api.Hover, api.Signature, api.Completion, api.Symbols]) provider.register(server);
+    return { document, handlers, params: (offset: number) => ({ textDocument: { uri: document.uri }, position: document.positionAt(offset) }) };
+  }
+
+  it("keeps prototype documentation, defaults and parameter names consistent across call sites", () => {
+    const source = "// Public description\nint Fn(int publicName = 7);\nvoid Before() { Fn(1); }\nint Fn(int internalName) { return internalName; }\nvoid After() { Fn(2); }";
+    const { handlers, params } = editor(source);
+    const results = ["Fn(1)", "Fn(2)"].map((call) => {
+      const offset = source.indexOf(call);
+      return {
+        hover: handlers.hover(params(offset + 1)),
+        signature: handlers.signature(params(offset + 3)),
+        completion: handlers.completion(params(offset + 1)).find((item: any) => item.label === "Fn"),
+      };
+    });
+    expect(results[0]).to.deep.equal(results[1]);
+    expect(results[0].hover.contents.value).to.include("Public description").and.include("int Fn(int publicName = 7)");
+    expect(results[0].signature.signatures[0].label).to.equal("int Fn(int publicName = 7)");
+    expect(results[0].completion.detail).to.include("publicName");
+    const parameter = source.lastIndexOf("internalName");
+    expect(handlers.hover(params(parameter + 1)).contents.value).to.include("int internalName");
+  });
+
+  for (const filename of ["details.nss", "nwscript.nss"]) {
+    it(`distinguishes mutable globals from constants, including implicit API constants in ${filename}`, () => {
+      const source = "int Global; const int Constant = 1; void main() {}";
+      const library = tokenizer.tokenizeContent("int TRUE = 1;", "document");
+      const { handlers, params } = editor(source, filename, library);
+      const completions = handlers.completion(params(source.length));
+      const global = completions.find((item: any) => item.label === "Global");
+      expect(global.kind).to.equal(filename === "nwscript.nss" ? 21 : 6);
+      if (filename !== "nwscript.nss") expect(global.detail).to.equal("(variable) Global: int");
+      expect(completions.find((item: any) => item.label === "Constant").kind).to.equal(21);
+      expect(completions.find((item: any) => item.label === "TRUE").kind).to.equal(21);
+      const symbols = handlers.symbols(params(0));
+      expect(symbols.find((item: any) => item.name === "Global").kind).to.equal(filename === "nwscript.nss" ? 14 : 13);
+      expect(symbols.find((item: any) => item.name === "Constant").kind).to.equal(14);
+    });
+  }
+
+  it("uses matching parameter labels with struct types and default values in signature help", () => {
+    const source = 'struct Data { int value; }; void Take(struct Data input, int count = 0, string text = ""); void main() { struct Data data; Take(data, 0, ""); }';
+    const { handlers, params } = editor(source);
+    const signature = handlers.signature(params(source.indexOf("Take(data") + "Take(".length)).signatures[0];
+    expect(signature.label).to.equal('void Take(struct Data input, int count = 0, string text = "")');
+    expect(signature.parameters.map((parameter: any) => parameter.label)).to.deep.equal(["struct Data input", "int count = 0", 'string text = ""']);
+  });
+
+  it("refreshes declaration details across providers after unsaved edits", () => {
+    const original = "int VALUE; void main() { VALUE; }";
+    const { document, handlers, params } = editor(original);
+    const sources = [original, "const int VALUE = 0; void main() { VALUE; }", original];
+    for (const [index, source] of sources.entries()) {
+      TextDocument.update(document, [{ text: source }], index + 2);
+      const target = params(source.lastIndexOf("VALUE") + 1);
+      const isConstant = index === 1;
+      expect(handlers.completion(target).find((item: any) => item.label === "VALUE").kind).to.equal(isConstant ? 21 : 6);
+      expect(handlers.symbols(target).find((item: any) => item.name === "VALUE").kind).to.equal(isConstant ? 14 : 13);
+      expect(handlers.hover(target).contents.value).to.equal(`\`\`\`nwscript\r\n${isConstant ? "const int VALUE = 0" : "int VALUE"}\r\n\`\`\``);
+    }
+  });
+
+  it("includes prototype-only functions in the outline without duplicating implemented functions", () => {
+    const source = "int Prototype(int parameter);\nint Implemented(int oldName);\nint Implemented(int currentName) { return currentName; }";
+    const { handlers, params } = editor(source);
+    const symbols = handlers.symbols(params(0));
+    expect(symbols.map((symbol: any) => symbol.name).sort()).to.deep.equal(["Implemented", "Prototype"]);
+    expect(symbols.find((symbol: any) => symbol.name === "Prototype").selectionRange.start).to.deep.equal({ line: 0, character: 4 });
+    expect(symbols.find((symbol: any) => symbol.name === "Implemented").selectionRange.start).to.deep.equal({ line: 2, character: 4 });
+    expect(symbols.find((symbol: any) => symbol.name === "Implemented").children.map((child: any) => child.name)).to.deep.equal(["currentName"]);
+  });
+
+  it("presents value parameters as variables in completion and outline", () => {
+    const source = "void Fn(int parameter) { parameter; }";
+    const { handlers, params } = editor(source);
+    const completions = handlers.completion(params(source.lastIndexOf("parameter") + 3));
+    expect(completions.find((item: any) => item.label === "parameter").kind).to.equal(6);
+    const symbol = handlers.symbols(params(0))[0].children.find((child: any) => child.name === "parameter");
+    expect(symbol.kind).to.equal(13);
+    expect(handlers.hover(params(source.lastIndexOf("parameter") + 3)).contents.value).to.include("int parameter");
+  });
+
+  for (const declaration of ["int Fn();", "void Fn(int value);", "void Fn(struct Data data, int count = 0);"]) {
+    it(`resolves function completion repeatedly without appending duplicate parameters: ${declaration}`, () => {
+      const fn = tokenizer.tokenizeContent(declaration, "document").globalDeclarations[0];
+      const config = { ...api.config, completion: { ...api.config.completion, addParamsToFunctions: true } };
+      const item = api.CompletionItemBuilder.buildItem(fn);
+      const once = api.CompletionItemBuilder.buildResolvedItem(item, config);
+      expect(once.label).to.equal(declaration.startsWith("int") ? "Fn()" : declaration.includes("struct") ? "Fn(struct Data data, int count)" : "Fn(int value)");
+      expect(api.CompletionItemBuilder.buildResolvedItem(once, config)).to.deep.equal(once);
+      expect(item.label).to.equal("Fn");
+    });
+  }
 
   it("indexes every same-line declaration with its own signature and value", () => {
     const scope = tokenizer.tokenizeContent("void First(int a) {} int Second(string b); void main() {} const int ONE = 1; const int TWO = 2;", "document");

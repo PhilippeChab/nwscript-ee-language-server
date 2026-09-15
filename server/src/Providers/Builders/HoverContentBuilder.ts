@@ -37,7 +37,7 @@ export default class HoverContentBuilder extends Builder {
   }
 
   private static buildConstantItem(token: ConstantComplexToken) {
-    return this.buildMarkdown(`${this.handleLanguageType(token.valueType)} ${token.identifier} = ${token.value}`);
+    return this.buildMarkdown(`${token.isConst ? "const " : ""}${this.handleLanguageType(token.valueType)} ${token.identifier}${token.value !== "" ? ` = ${token.value}` : ""}`);
   }
 
   private static buildVariableItem(token: VariableComplexToken) {
@@ -50,11 +50,7 @@ export default class HoverContentBuilder extends Builder {
 
   private static buildFunctionItem(token: FunctionComplexToken, serverConfig: ServerConfiguration) {
     return this.buildMarkdown(
-      [
-        `${this.handleLanguageType(token.returnType)} ${token.identifier}(${token.params.reduce((acc, param, index) => {
-          return `${acc}${this.handleLanguageType(param.valueType)} ${param.identifier}${param.defaultValue ? ` = ${param.defaultValue}` : ""}${index === token.params.length - 1 ? "" : ", "}`;
-        }, "")})`,
-      ],
+      [`${this.handleLanguageType(token.returnType)} ${token.identifier}(${token.params.map((param) => this.formatParameter(param)).join(", ")})`],
       serverConfig.hovering.addCommentsToFunctions ? ["```nwscript", ...token.comments, "```"] : [],
       [],
     );

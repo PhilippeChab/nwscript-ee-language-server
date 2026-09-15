@@ -93,7 +93,7 @@ describe("Workspace standard library", function () {
       expect(items.some((item: any) => item.label === "GetObjectByTag")).to.equal(false);
       expect(items.find((item: any) => item.label === "CUSTOM_VALUE").detail).to.include("42");
       expect(handlers.hover(params).contents.value).to.include("int CustomFn(string value, int count = 7)").and.include("Custom API");
-      expect(handlers.signature({ ...params, position: { line: include ? 3 : 2, character: 18 } }).signatures[0].label).to.equal("int CustomFn(string value, int count)");
+      expect(handlers.signature({ ...params, position: { line: include ? 3 : 2, character: 18 } }).signatures[0].label).to.equal("int CustomFn(string value, int count = 7)");
       expect(handlers.definition(params)).to.deep.equal({ uri: uri(spec), range: { start: { line: 1, character: 4 }, end: { line: 1, character: 4 } } });
       expect(errors).to.deep.equal([]);
     });
