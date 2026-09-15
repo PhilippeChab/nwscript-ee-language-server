@@ -9,6 +9,26 @@ export default class CapabilitiesHandler {
     this.capabilities = this.initializeServerCapabilities();
   }
 
+  public getSupportsWorkspaceFolders(): boolean {
+    return (this.clientCapabilities.workspace && !!this.clientCapabilities.workspace.workspaceFolders) || false;
+  }
+
+  public getSupportsMarkdownHover(): boolean {
+    return this.clientCapabilities.textDocument?.hover?.contentFormat?.includes(MarkupKind.Markdown) === true;
+  }
+
+  public getSupportsHierarchicalSymbols(): boolean {
+    return this.clientCapabilities.textDocument?.documentSymbol?.hierarchicalDocumentSymbolSupport === true;
+  }
+
+  public getSupportsConfigurationRegistration(): boolean {
+    return this.clientCapabilities.workspace?.didChangeConfiguration?.dynamicRegistration === true;
+  }
+
+  public getSupportsWorkspaceConfiguration(): boolean {
+    return (this.clientCapabilities.workspace && !!this.clientCapabilities.workspace.configuration) || false;
+  }
+
   private initializeServerCapabilities(): ServerCapabilities {
     const capabilities: ServerCapabilities = {
       textDocumentSync: {
@@ -41,25 +61,5 @@ export default class CapabilitiesHandler {
     }
 
     return capabilities;
-  }
-
-  public getSupportsWorkspaceFolders(): boolean {
-    return (this.clientCapabilities.workspace && !!this.clientCapabilities.workspace.workspaceFolders) || false;
-  }
-
-  public getSupportsMarkdownHover(): boolean {
-    return this.clientCapabilities.textDocument?.hover?.contentFormat?.includes(MarkupKind.Markdown) === true;
-  }
-
-  public getSupportsHierarchicalSymbols(): boolean {
-    return this.clientCapabilities.textDocument?.documentSymbol?.hierarchicalDocumentSymbolSupport === true;
-  }
-
-  public getSupportsConfigurationRegistration(): boolean {
-    return this.clientCapabilities.workspace?.didChangeConfiguration?.dynamicRegistration === true;
-  }
-
-  public getSupportsWorkspaceConfiguration(): boolean {
-    return (this.clientCapabilities.workspace && !!this.clientCapabilities.workspace.configuration) || false;
   }
 }

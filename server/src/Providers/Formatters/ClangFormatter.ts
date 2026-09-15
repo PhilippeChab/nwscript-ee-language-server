@@ -10,6 +10,94 @@ export default class ClangFormatter extends Formatter {
   edits: TextEdit[] = [];
   currentEdit: CurrentEdit | null = null;
 
+  public async formatDocument(document: TextDocument, range: Range | null) {
+    return await new Promise<TextEdit[] | null>((resolve, reject) => {
+      if (!this.enabled || this.isIgnoredFile(document.uri)) {
+        return resolve(null);
+      }
+
+      if (this.verbose) {
+        this.logger.debug(`Formatting ${document.uri}:`);
+      }
+
+      const text = document.getText();
+      const utf8Source = Buffer.from(text, "utf8");
+      const args = ["-output-replacements-xml", `-style=${JSON.stringify(this.style)}`];
+
+      if (range) {
+        const offset = Buffer.byteLength(text.slice(0, document.offsetAt(range.start)), "utf8");
+        const length = Buffer.byteLength(document.getText(range), "utf8");
+
+        args.push(`-offset=${offset}`, `-length=${length}`);
+      }
+
+      let stdout = "";
+      let stderr = "";
+
+      if (this.verbose) {
+        this.logger.debug(`Resolving clang-format's executable with: ${this.executable}.`);
+      }
+
+      const child = spawn(this.executable, args, {
+        cwd: this.workspaceFilesSystem.getWorkspaceRootPath(),
+      });
+
+      child.stdout.setEncoding("utf8");
+      child.stderr.setEncoding("utf8");
+
+      child.stdout.on("data", (chunk: string) => (stdout += chunk));
+      child.stderr.on("data", (chunk: string) => (stderr += chunk));
+
+      let spawnFailed = false;
+      child.on("error", (e: Error) => {
+        spawnFailed = true;
+        const error = new Error(`Cannot run clang-format at "${this.executable}". Install clang-format or set formatter.executable to its absolute path: ${e.message}`);
+        this.logger.error(error.message);
+        reject(error);
+      });
+
+      // A formatter can exit before it reads all input. Stream errors are not
+      // process errors and must not escape the formatting request.
+      child.stdin.on("error", (error: Error) => {
+        this.logger.error(`Cannot write to clang-format: ${error.message}`);
+        reject(error);
+      });
+      child.stdin.end(utf8Source);
+
+      child.on("close", (code) => {
+        if (spawnFailed) return;
+        if (code !== 0 || stderr.length !== 0) {
+          this.logger.error(stderr);
+          reject(new Error(stderr));
+          return;
+        }
+
+        try {
+          const xmlParser = parser(true, {
+            trim: false,
+            normalize: false,
+          });
+
+          xmlParser.onerror = (err) => reject(err);
+          xmlParser.ontext = this.xmlParseOnText();
+          xmlParser.onopentag = this.xmlParserOnOpenTag(reject, utf8Source.length);
+          xmlParser.onclosetag = this.xmlParserOnCloseTag(document, utf8Source);
+          xmlParser.write(stdout);
+          xmlParser.end();
+        } catch (error) {
+          reject(error);
+          return;
+        }
+
+        if (this.verbose) {
+          this.logger.debug("Done.\n");
+        }
+
+        resolve(this.edits);
+      });
+    });
+  }
+
   private xmlParseOnText() {
     return (text: string) => {
       if (!this.currentEdit) {
@@ -20,7 +108,7 @@ export default class ClangFormatter extends Formatter {
     };
   }
 
-  private xmlParserOnOpenTag(reject: (reason: any) => void) {
+  private xmlParserOnOpenTag(reject: (reason: any) => void, sourceLength: number) {
     return (tag: Tag) => {
       if (this.currentEdit) {
         reject(new Error("Malformed output."));
@@ -30,13 +118,16 @@ export default class ClangFormatter extends Formatter {
         case "replacements":
           return;
 
-        case "replacement":
-          this.currentEdit = {
-            length: parseInt(tag.attributes.length.toString()),
-            offset: parseInt(tag.attributes.offset.toString()),
-            text: "",
-          };
+        case "replacement": {
+          const length = Number(tag.attributes.length);
+          const offset = Number(tag.attributes.offset);
+          if (!Number.isSafeInteger(length) || !Number.isSafeInteger(offset) || length < 0 || offset < 0 || offset + length > sourceLength) {
+            reject(new Error("Invalid formatter replacement range."));
+            return;
+          }
+          this.currentEdit = { length, offset, text: "" };
           break;
+        }
 
         default:
           reject(new Error(`Unexpected tag ${tag.name}.`));
@@ -57,80 +148,5 @@ export default class ClangFormatter extends Formatter {
       this.edits.push({ range: { start, end }, newText: this.currentEdit.text });
       this.currentEdit = null;
     };
-  }
-
-  public async formatDocument(document: TextDocument, range: Range | null) {
-    return await new Promise<TextEdit[] | null>((resolve, reject) => {
-      if (!this.enabled || this.isIgnoredFile(document.uri)) {
-        return resolve(null);
-      }
-
-      if (this.verbose) {
-        this.logger.info(`Formatting ${document.uri}:`);
-      }
-
-      const text = document.getText();
-      const utf8Source = Buffer.from(text, "utf8");
-      const args = ["-output-replacements-xml", `-style=${JSON.stringify(this.style)}`];
-
-      if (range) {
-        const offset = Buffer.byteLength(text.slice(0, document.offsetAt(range.start)), "utf8");
-        const length = Buffer.byteLength(document.getText(range), "utf8");
-
-        args.push(`-offset=${offset}`, `-length=${length}`);
-      }
-
-      let stdout = "";
-      let stderr = "";
-
-      if (this.verbose) {
-        this.logger.info(`Resolving clang-format's executable with: ${this.executable}.`);
-      }
-
-      const child = spawn(this.executable, args, {
-        cwd: this.workspaceFilesSystem.getWorkspaceRootPath(),
-      });
-
-      child.stdout.setEncoding("utf8");
-      child.stderr.setEncoding("utf8");
-      child.stdin.end(utf8Source);
-      child.stdout.on("data", (chunk: string) => (stdout += chunk));
-      child.stderr.on("data", (chunk: string) => (stderr += chunk));
-
-      let spawnFailed = false;
-      child.on("error", (e: Error) => {
-        spawnFailed = true;
-        const error = new Error(`Cannot run clang-format at "${this.executable}". Install clang-format or set formatter.executable to its absolute path: ${e.message}`);
-        this.logger.error(error.message);
-        reject(error);
-      });
-
-      child.on("close", (code) => {
-        if (spawnFailed) return;
-        if (code !== 0 || stderr.length !== 0) {
-          this.logger.error(stderr);
-          reject(new Error(stderr));
-          return;
-        }
-
-        const xmlParser = parser(true, {
-          trim: false,
-          normalize: false,
-        });
-
-        xmlParser.onerror = (err) => reject(err);
-        xmlParser.ontext = this.xmlParseOnText();
-        xmlParser.onopentag = this.xmlParserOnOpenTag(reject);
-        xmlParser.onclosetag = this.xmlParserOnCloseTag(document, utf8Source);
-        xmlParser.write(stdout);
-        xmlParser.end();
-
-        if (this.verbose) {
-          this.logger.info("Done.\n");
-        }
-
-        resolve(this.edits);
-      });
-    });
   }
 }

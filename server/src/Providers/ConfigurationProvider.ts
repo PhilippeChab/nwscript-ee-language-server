@@ -8,10 +8,11 @@ export default class ConfigurationProvider {
     this.server.connection.onDidChangeConfiguration(this.handleDidChangeConfiguration);
   }
 
-  private async registerCallback() {
-    if (this.server.capabilitiesHandler.getSupportsConfigurationRegistration()) {
-      await this.server.optionalClientRequest("client/registerCapability", async () => await this.server.connection.client.register(DidChangeConfigurationNotification.type));
-    }
+  public static async register(server: ServerManager, configChangeCallback: ConfigCallback) {
+    const provider = new this(server, configChangeCallback);
+    await provider.registerCallback();
+
+    return provider;
   }
 
   // This needs to be an arrow function to keep the context
@@ -19,10 +20,9 @@ export default class ConfigurationProvider {
     this.configChangeCallback(params.settings);
   };
 
-  public static async register(server: ServerManager, configChangeCallback: ConfigCallback) {
-    const provider = new this(server, configChangeCallback);
-    await provider.registerCallback();
-
-    return provider;
+  private async registerCallback() {
+    if (this.server.capabilitiesHandler.getSupportsConfigurationRegistration()) {
+      await this.server.optionalClientRequest("client/registerCapability", async () => await this.server.connection.client.register(DidChangeConfigurationNotification.type));
+    }
   }
 }

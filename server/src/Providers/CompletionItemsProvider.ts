@@ -2,10 +2,8 @@ import { CompletionItem, CompletionList, CompletionParams } from "vscode-languag
 import { TextDocument } from "vscode-languageserver-textdocument";
 
 import type { ServerManager } from "../ServerManager";
-import type { ComplexToken } from "../Tokenizer/types";
 import { CompletionItemBuilder } from "./Builders";
 import { AutoImportContext, LocalScopeTokenizationResult } from "../Tokenizer/Tokenizer";
-import { TriggerCharacters } from ".";
 import { Document } from "../Documents";
 import { LanguageTypes } from "../Tokenizer/constants";
 import Provider from "./Provider";
@@ -27,26 +25,14 @@ export default class CompletionItemsProvider extends Provider {
         position,
       } = params;
 
-      const liveDocument = this.server.liveDocumentsManager.get(uri);
-      const indexedDocument = this.server.documentsCollection.getFromUri(uri);
-      if (!liveDocument || !indexedDocument) return;
-
-      const [lines, rawTokenizedContent] = this.server.tokenizer.tokenizeContentToRaw(liveDocument.getText());
-      const document = this.server.documentsCollection.initializeDocument(uri, false, this.server.tokenizer.tokenizeGlobalScopeFromRaw(lines, rawTokenizedContent));
-      const localScope = this.server.tokenizer.tokenizeContentFromRaw(lines, rawTokenizedContent, 0, position.line);
+      const context = this.getDocumentContext(uri, position);
+      if (!context) return;
+      const { liveDocument, document, lines, rawTokenizedContent, localScope } = context;
       const autoImportContext = this.server.config.completion.autoImport ? this.server.tokenizer.getAutoImportContextFromRaw(lines, rawTokenizedContent, position) : undefined;
 
-      if (params.context?.triggerCharacter === TriggerCharacters.dot) {
-        const { rawContent } = this.server.tokenizer.getActionTargetAtPosition(lines, rawTokenizedContent, position, -1);
-        const structIdentifer = localScope.functionVariablesComplexTokens.find((token) => token.identifier === rawContent)?.valueType;
-
-        return document
-          .getGlobalStructComplexTokens()
-          .concat(this.getStandardLibStructTokens(uri))
-          .find((token) => token.identifier === structIdentifer)
-          ?.properties.map((property) => {
-            return CompletionItemBuilder.buildItem(property);
-          });
+      const memberPath = this.server.tokenizer.getMemberAccessFromRaw(lines, rawTokenizedContent, position);
+      if (memberPath) {
+        return this.resolveMemberStruct(context, memberPath.slice(0, -1))?.token.properties.map((property) => CompletionItemBuilder.buildItem(property)) || [];
       }
 
       if (autoImportContext?.structsOnly || this.server.tokenizer.getActionTargetAtPosition(lines, rawTokenizedContent, position, -2).rawContent === LanguageTypes.struct) {
@@ -58,7 +44,7 @@ export default class CompletionItemsProvider extends Provider {
         return autoImportContext ? CompletionList.create(completions, true) : completions;
       }
 
-      const items = this.getGlobalScopeCompletionItems(document, localScope).concat(this.getLocalScopeCompletionItems(localScope)).concat(this.getStandardLibCompletionItems(uri));
+      const items = this.getLocalScopeCompletionItems(localScope).concat(this.getGlobalScopeCompletionItems(document, localScope)).concat(this.getStandardLibCompletionItems(uri));
       const seen = new Set<string>();
       const visible = items.filter((item) => {
         if (seen.has(item.label)) return false;
@@ -95,29 +81,33 @@ export default class CompletionItemsProvider extends Provider {
     if (!context) return [];
     const visibleNames = new Set(visible.map((item) => item.label));
     const prefix = context.prefix.toLowerCase();
-    const matchingTokens = new Map<Document, ComplexToken[]>();
-    const candidates = this.server.documentsCollection.getImportableDocuments(document, (candidate) => {
-      const tokens = context.structsOnly ? candidate.structComplexTokens : candidate.complexTokens;
-      const seen = new Set<string>();
-      const matches = tokens.filter((token) => {
-        if (
-          !token.identifier.toLowerCase().startsWith(prefix) ||
-          visibleNames.has(token.identifier) ||
-          seen.has(token.identifier) ||
-          token.identifier === "main" ||
-          token.identifier === "StartingConditional"
-        ) {
-          return false;
-        }
-        seen.add(token.identifier);
-        return true;
-      });
-      matchingTokens.set(candidate, matches);
-      return matches.length > 0;
-    });
+    const library = this.server.standardLibrary.get(liveDocument.uri);
+    const candidates = this.server.documentsCollection.getImportableDocuments(
+      document,
+      (candidate) => {
+        const tokens = context.structsOnly ? candidate.structDeclarations : candidate.globalDeclarations;
+        const seen = new Set<string>();
+        return tokens.filter((token) => {
+          if (
+            !token.identifier.toLowerCase().startsWith(prefix) ||
+            visibleNames.has(token.identifier) ||
+            seen.has(token.identifier) ||
+            token.identifier === "main" ||
+            token.identifier === "StartingConditional"
+          ) {
+            return false;
+          }
+          seen.add(token.identifier);
+          return true;
+        });
+      },
+      [...library.globalDeclarations, ...library.structDeclarations],
+      context.insertionPosition,
+      context.replacementRange.start,
+    );
     const items: CompletionItem[] = [];
-    for (const candidate of candidates) {
-      for (const token of matchingTokens.get(candidate) || []) {
+    for (const { document: candidate, tokens } of candidates) {
+      for (const token of tokens) {
         items.push(CompletionItemBuilder.buildAutoImportItem(token, candidate.getIncludeName(), liveDocument, context, this.server.config));
         if (items.length === MAX_AUTO_IMPORT_ITEMS) return items;
       }

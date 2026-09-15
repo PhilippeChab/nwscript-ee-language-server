@@ -2,8 +2,6 @@ import { SignatureHelpParams } from "vscode-languageserver/node";
 
 import type { ServerManager } from "../ServerManager";
 import type { FunctionComplexToken } from "../Tokenizer/types";
-import { LanguageScopes } from "../Tokenizer/constants";
-import { TokenizedScope } from "../Tokenizer/Tokenizer";
 import { SignatureHelpBuilder } from "./Builders";
 import Provider from "./Provider";
 
@@ -21,20 +19,12 @@ export default class SignatureHelpProvider extends Provider {
         position,
       } = params;
 
-      const liveDocument = this.server.liveDocumentsManager.get(uri);
-      const document = this.server.documentsCollection.getFromUri(uri);
-      if (!liveDocument || !document) return;
-
-      const [lines, rawTokenizedContent] = this.server.tokenizer.tokenizeContentToRaw(liveDocument.getText());
-      const line = lines[position.line];
-      const tokensArray = rawTokenizedContent[position.line];
-
-      if (!tokensArray || !this.server.tokenizer.isInScope(tokensArray, position, LanguageScopes.functionCall)) return;
-
-      const rawContent = this.server.tokenizer.getLookBehindScopesRawContent(line, tokensArray, position, [LanguageScopes.functionCall, LanguageScopes.functionIdentifier]);
-      const activeParameter = this.server.tokenizer.getLookBehindScopeOccurences(tokensArray, position, LanguageScopes.separatorStatement, LanguageScopes.leftArgumentsRoundBracket);
-
-      const localScope = this.server.tokenizer.tokenizeContent(liveDocument.getText(), TokenizedScope.local, 0, position.line);
+      const context = this.getDocumentContext(uri, position);
+      if (!context) return;
+      const { document, localScope, lines, rawTokenizedContent } = context;
+      const call = this.server.tokenizer.getCallContextFromRaw(lines, rawTokenizedContent, position);
+      if (!call) return;
+      const { identifier: rawContent, activeParameter } = call;
       const functionComplexToken =
         localScope.functionsComplexTokens.find((token) => token.identifier === rawContent) ||
         document.getGlobalComplexTokens().find((token) => token.identifier === rawContent) ||

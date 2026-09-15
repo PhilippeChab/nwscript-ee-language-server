@@ -2,15 +2,17 @@ import { writeFileSync, readFileSync, readdirSync } from "fs";
 import { normalize, join } from "path";
 import { createHash } from "crypto";
 
-import type { SourceMetadata } from "./UpdateStandardLibrary";
+import { extractSources, SourceMetadata } from "./UpdateStandardLibrary";
 
 import { Tokenizer } from "../src/Tokenizer";
-import { TokenizedScope } from "../src/Tokenizer/Tokenizer";
+import { TokenizationMode } from "../src/Tokenizer/Tokenizer";
 
 const generateDefinitions = async () => {
   const args = process.argv.slice(2);
-  if (args.some((arg) => arg !== "--standard-only" && arg !== "--check")) {
-    throw new Error("Usage: generate-lib-defs [--standard-only] [--check]");
+  const archiveIndex = args.indexOf("--archive");
+  const archivePath = archiveIndex >= 0 ? args.splice(archiveIndex, 2)[1] : undefined;
+  if ((archiveIndex >= 0 && !archivePath) || args.some((arg) => arg !== "--standard-only" && arg !== "--check")) {
+    throw new Error("Usage: generate-lib-defs [--standard-only] [--check] [--archive path.zip]");
   }
   const check = args.includes("--check");
   const tokenizer = await new Tokenizer(true).loadGrammar();
@@ -23,7 +25,34 @@ const generateDefinitions = async () => {
   }
   const lib = source.toString("utf8");
 
-  const definitions = tokenizer.tokenizeContent(lib, TokenizedScope.global);
+  if (archivePath) {
+    const targets = ["base_scripts", "ovr"].flatMap((folder) =>
+      readdirSync(join(__dirname, "../resources", folder)).map((filename) => ({
+        name: filename.slice(0, -5),
+        destination: join(__dirname, "../resources", folder, filename),
+      })),
+    );
+    const sources = extractSources(
+      readFileSync(archivePath),
+      metadata,
+      targets.map((target) => target.name),
+    );
+    // Parse every source before updating any generated index.
+    const updates = targets.map(({ name, destination }) => {
+      const text = sources.get(name);
+      if (!text) throw new Error(`Missing bundled script: ${name}`);
+      return { destination, output: JSON.stringify(tokenizer.tokenizeContent(text.toString("utf8"), TokenizationMode.document), null, 4) };
+    });
+    for (const { destination, output } of updates) {
+      if (check) {
+        if (readFileSync(destination, "utf8") !== output) throw new Error(`Bundled definitions are stale: ${destination}`);
+      } else writeFileSync(destination, output);
+    }
+    console.log(`${check ? "Verified" : "Generated"} ${updates.length} bundled script indexes from ${metadata.version}.`);
+    return;
+  }
+
+  const definitions = tokenizer.tokenizeContent(lib, TokenizationMode.document);
   const destination = join(__dirname, "../resources/standardLibDefinitions.json");
   const output = JSON.stringify(definitions, null, 4);
   if (check) {
@@ -50,8 +79,8 @@ const generateDefinitions = async () => {
 
     // Skip main files
     if (!lib.includes("main")) {
-      const definitions = tokenizer.tokenizeContent(lib, TokenizedScope.global);
-      if (definitions.children.length === 0 && definitions.complexTokens.length === 0 && definitions.structComplexTokens.length === 0) {
+      const definitions = tokenizer.tokenizeContent(lib, TokenizationMode.document);
+      if (definitions.children.length === 0 && definitions.globalDeclarations.length === 0 && definitions.structDeclarations.length === 0) {
         return;
       }
 
@@ -72,7 +101,7 @@ const generateDefinitions = async () => {
     const fileSource = join(normalize(join(__dirname, "ovr", filename)));
     const fileDestination = join(normalize(join(__dirname, "../resources/ovr", filename.replace(".nss", ".json"))));
     const lib = readFileSync(fileSource).toString();
-    const definitions = tokenizer.tokenizeContent(lib, TokenizedScope.global);
+    const definitions = tokenizer.tokenizeContent(lib, TokenizationMode.document);
 
     console.log(`Generating ${filename} ...`);
     filesCount++;

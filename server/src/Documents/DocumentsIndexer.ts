@@ -1,8 +1,8 @@
 import { readFileSync } from "fs";
 import { Tokenizer } from "../Tokenizer";
-import { TokenizedScope, GlobalScopeTokenizationResult } from "../Tokenizer/Tokenizer";
+import { TokenizationMode, DocumentTokenizationResult } from "../Tokenizer/Tokenizer";
 
-export type IndexerMessage = { filePath: string; globalScope?: GlobalScopeTokenizationResult; error?: string };
+export type IndexerMessage = { filePath: string; documentTokens?: DocumentTokenizationResult; error?: string };
 
 const send = async (message: IndexerMessage) => {
   await new Promise<void>((resolve, reject) => {
@@ -17,8 +17,8 @@ process.once("message", (paths: string[]) => {
     for (const filePath of paths) {
       let message: IndexerMessage;
       try {
-        const globalScope = tokenizer.tokenizeContent(readFileSync(filePath, "utf8"), TokenizedScope.global);
-        message = { filePath, globalScope };
+        const documentTokens = tokenizer.tokenizeContent(readFileSync(filePath, "utf8"), TokenizationMode.document);
+        message = { filePath, documentTokens };
       } catch (error) {
         message = { filePath, error: error instanceof Error ? error.message : String(error) };
       }

@@ -1,10 +1,11 @@
+import { readFileSync, existsSync } from "fs";
 import { cpus } from "os";
 import { join } from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 import { fork, ChildProcess } from "child_process";
 import type { IndexerMessage } from "../Documents/DocumentsIndexer";
 import type { Connection, InitializeParams } from "vscode-languageserver";
-import type { TextDocument } from "vscode-languageserver-textdocument";
+import { TextDocument } from "vscode-languageserver-textdocument";
 
 import {
   CompletionItemsProvider,
@@ -121,7 +122,7 @@ export default class ServerManger {
     progress?.begin("Indexing NWScript files", 0);
     let indexed = 0;
     try {
-      const paths = [...new Set(this.workspaceFilesSystem.getFilesPath().filter((path) => !isStandardLibrary(path)))];
+      const paths = [...new Set(this.workspaceFilesSystem.getFilesPath().filter((path) => !isStandardLibrary(pathToFileURL(path).href)))];
       this.logger.info("Indexing files ...");
       // Amortize worker startup on small projects, but allow larger workspaces
       // to use more CPUs without spawning a process for every CPU on big hosts.
@@ -132,10 +133,12 @@ export default class ServerManger {
         Array.from({ length: count }, async (_, index) => {
           await this.indexFiles(paths.slice(index * size, (index + 1) * size), (message) => {
             if (message.error) this.logger.error(`Cannot index ${message.filePath}: ${message.error}`);
-            if (message.globalScope) {
+            if (message.documentTokens) {
               const uri = pathToFileURL(message.filePath).href;
               // An opened document may have newer, unsaved contents.
-              if (!this.liveDocumentsManager.get(uri)) this.documentsCollection.createDocument(uri, message.globalScope);
+              if (this.workspaceFilesSystem.getRootForUri(uri) && !this.liveDocumentsManager.get(uri) && existsSync(message.filePath)) {
+                this.documentsCollection.createDocument(uri, message.documentTokens);
+              }
               indexed++;
               progress?.report(Math.round((100 * indexed) / paths.length));
             }
@@ -152,6 +155,52 @@ export default class ServerManger {
         void this.diagnosticsProvider?.processDocumentsWaitingForPublish().catch((error: Error) => this.logger.error(error.message));
       }
     }
+  }
+
+  public async down() {
+    this.stopping = true;
+    for (const cancel of this.pendingClientRequests) cancel();
+    await Promise.all(
+      [...this.workers].map(async (worker) => {
+        await new Promise<void>((resolve) => {
+          worker.once("close", () => resolve());
+          worker.kill();
+        });
+      }),
+    );
+  }
+
+  public refreshStandardLibrary() {
+    this.standardLibrary.invalidate();
+    this.revalidateOpenDocuments();
+  }
+
+  public revalidateOpenDocuments() {
+    for (const document of this.liveDocumentsManager.all()) {
+      if (!isStandardLibrary(document.uri)) {
+        void this.diagnosticsProvider?.publish(document.uri).catch((error: Error) => this.logger.error(error.message));
+      }
+    }
+  }
+
+  public refreshDocument(uri: string) {
+    try {
+      const live = this.liveDocumentsManager.get(uri);
+      this.updateDocument(live || TextDocument.create(uri, "nwscript", 0, readFileSync(fileURLToPath(uri), "utf8")));
+    } catch (error) {
+      this.logger.error(`Cannot refresh ${uri}: ${error instanceof Error ? error.message : String(error)}`);
+    }
+  }
+
+  public refreshWorkspaceDocuments() {
+    const uris = new Set(this.workspaceFilesSystem.getFilesPath().map((path) => pathToFileURL(path).href));
+    for (const document of this.documentsCollection.getWorkspaceDocuments()) {
+      if (!uris.has(document.uri)) this.documentsCollection.removeDocument(document.uri);
+    }
+    for (const uri of uris) {
+      if (!isStandardLibrary(uri)) this.refreshDocument(uri);
+    }
+    this.refreshStandardLibrary();
   }
 
   private async indexFiles(paths: string[], onMessage: (message: IndexerMessage) => void) {
@@ -179,32 +228,6 @@ export default class ServerManger {
     });
   }
 
-  public async down() {
-    this.stopping = true;
-    for (const cancel of this.pendingClientRequests) cancel();
-    await Promise.all(
-      [...this.workers].map(async (worker) => {
-        await new Promise<void>((resolve) => {
-          worker.once("close", () => resolve());
-          worker.kill();
-        });
-      }),
-    );
-  }
-
-  public refreshStandardLibrary() {
-    this.standardLibrary.invalidate();
-    this.revalidateOpenDocuments();
-  }
-
-  private revalidateOpenDocuments() {
-    for (const document of this.liveDocumentsManager.all()) {
-      if (!isStandardLibrary(document.uri)) {
-        void this.diagnosticsProvider?.publish(document.uri).catch((error: Error) => this.logger.error(error.message));
-      }
-    }
-  }
-
   private registerProviders() {
     CompletionItemsProvider.register(this);
     GotoDefinitionProvider.register(this);
@@ -229,7 +252,7 @@ export default class ServerManger {
     } catch (error) {
       // Register unfinished new documents; retain existing usable scopes.
       if (!this.documentsCollection.getFromUri(document.uri)) {
-        this.documentsCollection.createDocument(document.uri, { children: [], complexTokens: [], structComplexTokens: [] });
+        this.documentsCollection.createDocument(document.uri, { children: [], globalDeclarations: [], structDeclarations: [] });
       }
       this.logger.error(`Cannot index ${document.uri}: ${error instanceof Error ? error.message : String(error)}`);
     }
@@ -241,7 +264,13 @@ export default class ServerManger {
         this.updateDocument(event.document);
       }
     });
-    this.liveDocumentsManager.onDidClose((event) => this.standardLibrary.close(event.document.uri));
+    this.liveDocumentsManager.onDidClose(({ document }) => {
+      this.standardLibrary.close(document.uri);
+      if (!isStandardLibrary(document.uri)) {
+        if (this.workspaceFilesSystem.getRootForUri(document.uri) && existsSync(fileURLToPath(document.uri))) this.refreshDocument(document.uri);
+        else this.documentsCollection.removeDocument(document.uri);
+      }
+    });
     this.liveDocumentsManager.onDidSave((event) => {
       if (isStandardLibrary(event.document.uri)) this.refreshStandardLibrary();
       else {

@@ -11,14 +11,20 @@ export default class WorkspaceProvider extends Provider {
       this.server.connection.workspace.onDidChangeWorkspaceFolders(({ added, removed }) => {
         const folders = this.server.workspaceFilesSystem.getWorkspaceFolders().filter((folder) => !removed.some((item) => item.uri === folder.uri));
         this.server.workspaceFilesSystem.setWorkspaceFolders(folders.concat(added));
-        this.server.refreshStandardLibrary();
+        this.server.refreshWorkspaceDocuments();
       });
     }
     this.server.connection.onDidChangeWatchedFiles(({ changes }) => {
       for (const change of changes) {
-        if (change.type === FileChangeType.Deleted) this.server.standardLibrary.close(change.uri);
+        if (change.type === FileChangeType.Deleted) {
+          this.server.standardLibrary.close(change.uri);
+          this.server.documentsCollection.removeDocument(change.uri);
+        } else if (!isStandardLibrary(change.uri)) {
+          this.server.refreshDocument(change.uri);
+        }
       }
       if (changes.some((change) => isStandardLibrary(change.uri))) this.server.refreshStandardLibrary();
+      else this.server.revalidateOpenDocuments();
     });
   }
 }

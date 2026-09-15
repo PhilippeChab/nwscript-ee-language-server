@@ -1,3 +1,4 @@
+import { normalizeDocumentUri } from "../Utils";
 import type { Connection, Disposable, TextDocumentChangeEvent } from "vscode-languageserver";
 import { TextDocuments } from "vscode-languageserver";
 import { TextDocument } from "vscode-languageserver-textdocument";
@@ -30,7 +31,10 @@ export default class DocumentManager {
   }
 
   public get(uri: string) {
-    return this.documents.get(uri);
+    const exact = this.documents.get(uri);
+    if (exact) return exact;
+    const key = normalizeDocumentUri(uri);
+    return this.documents.all().find((document) => normalizeDocumentUri(document.uri) === key);
   }
 
   public all() {
