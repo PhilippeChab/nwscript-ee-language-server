@@ -1,10 +1,10 @@
 {
   "treeSitterCli": "0.25.10",
-  "abi": 14,
+  "abi": 15,
   "emscriptenImage": "emscripten/emsdk:4.0.4",
   "files": {
-    "grammar.js": "ab4f13ab3ffaaa18e26bead4b76718a4d3a2edcff7f33a3ab6240a55ce2d6a78",
+    "grammar.js": "0b4f87ab0e81f3ef6e9fd766414efb42fcfa56cd9424851f57fa8f4d968cdfcd",
     "tree-sitter.json": "244c84ff2b78a02f072b474a14162008f0636b6ac0b207d75cd60fb0f7c63bf1",
-    "tree-sitter-nwscript.wasm": "98b165f54f353771064a8151eb58ef8c5f62aaf452182a1b8fdc833b2b9bc28a"
+    "../../../resources/tree-sitter-nwscript.wasm": "9241c2d0bd2fff0f15fc88047d81fb7691e1fc2c9c45eaf83c663f22e08c8499"
   }
 }

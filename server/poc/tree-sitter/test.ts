@@ -2,16 +2,20 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import { test } from "node:test";
+import { before, test } from "node:test";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { CompletionItemKind } from "vscode-languageserver";
-import TreeSitterDocument from "./TreeSitterDocument";
-import { Query } from "web-tree-sitter";
+import Tokenizer from "../../src/Tokenizer/Tokenizer";
+import SyntaxDocument from "../../src/Tokenizer/SyntaxDocument";
+import TreeSitter = require("web-tree-sitter");
 import { CompletionItemBuilder } from "../../src/Providers/Builders";
+const { Query } = TreeSitter;
+
+before(async () => await SyntaxDocument.loadGrammar(join(__dirname, "../../resources")));
 
 const document = (text: string, version = 1) => TextDocument.create("file:///poc.nss", "nwscript", version, text);
 async function parse(t: { after: (cleanup: () => void) => void }, source: string) {
-  const parsed = await TreeSitterDocument.create(document(source));
+  const parsed = await SyntaxDocument.create(document(source));
   t.after(() => parsed.dispose());
   return parsed;
 }
@@ -101,7 +105,7 @@ void test("indexes field declarations independently of same-named globals", asyn
 void test("preserves parenthesized member context without falling back to a bare identifier", async (t) => {
   const source = "string x;void main(){vector v;float result=(v).x;}";
   const parsed = await parse(t, source);
-  assert.deepEqual(parsed.getMemberAccess(document(source).positionAt(source.lastIndexOf("x"))), { receiver: "(v)", member: "x" });
+  assert.deepEqual(parsed.getMemberPath(document(source).positionAt(source.lastIndexOf("x"))), []);
 });
 
 for (const [marked, identifier, activeParameter] of [
@@ -133,20 +137,23 @@ for (const marked of [
 }
 
 void test("retains exact UTF-16 declaration positions after Unicode and CRLF", async (t) => {
-  const source = '// é😀\r\nstring TEXT="é😀"; int AFTER=1;\r\n';
+  const source = '// é😀\r\nstring TEXT="é😀"; int AFTER=1;\r\n// Documented é😀\r\nvoid Fn();\r\n';
   const parsed = await parse(t, source);
   for (const token of parsed.getIndex().globalDeclarations) assert.deepEqual(token.position, document(source).positionAt(source.indexOf(token.identifier)));
+  const fn = parsed.getIndex().globalDeclarations.find((token) => token.identifier === "Fn");
+  assert.ok(fn && "comments" in fn);
+  assert.deepEqual(fn.comments, ["// Documented é😀"]);
 });
 
 void test("updates incrementally through unfinished and repaired edits, including in-place TextDocument updates", async (t) => {
   const live = document("");
-  const parsed = await TreeSitterDocument.create(live);
+  const parsed = await SyntaxDocument.create(live);
   t.after(() => parsed.dispose());
   const source = 'struct Data { int field; };\r\nvoid Fn(int value){string s="é😀";int n=value;}';
   for (let length = 1; length <= source.length; length++) {
     TextDocument.update(live, [{ text: source.slice(0, length) }], length + 1);
     parsed.update(live);
-    const fresh = await TreeSitterDocument.create(document(source.slice(0, length)));
+    const fresh = await SyntaxDocument.create(document(source.slice(0, length)));
     try {
       assert.equal(parsed.rootNode.toString(), fresh.rootNode.toString());
       assert.deepEqual(parsed.getIndex(), fresh.getIndex());
@@ -202,13 +209,13 @@ void test("does not suppress signatures immediately after a completed string", a
 void test("distinguishes the receiver from the member being accessed", async (t) => {
   const source = "void main(){vector v;float x=(v).x;}";
   const parsed = await parse(t, source);
-  assert.equal(parsed.getMemberAccess(document(source).positionAt(source.indexOf("(v)") + 1)), undefined);
+  assert.equal(parsed.getMemberPath(document(source).positionAt(source.indexOf("(v)") + 1)), undefined);
 });
 
 void test("pins the generated WASM to the reviewed grammar sources", () => {
   const directory = join(__dirname, "grammar");
   const manifest = JSON.parse(readFileSync(join(directory, "build.json"), "utf8")) as { files: Record<string, string> };
-  for (const file of ["grammar.js", "tree-sitter.json", "tree-sitter-nwscript.wasm"]) {
+  for (const file of ["grammar.js", "tree-sitter.json", "../../../resources/tree-sitter-nwscript.wasm"]) {
     assert.equal(
       createHash("sha256")
         .update(readFileSync(join(directory, file)))
@@ -231,4 +238,29 @@ void test("loads the Zed queries and excludes raw-string contents from bracket m
       query.delete();
     }
   }
+});
+
+void test("shares syntax and indexes per live version while isolating different documents", async (t) => {
+  const tokenizer = await new Tokenizer(true).loadGrammar();
+  const first = document("int FIRST;");
+  const second = TextDocument.create("file:///second.nss", "nwscript", 1, "int SECOND;");
+  const parsed = tokenizer.parse(first);
+  const other = tokenizer.parse(second);
+  t.after(() => {
+    parsed.dispose();
+    other.dispose();
+  });
+  assert.notEqual(parsed, other);
+  assert.equal(tokenizer.parse(first), parsed);
+  assert.equal(tokenizer.tokenizeDocument(first), parsed.getIndex());
+  const original = parsed.getIndex();
+  TextDocument.update(first, [{ text: "int UPDATED;" }], 2);
+  assert.equal(tokenizer.parse(first), parsed);
+  assert.equal(parsed.getIndex().globalDeclarations[0].identifier, "UPDATED");
+  assert.equal(original.globalDeclarations[0].identifier, "FIRST");
+  assert.equal(other.getIndex().globalDeclarations[0].identifier, "SECOND");
+});
+
+void test("ships the WASM runtime from the pinned runtime dependency", () => {
+  assert.deepEqual(readFileSync(join(__dirname, "../../resources/web-tree-sitter.wasm")), readFileSync(join(__dirname, "../../node_modules/web-tree-sitter/tree-sitter.wasm")));
 });

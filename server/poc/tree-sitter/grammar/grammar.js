@@ -46,6 +46,8 @@ module.exports = grammar({
 
     word: $ => $.identifier,
 
+    reserved: { global: $ => [$.primitive_type, "struct", "const", "if", "else", "while", "for", "return", "break", "continue", "switch", "case", "default", "do"] },
+
     rules: {
         translation_unit: $ => repeat($._top_level_item),
 

@@ -128,9 +128,9 @@ Unsaved edits update editor definitions. External changes, creation, deletion, a
 
 ## Notes
 
-The language server symbols or tokens are not generated using an AST like language servers usually do. The NWScript Language Server exploits its TextMate grammar to transform a file of code into tokens, then categorize them using their metadata. While it works well for most cases since it is a simple scripting language built on C - even for a language like NWScript, we need to cheat and use lookahead and lookbehind strategies to ensure we are in the right context -, it will also fail for complex or uncommon code structures and styles. A TextMate grammar will never cover the most extreme cases of a language grammar. An AST represents the hierarchical structure of a file of code in a much more complete and precise way.
+This draft branch replaces TextMate-based server parsing with a Tree-sitter syntax tree. The existing providers consume its declaration index and scope/context queries; VS Code still uses TextMate for syntax highlighting. Compiler diagnostics continue to use the bundled NWScript compiler.
 
-Implementing a perfectly reliable language lexer and parser to build its AST is a lot of work, and none was available at the time I implemented this project. Now that NWScript compiler has been made [public](https://github.com/niv/neverwinter.nim), it would be much easier to create a utility responsible for parsing a file of code and generating its AST. Implementing this utility and refactoring the whole tokenization engine of the Language Server is, however, a non-negligible amount of work. Considering the fact that the current solution works well for common use, I do not intend to do it.
+See the [replacement PoC](server/poc/tree-sitter/README.md) for the code reduction, test results, reproduction commands, and remaining recovery and language-conformance limitations. This is an experimental branch, not a released parser migration.
 
 ## Issues
 

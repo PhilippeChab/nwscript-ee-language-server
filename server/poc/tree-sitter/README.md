@@ -1,77 +1,90 @@
-# Tree-sitter tokenizer PoC
+# Tree-sitter replacement draft
 
-This draft evaluates replacing the language server's TextMate-derived parsing with a syntax-tree adapter. `TreeSitterDocument` returns the existing `DocumentTokenizationResult` and demonstrates local scope, member context, signature context, string/comment detection, and incremental updates. The existing completion item builder consumes its tokens in a test.
+This branch replaces the server's TextMate-based parser with Tree-sitter. Completion, hover, definition, signature help, workspace indexing, and the installed standalone server use the new implementation. There is no alternative parser selected by a flag and no separate PoC adapter.
 
-No production provider selects this backend. It is a separate package with its own development dependencies; neither the PoC nor its grammar is included in the VSIX or standalone server. The compiler and installed editor configuration are unchanged. Related investigation: [#88](https://github.com/PhilippeChab/nwscript-ee-language-server/issues/88).
+The existing include graph, symbol/type resolution, declaration-order and namespace checks, auto-import edits, and compiler diagnostics stay in their existing classes. VS Code keeps its TextMate grammar for highlighting.
 
-## Run
+## Concrete simplification
 
-Use Node.js 24 and Yarn Classic 1.22.22, as configured for this repository. From the repository root:
+Compared with `main` at `85e4089`:
+
+| Parsing code | Before | This draft |
+| --- | ---: | ---: |
+| Tokenizer implementation and index/context contracts | 679 lines | 461 lines across `Tokenizer`, `SyntaxDocument`, and `contracts` |
+| Including language constants and the old Oniguruma loader | 742 lines | 480 lines |
+
+These counts include the new adapter and moved types, not just the remaining `Tokenizer.ts`. The production parsing code is about 35% smaller. The separately maintained Tree-sitter grammar is additional source; this is not a claim that the entire repository shrinks by that percentage.
+
+Removed code includes TextMate rule-stack management, highlighting-scope predicates, scanning for declaration types and function-signature boundaries, variable initializer reconstruction, and manually maintained block-scope frames. Syntax nodes supply declaration kinds, types, fields, defaults, parameter lists, and enclosing blocks.
+
+Providers now obtain one syntax document:
+
+```ts
+const syntax = this.server.tokenizer.parse(liveDocument);
+const index = syntax.getIndex();
+const locals = syntax.getLocalScope(position);
+const call = syntax.getCallContext(position);
+```
+
+They no longer pass arrays of lines and highlighting tokens through `*FromRaw` methods. A document version shares its syntax tree and index. Updates edit that tree incrementally; a new version invalidates the derived index. Unused live trees release their WASM resources through finalization, while one-shot indexing explicitly disposes them.
+
+Call and member context still scan syntax leaves where needed to preserve incomplete-expression behavior. The replacement does not claim that every editor operation becomes one AST lookup. Strict background indexing still rejects incomplete declarations so existing fallback snapshots and repair behavior remain intact; live requests use the recovered tree.
+
+## Run and inspect
+
+Use Node.js 24 and Yarn Classic 1.22.22:
 
 ```sh
 yarn install --frozen-lockfile
+yarn compile
+yarn lint
+yarn --cwd server check-standard-lib
+yarn test
+
 yarn --cwd server/poc/tree-sitter install --frozen-lockfile
 yarn --cwd server/poc/tree-sitter typecheck
 yarn --cwd server/poc/tree-sitter lint
 yarn --cwd server/poc/tree-sitter test
-```
 
-Inspect a real file and compare with the current tokenizer's live recovery path:
-
-```sh
-yarn --cwd server/poc/tree-sitter inspect --compare /absolute/path/to/script.nss
-```
-
-Or use a repository fixture:
-
-```sh
 yarn --cwd server/poc/tree-sitter inspect --tree ../../test/static/neverwinter/corpus/functions.nss
 ```
 
-The inspector prints the index, whether the tree contains syntax errors, and optionally the old index or concrete syntax tree. A parse without syntax errors does not establish compiler validity. CI runs the PoC checks on Windows, Linux, Intel macOS, and Apple Silicon alongside the existing suite.
+The inspector uses the same production parser and prints its index, syntax-error status, and optionally its tree. You can pass any absolute `.nss` path. `yarn package:standalone` builds an installable server using Tree-sitter; the standalone tests package and install it automatically.
 
-## What becomes simpler
+## Validation
 
-The adapter reads function/parameter/field nodes rather than reconstructing declarations from highlighting scopes. Calls are distinct from declarations, blocks provide scope boundaries, member expressions preserve their receiver, and argument-list children identify nested call context. It can retain complete declarations before a trailing parse error.
+All 616 existing repository tests pass against the replacement, including the installed standalone LSP tests and the native compiler corpus checks. Existing test expectations are preserved. Direct parser tests now call the syntax-document API, parse-count spies observe `parseContent`, and the package license assertion names the new runtime.
 
-The adapter is about 250 lines, compared with the current 679-line tokenizer, but it is not yet feature-complete. This is not a claimed final line-count reduction. The grammar is maintained separately, and the generator/runtime provide parsing and recovery.
+The additional 30 parser checks also use the production implementation. They cover the existing index contract, incomplete declarations and strings, prototype parameters, struct fields, nested scopes and calls, Unicode/CRLF positions, incremental edits against fresh parses, document/version isolation, all 39 upstream corpus fixtures, grammar/runtime artifact consistency, and four Zed query files. Type checking and lint run for both packages. The standard-library regeneration check also matches the shipped JSON byte for byte. The headless Neovim client test passes against the packaged replacement. CI runs these checks on Windows, Linux, Intel macOS, and Apple Silicon; local validation is Linux only.
 
-Semantic logic remains necessary: include resolution, types, visibility rules, declaration order, namespaces, entry-point conflicts, auto-import edits, and compiler diagnostics. A production migration should reuse that logic, implement the missing adapter contract, and retire the corresponding TextMate parsing code rather than permanently keeping both backends.
+## Remaining draft limits
 
-## Evidence and limits
+Passing the current suite is evidence of preserved tested behavior, not exhaustive language equivalence:
 
-The committed tests cover the existing index shape and completion builder, prototypes/implementations and parameter metadata, struct fields, initializer calls, nested scope and signature context, incomplete declarations and strings, Unicode/CRLF positions, incremental replacement of live documents, 39 existing upstream corpus fixtures, and four Zed query files.
+- Recovery after an early malformed signature can absorb a later declaration into an ERROR region. A test explicitly records this remaining gap. The adapter does not invent declarations from arbitrary identifiers in an ERROR node.
+- The inherited grammar accepts C-derived constructs and needs a complete NWScript conformance audit. A syntax-clean tree does not establish compiler validity; the existing compiler remains responsible for diagnostics.
+- Index extraction is recomputed after edits. Incremental syntax parsing does not make all symbol or dependency processing incremental, and this draft does not establish a production performance budget.
+- Zed queries compile in tests, but this branch does not install a new editor grammar or update the user's local server installation.
 
-The preceding native-parser investigation used the same grammar family on 75 FRU files and 1,186 extracted bundled sources. All parsed without syntax errors; global declaration-name sets matched the current tokenizer on those real files. Those earlier Python/native results do not replace testing this Node/WASM adapter end to end.
-
-Known PoC limits:
-
-- It is not wired into LSP requests. The full provider suite still runs against the production tokenizer.
-- Error recovery can absorb a later declaration into an ERROR region after an early malformed signature. The test documents that behavior; the adapter does not manufacture declarations from identifiers in an ERROR node.
-- The inherited grammar accepts some C-derived constructs and needs an NWScript-specific conformance audit. Semantic-negative corpus files can have valid syntax.
-- Local scope and call/member methods demonstrate syntax context, not a complete name/type resolver. Import insertion and conflict detection remain in the existing shared providers/collection.
-- Full document indexing is recomputed on demand. Tree edits are incremental, but this does not yet make dependency or symbol-index updates incremental.
-- The Node WASM binding exposes UTF-16 indexes for string input, unlike native Tree-sitter byte offsets. Tests verify positions after non-ASCII text and edits; adapters must not apply native byte-offset conversions to this binding.
-- Zed queries compile in tests, but this PR does not install a new Zed grammar. VS Code still needs its TextMate highlighting integration even if the server stops using TextMate for parsing.
-- The PoC uses WASM for portable development/testing. It does not establish a production runtime or performance budget.
+Related investigation: [#88](https://github.com/PhilippeChab/nwscript-ee-language-server/issues/88).
 
 ## Grammar provenance and rebuilding
 
-`grammar/grammar.js` derives from the MIT-licensed [nwn-rs/tree-sitter-nwscript](https://github.com/nwn-rs/tree-sitter-nwscript/tree/b259972ec572a4068b7772e7b1768333f0a58e84), revision `b259972ec572a4068b7772e7b1768333f0a58e84`. Its license is retained in `grammar/LICENSE.txt`.
+`grammar/grammar.js` derives from the MIT-licensed [nwn-rs/tree-sitter-nwscript](https://github.com/nwn-rs/tree-sitter-nwscript/tree/b259972ec572a4068b7772e7b1768333f0a58e84), revision `b259972ec572a4068b7772e7b1768333f0a58e84`. Its license is retained in the grammar directory and shipped beside the generated grammar WASM.
 
-Adaptations fix comments between `if`/`else`, struct-typed fields, declarations in `for` initializers, parameter nodes/defaults, octal literals, and raw/hashed strings. Explicit string-content nodes preserve context when a closing quote is missing. The obsolete single-character uppercase expression alternative is removed. This is an adapted existing grammar, not a new parser engine.
+Adaptations cover comments between `if`/`else`, struct-typed fields, declarations in `for` initializers, explicit parameter nodes/defaults, octal literals, and raw/hashed strings. Reserved keywords prevent incomplete declarations from treating the following type keyword as a field name. This uses Tree-sitter ABI 15.
 
-The checked-in WASM lets every CI platform run tests without Emscripten. Generated C and JSON tables are ignored to keep the draft diff reviewable. To rebuild, use Tree-sitter CLI 0.25.10 and Docker (the CLI selects `emscripten/emsdk:4.0.4`):
+To rebuild with Tree-sitter CLI 0.25.10 and Docker (`emscripten/emsdk:4.0.4`):
 
 ```sh
 cd server/poc/tree-sitter/grammar
-npx --yes tree-sitter-cli@0.25.10 generate --abi 14
-npx --yes tree-sitter-cli@0.25.10 build --wasm --docker --output tree-sitter-nwscript.wasm
+npx --yes tree-sitter-cli@0.25.10 generate --abi 15
+npx --yes tree-sitter-cli@0.25.10 build --wasm --docker --output ../../../resources/tree-sitter-nwscript.wasm
 cd ..
 yarn grammar:record
 yarn test
 ```
 
-`grammar/build.json` records tool versions and source/artifact hashes. A test detects stale sources or artifacts relative to that manifest. Updating the manifest alone is not proof of regeneration; reviewers should regenerate after grammar changes.
+Generated C/JSON tables are ignored. `grammar/build.json` records tool versions and source/artifact hashes; updating the manifest alone is not proof of regeneration. The runtime WASM is copied from the pinned `web-tree-sitter@0.25.10` dependency into `server/resources/web-tree-sitter.wasm`, with its license. Tests compare those runtime bytes. Both WASM files ship in the VSIX and standalone package.
 
-The TypeScript adapter and harness follow this repository's GPL-3.0-only license; the upstream grammar retains its MIT license. Tree-sitter runtime licensing is provided by its npm package.
+The adapter follows this repository's GPL-3.0-only license. The upstream grammar and Tree-sitter runtime retain their MIT licenses.

@@ -21,13 +21,12 @@ export default class Provider {
   protected getDocumentContext(uri: string, position?: Position) {
     const liveDocument = this.server.liveDocumentsManager.get(uri);
     if (!liveDocument) return;
-    const [lines, rawTokenizedContent] = this.server.tokenizer.tokenizeContentToRaw(liveDocument.getText());
+    const syntax = this.server.tokenizer.parse(liveDocument);
     return {
       liveDocument,
-      lines,
-      rawTokenizedContent,
-      document: this.server.documentsCollection.initializeDocument(uri, false, this.server.tokenizer.tokenizeDocumentFromRaw(lines, rawTokenizedContent)),
-      localScope: this.server.tokenizer.tokenizeContentFromRaw(lines, rawTokenizedContent, 0, position?.line, position?.character),
+      syntax,
+      document: this.server.documentsCollection.initializeDocument(uri, false, syntax.getIndex()),
+      localScope: syntax.getLocalScope(position),
     };
   }
 
@@ -61,14 +60,14 @@ export default class Provider {
   protected resolveSymbol(uri: string, position: Position): { token: ComplexToken; owner?: string } | undefined {
     const context = this.getDocumentContext(uri, position);
     if (!context) return;
-    const { lines, rawTokenizedContent } = context;
-    const memberPath = this.server.tokenizer.getMemberAccessFromRaw(lines, rawTokenizedContent, position);
+    const { syntax } = context;
+    const memberPath = syntax.getMemberPath(position);
     if (memberPath) {
       const struct = this.resolveMemberStruct(context, memberPath.slice(0, -1));
       const token = struct?.token.properties.find((property) => property.identifier === memberPath[memberPath.length - 1]);
       return token ? { token, owner: struct?.owner } : undefined;
     }
-    const { tokenType, rawContent } = this.server.tokenizer.getActionTargetAtPosition(lines, rawTokenizedContent, position);
+    const { tokenType, rawContent } = syntax.getActionTarget(position);
     const fieldDeclaration = context.document.structDeclarations
       .flatMap((struct) => struct.properties)
       .find(

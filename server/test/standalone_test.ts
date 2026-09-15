@@ -102,7 +102,8 @@ describe("Installed standalone LSP server", function () {
     };
     compare("server/resources");
     compare("syntaxes");
-    expect(existsSync(join(packageRoot, "third-party/vscode-oniguruma/LICENSE.txt"))).to.equal(true);
+    expect(existsSync(join(packageRoot, "third-party/web-tree-sitter/LICENSE"))).to.equal(true);
+    expect(existsSync(join(packageRoot, "server/resources/tree-sitter-nwscript.LICENSE.txt"))).to.equal(true);
     const executable = join(packageRoot, "..", ".bin", process.platform === "win32" ? "nwscript-ee-language-server.cmd" : "nwscript-ee-language-server");
     expect(existsSync(executable)).to.equal(true);
     if (process.platform !== "win32") expect(execFileSync(executable, ["--version"], { encoding: "utf8" }).trim()).to.equal(manifest.version);

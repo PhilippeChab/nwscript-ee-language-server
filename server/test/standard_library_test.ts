@@ -212,9 +212,9 @@ describe("Workspace standard library", function () {
     write(spec, source);
     const editor = editorServer();
     const document = TextDocument.create(uri(spec), "nwscript", 1, source);
-    const tokenize = tokenizer.tokenizeContent.bind(tokenizer);
+    const tokenize = tokenizer.parseContent.bind(tokenizer);
     let parses = 0;
-    tokenizer.tokenizeContent = (...args: any[]) => {
+    tokenizer.parseContent = (...args: any[]) => {
       parses++;
       return tokenize(...args);
     };
@@ -230,7 +230,7 @@ describe("Workspace standard library", function () {
       expect(library.get(document.uri).globalDeclarations).to.equal(editor.server.documentsCollection.getFromUri(document.uri).globalDeclarations);
       expect(library.get(document.uri).globalDeclarations[0].identifier).to.equal("ChangedFn");
     } finally {
-      tokenizer.tokenizeContent = tokenize;
+      tokenizer.parseContent = tokenize;
     }
   });
 
@@ -241,9 +241,9 @@ describe("Workspace standard library", function () {
     const document = TextDocument.create(uri(spec), "nwscript", 1, source);
     editor.open(document);
     const initial = library.get(document.uri);
-    const tokenize = tokenizer.tokenizeContent.bind(tokenizer);
+    const tokenize = tokenizer.parseContent.bind(tokenizer);
     let parses = 0;
-    tokenizer.tokenizeContent = (...args: any[]) => {
+    tokenizer.parseContent = (...args: any[]) => {
       parses++;
       return tokenize(...args);
     };
@@ -265,7 +265,7 @@ describe("Workspace standard library", function () {
       expect(parses).to.equal(3);
       expect(library.get(document.uri).globalDeclarations[0].identifier).to.equal("Recovered");
     } finally {
-      tokenizer.tokenizeContent = tokenize;
+      tokenizer.parseContent = tokenize;
     }
   });
 

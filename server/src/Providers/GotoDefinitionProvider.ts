@@ -18,7 +18,7 @@ export default class GotoDefinitionProvider extends Provider {
           const ownerDocument = this.getSourceDocument(resolved.owner);
           if (ownerDocument) {
             const cursor = normalizeDocumentUri(uri) === normalizeDocumentUri(resolved.owner) ? position : undefined;
-            target = this.server.tokenizer.getFunctionNavigationTarget(ownerDocument, resolved.token.identifier, cursor) || target;
+            target = this.server.tokenizer.parse(ownerDocument).getFunctionNavigationTarget(resolved.token.identifier, cursor) || target;
           }
         }
         return { uri: resolved.owner, range: { start: target, end: target } };
