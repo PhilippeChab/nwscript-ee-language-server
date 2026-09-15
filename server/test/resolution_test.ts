@@ -19,7 +19,7 @@ describe("Document and signature resolution", () => {
         export { default as Hover } from './Providers/HoverContentProvider';
         export { default as Completion } from './Providers/CompletionItemsProvider';
         export { default as Symbols } from './Providers/SymbolsProvider';
-        export { HoverContentBuilder, SignatureHelpBuilder } from './Providers/Builders';
+        export { HoverContentBuilder, SignatureHelpBuilder, CompletionItemBuilder } from './Providers/Builders';
         export { defaultServerConfiguration as config } from './ServerManager/Config';`,
         resolveDir: join(__dirname, "../src"),
         loader: "ts",
@@ -103,7 +103,7 @@ describe("Document and signature resolution", () => {
       },
     };
     for (const provider of [api.Hover, api.Signature, api.Completion, api.Symbols]) provider.register(server);
-    return { handlers, params: (offset: number) => ({ textDocument: { uri: document.uri }, position: document.positionAt(offset) }) };
+    return { document, handlers, params: (offset: number) => ({ textDocument: { uri: document.uri }, position: document.positionAt(offset) }) };
   }
 
   it("keeps prototype documentation, defaults and parameter names consistent across call sites", () => {
@@ -149,6 +149,52 @@ describe("Document and signature resolution", () => {
     expect(signature.label).to.equal('void Take(struct Data input, int count = 0, string text = "")');
     expect(signature.parameters.map((parameter: any) => parameter.label)).to.deep.equal(["struct Data input", "int count = 0", 'string text = ""']);
   });
+
+  it("refreshes declaration details across providers after unsaved edits", () => {
+    const original = "int VALUE; void main() { VALUE; }";
+    const { document, handlers, params } = editor(original);
+    const sources = [original, "const int VALUE = 0; void main() { VALUE; }", original];
+    for (const [index, source] of sources.entries()) {
+      TextDocument.update(document, [{ text: source }], index + 2);
+      const target = params(source.lastIndexOf("VALUE") + 1);
+      const isConstant = index === 1;
+      expect(handlers.completion(target).find((item: any) => item.label === "VALUE").kind).to.equal(isConstant ? 21 : 6);
+      expect(handlers.symbols(target).find((item: any) => item.name === "VALUE").kind).to.equal(isConstant ? 14 : 13);
+      expect(handlers.hover(target).contents.value).to.equal(`\`\`\`nwscript\r\n${isConstant ? "const int VALUE = 0" : "int VALUE"}\r\n\`\`\``);
+    }
+  });
+
+  it("includes prototype-only functions in the outline without duplicating implemented functions", () => {
+    const source = "int Prototype(int parameter);\nint Implemented(int oldName);\nint Implemented(int currentName) { return currentName; }";
+    const { handlers, params } = editor(source);
+    const symbols = handlers.symbols(params(0));
+    expect(symbols.map((symbol: any) => symbol.name).sort()).to.deep.equal(["Implemented", "Prototype"]);
+    expect(symbols.find((symbol: any) => symbol.name === "Prototype").selectionRange.start).to.deep.equal({ line: 0, character: 4 });
+    expect(symbols.find((symbol: any) => symbol.name === "Implemented").selectionRange.start).to.deep.equal({ line: 2, character: 4 });
+    expect(symbols.find((symbol: any) => symbol.name === "Implemented").children.map((child: any) => child.name)).to.deep.equal(["currentName"]);
+  });
+
+  it("presents value parameters as variables in completion and outline", () => {
+    const source = "void Fn(int parameter) { parameter; }";
+    const { handlers, params } = editor(source);
+    const completions = handlers.completion(params(source.lastIndexOf("parameter") + 3));
+    expect(completions.find((item: any) => item.label === "parameter").kind).to.equal(6);
+    const symbol = handlers.symbols(params(0))[0].children.find((child: any) => child.name === "parameter");
+    expect(symbol.kind).to.equal(13);
+    expect(handlers.hover(params(source.lastIndexOf("parameter") + 3)).contents.value).to.include("int parameter");
+  });
+
+  for (const declaration of ["int Fn();", "void Fn(int value);", "void Fn(struct Data data, int count = 0);"]) {
+    it(`resolves function completion repeatedly without appending duplicate parameters: ${declaration}`, () => {
+      const fn = tokenizer.tokenizeContent(declaration, "document").globalDeclarations[0];
+      const config = { ...api.config, completion: { ...api.config.completion, addParamsToFunctions: true } };
+      const item = api.CompletionItemBuilder.buildItem(fn);
+      const once = api.CompletionItemBuilder.buildResolvedItem(item, config);
+      expect(once.label).to.equal(declaration.startsWith("int") ? "Fn()" : declaration.includes("struct") ? "Fn(struct Data data, int count)" : "Fn(int value)");
+      expect(api.CompletionItemBuilder.buildResolvedItem(once, config)).to.deep.equal(once);
+      expect(item.label).to.equal("Fn");
+    });
+  }
 
   it("indexes every same-line declaration with its own signature and value", () => {
     const scope = tokenizer.tokenizeContent("void First(int a) {} int Second(string b); void main() {} const int ONE = 1; const int TWO = 2;", "document");

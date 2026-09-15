@@ -27,7 +27,7 @@ export default class CompletionItemBuilder extends Builder {
   }
 
   public static buildResolvedItem(item: CompletionItem, serverConfig: ServerConfiguration): CompletionItem {
-    if (serverConfig.completion.addParamsToFunctions && item.kind === CompletionItemKind.Function) {
+    if (serverConfig.completion.addParamsToFunctions && item.kind === CompletionItemKind.Function && !item.label.includes("(")) {
       const params = item.data as FunctionParamComplexToken[];
 
       return {
@@ -80,7 +80,7 @@ export default class CompletionItemBuilder extends Builder {
   private static buildFunctionParamItem(token: FunctionParamComplexToken): CompletionItem {
     return {
       label: token.identifier,
-      kind: token.tokenType,
+      kind: CompletionItemKind.Variable,
       detail: `(param) ${token.identifier}: ${this.handleLanguageType(token.valueType)}`,
     };
   }

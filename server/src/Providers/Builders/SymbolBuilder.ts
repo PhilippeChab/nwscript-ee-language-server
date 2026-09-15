@@ -31,7 +31,7 @@ export default class SymbolBuilder extends Builder {
   }
 
   private static buildFunctionParamItem(token: FunctionParamComplexToken) {
-    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.TypeParameter, { start: token.position, end: token.position }, { start: token.position, end: token.position });
+    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Variable, { start: token.position, end: token.position }, { start: token.position, end: token.position });
   }
 
   private static buildFunctionItem(token: FunctionComplexToken) {
