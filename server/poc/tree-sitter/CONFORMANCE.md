@@ -78,6 +78,15 @@ The production build and all four platform test jobs passed on `608f1f0`: Linux,
 
 Local validation: 662 repository tests, 161 parser checks, root and harness type checking/lint, production build, and byte-identical standard-library regeneration. A freshly installed standalone package also passed the headless Neovim test for initialization, diagnostics, completion, hover, definition, formatting and shutdown.
 
-Manual Zed UI validation is in progress in the FRU workspace using Windows Zed 1.19.2 over WSL. A project-local server override points to the freshly installed package; global editor settings are unchanged. All 74 workspace scripts indexed successfully, and actual editor requests returned hover content and engine-function definition locations. The remaining interactive checks must be completed before treating this as a full editor smoke test. The grammar query tests and standalone LSP tests do not substitute for that UI check.
+Manual Zed smoke validation passed in the FRU workspace using Windows Zed 1.19.2 over WSL and a freshly installed standalone package. A project-local server override leaves global editor settings unchanged. All 74 existing workspace scripts indexed successfully. Actual keyboard actions, UI inspection and the server protocol trace verified:
 
-The language/recovery audit and comparative performance investigation are complete for the stated corpus and cases. The PR remains a draft pending completion of the manual Zed check. This is not a proof of correctness for every possible malformed program.
+- `CommandStruct` in `cmds_player.nss` navigates to its implementation in `consts_cmds.nss`; `commandStruct` navigates to the struct declaration.
+- A helper call navigates to its implementation; navigation on the prototype and implementation toggles between them.
+- Hover returns engine-function documentation and parameter defaults. Signature help visibly highlights the active second parameter and displays its default.
+- Auto-import acceptance inserts its include immediately below an existing include. With the argument filled in, formatting on save succeeds and compiler diagnostics clear. Clang-format sorts includes on save; this is separate from the completion insertion position.
+- Ordinary completion still works before an unfinished struct field declaration. Member completion returns the correct field before an unfinished function signature.
+- Typing a function name inside a raw string returns an empty server completion list and shows no suggestion popup.
+
+Temporary QA scripts were removed afterward; the user's existing FRU source edits were left intact. FRU retains the local server override for user review. The earlier isolated Linux GUI attempt was stopped after its shared keyring service triggered desktop prompts; it is not used as evidence for the Windows smoke test.
+
+The language/recovery audit, comparative performance investigation and editor smoke checks are complete for the stated corpus and cases. The PR remains a draft for user review. These results are not a proof of correctness for every possible malformed program or a guarantee of interactive latency on every workspace.
