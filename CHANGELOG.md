@@ -21,8 +21,6 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 
 - Change the language server license to GPL-3.0-only.
 
-Install using **Switch to Pre-Release Version** in VS Code's Extensions view.
-
 ## [2.3.1] Experimental pre-release
 
 - Update minimatch and brace-expansion dependencies to address denial-of-service vulnerabilities.
