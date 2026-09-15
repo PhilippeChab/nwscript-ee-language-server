@@ -128,9 +128,9 @@ Unsaved edits update editor definitions. External changes, creation, deletion, a
 
 ## Notes
 
-This draft branch replaces TextMate-based server parsing with a Tree-sitter syntax tree. The existing providers consume its declaration index and scope/context queries; VS Code still uses TextMate for syntax highlighting. Compiler diagnostics continue to use the bundled NWScript compiler.
+The server uses a Tree-sitter syntax tree for NWScript parsing. The existing providers consume its declaration index and scope/context queries; VS Code still uses TextMate for syntax highlighting. Compiler diagnostics continue to use the bundled NWScript compiler.
 
-See the [replacement PoC](server/poc/tree-sitter/README.md) for the code reduction, test results, reproduction commands, and remaining recovery and language-conformance limitations. This is an experimental branch, not a released parser migration.
+See the [parser documentation](server/tree-sitter/README.md) for its architecture, grammar maintenance, validation commands, and language-conformance limitations.
 
 ## Issues
 

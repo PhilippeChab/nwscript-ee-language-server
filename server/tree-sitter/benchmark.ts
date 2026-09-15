@@ -1,11 +1,11 @@
 import { readFileSync } from "node:fs";
 import { performance } from "node:perf_hooks";
 import { join } from "node:path";
-import SyntaxDocument from "../../src/Tokenizer/SyntaxDocument";
+import SyntaxDocument from "../src/Tokenizer/SyntaxDocument";
 import { TextDocument } from "vscode-languageserver-textdocument";
 const doc = (text: string, version = 1) => TextDocument.create("file:///bench.nss", "nwscript", version, text);
 async function main() {
-  await SyntaxDocument.loadGrammar(join(__dirname, "../../resources"));
+  await SyntaxDocument.loadGrammar(join(__dirname, "../resources"));
   const sources = process.argv.slice(2).map((file) => [file, readFileSync(file, "utf8")]);
   sources.push(["200 damaged signatures", Array.from({ length: 200 }, (_, i) => `int Broken${i}(\nint Later${i}(int parameter){return parameter;}\n`).join("")]);
   for (const [file, source] of sources) {

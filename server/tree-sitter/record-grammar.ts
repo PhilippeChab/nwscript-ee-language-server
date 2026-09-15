@@ -4,7 +4,7 @@ import { join } from "path";
 
 const directory = join(__dirname, "grammar");
 const files = Object.fromEntries(
-  ["grammar.js", "tree-sitter.json", "../../../resources/tree-sitter-nwscript.wasm"].map((file) => [
+  ["grammar.js", "tree-sitter.json", "../../resources/tree-sitter-nwscript.wasm"].map((file) => [
     file,
     createHash("sha256")
       .update(readFileSync(join(directory, file)))

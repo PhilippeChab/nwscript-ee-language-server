@@ -1,6 +1,6 @@
-# Tree-sitter replacement draft
+# Tree-sitter parser
 
-This branch replaces the server's TextMate-based parser with Tree-sitter. Completion, hover, definition, signature help, workspace indexing, and the installed standalone server use the new implementation. There is no alternative parser selected by a flag and no separate PoC adapter.
+The server uses Tree-sitter to parse NWScript. Completion, hover, definition, signature help, workspace indexing, and the installed standalone server use the new implementation.
 
 The existing include graph, symbol/type resolution, declaration-order and namespace checks, auto-import edits, and compiler diagnostics stay in their existing classes. VS Code keeps its TextMate grammar for highlighting.
 
@@ -8,7 +8,7 @@ The existing include graph, symbol/type resolution, declaration-order and namesp
 
 Compared with `main` at `85e4089`:
 
-| Parsing code | Before | This draft |
+| Parsing code | Before | Tree-sitter |
 | --- | ---: | ---: |
 | Tokenizer implementation and index/context contracts | 695 lines | 531 lines across `Tokenizer`, `SyntaxDocument`, `recoverDeclarations`, and `contracts` |
 | Including language constants and the old Oniguruma loader | 758 lines | 550 lines |
@@ -41,12 +41,12 @@ yarn lint
 yarn --cwd server check-standard-lib
 yarn test
 
-yarn --cwd server/poc/tree-sitter install --frozen-lockfile
-yarn --cwd server/poc/tree-sitter typecheck
-yarn --cwd server/poc/tree-sitter lint
-yarn --cwd server/poc/tree-sitter test
+yarn --cwd server/tree-sitter install --frozen-lockfile
+yarn --cwd server/tree-sitter typecheck
+yarn --cwd server/tree-sitter lint
+yarn --cwd server/tree-sitter test
 
-yarn --cwd server/poc/tree-sitter inspect --tree ../../test/static/neverwinter/corpus/functions.nss
+yarn --cwd server/tree-sitter inspect --tree ../test/static/neverwinter/corpus/functions.nss
 ```
 
 The inspector uses the same production parser and prints its index, syntax-error status, and optionally its tree. You can pass any absolute `.nss` path. `yarn package:standalone` builds an installable server using Tree-sitter; the standalone tests package and install it automatically.
@@ -65,7 +65,7 @@ The [audit report](CONFORMANCE.md) documents the native-compiler review, 111 com
 
 The compiler still owns semantic validity. A syntax-clean tree does not establish correct types, names, or control flow. Exceptional recovery reparses damaged signatures; ordinary edits remain incremental. Index extraction and some context queries still scan syntax nodes, so very large files incur additional work. The audit includes those measured costs.
 
-This branch does not install a new editor grammar or update the user's local server installation. It remains a draft for review, not a published release.
+The packaged server includes both the WebAssembly parsing runtime (`web-tree-sitter.wasm`) and the generated NWScript grammar (`tree-sitter-nwscript.wasm`). The `web-tree-sitter` package connects them to Node.js; parsing runs locally without a browser or network service. Editor syntax highlighting remains separate.
 
 Related investigation: [#88](https://github.com/PhilippeChab/nwscript-ee-language-server/issues/88).
 
@@ -78,9 +78,9 @@ The grammar has been narrowed to the bundled compiler's NWScript syntax, includi
 To rebuild with Tree-sitter CLI 0.25.10 and Docker (`emscripten/emsdk:4.0.4`):
 
 ```sh
-cd server/poc/tree-sitter/grammar
+cd server/tree-sitter/grammar
 npx --yes tree-sitter-cli@0.25.10 generate --abi 15
-npx --yes tree-sitter-cli@0.25.10 build --wasm --docker --output ../../../resources/tree-sitter-nwscript.wasm
+npx --yes tree-sitter-cli@0.25.10 build --wasm --docker --output ../../resources/tree-sitter-nwscript.wasm
 cd ..
 yarn grammar:record
 yarn test

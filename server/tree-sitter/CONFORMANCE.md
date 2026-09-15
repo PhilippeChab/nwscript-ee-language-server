@@ -41,7 +41,7 @@ Committed tests cover void/primitive/struct returns, same-line/LF/CRLF boundarie
 
 ## Timing probe
 
-Run `yarn --cwd server/poc/tree-sitter benchmark /absolute/path/to/script.nss` to reproduce the probe.
+Run `yarn --cwd server/tree-sitter benchmark /absolute/path/to/script.nss` to reproduce the probe.
 
 Local Node 24/WASM measurements used five warm-up iterations and 30 measured iterations. Each iteration created and indexed a document, appended a newline and reindexed it, then requested local scope, action target, and call context at EOF. These are component measurements, not end-to-end editor latency or comparisons with the old parser.
 
@@ -55,7 +55,7 @@ Large-file index extraction and context scans remain measurable work. This audit
 
 ## Comparison with the released parser
 
-Run `yarn --cwd server/poc/tree-sitter compare /absolute/path/to/3.0.1-checkout /absolute/path/to/script.nss ...`. The baseline checkout needs its own installed dependencies. The script bundles each revision's tokenizer into its own ignored `server/out` directory and loads that revision's own grammar and runtime.
+Run `yarn --cwd server/tree-sitter compare /absolute/path/to/3.0.1-checkout /absolute/path/to/script.nss ...`. The baseline checkout needs its own installed dependencies. The script bundles each revision's tokenizer into its own ignored `server/out` directory and loads that revision's own grammar and runtime.
 
 Both parsers perform the same index, local-scope, member-path and action-target work at EOF. Cold means the first request on a new document; warm repeats without changes; edit appends a space and requests again. Five iterations warm up the process and twenty supply the samples. Startup, include traversal, provider rendering and UI latency are excluded. These differ from the earlier component measurements above.
 
@@ -70,7 +70,7 @@ Local Node 24 / WSL Linux p95, milliseconds (3.0.1 → Tree-sitter):
 
 Tree-sitter was faster on the four inputs in that comparison. A separate 67-character smoke run had sub-millisecond timings with mixed results (cold p95 0.43 → 0.47 ms, warm 0.76 → 0.26 ms, edit 0.31 → 0.69 ms); small-file timings do not establish a universal speedup. Large-file cold requests and reindexing still cost hundreds of milliseconds; this is an improvement over the baseline, not a claim that all requests are instantaneous. No extra production caches or performance refactor were introduced to obtain these results.
 
-## Current status
+## Release validation
 
 The branch is rebased onto `main` at `2275b80` (3.0.1, merged PR #105), with all provider fixes retained. The conformance suite initially failed in clean CI because it used an ignored local API source. It now uses a checked-in minimal language specification; all 111 compiler outcomes remain identical to the prior full-API run.
 
@@ -87,6 +87,6 @@ Manual Zed smoke validation passed in the FRU workspace using Windows Zed 1.19.2
 - Ordinary completion still works before an unfinished struct field declaration. Member completion returns the correct field before an unfinished function signature.
 - Typing a function name inside a raw string returns an empty server completion list and shows no suggestion popup.
 
-Temporary QA scripts were removed afterward; the user's existing FRU source edits were left intact. FRU retains the local server override for user review. The earlier isolated Linux GUI attempt was stopped after its shared keyring service triggered desktop prompts; it is not used as evidence for the Windows smoke test.
+Interactive mutation checks used temporary QA scripts, which were removed afterward. Existing workspace source edits were preserved.
 
-The language/recovery audit, comparative performance investigation and editor smoke checks are complete for the stated corpus and cases. The PR remains a draft for user review. These results are not a proof of correctness for every possible malformed program or a guarantee of interactive latency on every workspace.
+The language/recovery audit, comparative performance investigation and editor smoke checks are complete for the stated corpus and cases. These results are not a proof of correctness for every possible malformed program or a guarantee of interactive latency on every workspace.

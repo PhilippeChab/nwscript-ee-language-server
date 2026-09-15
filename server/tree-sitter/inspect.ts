@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import { resolve } from "path";
 import { pathToFileURL } from "url";
 import { TextDocument } from "vscode-languageserver-textdocument";
-import Tokenizer from "../../src/Tokenizer/Tokenizer";
+import Tokenizer from "../src/Tokenizer/Tokenizer";
 
 async function main() {
   const paths = process.argv.slice(2).filter((argument) => !argument.startsWith("--"));

@@ -7,15 +7,15 @@ import { tmpdir } from "node:os";
 import { spawnSync } from "node:child_process";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { CompletionItemKind } from "vscode-languageserver";
-import Tokenizer from "../../src/Tokenizer/Tokenizer";
-import SyntaxDocument from "../../src/Tokenizer/SyntaxDocument";
+import Tokenizer from "../src/Tokenizer/Tokenizer";
+import SyntaxDocument from "../src/Tokenizer/SyntaxDocument";
 import TreeSitter = require("web-tree-sitter");
-import { CompletionItemBuilder } from "../../src/Providers/Builders";
+import { CompletionItemBuilder } from "../src/Providers/Builders";
 const { Query } = TreeSitter;
 
-before(async () => await SyntaxDocument.loadGrammar(join(__dirname, "../../resources")));
+before(async () => await SyntaxDocument.loadGrammar(join(__dirname, "../resources")));
 
-const document = (text: string, version = 1) => TextDocument.create("file:///poc.nss", "nwscript", version, text);
+const document = (text: string, version = 1) => TextDocument.create("file:///parser-test.nss", "nwscript", version, text);
 async function parse(t: { after: (cleanup: () => void) => void }, source: string) {
   const parsed = await SyntaxDocument.create(document(source));
   t.after(() => parsed.dispose());
@@ -172,7 +172,7 @@ void test("updates incrementally through unfinished and repaired edits, includin
 });
 
 void test("reads every upstream corpus fixture without syntax errors", async (t) => {
-  const directory = join(__dirname, "../../test/static/neverwinter/corpus");
+  const directory = join(__dirname, "../test/static/neverwinter/corpus");
   for (const file of readdirSync(directory).filter((name) => name.endsWith(".nss"))) {
     const parsed = await parse(t, readFileSync(join(directory, file), "utf8"));
     // Semantic-negative fixtures still have valid syntax. The compiler remains authoritative.
@@ -217,7 +217,7 @@ void test("distinguishes the receiver from the member being accessed", async (t)
 void test("pins the generated WASM to the reviewed grammar sources", () => {
   const directory = join(__dirname, "grammar");
   const manifest = JSON.parse(readFileSync(join(directory, "build.json"), "utf8")) as { files: Record<string, string> };
-  for (const file of ["grammar.js", "tree-sitter.json", "../../../resources/tree-sitter-nwscript.wasm"]) {
+  for (const file of ["grammar.js", "tree-sitter.json", "../../resources/tree-sitter-nwscript.wasm"]) {
     assert.equal(
       createHash("sha256")
         .update(readFileSync(join(directory, file)))
@@ -264,7 +264,7 @@ void test("shares syntax and indexes per live version while isolating different 
 });
 
 void test("ships the WASM runtime from the pinned runtime dependency", () => {
-  assert.deepEqual(readFileSync(join(__dirname, "../../resources/web-tree-sitter.wasm")), readFileSync(join(__dirname, "../../node_modules/web-tree-sitter/tree-sitter.wasm")));
+  assert.deepEqual(readFileSync(join(__dirname, "../resources/web-tree-sitter.wasm")), readFileSync(join(__dirname, "../node_modules/web-tree-sitter/tree-sitter.wasm")));
 });
 
 const conformance = JSON.parse(readFileSync(join(__dirname, "conformance.json"), "utf8")) as {
@@ -293,7 +293,7 @@ for (const fixture of conformance) {
     const file = join(compilerWorkspace, "case.nss");
     writeFileSync(file, fixture.source);
     const platform = process.platform === "win32" ? "windows" : process.platform === "darwin" ? "mac" : "linux";
-    const executable = join(__dirname, "../../resources/compiler", platform, `nwn_script_comp${process.platform === "win32" ? ".exe" : ""}`);
+    const executable = join(__dirname, "../resources/compiler", platform, `nwn_script_comp${process.platform === "win32" ? ".exe" : ""}`);
     const result = spawnSync(executable, ["-y", "-s", "-j", "1", "--userdirectory", compilerWorkspace, "--root", compilerWorkspace, "--dirs", compilerWorkspace, "-c", file], {
       encoding: "utf8",
       timeout: 20000,

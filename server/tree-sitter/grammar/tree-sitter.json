@@ -10,7 +10,7 @@
   "metadata": {
     "version": "0.0.1",
     "license": "MIT",
-    "description": "Experimental NWScript grammar for the language-server PoC",
+    "description": "NWScript grammar for the language server",
     "authors": [{"name": "urothis"}],
     "links": {"repository": "https://github.com/nwn-rs/tree-sitter-nwscript"}
   }

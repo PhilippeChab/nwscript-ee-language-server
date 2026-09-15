@@ -3,7 +3,7 @@
 const fs = require("fs"),
   path = require("path"),
   { performance } = require("perf_hooks");
-const current = path.resolve(__dirname, "../../..");
+const current = path.resolve(__dirname, "../..");
 if (!process.argv[2]) throw new Error("Usage: node compare.cjs /path/to/main-checkout /absolute/path/to/source.nss ...");
 const old = path.resolve(process.argv[2]);
 if (old === current) throw new Error("Baseline must be a separate checkout with its own dependencies installed");
