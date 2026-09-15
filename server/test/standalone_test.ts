@@ -120,6 +120,26 @@ describe("Installed standalone LSP server", function () {
     await client.shutdown();
   });
 
+  it("navigates consistently into closed, open, unsaved and reclosed helpers", async () => {
+    const client = await start();
+    await client.ready();
+    await open(client);
+    const helperUri = pathToFileURL(join(workspace, "helper.nss")).href;
+    const target = async () => {
+      const definition: any = await client.rpc.sendRequest(DefinitionRequest.type, params());
+      expect(definition.uri).to.equal(helperUri);
+      return definition.range.start;
+    };
+    expect(await target()).to.deep.equal({ line: 2, character: 4 });
+    await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri: helperUri, languageId: "nwscript", version: 1, text: helper } });
+    expect(await target()).to.deep.equal({ line: 2, character: 4 });
+    await client.rpc.sendNotification(DidChangeTextDocumentNotification.type, { textDocument: { uri: helperUri, version: 2 }, contentChanges: [{ text: "\n" + helper }] });
+    expect(await target()).to.deep.equal({ line: 3, character: 4 });
+    await client.rpc.sendNotification("textDocument/didClose", { textDocument: { uri: helperUri } });
+    expect(await target()).to.deep.equal({ line: 2, character: 4 });
+    await client.shutdown();
+  });
+
   it("supports the VS Code IPC transport with background indexing and clean shutdown", async () => {
     const client = await start({ ipc: true, capabilities: { workspace: { configuration: true } }, configuration: () => ({ compiler: { enabled: false } }) });
     await client.ready();

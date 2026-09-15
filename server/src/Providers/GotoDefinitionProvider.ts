@@ -1,3 +1,6 @@
+import { readFileSync } from "fs";
+import { fileURLToPath } from "url";
+import { TextDocument } from "vscode-languageserver-textdocument";
 import { CompletionItemKind } from "vscode-languageserver";
 import { normalizeDocumentUri } from "../Utils";
 import type { ServerManager } from "../ServerManager";
@@ -12,7 +15,7 @@ export default class GotoDefinitionProvider extends Provider {
         if (!resolved?.owner) return;
         let target = resolved.token.position;
         if (resolved.token.tokenType === CompletionItemKind.Function) {
-          const ownerDocument = this.server.liveDocumentsManager.get(resolved.owner);
+          const ownerDocument = this.getSourceDocument(resolved.owner);
           if (ownerDocument) {
             const cursor = normalizeDocumentUri(uri) === normalizeDocumentUri(resolved.owner) ? position : undefined;
             target = this.server.tokenizer.getFunctionNavigationTarget(ownerDocument, resolved.token.identifier, cursor) || target;
@@ -21,5 +24,16 @@ export default class GotoDefinitionProvider extends Provider {
         return { uri: resolved.owner, range: { start: target, end: target } };
       }),
     );
+  }
+
+  private getSourceDocument(uri: string) {
+    const live = this.server.liveDocumentsManager.get(uri);
+    if (live) return live;
+    try {
+      return TextDocument.create(uri, "nwscript", 0, readFileSync(fileURLToPath(uri), "utf8"));
+    } catch {
+      // A file may disappear between indexing and navigation. Keep the indexed target.
+      return undefined;
+    }
   }
 }
