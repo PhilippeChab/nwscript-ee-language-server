@@ -4,20 +4,9 @@ The server uses Tree-sitter to parse NWScript. Completion, hover, definition, si
 
 The existing include graph, symbol/type resolution, declaration-order and namespace checks, auto-import edits, and compiler diagnostics stay in their existing classes. VS Code keeps its TextMate grammar for highlighting.
 
-## Concrete simplification
+## Architecture
 
-Compared with `main` at `85e4089`:
-
-| Parsing code | Before | Tree-sitter |
-| --- | ---: | ---: |
-| Tokenizer implementation and index/context contracts | 695 lines | 531 lines across `Tokenizer`, `SyntaxDocument`, `recoverDeclarations`, and `contracts` |
-| Including language constants and the old Oniguruma loader | 758 lines | 550 lines |
-
-These counts include the new adapter and moved types, not just the remaining `Tokenizer.ts`. The production parsing code is about 27% smaller. The separately maintained Tree-sitter grammar is additional source; this is not a claim that the entire repository shrinks by that percentage.
-
-Removed code includes TextMate rule-stack management, highlighting-scope predicates, scanning for declaration types and function-signature boundaries, variable initializer reconstruction, and manually maintained block-scope frames. Syntax nodes supply declaration kinds, types, fields, defaults, parameter lists, and enclosing blocks.
-
-Providers now obtain one syntax document:
+Providers share a syntax document for declaration indexes and scope/context queries:
 
 ```ts
 const syntax = this.server.tokenizer.parse(liveDocument);
@@ -26,9 +15,9 @@ const locals = syntax.getLocalScope(position);
 const call = syntax.getCallContext(position);
 ```
 
-They no longer pass arrays of lines and highlighting tokens through `*FromRaw` methods. A document version shares its syntax tree and index. Updates edit that tree incrementally; a new version invalidates the derived index. Unused live trees release their WASM resources through finalization, while one-shot indexing explicitly disposes them.
+A document version shares its syntax tree and index. Updates edit that tree incrementally; a new version invalidates the derived index. Unused live trees release their WASM resources through finalization, while one-shot indexing explicitly disposes them.
 
-Call and member context still scan syntax leaves where needed to preserve incomplete-expression behavior. The replacement does not claim that every editor operation becomes one AST lookup. Strict background indexing still rejects incomplete declarations so existing fallback snapshots and repair behavior remain intact; live requests use the recovered tree.
+Call and member context scan syntax leaves where needed to preserve incomplete-expression behavior. Strict background indexing still rejects incomplete declarations so existing fallback snapshots and repair behavior remain intact; live requests use the recovered tree.
 
 ## Run and inspect
 
@@ -53,11 +42,7 @@ The inspector uses the same production parser and prints its index, syntax-error
 
 ## Validation
 
-All 662 repository tests pass against the replacement, including the installed standalone LSP tests and the native compiler corpus checks. Existing test expectations are preserved. Direct parser tests now call the syntax-document API, parse-count spies observe `parseContent`, and the package license assertion names the new runtime.
-
-The compiler-backed cases use the checked-in `compiler-language.nss`, so a clean checkout needs no ignored local API file or network download.
-
-The additional 161 parser checks also use the production implementation. They cover the existing index contract, incomplete declarations and strings, prototype parameters, struct fields, nested scopes and calls, Unicode/CRLF positions, incremental edits against fresh parses, document/version isolation, all 39 upstream corpus fixtures, grammar/runtime artifact consistency, and four Zed query files. Type checking and lint run for both packages. The standard-library regeneration check also matches the shipped JSON byte for byte. The headless Neovim client test passes against the packaged replacement. CI runs these checks on Windows, Linux, Intel macOS, and Apple Silicon; automated local validation runs on Linux. A Windows Zed 1.19.2 / WSL smoke check also passed in FRU; see the conformance report for the exact cases.
+CI runs parser and language-server tests on Linux, Windows, Intel macOS and Apple Silicon. Coverage includes compiler-backed fixtures, incomplete declarations, scopes, Unicode/CRLF positions, incremental edits against fresh parses, and grammar/runtime artifact consistency. Standalone tests package and install the server before exercising its LSP interface.
 
 ## Language conformance
 

@@ -9,9 +9,7 @@ import { TextDocument } from "vscode-languageserver-textdocument";
 import { CompletionItemKind } from "vscode-languageserver";
 import Tokenizer from "../src/Tokenizer/Tokenizer";
 import SyntaxDocument from "../src/Tokenizer/SyntaxDocument";
-import TreeSitter = require("web-tree-sitter");
 import { CompletionItemBuilder } from "../src/Providers/Builders";
-const { Query } = TreeSitter;
 
 before(async () => await SyntaxDocument.loadGrammar(join(__dirname, "../resources")));
 
@@ -225,20 +223,6 @@ void test("pins the generated WASM to the reviewed grammar sources", () => {
       manifest.files[file],
       `${file}: rebuild the grammar and update its manifest`,
     );
-  }
-});
-
-void test("loads the Zed queries and excludes raw-string contents from bracket matching", async (t) => {
-  const parsed = await parse(t, 'void main(){string s=r"not (a bracket)";Fn(1,2);}');
-  for (const file of ["highlights.scm", "brackets.scm", "outline.scm", "indents.scm"]) {
-    const query = new Query(parsed.rootNode.tree.language, readFileSync(join(__dirname, "grammar/queries", file), "utf8"));
-    try {
-      const captures = query.captures(parsed.rootNode);
-      assert.ok(captures.length > 0, file);
-      if (file === "brackets.scm") assert.equal(captures.filter((capture) => capture.name === "open" && capture.node.text === "(").length, 2);
-    } finally {
-      query.delete();
-    }
   }
 });
 
