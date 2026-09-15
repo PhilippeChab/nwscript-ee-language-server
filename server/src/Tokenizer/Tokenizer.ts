@@ -237,12 +237,12 @@ export default class Tokenizer {
     const calls: { identifier?: string; activeParameter: number }[] = [];
     let identifier: string | undefined;
     for (let lineIndex = 0; lineIndex <= position.line; lineIndex++) {
-      for (const token of tokensArrays[lineIndex] || []) {
+      for (const [tokenIndex, token] of (tokensArrays[lineIndex] || []).entries()) {
         if (lineIndex === position.line && token.startIndex >= position.character) break;
         if (this.isCommentToken(token) || token.scopes.some((scope) => scope.startsWith("string."))) continue;
         const text = this.getRawTokenContent(lines[lineIndex], token).trim();
         if (!text) continue;
-        if (token.scopes.includes(LanguageScopes.functionIdentifier) && token.scopes.includes(LanguageScopes.functionCall)) {
+        if (token.scopes.includes(LanguageScopes.functionIdentifier) && !this.isFunctionDeclarationIdentifier(lineIndex, tokenIndex, token, lines, tokensArrays)) {
           identifier = text;
           continue;
         }
@@ -268,6 +268,18 @@ export default class Tokenizer {
   }
 
   private getTokenIndexAtPosition(tokensArray: IToken[], position: Position) {
+    // Prefer an identifier beginning at the cursor over the preceding token's
+    // exclusive end. Keep end-of-name lookup for completion and navigation.
+    const identifierScopes = [
+      LanguageScopes.variableIdentifer,
+      LanguageScopes.constantIdentifer,
+      LanguageScopes.functionIdentifier,
+      LanguageScopes.structIdentifier,
+      LanguageScopes.structProperty,
+      LanguageScopes.functionParameter,
+    ];
+    const identifier = tokensArray.findIndex((token) => token.startIndex === position.character && token.scopes.some((scope) => identifierScopes.includes(scope as LanguageScopes)));
+    if (identifier >= 0) return identifier;
     return tokensArray.findIndex((token) => token.startIndex <= position.character && token.endIndex >= position.character);
   }
 
@@ -307,19 +319,22 @@ export default class Tokenizer {
     return tokensArray.findIndex((token) => token.startIndex === targetToken.startIndex);
   }
 
-  private getPrecedingType(lines: string[], tokensArrays: (IToken[] | undefined)[], lineIndex: number, tokenIndex: number) {
+  private getPrecedingToken(lines: string[], tokensArrays: (IToken[] | undefined)[], lineIndex: number, tokenIndex: number) {
     for (let line = lineIndex; line >= 0; line--) {
       const tokens = this.requireTokens(tokensArrays, line);
       for (let index = line === lineIndex ? tokenIndex - 1 : tokens.length - 1; index >= 0; index--) {
         const token = tokens[index];
         const text = this.getRawTokenContent(lines[line], token).trim();
         if (!text || this.isCommentToken(token)) continue;
-        // The nearest meaningful token is the builtin type or the struct tag.
-        // Whitespace and comments may span lines in valid signatures.
-        return text as LanguageTypes;
+        return { token, text };
       }
     }
-    throw new Error("Missing declaration type");
+  }
+
+  private getPrecedingType(lines: string[], tokensArrays: (IToken[] | undefined)[], lineIndex: number, tokenIndex: number) {
+    const preceding = this.getPrecedingToken(lines, tokensArrays, lineIndex, tokenIndex);
+    if (!preceding) throw new Error("Missing declaration type");
+    return preceding.text as LanguageTypes;
   }
 
   private *functionSignature(lineIndex: number, tokenIndex: number, tokensArrays: (IToken[] | undefined)[]) {
@@ -379,8 +394,12 @@ export default class Tokenizer {
     return false;
   }
 
-  private isFunctionIdentifier(lineIndex: number, tokenIndex: number, token: IToken) {
-    return !(tokenIndex === 0 && lineIndex === 0) && !token.scopes.includes(LanguageScopes.block) && token.scopes.includes(LanguageScopes.functionIdentifier);
+  private isFunctionDeclarationIdentifier(lineIndex: number, tokenIndex: number, token: IToken, lines: string[], tokensArrays: (IToken[] | undefined)[]) {
+    if (token.scopes.includes(LanguageScopes.block) || !token.scopes.includes(LanguageScopes.functionIdentifier)) return false;
+    // The grammar also labels calls in global initializers as functions.
+    // A declaration must have a return type immediately before its name.
+    const preceding = this.getPrecedingToken(lines, tokensArrays, lineIndex, tokenIndex)?.token;
+    return preceding?.scopes.some((scope) => scope === LanguageScopes.type || scope === LanguageScopes.structIdentifier) || false;
   }
 
   private getFunctionToken(lineIndex: number, tokenIndex: number, token: IToken, lines: string[], tokensArrays: (IToken[] | undefined)[]): FunctionComplexToken {
@@ -555,7 +574,7 @@ export default class Tokenizer {
               }
             }
 
-            if (this.isFunctionIdentifier(lineIndex, tokenIndex, token)) {
+            if (this.isFunctionDeclarationIdentifier(lineIndex, tokenIndex, token, lines, tokensArrays)) {
               const implementation = !this.isFunctionDeclaration(lineIndex, tokenIndex, tokensArrays);
               const identifier = this.getRawTokenContent(line, token);
               const functionToken = this.getFunctionToken(lineIndex, tokenIndex, token, lines, tokensArrays);
@@ -628,7 +647,7 @@ export default class Tokenizer {
           if (!frames.length) activeFunction = undefined;
         } else if (!frames.length && token.scopes.includes(LanguageScopes.terminatorStatement)) {
           pendingFunction = undefined;
-        } else if (this.isFunctionIdentifier(lineIndex, tokenIndex, token)) {
+        } else if (this.isFunctionDeclarationIdentifier(lineIndex, tokenIndex, token, lines, tokensArrays)) {
           try {
             pendingFunction = { ...this.getFunctionToken(lineIndex, tokenIndex, token, lines, tokensArrays), variables: [] };
             if (!this.isFunctionDeclaration(lineIndex, tokenIndex, tokensArrays)) {
