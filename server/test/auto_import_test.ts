@@ -127,8 +127,7 @@ describe("Auto-import completion", function () {
     const valid = '#include "helper"\nconst int VISIBLE = 1;\nvoid Existing();\nvoid main() {}\n';
     for (const declaration of ["struct Example {\n int field;\n float other;\n};", 'void Example(\n int value,\n string text = "value");', "const int EXAMPLE = 1;"]) {
       for (let length = 0; length <= declaration.length; length++) {
-        const [lines, raw] = tokenizer.tokenizeContentToRaw(valid + declaration.slice(0, length));
-        const scope = tokenizer.tokenizeDocumentFromRaw(lines, raw);
+        const scope = tokenizer.parseContent(valid + declaration.slice(0, length)).getIndex();
         expect(scope.children).to.deep.equal(["helper"]);
         expect(scope.entryPointDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["main"]);
         expect(scope.globalDeclarations.map((token: any) => token.identifier)).to.include.members(["VISIBLE", "Existing"]);
@@ -138,8 +137,7 @@ describe("Auto-import completion", function () {
 
   it("resumes after an incomplete struct field and keeps strict indexing unchanged", () => {
     const source = "struct Example {\n int first;\n int \n float last;\n};\nconst int AFTER = 1;\n";
-    const [lines, raw] = tokenizer.tokenizeContentToRaw(source);
-    const scope = tokenizer.tokenizeDocumentFromRaw(lines, raw);
+    const scope = tokenizer.parseContent(source).getIndex();
     expect(scope.structDeclarations[0].properties.map((token: any) => token.identifier)).to.deep.equal(["first", "last"]);
     expect(scope.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["AFTER"]);
     expect(() => tokenizer.tokenizeContent(source, "document")).to.throw();
@@ -684,10 +682,9 @@ describe("Auto-import completion", function () {
     expect(items.some((item) => item.label === "Imported")).to.equal(false);
   });
 
-  it("recognizes includes by grammar scopes in both indexing and live completion", () => {
+  it("recognizes include syntax in both indexing and live completion", () => {
     const source = '# include "helper" /* tail */\n// #include "fake"\n/*\n#include "also_fake"\n*/\n#include "unfinished\n';
-    const [lines, tokens] = tokenizer.tokenizeContentToRaw(source);
-    expect(tokenizer.tokenizeDocumentFromRaw(lines, tokens).children).to.deep.equal(["helper"]);
+    expect(tokenizer.parseContent(source).getIndex().children).to.deep.equal(["helper"]);
     expect(tokenizer.tokenizeContent(source, "document").children).to.deep.equal(["helper"]);
   });
 

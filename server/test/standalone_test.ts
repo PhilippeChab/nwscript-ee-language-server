@@ -102,7 +102,8 @@ describe("Installed standalone LSP server", function () {
     };
     compare("server/resources");
     compare("syntaxes");
-    expect(existsSync(join(packageRoot, "third-party/vscode-oniguruma/LICENSE.txt"))).to.equal(true);
+    expect(existsSync(join(packageRoot, "third-party/web-tree-sitter/LICENSE"))).to.equal(true);
+    expect(existsSync(join(packageRoot, "server/resources/tree-sitter-nwscript.LICENSE.txt"))).to.equal(true);
     const executable = join(packageRoot, "..", ".bin", process.platform === "win32" ? "nwscript-ee-language-server.cmd" : "nwscript-ee-language-server");
     expect(existsSync(executable)).to.equal(true);
     if (process.platform !== "win32") expect(execFileSync(executable, ["--version"], { encoding: "utf8" }).trim()).to.equal(manifest.version);
@@ -577,6 +578,25 @@ describe("Installed standalone LSP server", function () {
       await client.shutdown();
     });
   }
+
+  it("resolves a later declaration after an unfinished signature through all editor providers", async () => {
+    const text = "int Broken(\nint Later(int parameter){return parameter;}\nvoid main(){Later(1);}";
+    const uri = params().textDocument.uri;
+    writeFileSync(join(workspace, "sample.nss"), text);
+    const client = await start();
+    await client.ready();
+    await client.rpc.sendNotification(DidOpenTextDocumentNotification.type, { textDocument: { uri, languageId: "nwscript", version: 1, text } });
+    const document = TextDocument.create(uri, "nwscript", 1, text);
+    const target = { textDocument: { uri }, position: document.positionAt(text.lastIndexOf("Later") + 2) };
+    const declaration = document.positionAt(text.indexOf("Later"));
+    expect(await client.rpc.sendRequest(DefinitionRequest.type, target)).to.deep.equal({ uri, range: { start: declaration, end: declaration } });
+    expect(content(await client.rpc.sendRequest(HoverRequest.type, target))?.value).to.include("int Later(int parameter)");
+    const signature = await client.rpc.sendRequest(SignatureHelpRequest.type, { ...target, position: document.positionAt(text.lastIndexOf("Later") + 6) });
+    expect(signature?.signatures[0].label).to.equal("int Later(int parameter)");
+    const completion: any = await client.rpc.sendRequest(CompletionRequest.type, target);
+    expect((completion.items || completion).some((item: any) => item.label === "Later")).to.equal(true);
+    await client.shutdown();
+  });
 
   it("resolves every character of struct types, parameters, variables and fields", async () => {
     const text = "struct Data { int field; };\nvoid Fn(struct Data param) { struct Data local; local.field = param.field; }\n";

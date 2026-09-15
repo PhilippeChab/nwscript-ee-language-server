@@ -6,7 +6,6 @@ import { CompletionItemBuilder } from "./Builders";
 import { AutoImportContext, LocalScopeTokenizationResult } from "../Tokenizer/Tokenizer";
 import { isStandardLibrary } from "../Documents/StandardLibrary";
 import { Document } from "../Documents";
-import { LanguageTypes } from "../Tokenizer/constants";
 import Provider from "./Provider";
 
 const MAX_AUTO_IMPORT_ITEMS = 200;
@@ -28,16 +27,17 @@ export default class CompletionItemsProvider extends Provider {
 
       const context = this.getDocumentContext(uri, position);
       if (!context) return;
-      const { liveDocument, document, lines, rawTokenizedContent, localScope } = context;
-      if (this.server.tokenizer.isInCommentOrStringFromRaw(rawTokenizedContent, position)) return [];
-      const autoImportContext = this.server.config.completion.autoImport ? this.server.tokenizer.getAutoImportContextFromRaw(lines, rawTokenizedContent, position) : undefined;
+      const { liveDocument, document, syntax, localScope } = context;
+      if (syntax.isInCommentOrString(position)) return [];
+      const completionContext = syntax.getAutoImportContext(position);
+      const autoImportContext = this.server.config.completion.autoImport ? completionContext : undefined;
 
-      const memberPath = this.server.tokenizer.getMemberAccessFromRaw(lines, rawTokenizedContent, position);
+      const memberPath = syntax.getMemberPath(position);
       if (memberPath) {
         return this.resolveMemberStruct(context, memberPath.slice(0, -1))?.token.properties.map((property) => CompletionItemBuilder.buildItem(property)) || [];
       }
 
-      if (autoImportContext?.structsOnly || this.server.tokenizer.getActionTargetAtPosition(lines, rawTokenizedContent, position, -2).rawContent === LanguageTypes.struct) {
+      if (completionContext?.structsOnly) {
         const items = document
           .getGlobalStructComplexTokens()
           .concat(this.getStandardLibStructTokens(uri))

@@ -43,6 +43,13 @@ jobs:
           }
       - name: Lint
         run: yarn lint
+      - name: Install Tree-sitter grammar dependencies
+        run: yarn --cwd server/tree-sitter install --frozen-lockfile
+      - name: Check Tree-sitter grammar
+        run: |
+          yarn --cwd server/tree-sitter typecheck
+          yarn --cwd server/tree-sitter lint
+          yarn --cwd server/tree-sitter test
       - name: Run Tests Suite (including installed standalone server)
         run: yarn test
       - name: Test Neovim client (Linux)

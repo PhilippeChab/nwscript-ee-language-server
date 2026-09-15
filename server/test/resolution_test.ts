@@ -229,8 +229,8 @@ describe("Document and signature resolution", () => {
       const source = `int FIRST = ${expression};\nint SECOND = Make(2);\nvoid After() {}`;
       const scope = tokenizer.tokenizeContent(source, "document");
       expect(scope.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["FIRST", "SECOND", "After"]);
-      const [lines, raw] = tokenizer.tokenizeContentToRaw(source);
-      const local = tokenizer.tokenizeContentFromRaw(lines, raw, 0, lines.length - 1, lines.at(-1).length);
+      const document = TextDocument.create(workspaceUri("test.nss"), "nwscript", 1, source);
+      const local = tokenizer.parse(document).getLocalScope(document.positionAt(source.length));
       expect(local.functionsComplexTokens.map((token: any) => token.identifier)).to.deep.equal(["After"]);
     });
   }
@@ -301,8 +301,7 @@ describe("Document and signature resolution", () => {
     it(`tracks lexical scope and declaration lists: ${source}`, () => {
       const document = TextDocument.create(workspaceUri("test.nss"), "nwscript", 1, source.replace("|", ""));
       const position = document.positionAt(source.indexOf("|"));
-      const [lines, raw] = tokenizer.tokenizeContentToRaw(document.getText());
-      const scope = tokenizer.tokenizeContentFromRaw(lines, raw, 0, position.line, position.character);
+      const scope = tokenizer.parse(document).getLocalScope(position);
       expect(scope.functionVariablesComplexTokens.map((token: any) => token.identifier)).to.deep.equal(names);
     });
   }
@@ -323,8 +322,7 @@ describe("Document and signature resolution", () => {
 
   it("does not resolve identifiers inside comments or string literals", () => {
     for (const text of ['void main() { string value = "VALUE"; }', "void main() { /* VALUE */ }"]) {
-      const [lines, raw] = tokenizer.tokenizeContentToRaw(text);
-      expect(tokenizer.getActionTargetAtPosition(lines, raw, { line: 0, character: text.indexOf("VALUE") + 2 }).rawContent).to.equal(undefined);
+      expect(tokenizer.parseContent(text).getActionTarget({ line: 0, character: text.indexOf("VALUE") + 2 }).rawContent).to.equal(undefined);
     }
   });
 
@@ -340,8 +338,7 @@ describe("Document and signature resolution", () => {
   ] as const) {
     it(`reads member access from tokens: ${source}`, () => {
       const document = TextDocument.create(workspaceUri("member.nss"), "nwscript", 1, source.replace("|", ""));
-      const [lines, raw] = tokenizer.tokenizeContentToRaw(document.getText());
-      expect(tokenizer.getMemberAccessFromRaw(lines, raw, document.positionAt(source.indexOf("|")))).to.deep.equal(expected);
+      expect(tokenizer.parse(document).getMemberPath(document.positionAt(source.indexOf("|")))).to.deep.equal(expected);
     });
   }
 
@@ -374,9 +371,9 @@ describe("Document and signature resolution", () => {
           },
         },
       });
-      const tokenize = tokenizer.tokenizeContentToRaw.bind(tokenizer);
+      const tokenize = tokenizer.parseContent.bind(tokenizer);
       let parses = 0;
-      tokenizer.tokenizeContentToRaw = (...args: any[]) => {
+      tokenizer.parseContent = (...args: any[]) => {
         parses++;
         return tokenize(...args);
       };
@@ -386,7 +383,7 @@ describe("Document and signature resolution", () => {
         expect(result.activeParameter).to.equal(activeParameter);
         expect(parses).to.equal(1);
       } finally {
-        tokenizer.tokenizeContentToRaw = tokenize;
+        tokenizer.parseContent = tokenize;
       }
     });
   }
