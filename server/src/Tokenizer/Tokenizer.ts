@@ -263,10 +263,6 @@ export default class Tokenizer {
     return tokensArray.findIndex((token) => token.startIndex <= position.character && token.endIndex >= position.character);
   }
 
-  private getTokenAtPosition(tokensArray: IToken[], position: Position) {
-    return tokensArray.find((token) => token.startIndex <= position.character && token.endIndex >= position.character);
-  }
-
   private getRawTokenContent(line: string, token: IToken) {
     return line.slice(token.startIndex, token.endIndex);
   }
@@ -616,7 +612,8 @@ export default class Tokenizer {
           if (!frames.length && pendingFunction) {
             activeFunction = pendingFunction;
             pendingFunction = undefined;
-            frames.push([...activeFunction.params]);
+            // Body locals can shadow parameters, including on the signature's line.
+            frames.push([]);
           } else frames.push([]);
         } else if (token.scopes.includes(LanguageScopes.blockTermination)) {
           frames.pop();
@@ -649,7 +646,7 @@ export default class Tokenizer {
           .slice()
           .reverse()
           .flatMap((variables) => nearestFirst(variables))
-          .concat(pendingFunction?.params.filter((param) => beforeCursor(param.position)) || []);
+          .concat((activeFunction || pendingFunction)?.params.filter((param) => beforeCursor(param.position)) || []);
     return scope;
   }
 }
