@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "NW_I0_Plot"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 0,
-            "character": 0
+            "name": "NW_I0_Plot",
+            "position": {
+                "line": 0,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [
@@ -17,7 +17,7 @@
                 "character": 4
             },
             "identifier": "StartingConditional",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -36,7 +36,8 @@
                 "character": 5
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nOpen",
@@ -45,7 +46,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nPick",
@@ -54,7 +56,8 @@
                 "character": 23
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nTrap",
@@ -63,7 +66,8 @@
                 "character": 30
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nDisable",
@@ -72,7 +76,8 @@
                 "character": 37
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

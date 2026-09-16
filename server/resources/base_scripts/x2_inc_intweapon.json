@@ -6,7 +6,7 @@
                 "character": 10
             },
             "identifier": "X2_IW_INTERJECTION_CHANCE_EQUIP",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "25",
             "isConst": true
@@ -17,7 +17,7 @@
                 "character": 10
             },
             "identifier": "X2_IW_INTERJECTION_TYPE_EQUIP",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -28,7 +28,7 @@
                 "character": 10
             },
             "identifier": "X2_IW_INTERJECTION_EQUIP_COUNT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -39,7 +39,7 @@
                 "character": 10
             },
             "identifier": "X2_IW_INTERJECTION_CHANCE_UNEQUIP",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "25",
             "isConst": true
@@ -50,7 +50,7 @@
                 "character": 10
             },
             "identifier": "X2_IW_INTERJECTION_TYPE_UNEQUIP",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -61,7 +61,7 @@
                 "character": 10
             },
             "identifier": "X2_IW_INTERJECTION_UNEQUIP_COUNT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -72,7 +72,7 @@
                 "character": 10
             },
             "identifier": "X2_IW_INTERJECTION_CHANCE_BATTLECRY",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "8",
             "isConst": true
@@ -83,7 +83,7 @@
                 "character": 10
             },
             "identifier": "X2_IW_INTERJECTION_TYPE_BATTLECRY",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -94,7 +94,7 @@
                 "character": 10
             },
             "identifier": "X2_IW_INTERJECTION_BATTLECRY_COUNT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "20",
             "isConst": true
@@ -105,7 +105,7 @@
                 "character": 10
             },
             "identifier": "X2_IW_INTERJECTION_CHANCE_ONHIT_CRE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "20",
             "isConst": true
@@ -116,7 +116,7 @@
                 "character": 10
             },
             "identifier": "X2_IW_INTERJECTION_TYPE_ONHIT_CRE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "4",
             "isConst": true
@@ -127,7 +127,7 @@
                 "character": 10
             },
             "identifier": "X2_IW_INTERJECTION_TYPE_TRIGGER",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -138,7 +138,7 @@
                 "character": 10
             },
             "identifier": "X2_IW_CURSE_ENHANCEMENT_DURATION",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "10",
             "isConst": true
@@ -149,7 +149,7 @@
                 "character": 7
             },
             "identifier": "IWGetWeaponDialogName",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -158,7 +158,7 @@
                         "character": 36
                     },
                     "identifier": "oWeapon",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -177,7 +177,7 @@
                 "character": 7
             },
             "identifier": "IWSWrapper",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -186,7 +186,7 @@
                         "character": 25
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -195,7 +195,7 @@
                         "character": 41
                     },
                     "identifier": "oWeapon",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -214,7 +214,7 @@
                 "character": 7
             },
             "identifier": "IWSpawnInWeaponCreature",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -223,7 +223,7 @@
                         "character": 38
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -232,7 +232,7 @@
                         "character": 54
                     },
                     "identifier": "oWeapon",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -241,7 +241,7 @@
                         "character": 67
                     },
                     "identifier": "bEquip",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -261,7 +261,7 @@
                 "character": 7
             },
             "identifier": "IWStartIntelligentWeaponConversation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -270,7 +270,7 @@
                         "character": 51
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -279,7 +279,7 @@
                         "character": 66
                     },
                     "identifier": "oWeapon",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -299,7 +299,7 @@
                 "character": 7
             },
             "identifier": "IWEndIntelligentWeaponConversation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -308,7 +308,7 @@
                         "character": 49
                     },
                     "identifier": "oWeaponCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -317,7 +317,7 @@
                         "character": 74
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -338,7 +338,7 @@
                 "character": 7
             },
             "identifier": "IWGetIsInIntelligentWeaponConversation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -347,7 +347,7 @@
                         "character": 53
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -367,7 +367,7 @@
                 "character": 7
             },
             "identifier": "IWSetConversationCondition",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -376,7 +376,7 @@
                         "character": 41
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -385,7 +385,7 @@
                         "character": 53
                     },
                     "identifier": "nType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -394,7 +394,7 @@
                         "character": 64
                     },
                     "identifier": "nValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -413,7 +413,7 @@
                 "character": 7
             },
             "identifier": "IWGetConversationCondition",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -422,7 +422,7 @@
                         "character": 41
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -431,7 +431,7 @@
                         "character": 53
                     },
                     "identifier": "nType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -450,7 +450,7 @@
                 "character": 7
             },
             "identifier": "IWClearConversationConditions",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -459,7 +459,7 @@
                         "character": 44
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -478,7 +478,7 @@
                 "character": 7
             },
             "identifier": "IWSetCreatureHadOneLiner",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -487,7 +487,7 @@
                         "character": 39
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -496,7 +496,7 @@
                         "character": 54
                     },
                     "identifier": "bValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -513,7 +513,7 @@
                 "character": 7
             },
             "identifier": "IWPlayRandomEquipComment",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -522,7 +522,7 @@
                         "character": 39
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -531,7 +531,7 @@
                         "character": 54
                     },
                     "identifier": "oWeapon",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -548,7 +548,7 @@
                 "character": 7
             },
             "identifier": "IWPlayRandomUnequipComment",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -557,7 +557,7 @@
                         "character": 41
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -566,7 +566,7 @@
                         "character": 56
                     },
                     "identifier": "oWeapon",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -583,7 +583,7 @@
                 "character": 7
             },
             "identifier": "IWPlayRandomHitQuote",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -592,7 +592,7 @@
                         "character": 35
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -601,7 +601,7 @@
                         "character": 51
                     },
                     "identifier": "oWeapon",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -610,7 +610,7 @@
                         "character": 67
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -627,7 +627,7 @@
                 "character": 7
             },
             "identifier": "IWGetIntelligentWeaponEquipped",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -636,7 +636,7 @@
                         "character": 45
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -653,7 +653,7 @@
                 "character": 5
             },
             "identifier": "IWCreateIntelligentWeapon",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -662,7 +662,7 @@
                         "character": 38
                     },
                     "identifier": "oWeapon",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -671,7 +671,7 @@
                         "character": 51
                     },
                     "identifier": "nLevel",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "1"
                 }
@@ -693,7 +693,7 @@
                 "character": 5
             },
             "identifier": "IWSetEnhancementAndDrainLevel",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -702,7 +702,7 @@
                         "character": 42
                     },
                     "identifier": "oWeapon",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -711,7 +711,7 @@
                         "character": 55
                     },
                     "identifier": "nAddition",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -720,7 +720,7 @@
                         "character": 70
                     },
                     "identifier": "bRemove",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -738,7 +738,7 @@
                 "character": 4
             },
             "identifier": "IWGetStaticEnhancementBonus",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -747,7 +747,7 @@
                         "character": 39
                     },
                     "identifier": "oWeapon",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -764,7 +764,7 @@
                 "character": 5
             },
             "identifier": "IWSetTalkedTo",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -773,7 +773,7 @@
                         "character": 26
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -782,7 +782,7 @@
                         "character": 42
                     },
                     "identifier": "sWeaponTag",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -791,7 +791,7 @@
                         "character": 58
                     },
                     "identifier": "nNumTimes",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "1"
                 }
@@ -812,7 +812,7 @@
                 "character": 4
             },
             "identifier": "IWGetTalkedTo",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -821,7 +821,7 @@
                         "character": 25
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -830,7 +830,7 @@
                         "character": 41
                     },
                     "identifier": "sWeaponTag",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -850,7 +850,7 @@
                 "character": 5
             },
             "identifier": "IWSetQuestionAsked",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -859,7 +859,7 @@
                         "character": 31
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -868,7 +868,7 @@
                         "character": 47
                     },
                     "identifier": "sWeaponTag",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -877,7 +877,7 @@
                         "character": 62
                     },
                     "identifier": "nQuestion",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -897,7 +897,7 @@
                 "character": 4
             },
             "identifier": "IWGetQuestionAsked",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -906,7 +906,7 @@
                         "character": 30
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -915,7 +915,7 @@
                         "character": 46
                     },
                     "identifier": "sWeaponTag",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -924,7 +924,7 @@
                         "character": 61
                     },
                     "identifier": "nQuestion",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -944,7 +944,7 @@
                 "character": 4
             },
             "identifier": "IWGetIsHotUChapter1",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -963,7 +963,7 @@
                 "character": 4
             },
             "identifier": "IWGetIsHotUChapter2",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -982,7 +982,7 @@
                 "character": 4
             },
             "identifier": "IWGetIsHotUChapter3",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -1001,7 +1001,7 @@
                 "character": 5
             },
             "identifier": "IWGetCreatureHadOneLiner",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1010,7 +1010,7 @@
                         "character": 37
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1027,7 +1027,7 @@
                 "character": 5
             },
             "identifier": "IWPlayTriggerQuote",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1036,7 +1036,7 @@
                         "character": 31
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1045,7 +1045,7 @@
                         "character": 47
                     },
                     "identifier": "oWeapon",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1054,7 +1054,7 @@
                         "character": 60
                     },
                     "identifier": "nID",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -1075,7 +1075,7 @@
                 "character": 5
             },
             "identifier": "IWSetIntelligentWeaponEquipped",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1084,7 +1084,7 @@
                         "character": 43
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1093,7 +1093,7 @@
                         "character": 59
                     },
                     "identifier": "oWeapon",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1110,7 +1110,7 @@
                 "character": 5
             },
             "identifier": "IWClearConversationCondition",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1119,7 +1119,7 @@
                         "character": 41
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1136,18 +1136,20 @@
         }
     ],
     "structDeclarations": [],
-    "children": [
-        "x2_inc_itemprop",
-        "x2_i0_spells"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 15,
-            "character": 0
+            "name": "x2_inc_itemprop",
+            "position": {
+                "line": 15,
+                "character": 0
+            }
         },
         {
-            "line": 16,
-            "character": 0
+            "name": "x2_i0_spells",
+            "position": {
+                "line": 16,
+                "character": 0
+            }
         }
     ],
     "localDeclarations": [
@@ -1157,7 +1159,7 @@
                 "character": 36
             },
             "identifier": "oWeapon",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1166,7 +1168,7 @@
                 "character": 38
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1175,7 +1177,7 @@
                 "character": 54
             },
             "identifier": "oWeapon",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1184,7 +1186,7 @@
                 "character": 67
             },
             "identifier": "bEquip",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -1194,7 +1196,7 @@
                 "character": 23
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1203,7 +1205,7 @@
                 "character": 39
             },
             "identifier": "oWeapon",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1212,7 +1214,7 @@
                 "character": 49
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1221,7 +1223,7 @@
                 "character": 64
             },
             "identifier": "oWeapon",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1231,7 +1233,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1239,7 +1242,7 @@
                 "character": 47
             },
             "identifier": "oWeaponCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1248,7 +1251,7 @@
                 "character": 72
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1257,7 +1260,7 @@
                 "character": 50
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1267,7 +1270,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1275,7 +1279,7 @@
                 "character": 39
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1284,7 +1288,7 @@
                 "character": 51
             },
             "identifier": "nType",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1293,7 +1297,7 @@
                 "character": 62
             },
             "identifier": "nValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1302,7 +1306,7 @@
                 "character": 42
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1311,7 +1315,7 @@
                 "character": 38
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1320,7 +1324,7 @@
                 "character": 50
             },
             "identifier": "nType",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1330,7 +1334,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1338,7 +1343,7 @@
                 "character": 38
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1347,7 +1352,7 @@
                 "character": 53
             },
             "identifier": "oWeapon",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1356,7 +1361,7 @@
                 "character": 40
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1365,7 +1370,7 @@
                 "character": 55
             },
             "identifier": "oWeapon",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1374,7 +1379,7 @@
                 "character": 37
             },
             "identifier": "oCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1383,7 +1388,7 @@
                 "character": 52
             },
             "identifier": "bValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1392,7 +1397,7 @@
                 "character": 33
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1401,7 +1406,7 @@
                 "character": 49
             },
             "identifier": "oWeapon",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1410,7 +1415,7 @@
                 "character": 65
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1420,7 +1425,8 @@
                 "character": 15
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1428,7 +1434,7 @@
                 "character": 46
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1438,7 +1444,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1446,7 +1453,7 @@
                 "character": 38
             },
             "identifier": "oWeapon",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1455,7 +1462,7 @@
                 "character": 51
             },
             "identifier": "nLevel",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "1"
         },
@@ -1466,7 +1473,8 @@
                 "character": 15
             },
             "valueType": "itemproperty",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "ipTalkTo",
@@ -1475,7 +1483,8 @@
                 "character": 15
             },
             "valueType": "itemproperty",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1483,7 +1492,7 @@
                 "character": 26
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1492,7 +1501,7 @@
                 "character": 42
             },
             "identifier": "sWeaponTag",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1501,7 +1510,7 @@
                 "character": 58
             },
             "identifier": "nNumTimes",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "1"
         },
@@ -1511,7 +1520,7 @@
                 "character": 25
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1520,7 +1529,7 @@
                 "character": 41
             },
             "identifier": "sWeaponTag",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1530,7 +1539,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1538,7 +1548,7 @@
                 "character": 31
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1547,7 +1557,7 @@
                 "character": 47
             },
             "identifier": "sWeaponTag",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1556,7 +1566,7 @@
                 "character": 62
             },
             "identifier": "nQuestion",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1565,7 +1575,7 @@
                 "character": 30
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1574,7 +1584,7 @@
                 "character": 46
             },
             "identifier": "sWeaponTag",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1583,7 +1593,7 @@
                 "character": 61
             },
             "identifier": "nQuestion",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1593,7 +1603,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bRet",
@@ -1602,7 +1613,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bRet",
@@ -1611,7 +1623,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bRet",
@@ -1620,7 +1633,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1628,7 +1642,7 @@
                 "character": 39
             },
             "identifier": "oWeapon",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1638,7 +1652,8 @@
                 "character": 17
             },
             "valueType": "itemproperty",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nFound",
@@ -1647,7 +1662,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1655,7 +1671,7 @@
                 "character": 42
             },
             "identifier": "oWeapon",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1664,7 +1680,7 @@
                 "character": 55
             },
             "identifier": "nAddition",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1673,7 +1689,7 @@
                 "character": 70
             },
             "identifier": "bRemove",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -1684,7 +1700,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "ip",
@@ -1693,7 +1710,8 @@
                 "character": 17
             },
             "valueType": "itemproperty",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nEnhancement",
@@ -1702,7 +1720,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "ip2",
@@ -1711,7 +1730,8 @@
                 "character": 17
             },
             "valueType": "itemproperty",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "ip3",
@@ -1720,7 +1740,8 @@
                 "character": 17
             },
             "valueType": "itemproperty",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fTime",
@@ -1729,7 +1750,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

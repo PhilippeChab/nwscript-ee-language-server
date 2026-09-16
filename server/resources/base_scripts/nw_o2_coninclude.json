@@ -6,7 +6,7 @@
                 "character": 14
             },
             "identifier": "RANGE_1_MIN",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -17,7 +17,7 @@
                 "character": 14
             },
             "identifier": "RANGE_1_MAX",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -28,7 +28,7 @@
                 "character": 14
             },
             "identifier": "RANGE_2_MIN",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "6",
             "isConst": true
@@ -39,7 +39,7 @@
                 "character": 14
             },
             "identifier": "RANGE_2_MAX",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "8",
             "isConst": true
@@ -50,7 +50,7 @@
                 "character": 14
             },
             "identifier": "RANGE_3_MIN",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "9",
             "isConst": true
@@ -61,7 +61,7 @@
                 "character": 14
             },
             "identifier": "RANGE_3_MAX",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "10",
             "isConst": true
@@ -72,7 +72,7 @@
                 "character": 14
             },
             "identifier": "RANGE_4_MIN",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "11",
             "isConst": true
@@ -83,7 +83,7 @@
                 "character": 14
             },
             "identifier": "RANGE_4_MAX",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "13",
             "isConst": true
@@ -94,7 +94,7 @@
                 "character": 14
             },
             "identifier": "RANGE_5_MIN",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "14",
             "isConst": true
@@ -105,7 +105,7 @@
                 "character": 14
             },
             "identifier": "RANGE_5_MAX",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "16",
             "isConst": true
@@ -116,7 +116,7 @@
                 "character": 14
             },
             "identifier": "RANGE_6_MIN",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "17",
             "isConst": true
@@ -127,7 +127,7 @@
                 "character": 14
             },
             "identifier": "RANGE_6_MAX",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "100",
             "isConst": true
@@ -138,7 +138,7 @@
                 "character": 14
             },
             "identifier": "NUMBER_LOW_ONE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "100",
             "isConst": true
@@ -149,7 +149,7 @@
                 "character": 48
             },
             "identifier": "NUMBER_MED_ONE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "60",
             "isConst": true
@@ -160,7 +160,7 @@
                 "character": 82
             },
             "identifier": "NUMBER_HIGH_ONE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "40",
             "isConst": true
@@ -171,7 +171,7 @@
                 "character": 117
             },
             "identifier": "NUMBER_BOSS_ONE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "100",
             "isConst": true
@@ -182,7 +182,7 @@
                 "character": 14
             },
             "identifier": "NUMBER_LOW_TWO",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -193,7 +193,7 @@
                 "character": 48
             },
             "identifier": "NUMBER_MED_TWO",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "30",
             "isConst": true
@@ -204,7 +204,7 @@
                 "character": 82
             },
             "identifier": "NUMBER_HIGH_TWO",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "40",
             "isConst": true
@@ -215,7 +215,7 @@
                 "character": 117
             },
             "identifier": "NUMBER_BOSS_TWO",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -226,7 +226,7 @@
                 "character": 14
             },
             "identifier": "NUMBER_LOW_THREE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -237,7 +237,7 @@
                 "character": 48
             },
             "identifier": "NUMBER_MED_THREE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "10",
             "isConst": true
@@ -248,7 +248,7 @@
                 "character": 82
             },
             "identifier": "NUMBER_HIGH_THREE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "20",
             "isConst": true
@@ -259,7 +259,7 @@
                 "character": 117
             },
             "identifier": "NUMBER_BOSS_THREE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -270,7 +270,7 @@
                 "character": 14
             },
             "identifier": "NUMBER_BOOK_ONE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "75",
             "isConst": true
@@ -281,7 +281,7 @@
                 "character": 14
             },
             "identifier": "NUMBER_BOOK_TWO",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "20",
             "isConst": true
@@ -292,7 +292,7 @@
                 "character": 14
             },
             "identifier": "NUMBER_BOOK_THREE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -303,7 +303,7 @@
                 "character": 16
             },
             "identifier": "LOW_MOD_GOLD",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "float",
             "value": "0.5",
             "isConst": true
@@ -314,7 +314,7 @@
                 "character": 50
             },
             "identifier": "MEDIUM_MOD_GOLD",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "float",
             "value": "1.0",
             "isConst": true
@@ -325,7 +325,7 @@
                 "character": 85
             },
             "identifier": "HIGH_MOD_GOLD",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "float",
             "value": "3.0",
             "isConst": true
@@ -336,7 +336,7 @@
                 "character": 14
             },
             "identifier": "LOW_PROB_BOOK",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -347,7 +347,7 @@
                 "character": 47
             },
             "identifier": "MEDIUM_PROB_BOOK",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -358,7 +358,7 @@
                 "character": 82
             },
             "identifier": "HIGH_PROB_BOOK",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -369,7 +369,7 @@
                 "character": 14
             },
             "identifier": "LOW_PROB_ANIMAL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -380,7 +380,7 @@
                 "character": 47
             },
             "identifier": "MEDIUM_PROB_ANIMAL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -391,7 +391,7 @@
                 "character": 82
             },
             "identifier": "HIGH_PROB_ANIMAL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -402,7 +402,7 @@
                 "character": 14
             },
             "identifier": "LOW_PROB_JUNK",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -413,7 +413,7 @@
                 "character": 47
             },
             "identifier": "MEDIUM_PROB_JUNK",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -424,7 +424,7 @@
                 "character": 83
             },
             "identifier": "HIGH_PROB_JUNK",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -435,7 +435,7 @@
                 "character": 14
             },
             "identifier": "LOW_PROB_GOLD",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "43",
             "isConst": true
@@ -446,7 +446,7 @@
                 "character": 47
             },
             "identifier": "MEDIUM_PROB_GOLD",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "38",
             "isConst": true
@@ -457,7 +457,7 @@
                 "character": 82
             },
             "identifier": "HIGH_PROB_GOLD",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "15",
             "isConst": true
@@ -468,7 +468,7 @@
                 "character": 14
             },
             "identifier": "LOW_PROB_GEM",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "9",
             "isConst": true
@@ -479,7 +479,7 @@
                 "character": 47
             },
             "identifier": "MEDIUM_PROB_GEM",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "15",
             "isConst": true
@@ -490,7 +490,7 @@
                 "character": 82
             },
             "identifier": "HIGH_PROB_GEM",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "15",
             "isConst": true
@@ -501,7 +501,7 @@
                 "character": 14
             },
             "identifier": "LOW_PROB_JEWEL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "4",
             "isConst": true
@@ -512,7 +512,7 @@
                 "character": 47
             },
             "identifier": "MEDIUM_PROB_JEWEL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "6",
             "isConst": true
@@ -523,7 +523,7 @@
                 "character": 81
             },
             "identifier": "HIGH_PROB_JEWEL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "15",
             "isConst": true
@@ -534,7 +534,7 @@
                 "character": 14
             },
             "identifier": "LOW_PROB_ARCANE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -545,7 +545,7 @@
                 "character": 47
             },
             "identifier": "MEDIUM_PROB_ARCANE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -556,7 +556,7 @@
                 "character": 81
             },
             "identifier": "HIGH_PROB_ARCANE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -567,7 +567,7 @@
                 "character": 14
             },
             "identifier": "LOW_PROB_DIVINE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -578,7 +578,7 @@
                 "character": 47
             },
             "identifier": "MEDIUM_PROB_DIVINE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -589,7 +589,7 @@
                 "character": 82
             },
             "identifier": "HIGH_PROB_DIVINE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -600,7 +600,7 @@
                 "character": 14
             },
             "identifier": "LOW_PROB_AMMO",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "10",
             "isConst": true
@@ -611,7 +611,7 @@
                 "character": 47
             },
             "identifier": "MEDIUM_PROB_AMMO",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -622,7 +622,7 @@
                 "character": 82
             },
             "identifier": "HIGH_PROB_AMMO",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -633,7 +633,7 @@
                 "character": 14
             },
             "identifier": "LOW_PROB_KIT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -644,7 +644,7 @@
                 "character": 47
             },
             "identifier": "MEDIUM_PROB_KIT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -655,7 +655,7 @@
                 "character": 82
             },
             "identifier": "HIGH_PROB_KIT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -666,7 +666,7 @@
                 "character": 14
             },
             "identifier": "LOW_PROB_POTION",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "17",
             "isConst": true
@@ -677,7 +677,7 @@
                 "character": 47
             },
             "identifier": "MEDIUM_PROB_POTION",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "20",
             "isConst": true
@@ -688,7 +688,7 @@
                 "character": 82
             },
             "identifier": "HIGH_PROB_POTION",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "9",
             "isConst": true
@@ -699,7 +699,7 @@
                 "character": 14
             },
             "identifier": "LOW_PROB_TABLE2",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -710,7 +710,7 @@
                 "character": 47
             },
             "identifier": "MEDIUM_PROB_TABLE2",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -721,7 +721,7 @@
                 "character": 81
             },
             "identifier": "HIGH_PROB_TABLE2",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "30",
             "isConst": true
@@ -732,7 +732,7 @@
                 "character": 13
             },
             "identifier": "TREASURE_LOW",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -743,7 +743,7 @@
                 "character": 13
             },
             "identifier": "TREASURE_MEDIUM",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -754,7 +754,7 @@
                 "character": 13
             },
             "identifier": "TREASURE_HIGH",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -765,7 +765,7 @@
                 "character": 13
             },
             "identifier": "TREASURE_BOSS",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "4",
             "isConst": true
@@ -776,7 +776,7 @@
                 "character": 13
             },
             "identifier": "TREASURE_BOOK",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -787,7 +787,7 @@
                 "character": 10
             },
             "identifier": "JUMP_LEVEL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -798,7 +798,7 @@
                 "character": 9
             },
             "identifier": "CreateGenericExotic",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -807,7 +807,7 @@
                         "character": 36
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -816,7 +816,7 @@
                         "character": 52
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -825,7 +825,7 @@
                         "character": 69
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -845,7 +845,7 @@
                 "character": 9
             },
             "identifier": "CreateGenericMonkWeapon",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -854,7 +854,7 @@
                         "character": 40
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -863,7 +863,7 @@
                         "character": 56
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -872,7 +872,7 @@
                         "character": 73
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -890,7 +890,7 @@
                 "character": 9
             },
             "identifier": "CreateSpecificMonkWeapon",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -899,7 +899,7 @@
                         "character": 41
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -908,7 +908,7 @@
                         "character": 57
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -917,7 +917,7 @@
                         "character": 74
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -935,7 +935,7 @@
                 "character": 9
             },
             "identifier": "CreateGenericDruidWeapon",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -944,7 +944,7 @@
                         "character": 41
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -953,7 +953,7 @@
                         "character": 57
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -962,7 +962,7 @@
                         "character": 74
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -980,7 +980,7 @@
                 "character": 9
             },
             "identifier": "CreateSpecificDruidWeapon",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -989,7 +989,7 @@
                         "character": 42
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -998,7 +998,7 @@
                         "character": 58
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1007,7 +1007,7 @@
                         "character": 75
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1025,7 +1025,7 @@
                 "character": 9
             },
             "identifier": "CreateGenericWizardWeapon",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1034,7 +1034,7 @@
                         "character": 42
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1043,7 +1043,7 @@
                         "character": 58
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1052,7 +1052,7 @@
                         "character": 75
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1070,7 +1070,7 @@
                 "character": 9
             },
             "identifier": "CreateSpecificWizardWeapon",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1079,7 +1079,7 @@
                         "character": 43
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1088,7 +1088,7 @@
                         "character": 59
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1097,7 +1097,7 @@
                         "character": 76
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1115,7 +1115,7 @@
                 "character": 8
             },
             "identifier": "nDetermineClassToUse",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1124,7 +1124,7 @@
                         "character": 36
                     },
                     "identifier": "oCharacter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1141,7 +1141,7 @@
                 "character": 5
             },
             "identifier": "dbSpeak",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1150,7 +1150,7 @@
                         "character": 20
                     },
                     "identifier": "s",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -1169,7 +1169,7 @@
                 "character": 5
             },
             "identifier": "dbCreateItemOnObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1178,7 +1178,7 @@
                         "character": 33
                     },
                     "identifier": "sItemTemplate",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -1187,7 +1187,7 @@
                         "character": 55
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 },
@@ -1197,7 +1197,7 @@
                         "character": 82
                     },
                     "identifier": "nStackSize",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "1"
                 }
@@ -1217,7 +1217,7 @@
                 "character": 7
             },
             "identifier": "GetLastOpener",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [],
             "signatureEnd": {
@@ -1235,7 +1235,7 @@
                 "character": 4
             },
             "identifier": "GetRange",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1244,7 +1244,7 @@
                         "character": 17
                     },
                     "identifier": "nCategory",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1253,7 +1253,7 @@
                         "character": 32
                     },
                     "identifier": "nHD",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -1275,7 +1275,7 @@
                 "character": 4
             },
             "identifier": "GetNumberOfItems",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1284,7 +1284,7 @@
                         "character": 25
                     },
                     "identifier": "nTreasureType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -1306,7 +1306,7 @@
                 "character": 9
             },
             "identifier": "CreateBook",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1315,7 +1315,7 @@
                         "character": 27
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1332,7 +1332,7 @@
                 "character": 9
             },
             "identifier": "CreateAnimalPart",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1341,7 +1341,7 @@
                         "character": 33
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1358,7 +1358,7 @@
                 "character": 9
             },
             "identifier": "CreateJunk",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1367,7 +1367,7 @@
                         "character": 27
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1384,7 +1384,7 @@
                 "character": 9
             },
             "identifier": "CreateGold",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1393,7 +1393,7 @@
                         "character": 27
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1402,7 +1402,7 @@
                         "character": 43
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1411,7 +1411,7 @@
                         "character": 60
                     },
                     "identifier": "nTreasureType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1420,7 +1420,7 @@
                         "character": 79
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1438,7 +1438,7 @@
                 "character": 9
             },
             "identifier": "CreateGem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1447,7 +1447,7 @@
                         "character": 26
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1456,7 +1456,7 @@
                         "character": 42
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1465,7 +1465,7 @@
                         "character": 59
                     },
                     "identifier": "nTreasureType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1474,7 +1474,7 @@
                         "character": 78
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1492,7 +1492,7 @@
                 "character": 9
             },
             "identifier": "CreateJewel",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1501,7 +1501,7 @@
                         "character": 28
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1510,7 +1510,7 @@
                         "character": 44
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1519,7 +1519,7 @@
                         "character": 61
                     },
                     "identifier": "nTreasureType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1528,7 +1528,7 @@
                         "character": 80
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1546,7 +1546,7 @@
                 "character": 8
             },
             "identifier": "TrimLevel",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1555,7 +1555,7 @@
                         "character": 22
                     },
                     "identifier": "nScroll",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1564,7 +1564,7 @@
                         "character": 35
                     },
                     "identifier": "nLevel",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -1581,7 +1581,7 @@
                 "character": 9
             },
             "identifier": "CreateArcaneScroll",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1590,7 +1590,7 @@
                         "character": 35
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1599,7 +1599,7 @@
                         "character": 51
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1608,7 +1608,7 @@
                         "character": 68
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1626,7 +1626,7 @@
                 "character": 9
             },
             "identifier": "CreateDivineScroll",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1635,7 +1635,7 @@
                         "character": 35
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1644,7 +1644,7 @@
                         "character": 51
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1653,7 +1653,7 @@
                         "character": 68
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1671,7 +1671,7 @@
                 "character": 9
             },
             "identifier": "CreateAmmo",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1680,7 +1680,7 @@
                         "character": 27
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1689,7 +1689,7 @@
                         "character": 43
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1698,7 +1698,7 @@
                         "character": 60
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1716,7 +1716,7 @@
                 "character": 9
             },
             "identifier": "CreateTrapKit",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1725,7 +1725,7 @@
                         "character": 30
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1734,7 +1734,7 @@
                         "character": 46
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1743,7 +1743,7 @@
                         "character": 63
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1761,7 +1761,7 @@
                 "character": 9
             },
             "identifier": "CreateHealingKit",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1770,7 +1770,7 @@
                         "character": 33
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1779,7 +1779,7 @@
                         "character": 49
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1788,7 +1788,7 @@
                         "character": 66
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1806,7 +1806,7 @@
                 "character": 9
             },
             "identifier": "CreateLockPick",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1815,7 +1815,7 @@
                         "character": 31
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1824,7 +1824,7 @@
                         "character": 47
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1833,7 +1833,7 @@
                         "character": 64
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1851,7 +1851,7 @@
                 "character": 9
             },
             "identifier": "CreateKit",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1860,7 +1860,7 @@
                         "character": 26
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1869,7 +1869,7 @@
                         "character": 42
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1878,7 +1878,7 @@
                         "character": 59
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1896,7 +1896,7 @@
                 "character": 9
             },
             "identifier": "CreatePotion",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1905,7 +1905,7 @@
                         "character": 29
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1914,7 +1914,7 @@
                         "character": 45
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1923,7 +1923,7 @@
                         "character": 62
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1941,7 +1941,7 @@
                 "character": 13
             },
             "identifier": "CreateGenericMiscItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1950,7 +1950,7 @@
                         "character": 42
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1959,7 +1959,7 @@
                         "character": 58
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1968,7 +1968,7 @@
                         "character": 75
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -1986,7 +1986,7 @@
                 "character": 13
             },
             "identifier": "CreateGenericClassItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1995,7 +1995,7 @@
                         "character": 43
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2004,7 +2004,7 @@
                         "character": 59
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2013,7 +2013,7 @@
                         "character": 76
                     },
                     "identifier": "nSpecific",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -2031,7 +2031,7 @@
                 "character": 13
             },
             "identifier": "CreateGenericRodStaffWand",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2040,7 +2040,7 @@
                         "character": 46
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2049,7 +2049,7 @@
                         "character": 62
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2058,7 +2058,7 @@
                         "character": 79
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -2076,7 +2076,7 @@
                 "character": 13
             },
             "identifier": "CreateGenericSimple",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2085,7 +2085,7 @@
                         "character": 40
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2094,7 +2094,7 @@
                         "character": 56
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2103,7 +2103,7 @@
                         "character": 73
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -2121,7 +2121,7 @@
                 "character": 13
             },
             "identifier": "CreateGenericMartial",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2130,7 +2130,7 @@
                         "character": 41
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2139,7 +2139,7 @@
                         "character": 57
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2148,7 +2148,7 @@
                         "character": 74
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -2166,7 +2166,7 @@
                 "character": 13
             },
             "identifier": "CreateGenericLightArmor",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2175,7 +2175,7 @@
                         "character": 44
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2184,7 +2184,7 @@
                         "character": 60
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2193,7 +2193,7 @@
                         "character": 77
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -2211,7 +2211,7 @@
                 "character": 13
             },
             "identifier": "CreateGenericMediumArmor",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2220,7 +2220,7 @@
                         "character": 45
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2229,7 +2229,7 @@
                         "character": 61
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2238,7 +2238,7 @@
                         "character": 78
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -2256,7 +2256,7 @@
                 "character": 13
             },
             "identifier": "CreateGenericHeavyArmor",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2265,7 +2265,7 @@
                         "character": 44
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2274,7 +2274,7 @@
                         "character": 60
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2283,7 +2283,7 @@
                         "character": 77
                     },
                     "identifier": "nModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -2301,7 +2301,7 @@
                 "character": 13
             },
             "identifier": "CreateSpecificMiscItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2310,7 +2310,7 @@
                         "character": 43
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2319,7 +2319,7 @@
                         "character": 58
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -2336,7 +2336,7 @@
                 "character": 13
             },
             "identifier": "CreateSpecificRodStaffWand",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2345,7 +2345,7 @@
                         "character": 47
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2354,7 +2354,7 @@
                         "character": 63
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -2371,7 +2371,7 @@
                 "character": 13
             },
             "identifier": "CreateSpecificSimple",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2380,7 +2380,7 @@
                         "character": 41
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2389,7 +2389,7 @@
                         "character": 57
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -2406,7 +2406,7 @@
                 "character": 13
             },
             "identifier": "CreateSpecificMartial",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2415,7 +2415,7 @@
                         "character": 42
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2424,7 +2424,7 @@
                         "character": 58
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -2441,7 +2441,7 @@
                 "character": 13
             },
             "identifier": "CreateSpecificExotic",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2450,7 +2450,7 @@
                         "character": 41
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2459,7 +2459,7 @@
                         "character": 57
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -2476,7 +2476,7 @@
                 "character": 13
             },
             "identifier": "CreateSpecificLightArmor",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2485,7 +2485,7 @@
                         "character": 45
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2494,7 +2494,7 @@
                         "character": 61
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -2511,7 +2511,7 @@
                 "character": 13
             },
             "identifier": "CreateSpecificMediumArmor",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2520,7 +2520,7 @@
                         "character": 46
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2529,7 +2529,7 @@
                         "character": 62
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -2546,7 +2546,7 @@
                 "character": 13
             },
             "identifier": "CreateSpecificHeavyArmor",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2555,7 +2555,7 @@
                         "character": 45
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2564,7 +2564,7 @@
                         "character": 61
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -2581,7 +2581,7 @@
                 "character": 9
             },
             "identifier": "CreateTable2Item",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2590,7 +2590,7 @@
                         "character": 33
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2599,7 +2599,7 @@
                         "character": 49
                     },
                     "identifier": "oAdventurer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2608,7 +2608,7 @@
                         "character": 66
                     },
                     "identifier": "nSpecific",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -2626,7 +2626,7 @@
                 "character": 5
             },
             "identifier": "GenerateTreasure",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2635,7 +2635,7 @@
                         "character": 26
                     },
                     "identifier": "nTreasureType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2644,7 +2644,7 @@
                         "character": 48
                     },
                     "identifier": "oLastOpener",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2653,7 +2653,7 @@
                         "character": 68
                     },
                     "identifier": "oCreateOn",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -2675,7 +2675,7 @@
                 "character": 5
             },
             "identifier": "GenerateLowTreasure",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2684,7 +2684,7 @@
                         "character": 32
                     },
                     "identifier": "oLastOpener",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2693,7 +2693,7 @@
                         "character": 52
                     },
                     "identifier": "oCreateOn",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -2711,7 +2711,7 @@
                 "character": 5
             },
             "identifier": "GenerateMediumTreasure",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2720,7 +2720,7 @@
                         "character": 35
                     },
                     "identifier": "oLastOpener",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2729,7 +2729,7 @@
                         "character": 55
                     },
                     "identifier": "oCreateOn",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -2747,7 +2747,7 @@
                 "character": 5
             },
             "identifier": "GenerateHighTreasure",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2756,7 +2756,7 @@
                         "character": 33
                     },
                     "identifier": "oLastOpener",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2765,7 +2765,7 @@
                         "character": 53
                     },
                     "identifier": "oCreateOn",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -2783,7 +2783,7 @@
                 "character": 5
             },
             "identifier": "GenerateBossTreasure",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2792,7 +2792,7 @@
                         "character": 33
                     },
                     "identifier": "oLastOpener",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2801,7 +2801,7 @@
                         "character": 53
                     },
                     "identifier": "oCreateOn",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -2819,7 +2819,7 @@
                 "character": 5
             },
             "identifier": "GenerateBookTreasure",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2828,7 +2828,7 @@
                         "character": 33
                     },
                     "identifier": "oLastOpener",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2837,7 +2837,7 @@
                         "character": 53
                     },
                     "identifier": "oCreateOn",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -2855,7 +2855,7 @@
                 "character": 5
             },
             "identifier": "GenerateNPCTreasure",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2864,7 +2864,7 @@
                         "character": 29
                     },
                     "identifier": "nTreasureValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "1"
                 },
@@ -2874,7 +2874,7 @@
                         "character": 54
                     },
                     "identifier": "oTreasureGetter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 },
@@ -2884,7 +2884,7 @@
                         "character": 90
                     },
                     "identifier": "oKiller",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -2902,7 +2902,7 @@
                 "character": 5
             },
             "identifier": "ShoutDisturbed",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -2916,7 +2916,7 @@
         }
     ],
     "structDeclarations": [],
-    "children": [],
+    "includes": [],
     "localDeclarations": [
         {
             "identifier": "sRoot",
@@ -2925,7 +2925,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -2934,7 +2935,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMin",
@@ -2943,7 +2945,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMax",
@@ -2952,7 +2955,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nItems",
@@ -2961,7 +2965,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -2970,7 +2975,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbThreeItems",
@@ -2979,7 +2985,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbTwoItems",
@@ -2988,7 +2995,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbOneItems",
@@ -2997,7 +3005,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nBook1",
@@ -3006,7 +3015,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sRes",
@@ -3015,7 +3025,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sRes",
@@ -3024,7 +3035,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nResult",
@@ -3033,7 +3045,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sRes",
@@ -3042,7 +3055,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "NUM_ITEMS",
@@ -3051,7 +3065,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nResult",
@@ -3060,7 +3075,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nKit",
@@ -3069,7 +3085,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3078,7 +3095,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nAmount",
@@ -3087,7 +3105,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMod",
@@ -3096,7 +3115,8 @@
                 "character": 14
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3105,7 +3125,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sGem",
@@ -3114,7 +3135,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3123,7 +3145,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3132,7 +3155,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3141,7 +3165,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3150,7 +3175,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3159,7 +3185,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3168,7 +3195,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3177,7 +3205,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sJewel",
@@ -3186,7 +3215,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3195,7 +3225,8 @@
                 "character": 14
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3204,7 +3235,8 @@
                 "character": 14
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3213,7 +3245,8 @@
                 "character": 14
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3222,7 +3255,8 @@
                 "character": 14
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3231,7 +3265,8 @@
                 "character": 14
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3240,7 +3275,8 @@
                 "character": 14
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMax",
@@ -3249,7 +3285,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMaxSpells",
@@ -3258,7 +3295,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3267,7 +3305,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nScroll",
@@ -3276,7 +3315,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nLevel",
@@ -3285,7 +3325,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sRes",
@@ -3294,7 +3335,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3303,7 +3345,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sScroll",
@@ -3312,7 +3355,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3321,7 +3365,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3330,7 +3375,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3339,7 +3385,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3348,7 +3395,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3357,7 +3405,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sAmmo",
@@ -3366,7 +3415,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3375,7 +3425,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3384,7 +3435,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3393,7 +3445,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3402,7 +3455,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3411,7 +3465,8 @@
                 "character": 10
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sKit",
@@ -3420,7 +3475,8 @@
                 "character": 13
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3429,7 +3485,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3438,7 +3495,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3447,7 +3505,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3456,7 +3515,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3465,7 +3525,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3474,7 +3535,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3483,7 +3545,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sKit",
@@ -3492,7 +3555,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3501,7 +3565,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3510,7 +3575,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3519,7 +3585,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3528,7 +3595,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3537,7 +3605,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3546,7 +3615,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3555,7 +3625,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sKit",
@@ -3564,7 +3635,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3573,7 +3645,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3582,7 +3655,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3591,7 +3665,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3600,7 +3675,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3609,7 +3685,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3618,7 +3695,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sPotion",
@@ -3627,7 +3705,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3636,7 +3715,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3645,7 +3725,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3654,7 +3735,8 @@
                 "character": 15
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3663,7 +3745,8 @@
                 "character": 15
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3672,7 +3755,8 @@
                 "character": 15
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3681,7 +3765,8 @@
                 "character": 15
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3690,7 +3775,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -3699,7 +3785,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3708,7 +3795,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3717,7 +3805,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3726,7 +3815,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3735,7 +3825,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3744,7 +3835,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3753,7 +3845,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3762,7 +3855,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -3771,7 +3865,8 @@
                 "character": 25
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -3780,7 +3875,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3789,7 +3885,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3798,7 +3895,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3807,7 +3905,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3816,7 +3915,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3825,7 +3925,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3834,7 +3935,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -3842,7 +3944,7 @@
                 "character": 44
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -3851,7 +3953,7 @@
                 "character": 60
             },
             "identifier": "oAdventurer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -3860,7 +3962,7 @@
                 "character": 77
             },
             "identifier": "nModifier",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "0"
         },
@@ -3871,7 +3973,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3880,7 +3983,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3889,7 +3993,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3898,7 +4003,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3907,7 +4013,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3916,7 +4023,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3925,7 +4033,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -3933,7 +4042,7 @@
                 "character": 45
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -3942,7 +4051,7 @@
                 "character": 61
             },
             "identifier": "oAdventurer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -3951,7 +4060,7 @@
                 "character": 78
             },
             "identifier": "nModifier",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "0"
         },
@@ -3962,7 +4071,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3971,7 +4081,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3980,7 +4091,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3989,7 +4101,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3998,7 +4111,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4007,7 +4121,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4016,7 +4131,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4024,7 +4140,7 @@
                 "character": 45
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4033,7 +4149,7 @@
                 "character": 61
             },
             "identifier": "oAdventurer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4042,7 +4158,7 @@
                 "character": 78
             },
             "identifier": "nModifier",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "0"
         },
@@ -4053,7 +4169,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4062,7 +4179,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4071,7 +4189,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4080,7 +4199,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4089,7 +4209,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4098,7 +4219,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4107,7 +4229,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4115,7 +4238,7 @@
                 "character": 46
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4124,7 +4247,7 @@
                 "character": 62
             },
             "identifier": "oAdventurer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4133,7 +4256,7 @@
                 "character": 79
             },
             "identifier": "nModifier",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "0"
         },
@@ -4144,7 +4267,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4153,7 +4277,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4162,7 +4287,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4171,7 +4297,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4180,7 +4307,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4188,7 +4316,7 @@
                 "character": 46
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4197,7 +4325,7 @@
                 "character": 62
             },
             "identifier": "oAdventurer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4206,7 +4334,7 @@
                 "character": 79
             },
             "identifier": "nModifier",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "0"
         },
@@ -4217,7 +4345,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4226,7 +4355,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4235,7 +4365,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4244,7 +4375,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4253,7 +4385,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4262,7 +4395,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4271,7 +4405,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4279,7 +4414,7 @@
                 "character": 47
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4288,7 +4423,7 @@
                 "character": 63
             },
             "identifier": "oAdventurer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4297,7 +4432,7 @@
                 "character": 80
             },
             "identifier": "nModifier",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "0"
         },
@@ -4308,7 +4443,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4317,7 +4453,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4326,7 +4463,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4335,7 +4473,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4344,7 +4483,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4353,7 +4493,8 @@
                 "character": 18
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4362,7 +4503,8 @@
                 "character": 15
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4371,7 +4513,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4380,7 +4523,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4389,7 +4533,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4398,7 +4543,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4407,7 +4553,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4416,7 +4563,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4425,7 +4573,8 @@
                 "character": 18
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4434,7 +4583,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4443,7 +4593,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4452,7 +4603,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4461,7 +4613,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4470,7 +4623,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4479,7 +4633,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4488,7 +4643,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4496,7 +4652,7 @@
                 "character": 40
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4505,7 +4661,7 @@
                 "character": 56
             },
             "identifier": "oAdventurer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4514,7 +4670,7 @@
                 "character": 73
             },
             "identifier": "nModifier",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "0"
         },
@@ -4525,7 +4681,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4534,7 +4691,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4543,7 +4701,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4552,7 +4711,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4561,7 +4721,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4570,7 +4731,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4579,7 +4741,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4588,7 +4751,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4597,7 +4761,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4606,7 +4771,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4615,7 +4781,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4624,7 +4791,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4633,7 +4801,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4642,7 +4811,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4651,7 +4821,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4660,7 +4831,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4669,7 +4841,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4678,7 +4851,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4687,7 +4861,8 @@
                 "character": 21
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4696,7 +4871,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4705,7 +4881,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4714,7 +4891,8 @@
                 "character": 23
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4723,7 +4901,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4732,7 +4911,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4741,7 +4921,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4750,7 +4931,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4759,7 +4941,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4768,7 +4951,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4777,7 +4961,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4786,7 +4971,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4795,7 +4981,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4804,7 +4991,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4813,7 +5001,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4822,7 +5011,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4831,7 +5021,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4840,7 +5031,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4849,7 +5041,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4858,7 +5051,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4867,7 +5061,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4876,7 +5071,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4885,7 +5081,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4894,7 +5091,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4903,7 +5101,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4912,7 +5111,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4921,7 +5121,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4930,7 +5131,8 @@
                 "character": 18
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4939,7 +5141,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4948,7 +5151,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4957,7 +5161,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4966,7 +5171,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4975,7 +5181,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4984,7 +5191,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4993,7 +5201,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5002,7 +5211,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5011,7 +5221,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5020,7 +5231,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5029,7 +5241,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5038,7 +5251,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -5047,7 +5261,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -5056,7 +5271,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5065,7 +5281,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5074,7 +5291,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5083,7 +5301,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5092,7 +5311,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5101,7 +5321,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5110,7 +5331,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -5119,7 +5341,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -5128,7 +5351,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5137,7 +5361,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5146,7 +5371,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5155,7 +5381,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5164,7 +5391,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5173,7 +5401,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -5182,7 +5411,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -5191,7 +5421,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5200,7 +5431,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5209,7 +5441,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5218,7 +5451,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5227,7 +5461,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -5236,7 +5471,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -5245,7 +5481,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5254,7 +5491,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5263,7 +5501,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5272,7 +5511,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5281,7 +5521,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -5290,7 +5531,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbMisc",
@@ -5299,7 +5541,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbClass",
@@ -5308,7 +5551,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbRodStaffWand",
@@ -5317,7 +5561,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbSimple",
@@ -5326,7 +5571,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbMartial",
@@ -5335,7 +5581,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbExotic",
@@ -5344,7 +5591,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbLight",
@@ -5353,7 +5601,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbMedium",
@@ -5362,7 +5611,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbHeavy",
@@ -5371,7 +5621,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nSpecialRanger",
@@ -5380,7 +5631,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nClass",
@@ -5389,7 +5641,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5398,7 +5651,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbBook",
@@ -5407,7 +5661,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbAnimal",
@@ -5416,7 +5671,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbJunk",
@@ -5425,7 +5681,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbGold",
@@ -5434,7 +5691,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbGem",
@@ -5443,7 +5701,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbJewel",
@@ -5452,7 +5711,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbArcane",
@@ -5461,7 +5721,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbDivine",
@@ -5470,7 +5731,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbAmmo",
@@ -5479,7 +5741,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbKit",
@@ -5488,7 +5751,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbPotion",
@@ -5497,7 +5761,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbTable2",
@@ -5506,7 +5771,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nSpecific",
@@ -5515,7 +5781,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "i",
@@ -5524,7 +5791,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nNumberItems",
@@ -5533,7 +5801,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5542,7 +5811,8 @@
                 "character": 9
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oTarget",
@@ -5551,7 +5821,8 @@
                 "character": 19
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oAttacker",
@@ -5560,7 +5831,8 @@
                 "character": 18
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oTarget",
@@ -5569,7 +5841,8 @@
                 "character": 19
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oAttacker",
@@ -5578,7 +5851,8 @@
                 "character": 18
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -5586,7 +5860,7 @@
                 "character": 32
             },
             "identifier": "oCharacter",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -5596,7 +5870,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nTotal",
@@ -5605,7 +5880,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nClass1",
@@ -5614,7 +5890,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nClass2",
@@ -5623,7 +5900,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nClass3",
@@ -5632,7 +5910,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nState1",
@@ -5641,7 +5920,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nState2",
@@ -5650,7 +5930,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nUseClass",
@@ -5659,7 +5940,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

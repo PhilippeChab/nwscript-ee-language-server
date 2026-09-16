@@ -6,7 +6,7 @@
                 "character": 13
             },
             "identifier": "sCombatCondVarname",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X0_COMBAT_CONDITION\"",
             "isConst": true
@@ -17,7 +17,7 @@
                 "character": 10
             },
             "identifier": "X0_COMBAT_FLAG_RANGED",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0x00000001",
             "isConst": true
@@ -28,7 +28,7 @@
                 "character": 10
             },
             "identifier": "X0_COMBAT_FLAG_DEFENSIVE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0x00000002",
             "isConst": true
@@ -39,7 +39,7 @@
                 "character": 10
             },
             "identifier": "X0_COMBAT_FLAG_COWARDLY",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0x00000004",
             "isConst": true
@@ -50,7 +50,7 @@
                 "character": 10
             },
             "identifier": "X0_COMBAT_FLAG_AMBUSHER",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0x00000008",
             "isConst": true
@@ -61,7 +61,7 @@
                 "character": 4
             },
             "identifier": "GetCombatCondition",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -70,7 +70,7 @@
                         "character": 27
                     },
                     "identifier": "nCond",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -79,7 +79,7 @@
                         "character": 41
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -99,7 +99,7 @@
                 "character": 5
             },
             "identifier": "SetCombatCondition",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -108,7 +108,7 @@
                         "character": 28
                     },
                     "identifier": "nCond",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -117,7 +117,7 @@
                         "character": 39
                     },
                     "identifier": "bValid",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 },
@@ -127,7 +127,7 @@
                         "character": 59
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -147,7 +147,7 @@
                 "character": 4
             },
             "identifier": "SpecialTactics",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -156,7 +156,7 @@
                         "character": 26
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -183,7 +183,7 @@
                 "character": 4
             },
             "identifier": "SpecialTacticsRanged",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -192,7 +192,7 @@
                         "character": 32
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -224,7 +224,7 @@
                 "character": 4
             },
             "identifier": "SpecialTacticsAmbusher",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -233,7 +233,7 @@
                         "character": 34
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -259,7 +259,7 @@
                 "character": 4
             },
             "identifier": "SpecialTacticsCowardly",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -268,7 +268,7 @@
                         "character": 34
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -296,7 +296,7 @@
                 "character": 4
             },
             "identifier": "SpecialTacticsDefensive",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -305,7 +305,7 @@
                         "character": 35
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -324,13 +324,13 @@
         }
     ],
     "structDeclarations": [],
-    "children": [
-        "x0_i0_talent"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 13,
-            "character": 0
+            "name": "x0_i0_talent",
+            "position": {
+                "line": 13,
+                "character": 0
+            }
         }
     ],
     "localDeclarations": [
@@ -340,7 +340,7 @@
                 "character": 27
             },
             "identifier": "nCond",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -349,7 +349,7 @@
                 "character": 41
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_SELF"
         },
@@ -359,7 +359,7 @@
                 "character": 28
             },
             "identifier": "nCond",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -368,7 +368,7 @@
                 "character": 39
             },
             "identifier": "bValid",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -378,7 +378,7 @@
                 "character": 59
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_SELF"
         },
@@ -389,7 +389,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -397,7 +398,7 @@
                 "character": 26
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -406,7 +407,7 @@
                 "character": 32
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -416,7 +417,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oRangedEnemy",
@@ -425,7 +427,8 @@
                 "character": 19
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nAttempts",
@@ -434,7 +437,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRand",
@@ -443,7 +447,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nFeat",
@@ -452,7 +457,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -460,7 +466,7 @@
                 "character": 34
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -470,7 +476,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bTried",
@@ -479,7 +486,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -487,7 +495,7 @@
                 "character": 34
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -497,7 +505,8 @@
                 "character": 22
             },
             "valueType": "sSituation",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oLastEnemy",
@@ -506,7 +515,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nNth",
@@ -515,7 +525,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oSafe",
@@ -524,7 +535,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -532,7 +544,7 @@
                 "character": 35
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -542,7 +554,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nSkill",
@@ -551,7 +564,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRand",
@@ -560,7 +574,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMySize",
@@ -569,7 +584,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bHasExpertise",
@@ -578,7 +594,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bHasImprovedExpertise",
@@ -587,7 +604,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nBAB",
@@ -596,7 +614,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nAC",
@@ -605,7 +624,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oEnemy",
@@ -614,7 +634,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nParrySkill",
@@ -623,7 +644,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nAC",
@@ -632,7 +654,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ],
     "memberReferences": [
@@ -642,7 +665,7 @@
                 "line": 283,
                 "character": 22
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "ALLY_NUM",
@@ -650,7 +673,7 @@
                 "line": 283,
                 "character": 53
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "ENEMY_NUM",
@@ -658,7 +681,7 @@
                 "line": 285,
                 "character": 23
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "ALLY_NUM",
@@ -666,7 +689,7 @@
                 "line": 285,
                 "character": 53
             },
-            "tokenType": 18
+            "kind": "memberReference"
         }
     ]
 }

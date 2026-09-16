@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "x0_i0_plotgiver"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 11,
-            "character": 0
+            "name": "x0_i0_plotgiver",
+            "position": {
+                "line": 11,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [
@@ -17,7 +17,7 @@
                 "character": 4
             },
             "identifier": "StartingConditional",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {

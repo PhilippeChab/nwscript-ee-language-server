@@ -6,7 +6,7 @@
                 "character": 5
             },
             "identifier": "DoCaltropsEffect",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 29
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -33,13 +33,13 @@
         }
     ],
     "structDeclarations": [],
-    "children": [
-        "nw_i0_spells"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 11,
-            "character": 0
+            "name": "nw_i0_spells",
+            "position": {
+                "line": 11,
+                "character": 0
+            }
         }
     ],
     "localDeclarations": [
@@ -49,7 +49,7 @@
                 "character": 29
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -59,7 +59,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eDam",
@@ -68,7 +69,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fDelay",
@@ -77,7 +79,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nDamageDone",
@@ -86,7 +89,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oCaltrops",
@@ -95,7 +99,8 @@
                 "character": 15
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

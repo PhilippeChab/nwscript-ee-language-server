@@ -6,9 +6,10 @@
                 "character": 4
             },
             "identifier": "mySKILL_CRAFT_TRAP",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "22"
+            "value": "22",
+            "scope": "global"
         },
         {
             "position": {
@@ -16,9 +17,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_DCMINOR",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "2001"
+            "value": "2001",
+            "scope": "global"
         },
         {
             "position": {
@@ -26,9 +28,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_DCAVERAGE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "2002"
+            "value": "2002",
+            "scope": "global"
         },
         {
             "position": {
@@ -36,9 +39,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_DCSTRONG",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "2003"
+            "value": "2003",
+            "scope": "global"
         },
         {
             "position": {
@@ -46,9 +50,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_DCDEADLY",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "2004"
+            "value": "2004",
+            "scope": "global"
         },
         {
             "position": {
@@ -56,9 +61,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_FIRECOMPONENT",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_WMGRENADE002\""
+            "value": "\"X1_WMGRENADE002\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -66,9 +72,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_ELECTRICALCOMPONENT",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"NW_IT_MSMLMISC11\""
+            "value": "\"NW_IT_MSMLMISC11\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -76,9 +83,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_TANGLECOMPONENT",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_WMGRENADE006\""
+            "value": "\"X1_WMGRENADE006\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -86,9 +94,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_SPIKECOMPONENT",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_WMGRENADE003\""
+            "value": "\"X1_WMGRENADE003\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -96,9 +105,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_HOLYCOMPONENT",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_WMGRENADE005\""
+            "value": "\"X1_WMGRENADE005\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -106,9 +116,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_GASCOMPONENT",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_WMGRENADE004\""
+            "value": "\"X1_WMGRENADE004\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -116,9 +127,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_FROSTCOMPONENT",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_IT_MSMLMISC01\""
+            "value": "\"X1_IT_MSMLMISC01\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -126,9 +138,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_NEGATIVECOMPONENT",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"NW_IT_MSMLMISC13\""
+            "value": "\"NW_IT_MSMLMISC13\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -136,9 +149,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_SONICCOMPONENT",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_WMGRENADE007\""
+            "value": "\"X1_WMGRENADE007\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -146,9 +160,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_ACIDCOMPONENT",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_WMGRENADE001\""
+            "value": "\"X1_WMGRENADE001\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -156,9 +171,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_MINOR",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "scope": "global"
         },
         {
             "position": {
@@ -166,9 +182,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_AVERAGE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "3"
+            "value": "3",
+            "scope": "global"
         },
         {
             "position": {
@@ -176,9 +193,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_STRONG",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "scope": "global"
         },
         {
             "position": {
@@ -186,9 +204,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_DEADLY",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "7"
+            "value": "7",
+            "scope": "global"
         },
         {
             "position": {
@@ -196,9 +215,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_SPIKE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "scope": "global"
         },
         {
             "position": {
@@ -206,9 +226,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_SPIKE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -216,9 +237,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_SPIKE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -226,9 +248,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_SPIKE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "35"
+            "value": "35",
+            "scope": "global"
         },
         {
             "position": {
@@ -236,9 +259,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_HOLY",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "scope": "global"
         },
         {
             "position": {
@@ -246,9 +270,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_HOLY",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -256,9 +281,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_HOLY",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -266,9 +292,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_HOLY",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -276,9 +303,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_TANGLE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "scope": "global"
         },
         {
             "position": {
@@ -286,9 +314,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_TANGLE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -296,9 +325,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_TANGLE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -306,9 +336,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_TANGLE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -316,9 +347,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_ACID",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "scope": "global"
         },
         {
             "position": {
@@ -326,9 +358,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_ACID",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -336,9 +369,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_ACID",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -346,9 +380,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_ACID",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "35"
+            "value": "35",
+            "scope": "global"
         },
         {
             "position": {
@@ -356,9 +391,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_FIRE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -366,9 +402,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_FIRE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -376,9 +413,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_FIRE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -386,9 +424,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_FIRE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "35"
+            "value": "35",
+            "scope": "global"
         },
         {
             "position": {
@@ -396,9 +435,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_ELECTRICAL",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -406,9 +446,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_ELECTRICAL",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -416,9 +457,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_ELECTRICAL",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -426,9 +468,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_ELECTRICAL",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "35"
+            "value": "35",
+            "scope": "global"
         },
         {
             "position": {
@@ -436,9 +479,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_GAS",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -446,9 +490,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_GAS",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "35"
+            "value": "35",
+            "scope": "global"
         },
         {
             "position": {
@@ -456,9 +501,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_GAS",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "40"
+            "value": "40",
+            "scope": "global"
         },
         {
             "position": {
@@ -466,9 +512,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_GAS",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "45"
+            "value": "45",
+            "scope": "global"
         },
         {
             "position": {
@@ -476,9 +523,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_FROST",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "scope": "global"
         },
         {
             "position": {
@@ -486,9 +534,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_FROST",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -496,9 +545,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_FROST",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -506,9 +556,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_FROST",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -516,9 +567,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_NEGATIVE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "scope": "global"
         },
         {
             "position": {
@@ -526,9 +578,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_NEGATIVE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -536,9 +589,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_NEGATIVE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -546,9 +600,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_NEGATIVE",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -556,9 +611,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_SONIC",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "scope": "global"
         },
         {
             "position": {
@@ -566,9 +622,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_SONIC",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -576,9 +633,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_SONIC",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -586,9 +644,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_SONIC",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -596,9 +655,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_ACID_SPLASH",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "scope": "global"
         },
         {
             "position": {
@@ -606,9 +666,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_ACID_SPLASH",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -616,9 +677,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_ACID_SPLASH",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -626,9 +688,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_ACID_SPLASH",
-            "tokenType": 21,
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -636,7 +699,7 @@
                 "character": 4
             },
             "identifier": "skillCTRAPGetHasComponent",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -645,7 +708,7 @@
                         "character": 37
                     },
                     "identifier": "sComponent",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -654,7 +717,7 @@
                         "character": 56
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -663,7 +726,7 @@
                         "character": 65
                     },
                     "identifier": "nTrapDifficulty",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -680,7 +743,7 @@
                 "character": 5
             },
             "identifier": "skillCTRAPTakeComponent",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -689,7 +752,7 @@
                         "character": 36
                     },
                     "identifier": "sComponent",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -698,7 +761,7 @@
                         "character": 55
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -707,7 +770,7 @@
                         "character": 64
                     },
                     "identifier": "nTrapDifficulty",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -724,7 +787,7 @@
                 "character": 4
             },
             "identifier": "skillCTRAPSetCurrentTrapView",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -733,7 +796,7 @@
                         "character": 40
                     },
                     "identifier": "sComponent",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -750,7 +813,7 @@
                 "character": 4
             },
             "identifier": "skillCTRAPGetCurrentTrapViewEquals",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -759,7 +822,7 @@
                         "character": 46
                     },
                     "identifier": "sComponent",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -776,7 +839,7 @@
                 "character": 7
             },
             "identifier": "skillCTRAPGetCurrentTrapView",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [],
             "signatureEnd": {
@@ -792,7 +855,7 @@
                 "character": 5
             },
             "identifier": "DestroyNumItems",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -801,7 +864,7 @@
                         "character": 28
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -810,7 +873,7 @@
                         "character": 43
                     },
                     "identifier": "sItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -819,7 +882,7 @@
                         "character": 53
                     },
                     "identifier": "nNumItems",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -838,7 +901,7 @@
                 "character": 5
             },
             "identifier": "skillCTRAPCreateTrapKit",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -847,7 +910,7 @@
                         "character": 36
                     },
                     "identifier": "sComponent",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -856,7 +919,7 @@
                         "character": 55
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -865,7 +928,7 @@
                         "character": 64
                     },
                     "identifier": "nTrapDifficulty",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -882,7 +945,7 @@
                 "character": 5
             },
             "identifier": "ClearTrapMaking",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -899,13 +962,13 @@
         }
     ],
     "structDeclarations": [],
-    "children": [
-        "nw_i0_plot"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 13,
-            "character": 0
+            "name": "nw_i0_plot",
+            "position": {
+                "line": 13,
+                "character": 0
+            }
         }
     ],
     "localDeclarations": [
@@ -915,7 +978,7 @@
                 "character": 37
             },
             "identifier": "sComponent",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -924,7 +987,7 @@
                 "character": 56
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -933,7 +996,7 @@
                 "character": 65
             },
             "identifier": "nTrapDifficulty",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -943,7 +1006,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nFound",
@@ -952,7 +1016,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -960,7 +1025,7 @@
                 "character": 36
             },
             "identifier": "sComponent",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -969,7 +1034,7 @@
                 "character": 55
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -978,7 +1043,7 @@
                 "character": 64
             },
             "identifier": "nTrapDifficulty",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -987,7 +1052,7 @@
                 "character": 36
             },
             "identifier": "sComponent",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -996,7 +1061,7 @@
                 "character": 55
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1005,7 +1070,7 @@
                 "character": 64
             },
             "identifier": "nTrapDifficulty",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1015,7 +1080,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nDifficulty",
@@ -1024,7 +1090,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1032,7 +1099,7 @@
                 "character": 41
             },
             "identifier": "sComponent",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1041,7 +1108,7 @@
                 "character": 46
             },
             "identifier": "sComponent",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1050,7 +1117,7 @@
                 "character": 28
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1059,7 +1126,7 @@
                 "character": 43
             },
             "identifier": "sItem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1068,7 +1135,7 @@
                 "character": 53
             },
             "identifier": "nNumItems",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1078,7 +1145,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -1087,7 +1155,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nStackSize",
@@ -1096,7 +1165,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

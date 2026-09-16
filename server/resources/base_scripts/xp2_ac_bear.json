@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "inc_xp2_familiar"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 11,
-            "character": 0
+            "name": "inc_xp2_familiar",
+            "position": {
+                "line": 11,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [
@@ -17,7 +17,7 @@
                 "character": 4
             },
             "identifier": "StartingConditional",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {

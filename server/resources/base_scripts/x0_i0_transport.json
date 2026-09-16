@@ -6,7 +6,7 @@
                 "character": 5
             },
             "identifier": "TravelToObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 27
                     },
                     "identifier": "oDest",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -24,7 +24,7 @@
                         "character": 41
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 },
@@ -34,7 +34,7 @@
                         "character": 66
                     },
                     "identifier": "bRun",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 },
@@ -44,7 +44,7 @@
                         "character": 84
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float",
                     "defaultValue": "10.0"
                 }
@@ -69,7 +69,7 @@
                 "character": 5
             },
             "identifier": "TravelToLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -78,7 +78,7 @@
                         "character": 31
                     },
                     "identifier": "lDest",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 },
                 {
@@ -87,7 +87,7 @@
                         "character": 45
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 },
@@ -97,7 +97,7 @@
                         "character": 70
                     },
                     "identifier": "bRun",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 },
@@ -107,7 +107,7 @@
                         "character": 88
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float",
                     "defaultValue": "10.0"
                 }
@@ -128,7 +128,7 @@
                 "character": 7
             },
             "identifier": "GetNearestExit",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -137,7 +137,7 @@
                         "character": 29
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -157,7 +157,7 @@
                 "character": 7
             },
             "identifier": "GetBestExit",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -166,7 +166,7 @@
                         "character": 26
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 },
@@ -176,7 +176,7 @@
                         "character": 54
                     },
                     "identifier": "oTargetArea",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -196,7 +196,7 @@
                 "character": 5
             },
             "identifier": "TransportToWaypoint",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -205,7 +205,7 @@
                         "character": 32
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -214,7 +214,7 @@
                         "character": 44
                     },
                     "identifier": "oWaypoint",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -235,7 +235,7 @@
                 "character": 5
             },
             "identifier": "TransportToLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -244,7 +244,7 @@
                         "character": 32
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -253,7 +253,7 @@
                         "character": 46
                     },
                     "identifier": "oLoc",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 }
             ],
@@ -274,7 +274,7 @@
                 "character": 5
             },
             "identifier": "TransportAllToWaypoint",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -283,7 +283,7 @@
                         "character": 35
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -292,7 +292,7 @@
                         "character": 47
                     },
                     "identifier": "oWay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -311,7 +311,7 @@
                 "character": 5
             },
             "identifier": "TransportAllToLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -320,7 +320,7 @@
                         "character": 35
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -329,7 +329,7 @@
                         "character": 49
                     },
                     "identifier": "lLoc",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 }
             ],
@@ -348,7 +348,7 @@
                 "character": 7
             },
             "identifier": "GetBestExitByType",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -357,7 +357,7 @@
                         "character": 32
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 },
@@ -367,7 +367,7 @@
                         "character": 60
                     },
                     "identifier": "oTargetArea",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 },
@@ -377,7 +377,7 @@
                         "character": 92
                     },
                     "identifier": "nObjType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "OBJECT_TYPE_DOOR"
                 }
@@ -393,7 +393,7 @@
         }
     ],
     "structDeclarations": [],
-    "children": [],
+    "includes": [],
     "localDeclarations": [
         {
             "position": {
@@ -401,7 +401,7 @@
                 "character": 27
             },
             "identifier": "oDest",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -410,7 +410,7 @@
                 "character": 41
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_SELF"
         },
@@ -420,7 +420,7 @@
                 "character": 66
             },
             "identifier": "bRun",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -430,7 +430,7 @@
                 "character": 84
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float",
             "defaultValue": "10.0"
         },
@@ -440,7 +440,7 @@
                 "character": 31
             },
             "identifier": "lDest",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "location"
         },
         {
@@ -449,7 +449,7 @@
                 "character": 45
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_SELF"
         },
@@ -459,7 +459,7 @@
                 "character": 70
             },
             "identifier": "bRun",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -469,7 +469,7 @@
                 "character": 88
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float",
             "defaultValue": "10.0"
         },
@@ -480,7 +480,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oBestExit",
@@ -489,7 +490,8 @@
                 "character": 15
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nObjType",
@@ -498,7 +500,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -506,7 +509,7 @@
                 "character": 29
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_SELF"
         },
@@ -517,7 +520,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oNearDoor",
@@ -526,7 +530,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nTrig",
@@ -535,7 +540,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oNearTrig",
@@ -544,7 +550,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fMaxDist",
@@ -553,7 +560,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fDoorDist",
@@ -562,7 +570,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fTrigDist",
@@ -571,7 +580,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oCurrentArea",
@@ -580,7 +590,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nDoor",
@@ -589,7 +600,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oDoor",
@@ -598,7 +610,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oNearestDoor",
@@ -607,7 +620,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oDestArea",
@@ -616,7 +630,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oBestDoor",
@@ -625,7 +640,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oBestDestArea",
@@ -634,7 +650,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -642,7 +659,7 @@
                 "character": 26
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_SELF"
         },
@@ -652,7 +669,7 @@
                 "character": 54
             },
             "identifier": "oTargetArea",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         },
@@ -663,7 +680,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oBestTrigger",
@@ -672,7 +690,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -680,7 +699,7 @@
                 "character": 32
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -689,7 +708,7 @@
                 "character": 44
             },
             "identifier": "oWaypoint",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -698,7 +717,7 @@
                 "character": 32
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -707,7 +726,7 @@
                 "character": 46
             },
             "identifier": "oLoc",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "location"
         },
         {
@@ -717,7 +736,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oDomin",
@@ -726,7 +746,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oFamil",
@@ -735,7 +756,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oSummon",
@@ -744,7 +766,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oAnimalComp",
@@ -753,7 +776,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -761,7 +785,7 @@
                 "character": 35
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -770,7 +794,7 @@
                 "character": 47
             },
             "identifier": "oWaypoint",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -779,7 +803,7 @@
                 "character": 35
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -788,7 +812,7 @@
                 "character": 49
             },
             "identifier": "oLoc",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "location"
         },
         {
@@ -798,7 +822,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

@@ -1,18 +1,20 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "NW_J_ASSASSIN",
-        "nw_i0_plot"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 0,
-            "character": 0
+            "name": "NW_J_ASSASSIN",
+            "position": {
+                "line": 0,
+                "character": 0
+            }
         },
         {
-            "line": 1,
-            "character": 0
+            "name": "nw_i0_plot",
+            "position": {
+                "line": 1,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [
@@ -22,7 +24,7 @@
                 "character": 4
             },
             "identifier": "StartingConditional",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -41,7 +43,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oVictim",
@@ -50,7 +53,8 @@
                 "character": 15
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "iJob2",
@@ -59,7 +63,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

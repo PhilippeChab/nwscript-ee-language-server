@@ -6,7 +6,7 @@
                 "character": 5
             },
             "identifier": "AttemptToEquipItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 31
                     },
                     "identifier": "oItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -24,7 +24,7 @@
                         "character": 45
                     },
                     "identifier": "oHench",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -44,7 +44,7 @@
                 "character": 5
             },
             "identifier": "CopyEquipped",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -53,7 +53,7 @@
                         "character": 25
                     },
                     "identifier": "oContainer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -62,7 +62,7 @@
                         "character": 44
                     },
                     "identifier": "oHench",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -81,7 +81,7 @@
                 "character": 5
             },
             "identifier": "DestroyEquipped",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -90,7 +90,7 @@
                         "character": 28
                     },
                     "identifier": "oHench",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -109,7 +109,7 @@
                 "character": 5
             },
             "identifier": "CopyUnequipped",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -118,7 +118,7 @@
                         "character": 27
                     },
                     "identifier": "oContainer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -127,7 +127,7 @@
                         "character": 46
                     },
                     "identifier": "oHench",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -146,7 +146,7 @@
                 "character": 5
             },
             "identifier": "CopyBack",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -155,7 +155,7 @@
                         "character": 21
                     },
                     "identifier": "oContainer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -164,7 +164,7 @@
                         "character": 40
                     },
                     "identifier": "oHench",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -179,13 +179,13 @@
         }
     ],
     "structDeclarations": [],
-    "children": [
-        "nw_i0_generic"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 32,
-            "character": 0
+            "name": "nw_i0_generic",
+            "position": {
+                "line": 32,
+                "character": 0
+            }
         }
     ],
     "localDeclarations": [
@@ -196,7 +196,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nSlot",
@@ -205,7 +206,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oCurrentItem",
@@ -214,7 +216,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nValue",
@@ -223,7 +226,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nNewValue",
@@ -232,7 +236,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "i",
@@ -241,7 +246,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -250,7 +256,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "i",
@@ -259,7 +266,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -268,7 +276,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oSelf",
@@ -277,7 +286,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -286,7 +296,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -295,7 +306,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oNewItem",
@@ -304,7 +316,8 @@
                 "character": 15
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

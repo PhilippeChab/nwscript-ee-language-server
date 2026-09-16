@@ -6,7 +6,7 @@
                 "character": 5
             },
             "identifier": "newdebug",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 21
                     },
                     "identifier": "sString",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -34,7 +34,7 @@
                 "character": 5
             },
             "identifier": "DubugPrintTalentID",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -43,7 +43,7 @@
                         "character": 31
                     },
                     "identifier": "tTalent",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "talent"
                 }
             ],
@@ -64,7 +64,7 @@
                 "character": 5
             },
             "identifier": "DebugPrintTalentID",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -73,7 +73,7 @@
                         "character": 31
                     },
                     "identifier": "tTalent",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "talent"
                 }
             ],
@@ -94,7 +94,7 @@
                 "character": 5
             },
             "identifier": "MyPrintString",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -103,7 +103,7 @@
                         "character": 26
                     },
                     "identifier": "sString",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -120,7 +120,7 @@
         }
     ],
     "structDeclarations": [],
-    "children": [],
+    "includes": [],
     "localDeclarations": [
         {
             "position": {
@@ -128,7 +128,7 @@
                 "character": 21
             },
             "identifier": "sString",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -137,7 +137,7 @@
                 "character": 31
             },
             "identifier": "tTalent",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "talent"
         },
         {
@@ -146,7 +146,7 @@
                 "character": 31
             },
             "identifier": "tTalent",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "talent"
         },
         {
@@ -155,7 +155,7 @@
                 "character": 26
             },
             "identifier": "sString",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         }
     ]

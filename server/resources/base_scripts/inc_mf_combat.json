@@ -6,7 +6,7 @@
                 "character": 5
             },
             "identifier": "ActionPsionicMB",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 28
                     },
                     "identifier": "oSpellTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -32,7 +32,7 @@
                 "character": 5
             },
             "identifier": "ActionPsionicCharm",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -41,7 +41,7 @@
                         "character": 31
                     },
                     "identifier": "oSpellTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -58,7 +58,7 @@
                 "character": 5
             },
             "identifier": "DetermineMindflayerCombat",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -67,7 +67,7 @@
                         "character": 38
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -81,18 +81,20 @@
         }
     ],
     "structDeclarations": [],
-    "children": [
-        "NW_I0_GENERIC",
-        "NW_I0_SPELLS"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 12,
-            "character": 0
+            "name": "NW_I0_GENERIC",
+            "position": {
+                "line": 12,
+                "character": 0
+            }
         },
         {
-            "line": 13,
-            "character": 0
+            "name": "NW_I0_SPELLS",
+            "position": {
+                "line": 13,
+                "character": 0
+            }
         }
     ],
     "localDeclarations": [
@@ -103,7 +105,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nTargetStunned",
@@ -112,7 +115,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oTarget",
@@ -121,7 +125,8 @@
                 "character": 15
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -129,7 +134,7 @@
                 "character": 28
             },
             "identifier": "oSpellTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -139,7 +144,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nStunTime",
@@ -148,7 +154,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nDC",
@@ -157,7 +164,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fDelay",
@@ -166,7 +174,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "lTargetLocation",
@@ -175,7 +184,8 @@
                 "character": 13
             },
             "valueType": "location",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oTarget",
@@ -184,7 +194,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eCone",
@@ -193,7 +204,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eVis",
@@ -202,7 +214,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -210,7 +223,7 @@
                 "character": 31
             },
             "identifier": "oSpellTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -220,7 +233,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nDC",
@@ -229,7 +243,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "lTargetLocation",
@@ -238,7 +253,8 @@
                 "character": 13
             },
             "valueType": "location",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oTarget",
@@ -247,7 +263,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eGaze",
@@ -256,7 +273,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eVis",
@@ -265,7 +283,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eDur",
@@ -274,7 +293,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eVisDur",
@@ -283,7 +303,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eLink",
@@ -292,7 +313,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fDelay",
@@ -301,7 +323,8 @@
                 "character": 22
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

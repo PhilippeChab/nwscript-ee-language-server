@@ -6,7 +6,7 @@
                 "character": 4
             },
             "identifier": "SSMLevelUpCreature",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 30
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -24,7 +24,7 @@
                         "character": 45
                     },
                     "identifier": "nLevelUpTo",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -33,7 +33,7 @@
                         "character": 61
                     },
                     "identifier": "nClass",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "CLASS_TYPE_INVALID"
                 },
@@ -43,7 +43,7 @@
                         "character": 94
                     },
                     "identifier": "bReadySpells",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -64,7 +64,7 @@
                 "character": 4
             },
             "identifier": "SSMScaleEpicShadowLord",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -73,7 +73,7 @@
                         "character": 34
                     },
                     "identifier": "oLord",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -93,7 +93,7 @@
                 "character": 4
             },
             "identifier": "SSMScaleEpicFiendishServant",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -102,7 +102,7 @@
                         "character": 39
                     },
                     "identifier": "oServant",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -122,7 +122,7 @@
                 "character": 4
             },
             "identifier": "SSMGetSummonFailedLevelUp",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -131,7 +131,7 @@
                         "character": 37
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -148,7 +148,7 @@
                 "character": 5
             },
             "identifier": "SSMSetSummonLevelUpOK",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -157,7 +157,7 @@
                         "character": 34
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -174,7 +174,7 @@
                 "character": 5
             },
             "identifier": "SSMSetSummonFailedLevelUp",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -183,7 +183,7 @@
                         "character": 38
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -192,7 +192,7 @@
                         "character": 53
                     },
                     "identifier": "nLevel",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -205,7 +205,7 @@
         }
     ],
     "structDeclarations": [],
-    "children": [],
+    "includes": [],
     "localDeclarations": [
         {
             "position": {
@@ -213,7 +213,7 @@
                 "character": 30
             },
             "identifier": "oCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -222,7 +222,7 @@
                 "character": 45
             },
             "identifier": "nLevelUpTo",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -231,7 +231,7 @@
                 "character": 61
             },
             "identifier": "nClass",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "CLASS_TYPE_INVALID"
         },
@@ -241,7 +241,7 @@
                 "character": 94
             },
             "identifier": "bReadySpells",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -252,7 +252,8 @@
                 "character": 6
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nLevel",
@@ -261,7 +262,8 @@
                 "character": 6
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -269,7 +271,7 @@
                 "character": 34
             },
             "identifier": "oLord",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -279,7 +281,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRet",
@@ -288,7 +291,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -296,7 +300,7 @@
                 "character": 39
             },
             "identifier": "oServant",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -306,7 +310,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRet",
@@ -315,7 +320,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -323,7 +329,7 @@
                 "character": 38
             },
             "identifier": "oCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -332,7 +338,7 @@
                 "character": 53
             },
             "identifier": "nLevel",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -341,7 +347,7 @@
                 "character": 37
             },
             "identifier": "oCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -351,7 +357,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -359,7 +366,7 @@
                 "character": 34
             },
             "identifier": "oCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         }
     ]

@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "nw_i0_plot"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 14,
-            "character": 0
+            "name": "nw_i0_plot",
+            "position": {
+                "line": 14,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [
@@ -17,7 +17,7 @@
                 "character": 4
             },
             "identifier": "StartingConditional",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -36,7 +36,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }
