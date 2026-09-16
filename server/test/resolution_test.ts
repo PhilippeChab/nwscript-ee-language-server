@@ -50,8 +50,7 @@ describe("IndexedDocument and signature resolution", () => {
     const collection = new api.Collection();
     const live = TextDocument.create(workspaceUri("live.nss"), "nwscript", 1, '#include "NWSCRIPT"\n#include "FIRST"\nstruct Old value;\nvoid main() {}');
     const document = collection.getParsedDocument(live, parserService);
-    expect(document.children).to.deep.equal(["first"]);
-    expect(document.includePositions).to.deep.equal([{ line: 1, character: 0 }]);
+    expect(document.includes).to.deep.equal([{ name: "first", position: { line: 1, character: 0 } }]);
     expect(document.entryPoints).to.deep.equal(["main"]);
     const references = () => [...document.getNameOrder().keys()].filter((token: any) => token.targetKind === "struct");
     const initial = references();
@@ -60,8 +59,7 @@ describe("IndexedDocument and signature resolution", () => {
 
     TextDocument.update(live, [{ text: '\n#include "SECOND"\n#include "nwscript"\nstruct New value;\nint StartingConditional() { return 1; }' }], 2);
     collection.getParsedDocument(live, parserService);
-    expect(document.children).to.deep.equal(["second"]);
-    expect(document.includePositions).to.deep.equal([{ line: 1, character: 0 }]);
+    expect(document.includes).to.deep.equal([{ name: "second", position: { line: 1, character: 0 } }]);
     expect(document.entryPoints).to.deep.equal(["StartingConditional"]);
     expect(references().map((token: any) => token.identifier)).to.deep.equal(["New"]);
     expect(references()[0]).not.to.equal(initial[0]);

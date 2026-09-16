@@ -14,8 +14,7 @@ export type OwnedStructDeclarations = { owner?: string; tokens: StructDeclaratio
 export default class IndexedDocument {
   private derived?: {
     index: DocumentIndex;
-    children: string[];
-    includePositions: (Position | undefined)[];
+    includes: { name: string; position?: Position }[];
     typeReferences?: TypeReference[];
   };
 
@@ -25,12 +24,8 @@ export default class IndexedDocument {
     return this.source instanceof SyntaxDocument ? this.source : undefined;
   }
 
-  public get children() {
-    return this.getDerivedIndex().children;
-  }
-
-  public get includePositions() {
-    return this.getDerivedIndex().includePositions;
+  public get includes() {
+    return this.getDerivedIndex().includes;
   }
 
   public get globalDeclarations() {
@@ -136,8 +131,8 @@ export default class IndexedDocument {
     if (this.derived?.index !== index) {
       // nwscript is implicit and selected per requesting workspace. Keep include
       // locations aligned when excluding it from resource-name lookup.
-      const children = index.children.map((child, i) => ({ name: child.toLowerCase(), position: index.includePositions?.[i] })).filter((child) => child.name !== "nwscript");
-      this.derived = { index, children: children.map((child) => child.name), includePositions: children.map((child) => child.position) };
+      const includes = index.children.map((child, i) => ({ name: child.toLowerCase(), position: index.includePositions?.[i] })).filter((child) => child.name !== "nwscript");
+      this.derived = { index, includes };
     }
     return this.derived;
   }
@@ -156,12 +151,7 @@ export default class IndexedDocument {
   private *dependencies(computedChildren: string[] = [], withOrder = false): Generator<{ name: string; document?: IndexedDocument; order?: number[] }> {
     const visited = new Set([this.getIncludeName(), ...computedChildren]);
     const children = (document: IndexedDocument, parentOrder?: number[]) =>
-      document.children
-        .map((name, index) => {
-          const position = document.includePositions[index];
-          return { name, order: parentOrder && position ? [...parentOrder, position.line, position.character, 0] : undefined };
-        })
-        .reverse();
+      document.includes.map(({ name, position }) => ({ name, order: parentOrder && position ? [...parentOrder, position.line, position.character, 0] : undefined })).reverse();
     const pending = children(this, withOrder ? [] : undefined);
     while (pending.length) {
       const next = pending.pop();
