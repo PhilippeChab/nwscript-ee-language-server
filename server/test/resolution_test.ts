@@ -1,3 +1,4 @@
+import type DocumentsCollection from "../src/Documents/DocumentsCollection";
 import { DeclarationKind, ReferenceKind } from "../src/Parser/types";
 import { CompletionItemKind, SymbolKind } from "vscode-languageserver";
 import { workspaceUri } from "./support/fixtures";
@@ -54,7 +55,7 @@ describe("IndexedDocument and signature resolution", () => {
   });
 
   it("reuses a live indexed document and shares its syntax declarations across edits", () => {
-    const collection = new api.Collection();
+    const collection: DocumentsCollection = new api.Collection();
     const live = TextDocument.create(workspaceUri("live.nss"), "nwscript", 1, "int Before;");
     const document = collection.getParsedDocument(live, parserService);
     expect(collection.getParsedDocument(live, parserService)).to.equal(document);

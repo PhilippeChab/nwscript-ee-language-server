@@ -22,7 +22,6 @@ export default class SignatureHelpProvider extends Provider {
       const context = this.getDocumentContext(uri, position);
       if (!context) return;
       const { syntax } = context.document;
-      if (!syntax) return;
       const call = syntax.getCallContext(position);
       if (!call) return;
       const { identifier: rawContent, activeParameter } = call;

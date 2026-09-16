@@ -25,7 +25,7 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
   private readonly documentsByUri = new Map<string, IndexedDocument>();
   // Live syntax is separate from the last usable include-index snapshot. A
   // document's mutable parse must not change that fallback after a failed save.
-  private readonly parsedDocuments = new WeakMap<TextDocument, IndexedDocument>();
+  private readonly parsedDocuments = new WeakMap<TextDocument, IndexedDocument<SyntaxDocument>>();
   private importChildren = new WeakMap<IndexedDocument, Set<string>>();
 
   constructor() {
@@ -41,11 +41,11 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
     });
   }
 
-  public createIndexedDocument(uri: string, base: boolean, source: DocumentIndex | SyntaxDocument) {
+  public createIndexedDocument<Source extends DocumentIndex | SyntaxDocument>(uri: string, base: boolean, source: Source) {
     return new IndexedDocument(base ? uri : normalizeDocumentUri(uri), base, source, this);
   }
 
-  public getParsedDocument(document: TextDocument, parserService: ParserService) {
+  public getParsedDocument(document: TextDocument, parserService: ParserService): IndexedDocument<SyntaxDocument> {
     const syntax = parserService.parse(document);
     let indexed = this.parsedDocuments.get(document);
     if (!indexed || indexed.syntax !== syntax) {

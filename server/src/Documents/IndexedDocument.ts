@@ -11,13 +11,15 @@ import type { DocumentIndex } from "../Parser/contracts";
 export type OwnedDeclarations = { owner?: string; declarations: Declaration[] };
 export type OwnedStructDeclarations = { owner?: string; declarations: StructDeclaration[] };
 
-export default class IndexedDocument {
+export default class IndexedDocument<Source extends DocumentIndex | SyntaxDocument = DocumentIndex | SyntaxDocument> {
   private cachedTypeReferences?: { index: DocumentIndex; references: TypeReference[] };
 
-  constructor(readonly uri: string, readonly base: boolean, private readonly source: DocumentIndex | SyntaxDocument, private readonly collection: DocumentsCollection) {}
+  constructor(readonly uri: string, readonly base: boolean, private readonly source: Source, private readonly collection: DocumentsCollection) {}
 
-  public get syntax() {
-    return this.source instanceof SyntaxDocument ? this.source : undefined;
+  public get syntax(): Source extends SyntaxDocument ? SyntaxDocument : undefined {
+    // The constructor fixes the source type; TypeScript cannot narrow a generic
+    // conditional return type through the instanceof check.
+    return (this.source instanceof SyntaxDocument ? this.source : undefined) as Source extends SyntaxDocument ? SyntaxDocument : undefined;
   }
 
   public get includes() {
@@ -114,8 +116,9 @@ export default class IndexedDocument {
     logger.debug("");
   }
 
-  private get index() {
-    return this.source instanceof SyntaxDocument ? this.source.getIndex() : this.source;
+  private get index(): DocumentIndex {
+    const source: DocumentIndex | SyntaxDocument = this.source;
+    return source instanceof SyntaxDocument ? source.getIndex() : source;
   }
 
   private get typeReferences(): TypeReference[] {

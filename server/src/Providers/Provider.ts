@@ -24,7 +24,6 @@ export default class Provider {
     if (!liveDocument) return;
     const document = this.server.documentsCollection.getParsedDocument(liveDocument, this.server.parserService);
     const { syntax } = document;
-    if (!syntax) return;
     return {
       liveDocument,
       document,
@@ -63,7 +62,6 @@ export default class Provider {
     const context = this.getDocumentContext(uri, position);
     if (!context) return;
     const { syntax } = context.document;
-    if (!syntax) return;
     const memberPath = syntax.getMemberPath(position);
     if (memberPath) {
       const struct = this.resolveMemberStruct(context, memberPath.slice(0, -1));
