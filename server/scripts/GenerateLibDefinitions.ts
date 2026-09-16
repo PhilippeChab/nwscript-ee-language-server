@@ -80,7 +80,7 @@ const generateDefinitions = async () => {
     // Skip main files
     if (!lib.includes("main")) {
       const definitions = parserService.analyzeContent(lib, AnalysisMode.document);
-      if (definitions.children.length === 0 && definitions.globalDeclarations.length === 0 && definitions.structDeclarations.length === 0) {
+      if (definitions.includes.length === 0 && definitions.globalDeclarations.length === 0 && definitions.structDeclarations.length === 0) {
         return;
       }
 

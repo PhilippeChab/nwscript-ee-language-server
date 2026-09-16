@@ -121,13 +121,12 @@ export default class SyntaxDocument {
       throw new Error("Incomplete declaration");
     }
     if (this.index) return this.index;
-    const index: DocumentIndex = { globalDeclarations: [], structDeclarations: [], children: [] };
+    const index: DocumentIndex = { globalDeclarations: [], structDeclarations: [], includes: [] };
     for (const node of this.walk(this.rootNode)) {
       if (node.type === "preproc_include") {
         const file = node.childForFieldName("file");
         if (file && !file.hasError) {
-          index.children.push(file.text.slice(1, -1));
-          (index.includePositions ||= []).push(this.position(node));
+          index.includes.push({ name: file.text.slice(1, -1), position: this.position(node) });
         }
       } else if (node.type === "function_definition") {
         const fn = this.readFunction(node);

@@ -10,6 +10,7 @@ import type { ParserService } from "../Parser";
 import { DocumentIndex, AnalysisMode } from "../Parser/ParserService";
 import { Dictionnary, normalizeDocumentUri } from "../Utils";
 import IndexedDocument from "./IndexedDocument";
+import readDocumentIndex from "./readDocumentIndex";
 import type SyntaxDocument from "../Parser/SyntaxDocument";
 import WorkspaceFilesSystem, { FILES_EXTENSION, resourceName } from "../WorkspaceFilesSystem/WorkspaceFilesSystem";
 import { isStandardLibrary } from "./StandardLibrary";
@@ -33,7 +34,7 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       const directoryPath = normalize(join(__dirname, "..", "resources", staticResourcesFolder));
       const files = readdirSync(directoryPath);
       files.forEach((filename) => {
-        const tokens = JSON.parse(readFileSync(join(__dirname, "..", "resources", staticResourcesFolder, filename)).toString()) as DocumentIndex;
+        const tokens = readDocumentIndex(readFileSync(join(__dirname, "..", "resources", staticResourcesFolder, filename), "utf8"));
         this.addDocument(this.createIndexedDocument(`${STATIC_PREFIX}/${filename.replace(".json", FILES_EXTENSION)}`, true, tokens));
       });
     });
@@ -239,7 +240,7 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
     const documentTokens = parserService.analyzeContent(content, AnalysisMode.document);
 
     this.addDocument(this.createIndexedDocument(uri, false, documentTokens));
-    this.createChildrenDocument(documentTokens.children, parserService, workespaceFilesSystem);
+    this.createChildrenDocument(documentTokens.includes, parserService, workespaceFilesSystem);
   }
 
   public updateDocument(document: TextDocument, parserService: ParserService, workespaceFilesSystem: WorkspaceFilesSystem) {
@@ -250,7 +251,7 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
     this.overwriteDocument(this.createIndexedDocument(document.uri, false, documentTokens));
     // Already-declared includes may have failed indexing and since been repaired.
     // createChildrenDocument skips includes that are already available.
-    this.createChildrenDocument(documentTokens.children, parserService, workespaceFilesSystem);
+    this.createChildrenDocument(documentTokens.includes, parserService, workespaceFilesSystem);
   }
 
   public debug(logger: Logger) {
@@ -271,8 +272,8 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
     if (!selected || selected.uri === document.uri) this.overwrite(document.getKey(), document);
   }
 
-  private createChildrenDocument(children: string[], parserService: ParserService, workespaceFilesSystem: WorkspaceFilesSystem) {
-    children.forEach((child) => {
+  private createChildrenDocument(includes: DocumentIndex["includes"], parserService: ParserService, workespaceFilesSystem: WorkspaceFilesSystem) {
+    includes.forEach(({ name: child }) => {
       if (child.toLowerCase() === "nwscript" || this.get(child)) return;
       const filePath = workespaceFilesSystem.getFilePath(child);
       if (!filePath) return;

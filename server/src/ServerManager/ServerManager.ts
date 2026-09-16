@@ -252,7 +252,7 @@ export default class ServerManger {
     } catch (error) {
       // Register unfinished new documents; retain existing usable scopes.
       if (!this.documentsCollection.getFromUri(document.uri)) {
-        this.documentsCollection.createDocument(document.uri, { children: [], globalDeclarations: [], structDeclarations: [] });
+        this.documentsCollection.createDocument(document.uri, { includes: [], globalDeclarations: [], structDeclarations: [] });
       }
       this.logger.error(`Cannot index ${document.uri}: ${error instanceof Error ? error.message : String(error)}`);
     }

@@ -128,7 +128,7 @@ describe("Auto-import completion", function () {
     for (const declaration of ["struct Example {\n int field;\n float other;\n};", 'void Example(\n int value,\n string text = "value");', "const int EXAMPLE = 1;"]) {
       for (let length = 0; length <= declaration.length; length++) {
         const scope = parserService.parseContent(valid + declaration.slice(0, length)).getIndex();
-        expect(scope.children).to.deep.equal(["helper"]);
+        expect(scope.includes).to.deep.equal([{ name: "helper", position: { line: 0, character: 0 } }]);
         expect(scope.entryPointDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["main"]);
         expect(scope.globalDeclarations.map((token: any) => token.identifier)).to.include.members(["VISIBLE", "Existing"]);
       }
@@ -684,8 +684,8 @@ describe("Auto-import completion", function () {
 
   it("recognizes include syntax in both indexing and live completion", () => {
     const source = '# include "helper" /* tail */\n// #include "fake"\n/*\n#include "also_fake"\n*/\n#include "unfinished\n';
-    expect(parserService.parseContent(source).getIndex().children).to.deep.equal(["helper"]);
-    expect(parserService.analyzeContent(source, "document").children).to.deep.equal(["helper"]);
+    expect(parserService.parseContent(source).getIndex().includes).to.deep.equal([{ name: "helper", position: { line: 0, character: 0 } }]);
+    expect(parserService.analyzeContent(source, "document").includes).to.deep.equal([{ name: "helper", position: { line: 0, character: 0 } }]);
   });
 
   it("can be disabled", () => {

@@ -730,7 +730,7 @@ describe("Installed standalone LSP server", function () {
             if (!require("fs").existsSync(${JSON.stringify(release)})) return;
             clearInterval(timer);
             for (const filePath of paths) process.send({ filePath, documentTokens: {
-              children: [], structDeclarations: [], globalDeclarations: [{
+              includes: [], structDeclarations: [], globalDeclarations: [{
                 identifier: "GhostFromRemovedFolder", tokenType: 3, returnType: "void",
                 params: [], comments: [], position: { line: 0, character: 5 }
               }]

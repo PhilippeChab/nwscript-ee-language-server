@@ -1,4 +1,4 @@
-import { CompletionItemKind, type Position } from "vscode-languageserver";
+import { CompletionItemKind } from "vscode-languageserver";
 import type Logger from "../Logger/Logger";
 import { STATIC_PREFIX } from "./DocumentsCollection";
 
@@ -12,11 +12,7 @@ export type OwnedDeclarations = { owner?: string; tokens: Declaration[] };
 export type OwnedStructDeclarations = { owner?: string; tokens: StructDeclaration[] };
 
 export default class IndexedDocument {
-  private derived?: {
-    index: DocumentIndex;
-    includes: { name: string; position?: Position }[];
-    typeReferences?: TypeReference[];
-  };
+  private cachedTypeReferences?: { index: DocumentIndex; references: TypeReference[] };
 
   constructor(readonly uri: string, readonly base: boolean, private readonly source: DocumentIndex | SyntaxDocument, private readonly collection: DocumentsCollection) {}
 
@@ -25,27 +21,27 @@ export default class IndexedDocument {
   }
 
   public get includes() {
-    return this.getDerivedIndex().includes;
+    return this.index.includes;
   }
 
   public get globalDeclarations() {
-    return this.getDerivedIndex().index.globalDeclarations;
+    return this.index.globalDeclarations;
   }
 
   public get structDeclarations() {
-    return this.getDerivedIndex().index.structDeclarations;
+    return this.index.structDeclarations;
   }
 
   public get localDeclarations() {
-    return this.getDerivedIndex().index.localDeclarations || [];
+    return this.index.localDeclarations || [];
   }
 
   public get memberReferences() {
-    return this.getDerivedIndex().index.memberReferences || [];
+    return this.index.memberReferences || [];
   }
 
   public get entryPointDeclarations() {
-    return this.getDerivedIndex().index.entryPointDeclarations || [];
+    return this.index.entryPointDeclarations || [];
   }
 
   public get entryPoints(): string[] {
@@ -116,25 +112,23 @@ export default class IndexedDocument {
     logger.debug("");
   }
 
-  private get typeReferences(): TypeReference[] {
-    // Preserve reference identity within an index for include-once ordering.
-    return (this.getDerivedIndex().typeReferences ||= this.getDeclarations().flatMap((token) => {
-      const type = "valueType" in token ? token.valueType : "returnType" in token ? token.returnType : undefined;
-      return type && !Object.prototype.hasOwnProperty.call(LanguageTypes, type)
-        ? [{ identifier: type, position: token.position, tokenType: CompletionItemKind.Reference, targetKind: "struct" as const }]
-        : [];
-    }));
+  private get index() {
+    return this.source instanceof SyntaxDocument ? this.source.getIndex() : this.source;
   }
 
-  private getDerivedIndex() {
-    const index = this.source instanceof SyntaxDocument ? this.source.getIndex() : this.source;
-    if (this.derived?.index !== index) {
-      // nwscript is implicit and selected per requesting workspace. Keep include
-      // locations aligned when excluding it from resource-name lookup.
-      const includes = index.children.map((child, i) => ({ name: child.toLowerCase(), position: index.includePositions?.[i] })).filter((child) => child.name !== "nwscript");
-      this.derived = { index, includes };
+  private get typeReferences(): TypeReference[] {
+    const index = this.index;
+    if (this.cachedTypeReferences?.index !== index) {
+      // Preserve reference identity within an index for include-once ordering.
+      const references: TypeReference[] = this.getDeclarations().flatMap((token) => {
+        const type = "valueType" in token ? token.valueType : "returnType" in token ? token.returnType : undefined;
+        return type && !Object.prototype.hasOwnProperty.call(LanguageTypes, type)
+          ? [{ identifier: type, position: token.position, tokenType: CompletionItemKind.Reference, targetKind: "struct" as const }]
+          : [];
+      });
+      this.cachedTypeReferences = { index, references };
     }
-    return this.derived;
+    return this.cachedTypeReferences.references;
   }
 
   private getDeclarations() {
@@ -149,9 +143,10 @@ export default class IndexedDocument {
   }
 
   private *dependencies(computedChildren: string[] = [], withOrder = false): Generator<{ name: string; document?: IndexedDocument; order?: number[] }> {
-    const visited = new Set([this.getIncludeName(), ...computedChildren]);
+    // nwscript is implicit and selected per requesting workspace.
+    const visited = new Set(["nwscript", this.getIncludeName(), ...computedChildren]);
     const children = (document: IndexedDocument, parentOrder?: number[]) =>
-      document.includes.map(({ name, position }) => ({ name, order: parentOrder && position ? [...parentOrder, position.line, position.character, 0] : undefined })).reverse();
+      document.includes.map(({ name, position }) => ({ name: name.toLowerCase(), order: parentOrder && position ? [...parentOrder, position.line, position.character, 0] : undefined })).reverse();
     const pending = children(this, withOrder ? [] : undefined);
     while (pending.length) {
       const next = pending.pop();

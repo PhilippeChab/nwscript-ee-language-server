@@ -12,8 +12,7 @@ export enum AnalysisMode {
 export type DocumentIndex = {
   globalDeclarations: Declaration[];
   structDeclarations: StructDeclaration[];
-  children: string[];
-  includePositions?: Position[];
+  includes: { name: string; position?: Position }[];
   entryPointDeclarations?: FunctionDeclaration[];
   localDeclarations?: (VariableDeclaration | ParameterDeclaration)[];
   memberReferences?: MemberReference[];

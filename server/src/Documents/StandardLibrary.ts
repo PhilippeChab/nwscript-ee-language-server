@@ -5,6 +5,7 @@ import { fileURLToPath, pathToFileURL } from "url";
 import type { TextDocument } from "vscode-languageserver-textdocument";
 import type { ParserService } from "../Parser";
 import { DocumentIndex, AnalysisMode } from "../Parser/ParserService";
+import readDocumentIndex from "./readDocumentIndex";
 import type WorkspaceFilesSystem from "../WorkspaceFilesSystem/WorkspaceFilesSystem";
 
 export const isStandardLibrary = (uri: string) => basename(fileURLToPath(uri)).toLowerCase() === "nwscript.nss";
@@ -21,7 +22,7 @@ export default class StandardLibrary {
   private readonly attempted = new Map<string, string>();
 
   constructor(private readonly files: WorkspaceFilesSystem, private readonly parserService: ParserService, private readonly report: (message: string) => void) {
-    this.bundled = JSON.parse(readFileSync(join(__dirname, "..", "resources", "standardLibDefinitions.json"), "utf8"));
+    this.bundled = readDocumentIndex(readFileSync(join(__dirname, "..", "resources", "standardLibDefinitions.json"), "utf8"));
   }
 
   public invalidate() {

@@ -17,7 +17,7 @@ const locals = document.syntax?.getLocalScope(position);
 const call = document.syntax?.getCallContext(position);
 ```
 
-The collection reuses the same parsed `IndexedDocument` for the lifetime of a live `TextDocument`. The parser updates its tree incrementally after edits. Declarations come directly from the syntax document's cached index; derived include names and type references refresh when that index changes. Reopening a file creates a separate live document, even if its URI and version match the closed buffer.
+The collection reuses the same parsed `IndexedDocument` for the lifetime of a live `TextDocument`. The parser updates its tree incrementally after edits. Declarations and include entries (`{ name, position }`) come directly from the syntax document's cached `DocumentIndex`. Include traversal normalizes resource names and skips the implicit `nwscript` dependency. Derived type references refresh when the index changes. Reopening a file creates a separate live document, even if its URI and version match the closed buffer.
 
 Bundled definitions and background indexing use index-only documents without retaining syntax trees. Include lookup keeps the last usable index independently of the live document, so unfinished edits cannot overwrite its fallback snapshot. Live requests read the recovered current syntax. Unused live trees release their WASM resources through finalization, while one-shot indexing explicitly disposes them.
 

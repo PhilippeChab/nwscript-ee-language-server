@@ -27,8 +27,7 @@ void test("indexes functions, constants, structs, includes, and entry points thr
   );
   assert.equal(parsed.rootNode.hasError, false);
   const index = parsed.getIndex();
-  assert.deepEqual(index.children, ["helper"]);
-  assert.deepEqual(index.includePositions, [{ line: 0, character: 0 }]);
+  assert.deepEqual(index.includes, [{ name: "helper", position: { line: 0, character: 0 } }]);
   assert.deepEqual(
     index.globalDeclarations.map((token) => token.identifier),
     ["VALUE", "Fn"],
