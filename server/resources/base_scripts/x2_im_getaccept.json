@@ -36,7 +36,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oPC",
@@ -45,7 +46,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oBackup",
@@ -54,7 +56,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -63,7 +66,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nCost",
@@ -72,7 +76,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

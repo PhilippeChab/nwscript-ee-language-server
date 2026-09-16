@@ -389,7 +389,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -416,7 +417,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oRangedEnemy",
@@ -425,7 +427,8 @@
                 "character": 19
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nAttempts",
@@ -434,7 +437,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRand",
@@ -443,7 +447,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nFeat",
@@ -452,7 +457,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -470,7 +476,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bTried",
@@ -479,7 +486,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -497,7 +505,8 @@
                 "character": 22
             },
             "valueType": "sSituation",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oLastEnemy",
@@ -506,7 +515,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nNth",
@@ -515,7 +525,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oSafe",
@@ -524,7 +535,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -542,7 +554,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nSkill",
@@ -551,7 +564,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRand",
@@ -560,7 +574,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMySize",
@@ -569,7 +584,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bHasExpertise",
@@ -578,7 +594,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bHasImprovedExpertise",
@@ -587,7 +604,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nBAB",
@@ -596,7 +614,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nAC",
@@ -605,7 +624,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oEnemy",
@@ -614,7 +634,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nParrySkill",
@@ -623,7 +644,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nAC",
@@ -632,7 +654,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ],
     "memberReferences": [

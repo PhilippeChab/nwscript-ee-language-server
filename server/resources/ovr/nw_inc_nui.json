@@ -3781,7 +3781,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "ret",
@@ -3790,7 +3791,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -3838,7 +3840,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -3874,7 +3877,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -3930,7 +3934,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4137,7 +4142,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4182,7 +4188,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4228,7 +4235,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4300,7 +4308,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4338,7 +4347,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4437,7 +4447,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4536,7 +4547,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4581,7 +4593,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4645,7 +4658,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4702,7 +4716,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4738,7 +4753,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4756,7 +4772,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4792,7 +4809,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4828,7 +4846,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4873,7 +4892,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4891,7 +4911,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "ret",
@@ -4900,7 +4921,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4984,7 +5006,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -5086,7 +5109,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -5170,7 +5194,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -5281,7 +5306,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -5366,7 +5392,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -5459,7 +5486,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -5561,7 +5589,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -5645,7 +5674,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -5681,7 +5711,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

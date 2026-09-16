@@ -1328,7 +1328,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oCritter",
@@ -1337,7 +1338,8 @@
                 "character": 19
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eShout",
@@ -1346,7 +1348,8 @@
                 "character": 18
             },
             "valueType": "event",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eShout",
@@ -1355,7 +1358,8 @@
                 "character": 18
             },
             "valueType": "event",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oTrigger",
@@ -1364,7 +1368,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oInTrigger",
@@ -1373,7 +1378,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bInTrigger",
@@ -1382,7 +1388,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1411,7 +1418,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oFriend",
@@ -1420,7 +1428,8 @@
                 "character": 19
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oCreature",
@@ -1429,7 +1438,8 @@
                 "character": 23
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oCreature",
@@ -1438,7 +1448,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1456,7 +1467,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "ACT_WANDER",
@@ -1465,7 +1477,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "ACT_LEAVE",
@@ -1474,7 +1487,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nAction",
@@ -1483,7 +1497,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oDoor",
@@ -1492,7 +1507,8 @@
                 "character": 19
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "lMyLoc",
@@ -1501,7 +1517,8 @@
                 "character": 25
             },
             "valueType": "location",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sResRef",
@@ -1510,7 +1527,8 @@
                 "character": 23
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "lLoc",
@@ -1519,7 +1537,8 @@
                 "character": 25
             },
             "valueType": "location",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oInvisiblePlaceable",
@@ -1528,7 +1547,8 @@
                 "character": 23
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oBar",
@@ -1537,7 +1557,8 @@
                 "character": 19
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nAnimationType",
@@ -1546,7 +1567,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nAnimation",
@@ -1555,7 +1577,8 @@
                 "character": 24
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fSpeed",
@@ -1564,7 +1587,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nAnimation",
@@ -1573,7 +1597,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1600,7 +1625,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1627,7 +1653,8 @@
                 "character": 10
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1673,7 +1700,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oSelf",
@@ -1682,7 +1710,8 @@
                 "character": 23
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1710,7 +1739,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1738,7 +1768,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1757,7 +1788,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1776,7 +1808,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1862,7 +1895,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1900,7 +1934,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oNearest",
@@ -1909,7 +1944,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nPerson",
@@ -1918,7 +1954,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oRat",
@@ -1927,7 +1964,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oSelf",
@@ -1936,7 +1974,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1972,7 +2011,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oPersonAtOther",
@@ -1981,7 +2021,8 @@
                 "character": 15
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1999,7 +2040,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

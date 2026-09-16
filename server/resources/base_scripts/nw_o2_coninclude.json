@@ -2925,7 +2925,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -2934,7 +2935,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMin",
@@ -2943,7 +2945,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMax",
@@ -2952,7 +2955,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nItems",
@@ -2961,7 +2965,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -2970,7 +2975,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbThreeItems",
@@ -2979,7 +2985,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbTwoItems",
@@ -2988,7 +2995,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbOneItems",
@@ -2997,7 +3005,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nBook1",
@@ -3006,7 +3015,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sRes",
@@ -3015,7 +3025,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sRes",
@@ -3024,7 +3035,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nResult",
@@ -3033,7 +3045,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sRes",
@@ -3042,7 +3055,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "NUM_ITEMS",
@@ -3051,7 +3065,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nResult",
@@ -3060,7 +3075,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nKit",
@@ -3069,7 +3085,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3078,7 +3095,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nAmount",
@@ -3087,7 +3105,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMod",
@@ -3096,7 +3115,8 @@
                 "character": 14
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3105,7 +3125,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sGem",
@@ -3114,7 +3135,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3123,7 +3145,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3132,7 +3155,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3141,7 +3165,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3150,7 +3175,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3159,7 +3185,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3168,7 +3195,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3177,7 +3205,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sJewel",
@@ -3186,7 +3215,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3195,7 +3225,8 @@
                 "character": 14
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3204,7 +3235,8 @@
                 "character": 14
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3213,7 +3245,8 @@
                 "character": 14
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3222,7 +3255,8 @@
                 "character": 14
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3231,7 +3265,8 @@
                 "character": 14
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3240,7 +3275,8 @@
                 "character": 14
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMax",
@@ -3249,7 +3285,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMaxSpells",
@@ -3258,7 +3295,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3267,7 +3305,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nScroll",
@@ -3276,7 +3315,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nLevel",
@@ -3285,7 +3325,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sRes",
@@ -3294,7 +3335,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3303,7 +3345,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sScroll",
@@ -3312,7 +3355,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3321,7 +3365,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3330,7 +3375,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3339,7 +3385,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3348,7 +3395,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3357,7 +3405,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sAmmo",
@@ -3366,7 +3415,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3375,7 +3425,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3384,7 +3435,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3393,7 +3445,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3402,7 +3455,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3411,7 +3465,8 @@
                 "character": 10
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sKit",
@@ -3420,7 +3475,8 @@
                 "character": 13
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3429,7 +3485,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3438,7 +3495,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3447,7 +3505,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3456,7 +3515,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3465,7 +3525,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3474,7 +3535,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3483,7 +3545,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sKit",
@@ -3492,7 +3555,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3501,7 +3565,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3510,7 +3575,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3519,7 +3585,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3528,7 +3595,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3537,7 +3605,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3546,7 +3615,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3555,7 +3625,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sKit",
@@ -3564,7 +3635,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3573,7 +3645,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3582,7 +3655,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3591,7 +3665,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3600,7 +3675,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3609,7 +3685,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3618,7 +3695,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sPotion",
@@ -3627,7 +3705,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3636,7 +3715,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3645,7 +3725,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3654,7 +3735,8 @@
                 "character": 15
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3663,7 +3745,8 @@
                 "character": 15
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3672,7 +3755,8 @@
                 "character": 15
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3681,7 +3765,8 @@
                 "character": 15
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3690,7 +3775,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -3699,7 +3785,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3708,7 +3795,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3717,7 +3805,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3726,7 +3815,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3735,7 +3825,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3744,7 +3835,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3753,7 +3845,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3762,7 +3855,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -3771,7 +3865,8 @@
                 "character": 25
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -3780,7 +3875,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3789,7 +3885,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3798,7 +3895,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3807,7 +3905,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3816,7 +3915,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3825,7 +3925,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3834,7 +3935,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -3871,7 +3973,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3880,7 +3983,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3889,7 +3993,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3898,7 +4003,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3907,7 +4013,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3916,7 +4023,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3925,7 +4033,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -3962,7 +4071,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -3971,7 +4081,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3980,7 +4091,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3989,7 +4101,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -3998,7 +4111,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4007,7 +4121,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4016,7 +4131,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4053,7 +4169,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4062,7 +4179,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4071,7 +4189,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4080,7 +4199,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4089,7 +4209,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4098,7 +4219,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4107,7 +4229,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4144,7 +4267,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4153,7 +4277,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4162,7 +4287,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4171,7 +4297,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4180,7 +4307,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4217,7 +4345,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4226,7 +4355,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4235,7 +4365,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4244,7 +4375,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4253,7 +4385,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4262,7 +4395,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4271,7 +4405,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4308,7 +4443,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4317,7 +4453,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4326,7 +4463,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4335,7 +4473,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4344,7 +4483,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4353,7 +4493,8 @@
                 "character": 18
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4362,7 +4503,8 @@
                 "character": 15
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4371,7 +4513,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4380,7 +4523,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4389,7 +4533,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4398,7 +4543,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4407,7 +4553,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4416,7 +4563,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4425,7 +4573,8 @@
                 "character": 18
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4434,7 +4583,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4443,7 +4593,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4452,7 +4603,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4461,7 +4613,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4470,7 +4623,8 @@
                 "character": 20
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4479,7 +4633,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4488,7 +4643,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4525,7 +4681,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4534,7 +4691,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4543,7 +4701,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4552,7 +4711,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4561,7 +4721,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4570,7 +4731,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4579,7 +4741,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4588,7 +4751,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4597,7 +4761,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4606,7 +4771,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4615,7 +4781,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4624,7 +4791,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4633,7 +4801,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4642,7 +4811,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4651,7 +4821,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4660,7 +4831,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4669,7 +4841,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4678,7 +4851,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4687,7 +4861,8 @@
                 "character": 21
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4696,7 +4871,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4705,7 +4881,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4714,7 +4891,8 @@
                 "character": 23
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4723,7 +4901,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4732,7 +4911,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4741,7 +4921,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4750,7 +4931,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4759,7 +4941,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4768,7 +4951,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4777,7 +4961,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4786,7 +4971,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4795,7 +4981,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4804,7 +4991,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4813,7 +5001,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4822,7 +5011,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4831,7 +5021,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4840,7 +5031,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4849,7 +5041,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4858,7 +5051,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4867,7 +5061,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4876,7 +5071,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4885,7 +5081,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4894,7 +5091,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4903,7 +5101,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4912,7 +5111,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4921,7 +5121,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4930,7 +5131,8 @@
                 "character": 18
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4939,7 +5141,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4948,7 +5151,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4957,7 +5161,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4966,7 +5171,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -4975,7 +5181,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -4984,7 +5191,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -4993,7 +5201,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5002,7 +5211,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5011,7 +5221,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5020,7 +5231,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5029,7 +5241,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5038,7 +5251,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -5047,7 +5261,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -5056,7 +5271,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5065,7 +5281,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5074,7 +5291,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5083,7 +5301,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5092,7 +5311,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5101,7 +5321,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5110,7 +5331,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -5119,7 +5341,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -5128,7 +5351,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5137,7 +5361,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5146,7 +5371,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5155,7 +5381,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5164,7 +5391,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5173,7 +5401,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -5182,7 +5411,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -5191,7 +5421,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5200,7 +5431,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5209,7 +5441,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5218,7 +5451,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5227,7 +5461,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -5236,7 +5471,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHD",
@@ -5245,7 +5481,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5254,7 +5491,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5263,7 +5501,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5272,7 +5511,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5281,7 +5521,8 @@
                 "character": 22
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -5290,7 +5531,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbMisc",
@@ -5299,7 +5541,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbClass",
@@ -5308,7 +5551,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbRodStaffWand",
@@ -5317,7 +5561,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbSimple",
@@ -5326,7 +5571,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbMartial",
@@ -5335,7 +5581,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbExotic",
@@ -5344,7 +5591,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbLight",
@@ -5353,7 +5601,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbMedium",
@@ -5362,7 +5611,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbHeavy",
@@ -5371,7 +5621,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nSpecialRanger",
@@ -5380,7 +5631,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nClass",
@@ -5389,7 +5641,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5398,7 +5651,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbBook",
@@ -5407,7 +5661,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbAnimal",
@@ -5416,7 +5671,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbJunk",
@@ -5425,7 +5681,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbGold",
@@ -5434,7 +5691,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbGem",
@@ -5443,7 +5701,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbJewel",
@@ -5452,7 +5711,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbArcane",
@@ -5461,7 +5721,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbDivine",
@@ -5470,7 +5731,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbAmmo",
@@ -5479,7 +5741,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbKit",
@@ -5488,7 +5751,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbPotion",
@@ -5497,7 +5761,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nProbTable2",
@@ -5506,7 +5771,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nSpecific",
@@ -5515,7 +5781,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "i",
@@ -5524,7 +5791,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nNumberItems",
@@ -5533,7 +5801,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -5542,7 +5811,8 @@
                 "character": 9
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oTarget",
@@ -5551,7 +5821,8 @@
                 "character": 19
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oAttacker",
@@ -5560,7 +5831,8 @@
                 "character": 18
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oTarget",
@@ -5569,7 +5841,8 @@
                 "character": 19
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oAttacker",
@@ -5578,7 +5851,8 @@
                 "character": 18
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -5596,7 +5870,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nTotal",
@@ -5605,7 +5880,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nClass1",
@@ -5614,7 +5890,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nClass2",
@@ -5623,7 +5900,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nClass3",
@@ -5632,7 +5910,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nState1",
@@ -5641,7 +5920,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nState2",
@@ -5650,7 +5930,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nUseClass",
@@ -5659,7 +5940,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

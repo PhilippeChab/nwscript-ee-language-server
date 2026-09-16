@@ -3162,7 +3162,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "jField",
@@ -3171,7 +3172,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "jPatch",
@@ -3180,7 +3182,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "jPatch",
@@ -3189,7 +3192,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "jType",
@@ -3198,7 +3202,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "jLocString",
@@ -3207,7 +3212,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -3225,7 +3231,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "ret",
@@ -3234,7 +3241,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -3261,7 +3269,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -3279,7 +3288,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sObjectType",
@@ -3288,7 +3298,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -3334,7 +3345,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {

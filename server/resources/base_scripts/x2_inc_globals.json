@@ -1006,7 +1006,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oHench",
@@ -1015,7 +1016,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1042,7 +1044,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "i",
@@ -1051,7 +1054,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oHench",
@@ -1060,7 +1064,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1087,7 +1092,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "lPC",
@@ -1096,7 +1102,8 @@
                 "character": 13
             },
             "valueType": "location",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eVis",
@@ -1105,7 +1112,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oDeekin",
@@ -1114,7 +1122,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nCount",
@@ -1123,7 +1132,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sTag",
@@ -1132,7 +1142,8 @@
                 "character": 12
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sRandomOnes",
@@ -1141,7 +1152,8 @@
                 "character": 12
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1159,7 +1171,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sOneLiner",
@@ -1168,7 +1181,8 @@
                 "character": 12
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bAllowedToCopy",
@@ -1177,7 +1191,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -1186,7 +1201,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "i",
@@ -1195,7 +1211,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oJunkItem",
@@ -1204,7 +1221,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -1213,7 +1231,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sTag",
@@ -1222,7 +1241,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oCritter",
@@ -1231,7 +1251,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oStore",
@@ -1240,7 +1261,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oStore",
@@ -1249,7 +1271,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oRothe",
@@ -1258,7 +1281,8 @@
                 "character": 19
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oStore",
@@ -1267,7 +1291,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "lStore",
@@ -1276,7 +1301,8 @@
                 "character": 13
             },
             "valueType": "location",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oNewStore",
@@ -1285,7 +1311,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sName",
@@ -1294,7 +1321,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nValue",
@@ -1303,7 +1331,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nValue",
@@ -1312,7 +1341,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

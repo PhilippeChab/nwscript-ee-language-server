@@ -43,7 +43,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

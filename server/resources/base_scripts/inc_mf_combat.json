@@ -105,7 +105,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nTargetStunned",
@@ -114,7 +115,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oTarget",
@@ -123,7 +125,8 @@
                 "character": 15
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -141,7 +144,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nStunTime",
@@ -150,7 +154,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nDC",
@@ -159,7 +164,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fDelay",
@@ -168,7 +174,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "lTargetLocation",
@@ -177,7 +184,8 @@
                 "character": 13
             },
             "valueType": "location",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oTarget",
@@ -186,7 +194,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eCone",
@@ -195,7 +204,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eVis",
@@ -204,7 +214,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -222,7 +233,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nDC",
@@ -231,7 +243,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "lTargetLocation",
@@ -240,7 +253,8 @@
                 "character": 13
             },
             "valueType": "location",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oTarget",
@@ -249,7 +263,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eGaze",
@@ -258,7 +273,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eVis",
@@ -267,7 +283,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eDur",
@@ -276,7 +293,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eVisDur",
@@ -285,7 +303,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eLink",
@@ -294,7 +313,8 @@
                 "character": 11
             },
             "valueType": "effect",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fDelay",
@@ -303,7 +323,8 @@
                 "character": 22
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

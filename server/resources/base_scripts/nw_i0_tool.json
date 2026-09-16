@@ -6,9 +6,10 @@
                 "character": 4
             },
             "identifier": "DC_EASY",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0"
+            "value": "0",
+            "scope": "global"
         },
         {
             "position": {
@@ -16,9 +17,10 @@
                 "character": 4
             },
             "identifier": "DC_MEDIUM",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "scope": "global"
         },
         {
             "position": {
@@ -26,9 +28,10 @@
                 "character": 4
             },
             "identifier": "DC_HARD",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "scope": "global"
         },
         {
             "position": {
@@ -36,9 +39,10 @@
                 "character": 4
             },
             "identifier": "G_CLASSCHANCE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "70"
+            "value": "70",
+            "scope": "global"
         },
         {
             "position": {
@@ -411,7 +415,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nTest",
@@ -420,7 +425,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRewardMod",
@@ -429,7 +435,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nXP",
@@ -438,7 +445,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oPartyMember",
@@ -447,7 +455,8 @@
                 "character": 15
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oPartyMember",
@@ -456,7 +465,8 @@
                 "character": 15
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oPartyMember",
@@ -465,7 +475,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

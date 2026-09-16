@@ -36,7 +36,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nClass",
@@ -45,7 +46,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

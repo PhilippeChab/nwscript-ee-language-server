@@ -929,7 +929,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sLookUp",
@@ -938,7 +939,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sDefault",
@@ -947,7 +949,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sRet",
@@ -956,7 +959,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "s2DA",
@@ -965,7 +969,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRet",
@@ -974,7 +979,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sColName",
@@ -983,7 +989,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nChance",
@@ -992,7 +999,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nItems",
@@ -1001,7 +1009,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fStackV",
@@ -1010,7 +1019,8 @@
                 "character": 9
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1037,7 +1047,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sCol",
@@ -1046,7 +1057,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nBonus",
@@ -1055,7 +1067,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "ip",
@@ -1064,7 +1077,8 @@
                 "character": 17
             },
             "valueType": "itemproperty",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nStack",
@@ -1073,7 +1087,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nStackSize",
@@ -1082,7 +1097,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -1091,7 +1107,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sNum",
@@ -1100,7 +1117,8 @@
                 "character": 14
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMaxStackSize",
@@ -1109,7 +1127,8 @@
                 "character": 11
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRandom",
@@ -1118,7 +1137,8 @@
                 "character": 11
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nStackSize",
@@ -1127,7 +1147,8 @@
                 "character": 11
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "s2DA",
@@ -1136,7 +1157,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sRowName",
@@ -1145,7 +1167,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMax",
@@ -1154,7 +1177,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRand",
@@ -1163,7 +1187,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sRet",
@@ -1172,7 +1197,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sCol",
@@ -1181,7 +1207,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRand",
@@ -1190,7 +1217,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -1199,7 +1227,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nClass1",
@@ -1208,7 +1237,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nClass2",
@@ -1217,7 +1247,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nClass3",
@@ -1226,7 +1257,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRangeStart",
@@ -1235,7 +1267,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRangeStop",
@@ -1244,7 +1277,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "i",
@@ -1253,7 +1287,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nHighest",
@@ -1262,7 +1297,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -1271,7 +1307,8 @@
                 "character": 10
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nChance",
@@ -1280,7 +1317,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oCount",
@@ -1289,7 +1327,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nCount",
@@ -1298,7 +1337,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1344,7 +1384,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMax",
@@ -1353,7 +1394,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1390,7 +1432,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -1399,7 +1442,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oRet",
@@ -1408,7 +1452,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1427,7 +1472,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMaxItems",
@@ -1436,7 +1482,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nStackVariation",
@@ -1445,7 +1492,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fStackVariation",
@@ -1454,7 +1502,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "s2DA",
@@ -1463,7 +1512,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
