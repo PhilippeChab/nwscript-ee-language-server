@@ -1,18 +1,20 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "x2_inc_ws_smith",
-        "x0_i0_match"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 11,
-            "character": 0
+            "name": "x2_inc_ws_smith",
+            "position": {
+                "line": 11,
+                "character": 0
+            }
         },
         {
-            "line": 12,
-            "character": 0
+            "name": "x0_i0_match",
+            "position": {
+                "line": 12,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

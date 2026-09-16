@@ -899,13 +899,13 @@
         }
     ],
     "structDeclarations": [],
-    "children": [
-        "nw_i0_plot"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 13,
-            "character": 0
+            "name": "nw_i0_plot",
+            "position": {
+                "line": 13,
+                "character": 0
+            }
         }
     ],
     "localDeclarations": [

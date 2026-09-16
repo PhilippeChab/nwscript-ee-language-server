@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "x2_inc_craft"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 17,
-            "character": 0
+            "name": "x2_inc_craft",
+            "position": {
+                "line": 17,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

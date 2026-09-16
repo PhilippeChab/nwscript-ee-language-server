@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "x0_inc_skills"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 13,
-            "character": 0
+            "name": "x0_inc_skills",
+            "position": {
+                "line": 13,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

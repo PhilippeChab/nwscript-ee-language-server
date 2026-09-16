@@ -567,7 +567,13 @@
           ]
       }
   ],
-  "children": [
-      "nwnx"
+  "includes": [
+      {
+          "name": "nwnx",
+          "position": {
+              "line": 5,
+              "character": 0
+          }
+      }
   ]
 }

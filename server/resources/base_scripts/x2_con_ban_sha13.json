@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "x2_inc_banter"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 11,
-            "character": 0
+            "name": "x2_inc_banter",
+            "position": {
+                "line": 11,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

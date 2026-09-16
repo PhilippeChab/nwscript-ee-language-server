@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "NW_I0_GENERIC"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 5,
-            "character": 0
+            "name": "NW_I0_GENERIC",
+            "position": {
+                "line": 5,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

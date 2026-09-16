@@ -1,18 +1,20 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "NW_J_ASSASSIN",
-        "nw_i0_plot"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 13,
-            "character": 0
+            "name": "NW_J_ASSASSIN",
+            "position": {
+                "line": 13,
+                "character": 0
+            }
         },
         {
-            "line": 14,
-            "character": 0
+            "name": "nw_i0_plot",
+            "position": {
+                "line": 14,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

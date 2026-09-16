@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "x3_inc_horse"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 14,
-            "character": 0
+            "name": "x3_inc_horse",
+            "position": {
+                "line": 14,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

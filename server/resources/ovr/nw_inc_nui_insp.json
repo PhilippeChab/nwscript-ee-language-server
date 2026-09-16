@@ -55,13 +55,13 @@
         }
     ],
     "structDeclarations": [],
-    "children": [
-        "nw_inc_nui"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 0,
-            "character": 0
+            "name": "nw_inc_nui",
+            "position": {
+                "line": 0,
+                "character": 0
+            }
         }
     ],
     "localDeclarations": [

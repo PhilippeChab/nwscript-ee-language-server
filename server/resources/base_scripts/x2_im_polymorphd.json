@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "x0_i0_spells"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 0,
-            "character": 0
+            "name": "x0_i0_spells",
+            "position": {
+                "line": 0,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

@@ -1119,7 +1119,7 @@
         }
     ],
     "structDeclarations": [],
-    "children": [],
+    "includes": [],
     "localDeclarations": [
         {
             "identifier": "oDied",

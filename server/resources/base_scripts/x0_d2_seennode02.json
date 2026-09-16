@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "x0_i0_seennode"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 14,
-            "character": 0
+            "name": "x0_i0_seennode",
+            "position": {
+                "line": 14,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

@@ -1,18 +1,20 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "NW_I0_Plot",
-        "NW_J_FETCH"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 2,
-            "character": 0
+            "name": "NW_I0_Plot",
+            "position": {
+                "line": 2,
+                "character": 0
+            }
         },
         {
-            "line": 3,
-            "character": 0
+            "name": "NW_J_FETCH",
+            "position": {
+                "line": 3,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

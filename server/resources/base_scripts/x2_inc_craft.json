@@ -1808,18 +1808,20 @@
             ]
         }
     ],
-    "children": [
-        "x2_inc_itemprop",
-        "x2_inc_switches"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 15,
-            "character": 0
+            "name": "x2_inc_itemprop",
+            "position": {
+                "line": 15,
+                "character": 0
+            }
         },
         {
-            "line": 16,
-            "character": 0
+            "name": "x2_inc_switches",
+            "position": {
+                "line": 16,
+                "character": 0
+            }
         }
     ],
     "localDeclarations": [
