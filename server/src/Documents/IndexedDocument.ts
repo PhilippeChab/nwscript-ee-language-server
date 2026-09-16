@@ -1,4 +1,4 @@
-import { CompletionItemKind } from "vscode-languageserver";
+import { DeclarationKind, ReferenceKind } from "../Parser/types";
 import type Logger from "../Logger/Logger";
 import { STATIC_PREFIX } from "./DocumentsCollection";
 
@@ -63,7 +63,7 @@ export default class IndexedDocument {
     const order = new Map<IndexedName, number[] | undefined>();
     const add = (document: IndexedDocument, prefix?: number[]) => {
       for (const indexedName of [...document.getDeclarations(), ...document.memberReferences, ...document.typeReferences]) {
-        const position = indexedName.kind === CompletionItemKind.Function ? indexedName.signatureEnd || indexedName.position : indexedName.position;
+        const position = indexedName.kind === DeclarationKind.Function ? indexedName.signatureEnd || indexedName.position : indexedName.position;
         order.set(indexedName, prefix ? [...prefix, position.line, position.character, 1] : undefined);
       }
     };
@@ -124,9 +124,7 @@ export default class IndexedDocument {
       // Preserve reference identity within an index for include-once ordering.
       const references: TypeReference[] = this.getDeclarations().flatMap((declaration) => {
         const type = "valueType" in declaration ? declaration.valueType : "returnType" in declaration ? declaration.returnType : undefined;
-        return type && !Object.prototype.hasOwnProperty.call(LanguageTypes, type)
-          ? [{ identifier: type, position: declaration.position, kind: CompletionItemKind.Reference, targetKind: "struct" as const }]
-          : [];
+        return type && !Object.prototype.hasOwnProperty.call(LanguageTypes, type) ? [{ identifier: type, position: declaration.position, kind: ReferenceKind.Type }] : [];
       });
       this.cachedTypeReferences = { index, references };
     }
@@ -139,7 +137,7 @@ export default class IndexedDocument {
       ...this.structDeclarations,
       ...this.localDeclarations,
       ...this.entryPointDeclarations,
-      ...[...this.globalDeclarations, ...this.entryPointDeclarations].flatMap((declaration) => (declaration.kind === CompletionItemKind.Function ? declaration.params : [])),
+      ...[...this.globalDeclarations, ...this.entryPointDeclarations].flatMap((declaration) => (declaration.kind === DeclarationKind.Function ? declaration.params : [])),
       ...this.structDeclarations.flatMap((struct) => struct.properties),
     ];
   }

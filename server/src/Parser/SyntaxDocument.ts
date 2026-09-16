@@ -1,6 +1,7 @@
+import { DeclarationKind, ReferenceKind } from "./types";
 import { join } from "path";
 import type { Language as SyntaxLanguage, Parser as SyntaxParser, Node, Tree } from "web-tree-sitter";
-import { CompletionItemKind, Range } from "vscode-languageserver";
+import { Range } from "vscode-languageserver";
 import type { Position } from "vscode-languageserver";
 import type { TextDocument } from "vscode-languageserver-textdocument";
 import type { DocumentIndex, LocalScope, AutoImportContext } from "./contracts";
@@ -135,9 +136,7 @@ export default class SyntaxDocument {
           (index.entryPointDeclarations ||= []).push(fn);
           continue;
         }
-        const existing = index.globalDeclarations.find(
-          (declaration): declaration is FunctionDeclaration => declaration.kind === CompletionItemKind.Function && declaration.identifier === fn.identifier,
-        );
+        const existing = index.globalDeclarations.find((declaration): declaration is FunctionDeclaration => declaration.kind === DeclarationKind.Function && declaration.identifier === fn.identifier);
         if (!existing) index.globalDeclarations.push(fn);
         else {
           if (fn.implementation) existing.implementation = true;
@@ -150,10 +149,10 @@ export default class SyntaxDocument {
         index.structDeclarations.push({
           position: this.position(name),
           identifier: name.text,
-          kind: CompletionItemKind.Struct,
+          kind: DeclarationKind.Struct,
           properties: (fields?.namedChildren.filter(isNode) || [])
             .filter((child) => child.type === "field_declaration")
-            .flatMap((field) => this.variables(field).map((variable) => ({ ...variable, kind: CompletionItemKind.Property }))),
+            .flatMap((field) => this.variables(field).map((variable) => ({ ...variable, kind: DeclarationKind.Field }))),
         });
       } else if (node.type === "declaration") {
         const variables = this.variables(node);
@@ -165,7 +164,7 @@ export default class SyntaxDocument {
             index.globalDeclarations.push({
               position: variable.position,
               identifier: variable.identifier,
-              kind: CompletionItemKind.Constant,
+              kind: DeclarationKind.Constant,
               valueType: variable.valueType,
               value: declarator?.childForFieldName("value")?.text || "",
               ...(node.namedChildren.filter(isNode).some((child) => child.type === "const_qualifier") ? { isConst: true as const } : {}),
@@ -174,7 +173,7 @@ export default class SyntaxDocument {
         }
       } else if (node.type === "field_expression") {
         const member = node.childForFieldName("field");
-        if (member && !member.isMissing) (index.memberReferences ||= []).push({ identifier: member.text, position: this.position(member), kind: CompletionItemKind.Reference });
+        if (member && !member.isMissing) (index.memberReferences ||= []).push({ identifier: member.text, position: this.position(member), kind: ReferenceKind.Member });
       }
     }
     this.index = index;
@@ -269,9 +268,9 @@ export default class SyntaxDocument {
     const node = leaves.find((leaf) => leaf.startIndex === offset && leaf.isNamed) || leaves.find((leaf) => leaf.startIndex <= offset && leaf.endIndex >= offset);
     const kind =
       node?.type === "type_identifier" || ["struct_declarator", "struct_specifier"].includes(node?.parent?.type || "")
-        ? CompletionItemKind.Struct
+        ? ReferenceKind.Type
         : node?.type === "field_identifier"
-        ? CompletionItemKind.Property
+        ? ReferenceKind.Member
         : undefined;
     return { rawContent: node?.text, kind };
   }
@@ -368,7 +367,7 @@ export default class SyntaxDocument {
       .flatMap((declarator) => {
         const name = declarator.childForFieldName("declarator") || declarator;
         if (name.isMissing || !["identifier", "field_identifier"].includes(name.type)) return [];
-        return [{ identifier: name.text, position: this.position(name), valueType: this.valueType(node), kind: CompletionItemKind.Variable }];
+        return [{ identifier: name.text, position: this.position(name), valueType: this.valueType(node), kind: DeclarationKind.Variable }];
       });
   }
 
@@ -383,7 +382,7 @@ export default class SyntaxDocument {
         this.variables(parameter).map((variable) => ({
           position: variable.position,
           identifier: variable.identifier,
-          kind: CompletionItemKind.TypeParameter,
+          kind: DeclarationKind.Parameter,
           valueType: variable.valueType,
           ...(parameter.childForFieldName("default") ? { defaultValue: parameter.childForFieldName("default")?.text } : {}),
         })),
@@ -397,7 +396,7 @@ export default class SyntaxDocument {
     return {
       position: this.position(name),
       identifier: name.text,
-      kind: CompletionItemKind.Function,
+      kind: DeclarationKind.Function,
       returnType: this.valueType(node),
       params,
       signatureEnd: this.document.positionAt(args.endIndex),

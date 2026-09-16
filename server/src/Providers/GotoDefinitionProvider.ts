@@ -1,7 +1,7 @@
+import { DeclarationKind } from "../Parser/types";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { TextDocument } from "vscode-languageserver-textdocument";
-import { CompletionItemKind } from "vscode-languageserver";
 import { normalizeDocumentUri } from "../Utils";
 import type { ServerManager } from "../ServerManager";
 import Provider from "./Provider";
@@ -14,7 +14,7 @@ export default class GotoDefinitionProvider extends Provider {
         const resolved = this.resolveSymbol(uri, position);
         if (!resolved?.owner) return;
         let target = resolved.declaration.position;
-        if (resolved.declaration.kind === CompletionItemKind.Function) {
+        if (resolved.declaration.kind === DeclarationKind.Function) {
           const ownerDocument = this.getSourceDocument(resolved.owner);
           if (ownerDocument) {
             const cursor = normalizeDocumentUri(uri) === normalizeDocumentUri(resolved.owner) ? position : undefined;

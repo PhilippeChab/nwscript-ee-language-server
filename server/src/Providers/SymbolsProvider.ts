@@ -1,4 +1,5 @@
-import { CompletionItemKind, DocumentSymbolParams, DocumentSymbol, SymbolInformation } from "vscode-languageserver";
+import { DeclarationKind } from "../Parser/types";
+import { DocumentSymbolParams, DocumentSymbol, SymbolInformation } from "vscode-languageserver";
 
 import type { ServerManager } from "../ServerManager";
 import { isStandardLibrary } from "../Documents/StandardLibrary";
@@ -22,12 +23,12 @@ export default class SymbolsProvider extends Provider {
       if (!context) return;
       const { document, localScope } = context;
       const constantSymbols = document.globalDeclarations
-        .filter((declaration) => declaration.kind === CompletionItemKind.Constant)
+        .filter((declaration) => declaration.kind === DeclarationKind.Constant)
         .map((declaration) => SymbolBuilder.buildItem(declaration, isStandardLibrary(uri)));
       const structSymbols = document.structDeclarations.map((declaration) => SymbolBuilder.buildItem(declaration));
 
       const implementations = new Set(localScope.functionDeclarations.map((declaration) => declaration.identifier));
-      const prototypes = document.globalDeclarations.filter((declaration) => declaration.kind === CompletionItemKind.Function && !implementations.has(declaration.identifier));
+      const prototypes = document.globalDeclarations.filter((declaration) => declaration.kind === DeclarationKind.Function && !implementations.has(declaration.identifier));
       const functions = [...localScope.functionDeclarations, ...prototypes].map((declaration) => SymbolBuilder.buildItem(declaration));
       const symbols = constantSymbols.concat(structSymbols, functions);
       if (this.server.capabilitiesHandler.getSupportsHierarchicalSymbols()) return symbols;

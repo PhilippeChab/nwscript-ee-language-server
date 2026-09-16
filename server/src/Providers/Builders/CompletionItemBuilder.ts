@@ -1,3 +1,4 @@
+import { DeclarationKind } from "../../Parser/types";
 import { CompletionItem, CompletionItemKind, TextEdit } from "vscode-languageserver";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
@@ -43,7 +44,7 @@ export default class CompletionItemBuilder extends Builder {
 
   public static buildItem(declaration: Declaration, implicitConstants = false): CompletionItem {
     if (this.isConstantDeclaration(declaration)) {
-      return declaration.isConst || implicitConstants ? this.buildConstantItem(declaration) : this.buildVariableItem({ ...declaration, kind: CompletionItemKind.Variable });
+      return declaration.isConst || implicitConstants ? this.buildConstantItem(declaration) : this.buildVariableItem({ ...declaration, kind: DeclarationKind.Variable });
     } else if (this.isVariableDeclaration(declaration)) {
       return this.buildVariableItem(declaration);
     } else if (this.isParameterDeclaration(declaration)) {
@@ -64,7 +65,7 @@ export default class CompletionItemBuilder extends Builder {
   private static buildConstantItem(declaration: ConstantDeclaration): CompletionItem {
     return {
       label: declaration.identifier,
-      kind: declaration.kind,
+      kind: CompletionItemKind.Constant,
       detail: `(constant) ${declaration.value}: ${this.handleLanguageType(declaration.valueType)}`,
     };
   }
@@ -72,7 +73,7 @@ export default class CompletionItemBuilder extends Builder {
   private static buildVariableItem(declaration: VariableDeclaration): CompletionItem {
     return {
       label: declaration.identifier,
-      kind: declaration.kind,
+      kind: CompletionItemKind.Variable,
       detail: `(variable) ${declaration.identifier}: ${this.handleLanguageType(declaration.valueType)}`,
     };
   }
@@ -88,7 +89,7 @@ export default class CompletionItemBuilder extends Builder {
   private static buildFunctionItem(declaration: FunctionDeclaration): CompletionItem {
     return {
       label: declaration.identifier,
-      kind: declaration.kind,
+      kind: CompletionItemKind.Function,
       detail: `(method) (${declaration.params.reduce((acc, param, index) => {
         return `${acc}${param.identifier}: ${this.handleLanguageType(param.valueType)}${index === declaration.params.length - 1 ? "" : ", "}`;
       }, "")}): ${this.handleLanguageType(declaration.returnType)}`,
@@ -99,7 +100,7 @@ export default class CompletionItemBuilder extends Builder {
   private static buildStructPropertyItem(property: FieldDeclaration): CompletionItem {
     return {
       label: property.identifier,
-      kind: property.kind,
+      kind: CompletionItemKind.Property,
       detail: `(property) ${property.identifier}: ${this.handleLanguageType(property.valueType)}`,
     };
   }
@@ -107,7 +108,7 @@ export default class CompletionItemBuilder extends Builder {
   private static buildStructItem(declaration: StructDeclaration): CompletionItem {
     return {
       label: declaration.identifier,
-      kind: declaration.kind,
+      kind: CompletionItemKind.Struct,
       detail: `(struct) ${declaration.identifier}`,
     };
   }

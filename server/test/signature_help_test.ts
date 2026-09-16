@@ -1,6 +1,6 @@
 import { describe, it } from "mocha";
 import { expect } from "chai";
-import { CompletionItemKind } from "vscode-languageserver";
+import { DeclarationKind } from "../src/Parser/types";
 import SignatureHelpBuilder from "../src/Providers/Builders/SignatureHelpBuilder";
 import { LanguageTypes } from "../src/Parser/constants";
 import type { FunctionDeclaration } from "../src/Parser/types";
@@ -8,13 +8,13 @@ import type { FunctionDeclaration } from "../src/Parser/types";
 describe("Signature help", () => {
   const declaration: FunctionDeclaration = {
     identifier: "Example",
-    kind: CompletionItemKind.Function,
+    kind: DeclarationKind.Function,
     returnType: LanguageTypes.void,
     position: { line: 0, character: 0 },
     comments: [],
     params: ["first", "second"].map((identifier) => ({
       identifier,
-      kind: CompletionItemKind.TypeParameter,
+      kind: DeclarationKind.Parameter,
       valueType: LanguageTypes.int,
       position: { line: 0, character: 0 },
     })),

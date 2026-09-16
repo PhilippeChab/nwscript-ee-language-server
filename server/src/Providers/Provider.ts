@@ -1,4 +1,5 @@
-import { CompletionItemKind, Position } from "vscode-languageserver";
+import { DeclarationKind, ReferenceKind } from "../Parser/types";
+import { Position } from "vscode-languageserver";
 import type { Declaration, StructDeclaration } from "../Parser/types";
 import { LanguageTypes } from "../Parser/constants";
 import type { ServerManager } from "../ServerManager";
@@ -6,9 +7,9 @@ import type { ServerManager } from "../ServerManager";
 // Vector fields are built into NWScript and have no source document.
 const vectorType: StructDeclaration = {
   identifier: LanguageTypes.vector,
-  kind: CompletionItemKind.Struct,
+  kind: DeclarationKind.Struct,
   position: Position.create(0, 0),
-  properties: ["x", "y", "z"].map((identifier) => ({ identifier, valueType: LanguageTypes.float, kind: CompletionItemKind.Property, position: Position.create(0, 0) })),
+  properties: ["x", "y", "z"].map((identifier) => ({ identifier, valueType: LanguageTypes.float, kind: DeclarationKind.Field, position: Position.create(0, 0) })),
 };
 
 export default class Provider {
@@ -81,8 +82,8 @@ export default class Provider {
       );
     if (fieldDeclaration) return { declaration: fieldDeclaration, owner: context.liveDocument.uri };
     // An unrecognized receiver must not turn a member into an ordinary name.
-    if (kind === CompletionItemKind.Property) return;
-    if (kind === CompletionItemKind.Struct && rawContent) return this.resolveStructType(context, rawContent);
+    if (kind === ReferenceKind.Member) return;
+    if (kind === ReferenceKind.Type && rawContent) return this.resolveStructType(context, rawContent);
     return this.resolveValue(context, rawContent);
   }
 

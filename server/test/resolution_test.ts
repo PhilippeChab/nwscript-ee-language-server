@@ -1,3 +1,5 @@
+import { DeclarationKind, ReferenceKind } from "../src/Parser/types";
+import { CompletionItemKind, SymbolKind } from "vscode-languageserver";
 import { workspaceUri } from "./support/fixtures";
 import { before, describe, it } from "mocha";
 import { expect } from "chai";
@@ -19,7 +21,7 @@ describe("IndexedDocument and signature resolution", () => {
         export { default as Hover } from './Providers/HoverContentProvider';
         export { default as Completion } from './Providers/CompletionItemsProvider';
         export { default as Symbols } from './Providers/SymbolsProvider';
-        export { HoverContentBuilder, SignatureHelpBuilder, CompletionItemBuilder } from './Providers/Builders';
+        export { HoverContentBuilder, SignatureHelpBuilder, CompletionItemBuilder, SymbolBuilder } from './Providers/Builders';
         export { defaultServerConfiguration as config } from './ServerManager/Config';`,
         resolveDir: join(__dirname, "../src"),
         loader: "ts",
@@ -30,6 +32,25 @@ describe("IndexedDocument and signature resolution", () => {
     });
     api = require(bundle);
     parserService = await new api.ParserService().loadGrammar();
+  });
+
+  it("maps internal declaration kinds to editor completion and symbol kinds", () => {
+    const index = parserService.analyzeContent("const int Fixed = 1; int Global; struct Data { int field; }; int Fn(int arg) { int local = arg; return local; }", "document");
+    const fn = index.globalDeclarations.find((declaration: any) => declaration.identifier === "Fn");
+    const cases = [
+      [index.globalDeclarations[0], DeclarationKind.Constant, CompletionItemKind.Constant, SymbolKind.Constant],
+      [index.globalDeclarations[1], DeclarationKind.Constant, CompletionItemKind.Variable, SymbolKind.Variable],
+      [fn, DeclarationKind.Function, CompletionItemKind.Function, SymbolKind.Function],
+      [fn.params[0], DeclarationKind.Parameter, CompletionItemKind.Variable, SymbolKind.Variable],
+      [index.localDeclarations.find((declaration: any) => declaration.identifier === "local"), DeclarationKind.Variable, CompletionItemKind.Variable, SymbolKind.Variable],
+      [index.structDeclarations[0], DeclarationKind.Struct, CompletionItemKind.Struct, SymbolKind.Struct],
+      [index.structDeclarations[0].properties[0], DeclarationKind.Field, CompletionItemKind.Property, SymbolKind.Property],
+    ];
+    for (const [declaration, kind, completionKind, symbolKind] of cases) {
+      expect(declaration.kind).to.equal(kind);
+      expect(api.CompletionItemBuilder.buildItem(declaration).kind).to.equal(completionKind);
+      expect(api.SymbolBuilder.buildItem(declaration).kind).to.equal(symbolKind);
+    }
   });
 
   it("reuses a live indexed document and shares its syntax declarations across edits", () => {
@@ -57,7 +78,7 @@ describe("IndexedDocument and signature resolution", () => {
     ]);
     expect(document.getChildren()).to.deep.equal(["first"]);
     expect(document.entryPoints).to.deep.equal(["main"]);
-    const references = () => [...document.getNameOrder().keys()].filter((indexedName: any) => indexedName.targetKind === "struct");
+    const references = () => [...document.getNameOrder().keys()].filter((indexedName: any) => indexedName.kind === ReferenceKind.Type);
     const initial = references();
     expect(initial.map((reference: any) => reference.identifier)).to.deep.equal(["Old"]);
     expect(references()[0]).to.equal(initial[0]);

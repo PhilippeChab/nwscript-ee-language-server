@@ -1,3 +1,4 @@
+import { DeclarationKind, ReferenceKind } from "../src/Parser/types";
 import { describe, before } from "mocha";
 import { expect } from "chai";
 import { readFileSync } from "fs";
@@ -102,14 +103,16 @@ describe("Serialized document indexes", () => {
     };
     const current = {
       includes: [],
-      globalDeclarations: [{ identifier: "Fn", kind: 3, params: [{ identifier: "arg", kind: 25 }], comments: legacy.globalDeclarations[0].comments }],
-      structDeclarations: [{ identifier: "Data", kind: 22, properties: [{ identifier: "field", kind: 10 }] }],
-      localDeclarations: [{ identifier: "local", kind: 6 }],
-      memberReferences: [{ identifier: "field", kind: 18 }],
-      entryPointDeclarations: [{ identifier: "main", kind: 3 }],
+      globalDeclarations: [{ identifier: "Fn", kind: DeclarationKind.Function, params: [{ identifier: "arg", kind: DeclarationKind.Parameter }], comments: legacy.globalDeclarations[0].comments }],
+      structDeclarations: [{ identifier: "Data", kind: DeclarationKind.Struct, properties: [{ identifier: "field", kind: DeclarationKind.Field }] }],
+      localDeclarations: [{ identifier: "local", kind: DeclarationKind.Variable }],
+      memberReferences: [{ identifier: "field", kind: ReferenceKind.Member }],
+      entryPointDeclarations: [{ identifier: "main", kind: DeclarationKind.Function }],
     };
     expect(readDocumentIndex(JSON.stringify(legacy))).to.deep.equal(current);
     expect(readDocumentIndex(JSON.stringify(current))).to.deep.equal(current);
+    expect(JSON.parse('{"kind":18,"targetKind":"struct","identifier":"Data"}', reviveDeclaration)).to.deep.equal({ kind: ReferenceKind.Type, identifier: "Data" });
+    expect(JSON.parse('{"kind":3,"identifier":"Fn"}', reviveDeclaration)).to.deep.equal({ kind: DeclarationKind.Function, identifier: "Fn" });
   });
 
   it("reads current include entries with and without source positions", () => {

@@ -6,7 +6,7 @@ The existing include graph, symbol/type resolution, declaration-order and namesp
 
 ## Architecture
 
-`ParserService` initializes the parser and caches syntax documents by live document version. `SyntaxDocument` wraps a syntax tree and exposes declarations and cursor context. An open buffer's `IndexedDocument` references that syntax document and adds include/dependency lookup; `Declaration` describes a declaration without introducing symbol bindings. Declarations and references use `kind` as their discriminator in both code and serialized indexes.
+`ParserService` initializes the parser and caches syntax documents by live document version. `SyntaxDocument` wraps a syntax tree and exposes declarations and cursor context. An open buffer's `IndexedDocument` references that syntax document and adds include/dependency lookup; `Declaration` describes a declaration without introducing symbol bindings. Declarations and references use internal string-valued `DeclarationKind` and `ReferenceKind` tags in both code and serialized indexes. Completion and symbol builders map those tags to LSP presentation kinds.
 
 Providers obtain a parsed document from the collection:
 

@@ -1,4 +1,5 @@
-import { CompletionItemKind, DocumentSymbol, SymbolKind } from "vscode-languageserver";
+import { DeclarationKind } from "../../Parser/types";
+import { DocumentSymbol, SymbolKind } from "vscode-languageserver";
 
 import type { Declaration, ConstantDeclaration, FunctionDeclaration, ParameterDeclaration, StructDeclaration, FieldDeclaration, VariableDeclaration } from "../../Parser/types";
 import Builder from "./Builder";
@@ -6,7 +7,7 @@ import Builder from "./Builder";
 export default class SymbolBuilder extends Builder {
   public static buildItem(declaration: Declaration, implicitConstants = false): DocumentSymbol {
     if (this.isConstantDeclaration(declaration)) {
-      return declaration.isConst || implicitConstants ? this.buildConstantItem(declaration) : this.buildVariableItem({ ...declaration, kind: CompletionItemKind.Variable });
+      return declaration.isConst || implicitConstants ? this.buildConstantItem(declaration) : this.buildVariableItem({ ...declaration, kind: DeclarationKind.Variable });
     } else if (this.isVariableDeclaration(declaration)) {
       return this.buildVariableItem(declaration);
     } else if (this.isParameterDeclaration(declaration)) {

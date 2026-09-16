@@ -1,20 +1,35 @@
-import { CompletionItemKind, Position } from "vscode-languageserver";
+import type { Position } from "vscode-languageserver";
 import { LanguageTypes } from "./constants";
+
+// Internal syntax/index classifications, independent of editor protocol enums.
+export enum DeclarationKind {
+  Constant = "constant",
+  Variable = "variable",
+  Function = "function",
+  Parameter = "parameter",
+  Struct = "struct",
+  Field = "field",
+}
+
+export enum ReferenceKind {
+  Member = "memberReference",
+  Type = "typeReference",
+}
 
 type LanguageValueOrRef = string | number;
 
 type LanguageConstant = {
-  kind: typeof CompletionItemKind.Constant;
+  kind: DeclarationKind.Constant;
   valueType: LanguageTypes;
   value: LanguageValueOrRef;
   isConst?: true;
 };
 type LanguageVariable = {
-  kind: typeof CompletionItemKind.Variable;
+  kind: DeclarationKind.Variable;
   valueType: LanguageTypes;
 };
 type LanguageFunction = {
-  kind: typeof CompletionItemKind.Function;
+  kind: DeclarationKind.Function;
   returnType: LanguageTypes;
   params: ParameterDeclaration[];
   variables?: VariableDeclaration[];
@@ -23,16 +38,16 @@ type LanguageFunction = {
   comments: string[];
 };
 type LanguageFunctionParam = {
-  kind: typeof CompletionItemKind.TypeParameter;
+  kind: DeclarationKind.Parameter;
   valueType: LanguageTypes;
   defaultValue?: string;
 };
 type LanguageStruct = {
-  kind: typeof CompletionItemKind.Struct;
+  kind: DeclarationKind.Struct;
   properties: FieldDeclaration[];
 };
 type LanguageStructProperty = {
-  kind: typeof CompletionItemKind.Property;
+  kind: DeclarationKind.Field;
   valueType: LanguageTypes;
 };
 type NamedLocation<T> = T & { position: Position; identifier: string };
@@ -43,8 +58,8 @@ export type FunctionDeclaration = NamedLocation<LanguageFunction>;
 export type ParameterDeclaration = NamedLocation<LanguageFunctionParam>;
 export type StructDeclaration = NamedLocation<LanguageStruct>;
 export type FieldDeclaration = NamedLocation<LanguageStructProperty>;
-export type MemberReference = NamedLocation<{ kind: typeof CompletionItemKind.Reference; targetKind?: never }>;
-export type TypeReference = NamedLocation<{ kind: typeof CompletionItemKind.Reference; targetKind: "struct" }>;
+export type MemberReference = NamedLocation<{ kind: ReferenceKind.Member }>;
+export type TypeReference = NamedLocation<{ kind: ReferenceKind.Type }>;
 
 export type Declaration = ConstantDeclaration | VariableDeclaration | ParameterDeclaration | FunctionDeclaration | StructDeclaration | FieldDeclaration;
 

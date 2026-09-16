@@ -1,4 +1,4 @@
-import { CompletionItemKind } from "vscode-languageserver";
+import { DeclarationKind } from "../../Parser/types";
 
 import { LanguageTypes } from "../../Parser/constants";
 import type { Declaration, ConstantDeclaration, VariableDeclaration, ParameterDeclaration, FunctionDeclaration, FieldDeclaration, StructDeclaration } from "../../Parser/types";
@@ -17,26 +17,26 @@ export default abstract class Builder {
   }
 
   protected static isConstantDeclaration(declaration: Declaration): declaration is ConstantDeclaration {
-    return declaration.kind === CompletionItemKind.Constant;
+    return declaration.kind === DeclarationKind.Constant;
   }
 
   protected static isVariableDeclaration(declaration: Declaration): declaration is VariableDeclaration {
-    return declaration.kind === CompletionItemKind.Variable;
+    return declaration.kind === DeclarationKind.Variable;
   }
 
   protected static isParameterDeclaration(declaration: Declaration): declaration is ParameterDeclaration {
-    return declaration.kind === CompletionItemKind.TypeParameter;
+    return declaration.kind === DeclarationKind.Parameter;
   }
 
   protected static isFunctionDeclaration(declaration: Declaration): declaration is FunctionDeclaration {
-    return declaration.kind === CompletionItemKind.Function;
+    return declaration.kind === DeclarationKind.Function;
   }
 
   protected static isFieldDeclaration(declaration: Declaration): declaration is FieldDeclaration {
-    return declaration.kind === CompletionItemKind.Property;
+    return declaration.kind === DeclarationKind.Field;
   }
 
   protected static isStructDeclaration(declaration: Declaration): declaration is StructDeclaration {
-    return declaration.kind === CompletionItemKind.Struct;
+    return declaration.kind === DeclarationKind.Struct;
   }
 }

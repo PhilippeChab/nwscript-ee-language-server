@@ -731,7 +731,7 @@ describe("Installed standalone LSP server", function () {
             clearInterval(timer);
             for (const filePath of paths) process.send({ filePath, documentIndex: {
               includes: [], structDeclarations: [], globalDeclarations: [{
-                identifier: "GhostFromRemovedFolder", kind: 3, returnType: "void",
+                identifier: "GhostFromRemovedFolder", kind: "function", returnType: "void",
                 params: [], comments: [], position: { line: 0, character: 5 }
               }]
             }});
