@@ -136,7 +136,7 @@ export default class SyntaxDocument {
           continue;
         }
         const existing = index.globalDeclarations.find(
-          (declaration): declaration is FunctionDeclaration => declaration.tokenType === CompletionItemKind.Function && declaration.identifier === fn.identifier,
+          (declaration): declaration is FunctionDeclaration => declaration.kind === CompletionItemKind.Function && declaration.identifier === fn.identifier,
         );
         if (!existing) index.globalDeclarations.push(fn);
         else {
@@ -150,10 +150,10 @@ export default class SyntaxDocument {
         index.structDeclarations.push({
           position: this.position(name),
           identifier: name.text,
-          tokenType: CompletionItemKind.Struct,
+          kind: CompletionItemKind.Struct,
           properties: (fields?.namedChildren.filter(isNode) || [])
             .filter((child) => child.type === "field_declaration")
-            .flatMap((field) => this.variables(field).map((variable) => ({ ...variable, tokenType: CompletionItemKind.Property }))),
+            .flatMap((field) => this.variables(field).map((variable) => ({ ...variable, kind: CompletionItemKind.Property }))),
         });
       } else if (node.type === "declaration") {
         const variables = this.variables(node);
@@ -165,7 +165,7 @@ export default class SyntaxDocument {
             index.globalDeclarations.push({
               position: variable.position,
               identifier: variable.identifier,
-              tokenType: CompletionItemKind.Constant,
+              kind: CompletionItemKind.Constant,
               valueType: variable.valueType,
               value: declarator?.childForFieldName("value")?.text || "",
               ...(node.namedChildren.filter(isNode).some((child) => child.type === "const_qualifier") ? { isConst: true as const } : {}),
@@ -174,7 +174,7 @@ export default class SyntaxDocument {
         }
       } else if (node.type === "field_expression") {
         const member = node.childForFieldName("field");
-        if (member && !member.isMissing) (index.memberReferences ||= []).push({ identifier: member.text, position: this.position(member), tokenType: CompletionItemKind.Reference });
+        if (member && !member.isMissing) (index.memberReferences ||= []).push({ identifier: member.text, position: this.position(member), kind: CompletionItemKind.Reference });
       }
     }
     this.index = index;
@@ -263,17 +263,17 @@ export default class SyntaxDocument {
   }
 
   public getActionTarget(position: Position) {
-    if (this.isInCommentOrString(position)) return { rawContent: undefined, tokenType: undefined };
+    if (this.isInCommentOrString(position)) return { rawContent: undefined, kind: undefined };
     const offset = this.document.offsetAt(position);
     const leaves = [...this.leaves()];
     const node = leaves.find((leaf) => leaf.startIndex === offset && leaf.isNamed) || leaves.find((leaf) => leaf.startIndex <= offset && leaf.endIndex >= offset);
-    const tokenType =
+    const kind =
       node?.type === "type_identifier" || ["struct_declarator", "struct_specifier"].includes(node?.parent?.type || "")
         ? CompletionItemKind.Struct
         : node?.type === "field_identifier"
         ? CompletionItemKind.Property
         : undefined;
-    return { rawContent: node?.text, tokenType };
+    return { rawContent: node?.text, kind };
   }
 
   public getAutoImportContext(position: Position): AutoImportContext | undefined {
@@ -368,7 +368,7 @@ export default class SyntaxDocument {
       .flatMap((declarator) => {
         const name = declarator.childForFieldName("declarator") || declarator;
         if (name.isMissing || !["identifier", "field_identifier"].includes(name.type)) return [];
-        return [{ identifier: name.text, position: this.position(name), valueType: this.valueType(node), tokenType: CompletionItemKind.Variable }];
+        return [{ identifier: name.text, position: this.position(name), valueType: this.valueType(node), kind: CompletionItemKind.Variable }];
       });
   }
 
@@ -383,7 +383,7 @@ export default class SyntaxDocument {
         this.variables(parameter).map((variable) => ({
           position: variable.position,
           identifier: variable.identifier,
-          tokenType: CompletionItemKind.TypeParameter,
+          kind: CompletionItemKind.TypeParameter,
           valueType: variable.valueType,
           ...(parameter.childForFieldName("default") ? { defaultValue: parameter.childForFieldName("default")?.text } : {}),
         })),
@@ -397,7 +397,7 @@ export default class SyntaxDocument {
     return {
       position: this.position(name),
       identifier: name.text,
-      tokenType: CompletionItemKind.Function,
+      kind: CompletionItemKind.Function,
       returnType: this.valueType(node),
       params,
       signatureEnd: this.document.positionAt(args.endIndex),

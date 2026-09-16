@@ -43,7 +43,7 @@ export default class CompletionItemBuilder extends Builder {
 
   public static buildItem(declaration: Declaration, implicitConstants = false): CompletionItem {
     if (this.isConstantDeclaration(declaration)) {
-      return declaration.isConst || implicitConstants ? this.buildConstantItem(declaration) : this.buildVariableItem({ ...declaration, tokenType: CompletionItemKind.Variable });
+      return declaration.isConst || implicitConstants ? this.buildConstantItem(declaration) : this.buildVariableItem({ ...declaration, kind: CompletionItemKind.Variable });
     } else if (this.isVariableDeclaration(declaration)) {
       return this.buildVariableItem(declaration);
     } else if (this.isParameterDeclaration(declaration)) {
@@ -64,7 +64,7 @@ export default class CompletionItemBuilder extends Builder {
   private static buildConstantItem(declaration: ConstantDeclaration): CompletionItem {
     return {
       label: declaration.identifier,
-      kind: declaration.tokenType,
+      kind: declaration.kind,
       detail: `(constant) ${declaration.value}: ${this.handleLanguageType(declaration.valueType)}`,
     };
   }
@@ -72,7 +72,7 @@ export default class CompletionItemBuilder extends Builder {
   private static buildVariableItem(declaration: VariableDeclaration): CompletionItem {
     return {
       label: declaration.identifier,
-      kind: declaration.tokenType,
+      kind: declaration.kind,
       detail: `(variable) ${declaration.identifier}: ${this.handleLanguageType(declaration.valueType)}`,
     };
   }
@@ -88,7 +88,7 @@ export default class CompletionItemBuilder extends Builder {
   private static buildFunctionItem(declaration: FunctionDeclaration): CompletionItem {
     return {
       label: declaration.identifier,
-      kind: declaration.tokenType,
+      kind: declaration.kind,
       detail: `(method) (${declaration.params.reduce((acc, param, index) => {
         return `${acc}${param.identifier}: ${this.handleLanguageType(param.valueType)}${index === declaration.params.length - 1 ? "" : ", "}`;
       }, "")}): ${this.handleLanguageType(declaration.returnType)}`,
@@ -99,7 +99,7 @@ export default class CompletionItemBuilder extends Builder {
   private static buildStructPropertyItem(property: FieldDeclaration): CompletionItem {
     return {
       label: property.identifier,
-      kind: property.tokenType,
+      kind: property.kind,
       detail: `(property) ${property.identifier}: ${this.handleLanguageType(property.valueType)}`,
     };
   }
@@ -107,7 +107,7 @@ export default class CompletionItemBuilder extends Builder {
   private static buildStructItem(declaration: StructDeclaration): CompletionItem {
     return {
       label: declaration.identifier,
-      kind: declaration.tokenType,
+      kind: declaration.kind,
       detail: `(struct) ${declaration.identifier}`,
     };
   }

@@ -4,17 +4,17 @@ import { LanguageTypes } from "./constants";
 type LanguageValueOrRef = string | number;
 
 type LanguageConstant = {
-  tokenType: typeof CompletionItemKind.Constant;
+  kind: typeof CompletionItemKind.Constant;
   valueType: LanguageTypes;
   value: LanguageValueOrRef;
   isConst?: true;
 };
 type LanguageVariable = {
-  tokenType: typeof CompletionItemKind.Variable;
+  kind: typeof CompletionItemKind.Variable;
   valueType: LanguageTypes;
 };
 type LanguageFunction = {
-  tokenType: typeof CompletionItemKind.Function;
+  kind: typeof CompletionItemKind.Function;
   returnType: LanguageTypes;
   params: ParameterDeclaration[];
   variables?: VariableDeclaration[];
@@ -23,16 +23,16 @@ type LanguageFunction = {
   comments: string[];
 };
 type LanguageFunctionParam = {
-  tokenType: typeof CompletionItemKind.TypeParameter;
+  kind: typeof CompletionItemKind.TypeParameter;
   valueType: LanguageTypes;
   defaultValue?: string;
 };
 type LanguageStruct = {
-  tokenType: typeof CompletionItemKind.Struct;
+  kind: typeof CompletionItemKind.Struct;
   properties: FieldDeclaration[];
 };
 type LanguageStructProperty = {
-  tokenType: typeof CompletionItemKind.Property;
+  kind: typeof CompletionItemKind.Property;
   valueType: LanguageTypes;
 };
 type NamedLocation<T> = T & { position: Position; identifier: string };
@@ -43,8 +43,8 @@ export type FunctionDeclaration = NamedLocation<LanguageFunction>;
 export type ParameterDeclaration = NamedLocation<LanguageFunctionParam>;
 export type StructDeclaration = NamedLocation<LanguageStruct>;
 export type FieldDeclaration = NamedLocation<LanguageStructProperty>;
-export type MemberReference = NamedLocation<{ tokenType: typeof CompletionItemKind.Reference; targetKind?: never }>;
-export type TypeReference = NamedLocation<{ tokenType: typeof CompletionItemKind.Reference; targetKind: "struct" }>;
+export type MemberReference = NamedLocation<{ kind: typeof CompletionItemKind.Reference; targetKind?: never }>;
+export type TypeReference = NamedLocation<{ kind: typeof CompletionItemKind.Reference; targetKind: "struct" }>;
 
 export type Declaration = ConstantDeclaration | VariableDeclaration | ParameterDeclaration | FunctionDeclaration | StructDeclaration | FieldDeclaration;
 

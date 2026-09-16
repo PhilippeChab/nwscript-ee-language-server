@@ -8,13 +8,13 @@ import type { FunctionDeclaration } from "../src/Parser/types";
 describe("Signature help", () => {
   const declaration: FunctionDeclaration = {
     identifier: "Example",
-    tokenType: CompletionItemKind.Function,
+    kind: CompletionItemKind.Function,
     returnType: LanguageTypes.void,
     position: { line: 0, character: 0 },
     comments: [],
     params: ["first", "second"].map((identifier) => ({
       identifier,
-      tokenType: CompletionItemKind.TypeParameter,
+      kind: CompletionItemKind.TypeParameter,
       valueType: LanguageTypes.int,
       position: { line: 0, character: 0 },
     })),

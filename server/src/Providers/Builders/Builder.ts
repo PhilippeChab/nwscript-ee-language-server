@@ -17,26 +17,26 @@ export default abstract class Builder {
   }
 
   protected static isConstantDeclaration(declaration: Declaration): declaration is ConstantDeclaration {
-    return declaration.tokenType === CompletionItemKind.Constant;
+    return declaration.kind === CompletionItemKind.Constant;
   }
 
   protected static isVariableDeclaration(declaration: Declaration): declaration is VariableDeclaration {
-    return declaration.tokenType === CompletionItemKind.Variable;
+    return declaration.kind === CompletionItemKind.Variable;
   }
 
   protected static isParameterDeclaration(declaration: Declaration): declaration is ParameterDeclaration {
-    return declaration.tokenType === CompletionItemKind.TypeParameter;
+    return declaration.kind === CompletionItemKind.TypeParameter;
   }
 
   protected static isFunctionDeclaration(declaration: Declaration): declaration is FunctionDeclaration {
-    return declaration.tokenType === CompletionItemKind.Function;
+    return declaration.kind === CompletionItemKind.Function;
   }
 
   protected static isFieldDeclaration(declaration: Declaration): declaration is FieldDeclaration {
-    return declaration.tokenType === CompletionItemKind.Property;
+    return declaration.kind === CompletionItemKind.Property;
   }
 
   protected static isStructDeclaration(declaration: Declaration): declaration is StructDeclaration {
-    return declaration.tokenType === CompletionItemKind.Struct;
+    return declaration.kind === CompletionItemKind.Struct;
   }
 }

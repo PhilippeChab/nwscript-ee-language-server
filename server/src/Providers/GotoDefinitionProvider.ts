@@ -14,7 +14,7 @@ export default class GotoDefinitionProvider extends Provider {
         const resolved = this.resolveSymbol(uri, position);
         if (!resolved?.owner) return;
         let target = resolved.declaration.position;
-        if (resolved.declaration.tokenType === CompletionItemKind.Function) {
+        if (resolved.declaration.kind === CompletionItemKind.Function) {
           const ownerDocument = this.getSourceDocument(resolved.owner);
           if (ownerDocument) {
             const cursor = normalizeDocumentUri(uri) === normalizeDocumentUri(resolved.owner) ? position : undefined;

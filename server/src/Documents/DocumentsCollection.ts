@@ -117,9 +117,9 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       return left.length - right.length;
     };
     const isScoped = (indexedName: IndexedName) =>
-      indexedName.tokenType === CompletionItemKind.Variable || indexedName.tokenType === CompletionItemKind.TypeParameter || indexedName.tokenType === CompletionItemKind.Property;
+      indexedName.kind === CompletionItemKind.Variable || indexedName.kind === CompletionItemKind.TypeParameter || indexedName.kind === CompletionItemKind.Property;
     const isReserved = (indexedName: IndexedName) =>
-      indexedName.tokenType === CompletionItemKind.Function || (indexedName.tokenType === CompletionItemKind.Constant && (indexedName.isConst || implicitNames.has(indexedName)));
+      indexedName.kind === CompletionItemKind.Function || (indexedName.kind === CompletionItemKind.Constant && (indexedName.isConst || implicitNames.has(indexedName)));
     const namesConflict = (left: IndexedName, right: IndexedName, order: Map<IndexedName, number[] | undefined>) => {
       // Paths interleave declarations with their includes at the actual source
       // positions. Unknown legacy include positions retain conservative checks.
@@ -129,13 +129,13 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       const leftFirst = knownOrder && compareOrder(leftOrder, rightOrder) < 0;
       const earlier = leftFirst ? left : right;
       const later = leftFirst ? right : left;
-      if (left.tokenType === CompletionItemKind.Reference || right.tokenType === CompletionItemKind.Reference) {
-        const reference = left.tokenType === CompletionItemKind.Reference ? left : right;
+      if (left.kind === CompletionItemKind.Reference || right.kind === CompletionItemKind.Reference) {
+        const reference = left.kind === CompletionItemKind.Reference ? left : right;
         const other = reference === left ? right : left;
         // A constant replaces identifiers even after a dot; function names do
         // not. Earlier field declarations alone remain legal.
         return Boolean(
-          (other.tokenType === CompletionItemKind.Constant || (reference.tokenType === CompletionItemKind.Reference && reference.targetKind === "struct")) &&
+          (other.kind === CompletionItemKind.Constant || (reference.kind === CompletionItemKind.Reference && reference.targetKind === "struct")) &&
             isReserved(other) &&
             (implicitNames.has(other) || !knownOrder || earlier === other),
         );
@@ -147,19 +147,19 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       }
       if (
         (knownOrder || currentDeclarations.has(left)) &&
-        (later.tokenType === CompletionItemKind.Function || (later.tokenType === CompletionItemKind.Constant && later.isConst)) &&
-        (earlier.tokenType === CompletionItemKind.Struct || (earlier.tokenType === CompletionItemKind.Constant && !earlier.isConst))
+        (later.kind === CompletionItemKind.Function || (later.kind === CompletionItemKind.Constant && later.isConst)) &&
+        (earlier.kind === CompletionItemKind.Struct || (earlier.kind === CompletionItemKind.Constant && !earlier.isConst))
       ) {
         return false;
       }
-      if (left.tokenType === CompletionItemKind.Struct || right.tokenType === CompletionItemKind.Struct) {
-        const other = left.tokenType === CompletionItemKind.Struct ? right : left;
+      if (left.kind === CompletionItemKind.Struct || right.kind === CompletionItemKind.Struct) {
+        const other = left.kind === CompletionItemKind.Struct ? right : left;
         // Struct tags and ordinary variables are separate namespaces. Functions
         // and const names reserve lexer tokens that can invalidate struct uses.
         // API constants are reserved even when nwscript.nss omits const.
-        return other.tokenType !== CompletionItemKind.Constant || other.isConst === true || implicitNames.has(other);
+        return other.kind !== CompletionItemKind.Constant || other.isConst === true || implicitNames.has(other);
       }
-      if (left.tokenType !== CompletionItemKind.Function || right.tokenType !== CompletionItemKind.Function) return true;
+      if (left.kind !== CompletionItemKind.Function || right.kind !== CompletionItemKind.Function) return true;
       // Engine API declarations already have implementations, despite prototype syntax.
       return (
         ((left.implementation || implicitNames.has(left)) && (right.implementation || implicitNames.has(right))) ||
@@ -201,7 +201,7 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
           })
           .map((indexedName) => indexedName.identifier),
       );
-      return matches.filter((declaration) => declaration.tokenType !== CompletionItemKind.Struct || !reservedNames.has(declaration.identifier));
+      return matches.filter((declaration) => declaration.kind !== CompletionItemKind.Struct || !reservedNames.has(declaration.identifier));
     };
     const currentName = document.getIncludeName();
     const candidates: { document: IndexedDocument; declarations: Declaration[] }[] = [];

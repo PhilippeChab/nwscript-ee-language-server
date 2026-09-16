@@ -6,7 +6,7 @@ import Builder from "./Builder";
 export default class SymbolBuilder extends Builder {
   public static buildItem(declaration: Declaration, implicitConstants = false): DocumentSymbol {
     if (this.isConstantDeclaration(declaration)) {
-      return declaration.isConst || implicitConstants ? this.buildConstantItem(declaration) : this.buildVariableItem({ ...declaration, tokenType: CompletionItemKind.Variable });
+      return declaration.isConst || implicitConstants ? this.buildConstantItem(declaration) : this.buildVariableItem({ ...declaration, kind: CompletionItemKind.Variable });
     } else if (this.isVariableDeclaration(declaration)) {
       return this.buildVariableItem(declaration);
     } else if (this.isParameterDeclaration(declaration)) {

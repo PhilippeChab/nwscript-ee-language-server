@@ -32,7 +32,7 @@ void test("indexes functions, constants, structs, includes, and entry points thr
     index.globalDeclarations.map((declaration) => declaration.identifier),
     ["VALUE", "Fn"],
   );
-  const fn = index.globalDeclarations.find((declaration) => declaration.tokenType === CompletionItemKind.Function);
+  const fn = index.globalDeclarations.find((declaration) => declaration.kind === CompletionItemKind.Function);
   assert.ok(fn && "params" in fn);
   assert.equal(fn.implementation, true);
   assert.equal(fn.params[0].defaultValue, "2");
@@ -376,7 +376,7 @@ void test("matches fresh parsing through 805 damaged edit and restore sequences"
 void test("keeps the prototype after a line comment ending in a backslash", async (t) => {
   const parsed = await parse(t, "// comment ending in \\\nint Fn(int publicName);\nint Fn(int internalName) { return internalName; }");
   const fn = parsed.getIndex().globalDeclarations[0];
-  assert.ok(fn.tokenType === CompletionItemKind.Function);
+  assert.ok(fn.kind === CompletionItemKind.Function);
   assert.deepEqual(fn.position, { line: 1, character: 4 });
   assert.equal(fn.params[0].identifier, "publicName");
 });
@@ -384,7 +384,7 @@ void test("keeps the prototype after a line comment ending in a backslash", asyn
 void test("keeps a struct parameter following primitive parameters", async (t) => {
   const parsed = await parse(t, "struct Data { int value; };\nvoid Fn(object owner, int index, struct Data data);");
   const fn = parsed.getIndex().globalDeclarations[0];
-  assert.ok(fn.tokenType === CompletionItemKind.Function);
+  assert.ok(fn.kind === CompletionItemKind.Function);
   assert.deepEqual(
     fn.params.map((param) => [param.valueType, param.identifier]),
     [

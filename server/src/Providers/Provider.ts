@@ -6,9 +6,9 @@ import type { ServerManager } from "../ServerManager";
 // Vector fields are built into NWScript and have no source document.
 const vectorType: StructDeclaration = {
   identifier: LanguageTypes.vector,
-  tokenType: CompletionItemKind.Struct,
+  kind: CompletionItemKind.Struct,
   position: Position.create(0, 0),
-  properties: ["x", "y", "z"].map((identifier) => ({ identifier, valueType: LanguageTypes.float, tokenType: CompletionItemKind.Property, position: Position.create(0, 0) })),
+  properties: ["x", "y", "z"].map((identifier) => ({ identifier, valueType: LanguageTypes.float, kind: CompletionItemKind.Property, position: Position.create(0, 0) })),
 };
 
 export default class Provider {
@@ -69,7 +69,7 @@ export default class Provider {
       const declaration = struct?.declaration.properties.find((property) => property.identifier === memberPath[memberPath.length - 1]);
       return declaration ? { declaration, owner: struct?.owner } : undefined;
     }
-    const { tokenType, rawContent } = syntax.getActionTarget(position);
+    const { kind, rawContent } = syntax.getActionTarget(position);
     const fieldDeclaration = context.document.structDeclarations
       .flatMap((struct) => struct.properties)
       .find(
@@ -81,8 +81,8 @@ export default class Provider {
       );
     if (fieldDeclaration) return { declaration: fieldDeclaration, owner: context.liveDocument.uri };
     // An unrecognized receiver must not turn a member into an ordinary name.
-    if (tokenType === CompletionItemKind.Property) return;
-    if (tokenType === CompletionItemKind.Struct && rawContent) return this.resolveStructType(context, rawContent);
+    if (kind === CompletionItemKind.Property) return;
+    if (kind === CompletionItemKind.Struct && rawContent) return this.resolveStructType(context, rawContent);
     return this.resolveValue(context, rawContent);
   }
 

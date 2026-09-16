@@ -2,7 +2,7 @@ import { describe, before } from "mocha";
 import { expect } from "chai";
 import { readFileSync } from "fs";
 import { normalize, join } from "path";
-import readDocumentIndex from "../src/Documents/readDocumentIndex";
+import readDocumentIndex, { reviveDeclaration } from "../src/Documents/readDocumentIndex";
 import ParserService, { DocumentIndex, LocalScope, AnalysisMode } from "../src/Parser/ParserService";
 
 // Preserve the legacy declaration comparisons; declaration-order metadata is
@@ -20,8 +20,8 @@ describe("ParserService", () => {
     parserService = await new ParserService(true).loadGrammar();
     staticCode = readFileSync(normalize(join(__dirname, "./static/test.nss"))).toString();
     staticDocumentIndex = readDocumentIndex(readFileSync(normalize(join(__dirname, "./static/globalScopeTokens.json")), "utf8"));
-    staticLocalScopeWithContext = JSON.parse(readFileSync(normalize(join(__dirname, "./static/localScopeTokensWithContext.json"))).toString()) as LocalScope;
-    staticLocalScopeWithoutContext = JSON.parse(readFileSync(normalize(join(__dirname, "./static/localScopeTokensWithoutContext.json"))).toString()) as LocalScope;
+    staticLocalScopeWithContext = JSON.parse(readFileSync(normalize(join(__dirname, "./static/localScopeTokensWithContext.json"))).toString(), reviveDeclaration) as LocalScope;
+    staticLocalScopeWithoutContext = JSON.parse(readFileSync(normalize(join(__dirname, "./static/localScopeTokensWithoutContext.json"))).toString(), reviveDeclaration) as LocalScope;
   });
 
   describe("Global Scope", () => {
@@ -89,6 +89,27 @@ describe("Serialized document indexes", () => {
       ],
     });
     expect(readDocumentIndex(JSON.stringify({ ...declarations, children: ["Helper"] }))).to.deep.equal({ ...declarations, includes: [{ name: "Helper" }] });
+  });
+
+  it("converts legacy kinds in nested declarations and references without changing strings", () => {
+    const legacy = {
+      children: [],
+      globalDeclarations: [{ identifier: "Fn", tokenType: 3, params: [{ identifier: "arg", tokenType: 25 }], comments: ['tokenType: 3; "tokenType": 3'] }],
+      structDeclarations: [{ identifier: "Data", tokenType: 22, properties: [{ identifier: "field", tokenType: 10 }] }],
+      localDeclarations: [{ identifier: "local", tokenType: 6 }],
+      memberReferences: [{ identifier: "field", tokenType: 18 }],
+      entryPointDeclarations: [{ identifier: "main", tokenType: 3 }],
+    };
+    const current = {
+      includes: [],
+      globalDeclarations: [{ identifier: "Fn", kind: 3, params: [{ identifier: "arg", kind: 25 }], comments: legacy.globalDeclarations[0].comments }],
+      structDeclarations: [{ identifier: "Data", kind: 22, properties: [{ identifier: "field", kind: 10 }] }],
+      localDeclarations: [{ identifier: "local", kind: 6 }],
+      memberReferences: [{ identifier: "field", kind: 18 }],
+      entryPointDeclarations: [{ identifier: "main", kind: 3 }],
+    };
+    expect(readDocumentIndex(JSON.stringify(legacy))).to.deep.equal(current);
+    expect(readDocumentIndex(JSON.stringify(current))).to.deep.equal(current);
   });
 
   it("reads current include entries with and without source positions", () => {

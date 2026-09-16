@@ -1,3 +1,4 @@
+import readDocumentIndex from "../src/Documents/readDocumentIndex";
 import { workspaceUri } from "./support/fixtures";
 import { before, describe, it } from "mocha";
 import { expect } from "chai";
@@ -216,7 +217,7 @@ describe("Auto-import completion", function () {
   for (const bundled of [true, false]) {
     for (const transitive of [true, false]) {
       it(`reserves API constants without a const modifier (bundled=${String(bundled)}, transitive=${String(transitive)})`, () => {
-        const library = bundled ? JSON.parse(readFileSync(join(__dirname, "../resources/standardLibDefinitions.json"), "utf8")) : parserService.analyzeContent("int TRUE = 1;", "document");
+        const library = bundled ? readDocumentIndex(readFileSync(join(__dirname, "../resources/standardLibDefinitions.json"), "utf8")) : parserService.analyzeContent("int TRUE = 1;", "document");
         expect(library.globalDeclarations.find((declaration: any) => declaration.identifier === "TRUE").isConst).to.equal(undefined);
         const { items } = complete(
           "void main() {\n Imp|\n}",
