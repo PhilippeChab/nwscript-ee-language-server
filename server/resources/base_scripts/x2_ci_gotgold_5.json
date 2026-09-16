@@ -17,7 +17,7 @@
                 "character": 4
             },
             "identifier": "StartingConditional",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -36,7 +36,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nNumber",
@@ -45,7 +45,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oPC",
@@ -54,7 +54,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nSkill",
@@ -63,7 +63,7 @@
                 "character": 14
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "s2DA",
@@ -72,7 +72,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nRow",
@@ -81,7 +81,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "stItem",
@@ -90,7 +90,7 @@
                 "character": 24
             },
             "valueType": "craft_struct",
-            "tokenType": 6
+            "kind": "variable"
         }
     ],
     "memberReferences": [
@@ -100,7 +100,7 @@
                 "line": 37,
                 "character": 38
             },
-            "tokenType": 18
+            "kind": "memberReference"
         }
     ]
 }

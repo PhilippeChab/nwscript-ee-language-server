@@ -6,7 +6,7 @@
                 "character": 13
             },
             "identifier": "DB_NAME",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"XP2\"",
             "isConst": true
@@ -17,7 +17,7 @@
                 "character": 5
             },
             "identifier": "SetGlobalInt",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -26,7 +26,7 @@
                         "character": 25
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -35,7 +35,7 @@
                         "character": 39
                     },
                     "identifier": "nValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -56,7 +56,7 @@
                 "character": 4
             },
             "identifier": "GetGlobalInt",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -65,7 +65,7 @@
                         "character": 24
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -86,7 +86,7 @@
                 "character": 5
             },
             "identifier": "SetGlobalString",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -95,7 +95,7 @@
                         "character": 28
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -104,7 +104,7 @@
                         "character": 45
                     },
                     "identifier": "sValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -125,7 +125,7 @@
                 "character": 7
             },
             "identifier": "GetGlobalString",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -134,7 +134,7 @@
                         "character": 30
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -155,7 +155,7 @@
                 "character": 5
             },
             "identifier": "ClearDatabase",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -174,7 +174,7 @@
                 "character": 5
             },
             "identifier": "CopyVariableIntToDatabase",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -183,7 +183,7 @@
                         "character": 38
                     },
                     "identifier": "sVar",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -202,7 +202,7 @@
                 "character": 5
             },
             "identifier": "CopyAllHenchmen",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -211,7 +211,7 @@
                         "character": 28
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -231,7 +231,7 @@
                 "character": 5
             },
             "identifier": "RestoreAllHenchmen",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -240,7 +240,7 @@
                         "character": 33
                     },
                     "identifier": "lLoc",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 },
                 {
@@ -249,7 +249,7 @@
                         "character": 46
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -269,7 +269,7 @@
                 "character": 5
             },
             "identifier": "CallForthHenchman",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -278,7 +278,7 @@
                         "character": 30
                     },
                     "identifier": "sTag",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -287,7 +287,7 @@
                         "character": 43
                     },
                     "identifier": "sMemory",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -307,7 +307,7 @@
                 "character": 5
             },
             "identifier": "RestoreHenchmenVariables",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -316,7 +316,7 @@
                         "character": 37
                     },
                     "identifier": "oHench",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -336,7 +336,7 @@
                 "character": 5
             },
             "identifier": "ReturnToChapter2",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -352,7 +352,7 @@
                 "character": 4
             },
             "identifier": "PCBetrayedNathyrra",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -370,7 +370,7 @@
                 "character": 4
             },
             "identifier": "PCBetrayedValen",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -388,7 +388,7 @@
                 "character": 5
             },
             "identifier": "StoreInt",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -397,7 +397,7 @@
                         "character": 21
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -416,7 +416,7 @@
                 "character": 5
             },
             "identifier": "RestoreInt",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -425,7 +425,7 @@
                         "character": 23
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -442,7 +442,7 @@
                 "character": 5
             },
             "identifier": "StoreIntFromObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -451,7 +451,7 @@
                         "character": 31
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -460,7 +460,7 @@
                         "character": 48
                     },
                     "identifier": "oSelf",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -479,7 +479,7 @@
                 "character": 5
             },
             "identifier": "RestoreIntFromObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -488,7 +488,7 @@
                         "character": 33
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -497,7 +497,7 @@
                         "character": 50
                     },
                     "identifier": "oSelf",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -516,7 +516,7 @@
                 "character": 5
             },
             "identifier": "StoreString",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -525,7 +525,7 @@
                         "character": 24
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -542,7 +542,7 @@
                 "character": 5
             },
             "identifier": "RestoreString",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -551,7 +551,7 @@
                         "character": 26
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -568,7 +568,7 @@
                 "character": 5
             },
             "identifier": "StoreHenchmenVariables",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -577,7 +577,7 @@
                         "character": 35
                     },
                     "identifier": "oHench",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -598,7 +598,7 @@
                 "character": 7
             },
             "identifier": "WrapCopyItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -607,7 +607,7 @@
                         "character": 27
                     },
                     "identifier": "oItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -616,7 +616,7 @@
                         "character": 41
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -625,7 +625,7 @@
                         "character": 54
                     },
                     "identifier": "bIgnoreCursedAndNoDrop",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -643,7 +643,7 @@
                 "character": 5
             },
             "identifier": "CopyInventory",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -652,7 +652,7 @@
                         "character": 26
                     },
                     "identifier": "oSource",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -661,7 +661,7 @@
                         "character": 42
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -670,7 +670,7 @@
                         "character": 55
                     },
                     "identifier": "bIgnoreCursedAndNoDrop",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -693,7 +693,7 @@
                 "character": 5
             },
             "identifier": "RemoveInventory",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -702,7 +702,7 @@
                         "character": 28
                     },
                     "identifier": "oStore",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -721,7 +721,7 @@
                 "character": 5
             },
             "identifier": "CopyOriginalFourInventory",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -739,7 +739,7 @@
                 "character": 5
             },
             "identifier": "StorePoolOfLostSouls",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -748,7 +748,7 @@
                         "character": 33
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -767,7 +767,7 @@
                 "character": 7
             },
             "identifier": "RestorePoolOfLostSouls",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -776,7 +776,7 @@
                         "character": 37
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -795,7 +795,7 @@
                 "character": 5
             },
             "identifier": "StoreWeaponInt",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -804,7 +804,7 @@
                         "character": 27
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -813,7 +813,7 @@
                         "character": 39
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -830,7 +830,7 @@
                 "character": 5
             },
             "identifier": "RestoreWeaponInt",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -839,7 +839,7 @@
                         "character": 29
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -848,7 +848,7 @@
                         "character": 41
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -865,7 +865,7 @@
                 "character": 5
             },
             "identifier": "StoreWeaponVars",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -874,7 +874,7 @@
                         "character": 28
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -893,7 +893,7 @@
                 "character": 5
             },
             "identifier": "RestoreWeaponVars",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -902,7 +902,7 @@
                         "character": 30
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -933,7 +933,7 @@
                 "character": 25
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -942,7 +942,7 @@
                 "character": 39
             },
             "identifier": "nValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -951,7 +951,7 @@
                 "character": 24
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -960,7 +960,7 @@
                 "character": 28
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -969,7 +969,7 @@
                 "character": 45
             },
             "identifier": "sValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -978,7 +978,7 @@
                 "character": 30
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -987,7 +987,7 @@
                 "character": 38
             },
             "identifier": "sVar",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -996,7 +996,7 @@
                 "character": 28
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1006,7 +1006,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oHench",
@@ -1015,7 +1015,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -1023,7 +1023,7 @@
                 "character": 33
             },
             "identifier": "lLoc",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "location"
         },
         {
@@ -1032,7 +1032,7 @@
                 "character": 46
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1042,7 +1042,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "i",
@@ -1051,7 +1051,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oHench",
@@ -1060,7 +1060,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -1068,7 +1068,7 @@
                 "character": 30
             },
             "identifier": "sTag",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1077,7 +1077,7 @@
                 "character": 43
             },
             "identifier": "sMemory",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1087,7 +1087,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "lPC",
@@ -1096,7 +1096,7 @@
                 "character": 13
             },
             "valueType": "location",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "eVis",
@@ -1105,7 +1105,7 @@
                 "character": 11
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oDeekin",
@@ -1114,7 +1114,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nCount",
@@ -1123,7 +1123,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sTag",
@@ -1132,7 +1132,7 @@
                 "character": 12
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sRandomOnes",
@@ -1141,7 +1141,7 @@
                 "character": 12
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -1149,7 +1149,7 @@
                 "character": 37
             },
             "identifier": "oHench",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1159,7 +1159,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sOneLiner",
@@ -1168,7 +1168,7 @@
                 "character": 12
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "bAllowedToCopy",
@@ -1177,7 +1177,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oItem",
@@ -1186,7 +1186,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "i",
@@ -1195,7 +1195,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oJunkItem",
@@ -1204,7 +1204,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oItem",
@@ -1213,7 +1213,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sTag",
@@ -1222,7 +1222,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oCritter",
@@ -1231,7 +1231,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oStore",
@@ -1240,7 +1240,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oStore",
@@ -1249,7 +1249,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oRothe",
@@ -1258,7 +1258,7 @@
                 "character": 19
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oStore",
@@ -1267,7 +1267,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "lStore",
@@ -1276,7 +1276,7 @@
                 "character": 13
             },
             "valueType": "location",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oNewStore",
@@ -1285,7 +1285,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sName",
@@ -1294,7 +1294,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nValue",
@@ -1303,7 +1303,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nValue",
@@ -1312,7 +1312,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         }
     ]
 }

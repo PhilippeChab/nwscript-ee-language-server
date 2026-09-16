@@ -6,7 +6,7 @@
                 "character": 5
             },
             "identifier": "SetupWander",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 24
                     },
                     "identifier": "sMonster",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -24,7 +24,7 @@
                         "character": 38
                     },
                     "identifier": "nPercent",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -33,7 +33,7 @@
                         "character": 52
                     },
                     "identifier": "nNumber",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -50,7 +50,7 @@
                 "character": 4
             },
             "identifier": "GetMartialClass",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -59,7 +59,7 @@
                         "character": 27
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -76,7 +76,7 @@
                 "character": 5
             },
             "identifier": "MoveAllAssociatesTo",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -85,7 +85,7 @@
                         "character": 32
                     },
                     "identifier": "oDest",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -94,7 +94,7 @@
                         "character": 46
                     },
                     "identifier": "oMaster",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -113,7 +113,7 @@
                 "character": 4
             },
             "identifier": "GetPCTotalLevel",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -122,7 +122,7 @@
                         "character": 27
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -145,7 +145,7 @@
                 "character": 24
             },
             "identifier": "sMonster",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -154,7 +154,7 @@
                 "character": 38
             },
             "identifier": "nPercent",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -163,7 +163,7 @@
                 "character": 52
             },
             "identifier": "nNumber",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -173,7 +173,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "i",
@@ -182,7 +182,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oHench",
@@ -191,7 +191,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         }
     ]
 }

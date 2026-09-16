@@ -6,7 +6,7 @@
                 "character": 4
             },
             "identifier": "DC_EASY",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0"
         },
@@ -16,7 +16,7 @@
                 "character": 4
             },
             "identifier": "DC_MEDIUM",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1"
         },
@@ -26,7 +26,7 @@
                 "character": 4
             },
             "identifier": "DC_HARD",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2"
         },
@@ -36,7 +36,7 @@
                 "character": 4
             },
             "identifier": "G_CLASSCHANCE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "70"
         },
@@ -46,7 +46,7 @@
                 "character": 4
             },
             "identifier": "HasItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -55,7 +55,7 @@
                         "character": 19
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -64,7 +64,7 @@
                         "character": 37
                     },
                     "identifier": "s",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -81,7 +81,7 @@
                 "character": 5
             },
             "identifier": "TakeGold",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -90,7 +90,7 @@
                         "character": 18
                     },
                     "identifier": "nAmount",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -99,7 +99,7 @@
                         "character": 34
                     },
                     "identifier": "oGoldHolder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -108,7 +108,7 @@
                         "character": 51
                     },
                     "identifier": "bDestroy",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -131,7 +131,7 @@
                 "character": 4
             },
             "identifier": "HasGold",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -140,7 +140,7 @@
                         "character": 16
                     },
                     "identifier": "nAmount",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -149,7 +149,7 @@
                         "character": 32
                     },
                     "identifier": "oGoldHolder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -171,7 +171,7 @@
                 "character": 4
             },
             "identifier": "AutoDC",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -180,7 +180,7 @@
                         "character": 15
                     },
                     "identifier": "DC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -189,7 +189,7 @@
                         "character": 23
                     },
                     "identifier": "nSkill",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -198,7 +198,7 @@
                         "character": 38
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -227,7 +227,7 @@
                 "character": 5
             },
             "identifier": "DoGiveXP",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -236,7 +236,7 @@
                         "character": 21
                     },
                     "identifier": "sJournalTag",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -245,7 +245,7 @@
                         "character": 38
                     },
                     "identifier": "nPercentage",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -254,7 +254,7 @@
                         "character": 58
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -263,7 +263,7 @@
                         "character": 71
                     },
                     "identifier": "QuestAlignment",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "ALIGNMENT_NEUTRAL"
                 }
@@ -281,7 +281,7 @@
                 "character": 5
             },
             "identifier": "RewardPartyGP",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -290,7 +290,7 @@
                         "character": 23
                     },
                     "identifier": "GP",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -299,7 +299,7 @@
                         "character": 34
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -308,7 +308,7 @@
                         "character": 46
                     },
                     "identifier": "bAllParty",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -326,7 +326,7 @@
                 "character": 5
             },
             "identifier": "RewardPartyXP",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -335,7 +335,7 @@
                         "character": 23
                     },
                     "identifier": "XP",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -344,7 +344,7 @@
                         "character": 34
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -353,7 +353,7 @@
                         "character": 46
                     },
                     "identifier": "bAllParty",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -371,7 +371,7 @@
                 "character": 4
             },
             "identifier": "CheckPartyForItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -380,7 +380,7 @@
                         "character": 29
                     },
                     "identifier": "oMember",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -389,7 +389,7 @@
                         "character": 45
                     },
                     "identifier": "sItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -411,7 +411,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nTest",
@@ -420,7 +420,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nRewardMod",
@@ -429,7 +429,7 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nXP",
@@ -438,7 +438,7 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oPartyMember",
@@ -447,7 +447,7 @@
                 "character": 15
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oPartyMember",
@@ -456,7 +456,7 @@
                 "character": 15
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oPartyMember",
@@ -465,7 +465,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         }
     ]
 }

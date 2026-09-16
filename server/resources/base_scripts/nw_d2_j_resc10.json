@@ -24,7 +24,7 @@
                 "character": 4
             },
             "identifier": "StartingConditional",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -43,7 +43,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         }
     ]
 }

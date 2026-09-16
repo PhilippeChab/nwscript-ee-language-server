@@ -6,7 +6,7 @@
                 "character": 10
             },
             "identifier": "SHIFTER_DC_VERY_EASY",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -17,7 +17,7 @@
                 "character": 10
             },
             "identifier": "SHIFTER_DC_EASY",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -28,7 +28,7 @@
                 "character": 10
             },
             "identifier": "SHIFTER_DC_EASY_MEDIUM",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -39,7 +39,7 @@
                 "character": 10
             },
             "identifier": "SHIFTER_DC_NORMAL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -50,7 +50,7 @@
                 "character": 10
             },
             "identifier": "SHIFTER_DC_HARD",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "4",
             "isConst": true
@@ -61,7 +61,7 @@
                 "character": 10
             },
             "identifier": "X2_GW2_EPIC_THRESHOLD",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "11",
             "isConst": true
@@ -72,7 +72,7 @@
                 "character": 10
             },
             "identifier": "X2_GW3_EPIC_THRESHOLD",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "15",
             "isConst": true
@@ -83,7 +83,7 @@
                 "character": 4
             },
             "identifier": "ShifterDecrementGWildShapeSpellUsesLeft",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -104,7 +104,7 @@
                 "character": 5
             },
             "identifier": "ShifterSetGWildshapeSpellLimits",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -113,7 +113,7 @@
                         "character": 41
                     },
                     "identifier": "nSpellId",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -141,7 +141,7 @@
                 "character": 4
             },
             "identifier": "ShifterGetSaveDC",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -150,7 +150,7 @@
                         "character": 28
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -159,7 +159,7 @@
                         "character": 37
                     },
                     "identifier": "nShifterDCConst",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "SHIFTER_DC_NORMAL"
                 },
@@ -169,7 +169,7 @@
                         "character": 78
                     },
                     "identifier": "bAddDruidLevels",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -193,7 +193,7 @@
                 "character": 4
             },
             "identifier": "ShifterMergeWeapon",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -202,7 +202,7 @@
                         "character": 28
                     },
                     "identifier": "nPolymorphConstant",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -222,7 +222,7 @@
                 "character": 4
             },
             "identifier": "ShifterMergeArmor",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -231,7 +231,7 @@
                         "character": 28
                     },
                     "identifier": "nPolymorphConstant",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -251,7 +251,7 @@
                 "character": 4
             },
             "identifier": "ShifterMergeItems",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -260,7 +260,7 @@
                         "character": 28
                     },
                     "identifier": "nPolymorphConstant",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -284,7 +284,7 @@
                 "character": 41
             },
             "identifier": "nSpellId",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -294,7 +294,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nLevel",
@@ -303,7 +303,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sId",
@@ -312,7 +312,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nLimit",
@@ -321,7 +321,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -329,7 +329,7 @@
                 "character": 28
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -338,7 +338,7 @@
                 "character": 37
             },
             "identifier": "nShifterDCConst",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "SHIFTER_DC_NORMAL"
         },
@@ -348,7 +348,7 @@
                 "character": 78
             },
             "identifier": "bAddDruidLevels",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -359,7 +359,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nLevel",
@@ -368,7 +368,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -376,7 +376,7 @@
                 "character": 28
             },
             "identifier": "nPolymorphConstant",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -386,7 +386,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -394,7 +394,7 @@
                 "character": 28
             },
             "identifier": "nPolymorphConstant",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -404,7 +404,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -412,7 +412,7 @@
                 "character": 28
             },
             "identifier": "nPolymorphConstant",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -422,7 +422,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         }
     ]
 }

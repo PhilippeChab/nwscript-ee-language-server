@@ -6,7 +6,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_ENABLE_UMD_SCROLLS",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SWITCH_ENABLE_UMD_SCROLLS\"",
             "isConst": true
@@ -17,7 +17,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_DISABLE_ITEM_CREATION_FEATS",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SWITCH_DISABLE_ITEMCREATION_FEATS\"",
             "isConst": true
@@ -28,7 +28,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_AOE_HURT_NEUTRAL_NPCS",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X0_G_ALLOWSPELLSTOHURT\"",
             "isConst": true
@@ -39,7 +39,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_ENABLE_CRAFT_WAND_50_CHARGES",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SWITCH_ENABLE_50_WAND_CHARGES\"",
             "isConst": true
@@ -50,7 +50,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_EPIC_SPELLS_HURT_CASTER",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SWITCH_EPIC_SPELLS_HURT_CASTER\"",
             "isConst": true
@@ -61,7 +61,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_SPELL_CORERULES_DMASTERTOUCH",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SWITCH_SPELL_CORERULE_DMTOUCH\"",
             "isConst": true
@@ -72,7 +72,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_RESTRICT_USE_POISON_TO_FEAT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SWITCH_RESTRICT_USE_POISON_FEAT\"",
             "isConst": true
@@ -83,7 +83,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_ENABLE_MULTI_HENCH_AOE_DAMAGE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SWITCH_MULTI_HENCH_AOE_MADNESS\"",
             "isConst": true
@@ -94,7 +94,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_ENABLE_NPC_AOE_HURT_ALLIES",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SWITCH_ENABLE_NPC_AOE_HURT_ALLIES\"",
             "isConst": true
@@ -105,7 +105,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_ENABLE_BEBILITH_RUIN_ARMOR",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SWITCH_BEBILITH_HARDCORE_RUIN_ARMOR\"",
             "isConst": true
@@ -116,7 +116,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_ENABLE_INVISIBLE_GLYPH_OF_WARDING",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SWITCH_GLYPH_OF_WARDING_INVISIBLE\"",
             "isConst": true
@@ -127,7 +127,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_ENABLE_CROSSAREA_WALKWAYPOINTS",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SWITCH_CROSSAREA_WALKWAYPOINTS\"",
             "isConst": true
@@ -138,7 +138,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_DISABLE_SECRET_DOOR_FLASH",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SWITCH_DISABLE_SECRET_DOOR_FLASH\"",
             "isConst": true
@@ -149,7 +149,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_ENABLE_TAGBASED_SCRIPTS",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SWITCH_ENABLE_TAGBASED_SCRIPTS\"",
             "isConst": true
@@ -160,7 +160,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_USE_XP2_RESTSYSTEM",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SWITCH_ENABLE_XP2_RESTSYSTEM\"",
             "isConst": true
@@ -171,7 +171,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_DISABLE_AI_DISPEL_AOE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_L_AI_NO_AOE_DISPEL\"",
             "isConst": true
@@ -182,7 +182,7 @@
                 "character": 13
             },
             "identifier": "MODULE_SWITCH_NO_RANDOM_MONSTER_LOOT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_L_NOTREASURE\"",
             "isConst": true
@@ -193,7 +193,7 @@
                 "character": 13
             },
             "identifier": "MODULE_VAR_OVERRIDE_SPELLSCRIPT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_S_UD_SPELLSCRIPT\"",
             "isConst": true
@@ -204,7 +204,7 @@
                 "character": 13
             },
             "identifier": "MODULE_VAR_TAGBASED_SCRIPT_PREFIX",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_S_UD_SPELLSCRIPT\"",
             "isConst": true
@@ -215,7 +215,7 @@
                 "character": 13
             },
             "identifier": "MODULE_VAR_WANDERING_MONSTER_2DA",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_WM_2DA_NAME\"",
             "isConst": true
@@ -226,7 +226,7 @@
                 "character": 13
             },
             "identifier": "MODULE_VAR_AI_NO_DISPEL_AOE_CHANCE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_L_AI_AOE_DISPEL_CHANCE\"",
             "isConst": true
@@ -237,7 +237,7 @@
                 "character": 13
             },
             "identifier": "MODULE_VAR_AI_STOP_EXPERTISE_ABUSE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_L_STOP_EXPERTISE_ABUSE\"",
             "isConst": true
@@ -248,7 +248,7 @@
                 "character": 13
             },
             "identifier": "CREATURE_VAR_CUSTOM_AISCRIPT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SPECIAL_COMBAT_AI_SCRIPT\"",
             "isConst": true
@@ -259,7 +259,7 @@
                 "character": 13
             },
             "identifier": "CREATURE_VAR_RANDOMIZE_NAME",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_NAME_RANDOM\"",
             "isConst": true
@@ -270,7 +270,7 @@
                 "character": 13
             },
             "identifier": "CREATURE_VAR_RANDOMIZE_SPELLUSE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_SPELL_RANDOM\"",
             "isConst": true
@@ -281,7 +281,7 @@
                 "character": 13
             },
             "identifier": "CREATURE_VAR_USE_SPAWN_STEALTH",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_L_SPAWN_USE_STEALTH\"",
             "isConst": true
@@ -292,7 +292,7 @@
                 "character": 13
             },
             "identifier": "CREATURE_VAR_USE_SPAWN_SEARCH",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_L_SPAWN_USE_SEARCH\"",
             "isConst": true
@@ -303,7 +303,7 @@
                 "character": 13
             },
             "identifier": "CREATURE_VAR_USE_SPAWN_AMBIENT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_L_SPAWN_USE_AMBIENT\"",
             "isConst": true
@@ -314,7 +314,7 @@
                 "character": 13
             },
             "identifier": "CREATURE_VAR_USE_SPAWN_AMBIENT_IMMOBILE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_L_SPAWN_USE_AMBIENT_IMMOBILE\"",
             "isConst": true
@@ -325,7 +325,7 @@
                 "character": 13
             },
             "identifier": "CREATURE_VAR_IMMUNE_TO_DISPEL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X1_L_IMMUNE_TO_DISPEL\"",
             "isConst": true
@@ -336,7 +336,7 @@
                 "character": 13
             },
             "identifier": "CREATURE_VAR_IS_INCORPOREAL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_L_IS_INCORPOREAL\"",
             "isConst": true
@@ -347,7 +347,7 @@
                 "character": 13
             },
             "identifier": "CREATURE_VAR_NUMBER_OF_ATTACKS",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_L_NUMBER_OF_ATTACKS\"",
             "isConst": true
@@ -358,7 +358,7 @@
                 "character": 13
             },
             "identifier": "CREATURE_AI_MODIFIED_MAGIC_RATE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_L_BEH_MAGIC\"",
             "isConst": true
@@ -369,7 +369,7 @@
                 "character": 13
             },
             "identifier": "CREATURE_AI_MODIFIED_OFFENSE_RATE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_L_BEH_OFFENSE\"",
             "isConst": true
@@ -380,7 +380,7 @@
                 "character": 13
             },
             "identifier": "CREATURE_AI_MODIFIED_COMPASSION_RATE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_L_BEH_COMPASSION\"",
             "isConst": true
@@ -391,7 +391,7 @@
                 "character": 13
             },
             "identifier": "CREATURE_VAR_PALE_MASTER_SPECIAL_ITEM",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_S_PM_SPECIAL_ITEM\"",
             "isConst": true
@@ -402,7 +402,7 @@
                 "character": 10
             },
             "identifier": "X2_ITEM_EVENT_ACTIVATE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -413,7 +413,7 @@
                 "character": 10
             },
             "identifier": "X2_ITEM_EVENT_EQUIP",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -424,7 +424,7 @@
                 "character": 10
             },
             "identifier": "X2_ITEM_EVENT_UNEQUIP",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -435,7 +435,7 @@
                 "character": 10
             },
             "identifier": "X2_ITEM_EVENT_ONHITCAST",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -446,7 +446,7 @@
                 "character": 10
             },
             "identifier": "X2_ITEM_EVENT_ACQUIRE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "4",
             "isConst": true
@@ -457,7 +457,7 @@
                 "character": 10
             },
             "identifier": "X2_ITEM_EVENT_UNACQUIRE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -468,7 +468,7 @@
                 "character": 10
             },
             "identifier": "X2_ITEM_EVENT_SPELLCAST_AT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "6",
             "isConst": true
@@ -479,7 +479,7 @@
                 "character": 10
             },
             "identifier": "X2_EXECUTE_SCRIPT_CONTINUE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -490,7 +490,7 @@
                 "character": 10
             },
             "identifier": "X2_EXECUTE_SCRIPT_END",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -501,7 +501,7 @@
                 "character": 5
             },
             "identifier": "SetUserDefinedItemEventNumber",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -510,7 +510,7 @@
                         "character": 39
                     },
                     "identifier": "nEvent",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -536,7 +536,7 @@
                 "character": 4
             },
             "identifier": "GetUserDefinedItemEventNumber",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -561,7 +561,7 @@
                 "character": 5
             },
             "identifier": "SetModuleSwitch",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -570,7 +570,7 @@
                         "character": 28
                     },
                     "identifier": "sModuleSwitchConstant",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -579,7 +579,7 @@
                         "character": 54
                     },
                     "identifier": "bValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -601,7 +601,7 @@
                 "character": 4
             },
             "identifier": "GetModuleSwitchValue",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -610,7 +610,7 @@
                         "character": 33
                     },
                     "identifier": "sModuleSwitchConstant",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -631,7 +631,7 @@
                 "character": 13
             },
             "identifier": "DOOR_FLAG_RESIST_KNOCK",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_FLAG_DOOR_RESIST_KNOCK\"",
             "isConst": true
@@ -642,7 +642,7 @@
                 "character": 5
             },
             "identifier": "SetDoorFlag",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -651,7 +651,7 @@
                         "character": 24
                     },
                     "identifier": "oDoor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -660,7 +660,7 @@
                         "character": 38
                     },
                     "identifier": "sDoorFlagConstant",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -669,7 +669,7 @@
                         "character": 61
                     },
                     "identifier": "nValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -695,7 +695,7 @@
                 "character": 4
             },
             "identifier": "GetDoorFlag",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -704,7 +704,7 @@
                         "character": 23
                     },
                     "identifier": "oDoor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -713,7 +713,7 @@
                         "character": 38
                     },
                     "identifier": "sDoorFlagConstant",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -730,7 +730,7 @@
                 "character": 14
             },
             "identifier": "WAYPOINT_VAR_FORCE_SETFACING",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_L_WAYPOINT_SETFACING\"",
             "isConst": true
@@ -741,7 +741,7 @@
                 "character": 13
             },
             "identifier": "ITEM_FLAG_NO_CRAFT_MODIFICATION",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"X2_FLAG_ITEM_CRAFT_DO_NOT_MODIFY\"",
             "isConst": true
@@ -752,7 +752,7 @@
                 "character": 5
             },
             "identifier": "SetItemFlag",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -761,7 +761,7 @@
                         "character": 24
                     },
                     "identifier": "oItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -770,7 +770,7 @@
                         "character": 38
                     },
                     "identifier": "sItemFlagConstant",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -779,7 +779,7 @@
                         "character": 61
                     },
                     "identifier": "nValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -796,7 +796,7 @@
                 "character": 4
             },
             "identifier": "GetItemFlag",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -805,7 +805,7 @@
                         "character": 23
                     },
                     "identifier": "oItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -814,7 +814,7 @@
                         "character": 38
                     },
                     "identifier": "sItemFlagConstant",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -831,7 +831,7 @@
                 "character": 4
             },
             "identifier": "ExecuteScriptAndReturnInt",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -840,7 +840,7 @@
                         "character": 37
                     },
                     "identifier": "sScript",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -849,7 +849,7 @@
                         "character": 53
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -871,7 +871,7 @@
                 "character": 6
             },
             "identifier": "SetExecutedScriptReturnValue",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -880,7 +880,7 @@
                         "character": 39
                     },
                     "identifier": "nValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "X2_EXECUTE_SCRIPT_END"
                 }
@@ -905,7 +905,7 @@
                 "character": 5
             },
             "identifier": "SetUserDefinedItemEventPrefix",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -914,7 +914,7 @@
                         "character": 42
                     },
                     "identifier": "sPrefix",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string",
                     "defaultValue": "\"\""
                 }
@@ -940,7 +940,7 @@
                 "character": 5
             },
             "identifier": "SetModuleOverrideSpellscript",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -949,7 +949,7 @@
                         "character": 41
                     },
                     "identifier": "sScriptName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -975,7 +975,7 @@
                 "character": 5
             },
             "identifier": "SetCreatureFlag",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -984,7 +984,7 @@
                         "character": 28
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -993,7 +993,7 @@
                         "character": 46
                     },
                     "identifier": "sFlag",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -1002,7 +1002,7 @@
                         "character": 57
                     },
                     "identifier": "nValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -1019,7 +1019,7 @@
                 "character": 5
             },
             "identifier": "GetCreatureFlag",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1028,7 +1028,7 @@
                         "character": 28
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1037,7 +1037,7 @@
                         "character": 46
                     },
                     "identifier": "sFlag",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -1054,7 +1054,7 @@
                 "character": 5
             },
             "identifier": "SetCreatureOverrideAIScript",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1063,7 +1063,7 @@
                         "character": 40
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1072,7 +1072,7 @@
                         "character": 58
                     },
                     "identifier": "sScriptName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -1094,7 +1094,7 @@
                 "character": 7
             },
             "identifier": "SetCreatureOverrideAIScriptFinished",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1103,7 +1103,7 @@
                         "character": 50
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -1126,7 +1126,7 @@
                 "character": 7
             },
             "identifier": "ClearCreatureOverrideAIScriptTarget",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1135,7 +1135,7 @@
                         "character": 50
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -1153,7 +1153,7 @@
                 "character": 7
             },
             "identifier": "GetCreatureOverrideAIScriptTarget",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -1162,7 +1162,7 @@
                         "character": 48
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -1180,7 +1180,7 @@
                 "character": 5
             },
             "identifier": "SetWanderingMonster2DAFile",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1189,7 +1189,7 @@
                         "character": 39
                     },
                     "identifier": "s2DAName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string",
                     "defaultValue": "\"des_restsystem\""
                 }
@@ -1212,7 +1212,7 @@
                 "character": 7
             },
             "identifier": "GetModuleOverrideSpellscript",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [],
             "signatureEnd": {
@@ -1228,7 +1228,7 @@
                 "character": 5
             },
             "identifier": "SetModuleOverrideSpellScriptFinished",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -1251,7 +1251,7 @@
                 "character": 4
             },
             "identifier": "GetModuleOverrideSpellScriptFinished",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -1267,7 +1267,7 @@
                 "character": 7
             },
             "identifier": "GetUserDefinedItemEventScriptName",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -1276,7 +1276,7 @@
                         "character": 48
                     },
                     "identifier": "oItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1302,7 +1302,7 @@
                 "character": 28
             },
             "identifier": "sModuleSwitchConstant",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1311,7 +1311,7 @@
                 "character": 54
             },
             "identifier": "bValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1320,7 +1320,7 @@
                 "character": 33
             },
             "identifier": "sModuleSwitchConstant",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1330,7 +1330,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -1338,7 +1338,7 @@
                 "character": 24
             },
             "identifier": "oDoor",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1347,7 +1347,7 @@
                 "character": 38
             },
             "identifier": "sDoorFlagConstant",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1356,7 +1356,7 @@
                 "character": 61
             },
             "identifier": "nValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1365,7 +1365,7 @@
                 "character": 23
             },
             "identifier": "oDoor",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1374,7 +1374,7 @@
                 "character": 38
             },
             "identifier": "sDoorFlagConstant",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1384,7 +1384,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -1392,7 +1392,7 @@
                 "character": 24
             },
             "identifier": "oItem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1401,7 +1401,7 @@
                 "character": 38
             },
             "identifier": "sItemFlagConstant",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1410,7 +1410,7 @@
                 "character": 61
             },
             "identifier": "nValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1419,7 +1419,7 @@
                 "character": 23
             },
             "identifier": "oItem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1428,7 +1428,7 @@
                 "character": 38
             },
             "identifier": "sItemFlagConstant",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1438,7 +1438,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -1446,7 +1446,7 @@
                 "character": 41
             },
             "identifier": "sScriptName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1456,7 +1456,7 @@
                 "character": 13
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nRet",
@@ -1465,7 +1465,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -1473,7 +1473,7 @@
                 "character": 40
             },
             "identifier": "oCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1482,7 +1482,7 @@
                 "character": 58
             },
             "identifier": "sScriptName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1491,7 +1491,7 @@
                 "character": 48
             },
             "identifier": "oCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_SELF"
         },
@@ -1501,7 +1501,7 @@
                 "character": 48
             },
             "identifier": "oCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_SELF"
         },
@@ -1512,7 +1512,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -1520,7 +1520,7 @@
                 "character": 48
             },
             "identifier": "oCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_SELF"
         },
@@ -1530,7 +1530,7 @@
                 "character": 28
             },
             "identifier": "oCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1539,7 +1539,7 @@
                 "character": 46
             },
             "identifier": "sFlag",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1548,7 +1548,7 @@
                 "character": 57
             },
             "identifier": "nValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1557,7 +1557,7 @@
                 "character": 27
             },
             "identifier": "oCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1566,7 +1566,7 @@
                 "character": 45
             },
             "identifier": "sFlag",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1576,7 +1576,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -1584,7 +1584,7 @@
                 "character": 39
             },
             "identifier": "nEvent",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1594,7 +1594,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sTag",
@@ -1603,7 +1603,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -1611,7 +1611,7 @@
                 "character": 42
             },
             "identifier": "sPrefix",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string",
             "defaultValue": "\"\""
         },
@@ -1621,7 +1621,7 @@
                 "character": 37
             },
             "identifier": "sScript",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1630,7 +1630,7 @@
                 "character": 53
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1640,7 +1640,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -1648,7 +1648,7 @@
                 "character": 39
             },
             "identifier": "nValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "X2_EXECUTE_SCRIPT_CONTINUE"
         },
@@ -1658,7 +1658,7 @@
                 "character": 39
             },
             "identifier": "s2DAName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string",
             "defaultValue": "\"des_restsystem\""
         }

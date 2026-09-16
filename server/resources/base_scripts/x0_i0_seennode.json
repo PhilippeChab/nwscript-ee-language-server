@@ -6,7 +6,7 @@
                 "character": 7
             },
             "identifier": "SeenNodeVarName",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 28
                     },
                     "identifier": "nNode",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -39,7 +39,7 @@
                 "character": 28
             },
             "identifier": "nNode",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         }
     ]

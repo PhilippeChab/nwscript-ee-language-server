@@ -6,7 +6,7 @@
                 "character": 10
             },
             "identifier": "NUI_DIRECTION_HORIZONTAL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -17,7 +17,7 @@
                 "character": 10
             },
             "identifier": "NUI_DIRECTION_VERTICAL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -28,7 +28,7 @@
                 "character": 10
             },
             "identifier": "NUI_MOUSE_BUTTON_LEFT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -39,7 +39,7 @@
                 "character": 10
             },
             "identifier": "NUI_MOUSE_BUTTON_MIDDLE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -50,7 +50,7 @@
                 "character": 10
             },
             "identifier": "NUI_MOUSE_BUTTON_RIGHT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -61,7 +61,7 @@
                 "character": 10
             },
             "identifier": "NUI_SCROLLBARS_NONE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -72,7 +72,7 @@
                 "character": 10
             },
             "identifier": "NUI_SCROLLBARS_X",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -83,7 +83,7 @@
                 "character": 10
             },
             "identifier": "NUI_SCROLLBARS_Y",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -94,7 +94,7 @@
                 "character": 10
             },
             "identifier": "NUI_SCROLLBARS_BOTH",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -105,7 +105,7 @@
                 "character": 10
             },
             "identifier": "NUI_SCROLLBARS_AUTO",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "4",
             "isConst": true
@@ -116,7 +116,7 @@
                 "character": 10
             },
             "identifier": "NUI_ASPECT_FIT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -127,7 +127,7 @@
                 "character": 10
             },
             "identifier": "NUI_ASPECT_FILL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -138,7 +138,7 @@
                 "character": 10
             },
             "identifier": "NUI_ASPECT_FIT100",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -149,7 +149,7 @@
                 "character": 10
             },
             "identifier": "NUI_ASPECT_EXACT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -160,7 +160,7 @@
                 "character": 10
             },
             "identifier": "NUI_ASPECT_EXACTSCALED",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "4",
             "isConst": true
@@ -171,7 +171,7 @@
                 "character": 10
             },
             "identifier": "NUI_ASPECT_STRETCH",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -182,7 +182,7 @@
                 "character": 10
             },
             "identifier": "NUI_HALIGN_CENTER",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -193,7 +193,7 @@
                 "character": 10
             },
             "identifier": "NUI_HALIGN_LEFT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -204,7 +204,7 @@
                 "character": 10
             },
             "identifier": "NUI_HALIGN_RIGHT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -215,7 +215,7 @@
                 "character": 10
             },
             "identifier": "NUI_VALIGN_MIDDLE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -226,7 +226,7 @@
                 "character": 10
             },
             "identifier": "NUI_VALIGN_TOP",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -237,7 +237,7 @@
                 "character": 10
             },
             "identifier": "NUI_VALIGN_BOTTOM",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -248,7 +248,7 @@
                 "character": 12
             },
             "identifier": "NUI_STYLE_PRIMARY_WIDTH",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "float",
             "value": "150.0",
             "isConst": true
@@ -259,7 +259,7 @@
                 "character": 12
             },
             "identifier": "NUI_STYLE_PRIMARY_HEIGHT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "float",
             "value": "50.0",
             "isConst": true
@@ -270,7 +270,7 @@
                 "character": 12
             },
             "identifier": "NUI_STYLE_SECONDARY_WIDTH",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "float",
             "value": "150.0",
             "isConst": true
@@ -281,7 +281,7 @@
                 "character": 12
             },
             "identifier": "NUI_STYLE_SECONDARY_HEIGHT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "float",
             "value": "35.0",
             "isConst": true
@@ -292,7 +292,7 @@
                 "character": 12
             },
             "identifier": "NUI_STYLE_TERTIARY_WIDTH",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "float",
             "value": "100.0",
             "isConst": true
@@ -303,7 +303,7 @@
                 "character": 12
             },
             "identifier": "NUI_STYLE_TERTIARY_HEIGHT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "float",
             "value": "30.0",
             "isConst": true
@@ -314,7 +314,7 @@
                 "character": 12
             },
             "identifier": "NUI_STYLE_ROW_HEIGHT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "float",
             "value": "25.0",
             "isConst": true
@@ -325,7 +325,7 @@
                 "character": 10
             },
             "identifier": "NUI_NUMBER_FLAG_HEX",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0x001",
             "isConst": true
@@ -336,7 +336,7 @@
                 "character": 10
             },
             "identifier": "NUI_TEXT_FLAG_LOWERCASE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0x001",
             "isConst": true
@@ -347,7 +347,7 @@
                 "character": 10
             },
             "identifier": "NUI_TEXT_FLAG_UPPERCASE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0x002",
             "isConst": true
@@ -358,7 +358,7 @@
                 "character": 5
             },
             "identifier": "NuiWindow",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -367,7 +367,7 @@
                         "character": 20
                     },
                     "identifier": "jRoot",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -376,7 +376,7 @@
                         "character": 32
                     },
                     "identifier": "jTitle",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -385,7 +385,7 @@
                         "character": 45
                     },
                     "identifier": "jGeometry",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -394,7 +394,7 @@
                         "character": 61
                     },
                     "identifier": "jResizable",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -403,7 +403,7 @@
                         "character": 77
                     },
                     "identifier": "jCollapsed",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -412,7 +412,7 @@
                         "character": 93
                     },
                     "identifier": "jClosable",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -421,7 +421,7 @@
                         "character": 109
                     },
                     "identifier": "jTransparent",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -430,7 +430,7 @@
                         "character": 128
                     },
                     "identifier": "jBorder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -439,7 +439,7 @@
                         "character": 142
                     },
                     "identifier": "jAcceptsInput",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json",
                     "defaultValue": "JSON_TRUE"
                 },
@@ -449,7 +449,7 @@
                         "character": 174
                     },
                     "identifier": "jSizeConstraint",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json",
                     "defaultValue": "JSON_NULL"
                 },
@@ -459,7 +459,7 @@
                         "character": 208
                     },
                     "identifier": "jEdgeConstraint",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json",
                     "defaultValue": "JSON_NULL"
                 },
@@ -469,7 +469,7 @@
                         "character": 242
                     },
                     "identifier": "jFont",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json",
                     "defaultValue": "JSON_STRING"
                 }
@@ -526,7 +526,7 @@
                 "character": 5
             },
             "identifier": "NuiBind",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -535,7 +535,7 @@
                         "character": 20
                     },
                     "identifier": "sId",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -544,7 +544,7 @@
                         "character": 29
                     },
                     "identifier": "nNumberFlags",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 },
@@ -554,7 +554,7 @@
                         "character": 51
                     },
                     "identifier": "nNumberPrecision",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 },
@@ -564,7 +564,7 @@
                         "character": 77
                     },
                     "identifier": "nTextFlags",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "0"
                 }
@@ -596,7 +596,7 @@
                 "character": 5
             },
             "identifier": "NuiId",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -605,7 +605,7 @@
                         "character": 16
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -614,7 +614,7 @@
                         "character": 30
                     },
                     "identifier": "sId",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -634,7 +634,7 @@
                 "character": 5
             },
             "identifier": "NuiStrRef",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -643,7 +643,7 @@
                         "character": 19
                     },
                     "identifier": "nStrRef",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -663,7 +663,7 @@
                 "character": 5
             },
             "identifier": "NuiCol",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -672,7 +672,7 @@
                         "character": 17
                     },
                     "identifier": "jList",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -693,7 +693,7 @@
                 "character": 5
             },
             "identifier": "NuiRow",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -702,7 +702,7 @@
                         "character": 17
                     },
                     "identifier": "jList",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -723,7 +723,7 @@
                 "character": 5
             },
             "identifier": "NuiGroup",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -732,7 +732,7 @@
                         "character": 19
                     },
                     "identifier": "jChild",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -741,7 +741,7 @@
                         "character": 31
                     },
                     "identifier": "bBorder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 },
@@ -751,7 +751,7 @@
                         "character": 51
                     },
                     "identifier": "nScroll",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_SCROLLBARS_AUTO"
                 }
@@ -774,7 +774,7 @@
                 "character": 5
             },
             "identifier": "NuiWidth",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -783,7 +783,7 @@
                         "character": 19
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -792,7 +792,7 @@
                         "character": 32
                     },
                     "identifier": "fWidth",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 }
             ],
@@ -812,7 +812,7 @@
                 "character": 5
             },
             "identifier": "NuiHeight",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -821,7 +821,7 @@
                         "character": 20
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -830,7 +830,7 @@
                         "character": 33
                     },
                     "identifier": "fHeight",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 }
             ],
@@ -850,7 +850,7 @@
                 "character": 5
             },
             "identifier": "NuiAspect",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -859,7 +859,7 @@
                         "character": 20
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -868,7 +868,7 @@
                         "character": 33
                     },
                     "identifier": "fAspect",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 }
             ],
@@ -888,7 +888,7 @@
                 "character": 5
             },
             "identifier": "NuiMargin",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -897,7 +897,7 @@
                         "character": 20
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -906,7 +906,7 @@
                         "character": 33
                     },
                     "identifier": "fMargin",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 }
             ],
@@ -925,7 +925,7 @@
                 "character": 5
             },
             "identifier": "NuiPadding",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -934,7 +934,7 @@
                         "character": 21
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -943,7 +943,7 @@
                         "character": 34
                     },
                     "identifier": "fPadding",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 }
             ],
@@ -962,7 +962,7 @@
                 "character": 5
             },
             "identifier": "NuiEnabled",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -971,7 +971,7 @@
                         "character": 21
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -980,7 +980,7 @@
                         "character": 33
                     },
                     "identifier": "jEnabler",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1001,7 +1001,7 @@
                 "character": 5
             },
             "identifier": "NuiVisible",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1010,7 +1010,7 @@
                         "character": 21
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1019,7 +1019,7 @@
                         "character": 33
                     },
                     "identifier": "jVisible",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1040,7 +1040,7 @@
                 "character": 5
             },
             "identifier": "NuiTooltip",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1049,7 +1049,7 @@
                         "character": 21
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1058,7 +1058,7 @@
                         "character": 33
                     },
                     "identifier": "jTooltip",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1079,7 +1079,7 @@
                 "character": 5
             },
             "identifier": "NuiDisabledTooltip",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1088,7 +1088,7 @@
                         "character": 29
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1097,7 +1097,7 @@
                         "character": 41
                     },
                     "identifier": "jTooltip",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1118,7 +1118,7 @@
                 "character": 5
             },
             "identifier": "NuiEncouraged",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1127,7 +1127,7 @@
                         "character": 24
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1136,7 +1136,7 @@
                         "character": 36
                     },
                     "identifier": "jEncouraged",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1157,7 +1157,7 @@
                 "character": 5
             },
             "identifier": "NuiVec",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1166,7 +1166,7 @@
                         "character": 18
                     },
                     "identifier": "x",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1175,7 +1175,7 @@
                         "character": 27
                     },
                     "identifier": "y",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 }
             ],
@@ -1192,7 +1192,7 @@
                 "character": 5
             },
             "identifier": "NuiRect",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1201,7 +1201,7 @@
                         "character": 19
                     },
                     "identifier": "x",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1210,7 +1210,7 @@
                         "character": 28
                     },
                     "identifier": "y",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1219,7 +1219,7 @@
                         "character": 37
                     },
                     "identifier": "w",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1228,7 +1228,7 @@
                         "character": 46
                     },
                     "identifier": "h",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 }
             ],
@@ -1245,7 +1245,7 @@
                 "character": 5
             },
             "identifier": "NuiColor",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1254,7 +1254,7 @@
                         "character": 18
                     },
                     "identifier": "r",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1263,7 +1263,7 @@
                         "character": 25
                     },
                     "identifier": "g",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1272,7 +1272,7 @@
                         "character": 32
                     },
                     "identifier": "b",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1281,7 +1281,7 @@
                         "character": 39
                     },
                     "identifier": "a",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "255"
                 }
@@ -1299,7 +1299,7 @@
                 "character": 5
             },
             "identifier": "NuiStyleForegroundColor",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1308,7 +1308,7 @@
                         "character": 34
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1317,7 +1317,7 @@
                         "character": 46
                     },
                     "identifier": "jColor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1340,7 +1340,7 @@
                 "character": 5
             },
             "identifier": "NuiStyleFont",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1349,7 +1349,7 @@
                         "character": 23
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1358,7 +1358,7 @@
                         "character": 35
                     },
                     "identifier": "jFont",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1380,7 +1380,7 @@
                 "character": 5
             },
             "identifier": "NuiSpacer",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [],
             "signatureEnd": {
@@ -1400,7 +1400,7 @@
                 "character": 5
             },
             "identifier": "NuiLabel",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1409,7 +1409,7 @@
                         "character": 19
                     },
                     "identifier": "jValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1418,7 +1418,7 @@
                         "character": 32
                     },
                     "identifier": "jHAlign",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1427,7 +1427,7 @@
                         "character": 46
                     },
                     "identifier": "jVAlign",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1449,7 +1449,7 @@
                 "character": 5
             },
             "identifier": "NuiText",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1458,7 +1458,7 @@
                         "character": 18
                     },
                     "identifier": "jValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1467,7 +1467,7 @@
                         "character": 30
                     },
                     "identifier": "bBorder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 },
@@ -1477,7 +1477,7 @@
                         "character": 50
                     },
                     "identifier": "nScroll",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_SCROLLBARS_AUTO"
                 }
@@ -1501,7 +1501,7 @@
                 "character": 5
             },
             "identifier": "NuiButton",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1510,7 +1510,7 @@
                         "character": 20
                     },
                     "identifier": "jLabel",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1531,7 +1531,7 @@
                 "character": 5
             },
             "identifier": "NuiButtonImage",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1540,7 +1540,7 @@
                         "character": 25
                     },
                     "identifier": "jResRef",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1561,7 +1561,7 @@
                 "character": 5
             },
             "identifier": "NuiButtonSelect",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1570,7 +1570,7 @@
                         "character": 26
                     },
                     "identifier": "jLabel",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1579,7 +1579,7 @@
                         "character": 39
                     },
                     "identifier": "jValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1602,7 +1602,7 @@
                 "character": 5
             },
             "identifier": "NuiCheck",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1611,7 +1611,7 @@
                         "character": 19
                     },
                     "identifier": "jLabel",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1620,7 +1620,7 @@
                         "character": 32
                     },
                     "identifier": "jBool",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1641,7 +1641,7 @@
                 "character": 5
             },
             "identifier": "NuiImage",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1650,7 +1650,7 @@
                         "character": 19
                     },
                     "identifier": "jResRef",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1659,7 +1659,7 @@
                         "character": 33
                     },
                     "identifier": "jAspect",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1668,7 +1668,7 @@
                         "character": 47
                     },
                     "identifier": "jHAlign",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1677,7 +1677,7 @@
                         "character": 61
                     },
                     "identifier": "jVAlign",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1700,7 +1700,7 @@
                 "character": 5
             },
             "identifier": "NuiImageRegion",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1709,7 +1709,7 @@
                         "character": 25
                     },
                     "identifier": "jImage",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1718,7 +1718,7 @@
                         "character": 38
                     },
                     "identifier": "jRegion",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1739,7 +1739,7 @@
                 "character": 5
             },
             "identifier": "NuiCombo",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1748,7 +1748,7 @@
                         "character": 19
                     },
                     "identifier": "jElements",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1757,7 +1757,7 @@
                         "character": 35
                     },
                     "identifier": "jSelected",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1778,7 +1778,7 @@
                 "character": 5
             },
             "identifier": "NuiComboEntry",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1787,7 +1787,7 @@
                         "character": 26
                     },
                     "identifier": "sLabel",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -1796,7 +1796,7 @@
                         "character": 38
                     },
                     "identifier": "nValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -1813,7 +1813,7 @@
                 "character": 5
             },
             "identifier": "NuiSliderFloat",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1822,7 +1822,7 @@
                         "character": 25
                     },
                     "identifier": "jValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1831,7 +1831,7 @@
                         "character": 38
                     },
                     "identifier": "jMin",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1840,7 +1840,7 @@
                         "character": 49
                     },
                     "identifier": "jMax",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1849,7 +1849,7 @@
                         "character": 60
                     },
                     "identifier": "jStepSize",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1872,7 +1872,7 @@
                 "character": 5
             },
             "identifier": "NuiSlider",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1881,7 +1881,7 @@
                         "character": 20
                     },
                     "identifier": "jValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1890,7 +1890,7 @@
                         "character": 33
                     },
                     "identifier": "jMin",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1899,7 +1899,7 @@
                         "character": 44
                     },
                     "identifier": "jMax",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1908,7 +1908,7 @@
                         "character": 55
                     },
                     "identifier": "jStepSize",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1931,7 +1931,7 @@
                 "character": 5
             },
             "identifier": "NuiProgress",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1940,7 +1940,7 @@
                         "character": 22
                     },
                     "identifier": "jValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -1960,7 +1960,7 @@
                 "character": 5
             },
             "identifier": "NuiTextEdit",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -1969,7 +1969,7 @@
                         "character": 22
                     },
                     "identifier": "jPlaceholder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1978,7 +1978,7 @@
                         "character": 41
                     },
                     "identifier": "jValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -1987,7 +1987,7 @@
                         "character": 53
                     },
                     "identifier": "nMaxLength",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1996,7 +1996,7 @@
                         "character": 69
                     },
                     "identifier": "bMultiline",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2005,7 +2005,7 @@
                         "character": 85
                     },
                     "identifier": "bWordWrap",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -2030,7 +2030,7 @@
                 "character": 5
             },
             "identifier": "NuiList",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -2039,7 +2039,7 @@
                         "character": 18
                     },
                     "identifier": "jTemplate",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2048,7 +2048,7 @@
                         "character": 34
                     },
                     "identifier": "jRowCount",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2057,7 +2057,7 @@
                         "character": 51
                     },
                     "identifier": "fRowHeight",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float",
                     "defaultValue": "NUI_STYLE_ROW_HEIGHT"
                 },
@@ -2067,7 +2067,7 @@
                         "character": 90
                     },
                     "identifier": "bBorder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 },
@@ -2077,7 +2077,7 @@
                         "character": 110
                     },
                     "identifier": "nScroll",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_SCROLLBARS_Y"
                 }
@@ -2107,7 +2107,7 @@
                 "character": 5
             },
             "identifier": "NuiListTemplateCell",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -2116,7 +2116,7 @@
                         "character": 30
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2125,7 +2125,7 @@
                         "character": 43
                     },
                     "identifier": "fWidth",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -2134,7 +2134,7 @@
                         "character": 55
                     },
                     "identifier": "bVariable",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -2155,7 +2155,7 @@
                 "character": 5
             },
             "identifier": "NuiColorPicker",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -2164,7 +2164,7 @@
                         "character": 25
                     },
                     "identifier": "jColor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -2184,7 +2184,7 @@
                 "character": 5
             },
             "identifier": "NuiOptions",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -2193,7 +2193,7 @@
                         "character": 20
                     },
                     "identifier": "nDirection",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2202,7 +2202,7 @@
                         "character": 37
                     },
                     "identifier": "jElements",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2211,7 +2211,7 @@
                         "character": 53
                     },
                     "identifier": "jValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -2235,7 +2235,7 @@
                 "character": 5
             },
             "identifier": "NuiToggles",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -2244,7 +2244,7 @@
                         "character": 20
                     },
                     "identifier": "nDirection",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2253,7 +2253,7 @@
                         "character": 37
                     },
                     "identifier": "jElements",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2262,7 +2262,7 @@
                         "character": 54
                     },
                     "identifier": "jValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -2286,7 +2286,7 @@
                 "character": 10
             },
             "identifier": "NUI_CHART_TYPE_LINES",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -2297,7 +2297,7 @@
                 "character": 10
             },
             "identifier": "NUI_CHART_TYPE_COLUMN",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -2308,7 +2308,7 @@
                 "character": 5
             },
             "identifier": "NuiChartSlot",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -2317,7 +2317,7 @@
                         "character": 22
                     },
                     "identifier": "nType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2326,7 +2326,7 @@
                         "character": 34
                     },
                     "identifier": "jLegend",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2335,7 +2335,7 @@
                         "character": 48
                     },
                     "identifier": "jColor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2344,7 +2344,7 @@
                         "character": 61
                     },
                     "identifier": "jData",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -2366,7 +2366,7 @@
                 "character": 5
             },
             "identifier": "NuiChart",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -2375,7 +2375,7 @@
                         "character": 20
                     },
                     "identifier": "jSlots",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -2397,7 +2397,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_TYPE_POLYLINE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -2408,7 +2408,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_TYPE_CURVE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -2419,7 +2419,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_TYPE_CIRCLE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -2430,7 +2430,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_TYPE_ARC",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -2441,7 +2441,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_TYPE_TEXT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "4",
             "isConst": true
@@ -2452,7 +2452,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_TYPE_IMAGE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -2463,7 +2463,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_TYPE_LINE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "6",
             "isConst": true
@@ -2474,7 +2474,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_TYPE_RECT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "7",
             "isConst": true
@@ -2485,7 +2485,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_ORDER_BEFORE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "-1",
             "isConst": true
@@ -2496,7 +2496,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_ORDER_AFTER",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -2507,7 +2507,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -2518,7 +2518,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_RENDER_MOUSE_OFF",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -2529,7 +2529,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_RENDER_MOUSE_HOVER",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -2540,7 +2540,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_RENDER_MOUSE_LEFT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -2551,7 +2551,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_RENDER_MOUSE_RIGHT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "4",
             "isConst": true
@@ -2562,7 +2562,7 @@
                 "character": 10
             },
             "identifier": "NUI_DRAW_LIST_ITEM_RENDER_MOUSE_MIDDLE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -2573,7 +2573,7 @@
                 "character": 5
             },
             "identifier": "NuiDrawListPolyLine",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -2582,7 +2582,7 @@
                         "character": 30
                     },
                     "identifier": "jEnabled",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2591,7 +2591,7 @@
                         "character": 45
                     },
                     "identifier": "jColor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2600,7 +2600,7 @@
                         "character": 58
                     },
                     "identifier": "jFill",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2609,7 +2609,7 @@
                         "character": 70
                     },
                     "identifier": "jLineThickness",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2618,7 +2618,7 @@
                         "character": 91
                     },
                     "identifier": "jPoints",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2627,7 +2627,7 @@
                         "character": 104
                     },
                     "identifier": "nOrder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
                 },
@@ -2637,7 +2637,7 @@
                         "character": 149
                     },
                     "identifier": "nRender",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
                 },
@@ -2647,7 +2647,7 @@
                         "character": 197
                     },
                     "identifier": "nBindArrays",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -2674,7 +2674,7 @@
                 "character": 5
             },
             "identifier": "NuiDrawListCurve",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -2683,7 +2683,7 @@
                         "character": 27
                     },
                     "identifier": "jEnabled",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2692,7 +2692,7 @@
                         "character": 42
                     },
                     "identifier": "jColor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2701,7 +2701,7 @@
                         "character": 55
                     },
                     "identifier": "jLineThickness",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2710,7 +2710,7 @@
                         "character": 76
                     },
                     "identifier": "jA",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2719,7 +2719,7 @@
                         "character": 85
                     },
                     "identifier": "jB",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2728,7 +2728,7 @@
                         "character": 94
                     },
                     "identifier": "jCtrl0",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2737,7 +2737,7 @@
                         "character": 107
                     },
                     "identifier": "jCtrl1",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2746,7 +2746,7 @@
                         "character": 119
                     },
                     "identifier": "nOrder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
                 },
@@ -2756,7 +2756,7 @@
                         "character": 164
                     },
                     "identifier": "nRender",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
                 },
@@ -2766,7 +2766,7 @@
                         "character": 212
                     },
                     "identifier": "nBindArrays",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -2795,7 +2795,7 @@
                 "character": 5
             },
             "identifier": "NuiDrawListCircle",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -2804,7 +2804,7 @@
                         "character": 28
                     },
                     "identifier": "jEnabled",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2813,7 +2813,7 @@
                         "character": 43
                     },
                     "identifier": "jColor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2822,7 +2822,7 @@
                         "character": 56
                     },
                     "identifier": "jFill",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2831,7 +2831,7 @@
                         "character": 68
                     },
                     "identifier": "jLineThickness",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2840,7 +2840,7 @@
                         "character": 89
                     },
                     "identifier": "jRect",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2849,7 +2849,7 @@
                         "character": 100
                     },
                     "identifier": "nOrder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
                 },
@@ -2859,7 +2859,7 @@
                         "character": 145
                     },
                     "identifier": "nRender",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
                 },
@@ -2869,7 +2869,7 @@
                         "character": 193
                     },
                     "identifier": "nBindArrays",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -2896,7 +2896,7 @@
                 "character": 5
             },
             "identifier": "NuiDrawListArc",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -2905,7 +2905,7 @@
                         "character": 25
                     },
                     "identifier": "jEnabled",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2914,7 +2914,7 @@
                         "character": 40
                     },
                     "identifier": "jColor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2923,7 +2923,7 @@
                         "character": 53
                     },
                     "identifier": "jFill",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2932,7 +2932,7 @@
                         "character": 65
                     },
                     "identifier": "jLineThickness",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2941,7 +2941,7 @@
                         "character": 86
                     },
                     "identifier": "jCenter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2950,7 +2950,7 @@
                         "character": 100
                     },
                     "identifier": "jRadius",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2959,7 +2959,7 @@
                         "character": 114
                     },
                     "identifier": "jAMin",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2968,7 +2968,7 @@
                         "character": 126
                     },
                     "identifier": "jAMax",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -2977,7 +2977,7 @@
                         "character": 137
                     },
                     "identifier": "nOrder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
                 },
@@ -2987,7 +2987,7 @@
                         "character": 182
                     },
                     "identifier": "nRender",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
                 },
@@ -2997,7 +2997,7 @@
                         "character": 230
                     },
                     "identifier": "nBindArrays",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -3027,7 +3027,7 @@
                 "character": 5
             },
             "identifier": "NuiDrawListText",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -3036,7 +3036,7 @@
                         "character": 26
                     },
                     "identifier": "jEnabled",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3045,7 +3045,7 @@
                         "character": 41
                     },
                     "identifier": "jColor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3054,7 +3054,7 @@
                         "character": 54
                     },
                     "identifier": "jRect",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3063,7 +3063,7 @@
                         "character": 66
                     },
                     "identifier": "jText",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3072,7 +3072,7 @@
                         "character": 77
                     },
                     "identifier": "nOrder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
                 },
@@ -3082,7 +3082,7 @@
                         "character": 122
                     },
                     "identifier": "nRender",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
                 },
@@ -3092,7 +3092,7 @@
                         "character": 170
                     },
                     "identifier": "nBindArrays",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 },
@@ -3102,7 +3102,7 @@
                         "character": 196
                     },
                     "identifier": "jFont",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json",
                     "defaultValue": "JSON_STRING"
                 }
@@ -3129,7 +3129,7 @@
                 "character": 5
             },
             "identifier": "NuiDrawListImage",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -3138,7 +3138,7 @@
                         "character": 27
                     },
                     "identifier": "jEnabled",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3147,7 +3147,7 @@
                         "character": 42
                     },
                     "identifier": "jResRef",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3156,7 +3156,7 @@
                         "character": 56
                     },
                     "identifier": "jPos",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3165,7 +3165,7 @@
                         "character": 67
                     },
                     "identifier": "jAspect",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3174,7 +3174,7 @@
                         "character": 81
                     },
                     "identifier": "jHAlign",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3183,7 +3183,7 @@
                         "character": 95
                     },
                     "identifier": "jVAlign",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3192,7 +3192,7 @@
                         "character": 108
                     },
                     "identifier": "nOrder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
                 },
@@ -3202,7 +3202,7 @@
                         "character": 153
                     },
                     "identifier": "nRender",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
                 },
@@ -3212,7 +3212,7 @@
                         "character": 201
                     },
                     "identifier": "nBindArrays",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -3240,7 +3240,7 @@
                 "character": 5
             },
             "identifier": "NuiDrawListImageRegion",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -3249,7 +3249,7 @@
                         "character": 33
                     },
                     "identifier": "jDrawListImage",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3258,7 +3258,7 @@
                         "character": 54
                     },
                     "identifier": "jRegion",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -3278,7 +3278,7 @@
                 "character": 5
             },
             "identifier": "NuiDrawListLine",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -3287,7 +3287,7 @@
                         "character": 26
                     },
                     "identifier": "jEnabled",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3296,7 +3296,7 @@
                         "character": 41
                     },
                     "identifier": "jColor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3305,7 +3305,7 @@
                         "character": 54
                     },
                     "identifier": "jLineThickness",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3314,7 +3314,7 @@
                         "character": 75
                     },
                     "identifier": "jA",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3323,7 +3323,7 @@
                         "character": 84
                     },
                     "identifier": "jB",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3332,7 +3332,7 @@
                         "character": 92
                     },
                     "identifier": "nOrder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
                 },
@@ -3342,7 +3342,7 @@
                         "character": 137
                     },
                     "identifier": "nRender",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
                 },
@@ -3352,7 +3352,7 @@
                         "character": 185
                     },
                     "identifier": "nBindArrays",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -3379,7 +3379,7 @@
                 "character": 5
             },
             "identifier": "NuiDrawListRect",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -3388,7 +3388,7 @@
                         "character": 26
                     },
                     "identifier": "jEnabled",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3397,7 +3397,7 @@
                         "character": 41
                     },
                     "identifier": "jColor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3406,7 +3406,7 @@
                         "character": 54
                     },
                     "identifier": "jFill",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3415,7 +3415,7 @@
                         "character": 66
                     },
                     "identifier": "jLineThickness",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3424,7 +3424,7 @@
                         "character": 87
                     },
                     "identifier": "jRect",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3433,7 +3433,7 @@
                         "character": 99
                     },
                     "identifier": "nOrder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
                 },
@@ -3443,7 +3443,7 @@
                         "character": 144
                     },
                     "identifier": "nRender",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
                 },
@@ -3453,7 +3453,7 @@
                         "character": 192
                     },
                     "identifier": "nBindArrays",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -3480,7 +3480,7 @@
                 "character": 5
             },
             "identifier": "NuiDrawList",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -3489,7 +3489,7 @@
                         "character": 22
                     },
                     "identifier": "jElem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3498,7 +3498,7 @@
                         "character": 34
                     },
                     "identifier": "jScissor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3507,7 +3507,7 @@
                         "character": 49
                     },
                     "identifier": "jList",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -3528,7 +3528,7 @@
                 "character": 0
             },
             "identifier": "NuiElement",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -3537,7 +3537,7 @@
                         "character": 9
                     },
                     "identifier": "sType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -3546,7 +3546,7 @@
                         "character": 7
                     },
                     "identifier": "jLabel",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3555,7 +3555,7 @@
                         "character": 7
                     },
                     "identifier": "jValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 }
             ],
@@ -3572,7 +3572,7 @@
                 "character": 0
             },
             "identifier": "NuiDrawListItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "json",
             "params": [
                 {
@@ -3581,7 +3581,7 @@
                         "character": 6
                     },
                     "identifier": "nType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3590,7 +3590,7 @@
                         "character": 7
                     },
                     "identifier": "jEnabled",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3599,7 +3599,7 @@
                         "character": 7
                     },
                     "identifier": "jColor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3608,7 +3608,7 @@
                         "character": 7
                     },
                     "identifier": "jFill",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3617,7 +3617,7 @@
                         "character": 7
                     },
                     "identifier": "jLineThickness",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "json"
                 },
                 {
@@ -3626,7 +3626,7 @@
                         "character": 6
                     },
                     "identifier": "nOrder",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
                 },
@@ -3636,7 +3636,7 @@
                         "character": 6
                     },
                     "identifier": "nRender",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
                 },
@@ -3646,7 +3646,7 @@
                         "character": 6
                     },
                     "identifier": "nBindArrays",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -3668,7 +3668,7 @@
                 "character": 7
             },
             "identifier": "jRoot",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3677,7 +3677,7 @@
                 "character": 7
             },
             "identifier": "jTitle",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3686,7 +3686,7 @@
                 "character": 7
             },
             "identifier": "jGeometry",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3695,7 +3695,7 @@
                 "character": 7
             },
             "identifier": "jResizable",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3704,7 +3704,7 @@
                 "character": 7
             },
             "identifier": "jCollapsed",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3713,7 +3713,7 @@
                 "character": 7
             },
             "identifier": "jClosable",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3722,7 +3722,7 @@
                 "character": 7
             },
             "identifier": "jTransparent",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3731,7 +3731,7 @@
                 "character": 7
             },
             "identifier": "jBorder",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3740,7 +3740,7 @@
                 "character": 7
             },
             "identifier": "jAcceptsInput",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json",
             "defaultValue": "JSON_TRUE"
         },
@@ -3750,7 +3750,7 @@
                 "character": 7
             },
             "identifier": "jWindowConstraint",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json",
             "defaultValue": "JSON_NULL"
         },
@@ -3760,7 +3760,7 @@
                 "character": 7
             },
             "identifier": "jEdgeConstraint",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json",
             "defaultValue": "JSON_NULL"
         },
@@ -3770,7 +3770,7 @@
                 "character": 7
             },
             "identifier": "jFont",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json",
             "defaultValue": "JSON_STRING"
         },
@@ -3781,7 +3781,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "ret",
@@ -3790,7 +3790,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -3798,7 +3798,7 @@
                 "character": 9
             },
             "identifier": "sId",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -3807,7 +3807,7 @@
                 "character": 6
             },
             "identifier": "nNumberFlags",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "0"
         },
@@ -3817,7 +3817,7 @@
                 "character": 6
             },
             "identifier": "nNumberPrecision",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "0"
         },
@@ -3827,7 +3827,7 @@
                 "character": 6
             },
             "identifier": "nTextFlags",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "0"
         },
@@ -3838,7 +3838,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -3846,7 +3846,7 @@
                 "character": 7
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3855,7 +3855,7 @@
                 "character": 9
             },
             "identifier": "sId",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -3864,7 +3864,7 @@
                 "character": 8
             },
             "identifier": "nStrRef",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -3874,7 +3874,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -3882,7 +3882,7 @@
                 "character": 7
             },
             "identifier": "jList",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3891,7 +3891,7 @@
                 "character": 7
             },
             "identifier": "jList",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3900,7 +3900,7 @@
                 "character": 7
             },
             "identifier": "jChild",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3909,7 +3909,7 @@
                 "character": 6
             },
             "identifier": "bBorder",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -3919,7 +3919,7 @@
                 "character": 6
             },
             "identifier": "nScroll",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_SCROLLBARS_AUTO"
         },
@@ -3930,7 +3930,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -3938,7 +3938,7 @@
                 "character": 14
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3947,7 +3947,7 @@
                 "character": 27
             },
             "identifier": "fWidth",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -3956,7 +3956,7 @@
                 "character": 15
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3965,7 +3965,7 @@
                 "character": 28
             },
             "identifier": "fHeight",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -3974,7 +3974,7 @@
                 "character": 15
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -3983,7 +3983,7 @@
                 "character": 28
             },
             "identifier": "fAspect",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -3992,7 +3992,7 @@
                 "character": 7
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4001,7 +4001,7 @@
                 "character": 8
             },
             "identifier": "fMargin",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4010,7 +4010,7 @@
                 "character": 7
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4019,7 +4019,7 @@
                 "character": 8
             },
             "identifier": "fPadding",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4028,7 +4028,7 @@
                 "character": 7
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4037,7 +4037,7 @@
                 "character": 7
             },
             "identifier": "jEnabler",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4046,7 +4046,7 @@
                 "character": 7
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4055,7 +4055,7 @@
                 "character": 7
             },
             "identifier": "jVisible",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4064,7 +4064,7 @@
                 "character": 7
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4073,7 +4073,7 @@
                 "character": 7
             },
             "identifier": "jTooltip",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4082,7 +4082,7 @@
                 "character": 7
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4091,7 +4091,7 @@
                 "character": 7
             },
             "identifier": "jTooltip",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4100,7 +4100,7 @@
                 "character": 7
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4109,7 +4109,7 @@
                 "character": 7
             },
             "identifier": "jEncouraged",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4118,7 +4118,7 @@
                 "character": 13
             },
             "identifier": "x",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4127,7 +4127,7 @@
                 "character": 22
             },
             "identifier": "y",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4137,7 +4137,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4145,7 +4145,7 @@
                 "character": 14
             },
             "identifier": "x",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4154,7 +4154,7 @@
                 "character": 23
             },
             "identifier": "y",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4163,7 +4163,7 @@
                 "character": 32
             },
             "identifier": "w",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4172,7 +4172,7 @@
                 "character": 41
             },
             "identifier": "h",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4182,7 +4182,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4190,7 +4190,7 @@
                 "character": 13
             },
             "identifier": "r",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4199,7 +4199,7 @@
                 "character": 20
             },
             "identifier": "g",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4208,7 +4208,7 @@
                 "character": 27
             },
             "identifier": "b",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4217,7 +4217,7 @@
                 "character": 34
             },
             "identifier": "a",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "255"
         },
@@ -4228,7 +4228,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4236,7 +4236,7 @@
                 "character": 7
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4245,7 +4245,7 @@
                 "character": 7
             },
             "identifier": "jColor",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4254,7 +4254,7 @@
                 "character": 7
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4263,7 +4263,7 @@
                 "character": 7
             },
             "identifier": "jFont",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4272,7 +4272,7 @@
                 "character": 7
             },
             "identifier": "jValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4281,7 +4281,7 @@
                 "character": 7
             },
             "identifier": "jHAlign",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4290,7 +4290,7 @@
                 "character": 7
             },
             "identifier": "jVAlign",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4300,7 +4300,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4308,7 +4308,7 @@
                 "character": 7
             },
             "identifier": "jValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4317,7 +4317,7 @@
                 "character": 6
             },
             "identifier": "bBorder",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4327,7 +4327,7 @@
                 "character": 6
             },
             "identifier": "nScroll",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_SCROLLBARS_AUTO"
         },
@@ -4338,7 +4338,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4346,7 +4346,7 @@
                 "character": 7
             },
             "identifier": "jLabel",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4355,7 +4355,7 @@
                 "character": 7
             },
             "identifier": "jResRef",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4364,7 +4364,7 @@
                 "character": 7
             },
             "identifier": "jLabel",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4373,7 +4373,7 @@
                 "character": 7
             },
             "identifier": "jValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4382,7 +4382,7 @@
                 "character": 7
             },
             "identifier": "jLabel",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4391,7 +4391,7 @@
                 "character": 7
             },
             "identifier": "jBool",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4400,7 +4400,7 @@
                 "character": 7
             },
             "identifier": "jResRef",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4409,7 +4409,7 @@
                 "character": 7
             },
             "identifier": "jAspect",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4418,7 +4418,7 @@
                 "character": 7
             },
             "identifier": "jHAlign",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4427,7 +4427,7 @@
                 "character": 7
             },
             "identifier": "jVAlign",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4437,7 +4437,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4445,7 +4445,7 @@
                 "character": 9
             },
             "identifier": "jImage",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4454,7 +4454,7 @@
                 "character": 9
             },
             "identifier": "jRegion",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4463,7 +4463,7 @@
                 "character": 7
             },
             "identifier": "jElements",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4472,7 +4472,7 @@
                 "character": 7
             },
             "identifier": "jSelected",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4481,7 +4481,7 @@
                 "character": 9
             },
             "identifier": "sLabel",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -4490,7 +4490,7 @@
                 "character": 6
             },
             "identifier": "nValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4499,7 +4499,7 @@
                 "character": 7
             },
             "identifier": "jValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4508,7 +4508,7 @@
                 "character": 7
             },
             "identifier": "jMin",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4517,7 +4517,7 @@
                 "character": 7
             },
             "identifier": "jMax",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4526,7 +4526,7 @@
                 "character": 7
             },
             "identifier": "jStepSize",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4536,7 +4536,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4544,7 +4544,7 @@
                 "character": 7
             },
             "identifier": "jValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4553,7 +4553,7 @@
                 "character": 7
             },
             "identifier": "jMin",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4562,7 +4562,7 @@
                 "character": 7
             },
             "identifier": "jMax",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4571,7 +4571,7 @@
                 "character": 7
             },
             "identifier": "jStepSize",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4581,7 +4581,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4589,7 +4589,7 @@
                 "character": 7
             },
             "identifier": "jValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4598,7 +4598,7 @@
                 "character": 7
             },
             "identifier": "jPlaceholder",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4607,7 +4607,7 @@
                 "character": 7
             },
             "identifier": "jValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4616,7 +4616,7 @@
                 "character": 6
             },
             "identifier": "nMaxLength",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4625,7 +4625,7 @@
                 "character": 6
             },
             "identifier": "bMultiline",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4634,7 +4634,7 @@
                 "character": 6
             },
             "identifier": "bWordWrap",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4645,7 +4645,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4653,7 +4653,7 @@
                 "character": 7
             },
             "identifier": "jTemplate",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4662,7 +4662,7 @@
                 "character": 7
             },
             "identifier": "jRowCount",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4671,7 +4671,7 @@
                 "character": 8
             },
             "identifier": "fRowHeight",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float",
             "defaultValue": "NUI_STYLE_ROW_HEIGHT"
         },
@@ -4681,7 +4681,7 @@
                 "character": 6
             },
             "identifier": "bBorder",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4691,7 +4691,7 @@
                 "character": 6
             },
             "identifier": "nScroll",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_SCROLLBARS_Y"
         },
@@ -4702,7 +4702,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4710,7 +4710,7 @@
                 "character": 7
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4719,7 +4719,7 @@
                 "character": 8
             },
             "identifier": "fWidth",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4728,7 +4728,7 @@
                 "character": 6
             },
             "identifier": "bVariable",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4738,7 +4738,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4746,7 +4746,7 @@
                 "character": 7
             },
             "identifier": "jColor",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4756,7 +4756,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4764,7 +4764,7 @@
                 "character": 6
             },
             "identifier": "nDirection",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4773,7 +4773,7 @@
                 "character": 7
             },
             "identifier": "jElements",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4782,7 +4782,7 @@
                 "character": 7
             },
             "identifier": "jValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4792,7 +4792,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4800,7 +4800,7 @@
                 "character": 6
             },
             "identifier": "nDirection",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4809,7 +4809,7 @@
                 "character": 7
             },
             "identifier": "jElements",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4818,7 +4818,7 @@
                 "character": 7
             },
             "identifier": "jValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4828,7 +4828,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4836,7 +4836,7 @@
                 "character": 6
             },
             "identifier": "nType",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4845,7 +4845,7 @@
                 "character": 7
             },
             "identifier": "jLegend",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4854,7 +4854,7 @@
                 "character": 7
             },
             "identifier": "jColor",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4863,7 +4863,7 @@
                 "character": 7
             },
             "identifier": "jData",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4873,7 +4873,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4881,7 +4881,7 @@
                 "character": 7
             },
             "identifier": "jSlots",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4891,7 +4891,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "ret",
@@ -4900,7 +4900,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4908,7 +4908,7 @@
                 "character": 7
             },
             "identifier": "jEnabled",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4917,7 +4917,7 @@
                 "character": 7
             },
             "identifier": "jColor",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4926,7 +4926,7 @@
                 "character": 7
             },
             "identifier": "jFill",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4935,7 +4935,7 @@
                 "character": 7
             },
             "identifier": "jLineThickness",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4944,7 +4944,7 @@
                 "character": 7
             },
             "identifier": "jPoints",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -4953,7 +4953,7 @@
                 "character": 6
             },
             "identifier": "nOrder",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
         },
@@ -4963,7 +4963,7 @@
                 "character": 6
             },
             "identifier": "nRender",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
         },
@@ -4973,7 +4973,7 @@
                 "character": 6
             },
             "identifier": "nBindArrays",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -4984,7 +4984,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -4992,7 +4992,7 @@
                 "character": 7
             },
             "identifier": "jEnabled",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5001,7 +5001,7 @@
                 "character": 7
             },
             "identifier": "jColor",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5010,7 +5010,7 @@
                 "character": 7
             },
             "identifier": "jLineThickness",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5019,7 +5019,7 @@
                 "character": 7
             },
             "identifier": "jA",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5028,7 +5028,7 @@
                 "character": 7
             },
             "identifier": "jB",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5037,7 +5037,7 @@
                 "character": 7
             },
             "identifier": "jCtrl0",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5046,7 +5046,7 @@
                 "character": 7
             },
             "identifier": "jCtrl1",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5055,7 +5055,7 @@
                 "character": 6
             },
             "identifier": "nOrder",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
         },
@@ -5065,7 +5065,7 @@
                 "character": 6
             },
             "identifier": "nRender",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
         },
@@ -5075,7 +5075,7 @@
                 "character": 6
             },
             "identifier": "nBindArrays",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -5086,7 +5086,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -5094,7 +5094,7 @@
                 "character": 7
             },
             "identifier": "jEnabled",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5103,7 +5103,7 @@
                 "character": 7
             },
             "identifier": "jColor",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5112,7 +5112,7 @@
                 "character": 7
             },
             "identifier": "jFill",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5121,7 +5121,7 @@
                 "character": 7
             },
             "identifier": "jLineThickness",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5130,7 +5130,7 @@
                 "character": 7
             },
             "identifier": "jRect",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5139,7 +5139,7 @@
                 "character": 6
             },
             "identifier": "nOrder",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
         },
@@ -5149,7 +5149,7 @@
                 "character": 6
             },
             "identifier": "nRender",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
         },
@@ -5159,7 +5159,7 @@
                 "character": 6
             },
             "identifier": "nBindArrays",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -5170,7 +5170,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -5178,7 +5178,7 @@
                 "character": 7
             },
             "identifier": "jEnabled",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5187,7 +5187,7 @@
                 "character": 7
             },
             "identifier": "jColor",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5196,7 +5196,7 @@
                 "character": 7
             },
             "identifier": "jFill",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5205,7 +5205,7 @@
                 "character": 7
             },
             "identifier": "jLineThickness",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5214,7 +5214,7 @@
                 "character": 7
             },
             "identifier": "jCenter",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5223,7 +5223,7 @@
                 "character": 7
             },
             "identifier": "jRadius",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5232,7 +5232,7 @@
                 "character": 7
             },
             "identifier": "jAMin",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5241,7 +5241,7 @@
                 "character": 7
             },
             "identifier": "jAMax",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5250,7 +5250,7 @@
                 "character": 6
             },
             "identifier": "nOrder",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
         },
@@ -5260,7 +5260,7 @@
                 "character": 6
             },
             "identifier": "nRender",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
         },
@@ -5270,7 +5270,7 @@
                 "character": 6
             },
             "identifier": "nBindArrays",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -5281,7 +5281,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -5289,7 +5289,7 @@
                 "character": 7
             },
             "identifier": "jEnabled",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5298,7 +5298,7 @@
                 "character": 7
             },
             "identifier": "jColor",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5307,7 +5307,7 @@
                 "character": 7
             },
             "identifier": "jRect",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5316,7 +5316,7 @@
                 "character": 7
             },
             "identifier": "jText",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5325,7 +5325,7 @@
                 "character": 6
             },
             "identifier": "nOrder",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
         },
@@ -5335,7 +5335,7 @@
                 "character": 6
             },
             "identifier": "nRender",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
         },
@@ -5345,7 +5345,7 @@
                 "character": 6
             },
             "identifier": "nBindArrays",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -5355,7 +5355,7 @@
                 "character": 7
             },
             "identifier": "jFont",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json",
             "defaultValue": "JSON_STRING"
         },
@@ -5366,7 +5366,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -5374,7 +5374,7 @@
                 "character": 7
             },
             "identifier": "jEnabled",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5383,7 +5383,7 @@
                 "character": 7
             },
             "identifier": "jResRef",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5392,7 +5392,7 @@
                 "character": 7
             },
             "identifier": "jRect",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5401,7 +5401,7 @@
                 "character": 7
             },
             "identifier": "jAspect",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5410,7 +5410,7 @@
                 "character": 7
             },
             "identifier": "jHAlign",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5419,7 +5419,7 @@
                 "character": 7
             },
             "identifier": "jVAlign",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5428,7 +5428,7 @@
                 "character": 6
             },
             "identifier": "nOrder",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
         },
@@ -5438,7 +5438,7 @@
                 "character": 6
             },
             "identifier": "nRender",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
         },
@@ -5448,7 +5448,7 @@
                 "character": 6
             },
             "identifier": "nBindArrays",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -5459,7 +5459,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -5467,7 +5467,7 @@
                 "character": 7
             },
             "identifier": "jDrawListImage",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5476,7 +5476,7 @@
                 "character": 7
             },
             "identifier": "jRegion",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5485,7 +5485,7 @@
                 "character": 7
             },
             "identifier": "jEnabled",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5494,7 +5494,7 @@
                 "character": 7
             },
             "identifier": "jColor",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5503,7 +5503,7 @@
                 "character": 7
             },
             "identifier": "jLineThickness",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5512,7 +5512,7 @@
                 "character": 7
             },
             "identifier": "jA",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5521,7 +5521,7 @@
                 "character": 7
             },
             "identifier": "jB",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5530,7 +5530,7 @@
                 "character": 6
             },
             "identifier": "nOrder",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
         },
@@ -5540,7 +5540,7 @@
                 "character": 6
             },
             "identifier": "nRender",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
         },
@@ -5550,7 +5550,7 @@
                 "character": 6
             },
             "identifier": "nBindArrays",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -5561,7 +5561,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -5569,7 +5569,7 @@
                 "character": 7
             },
             "identifier": "jEnabled",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5578,7 +5578,7 @@
                 "character": 7
             },
             "identifier": "jColor",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5587,7 +5587,7 @@
                 "character": 7
             },
             "identifier": "jFill",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5596,7 +5596,7 @@
                 "character": 7
             },
             "identifier": "jLineThickness",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5605,7 +5605,7 @@
                 "character": 7
             },
             "identifier": "jRect",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5614,7 +5614,7 @@
                 "character": 6
             },
             "identifier": "nOrder",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_ORDER_AFTER"
         },
@@ -5624,7 +5624,7 @@
                 "character": 6
             },
             "identifier": "nRender",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "NUI_DRAW_LIST_ITEM_RENDER_ALWAYS"
         },
@@ -5634,7 +5634,7 @@
                 "character": 6
             },
             "identifier": "nBindArrays",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -5645,7 +5645,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -5653,7 +5653,7 @@
                 "character": 7
             },
             "identifier": "jElem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5662,7 +5662,7 @@
                 "character": 7
             },
             "identifier": "jScissor",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5671,7 +5671,7 @@
                 "character": 7
             },
             "identifier": "jList",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "json"
         },
         {
@@ -5681,7 +5681,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         }
     ]
 }
