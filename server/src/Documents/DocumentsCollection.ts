@@ -5,7 +5,7 @@ import { fileURLToPath, pathToFileURL } from "url";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
 import { CompletionItemKind, Position } from "vscode-languageserver";
-import type { Declaration } from "../Parser/types";
+import type { Declaration, IndexedName } from "../Parser/types";
 import type { ParserService } from "../Parser";
 import { DocumentIndex, AnalysisMode } from "../Parser/ParserService";
 import { Dictionnary, normalizeDocumentUri } from "../Utils";
@@ -43,9 +43,9 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       base ? uri : normalizeDocumentUri(uri),
       base,
       children.map((child) => child.name),
+      children.map((child) => child.position),
       documentTokens.globalDeclarations,
       documentTokens.structDeclarations,
-      children.map((child) => child.position),
       documentTokens.localDeclarations,
       documentTokens.memberReferences,
       documentTokens.entryPointDeclarations,
@@ -100,11 +100,11 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       dependency?.entryPoints.forEach((entryPoint) => entryPoints.add(entryPoint));
     }
     const conflicts = (source: IndexedDocument | undefined) => source?.entryPoints.some((entryPoint) => entryPoints.has(entryPoint));
-    const implicitDeclarations = new Set(implicitTokens);
-    const currentDeclarations = new Set(document.globalDeclarations);
-    const visible = new Map<string, Declaration[]>();
-    const visibleTokens = new Set<Declaration>();
-    const existingOrder = document.getDeclarationOrder();
+    const implicitDeclarations = new Set<IndexedName>(implicitTokens);
+    const currentDeclarations = new Set<IndexedName>(document.globalDeclarations);
+    const visible = new Map<string, IndexedName[]>();
+    const visibleTokens = new Set<IndexedName>();
+    const existingOrder = document.getNameOrder();
     for (const token of [...existingOrder.keys(), ...implicitTokens]) {
       visibleTokens.add(token);
       visible.set(token.identifier, [...(visible.get(token.identifier) || []), token]);
@@ -115,10 +115,10 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       }
       return left.length - right.length;
     };
-    const isScoped = (token: Declaration) => token.tokenType === CompletionItemKind.Variable || token.tokenType === CompletionItemKind.TypeParameter || token.tokenType === CompletionItemKind.Property;
-    const isReserved = (token: Declaration) =>
+    const isScoped = (token: IndexedName) => token.tokenType === CompletionItemKind.Variable || token.tokenType === CompletionItemKind.TypeParameter || token.tokenType === CompletionItemKind.Property;
+    const isReserved = (token: IndexedName) =>
       token.tokenType === CompletionItemKind.Function || (token.tokenType === CompletionItemKind.Constant && (token.isConst || implicitDeclarations.has(token)));
-    const declarationsConflict = (left: Declaration, right: Declaration, order: Map<Declaration, number[] | undefined>) => {
+    const namesConflict = (left: IndexedName, right: IndexedName, order: Map<IndexedName, number[] | undefined>) => {
       // Paths interleave declarations with their includes at the actual source
       // positions. Unknown legacy include positions retain conservative checks.
       const leftOrder = order.get(left);
@@ -167,8 +167,8 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       );
     };
     const getSafeMatches = (candidate: IndexedDocument, matches: Declaration[]) => {
-      const introduced = new Map<string, Declaration[]>();
-      const incomingOrder = candidate.getDeclarationOrder();
+      const introduced = new Map<string, IndexedName[]>();
+      const incomingOrder = candidate.getNameOrder();
       const order = new Map(existingOrder);
       for (const [token, path] of incomingOrder) {
         // The inserted include precedes an existing token at the same position.
@@ -185,7 +185,7 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
           if (!before || !after || compareOrder(after, before) >= 0) continue;
         }
         const prior = introduced.get(token.identifier) || [];
-        if ([...(visible.get(token.identifier) || []), ...prior].some((existing) => existing !== token && declarationsConflict(existing, token, order))) return [];
+        if ([...(visible.get(token.identifier) || []), ...prior].some((existing) => existing !== token && namesConflict(existing, token, order))) return [];
         if (!visibleTokens.has(token)) introduced.set(token.identifier, [...prior, token]);
       }
       // Accepting a struct completion introduces a type use at the cursor,

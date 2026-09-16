@@ -2,7 +2,7 @@ import { CompletionItemKind, type Position } from "vscode-languageserver";
 import type Logger from "../Logger/Logger";
 import { STATIC_PREFIX } from "./DocumentsCollection";
 
-import type { Declaration, FunctionDeclaration, StructDeclaration } from "../Parser/types";
+import type { Declaration, FunctionDeclaration, StructDeclaration, MemberReference, TypeReference, IndexedName } from "../Parser/types";
 import { LanguageTypes } from "../Parser/constants";
 import type DocumentsCollection from "./DocumentsCollection";
 
@@ -10,16 +10,16 @@ export type OwnedDeclarations = { owner?: string; tokens: Declaration[] };
 export type OwnedStructDeclarations = { owner?: string; tokens: StructDeclaration[] };
 
 export default class IndexedDocument {
-  private readonly typeReferences: Declaration[];
+  private readonly typeReferences: TypeReference[];
   constructor(
     readonly uri: string,
     readonly base: boolean,
     readonly children: string[],
+    readonly includePositions: (Position | undefined)[] = [],
     readonly globalDeclarations: Declaration[],
     readonly structDeclarations: StructDeclaration[],
-    readonly includePositions: (Position | undefined)[] = [],
     readonly localDeclarations: Declaration[] = [],
-    readonly memberReferences: Declaration[] = [],
+    readonly memberReferences: MemberReference[] = [],
     readonly entryPointDeclarations: FunctionDeclaration[] = [],
     private readonly collection: DocumentsCollection,
   ) {
@@ -46,10 +46,10 @@ export default class IndexedDocument {
     return this.base ? key.slice(STATIC_PREFIX.length + 1) : key;
   }
 
-  // Each path follows include locations, then the declaration location. The
-  // final component distinguishes an include from a declaration at that position.
-  public getDeclarationOrder(computedChildren: string[] = []) {
-    const order = new Map<Declaration, number[] | undefined>();
+  // Each path follows include locations, then the declaration or reference.
+  // The final component places an include before a name at the same position.
+  public getNameOrder(computedChildren: string[] = []) {
+    const order = new Map<IndexedName, number[] | undefined>();
     const add = (document: IndexedDocument, prefix?: number[]) => {
       for (const token of [...document.getDeclarations(), ...document.memberReferences, ...document.typeReferences]) {
         const position = token.tokenType === CompletionItemKind.Function ? token.signatureEnd || token.position : token.position;
