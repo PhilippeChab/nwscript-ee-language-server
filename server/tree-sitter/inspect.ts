@@ -18,7 +18,7 @@ async function main() {
         JSON.stringify(
           {
             file,
-            hasSyntaxErrors: parsed.rootNode.hasError,
+            hasSyntaxErrors: parsed.hasSyntaxErrors,
             index,
             ...(process.argv.includes("--tree") ? { tree: parsed.rootNode.toString() } : {}),
           },

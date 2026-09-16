@@ -25,7 +25,7 @@ void test("indexes functions, constants, structs, includes, and entry points thr
     t,
     '#include "helper"\nstruct Data { int field; struct Data nested; };\nconst int VALUE = 1;\nint Fn(int value = 2);\nint Fn(int renamed) { int local = renamed; return local; }\nvoid main() {}\n',
   );
-  assert.equal(parsed.rootNode.hasError, false);
+  assert.equal(parsed.hasSyntaxErrors, false);
   const index = parsed.getIndex();
   assert.deepEqual(index.includes, [{ name: "helper", position: { line: 0, character: 0 } }]);
   assert.deepEqual(
@@ -73,7 +73,7 @@ void test("does not index global initializer calls as function declarations", as
 for (const suffix of ["void Unfinished(", "struct Unfinished { int "]) {
   void test(`preserves complete declarations before ${suffix}`, async (t) => {
     const parsed = await parse(t, "int Good(int value) { return value; }\n" + suffix);
-    assert.equal(parsed.rootNode.hasError, true);
+    assert.equal(parsed.hasSyntaxErrors, true);
     assert.deepEqual(
       parsed.getIndex().globalDeclarations.map((declaration) => declaration.identifier),
       ["Good"],
@@ -173,13 +173,13 @@ void test("reads every upstream corpus fixture without syntax errors", async (t)
   for (const file of readdirSync(directory).filter((name) => name.endsWith(".nss"))) {
     const parsed = await parse(t, readFileSync(join(directory, file), "utf8"));
     // Semantic-negative fixtures still have valid syntax. The compiler remains authoritative.
-    assert.equal(parsed.rootNode.hasError, false, file);
+    assert.equal(parsed.hasSyntaxErrors, false, file);
   }
 });
 
 void test("recovers later declarations after an unfinished signature", async (t) => {
   const parsed = await parse(t, "void Broken(\nvoid Later(){}\nvoid main(){}");
-  assert.equal(parsed.rootNode.hasError, true);
+  assert.equal(parsed.hasSyntaxErrors, true);
   assert.deepEqual(
     parsed.getIndex().entryPointDeclarations?.map((declaration) => declaration.identifier),
     ["main"],
@@ -188,6 +188,70 @@ void test("recovers later declarations after an unfinished signature", async (t)
     parsed.getIndex().globalDeclarations.some((declaration) => declaration.identifier === "Later"),
     true,
   );
+});
+
+void test("recovers declarations with explicit incomplete nodes and unmodified source", () => {
+  const prefixes = [
+    "void Broken(",
+    "int Broken(",
+    "void Broken(int first",
+    "void Broken(int first,",
+    "void Broken(const",
+    "void Broken(const int",
+    "void Broken(int first, const int",
+    "void Broken(struct Data first,",
+    'void Broken(string message = "x,y",',
+    "void Broken(/* comment */",
+  ];
+  const declarations = [
+    ["void Later() {}", "Later"],
+    ["int Later(int parameter) { return parameter; }", "Later"],
+    ["int LATER_VALUE = 1;", "LATER_VALUE"],
+    ["const int LATER_VALUE = 1;", "LATER_VALUE"],
+    ["struct LaterData { int field; };", "LaterData"],
+  ];
+  for (const prefix of prefixes) {
+    for (const [declaration, name] of declarations) {
+      for (const separator of [" ", "\n", "\r\n"]) {
+        const source = `struct Data { int field; };\n${prefix}${separator}${declaration}\nvoid main() {}`;
+        const parsed = SyntaxDocument.create(document(source));
+        try {
+          assert.equal(parsed.rootNode.text, source, source);
+          assert.ok(
+            parsed.rootNode.namedChildren.some((node) => node?.type === "incomplete_function_definition"),
+            source,
+          );
+          assert.equal(parsed.hasSyntaxErrors, true, source);
+          const index = parsed.getIndex();
+          const declarations = [...index.globalDeclarations, ...index.structDeclarations];
+          const recovered = declarations.find((item) => item.identifier === name);
+          assert.ok(recovered, source);
+          assert.deepEqual(recovered.position, document(source).positionAt(source.indexOf(name)), source);
+          assert.equal(
+            declarations.some((item) => item.identifier === "Broken"),
+            false,
+            source,
+          );
+          assert.throws(() => parsed.getIndex(true), source);
+        } finally {
+          parsed.dispose();
+        }
+      }
+    }
+  }
+});
+
+void test("marks an unfinished grammar node as incomplete even without built-in error nodes", () => {
+  const parsed = SyntaxDocument.create(document("void Broken("));
+  try {
+    assert.equal(parsed.rootNode.hasError, false);
+    assert.equal(parsed.hasSyntaxErrors, true);
+    assert.throws(() => parsed.getIndex(true));
+    assert.deepEqual(parsed.getIndex().globalDeclarations, []);
+    assert.equal(parsed.getCallContext({ line: 0, character: 12 }), undefined);
+  } finally {
+    parsed.dispose();
+  }
 });
 
 for (const source of ['void main(){string s="unfinished', 'void main(){int hash=h"unfinished']) {
@@ -272,7 +336,7 @@ after(() => {
 for (const fixture of conformance) {
   void test(`compiler-backed syntax: ${fixture.name}`, async (t) => {
     const parsed = await parse(t, fixture.source);
-    assert.equal(!parsed.rootNode.hasError, fixture.syntax, parsed.rootNode.toString());
+    assert.equal(!parsed.hasSyntaxErrors, fixture.syntax, parsed.rootNode.toString());
     const file = join(compilerWorkspace, "case.nss");
     writeFileSync(file, fixture.source);
     const platform = process.platform === "win32" ? "windows" : process.platform === "darwin" ? "mac" : "linux";

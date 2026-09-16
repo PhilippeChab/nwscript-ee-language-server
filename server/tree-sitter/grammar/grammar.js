@@ -14,9 +14,17 @@ module.exports = grammar({
         global: $ => [$.primitive_type, $.void_type, $.nwn_type, 'struct', 'const',
             'if', 'else', 'while', 'for', 'return', 'break', 'continue', 'switch', 'case', 'default', 'do'],
     },
+    // Keep the unfinished-header interpretation available until a following
+    // declaration distinguishes it from another parameter. Prefer complete functions.
+    conflicts: $ => [
+        [$.incomplete_function_definition],
+        [$.incomplete_function_definition, $.function_argument_list],
+        [$.incomplete_function_definition, $._declaration_specifiers],
+        [$.incomplete_function_definition, $.parameter_declaration],
+    ],
     rules: {
         translation_unit: $ => repeat(choice(
-            $.declaration, $.struct_declarator, $.function_definition,
+            $.declaration, $.struct_declarator, $.function_definition, $.incomplete_function_definition,
             $.preproc_include, $.preproc_def,
             // Retain lexical context for expressions being typed at file scope.
             $.expression_statement,
@@ -29,6 +37,14 @@ module.exports = grammar({
             field('name', alias(token(choice('ENGINE_NUM_STRUCTURES', /ENGINE_STRUCTURE_[0-9]+/)), $.identifier)), field('value', $.preproc_arg)),
         preproc_arg: $ => token(prec(-1, /[^\r\n]+/)),
 
+        incomplete_function_definition: $ => prec.dynamic(-1, seq(
+            choice(field('type', $.void_type), $._declaration_specifiers),
+            field('declarator', $.identifier), '(',
+            optional(choice(
+                $._declaration_specifiers, $.const_qualifier,
+                seq(commaSep1($.parameter_declaration), optional(seq(',', optional(choice($._declaration_specifiers, $.const_qualifier))))),
+            )),
+        )),
         function_definition: $ => seq(
             choice(field('type', $.void_type), $._declaration_specifiers),
             field('declarator', $.identifier), $.function_argument_list,
@@ -39,8 +55,9 @@ module.exports = grammar({
             $._declaration_specifiers, field('declarator', $.identifier),
             optional(seq('=', field('default', $._expression))),
         ),
-        declaration: $ => seq($._declaration_specifiers,
-            commaSep1(field('declarator', choice($.identifier, $.init_declarator))), ';'),
+        // A complete declaration takes priority over an unfinished parameter list.
+        declaration: $ => prec.dynamic(1, seq($._declaration_specifiers,
+            commaSep1(field('declarator', choice($.identifier, $.init_declarator))), ';')),
         _declaration_specifiers: $ => seq(optional($.const_qualifier), field('type', $._type_specifier)),
         init_declarator: $ => seq(field('declarator', $.identifier), '=', field('value', $._expression)),
         const_qualifier: $ => 'const',

@@ -13,15 +13,15 @@ Providers obtain a parsed document from the collection:
 ```ts
 const document = this.server.documentsCollection.getParsedDocument(liveDocument, this.server.parserService);
 const declarations = document.getGlobalDeclarations(); // Includes dependencies.
-const locals = document.syntax?.getLocalScope(position);
-const call = document.syntax?.getCallContext(position);
+const locals = document.syntax.getLocalScope(position);
+const call = document.syntax.getCallContext(position);
 ```
 
 The collection reuses the same parsed `IndexedDocument` for the lifetime of a live `TextDocument`. The parser updates its tree incrementally after edits. Declarations and include entries (`{ name, position }`) come directly from the syntax document's cached `DocumentIndex`. Include traversal normalizes resource names and skips the implicit `nwscript` dependency. Derived type references refresh when the index changes. Reopening a file creates a separate live document, even if its URI and version match the closed buffer.
 
 Bundled definitions and background indexing use index-only documents without retaining syntax trees. Include lookup keeps the last usable index independently of the live document, so unfinished edits cannot overwrite its fallback snapshot. Live requests read the recovered current syntax. Unused live trees release their WASM resources through finalization, while one-shot indexing explicitly disposes them.
 
-Call and member context scan syntax leaves where needed to preserve incomplete-expression behavior. Strict background indexing still rejects incomplete declarations so existing fallback snapshots and repair behavior remain intact; live requests use the recovered tree.
+Call and member context scan syntax leaves where needed to preserve incomplete-expression behavior. The grammar uses explicit incomplete-signature nodes to preserve later declarations while typing. Strict background indexing rejects those nodes so existing fallback snapshots and repair behavior remain intact; live requests use the same tree, and edits remain incremental.
 
 ## Run and inspect
 

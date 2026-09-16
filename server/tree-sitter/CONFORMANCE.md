@@ -25,4 +25,6 @@ When changing the grammar, add fixtures for both accepted and rejected forms and
 
 Tests compare incremental parsing with fresh parsing after damaged edits and restoration, including unfinished declarations, comments, raw strings, Unicode and CRLF. They check declaration positions and provider context as well as tree shape.
 
-Exceptional recovery can mask an unfinished signature in parser input to recover a later declaration. It preserves source offsets and an error marker without changing the document. Strict indexing retains its fallback behavior, and the next edit starts from a fresh tree. Ordinary edits remain incremental.
+The grammar represents unfinished signatures as `incomplete_function_definition` nodes, leaving following declarations separate. Complete declarations take priority over unfinished parameter lists. These nodes preserve the original text and offsets, participate in incremental parsing, and never enter the declaration index.
+
+`SyntaxDocument.hasSyntaxErrors` includes both Tree-sitter errors and explicit incomplete nodes. Strict indexing rejects unfinished signatures so saved include snapshots retain their fallback behavior.
