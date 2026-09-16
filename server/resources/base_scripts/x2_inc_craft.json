@@ -6,7 +6,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_CRAFTSKILL_CONV",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"x2_p_craftskills\"",
             "isConst": true
@@ -17,7 +17,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_BREWPOTION_FEAT_ID",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "944",
             "isConst": true
@@ -28,7 +28,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_BREWPOTION_MAXLEVEL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -39,7 +39,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_BREWPOTION_COSTMODIFIER",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "50",
             "isConst": true
@@ -50,7 +50,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_BREWPOTION_NEWITEM_RESREF",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"x2_it_pcpotion\"",
             "isConst": true
@@ -61,7 +61,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_SCRIBESCROLL_FEAT_ID",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "945",
             "isConst": true
@@ -72,7 +72,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_SCRIBESCROLL_COSTMODIFIER",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "25",
             "isConst": true
@@ -83,7 +83,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_SCRIBESCROLL_NEWITEM_RESREF",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"x2_it_pcscroll\"",
             "isConst": true
@@ -94,7 +94,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_CRAFTWAND_FEAT_ID",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "946",
             "isConst": true
@@ -105,7 +105,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_CRAFTWAND_MAXLEVEL",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "4",
             "isConst": true
@@ -116,7 +116,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_CRAFTWAND_COSTMODIFIER",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "750",
             "isConst": true
@@ -127,7 +127,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_CRAFTWAND_NEWITEM_RESREF",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"x2_it_pcwand\"",
             "isConst": true
@@ -138,7 +138,7 @@
                 "character": 13
             },
             "identifier": "X2_CI_CRAFTING_WP_2DA",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"des_crft_weapon\"",
             "isConst": true
@@ -149,7 +149,7 @@
                 "character": 13
             },
             "identifier": "X2_CI_CRAFTING_AR_2DA",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"des_crft_armor\"",
             "isConst": true
@@ -160,7 +160,7 @@
                 "character": 13
             },
             "identifier": "X2_CI_CRAFTING_MAT_2DA",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"des_crft_mat\"",
             "isConst": true
@@ -171,7 +171,7 @@
                 "character": 13
             },
             "identifier": "X2_CI_CRAFTING_SP_2DA",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"des_crft_spells\"",
             "isConst": true
@@ -182,7 +182,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_CRAFTINGSKILL_CTOKENBASE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "13220",
             "isConst": true
@@ -193,7 +193,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_CRAFTINGSKILL_DC_CTOKENBASE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "14220",
             "isConst": true
@@ -204,7 +204,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_CRAFTINGSKILL_GP_CTOKENBASE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "14320",
             "isConst": true
@@ -215,7 +215,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_MODIFYARMOR_GP_CTOKENBASE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "14420",
             "isConst": true
@@ -226,7 +226,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_CRAFTING_ITEMS_PER_ROW",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "5",
             "isConst": true
@@ -237,7 +237,7 @@
                 "character": 14
             },
             "identifier": "X2_CI_2DA_SCROLLS",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"des_crft_scroll\"",
             "isConst": true
@@ -248,7 +248,7 @@
                 "character": 10
             },
             "identifier": "X2_CI_CRAFTMODE_INVALID",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -259,7 +259,7 @@
                 "character": 10
             },
             "identifier": "X2_CI_CRAFTMODE_CONTAINER",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -270,7 +270,7 @@
                 "character": 10
             },
             "identifier": "X2_CI_CRAFTMODE_BASE_ITEM",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -281,7 +281,7 @@
                 "character": 10
             },
             "identifier": "X2_CI_CRAFTMODE_ASSEMBLE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -292,7 +292,7 @@
                 "character": 10
             },
             "identifier": "X2_CI_MAGICTYPE_INVALID",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -303,7 +303,7 @@
                 "character": 10
             },
             "identifier": "X2_CI_MAGICTYPE_ARCANE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -314,7 +314,7 @@
                 "character": 10
             },
             "identifier": "X2_CI_MAGICTYPE_DIVINE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -325,7 +325,7 @@
                 "character": 10
             },
             "identifier": "X2_CI_MODMODE_INVALID",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0",
             "isConst": true
@@ -336,7 +336,7 @@
                 "character": 10
             },
             "identifier": "X2_CI_MODMODE_ARMOR",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "1",
             "isConst": true
@@ -347,7 +347,7 @@
                 "character": 10
             },
             "identifier": "X2_CI_MODMODE_WEAPON",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "2",
             "isConst": true
@@ -358,7 +358,7 @@
                 "character": 6
             },
             "identifier": "CIGetIsCraftFeatBaseItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -367,7 +367,7 @@
                         "character": 39
                     },
                     "identifier": "oItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -387,7 +387,7 @@
                 "character": 6
             },
             "identifier": "CICraftCheckBrewPotion",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -396,7 +396,7 @@
                         "character": 36
                     },
                     "identifier": "oSpellTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -405,7 +405,7 @@
                         "character": 57
                     },
                     "identifier": "oCaster",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -426,7 +426,7 @@
                 "character": 6
             },
             "identifier": "CICraftCheckScribeScroll",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -435,7 +435,7 @@
                         "character": 38
                     },
                     "identifier": "oSpellTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -444,7 +444,7 @@
                         "character": 59
                     },
                     "identifier": "oCaster",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -465,7 +465,7 @@
                 "character": 7
             },
             "identifier": "CICraftBrewPotion",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -474,7 +474,7 @@
                         "character": 32
                     },
                     "identifier": "oCreator",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -483,7 +483,7 @@
                         "character": 46
                     },
                     "identifier": "nSpellID",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -502,7 +502,7 @@
                 "character": 7
             },
             "identifier": "CICraftScribeScroll",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -511,7 +511,7 @@
                         "character": 34
                     },
                     "identifier": "oCreator",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -520,7 +520,7 @@
                         "character": 48
                     },
                     "identifier": "nSpellID",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -539,7 +539,7 @@
                 "character": 6
             },
             "identifier": "CIGetSpellWasUsedForItemCreation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -548,7 +548,7 @@
                         "character": 46
                     },
                     "identifier": "oSpellTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -569,7 +569,7 @@
                 "character": 6
             },
             "identifier": "CIGetSpellInnateLevel",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -578,7 +578,7 @@
                         "character": 32
                     },
                     "identifier": "nSpellID",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -587,7 +587,7 @@
                         "character": 46
                     },
                     "identifier": "bDefaultZeroToOne",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -608,7 +608,7 @@
                 "character": 7
             },
             "identifier": "CIUseCraftItemSkill",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -617,7 +617,7 @@
                         "character": 34
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -626,7 +626,7 @@
                         "character": 43
                     },
                     "identifier": "nSkill",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -635,7 +635,7 @@
                         "character": 58
                     },
                     "identifier": "sResRef",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -644,7 +644,7 @@
                         "character": 71
                     },
                     "identifier": "nDC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -653,7 +653,7 @@
                         "character": 83
                     },
                     "identifier": "oContainer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -680,7 +680,7 @@
                 "character": 6
             },
             "identifier": "CIGetIsSpellRestrictedFromCraftFeat",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -689,7 +689,7 @@
                         "character": 46
                     },
                     "identifier": "nSpellID",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -698,7 +698,7 @@
                         "character": 60
                     },
                     "identifier": "nFeatID",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -717,7 +717,7 @@
                 "character": 20
             },
             "identifier": "CIGetCraftItemStructFrom2DA",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "craft_struct",
             "params": [
                 {
@@ -726,7 +726,7 @@
                         "character": 55
                     },
                     "identifier": "s2DA",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -735,7 +735,7 @@
                         "character": 65
                     },
                     "identifier": "nRow",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -744,7 +744,7 @@
                         "character": 75
                     },
                     "identifier": "nItemNo",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -763,7 +763,7 @@
                 "character": 4
             },
             "identifier": "CI_GetClassMagicType",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -772,7 +772,7 @@
                         "character": 29
                     },
                     "identifier": "nClass",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -796,7 +796,7 @@
                 "character": 7
             },
             "identifier": "GetMaterialComponentTag",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -805,7 +805,7 @@
                         "character": 35
                     },
                     "identifier": "nPropID",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -822,7 +822,7 @@
                 "character": 4
             },
             "identifier": "CIGetCraftGPCost",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -831,7 +831,7 @@
                         "character": 25
                     },
                     "identifier": "nLevel",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -840,7 +840,7 @@
                         "character": 37
                     },
                     "identifier": "nMod",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -861,7 +861,7 @@
                 "character": 7
             },
             "identifier": "CICraftCraftWand",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -870,7 +870,7 @@
                         "character": 31
                     },
                     "identifier": "oCreator",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -879,7 +879,7 @@
                         "character": 45
                     },
                     "identifier": "nSpellID",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -902,7 +902,7 @@
                 "character": 4
             },
             "identifier": "CICraftCheckCraftWand",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -911,7 +911,7 @@
                         "character": 33
                     },
                     "identifier": "oSpellTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -920,7 +920,7 @@
                         "character": 54
                     },
                     "identifier": "oCaster",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -941,7 +941,7 @@
                 "character": 4
             },
             "identifier": "CIDoCraftItemFromConversation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -950,7 +950,7 @@
                         "character": 38
                     },
                     "identifier": "nNumber",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -973,7 +973,7 @@
                 "character": 4
             },
             "identifier": "CIGetItemPartModificationCost",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -982,7 +982,7 @@
                         "character": 41
                     },
                     "identifier": "oOldItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -991,7 +991,7 @@
                         "character": 55
                     },
                     "identifier": "nPart",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -1012,7 +1012,7 @@
                 "character": 4
             },
             "identifier": "CIGetItemPartModificationDC",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1021,7 +1021,7 @@
                         "character": 39
                     },
                     "identifier": "oOldItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1030,7 +1030,7 @@
                         "character": 53
                     },
                     "identifier": "nPart",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -1051,7 +1051,7 @@
                 "character": 4
             },
             "identifier": "CIGetArmorModificationCost",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1060,7 +1060,7 @@
                         "character": 38
                     },
                     "identifier": "oOldItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1069,7 +1069,7 @@
                         "character": 55
                     },
                     "identifier": "oNewItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1091,7 +1091,7 @@
                 "character": 4
             },
             "identifier": "CIGetArmorModificationDC",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1100,7 +1100,7 @@
                         "character": 36
                     },
                     "identifier": "oOldItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1109,7 +1109,7 @@
                         "character": 53
                     },
                     "identifier": "oNewItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1131,7 +1131,7 @@
                 "character": 4
             },
             "identifier": "CIGetCraftingReceipeRow",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1140,7 +1140,7 @@
                         "character": 32
                     },
                     "identifier": "nMode",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1149,7 +1149,7 @@
                         "character": 46
                     },
                     "identifier": "oMajor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1158,7 +1158,7 @@
                         "character": 61
                     },
                     "identifier": "oMinor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1167,7 +1167,7 @@
                         "character": 73
                     },
                     "identifier": "nSkill",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -1188,7 +1188,7 @@
                 "character": 5
             },
             "identifier": "CISetupCraftingConversation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1197,7 +1197,7 @@
                         "character": 40
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1206,7 +1206,7 @@
                         "character": 49
                     },
                     "identifier": "nNumber",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1215,7 +1215,7 @@
                         "character": 62
                     },
                     "identifier": "nSkill",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1224,7 +1224,7 @@
                         "character": 74
                     },
                     "identifier": "nReceipe",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1233,7 +1233,7 @@
                         "character": 91
                     },
                     "identifier": "oMajor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1242,7 +1242,7 @@
                         "character": 106
                     },
                     "identifier": "oMinor",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1251,7 +1251,7 @@
                         "character": 118
                     },
                     "identifier": "nMode",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -1273,7 +1273,7 @@
                 "character": 28
             },
             "identifier": "CIGetCraftingModeFromTarget",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "craft_receipe_struct",
             "params": [
                 {
@@ -1282,7 +1282,7 @@
                         "character": 63
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1291,7 +1291,7 @@
                         "character": 74
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1300,7 +1300,7 @@
                         "character": 90
                     },
                     "identifier": "oItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -1322,7 +1322,7 @@
                 "character": 4
             },
             "identifier": "CIGetInModWeaponOrArmorConv",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1331,7 +1331,7 @@
                         "character": 39
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1352,7 +1352,7 @@
                 "character": 5
             },
             "identifier": "CISetCurrentModMode",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1361,7 +1361,7 @@
                         "character": 32
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1370,7 +1370,7 @@
                         "character": 41
                     },
                     "identifier": "nMode",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -1387,7 +1387,7 @@
                 "character": 4
             },
             "identifier": "CIGetCurrentModMode",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1396,7 +1396,7 @@
                         "character": 31
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1413,7 +1413,7 @@
                 "character": 7
             },
             "identifier": "CIGetCurrentModBackup",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -1422,7 +1422,7 @@
                         "character": 36
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1439,7 +1439,7 @@
                 "character": 7
             },
             "identifier": "CIGetCurrentModItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -1448,7 +1448,7 @@
                         "character": 34
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1465,7 +1465,7 @@
                 "character": 5
             },
             "identifier": "CISetCurrentModBackup",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1474,7 +1474,7 @@
                         "character": 34
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1483,7 +1483,7 @@
                         "character": 46
                     },
                     "identifier": "oBackup",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1500,7 +1500,7 @@
                 "character": 5
             },
             "identifier": "CISetCurrentModItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1509,7 +1509,7 @@
                         "character": 32
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1518,7 +1518,7 @@
                         "character": 44
                     },
                     "identifier": "oItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1535,7 +1535,7 @@
                 "character": 5
             },
             "identifier": "CISetCurrentModPart",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1544,7 +1544,7 @@
                         "character": 32
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1553,7 +1553,7 @@
                         "character": 41
                     },
                     "identifier": "nPart",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1562,7 +1562,7 @@
                         "character": 52
                     },
                     "identifier": "nStrRef",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -1586,7 +1586,7 @@
                 "character": 4
             },
             "identifier": "CIGetCurrentModPart",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1595,7 +1595,7 @@
                         "character": 31
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1612,7 +1612,7 @@
                 "character": 5
             },
             "identifier": "CISetDefaultModItemCamera",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1621,7 +1621,7 @@
                         "character": 38
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1638,7 +1638,7 @@
                 "character": 5
             },
             "identifier": "CIUpdateModItemCostDC",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1647,7 +1647,7 @@
                         "character": 34
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1656,7 +1656,7 @@
                         "character": 43
                     },
                     "identifier": "nDC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1665,7 +1665,7 @@
                         "character": 52
                     },
                     "identifier": "nCost",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -1682,7 +1682,7 @@
                 "character": 4
             },
             "identifier": "CIGetWeaponModificationCost",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1691,7 +1691,7 @@
                         "character": 39
                     },
                     "identifier": "oOldItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1700,7 +1700,7 @@
                         "character": 56
                     },
                     "identifier": "oNewItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1721,7 +1721,7 @@
                 "character": 7
             },
             "identifier": "craft_struct",
-            "tokenType": 22,
+            "kind": "struct",
             "properties": [
                 {
                     "identifier": "nRow",
@@ -1730,7 +1730,7 @@
                         "character": 11
                     },
                     "valueType": "int",
-                    "tokenType": 10
+                    "kind": "field"
                 },
                 {
                     "identifier": "sResRef",
@@ -1739,7 +1739,7 @@
                         "character": 11
                     },
                     "valueType": "string",
-                    "tokenType": 10
+                    "kind": "field"
                 },
                 {
                     "identifier": "nDC",
@@ -1748,7 +1748,7 @@
                         "character": 11
                     },
                     "valueType": "int",
-                    "tokenType": 10
+                    "kind": "field"
                 },
                 {
                     "identifier": "nCost",
@@ -1757,7 +1757,7 @@
                         "character": 11
                     },
                     "valueType": "int",
-                    "tokenType": 10
+                    "kind": "field"
                 },
                 {
                     "identifier": "sLabel",
@@ -1766,7 +1766,7 @@
                         "character": 11
                     },
                     "valueType": "string",
-                    "tokenType": 10
+                    "kind": "field"
                 }
             ]
         },
@@ -1776,7 +1776,7 @@
                 "character": 7
             },
             "identifier": "craft_receipe_struct",
-            "tokenType": 22,
+            "kind": "struct",
             "properties": [
                 {
                     "identifier": "nMode",
@@ -1785,7 +1785,7 @@
                         "character": 8
                     },
                     "valueType": "int",
-                    "tokenType": 10
+                    "kind": "field"
                 },
                 {
                     "identifier": "oMajor",
@@ -1794,7 +1794,7 @@
                         "character": 11
                     },
                     "valueType": "object",
-                    "tokenType": 10
+                    "kind": "field"
                 },
                 {
                     "identifier": "oMinor",
@@ -1803,7 +1803,7 @@
                         "character": 11
                     },
                     "valueType": "object",
-                    "tokenType": 10
+                    "kind": "field"
                 }
             ]
         }
@@ -1832,7 +1832,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sRet",
@@ -1841,7 +1841,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -1849,7 +1849,7 @@
                 "character": 36
             },
             "identifier": "oItem",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1859,7 +1859,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -1867,7 +1867,7 @@
                 "character": 32
             },
             "identifier": "oCreator",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1876,7 +1876,7 @@
                 "character": 46
             },
             "identifier": "nSpellID",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1886,7 +1886,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oTarget",
@@ -1895,7 +1895,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "ipProp",
@@ -1904,7 +1904,7 @@
                 "character": 21
             },
             "valueType": "itemproperty",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nLvlRow",
@@ -1913,7 +1913,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nCLevel",
@@ -1922,7 +1922,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nRet",
@@ -1931,7 +1931,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nPropID",
@@ -1940,7 +1940,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oTarget",
@@ -1949,7 +1949,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "ipProp",
@@ -1958,7 +1958,7 @@
                 "character": 21
             },
             "valueType": "itemproperty",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nType",
@@ -1967,7 +1967,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "ipLimit",
@@ -1976,7 +1976,7 @@
                 "character": 21
             },
             "valueType": "itemproperty",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nCharges",
@@ -1985,7 +1985,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -1993,7 +1993,7 @@
                 "character": 34
             },
             "identifier": "oCreator",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -2002,7 +2002,7 @@
                 "character": 48
             },
             "identifier": "nSpellID",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -2012,7 +2012,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oTarget",
@@ -2021,7 +2021,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sMat",
@@ -2030,7 +2030,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oMat",
@@ -2039,7 +2039,7 @@
                 "character": 15
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nClass",
@@ -2048,7 +2048,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sClass",
@@ -2057,7 +2057,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sResRef",
@@ -2066,7 +2066,7 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -2074,7 +2074,7 @@
                 "character": 34
             },
             "identifier": "oSpellTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -2083,7 +2083,7 @@
                 "character": 55
             },
             "identifier": "oCaster",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -2093,7 +2093,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oCaster",
@@ -2102,7 +2102,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nID",
@@ -2111,7 +2111,7 @@
                 "character": 11
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nLevel",
@@ -2120,7 +2120,7 @@
                 "character": 11
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nCost",
@@ -2129,7 +2129,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nExperienceCost",
@@ -2138,7 +2138,7 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nGoldCost",
@@ -2147,7 +2147,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nHD",
@@ -2156,7 +2156,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nMinXPForLevel",
@@ -2165,7 +2165,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nNewXP",
@@ -2174,7 +2174,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oPotion",
@@ -2183,7 +2183,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -2191,7 +2191,7 @@
                 "character": 36
             },
             "identifier": "oSpellTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -2200,7 +2200,7 @@
                 "character": 57
             },
             "identifier": "oCaster",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -2210,7 +2210,7 @@
                 "character": 9
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nLevel",
@@ -2219,7 +2219,7 @@
                 "character": 9
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nCost",
@@ -2228,7 +2228,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "fExperienceCost",
@@ -2237,7 +2237,7 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nGoldCost",
@@ -2246,7 +2246,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nHD",
@@ -2255,7 +2255,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nMinXPForLevel",
@@ -2264,7 +2264,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nNewXP",
@@ -2273,7 +2273,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oScroll",
@@ -2282,7 +2282,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nID",
@@ -2291,7 +2291,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nLevel",
@@ -2300,7 +2300,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nCost",
@@ -2309,7 +2309,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nExperienceCost",
@@ -2318,7 +2318,7 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nGoldCost",
@@ -2327,7 +2327,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nHD",
@@ -2336,7 +2336,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nMinXPForLevel",
@@ -2345,7 +2345,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nNewXP",
@@ -2354,7 +2354,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oWand",
@@ -2363,7 +2363,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -2371,7 +2371,7 @@
                 "character": 44
             },
             "identifier": "oSpellTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -2381,7 +2381,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nBt",
@@ -2390,7 +2390,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nRet",
@@ -2399,7 +2399,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -2407,7 +2407,7 @@
                 "character": 34
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -2416,7 +2416,7 @@
                 "character": 43
             },
             "identifier": "nSkill",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -2425,7 +2425,7 @@
                 "character": 58
             },
             "identifier": "sResRef",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -2434,7 +2434,7 @@
                 "character": 71
             },
             "identifier": "nDC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -2443,7 +2443,7 @@
                 "character": 83
             },
             "identifier": "oContainer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         },
@@ -2454,7 +2454,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oNew",
@@ -2463,7 +2463,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "bFix",
@@ -2472,7 +2472,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nBase",
@@ -2481,7 +2481,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oRet",
@@ -2490,7 +2490,7 @@
                 "character": 19
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sNumber",
@@ -2499,7 +2499,7 @@
                 "character": 12
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oPC",
@@ -2508,7 +2508,7 @@
                 "character": 12
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oMajor",
@@ -2517,7 +2517,7 @@
                 "character": 12
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oMinor",
@@ -2526,7 +2526,7 @@
                 "character": 12
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nSkill",
@@ -2535,7 +2535,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nMode",
@@ -2544,7 +2544,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sResult",
@@ -2553,7 +2553,7 @@
                 "character": 12
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "s2DA",
@@ -2562,7 +2562,7 @@
                 "character": 12
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nDC",
@@ -2571,7 +2571,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nRow",
@@ -2580,7 +2580,7 @@
                 "character": 6
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "stItem",
@@ -2589,7 +2589,7 @@
                 "character": 22
             },
             "valueType": "craft_struct",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oContainer",
@@ -2598,7 +2598,7 @@
                 "character": 9
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oRet",
@@ -2607,7 +2607,7 @@
                 "character": 9
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nRet",
@@ -2616,7 +2616,7 @@
                 "character": 6
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -2624,7 +2624,7 @@
                 "character": 55
             },
             "identifier": "s2DA",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -2633,7 +2633,7 @@
                 "character": 65
             },
             "identifier": "nRow",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -2642,7 +2642,7 @@
                 "character": 75
             },
             "identifier": "nItemNo",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -2652,7 +2652,7 @@
                 "character": 23
             },
             "valueType": "craft_struct",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sNumber",
@@ -2661,7 +2661,7 @@
                 "character": 10
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sLabel",
@@ -2670,7 +2670,7 @@
                 "character": 10
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nStrRef",
@@ -2679,7 +2679,7 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nRet",
@@ -2688,7 +2688,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nRet",
@@ -2697,7 +2697,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nTotal",
@@ -2706,7 +2706,7 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nPart",
@@ -2715,7 +2715,7 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nTotal",
@@ -2724,7 +2724,7 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nPart",
@@ -2733,7 +2733,7 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nDC",
@@ -2742,7 +2742,7 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -2750,7 +2750,7 @@
                 "character": 44
             },
             "identifier": "nSpellID",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -2759,7 +2759,7 @@
                 "character": 58
             },
             "identifier": "nFeatID",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -2769,7 +2769,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sRet",
@@ -2778,7 +2778,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nRet",
@@ -2787,7 +2787,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nMinorId",
@@ -2796,7 +2796,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nMajorId",
@@ -2805,7 +2805,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nLookUpRow",
@@ -2814,7 +2814,7 @@
                 "character": 11
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sTag",
@@ -2823,7 +2823,7 @@
                 "character": 14
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nRet",
@@ -2832,7 +2832,7 @@
                 "character": 11
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "stStruct",
@@ -2841,7 +2841,7 @@
                 "character": 30
             },
             "valueType": "craft_receipe_struct",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "bCraftCont",
@@ -2850,7 +2850,7 @@
                 "character": 6
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oTest",
@@ -2859,7 +2859,7 @@
                 "character": 15
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nCount",
@@ -2868,7 +2868,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "bMajor",
@@ -2877,7 +2877,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "bMinor",
@@ -2886,7 +2886,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "fFacing",
@@ -2895,7 +2895,7 @@
                 "character": 14
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "fPitch",
@@ -2904,7 +2904,7 @@
                 "character": 14
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "fDistance",
@@ -2913,7 +2913,7 @@
                 "character": 15
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nCost",
@@ -2922,7 +2922,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nDC",
@@ -2931,7 +2931,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "fDistance",
@@ -2940,7 +2940,7 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "fPitch",
@@ -2949,7 +2949,7 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "fFacing",
@@ -2958,7 +2958,7 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nTotal",
@@ -2967,7 +2967,7 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nPart",
@@ -2976,7 +2976,7 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         }
     ],
     "memberReferences": [
@@ -2986,7 +2986,7 @@
                 "line": 875,
                 "character": 57
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nDC",
@@ -2994,7 +2994,7 @@
                 "line": 875,
                 "character": 73
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nCost",
@@ -3002,7 +3002,7 @@
                 "line": 888,
                 "character": 31
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nCost",
@@ -3010,7 +3010,7 @@
                 "line": 897,
                 "character": 38
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nCost",
@@ -3018,7 +3018,7 @@
                 "line": 905,
                 "character": 34
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nRow",
@@ -3026,7 +3026,7 @@
                 "line": 930,
                 "character": 9
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "sLabel",
@@ -3034,7 +3034,7 @@
                 "line": 941,
                 "character": 9
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nDC",
@@ -3042,7 +3042,7 @@
                 "line": 942,
                 "character": 9
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nCost",
@@ -3050,7 +3050,7 @@
                 "line": 943,
                 "character": 9
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "sResRef",
@@ -3058,7 +3058,7 @@
                 "line": 944,
                 "character": 9
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "oMajor",
@@ -3066,7 +3066,7 @@
                 "line": 1111,
                 "character": 16
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nMode",
@@ -3074,7 +3074,7 @@
                 "line": 1112,
                 "character": 16
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nMode",
@@ -3082,7 +3082,7 @@
                 "line": 1118,
                 "character": 14
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nMode",
@@ -3090,7 +3090,7 @@
                 "line": 1128,
                 "character": 21
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "oMajor",
@@ -3098,7 +3098,7 @@
                 "line": 1129,
                 "character": 21
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "oMinor",
@@ -3106,7 +3106,7 @@
                 "line": 1130,
                 "character": 21
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nMode",
@@ -3114,7 +3114,7 @@
                 "line": 1153,
                 "character": 17
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "oMajor",
@@ -3122,7 +3122,7 @@
                 "line": 1154,
                 "character": 17
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nMode",
@@ -3130,7 +3130,7 @@
                 "line": 1167,
                 "character": 21
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "oMajor",
@@ -3138,7 +3138,7 @@
                 "line": 1176,
                 "character": 29
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "oMinor",
@@ -3146,7 +3146,7 @@
                 "line": 1181,
                 "character": 29
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nMode",
@@ -3154,7 +3154,7 @@
                 "line": 1186,
                 "character": 29
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "oMajor",
@@ -3162,7 +3162,7 @@
                 "line": 1187,
                 "character": 29
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nMode",
@@ -3170,7 +3170,7 @@
                 "line": 1200,
                 "character": 25
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nMode",
@@ -3178,7 +3178,7 @@
                 "line": 1206,
                 "character": 25
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nMode",
@@ -3186,7 +3186,7 @@
                 "line": 1212,
                 "character": 25
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nMode",
@@ -3194,7 +3194,7 @@
                 "line": 1219,
                 "character": 25
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nMode",
@@ -3202,7 +3202,7 @@
                 "line": 1231,
                 "character": 16
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "oMajor",
@@ -3210,7 +3210,7 @@
                 "line": 1232,
                 "character": 16
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nMode",
@@ -3218,7 +3218,7 @@
                 "line": 1241,
                 "character": 23
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "nMode",
@@ -3226,7 +3226,7 @@
                 "line": 1248,
                 "character": 23
             },
-            "tokenType": 18
+            "kind": "memberReference"
         }
     ]
 }

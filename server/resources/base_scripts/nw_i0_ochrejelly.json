@@ -6,7 +6,7 @@
                 "character": 5
             },
             "identifier": "SplitCreature",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 26
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -24,7 +24,7 @@
                         "character": 41
                     },
                     "identifier": "iHP",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -45,7 +45,7 @@
                 "character": 26
             },
             "identifier": "oCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -54,7 +54,7 @@
                 "character": 41
             },
             "identifier": "iHP",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -64,7 +64,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sOchre3",
@@ -73,7 +73,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sOchre5",
@@ -82,7 +82,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "iHitDice",
@@ -91,7 +91,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "iDifficulty",
@@ -100,7 +100,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "iDamage",
@@ -109,7 +109,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "ePoof1",
@@ -118,7 +118,7 @@
                 "character": 11
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "ePoof2",
@@ -127,7 +127,7 @@
                 "character": 11
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "eLevelDown",
@@ -136,7 +136,7 @@
                 "character": 11
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "eDamage",
@@ -145,7 +145,7 @@
                 "character": 23
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oClone1",
@@ -154,7 +154,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oClone2",
@@ -163,7 +163,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "lSpawn",
@@ -172,7 +172,7 @@
                 "character": 13
             },
             "valueType": "location",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sResRef",
@@ -181,7 +181,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         }
     ]
 }

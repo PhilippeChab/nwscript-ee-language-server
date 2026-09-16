@@ -6,7 +6,7 @@
                 "character": 33
             },
             "identifier": "NWNX_SkillRanks_GetSkillFeat",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "NWNX_SkillRanks_SkillFeat",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 66
                     },
                     "identifier": "iSkill",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -24,7 +24,7 @@
                         "character": 78
                     },
                     "identifier": "iFeat",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -36,7 +36,7 @@
                         "character": 37
                     },
                     "identifier": "skillFeat",
-                    "tokenType": 6,
+                    "kind": "variable",
                     "valueType": "NWNX_SkillRanks_SkillFeat"
                 },
                 {
@@ -45,7 +45,7 @@
                         "character": 11
                     },
                     "identifier": "sFunc",
-                    "tokenType": 6,
+                    "kind": "variable",
                     "valueType": "string"
                 }
             ]
@@ -56,7 +56,7 @@
                 "character": 5
             },
             "identifier": "NWNX_SkillRanks_SetAreaModifier",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -65,7 +65,7 @@
                         "character": 44
                     },
                     "identifier": "oArea",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -74,7 +74,7 @@
                         "character": 55
                     },
                     "identifier": "iSkill",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -83,7 +83,7 @@
                         "character": 67
                     },
                     "identifier": "iModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -95,7 +95,7 @@
                         "character": 11
                     },
                     "identifier": "sFunc",
-                    "tokenType": 6,
+                    "kind": "variable",
                     "valueType": "string"
                 }
             ]
@@ -106,7 +106,7 @@
                 "character": 4
             },
             "identifier": "NWNX_SkillRanks_GetAreaModifier",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -115,7 +115,7 @@
                         "character": 43
                     },
                     "identifier": "oArea",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -124,7 +124,7 @@
                         "character": 54
                     },
                     "identifier": "iSkill",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -136,7 +136,7 @@
                         "character": 11
                     },
                     "identifier": "sFunc",
-                    "tokenType": 6,
+                    "kind": "variable",
                     "valueType": "string"
                 }
             ]
@@ -147,7 +147,7 @@
                 "character": 5
             },
             "identifier": "NWNX_SkillRanks_SetBlindnessPenalty",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -156,7 +156,7 @@
                         "character": 45
                     },
                     "identifier": "iModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -168,7 +168,7 @@
                         "character": 11
                     },
                     "identifier": "sFunc",
-                    "tokenType": 6,
+                    "kind": "variable",
                     "valueType": "string"
                 }
             ]
@@ -179,7 +179,7 @@
                 "character": 4
             },
             "identifier": "NWNX_SkillRanks_GetBlindnessPenalty",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "comments": [],
@@ -190,7 +190,7 @@
                         "character": 11
                     },
                     "identifier": "sFunc",
-                    "tokenType": 6,
+                    "kind": "variable",
                     "valueType": "string"
                 }
             ]
@@ -201,7 +201,7 @@
                 "character": 5
             },
             "identifier": "NWNX_SkillRanks_SetSkillFeatFocusModifier",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -210,7 +210,7 @@
                         "character": 51
                     },
                     "identifier": "iModifier",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -219,7 +219,7 @@
                         "character": 66
                     },
                     "identifier": "epicFocus",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -232,7 +232,7 @@
                         "character": 11
                     },
                     "identifier": "sFunc",
-                    "tokenType": 6,
+                    "kind": "variable",
                     "valueType": "string"
                 }
             ]
@@ -243,7 +243,7 @@
                 "character": 33
             },
             "identifier": "NWNX_SkillRanks_AddSkillFeatClass",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "NWNX_SkillRanks_SkillFeat",
             "params": [
                 {
@@ -252,7 +252,7 @@
                         "character": 100
                     },
                     "identifier": "skillFeat",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "NWNX_SkillRanks_SkillFeat"
                 },
                 {
@@ -261,7 +261,7 @@
                         "character": 115
                     },
                     "identifier": "iClass",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -273,7 +273,7 @@
                         "character": 15
                     },
                     "identifier": "sPad",
-                    "tokenType": 6,
+                    "kind": "variable",
                     "valueType": "string"
                 },
                 {
@@ -282,7 +282,7 @@
                         "character": 12
                     },
                     "identifier": "i",
-                    "tokenType": 6,
+                    "kind": "variable",
                     "valueType": "int"
                 }
             ]
@@ -293,7 +293,7 @@
                 "character": 5
             },
             "identifier": "NWNX_SkillRanks_SetSkillFeat",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -302,7 +302,7 @@
                         "character": 67
                     },
                     "identifier": "skillFeat",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "NWNX_SkillRanks_SkillFeat"
                 },
                 {
@@ -311,7 +311,7 @@
                         "character": 82
                     },
                     "identifier": "createIfNonExistent",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -324,7 +324,7 @@
                         "character": 11
                     },
                     "identifier": "sFunc",
-                    "tokenType": 6,
+                    "kind": "variable",
                     "valueType": "string"
                 }
             ]
@@ -335,7 +335,7 @@
                 "character": 33
             },
             "identifier": "NWNX_SkillRanks_GetSkillFeatForSkillByIndex",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "NWNX_SkillRanks_SkillFeat",
             "params": [
                 {
@@ -344,7 +344,7 @@
                         "character": 81
                     },
                     "identifier": "iSkill",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -353,7 +353,7 @@
                         "character": 93
                     },
                     "identifier": "iIndex",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -365,7 +365,7 @@
                         "character": 37
                     },
                     "identifier": "skillFeat",
-                    "tokenType": 6,
+                    "kind": "variable",
                     "valueType": "NWNX_SkillRanks_SkillFeat"
                 },
                 {
@@ -374,7 +374,7 @@
                         "character": 11
                     },
                     "identifier": "sFunc",
-                    "tokenType": 6,
+                    "kind": "variable",
                     "valueType": "string"
                 }
             ]
@@ -385,7 +385,7 @@
                 "character": 4
             },
             "identifier": "NWNX_SkillRanks_GetSkillFeatCountForSkill",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -394,7 +394,7 @@
                         "character": 50
                     },
                     "identifier": "iSkill",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -406,7 +406,7 @@
                         "character": 11
                     },
                     "identifier": "sFunc",
-                    "tokenType": 6,
+                    "kind": "variable",
                     "valueType": "string"
                 }
             ]
@@ -419,7 +419,7 @@
                 "character": 37
             },
             "identifier": "skillFeat",
-            "tokenType": 6,
+            "kind": "variable",
             "valueType": "NWNX_SkillRanks_SkillFeat"
         },
         {
@@ -428,7 +428,7 @@
                 "character": 11
             },
             "identifier": "sFunc",
-            "tokenType": 6,
+            "kind": "variable",
             "valueType": "string"
         },
         {
@@ -437,7 +437,7 @@
                 "character": 66
             },
             "identifier": "iSkill",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -446,7 +446,7 @@
                 "character": 78
             },
             "identifier": "iFeat",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         }
     ]

@@ -6,7 +6,7 @@
                 "character": 13
             },
             "identifier": "NuiInspectorWindowId",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"nw_nui_inspector\"",
             "isConst": true
@@ -17,7 +17,7 @@
                 "character": 5
             },
             "identifier": "HandleWindowInspectorEvent",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -33,7 +33,7 @@
                 "character": 5
             },
             "identifier": "MakeWindowInspector",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -42,7 +42,7 @@
                         "character": 32
                     },
                     "identifier": "pc",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -72,7 +72,7 @@
                 "character": 9
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nInspectorToken",
@@ -81,7 +81,7 @@
                 "character": 6
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nToken",
@@ -90,7 +90,7 @@
                 "character": 9
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sEvent",
@@ -99,7 +99,7 @@
                 "character": 9
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sElem",
@@ -108,7 +108,7 @@
                 "character": 9
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nIdx",
@@ -117,7 +117,7 @@
                 "character": 9
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sWndId",
@@ -126,7 +126,7 @@
                 "character": 9
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "jPayld",
@@ -135,7 +135,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "msg",
@@ -144,7 +144,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nTargetToken",
@@ -153,7 +153,7 @@
                 "character": 6
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "wndlst",
@@ -162,7 +162,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nth",
@@ -171,7 +171,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "itertoken",
@@ -180,7 +180,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "name",
@@ -189,7 +189,7 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "updateview",
@@ -198,7 +198,7 @@
                 "character": 6
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "labels",
@@ -207,7 +207,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "watchval",
@@ -216,7 +216,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "i",
@@ -225,7 +225,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "bind",
@@ -234,7 +234,7 @@
                 "character": 13
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "ourval",
@@ -243,7 +243,7 @@
                 "character": 11
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "theirval",
@@ -252,7 +252,7 @@
                 "character": 11
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "bindlabels_bool",
@@ -261,7 +261,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "bindvalues_bool",
@@ -270,7 +270,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "bindlabels_readonly",
@@ -279,7 +279,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "bindvalues_readonly",
@@ -288,7 +288,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nth",
@@ -297,7 +297,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "bind",
@@ -306,7 +306,7 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "prefix",
@@ -315,7 +315,7 @@
                 "character": 13
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "bval",
@@ -324,7 +324,7 @@
                 "character": 13
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "val",
@@ -333,7 +333,7 @@
                 "character": 17
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "col",
@@ -342,7 +342,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "row",
@@ -351,7 +351,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "template",
@@ -360,7 +360,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "value",
@@ -369,7 +369,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "row",
@@ -378,7 +378,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "template",
@@ -387,7 +387,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "label",
@@ -396,7 +396,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "value",
@@ -405,7 +405,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "row",
@@ -414,7 +414,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "row",
@@ -423,7 +423,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "refreshBtn",
@@ -432,7 +432,7 @@
                 "character": 9
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "root",
@@ -441,7 +441,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nui",
@@ -450,7 +450,7 @@
                 "character": 7
             },
             "valueType": "json",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "token",
@@ -459,7 +459,7 @@
                 "character": 6
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         }
     ]
 }

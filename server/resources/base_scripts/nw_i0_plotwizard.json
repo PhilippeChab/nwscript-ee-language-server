@@ -6,7 +6,7 @@
                 "character": 5
             },
             "identifier": "PWGiveExperienceParty",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 34
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -24,7 +24,7 @@
                         "character": 43
                     },
                     "identifier": "nExperience",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -43,7 +43,7 @@
                 "character": 5
             },
             "identifier": "PWSetMinLocalIntParty",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -52,7 +52,7 @@
                         "character": 34
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -61,7 +61,7 @@
                         "character": 46
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -70,7 +70,7 @@
                         "character": 60
                     },
                     "identifier": "nValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -91,7 +91,7 @@
                 "character": 5
             },
             "identifier": "PWSetMinLocalIntPartyPCSpeaker",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -100,7 +100,7 @@
                         "character": 43
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -109,7 +109,7 @@
                         "character": 57
                     },
                     "identifier": "nValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -130,7 +130,7 @@
                 "character": 5
             },
             "identifier": "PWSetMinLocalIntAndJournalForItemAcquired",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -139,7 +139,7 @@
                         "character": 54
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -148,7 +148,7 @@
                         "character": 71
                     },
                     "identifier": "sJournalTag",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -157,7 +157,7 @@
                         "character": 88
                     },
                     "identifier": "nState",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -166,7 +166,7 @@
                         "character": 103
                     },
                     "identifier": "sItemTag",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -175,7 +175,7 @@
                         "character": 117
                     },
                     "identifier": "nExperience",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -192,7 +192,7 @@
                 "character": 5
             },
             "identifier": "PWSetMinLocalIntAndJournalForOpenerParty",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -201,7 +201,7 @@
                         "character": 53
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -210,7 +210,7 @@
                         "character": 70
                     },
                     "identifier": "sJournalTag",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -219,7 +219,7 @@
                         "character": 87
                     },
                     "identifier": "nState",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -228,7 +228,7 @@
                         "character": 99
                     },
                     "identifier": "nExperience",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -249,7 +249,7 @@
                 "character": 34
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -258,7 +258,7 @@
                 "character": 43
             },
             "identifier": "nExperience",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -268,7 +268,7 @@
                 "character": 9
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nCurrentXP",
@@ -277,7 +277,7 @@
                 "character": 10
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nNewXP",
@@ -286,7 +286,7 @@
                 "character": 10
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -294,7 +294,7 @@
                 "character": 34
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -303,7 +303,7 @@
                 "character": 46
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -312,7 +312,7 @@
                 "character": 60
             },
             "identifier": "nValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -322,7 +322,7 @@
                 "character": 9
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -330,7 +330,7 @@
                 "character": 43
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -339,7 +339,7 @@
                 "character": 57
             },
             "identifier": "nValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -348,7 +348,7 @@
                 "character": 54
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -357,7 +357,7 @@
                 "character": 71
             },
             "identifier": "sJournalTag",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -366,7 +366,7 @@
                 "character": 88
             },
             "identifier": "nState",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -375,7 +375,7 @@
                 "character": 103
             },
             "identifier": "sItemTag",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -384,7 +384,7 @@
                 "character": 117
             },
             "identifier": "nExperience",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -394,7 +394,7 @@
                 "character": 9
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "sTag",
@@ -403,7 +403,7 @@
                 "character": 9
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oPC",
@@ -412,7 +412,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nOriginalState",
@@ -421,7 +421,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oPartyMember",
@@ -430,7 +430,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "position": {
@@ -438,7 +438,7 @@
                 "character": 53
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -447,7 +447,7 @@
                 "character": 70
             },
             "identifier": "sJournalTag",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -456,7 +456,7 @@
                 "character": 87
             },
             "identifier": "nState",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -465,7 +465,7 @@
                 "character": 99
             },
             "identifier": "nExperience",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -475,7 +475,7 @@
                 "character": 9
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "nOriginalState",
@@ -484,7 +484,7 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         },
         {
             "identifier": "oPartyMember",
@@ -493,7 +493,7 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable"
         }
     ]
 }

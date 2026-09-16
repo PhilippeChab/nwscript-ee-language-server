@@ -6,7 +6,7 @@
                 "character": 13
             },
             "identifier": "sModeVarname",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"NW_MODES_CONDITION\"",
             "isConst": true
@@ -17,7 +17,7 @@
                 "character": 10
             },
             "identifier": "NW_MODE_STEALTH",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0x00000001",
             "isConst": true
@@ -28,7 +28,7 @@
                 "character": 10
             },
             "identifier": "NW_MODE_DETECT",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "0x00000002",
             "isConst": true
@@ -39,7 +39,7 @@
                 "character": 4
             },
             "identifier": "GetModeActive",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -48,7 +48,7 @@
                         "character": 22
                     },
                     "identifier": "nMode",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -57,7 +57,7 @@
                         "character": 36
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -77,7 +77,7 @@
                 "character": 5
             },
             "identifier": "SetModeActive",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -86,7 +86,7 @@
                         "character": 23
                     },
                     "identifier": "nMode",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -95,7 +95,7 @@
                         "character": 34
                     },
                     "identifier": "bActive",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 },
@@ -105,7 +105,7 @@
                         "character": 55
                     },
                     "identifier": "oCreature",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -125,7 +125,7 @@
                 "character": 5
             },
             "identifier": "UseStealthMode",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -143,7 +143,7 @@
                 "character": 5
             },
             "identifier": "UseDetectMode",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -165,7 +165,7 @@
                 "character": 22
             },
             "identifier": "nMode",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -174,7 +174,7 @@
                 "character": 36
             },
             "identifier": "oCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_SELF"
         },
@@ -184,7 +184,7 @@
                 "character": 23
             },
             "identifier": "nMode",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -193,7 +193,7 @@
                 "character": 34
             },
             "identifier": "bActive",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -203,7 +203,7 @@
                 "character": 55
             },
             "identifier": "oCreature",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_SELF"
         },
@@ -214,7 +214,7 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable"
         }
     ]
 }
