@@ -2,35 +2,55 @@ import { CompletionItemKind, type Position } from "vscode-languageserver";
 import type Logger from "../Logger/Logger";
 import { STATIC_PREFIX } from "./DocumentsCollection";
 
-import type { Declaration, FunctionDeclaration, StructDeclaration, MemberReference, TypeReference, IndexedName } from "../Parser/types";
+import type { Declaration, StructDeclaration, TypeReference, IndexedName } from "../Parser/types";
 import { LanguageTypes } from "../Parser/constants";
 import type DocumentsCollection from "./DocumentsCollection";
+import SyntaxDocument from "../Parser/SyntaxDocument";
+import type { DocumentIndex } from "../Parser/contracts";
 
 export type OwnedDeclarations = { owner?: string; tokens: Declaration[] };
 export type OwnedStructDeclarations = { owner?: string; tokens: StructDeclaration[] };
 
 export default class IndexedDocument {
-  private readonly typeReferences: TypeReference[];
-  constructor(
-    readonly uri: string,
-    readonly base: boolean,
-    readonly children: string[],
-    readonly includePositions: (Position | undefined)[] = [],
-    readonly globalDeclarations: Declaration[],
-    readonly structDeclarations: StructDeclaration[],
-    readonly localDeclarations: Declaration[] = [],
-    readonly memberReferences: MemberReference[] = [],
-    readonly entryPointDeclarations: FunctionDeclaration[] = [],
-    private readonly collection: DocumentsCollection,
-  ) {
-    // Type uses are already represented by parsed declaration types. Retain
-    // their identity so shared dependencies still follow include-once ordering.
-    this.typeReferences = this.getDeclarations().flatMap((token) => {
-      const type = "valueType" in token ? token.valueType : "returnType" in token ? token.returnType : undefined;
-      return type && !Object.prototype.hasOwnProperty.call(LanguageTypes, type)
-        ? [{ identifier: type, position: token.position, tokenType: CompletionItemKind.Reference, targetKind: "struct" as const }]
-        : [];
-    });
+  private derived?: {
+    index: DocumentIndex;
+    children: string[];
+    includePositions: (Position | undefined)[];
+    typeReferences?: TypeReference[];
+  };
+
+  constructor(readonly uri: string, readonly base: boolean, private readonly source: DocumentIndex | SyntaxDocument, private readonly collection: DocumentsCollection) {}
+
+  public get syntax() {
+    return this.source instanceof SyntaxDocument ? this.source : undefined;
+  }
+
+  public get children() {
+    return this.getDerivedIndex().children;
+  }
+
+  public get includePositions() {
+    return this.getDerivedIndex().includePositions;
+  }
+
+  public get globalDeclarations() {
+    return this.getDerivedIndex().index.globalDeclarations;
+  }
+
+  public get structDeclarations() {
+    return this.getDerivedIndex().index.structDeclarations;
+  }
+
+  public get localDeclarations() {
+    return this.getDerivedIndex().index.localDeclarations || [];
+  }
+
+  public get memberReferences() {
+    return this.getDerivedIndex().index.memberReferences || [];
+  }
+
+  public get entryPointDeclarations() {
+    return this.getDerivedIndex().index.entryPointDeclarations || [];
   }
 
   public get entryPoints(): string[] {
@@ -99,6 +119,27 @@ export default class IndexedDocument {
     logger.debug(JSON.stringify(this.getStructDeclarations(), null, 2));
     logger.debug("'''''''''''''''''''''");
     logger.debug("");
+  }
+
+  private get typeReferences(): TypeReference[] {
+    // Preserve reference identity within an index for include-once ordering.
+    return (this.getDerivedIndex().typeReferences ||= this.getDeclarations().flatMap((token) => {
+      const type = "valueType" in token ? token.valueType : "returnType" in token ? token.returnType : undefined;
+      return type && !Object.prototype.hasOwnProperty.call(LanguageTypes, type)
+        ? [{ identifier: type, position: token.position, tokenType: CompletionItemKind.Reference, targetKind: "struct" as const }]
+        : [];
+    }));
+  }
+
+  private getDerivedIndex() {
+    const index = this.source instanceof SyntaxDocument ? this.source.getIndex() : this.source;
+    if (this.derived?.index !== index) {
+      // nwscript is implicit and selected per requesting workspace. Keep include
+      // locations aligned when excluding it from resource-name lookup.
+      const children = index.children.map((child, i) => ({ name: child.toLowerCase(), position: index.includePositions?.[i] })).filter((child) => child.name !== "nwscript");
+      this.derived = { index, children: children.map((child) => child.name), includePositions: children.map((child) => child.position) };
+    }
+    return this.derived;
   }
 
   private getDeclarations() {

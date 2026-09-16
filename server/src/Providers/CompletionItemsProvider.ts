@@ -27,7 +27,9 @@ export default class CompletionItemsProvider extends Provider {
 
       const context = this.getDocumentContext(uri, position);
       if (!context) return;
-      const { liveDocument, document, syntax, localScope } = context;
+      const { liveDocument, document, localScope } = context;
+      const { syntax } = document;
+      if (!syntax) return;
       if (syntax.isInCommentOrString(position)) return [];
       const completionContext = syntax.getAutoImportContext(position);
       const autoImportContext = this.server.config.completion.autoImport ? completionContext : undefined;

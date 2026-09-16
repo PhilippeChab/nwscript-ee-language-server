@@ -77,6 +77,28 @@ describe("Provider cross-feature review", () => {
   }
   const request = (document: TextDocument, offset: number) => ({ textDocument: { uri: document.uri }, position: document.positionAt(offset) });
 
+  it("keeps all providers on the current syntax after unsaved edits and incomplete declarations", () => {
+    const { handlers, add } = editor(false, true);
+    const document = add("live.nss", "int Value;\nint Fn(int arg);\nvoid main() { Fn(Value); }");
+    const initial = request(document, document.getText().lastIndexOf("Value") + 2);
+    expect(handlers.hover(initial).contents.value).to.include("int Value");
+    expect(handlers.completion(initial).find((item: any) => item.label === "Value").detail).to.include("Value: int");
+
+    const source = "\nstring Value;\nstring Fn(string arg) { return arg; }\nvoid main() { Fn(Value); }\nstruct Unfinished { int ";
+    TextDocument.update(document, [{ text: source }], 2);
+    const params = request(document, source.lastIndexOf("Value") + 2);
+    expect(handlers.hover(params).contents.value).to.include("string Value");
+    expect(handlers.completion(params).find((item: any) => item.label === "Value").detail).to.include("Value: string");
+    expect(handlers.signature(params).signatures[0].label).to.equal("string Fn(string arg)");
+    expect(handlers.definition(params).range.start).to.deep.equal(document.positionAt(source.indexOf("Value")));
+    expect(handlers.symbols(params).find((symbol: any) => symbol.name === "Value").selectionRange.start).to.deep.equal(document.positionAt(source.indexOf("Value")));
+    expect(handlers.definition(request(document, source.lastIndexOf("Fn(") + 1)).range.start).to.deep.equal(document.positionAt(source.indexOf("Fn(")));
+
+    const quoted = 'void main() { string text = r"Value"; }';
+    TextDocument.update(document, [{ text: quoted }], 3);
+    expect(handlers.completion(request(document, quoted.indexOf("Value") + 2))).to.deep.equal([]);
+  });
+
   for (const [type, value] of [
     ["int", "0"],
     ["float", "0.0"],

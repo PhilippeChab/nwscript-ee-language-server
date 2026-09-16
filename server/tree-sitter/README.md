@@ -6,18 +6,20 @@ The existing include graph, symbol/type resolution, declaration-order and namesp
 
 ## Architecture
 
-`ParserService` initializes the parser and caches syntax documents by live document version. `SyntaxDocument` wraps a syntax tree and exposes declarations and cursor context. `IndexedDocument` holds indexed declarations and includes for dependency lookup; `Declaration` describes a declaration without introducing symbol bindings.
+`ParserService` initializes the parser and caches syntax documents by live document version. `SyntaxDocument` wraps a syntax tree and exposes declarations and cursor context. An open buffer's `IndexedDocument` references that syntax document and adds include/dependency lookup; `Declaration` describes a declaration without introducing symbol bindings.
 
-Providers query the syntax document through the parser service:
+Providers obtain a parsed document from the collection:
 
 ```ts
-const syntax = this.server.parserService.parse(liveDocument);
-const index = syntax.getIndex();
-const locals = syntax.getLocalScope(position);
-const call = syntax.getCallContext(position);
+const document = this.server.documentsCollection.getParsedDocument(liveDocument, this.server.parserService);
+const declarations = document.getGlobalDeclarations(); // Includes dependencies.
+const locals = document.syntax?.getLocalScope(position);
+const call = document.syntax?.getCallContext(position);
 ```
 
-A document version shares its syntax tree and index. Updates edit that tree incrementally; a new version invalidates the derived index. Unused live trees release their WASM resources through finalization, while one-shot indexing explicitly disposes them.
+The collection reuses the same parsed `IndexedDocument` for the lifetime of a live `TextDocument`. The parser updates its tree incrementally after edits. Declarations come directly from the syntax document's cached index; derived include names and type references refresh when that index changes. Reopening a file creates a separate live document, even if its URI and version match the closed buffer.
+
+Bundled definitions and background indexing use index-only documents without retaining syntax trees. Include lookup keeps the last usable index independently of the live document, so unfinished edits cannot overwrite its fallback snapshot. Live requests read the recovered current syntax. Unused live trees release their WASM resources through finalization, while one-shot indexing explicitly disposes them.
 
 Call and member context scan syntax leaves where needed to preserve incomplete-expression behavior. Strict background indexing still rejects incomplete declarations so existing fallback snapshots and repair behavior remain intact; live requests use the recovered tree.
 

@@ -10,6 +10,7 @@ import type { ParserService } from "../Parser";
 import { DocumentIndex, AnalysisMode } from "../Parser/ParserService";
 import { Dictionnary, normalizeDocumentUri } from "../Utils";
 import IndexedDocument from "./IndexedDocument";
+import type SyntaxDocument from "../Parser/SyntaxDocument";
 import WorkspaceFilesSystem, { FILES_EXTENSION, resourceName } from "../WorkspaceFilesSystem/WorkspaceFilesSystem";
 import { isStandardLibrary } from "./StandardLibrary";
 
@@ -20,6 +21,9 @@ export const STATIC_PREFIX = "static";
 export default class DocumentsCollection extends Dictionnary<string, IndexedDocument> {
   // Requests identify an exact document; basename lookup is only for includes.
   private readonly documentsByUri = new Map<string, IndexedDocument>();
+  // Live syntax is separate from the last usable include-index snapshot. A
+  // document's mutable parse must not change that fallback after a failed save.
+  private readonly parsedDocuments = new WeakMap<TextDocument, IndexedDocument>();
   private importChildren = new WeakMap<IndexedDocument, Set<string>>();
 
   constructor() {
@@ -35,22 +39,18 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
     });
   }
 
-  public createIndexedDocument(uri: string, base: boolean, documentTokens: DocumentIndex) {
-    // nwscript is implicit and selected per requesting workspace, even when an
-    // include explicitly names it. Never resolve it through the basename index.
-    const children = documentTokens.children.map((child, index) => ({ name: child.toLowerCase(), position: documentTokens.includePositions?.[index] })).filter((child) => child.name !== "nwscript");
-    return new IndexedDocument(
-      base ? uri : normalizeDocumentUri(uri),
-      base,
-      children.map((child) => child.name),
-      children.map((child) => child.position),
-      documentTokens.globalDeclarations,
-      documentTokens.structDeclarations,
-      documentTokens.localDeclarations,
-      documentTokens.memberReferences,
-      documentTokens.entryPointDeclarations,
-      this,
-    );
+  public createIndexedDocument(uri: string, base: boolean, source: DocumentIndex | SyntaxDocument) {
+    return new IndexedDocument(base ? uri : normalizeDocumentUri(uri), base, source, this);
+  }
+
+  public getParsedDocument(document: TextDocument, parserService: ParserService) {
+    const syntax = parserService.parse(document);
+    let indexed = this.parsedDocuments.get(document);
+    if (!indexed || indexed.syntax !== syntax) {
+      indexed = this.createIndexedDocument(document.uri, false, syntax);
+      this.parsedDocuments.set(document, indexed);
+    }
+    return indexed;
   }
 
   public getKey(uri: string, base: boolean) {

@@ -21,11 +21,12 @@ export default class Provider {
   protected getDocumentContext(uri: string, position?: Position) {
     const liveDocument = this.server.liveDocumentsManager.get(uri);
     if (!liveDocument) return;
-    const syntax = this.server.parserService.parse(liveDocument);
+    const document = this.server.documentsCollection.getParsedDocument(liveDocument, this.server.parserService);
+    const { syntax } = document;
+    if (!syntax) return;
     return {
       liveDocument,
-      syntax,
-      document: this.server.documentsCollection.createIndexedDocument(uri, false, syntax.getIndex()),
+      document,
       localScope: syntax.getLocalScope(position),
     };
   }
@@ -60,7 +61,8 @@ export default class Provider {
   protected resolveSymbol(uri: string, position: Position): { token: Declaration; owner?: string } | undefined {
     const context = this.getDocumentContext(uri, position);
     if (!context) return;
-    const { syntax } = context;
+    const { syntax } = context.document;
+    if (!syntax) return;
     const memberPath = syntax.getMemberPath(position);
     if (memberPath) {
       const struct = this.resolveMemberStruct(context, memberPath.slice(0, -1));

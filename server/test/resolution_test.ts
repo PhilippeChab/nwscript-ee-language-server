@@ -32,6 +32,93 @@ describe("IndexedDocument and signature resolution", () => {
     parserService = await new api.ParserService().loadGrammar();
   });
 
+  it("reuses a live indexed document and shares its syntax declarations across edits", () => {
+    const collection = new api.Collection();
+    const live = TextDocument.create(workspaceUri("live.nss"), "nwscript", 1, "int Before;");
+    const document = collection.getParsedDocument(live, parserService);
+    expect(collection.getParsedDocument(live, parserService)).to.equal(document);
+    expect(document.syntax).to.equal(parserService.parse(live));
+    expect(document.globalDeclarations).to.equal(document.syntax.getIndex().globalDeclarations);
+
+    TextDocument.update(live, [{ text: "string After;" }], 2);
+    expect(collection.getParsedDocument(live, parserService)).to.equal(document);
+    expect(document.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["After"]);
+    expect(document.globalDeclarations).to.equal(document.syntax.getIndex().globalDeclarations);
+  });
+
+  it("refreshes include locations, type uses and entry points with the live syntax", () => {
+    const collection = new api.Collection();
+    const live = TextDocument.create(workspaceUri("live.nss"), "nwscript", 1, '#include "NWSCRIPT"\n#include "FIRST"\nstruct Old value;\nvoid main() {}');
+    const document = collection.getParsedDocument(live, parserService);
+    expect(document.children).to.deep.equal(["first"]);
+    expect(document.includePositions).to.deep.equal([{ line: 1, character: 0 }]);
+    expect(document.entryPoints).to.deep.equal(["main"]);
+    const references = () => [...document.getNameOrder().keys()].filter((token: any) => token.targetKind === "struct");
+    const initial = references();
+    expect(initial.map((token: any) => token.identifier)).to.deep.equal(["Old"]);
+    expect(references()[0]).to.equal(initial[0]);
+
+    TextDocument.update(live, [{ text: '\n#include "SECOND"\n#include "nwscript"\nstruct New value;\nint StartingConditional() { return 1; }' }], 2);
+    collection.getParsedDocument(live, parserService);
+    expect(document.children).to.deep.equal(["second"]);
+    expect(document.includePositions).to.deep.equal([{ line: 1, character: 0 }]);
+    expect(document.entryPoints).to.deep.equal(["StartingConditional"]);
+    expect(references().map((token: any) => token.identifier)).to.deep.equal(["New"]);
+    expect(references()[0]).not.to.equal(initial[0]);
+  });
+
+  for (const unfinished of ["void Unfinished(", "struct Unfinished { int "]) {
+    it(`retains the saved include snapshot while live requests recover ${JSON.stringify(unfinished)}`, () => {
+      const collection = new api.Collection();
+      const files = { getFilePath: () => null };
+      const live = TextDocument.create(workspaceUri("live.nss"), "nwscript", 1, "int Saved;");
+      collection.updateDocument(live, parserService, files);
+      const saved = collection.getFromUri(live.uri);
+      const document = collection.getParsedDocument(live, parserService);
+      expect(document.globalDeclarations).to.equal(saved.globalDeclarations);
+
+      TextDocument.update(live, [{ text: `string Unsaved;\n${unfinished}` }], 2);
+      expect(() => collection.updateDocument(live, parserService, files)).to.throw("Incomplete declaration");
+      expect(collection.getParsedDocument(live, parserService)).to.equal(document);
+      expect(document.globalDeclarations.map((token: any) => token.identifier))
+        .to.include("Unsaved")
+        .and.not.include("Saved");
+      expect(collection.getFromUri(live.uri)).to.equal(saved);
+      expect(collection.resolveInclude("live").globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["Saved"]);
+
+      TextDocument.update(live, [{ text: "string Repaired;" }], 3);
+      collection.updateDocument(live, parserService, files);
+      expect(collection.getParsedDocument(live, parserService)).to.equal(document);
+      expect(collection.getFromUri(live.uri).globalDeclarations).to.equal(document.globalDeclarations);
+      expect(document.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["Repaired"]);
+    });
+  }
+
+  it("isolates reopened buffers and duplicate basenames without retaining unsaved content", () => {
+    const collection = new api.Collection();
+    const live = TextDocument.create(workspaceUri("live.nss"), "nwscript", 1, "int Unsaved;");
+    const original = collection.getParsedDocument(live, parserService);
+    const reopened = TextDocument.create(live.uri, "nwscript", 1, "int Disk;");
+    const other = TextDocument.create(workspaceUri("other/live.nss"), "nwscript", 1, "int Other;");
+    const document = collection.getParsedDocument(reopened, parserService);
+    expect(document).not.to.equal(original);
+    expect(document.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["Disk"]);
+    const duplicate = collection.getParsedDocument(other, parserService);
+    expect(duplicate).not.to.equal(document);
+    expect(duplicate.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["Other"]);
+    expect(document.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["Disk"]);
+  });
+
+  it("resolves bundled includes from their serialized index without requiring a syntax tree", () => {
+    const collection = new api.Collection();
+    const bundled = collection.resolveInclude("nw_i0_plot");
+    expect(bundled.syntax).to.equal(undefined);
+    expect(bundled.globalDeclarations.some((token: any) => token.identifier === "plotCanRemoveXP")).to.equal(true);
+    const live = TextDocument.create(workspaceUri("live.nss"), "nwscript", 1, '#include "NW_I0_PLOT"');
+    const document = collection.getParsedDocument(live, parserService);
+    expect(document.getGlobalDeclarations().some((token: any) => token.identifier === "plotCanRemoveXP")).to.equal(true);
+  });
+
   it("omits absent global initializers from hover while preserving zero and empty strings", () => {
     const scope = parserService.analyzeContent('int Global; int Zero = 0; string Empty = ""; const int Constant = 1;', "document");
     for (const markdown of [true, false]) {
