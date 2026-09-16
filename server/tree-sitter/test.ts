@@ -29,30 +29,30 @@ void test("indexes functions, constants, structs, includes, and entry points thr
   const index = parsed.getIndex();
   assert.deepEqual(index.includes, [{ name: "helper", position: { line: 0, character: 0 } }]);
   assert.deepEqual(
-    index.globalDeclarations.map((token) => token.identifier),
+    index.globalDeclarations.map((declaration) => declaration.identifier),
     ["VALUE", "Fn"],
   );
-  const fn = index.globalDeclarations.find((token) => token.tokenType === CompletionItemKind.Function);
+  const fn = index.globalDeclarations.find((declaration) => declaration.tokenType === CompletionItemKind.Function);
   assert.ok(fn && "params" in fn);
   assert.equal(fn.implementation, true);
   assert.equal(fn.params[0].defaultValue, "2");
   assert.deepEqual(
-    index.localDeclarations?.map((token) => token.identifier),
+    index.localDeclarations?.map((declaration) => declaration.identifier),
     ["renamed", "local"],
   );
   assert.deepEqual(
-    index.structDeclarations[0].properties.map((token) => [token.identifier, token.valueType]),
+    index.structDeclarations[0].properties.map((declaration) => [declaration.identifier, declaration.valueType]),
     [
       ["field", "int"],
       ["nested", "Data"],
     ],
   );
   assert.deepEqual(
-    index.entryPointDeclarations?.map((token) => token.identifier),
+    index.entryPointDeclarations?.map((declaration) => declaration.identifier),
     ["main"],
   );
   assert.deepEqual(
-    index.globalDeclarations.map((token) => CompletionItemBuilder.buildItem(token).label),
+    index.globalDeclarations.map((declaration) => CompletionItemBuilder.buildItem(declaration).label),
     ["VALUE", "Fn"],
   );
 });
@@ -64,7 +64,7 @@ void test("does not index global initializer calls as function declarations", as
   );
   const index = parsed.getIndex();
   assert.deepEqual(
-    index.globalDeclarations.map((token) => token.identifier),
+    index.globalDeclarations.map((declaration) => declaration.identifier),
     ["CommandStruct", "FIRST", "SECOND"],
   );
   assert.deepEqual(index.globalDeclarations[0].position, { line: 1, character: 21 });
@@ -75,7 +75,7 @@ for (const suffix of ["void Unfinished(", "struct Unfinished { int "]) {
     const parsed = await parse(t, "int Good(int value) { return value; }\n" + suffix);
     assert.equal(parsed.rootNode.hasError, true);
     assert.deepEqual(
-      parsed.getIndex().globalDeclarations.map((token) => token.identifier),
+      parsed.getIndex().globalDeclarations.map((declaration) => declaration.identifier),
       ["Good"],
     );
   });
@@ -90,8 +90,8 @@ void test("keeps parameter scope inside multiline prototypes", async (t) => {
 void test("restores parameter visibility after an inner block", async (t) => {
   const source = "string value;void Fn(int value){{string value;string copy=value;}int after=value;}";
   const parsed = await parse(t, source);
-  assert.equal(parsed.getVisibleLocals(document(source).positionAt(source.indexOf("copy=value") + 7)).find((token) => token.identifier === "value")?.valueType, "string");
-  assert.equal(parsed.getVisibleLocals(document(source).positionAt(source.indexOf("after=value") + 8)).find((token) => token.identifier === "value")?.valueType, "int");
+  assert.equal(parsed.getVisibleLocals(document(source).positionAt(source.indexOf("copy=value") + 7)).find((declaration) => declaration.identifier === "value")?.valueType, "string");
+  assert.equal(parsed.getVisibleLocals(document(source).positionAt(source.indexOf("after=value") + 8)).find((declaration) => declaration.identifier === "value")?.valueType, "int");
 });
 
 void test("indexes field declarations independently of same-named globals", async (t) => {
@@ -138,8 +138,8 @@ for (const marked of [
 void test("retains exact UTF-16 declaration positions after Unicode and CRLF", async (t) => {
   const source = '// é😀\r\nstring TEXT="é😀"; int AFTER=1;\r\n// Documented é😀\r\nvoid Fn();\r\n';
   const parsed = await parse(t, source);
-  for (const token of parsed.getIndex().globalDeclarations) assert.deepEqual(token.position, document(source).positionAt(source.indexOf(token.identifier)));
-  const fn = parsed.getIndex().globalDeclarations.find((token) => token.identifier === "Fn");
+  for (const declaration of parsed.getIndex().globalDeclarations) assert.deepEqual(declaration.position, document(source).positionAt(source.indexOf(declaration.identifier)));
+  const fn = parsed.getIndex().globalDeclarations.find((declaration) => declaration.identifier === "Fn");
   assert.ok(fn && "comments" in fn);
   assert.deepEqual(fn.comments, ["// Documented é😀"]);
 });
@@ -163,7 +163,7 @@ void test("updates incrementally through unfinished and repaired edits, includin
   TextDocument.update(live, [{ text: "void Changed(){}" }], source.length + 2);
   parsed.update(live);
   assert.deepEqual(
-    parsed.getIndex().globalDeclarations.map((token) => token.identifier),
+    parsed.getIndex().globalDeclarations.map((declaration) => declaration.identifier),
     ["Changed"],
   );
 });
@@ -181,11 +181,11 @@ void test("recovers later declarations after an unfinished signature", async (t)
   const parsed = await parse(t, "void Broken(\nvoid Later(){}\nvoid main(){}");
   assert.equal(parsed.rootNode.hasError, true);
   assert.deepEqual(
-    parsed.getIndex().entryPointDeclarations?.map((token) => token.identifier),
+    parsed.getIndex().entryPointDeclarations?.map((declaration) => declaration.identifier),
     ["main"],
   );
   assert.equal(
-    parsed.getIndex().globalDeclarations.some((token) => token.identifier === "Later"),
+    parsed.getIndex().globalDeclarations.some((declaration) => declaration.identifier === "Later"),
     true,
   );
 });
@@ -294,13 +294,13 @@ for (const returnType of ["void", "int", "string", "struct Data"]) {
       const body = returnType === "void" ? "" : returnType === "int" ? "return 1;" : returnType === "string" ? 'return "ok";' : "struct Data value; return value;";
       const source = `struct Data{int field;};\n${returnType} Broken(${separator}${returnType} Later(int parameter){${body}}\nvoid main(){Later(1);}`;
       const parsed = await parse(t, source);
-      const later = parsed.getIndex().globalDeclarations.find((token) => token.identifier === "Later");
+      const later = parsed.getIndex().globalDeclarations.find((declaration) => declaration.identifier === "Later");
       assert.ok(later && "params" in later);
       assert.deepEqual(later.position, document(source).positionAt(source.indexOf("Later")));
       assert.equal(later.params[0].identifier, "parameter");
       assert.equal(later.implementation, true);
       assert.equal(
-        parsed.getIndex().globalDeclarations.some((token) => token.identifier === "Broken"),
+        parsed.getIndex().globalDeclarations.some((declaration) => declaration.identifier === "Broken"),
         false,
       );
       assert.throws(() => parsed.getIndex(true));

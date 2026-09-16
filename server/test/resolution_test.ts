@@ -42,7 +42,7 @@ describe("IndexedDocument and signature resolution", () => {
 
     TextDocument.update(live, [{ text: "string After;" }], 2);
     expect(collection.getParsedDocument(live, parserService)).to.equal(document);
-    expect(document.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["After"]);
+    expect(document.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["After"]);
     expect(document.globalDeclarations).to.equal(document.syntax.getIndex().globalDeclarations);
   });
 
@@ -57,9 +57,9 @@ describe("IndexedDocument and signature resolution", () => {
     ]);
     expect(document.getChildren()).to.deep.equal(["first"]);
     expect(document.entryPoints).to.deep.equal(["main"]);
-    const references = () => [...document.getNameOrder().keys()].filter((token: any) => token.targetKind === "struct");
+    const references = () => [...document.getNameOrder().keys()].filter((indexedName: any) => indexedName.targetKind === "struct");
     const initial = references();
-    expect(initial.map((token: any) => token.identifier)).to.deep.equal(["Old"]);
+    expect(initial.map((reference: any) => reference.identifier)).to.deep.equal(["Old"]);
     expect(references()[0]).to.equal(initial[0]);
 
     TextDocument.update(live, [{ text: '\n#include "SECOND"\n#include "nwscript"\nstruct New value;\nint StartingConditional() { return 1; }' }], 2);
@@ -71,7 +71,7 @@ describe("IndexedDocument and signature resolution", () => {
     ]);
     expect(document.getChildren()).to.deep.equal(["second"]);
     expect(document.entryPoints).to.deep.equal(["StartingConditional"]);
-    expect(references().map((token: any) => token.identifier)).to.deep.equal(["New"]);
+    expect(references().map((reference: any) => reference.identifier)).to.deep.equal(["New"]);
     expect(references()[0]).not.to.equal(initial[0]);
   });
 
@@ -88,17 +88,17 @@ describe("IndexedDocument and signature resolution", () => {
       TextDocument.update(live, [{ text: `string Unsaved;\n${unfinished}` }], 2);
       expect(() => collection.updateDocument(live, parserService, files)).to.throw("Incomplete declaration");
       expect(collection.getParsedDocument(live, parserService)).to.equal(document);
-      expect(document.globalDeclarations.map((token: any) => token.identifier))
+      expect(document.globalDeclarations.map((declaration: any) => declaration.identifier))
         .to.include("Unsaved")
         .and.not.include("Saved");
       expect(collection.getFromUri(live.uri)).to.equal(saved);
-      expect(collection.resolveInclude("live").globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["Saved"]);
+      expect(collection.resolveInclude("live").globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Saved"]);
 
       TextDocument.update(live, [{ text: "string Repaired;" }], 3);
       collection.updateDocument(live, parserService, files);
       expect(collection.getParsedDocument(live, parserService)).to.equal(document);
       expect(collection.getFromUri(live.uri).globalDeclarations).to.equal(document.globalDeclarations);
-      expect(document.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["Repaired"]);
+      expect(document.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Repaired"]);
     });
   }
 
@@ -110,28 +110,28 @@ describe("IndexedDocument and signature resolution", () => {
     const other = TextDocument.create(workspaceUri("other/live.nss"), "nwscript", 1, "int Other;");
     const document = collection.getParsedDocument(reopened, parserService);
     expect(document).not.to.equal(original);
-    expect(document.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["Disk"]);
+    expect(document.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Disk"]);
     const duplicate = collection.getParsedDocument(other, parserService);
     expect(duplicate).not.to.equal(document);
-    expect(duplicate.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["Other"]);
-    expect(document.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["Disk"]);
+    expect(duplicate.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Other"]);
+    expect(document.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Disk"]);
   });
 
   it("resolves bundled includes from their serialized index without requiring a syntax tree", () => {
     const collection = new api.Collection();
     const bundled = collection.resolveInclude("nw_i0_plot");
     expect(bundled.syntax).to.equal(undefined);
-    expect(bundled.globalDeclarations.some((token: any) => token.identifier === "plotCanRemoveXP")).to.equal(true);
+    expect(bundled.globalDeclarations.some((declaration: any) => declaration.identifier === "plotCanRemoveXP")).to.equal(true);
     const live = TextDocument.create(workspaceUri("live.nss"), "nwscript", 1, '#include "NW_I0_PLOT"');
     const document = collection.getParsedDocument(live, parserService);
-    expect(document.getGlobalDeclarations().some((token: any) => token.identifier === "plotCanRemoveXP")).to.equal(true);
+    expect(document.getGlobalDeclarations().some((declaration: any) => declaration.identifier === "plotCanRemoveXP")).to.equal(true);
   });
 
   it("omits absent global initializers from hover while preserving zero and empty strings", () => {
     const scope = parserService.analyzeContent('int Global; int Zero = 0; string Empty = ""; const int Constant = 1;', "document");
     for (const markdown of [true, false]) {
       const expected = ["int Global", "int Zero = 0", 'string Empty = ""', "const int Constant = 1"];
-      expect(scope.globalDeclarations.map((token: any) => api.HoverContentBuilder.buildItem(token, api.config, markdown).value)).to.deep.equal(
+      expect(scope.globalDeclarations.map((declaration: any) => api.HoverContentBuilder.buildItem(declaration, api.config, markdown).value)).to.deep.equal(
         expected.map((value) => (markdown ? `\`\`\`nwscript\r\n${value}\r\n\`\`\`` : value)),
       );
     }
@@ -294,12 +294,12 @@ describe("IndexedDocument and signature resolution", () => {
   it("indexes every same-line declaration with its own signature and value", () => {
     const scope = parserService.analyzeContent("void First(int a) {} int Second(string b); void main() {} const int ONE = 1; const int TWO = 2;", "document");
     expect(scope.entryPointDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["main"]);
-    expect(scope.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["First", "Second", "ONE", "TWO"]);
+    expect(scope.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["First", "Second", "ONE", "TWO"]);
     expect(scope.globalDeclarations[0].implementation).to.equal(true);
     expect(scope.globalDeclarations[1].implementation).to.equal(undefined);
     expect(scope.globalDeclarations[0].params.map((param: any) => param.identifier)).to.deep.equal(["a"]);
     expect(scope.globalDeclarations[1].params.map((param: any) => param.identifier)).to.deep.equal(["b"]);
-    expect(scope.globalDeclarations.slice(2).map((token: any) => token.value)).to.deep.equal(["1", "2"]);
+    expect(scope.globalDeclarations.slice(2).map((declaration: any) => declaration.value)).to.deep.equal(["1", "2"]);
   });
 
   for (const source of [
@@ -311,8 +311,8 @@ describe("IndexedDocument and signature resolution", () => {
     it(`indexes struct fields and subsequent declarations: ${source}`, () => {
       const scope = parserService.analyzeContent(source, "document");
       expect(scope.entryPointDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["main"]);
-      expect(scope.structDeclarations.map((token: any) => token.identifier)).to.deep.equal(["Thing"]);
-      expect(scope.structDeclarations[0].properties.map((token: any) => [token.identifier, token.valueType])).to.deep.equal([
+      expect(scope.structDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Thing"]);
+      expect(scope.structDeclarations[0].properties.map((declaration: any) => [declaration.identifier, declaration.valueType])).to.deep.equal([
         ["first", "int"],
         ["second", "float"],
       ]);
@@ -323,10 +323,10 @@ describe("IndexedDocument and signature resolution", () => {
     it(`keeps global initializer calls out of function declarations: ${expression}`, () => {
       const source = `int FIRST = ${expression};\nint SECOND = Make(2);\nvoid After() {}`;
       const scope = parserService.analyzeContent(source, "document");
-      expect(scope.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["FIRST", "SECOND", "After"]);
+      expect(scope.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["FIRST", "SECOND", "After"]);
       const document = TextDocument.create(workspaceUri("test.nss"), "nwscript", 1, source);
       const local = parserService.parse(document).getLocalScope(document.positionAt(source.length));
-      expect(local.functionDeclarations.map((token: any) => token.identifier)).to.deep.equal(["After"]);
+      expect(local.functionDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["After"]);
     });
   }
 
@@ -351,7 +351,7 @@ describe("IndexedDocument and signature resolution", () => {
     for (const spacing of ["", " ", "\n"]) {
       it(`keeps default expressions out of the parameter list: ${type}, ${value}, spacing=${JSON.stringify(spacing)}`, () => {
         const scope = parserService.analyzeContent(`const int fallback=1; void Fn(${type} value${spacing}=${spacing}${value}, int next=2);`, "document");
-        const fn = scope.globalDeclarations.find((token: any) => token.identifier === "Fn");
+        const fn = scope.globalDeclarations.find((declaration: any) => declaration.identifier === "Fn");
         expect(fn.params.map((param: any) => [param.identifier, param.valueType, param.defaultValue])).to.deep.equal([
           ["value", type, value],
           ["next", "int", "2"],
@@ -364,7 +364,7 @@ describe("IndexedDocument and signature resolution", () => {
     for (const type of ["int", "struct Data", "struct constructor"]) {
       it(`reads return and parameter types across ${JSON.stringify(separator)}: ${type}`, () => {
         const scope = parserService.analyzeContent(`struct Data { int field; }; struct constructor { int field; };\n${type}${separator}Fn(${type}${separator}value);`, "document");
-        const fn = scope.globalDeclarations.find((token: any) => token.identifier === "Fn");
+        const fn = scope.globalDeclarations.find((declaration: any) => declaration.identifier === "Fn");
         expect(fn.returnType).to.equal(type.replace("struct ", ""));
         expect(fn.params.map((param: any) => [param.identifier, param.valueType])).to.deep.equal([["value", type.replace("struct ", "")]]);
         expect(api.HoverContentBuilder.buildItem(fn, api.config).value).to.include(`${type} Fn(${type} value)`);
@@ -374,7 +374,7 @@ describe("IndexedDocument and signature resolution", () => {
 
   it("distinguishes struct definitions from struct field and return types", () => {
     const scope = parserService.analyzeContent("struct Child { int value; };\nstruct Parent { struct Child child; };\nstruct Child GetChild();", "document");
-    expect(scope.structDeclarations.map((token: any) => token.identifier)).to.deep.equal(["Child", "Parent"]);
+    expect(scope.structDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Child", "Parent"]);
     expect(scope.structDeclarations[1].properties[0].valueType).to.equal("Child");
     expect(scope.globalDeclarations[0].identifier).to.equal("GetChild");
     expect(scope.globalDeclarations[0].returnType).to.equal("Child");
@@ -397,17 +397,17 @@ describe("IndexedDocument and signature resolution", () => {
       const document = TextDocument.create(workspaceUri("test.nss"), "nwscript", 1, source.replace("|", ""));
       const position = document.positionAt(source.indexOf("|"));
       const scope = parserService.parse(document).getLocalScope(position);
-      expect(scope.variableDeclarations.map((token: any) => token.identifier)).to.deep.equal(names);
+      expect(scope.variableDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(names);
     });
   }
 
   it("keeps comma-separated global values and struct fields distinct", () => {
     const scope = parserService.analyzeContent("int first = 1, second = 2;\nstruct Thing { int FIRST, SECOND; string third, fourth; };", "document");
-    expect(scope.globalDeclarations.map((token: any) => [token.identifier, token.value])).to.deep.equal([
+    expect(scope.globalDeclarations.map((declaration: any) => [declaration.identifier, declaration.value])).to.deep.equal([
       ["first", "1"],
       ["second", "2"],
     ]);
-    expect(scope.structDeclarations[0].properties.map((token: any) => [token.identifier, token.valueType])).to.deep.equal([
+    expect(scope.structDeclarations[0].properties.map((declaration: any) => [declaration.identifier, declaration.valueType])).to.deep.equal([
       ["FIRST", "int"],
       ["SECOND", "int"],
       ["third", "string"],
@@ -431,7 +431,7 @@ describe("IndexedDocument and signature resolution", () => {
     ['"value.field|"', undefined],
     ["// value.field|", undefined],
   ] as const) {
-    it(`reads member access from tokens: ${source}`, () => {
+    it(`reads member access from syntax: ${source}`, () => {
       const document = TextDocument.create(workspaceUri("member.nss"), "nwscript", 1, source.replace("|", ""));
       expect(parserService.parse(document).getMemberPath(document.positionAt(source.indexOf("|")))).to.deep.equal(expected);
     });
@@ -466,11 +466,11 @@ describe("IndexedDocument and signature resolution", () => {
           },
         },
       });
-      const tokenize = parserService.parseContent.bind(parserService);
+      const parseContent = parserService.parseContent.bind(parserService);
       let parses = 0;
       parserService.parseContent = (...args: any[]) => {
         parses++;
-        return tokenize(...args);
+        return parseContent(...args);
       };
       try {
         const result = handler({ textDocument: { uri: live.uri }, position: live.positionAt(marked.indexOf("|")) });
@@ -478,7 +478,7 @@ describe("IndexedDocument and signature resolution", () => {
         expect(result.activeParameter).to.equal(activeParameter);
         expect(parses).to.equal(1);
       } finally {
-        parserService.parseContent = tokenize;
+        parserService.parseContent = parseContent;
       }
     });
   }
@@ -510,8 +510,8 @@ describe("IndexedDocument and signature resolution", () => {
     const document = collection.getFromUri(workspaceUri("constructor.nss"));
     expect(document.getChildren()).to.deep.equal(["cycle"]);
     expect(document.getGlobalDeclarationsWithOwner()[0].owner).to.equal(document.uri);
-    expect(document.getGlobalDeclarations().map((token: any) => token.identifier)).to.deep.equal(["First"]);
-    expect(document.getStructDeclarations().map((token: any) => token.identifier)).to.deep.equal(["Value"]);
+    expect(document.getGlobalDeclarations().map((declaration: any) => declaration.identifier)).to.deep.equal(["First"]);
+    expect(document.getStructDeclarations().map((declaration: any) => declaration.identifier)).to.deep.equal(["Value"]);
     collection.removeDocument(document.uri);
     expect(collection.get("CONSTRUCTOR").globalDeclarations[0].identifier).to.equal("Replacement");
     expect(collection.getFromUri(document.uri)).to.equal(undefined);

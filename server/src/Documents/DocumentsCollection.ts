@@ -34,8 +34,8 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       const directoryPath = normalize(join(__dirname, "..", "resources", staticResourcesFolder));
       const files = readdirSync(directoryPath);
       files.forEach((filename) => {
-        const tokens = readDocumentIndex(readFileSync(join(__dirname, "..", "resources", staticResourcesFolder, filename), "utf8"));
-        this.addDocument(this.createIndexedDocument(`${STATIC_PREFIX}/${filename.replace(".json", FILES_EXTENSION)}`, true, tokens));
+        const documentIndex = readDocumentIndex(readFileSync(join(__dirname, "..", "resources", staticResourcesFolder, filename), "utf8"));
+        this.addDocument(this.createIndexedDocument(`${STATIC_PREFIX}/${filename.replace(".json", FILES_EXTENSION)}`, true, documentIndex));
       });
     });
   }
@@ -90,7 +90,7 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
   public getImportableDocuments(
     document: IndexedDocument,
     getMatches: (candidate: IndexedDocument) => Declaration[],
-    implicitTokens: Declaration[] = [],
+    implicitDeclarations: Declaration[] = [],
     insertionPosition: Position = { line: 0, character: 0 },
     referencePosition: Position = insertionPosition,
   ) {
@@ -101,14 +101,14 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       dependency?.entryPoints.forEach((entryPoint) => entryPoints.add(entryPoint));
     }
     const conflicts = (source: IndexedDocument | undefined) => source?.entryPoints.some((entryPoint) => entryPoints.has(entryPoint));
-    const implicitDeclarations = new Set<IndexedName>(implicitTokens);
+    const implicitNames = new Set<IndexedName>(implicitDeclarations);
     const currentDeclarations = new Set<IndexedName>(document.globalDeclarations);
     const visible = new Map<string, IndexedName[]>();
-    const visibleTokens = new Set<IndexedName>();
+    const visibleNames = new Set<IndexedName>();
     const existingOrder = document.getNameOrder();
-    for (const token of [...existingOrder.keys(), ...implicitTokens]) {
-      visibleTokens.add(token);
-      visible.set(token.identifier, [...(visible.get(token.identifier) || []), token]);
+    for (const indexedName of [...existingOrder.keys(), ...implicitDeclarations]) {
+      visibleNames.add(indexedName);
+      visible.set(indexedName.identifier, [...(visible.get(indexedName.identifier) || []), indexedName]);
     }
     const compareOrder = (left: number[], right: number[]) => {
       for (let index = 0; index < Math.min(left.length, right.length); index++) {
@@ -116,9 +116,10 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       }
       return left.length - right.length;
     };
-    const isScoped = (token: IndexedName) => token.tokenType === CompletionItemKind.Variable || token.tokenType === CompletionItemKind.TypeParameter || token.tokenType === CompletionItemKind.Property;
-    const isReserved = (token: IndexedName) =>
-      token.tokenType === CompletionItemKind.Function || (token.tokenType === CompletionItemKind.Constant && (token.isConst || implicitDeclarations.has(token)));
+    const isScoped = (indexedName: IndexedName) =>
+      indexedName.tokenType === CompletionItemKind.Variable || indexedName.tokenType === CompletionItemKind.TypeParameter || indexedName.tokenType === CompletionItemKind.Property;
+    const isReserved = (indexedName: IndexedName) =>
+      indexedName.tokenType === CompletionItemKind.Function || (indexedName.tokenType === CompletionItemKind.Constant && (indexedName.isConst || implicitNames.has(indexedName)));
     const namesConflict = (left: IndexedName, right: IndexedName, order: Map<IndexedName, number[] | undefined>) => {
       // Paths interleave declarations with their includes at the actual source
       // positions. Unknown legacy include positions retain conservative checks.
@@ -136,13 +137,13 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
         return Boolean(
           (other.tokenType === CompletionItemKind.Constant || (reference.tokenType === CompletionItemKind.Reference && reference.targetKind === "struct")) &&
             isReserved(other) &&
-            (implicitDeclarations.has(other) || !knownOrder || earlier === other),
+            (implicitNames.has(other) || !knownOrder || earlier === other),
         );
       }
       if (isScoped(left) || isScoped(right)) {
         const scoped = isScoped(left) ? left : right;
         const other = scoped === left ? right : left;
-        return Boolean(isReserved(other) && (implicitDeclarations.has(other) || !knownOrder || earlier === other));
+        return Boolean(isReserved(other) && (implicitNames.has(other) || !knownOrder || earlier === other));
       }
       if (
         (knownOrder || currentDeclarations.has(left)) &&
@@ -156,12 +157,12 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
         // Struct tags and ordinary variables are separate namespaces. Functions
         // and const names reserve lexer tokens that can invalidate struct uses.
         // API constants are reserved even when nwscript.nss omits const.
-        return other.tokenType !== CompletionItemKind.Constant || other.isConst === true || implicitDeclarations.has(other);
+        return other.tokenType !== CompletionItemKind.Constant || other.isConst === true || implicitNames.has(other);
       }
       if (left.tokenType !== CompletionItemKind.Function || right.tokenType !== CompletionItemKind.Function) return true;
       // Engine API declarations already have implementations, despite prototype syntax.
       return (
-        ((left.implementation || implicitDeclarations.has(left)) && (right.implementation || implicitDeclarations.has(right))) ||
+        ((left.implementation || implicitNames.has(left)) && (right.implementation || implicitNames.has(right))) ||
         left.returnType !== right.returnType ||
         left.params.length !== right.params.length ||
         left.params.some((param, index) => param.valueType !== right.params[index].valueType)
@@ -171,39 +172,39 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       const introduced = new Map<string, IndexedName[]>();
       const incomingOrder = candidate.getNameOrder();
       const order = new Map(existingOrder);
-      for (const [token, path] of incomingOrder) {
-        // The inserted include precedes an existing token at the same position.
+      for (const [indexedName, path] of incomingOrder) {
+        // The inserted include precedes an existing declaration or reference at the same position.
         const incoming = path && [insertionPosition.line, insertionPosition.character, -1, ...path];
-        const existing = order.get(token);
-        order.set(token, incoming && existing ? (compareOrder(incoming, existing) < 0 ? incoming : existing) : incoming);
+        const existing = order.get(indexedName);
+        order.set(indexedName, incoming && existing ? (compareOrder(incoming, existing) < 0 ? incoming : existing) : incoming);
       }
-      for (const token of incomingOrder.keys()) {
-        if (visibleTokens.has(token)) {
-          const before = existingOrder.get(token);
-          const after = order.get(token);
+      for (const indexedName of incomingOrder.keys()) {
+        if (visibleNames.has(indexedName)) {
+          const before = existingOrder.get(indexedName);
+          const after = order.get(indexedName);
           // Include-once dependencies can move earlier when reached through the
           // new helper. Recheck declarations whose effective position changes.
           if (!before || !after || compareOrder(after, before) >= 0) continue;
         }
-        const prior = introduced.get(token.identifier) || [];
-        if ([...(visible.get(token.identifier) || []), ...prior].some((existing) => existing !== token && namesConflict(existing, token, order))) return [];
-        if (!visibleTokens.has(token)) introduced.set(token.identifier, [...prior, token]);
+        const prior = introduced.get(indexedName.identifier) || [];
+        if ([...(visible.get(indexedName.identifier) || []), ...prior].some((existing) => existing !== indexedName && namesConflict(existing, indexedName, order))) return [];
+        if (!visibleNames.has(indexedName)) introduced.set(indexedName.identifier, [...prior, indexedName]);
       }
       // Accepting a struct completion introduces a type use at the cursor,
       // which can be later than a legal same-named declaration in the script.
       const reference = [referencePosition.line, referencePosition.character, 1];
       const reservedNames = new Set(
-        [...order.keys(), ...implicitTokens]
-          .filter((token) => {
-            const position = order.get(token);
-            return isReserved(token) && (!position || compareOrder(position, reference) < 0);
+        [...order.keys(), ...implicitDeclarations]
+          .filter((indexedName) => {
+            const position = order.get(indexedName);
+            return isReserved(indexedName) && (!position || compareOrder(position, reference) < 0);
           })
-          .map((token) => token.identifier),
+          .map((indexedName) => indexedName.identifier),
       );
-      return matches.filter((token) => token.tokenType !== CompletionItemKind.Struct || !reservedNames.has(token.identifier));
+      return matches.filter((declaration) => declaration.tokenType !== CompletionItemKind.Struct || !reservedNames.has(declaration.identifier));
     };
     const currentName = document.getIncludeName();
-    const candidates: { document: IndexedDocument; tokens: Declaration[] }[] = [];
+    const candidates: { document: IndexedDocument; declarations: Declaration[] }[] = [];
     this.forEach((candidate) => {
       const name = candidate.getIncludeName();
       if (name === currentName || name.toLowerCase() === "nwscript" || included.has(name)) return;
@@ -223,35 +224,35 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       for (const child of children) {
         if (!included.has(child) && conflicts(this.resolveInclude(child))) return;
       }
-      const tokens = getSafeMatches(candidate, matches);
-      if (tokens.length) candidates.push({ document: candidate, tokens });
+      const declarations = getSafeMatches(candidate, matches);
+      if (declarations.length) candidates.push({ document: candidate, declarations });
     });
     // Keep workspace symbols ahead of bundled symbols in bounded completion lists.
     return candidates.sort((left, right) => Number(left.document.base) - Number(right.document.base));
   }
 
-  public createDocument(uri: string, documentTokens: DocumentIndex) {
-    const document = this.createIndexedDocument(uri, false, documentTokens);
+  public createDocument(uri: string, documentIndex: DocumentIndex) {
+    const document = this.createIndexedDocument(uri, false, documentIndex);
     if (isStandardLibrary(uri)) this.overwriteDocument(document);
     else this.addDocument(document);
   }
 
   public createDocuments(uri: string, content: string, parserService: ParserService, workespaceFilesSystem: WorkspaceFilesSystem) {
-    const documentTokens = parserService.analyzeContent(content, AnalysisMode.document);
+    const documentIndex = parserService.analyzeContent(content, AnalysisMode.document);
 
-    this.addDocument(this.createIndexedDocument(uri, false, documentTokens));
-    this.createChildrenDocument(documentTokens.includes, parserService, workespaceFilesSystem);
+    this.addDocument(this.createIndexedDocument(uri, false, documentIndex));
+    this.createChildrenDocument(documentIndex.includes, parserService, workespaceFilesSystem);
   }
 
   public updateDocument(document: TextDocument, parserService: ParserService, workespaceFilesSystem: WorkspaceFilesSystem) {
     // willSave and didSave can describe the same document version. Reuse its
-    // tokens, but still retry missing includes that may have appeared on disk.
-    const documentTokens = parserService.getDocumentIndex(document);
+    // index, but still retry missing includes that may have appeared on disk.
+    const documentIndex = parserService.getDocumentIndex(document);
 
-    this.overwriteDocument(this.createIndexedDocument(document.uri, false, documentTokens));
+    this.overwriteDocument(this.createIndexedDocument(document.uri, false, documentIndex));
     // Already-declared includes may have failed indexing and since been repaired.
     // createChildrenDocument skips includes that are already available.
-    this.createChildrenDocument(documentTokens.includes, parserService, workespaceFilesSystem);
+    this.createChildrenDocument(documentIndex.includes, parserService, workespaceFilesSystem);
   }
 
   public debug(logger: Logger) {

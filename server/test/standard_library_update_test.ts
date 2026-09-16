@@ -105,7 +105,7 @@ describe("Standard library updater", () => {
     expect(saved.archiveSha256).to.equal(sha256(latestArchive));
     expect(readFileSync(join(scripts, "nwscript.nss")).equals(source)).to.equal(true);
     const definitions = JSON.parse(readFileSync(join(root, "resources/standardLibDefinitions.json"), "utf8"));
-    expect(definitions.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["NewFn"]);
+    expect(definitions.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["NewFn"]);
     expect(definitions.globalDeclarations[0].params[0].defaultValue).to.equal("7");
   });
 

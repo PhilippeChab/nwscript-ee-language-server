@@ -7,7 +7,7 @@ const isNode = (node: Node | null): node is Node => node !== null;
 // A damaged parameter list can consume the next function's signature. Only
 // resynchronize at a declaration independently recognized by the same grammar.
 // Keep offsets and line endings intact, and leave an ERROR marker for strict
-// indexing. No synthetic declaration tokens enter the symbol index.
+// indexing. No synthetic declarations enter the symbol index.
 export function recoverDeclarations(parser: Parser, initial: Tree, source: string): Tree {
   if (!initial.rootNode.hasError) return initial;
   let tree = initial;

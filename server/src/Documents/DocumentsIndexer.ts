@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import { ParserService } from "../Parser";
 import { AnalysisMode, DocumentIndex } from "../Parser/ParserService";
 
-export type IndexerMessage = { filePath: string; documentTokens?: DocumentIndex; error?: string };
+export type IndexerMessage = { filePath: string; documentIndex?: DocumentIndex; error?: string };
 
 const send = async (message: IndexerMessage) => {
   await new Promise<void>((resolve, reject) => {
@@ -17,8 +17,8 @@ process.once("message", (paths: string[]) => {
     for (const filePath of paths) {
       let message: IndexerMessage;
       try {
-        const documentTokens = parserService.analyzeContent(readFileSync(filePath, "utf8"), AnalysisMode.document);
-        message = { filePath, documentTokens };
+        const documentIndex = parserService.analyzeContent(readFileSync(filePath, "utf8"), AnalysisMode.document);
+        message = { filePath, documentIndex };
       } catch (error) {
         message = { filePath, error: error instanceof Error ? error.message : String(error) };
       }

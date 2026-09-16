@@ -36,14 +36,14 @@ export default class CompletionItemsProvider extends Provider {
 
       const memberPath = syntax.getMemberPath(position);
       if (memberPath) {
-        return this.resolveMemberStruct(context, memberPath.slice(0, -1))?.token.properties.map((property) => CompletionItemBuilder.buildItem(property)) || [];
+        return this.resolveMemberStruct(context, memberPath.slice(0, -1))?.declaration.properties.map((property) => CompletionItemBuilder.buildItem(property)) || [];
       }
 
       if (completionContext?.structsOnly) {
         const items = document
           .getStructDeclarations()
           .concat(this.getStandardLibStructDeclarations(uri))
-          .map((token) => CompletionItemBuilder.buildItem(token));
+          .map((declaration) => CompletionItemBuilder.buildItem(declaration));
         const completions = items.concat(this.getAutoImportCompletionItems(document, liveDocument, autoImportContext, items));
         return autoImportContext ? CompletionList.create(completions, true) : completions;
       }
@@ -65,22 +65,22 @@ export default class CompletionItemsProvider extends Provider {
     return document
       .getGlobalDeclarations(
         [],
-        localScope.functionDeclarations.map((token) => token.identifier),
+        localScope.functionDeclarations.map((declaration) => declaration.identifier),
       )
-      .map((token) => CompletionItemBuilder.buildItem(token, isStandardLibrary(document.uri)));
+      .map((declaration) => CompletionItemBuilder.buildItem(declaration, isStandardLibrary(document.uri)));
   }
 
   private getLocalScopeCompletionItems(localScope: LocalScope, document: IndexedDocument) {
-    const functionVariablesCompletionItems = localScope.variableDeclarations.map((token) => CompletionItemBuilder.buildItem(token));
-    const functionsCompletionItems = localScope.functionDeclarations.map((token) =>
-      CompletionItemBuilder.buildItem(document.globalDeclarations.find((declaration) => declaration.identifier === token.identifier) || token),
+    const functionVariablesCompletionItems = localScope.variableDeclarations.map((declaration) => CompletionItemBuilder.buildItem(declaration));
+    const functionsCompletionItems = localScope.functionDeclarations.map((declaration) =>
+      CompletionItemBuilder.buildItem(document.globalDeclarations.find((candidate) => candidate.identifier === declaration.identifier) || declaration),
     );
 
     return functionVariablesCompletionItems.concat(functionsCompletionItems);
   }
 
   private getStandardLibCompletionItems(uri: string) {
-    return this.getStandardLibDeclarations(uri).map((token) => CompletionItemBuilder.buildItem(token, true));
+    return this.getStandardLibDeclarations(uri).map((declaration) => CompletionItemBuilder.buildItem(declaration, true));
   }
 
   private getAutoImportCompletionItems(document: IndexedDocument, liveDocument: TextDocument, context: AutoImportContext | undefined, visible: CompletionItem[]) {
@@ -91,19 +91,19 @@ export default class CompletionItemsProvider extends Provider {
     const candidates = this.server.documentsCollection.getImportableDocuments(
       document,
       (candidate) => {
-        const tokens = context.structsOnly ? candidate.structDeclarations : candidate.globalDeclarations;
+        const declarations = context.structsOnly ? candidate.structDeclarations : candidate.globalDeclarations;
         const seen = new Set<string>();
-        return tokens.filter((token) => {
+        return declarations.filter((declaration) => {
           if (
-            !token.identifier.toLowerCase().startsWith(prefix) ||
-            visibleNames.has(token.identifier) ||
-            seen.has(token.identifier) ||
-            token.identifier === "main" ||
-            token.identifier === "StartingConditional"
+            !declaration.identifier.toLowerCase().startsWith(prefix) ||
+            visibleNames.has(declaration.identifier) ||
+            seen.has(declaration.identifier) ||
+            declaration.identifier === "main" ||
+            declaration.identifier === "StartingConditional"
           ) {
             return false;
           }
-          seen.add(token.identifier);
+          seen.add(declaration.identifier);
           return true;
         });
       },
@@ -112,9 +112,9 @@ export default class CompletionItemsProvider extends Provider {
       context.replacementRange.start,
     );
     const items: CompletionItem[] = [];
-    for (const { document: candidate, tokens } of candidates) {
-      for (const token of tokens) {
-        items.push(CompletionItemBuilder.buildAutoImportItem(token, candidate.getIncludeName(), liveDocument, context, this.server.config));
+    for (const { document: candidate, declarations } of candidates) {
+      for (const declaration of declarations) {
+        items.push(CompletionItemBuilder.buildAutoImportItem(declaration, candidate.getIncludeName(), liveDocument, context, this.server.config));
         if (items.length === MAX_AUTO_IMPORT_ITEMS) return items;
       }
     }

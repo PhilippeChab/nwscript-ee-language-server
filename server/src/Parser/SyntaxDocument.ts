@@ -135,7 +135,9 @@ export default class SyntaxDocument {
           (index.entryPointDeclarations ||= []).push(fn);
           continue;
         }
-        const existing = index.globalDeclarations.find((token): token is FunctionDeclaration => token.tokenType === CompletionItemKind.Function && token.identifier === fn.identifier);
+        const existing = index.globalDeclarations.find(
+          (declaration): declaration is FunctionDeclaration => declaration.tokenType === CompletionItemKind.Function && declaration.identifier === fn.identifier,
+        );
         if (!existing) index.globalDeclarations.push(fn);
         else {
           if (fn.implementation) existing.implementation = true;

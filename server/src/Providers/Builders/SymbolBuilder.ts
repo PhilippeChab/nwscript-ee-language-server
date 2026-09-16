@@ -4,59 +4,83 @@ import type { Declaration, ConstantDeclaration, FunctionDeclaration, ParameterDe
 import Builder from "./Builder";
 
 export default class SymbolBuilder extends Builder {
-  public static buildItem(token: Declaration, implicitConstants = false): DocumentSymbol {
-    if (this.isConstantToken(token)) {
-      return token.isConst || implicitConstants ? this.buildConstantItem(token) : this.buildVariableItem({ ...token, tokenType: CompletionItemKind.Variable });
-    } else if (this.isVariableToken(token)) {
-      return this.buildVariableItem(token);
-    } else if (this.isFunctionParameterToken(token)) {
-      return this.buildFunctionParamItem(token);
-    } else if (this.isFunctionToken(token)) {
-      return this.buildFunctionItem(token);
-    } else if (this.isStructPropertyToken(token)) {
-      return this.buildStructPropertyItem(token);
-    } else if (this.isStructToken(token)) {
-      return this.buildStructItem(token);
+  public static buildItem(declaration: Declaration, implicitConstants = false): DocumentSymbol {
+    if (this.isConstantDeclaration(declaration)) {
+      return declaration.isConst || implicitConstants ? this.buildConstantItem(declaration) : this.buildVariableItem({ ...declaration, tokenType: CompletionItemKind.Variable });
+    } else if (this.isVariableDeclaration(declaration)) {
+      return this.buildVariableItem(declaration);
+    } else if (this.isParameterDeclaration(declaration)) {
+      return this.buildFunctionParamItem(declaration);
+    } else if (this.isFunctionDeclaration(declaration)) {
+      return this.buildFunctionItem(declaration);
+    } else if (this.isFieldDeclaration(declaration)) {
+      return this.buildStructPropertyItem(declaration);
+    } else if (this.isStructDeclaration(declaration)) {
+      return this.buildStructItem(declaration);
     } else {
-      throw new Error("Invalid complex token. Cannot build symbol.");
+      throw new Error("Invalid declaration. Cannot build symbol.");
     }
   }
 
-  private static buildConstantItem(token: ConstantDeclaration) {
-    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Constant, { start: token.position, end: token.position }, { start: token.position, end: token.position });
+  private static buildConstantItem(declaration: ConstantDeclaration) {
+    return DocumentSymbol.create(
+      declaration.identifier,
+      undefined,
+      SymbolKind.Constant,
+      { start: declaration.position, end: declaration.position },
+      { start: declaration.position, end: declaration.position },
+    );
   }
 
-  private static buildVariableItem(token: VariableDeclaration) {
-    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Variable, { start: token.position, end: token.position }, { start: token.position, end: token.position });
+  private static buildVariableItem(declaration: VariableDeclaration) {
+    return DocumentSymbol.create(
+      declaration.identifier,
+      undefined,
+      SymbolKind.Variable,
+      { start: declaration.position, end: declaration.position },
+      { start: declaration.position, end: declaration.position },
+    );
   }
 
-  private static buildFunctionParamItem(token: ParameterDeclaration) {
-    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Variable, { start: token.position, end: token.position }, { start: token.position, end: token.position });
+  private static buildFunctionParamItem(declaration: ParameterDeclaration) {
+    return DocumentSymbol.create(
+      declaration.identifier,
+      undefined,
+      SymbolKind.Variable,
+      { start: declaration.position, end: declaration.position },
+      { start: declaration.position, end: declaration.position },
+    );
   }
 
-  private static buildFunctionItem(token: FunctionDeclaration) {
-    const paramSymbols = token.params.map((child) => SymbolBuilder.buildItem(child)) || [];
-    const variableSymbols = token.variables?.map((child) => SymbolBuilder.buildItem(child)) || [];
+  private static buildFunctionItem(declaration: FunctionDeclaration) {
+    const paramSymbols = declaration.params.map((child) => SymbolBuilder.buildItem(child)) || [];
+    const variableSymbols = declaration.variables?.map((child) => SymbolBuilder.buildItem(child)) || [];
 
     const children = paramSymbols.concat(variableSymbols);
     const end = children.reduce(
       (position, child) => (child.range.end.line > position.line || (child.range.end.line === position.line && child.range.end.character > position.character) ? child.range.end : position),
-      token.position,
+      declaration.position,
     );
-    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Function, { start: token.position, end }, { start: token.position, end: token.position }, children);
+    return DocumentSymbol.create(declaration.identifier, undefined, SymbolKind.Function, { start: declaration.position, end }, { start: declaration.position, end: declaration.position }, children);
   }
 
-  private static buildStructPropertyItem(token: FieldDeclaration) {
-    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Property, { start: token.position, end: token.position }, { start: token.position, end: token.position });
+  private static buildStructPropertyItem(declaration: FieldDeclaration) {
+    return DocumentSymbol.create(
+      declaration.identifier,
+      undefined,
+      SymbolKind.Property,
+      { start: declaration.position, end: declaration.position },
+      { start: declaration.position, end: declaration.position },
+    );
   }
 
-  private static buildStructItem(token: StructDeclaration) {
-    const symbols = token.properties?.map((child) => SymbolBuilder.buildItem(child));
+  private static buildStructItem(declaration: StructDeclaration) {
+    const symbols = declaration.properties?.map((child) => SymbolBuilder.buildItem(child));
 
     const end = symbols.reduce(
       (position, child) => (child.range.end.line > position.line || (child.range.end.line === position.line && child.range.end.character > position.character) ? child.range.end : position),
-      token.position,
+      declaration.position,
     );
-    return DocumentSymbol.create(token.identifier, undefined, SymbolKind.Struct, { start: token.position, end }, { start: token.position, end: token.position }, symbols);
+    return DocumentSymbol.create(declaration.identifier, undefined, SymbolKind.Struct, { start: declaration.position, end }, { start: declaration.position, end: declaration.position }, symbols);
   }
 }

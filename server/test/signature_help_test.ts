@@ -6,7 +6,7 @@ import { LanguageTypes } from "../src/Parser/constants";
 import type { FunctionDeclaration } from "../src/Parser/types";
 
 describe("Signature help", () => {
-  const token: FunctionDeclaration = {
+  const declaration: FunctionDeclaration = {
     identifier: "Example",
     tokenType: CompletionItemKind.Function,
     returnType: LanguageTypes.void,
@@ -21,15 +21,15 @@ describe("Signature help", () => {
   };
 
   it("selects the first parameter with index zero", () => {
-    expect(SignatureHelpBuilder.buildFunctionItem(token, 0).activeParameter).to.equal(0);
+    expect(SignatureHelpBuilder.buildFunctionItem(declaration, 0).activeParameter).to.equal(0);
   });
 
   it("preserves a later parameter index", () => {
-    expect(SignatureHelpBuilder.buildFunctionItem(token, 1).activeParameter).to.equal(1);
+    expect(SignatureHelpBuilder.buildFunctionItem(declaration, 1).activeParameter).to.equal(1);
   });
 
   it("omits an unknown active parameter from the protocol response", () => {
-    const response = JSON.parse(JSON.stringify(SignatureHelpBuilder.buildFunctionItem(token, undefined)));
+    const response = JSON.parse(JSON.stringify(SignatureHelpBuilder.buildFunctionItem(declaration, undefined)));
     expect(response).not.to.have.property("activeParameter");
   });
 });

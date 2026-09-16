@@ -8,7 +8,7 @@ export default class HoverContentProvider extends Provider {
     this.server.connection.onHover(({ textDocument: { uri }, position }) =>
       this.exceptionsWrapper(() => {
         const resolved = this.resolveSymbol(uri, position);
-        if (resolved) return { contents: HoverContentBuilder.buildItem(resolved.token, this.server.config, this.server.capabilitiesHandler.getSupportsMarkdownHover()) };
+        if (resolved) return { contents: HoverContentBuilder.buildItem(resolved.declaration, this.server.config, this.server.capabilitiesHandler.getSupportsMarkdownHover()) };
       }),
     );
   }

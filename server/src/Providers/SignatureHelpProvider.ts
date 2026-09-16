@@ -25,7 +25,7 @@ export default class SignatureHelpProvider extends Provider {
       const call = syntax.getCallContext(position);
       if (!call) return;
       const { identifier: rawContent, activeParameter } = call;
-      const functionDeclaration = this.resolveValue(context, rawContent)?.token;
+      const functionDeclaration = this.resolveValue(context, rawContent)?.declaration;
       if (functionDeclaration?.tokenType === CompletionItemKind.Function) {
         return SignatureHelpBuilder.buildFunctionItem(functionDeclaration, activeParameter);
       }

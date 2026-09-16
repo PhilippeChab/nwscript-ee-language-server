@@ -130,7 +130,7 @@ describe("Auto-import completion", function () {
         const scope = parserService.parseContent(valid + declaration.slice(0, length)).getIndex();
         expect(scope.includes).to.deep.equal([{ name: "helper", position: { line: 0, character: 0 } }]);
         expect(scope.entryPointDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["main"]);
-        expect(scope.globalDeclarations.map((token: any) => token.identifier)).to.include.members(["VISIBLE", "Existing"]);
+        expect(scope.globalDeclarations.map((declaration: any) => declaration.identifier)).to.include.members(["VISIBLE", "Existing"]);
       }
     }
   });
@@ -138,8 +138,8 @@ describe("Auto-import completion", function () {
   it("resumes after an incomplete struct field and keeps strict indexing unchanged", () => {
     const source = "struct Example {\n int first;\n int \n float last;\n};\nconst int AFTER = 1;\n";
     const scope = parserService.parseContent(source).getIndex();
-    expect(scope.structDeclarations[0].properties.map((token: any) => token.identifier)).to.deep.equal(["first", "last"]);
-    expect(scope.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["AFTER"]);
+    expect(scope.structDeclarations[0].properties.map((declaration: any) => declaration.identifier)).to.deep.equal(["first", "last"]);
+    expect(scope.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["AFTER"]);
     expect(() => parserService.analyzeContent(source, "document")).to.throw();
   });
 
@@ -217,7 +217,7 @@ describe("Auto-import completion", function () {
     for (const transitive of [true, false]) {
       it(`reserves API constants without a const modifier (bundled=${String(bundled)}, transitive=${String(transitive)})`, () => {
         const library = bundled ? JSON.parse(readFileSync(join(__dirname, "../resources/standardLibDefinitions.json"), "utf8")) : parserService.analyzeContent("int TRUE = 1;", "document");
-        expect(library.globalDeclarations.find((token: any) => token.identifier === "TRUE").isConst).to.equal(undefined);
+        expect(library.globalDeclarations.find((declaration: any) => declaration.identifier === "TRUE").isConst).to.equal(undefined);
         const { items } = complete(
           "void main() {\n Imp|\n}",
           {

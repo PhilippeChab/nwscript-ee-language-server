@@ -16,27 +16,27 @@ export default abstract class Builder {
     return type;
   }
 
-  protected static isConstantToken(token: Declaration): token is ConstantDeclaration {
-    return token.tokenType === CompletionItemKind.Constant;
+  protected static isConstantDeclaration(declaration: Declaration): declaration is ConstantDeclaration {
+    return declaration.tokenType === CompletionItemKind.Constant;
   }
 
-  protected static isVariableToken(token: Declaration): token is VariableDeclaration {
-    return token.tokenType === CompletionItemKind.Variable;
+  protected static isVariableDeclaration(declaration: Declaration): declaration is VariableDeclaration {
+    return declaration.tokenType === CompletionItemKind.Variable;
   }
 
-  protected static isFunctionParameterToken(token: Declaration): token is ParameterDeclaration {
-    return token.tokenType === CompletionItemKind.TypeParameter;
+  protected static isParameterDeclaration(declaration: Declaration): declaration is ParameterDeclaration {
+    return declaration.tokenType === CompletionItemKind.TypeParameter;
   }
 
-  protected static isFunctionToken(token: Declaration): token is FunctionDeclaration {
-    return token.tokenType === CompletionItemKind.Function;
+  protected static isFunctionDeclaration(declaration: Declaration): declaration is FunctionDeclaration {
+    return declaration.tokenType === CompletionItemKind.Function;
   }
 
-  protected static isStructPropertyToken(token: Declaration): token is FieldDeclaration {
-    return token.tokenType === CompletionItemKind.Property;
+  protected static isFieldDeclaration(declaration: Declaration): declaration is FieldDeclaration {
+    return declaration.tokenType === CompletionItemKind.Property;
   }
 
-  protected static isStructToken(token: Declaration): token is StructDeclaration {
-    return token.tokenType === CompletionItemKind.Struct;
+  protected static isStructDeclaration(declaration: Declaration): declaration is StructDeclaration {
+    return declaration.tokenType === CompletionItemKind.Struct;
   }
 }

@@ -13,12 +13,12 @@ export default class GotoDefinitionProvider extends Provider {
       this.exceptionsWrapper(() => {
         const resolved = this.resolveSymbol(uri, position);
         if (!resolved?.owner) return;
-        let target = resolved.token.position;
-        if (resolved.token.tokenType === CompletionItemKind.Function) {
+        let target = resolved.declaration.position;
+        if (resolved.declaration.tokenType === CompletionItemKind.Function) {
           const ownerDocument = this.getSourceDocument(resolved.owner);
           if (ownerDocument) {
             const cursor = normalizeDocumentUri(uri) === normalizeDocumentUri(resolved.owner) ? position : undefined;
-            target = this.server.documentsCollection.getParsedDocument(ownerDocument, this.server.parserService).syntax?.getFunctionNavigationTarget(resolved.token.identifier, cursor) || target;
+            target = this.server.documentsCollection.getParsedDocument(ownerDocument, this.server.parserService).syntax?.getFunctionNavigationTarget(resolved.declaration.identifier, cursor) || target;
           }
         }
         return { uri: resolved.owner, range: { start: target, end: target } };

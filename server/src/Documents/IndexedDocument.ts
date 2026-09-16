@@ -8,8 +8,8 @@ import type DocumentsCollection from "./DocumentsCollection";
 import SyntaxDocument from "../Parser/SyntaxDocument";
 import type { DocumentIndex } from "../Parser/contracts";
 
-export type OwnedDeclarations = { owner?: string; tokens: Declaration[] };
-export type OwnedStructDeclarations = { owner?: string; tokens: StructDeclaration[] };
+export type OwnedDeclarations = { owner?: string; declarations: Declaration[] };
+export type OwnedStructDeclarations = { owner?: string; declarations: StructDeclaration[] };
 
 export default class IndexedDocument {
   private cachedTypeReferences?: { index: DocumentIndex; references: TypeReference[] };
@@ -62,9 +62,9 @@ export default class IndexedDocument {
   public getNameOrder(computedChildren: string[] = []) {
     const order = new Map<IndexedName, number[] | undefined>();
     const add = (document: IndexedDocument, prefix?: number[]) => {
-      for (const token of [...document.getDeclarations(), ...document.memberReferences, ...document.typeReferences]) {
-        const position = token.tokenType === CompletionItemKind.Function ? token.signatureEnd || token.position : token.position;
-        order.set(token, prefix ? [...prefix, position.line, position.character, 1] : undefined);
+      for (const indexedName of [...document.getDeclarations(), ...document.memberReferences, ...document.typeReferences]) {
+        const position = indexedName.tokenType === CompletionItemKind.Function ? indexedName.signatureEnd || indexedName.position : indexedName.position;
+        order.set(indexedName, prefix ? [...prefix, position.line, position.character, 1] : undefined);
       }
     };
     add(this, []);
@@ -79,15 +79,17 @@ export default class IndexedDocument {
   }
 
   public getGlobalDeclarationsWithOwner(computedChildren: string[] = []): OwnedDeclarations[] {
-    return this.getDocuments(computedChildren).map((document) => ({ owner: document.base ? undefined : document.uri, tokens: document.globalDeclarations }));
+    return this.getDocuments(computedChildren).map((document) => ({ owner: document.base ? undefined : document.uri, declarations: document.globalDeclarations }));
   }
 
   public getGlobalDeclarations(computedChildren: string[] = [], localFunctionIdentifiers: string[] = []): Declaration[] {
-    return this.getDocuments(computedChildren).flatMap((document) => document.globalDeclarations.filter((token) => document !== this || !localFunctionIdentifiers.includes(token.identifier)));
+    return this.getDocuments(computedChildren).flatMap((document) =>
+      document.globalDeclarations.filter((declaration) => document !== this || !localFunctionIdentifiers.includes(declaration.identifier)),
+    );
   }
 
   public getStructDeclarationsWithOwner(computedChildren: string[] = []): OwnedStructDeclarations[] {
-    return this.getDocuments(computedChildren).map((document) => ({ owner: document.base ? undefined : document.uri, tokens: document.structDeclarations }));
+    return this.getDocuments(computedChildren).map((document) => ({ owner: document.base ? undefined : document.uri, declarations: document.structDeclarations }));
   }
 
   public getStructDeclarations(computedChildren: string[] = []): StructDeclaration[] {
@@ -120,10 +122,10 @@ export default class IndexedDocument {
     const index = this.index;
     if (this.cachedTypeReferences?.index !== index) {
       // Preserve reference identity within an index for include-once ordering.
-      const references: TypeReference[] = this.getDeclarations().flatMap((token) => {
-        const type = "valueType" in token ? token.valueType : "returnType" in token ? token.returnType : undefined;
+      const references: TypeReference[] = this.getDeclarations().flatMap((declaration) => {
+        const type = "valueType" in declaration ? declaration.valueType : "returnType" in declaration ? declaration.returnType : undefined;
         return type && !Object.prototype.hasOwnProperty.call(LanguageTypes, type)
-          ? [{ identifier: type, position: token.position, tokenType: CompletionItemKind.Reference, targetKind: "struct" as const }]
+          ? [{ identifier: type, position: declaration.position, tokenType: CompletionItemKind.Reference, targetKind: "struct" as const }]
           : [];
       });
       this.cachedTypeReferences = { index, references };
@@ -137,7 +139,7 @@ export default class IndexedDocument {
       ...this.structDeclarations,
       ...this.localDeclarations,
       ...this.entryPointDeclarations,
-      ...[...this.globalDeclarations, ...this.entryPointDeclarations].flatMap((token) => (token.tokenType === CompletionItemKind.Function ? token.params : [])),
+      ...[...this.globalDeclarations, ...this.entryPointDeclarations].flatMap((declaration) => (declaration.tokenType === CompletionItemKind.Function ? declaration.params : [])),
       ...this.structDeclarations.flatMap((struct) => struct.properties),
     ];
   }

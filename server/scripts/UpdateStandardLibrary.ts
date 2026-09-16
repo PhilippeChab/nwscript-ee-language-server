@@ -128,7 +128,7 @@ export function extractSource(data: Buffer, metadata: SourceMetadata) {
   return source;
 }
 
-// Network/extraction/tokenization all finish before any repository file is changed.
+// Network/extraction/parsing all finish before any repository file is changed.
 export async function updateStandardLibrary(options: { scripts?: string; pinned?: boolean; archive?: string; download?: (url: string) => Promise<Buffer> } = {}) {
   const scripts = options.scripts || __dirname;
   const fetch = options.download || download;

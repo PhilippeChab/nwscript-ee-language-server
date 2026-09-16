@@ -133,11 +133,11 @@ export default class ServerManger {
         Array.from({ length: count }, async (_, index) => {
           await this.indexFiles(paths.slice(index * size, (index + 1) * size), (message) => {
             if (message.error) this.logger.error(`Cannot index ${message.filePath}: ${message.error}`);
-            if (message.documentTokens) {
+            if (message.documentIndex) {
               const uri = pathToFileURL(message.filePath).href;
               // An opened document may have newer, unsaved contents.
               if (this.workspaceFilesSystem.getRootForUri(uri) && !this.liveDocumentsManager.get(uri) && existsSync(message.filePath)) {
-                this.documentsCollection.createDocument(uri, message.documentTokens);
+                this.documentsCollection.createDocument(uri, message.documentIndex);
               }
               indexed++;
               progress?.report(Math.round((100 * indexed) / paths.length));

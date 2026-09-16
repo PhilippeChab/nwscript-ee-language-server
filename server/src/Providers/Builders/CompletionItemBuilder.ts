@@ -7,8 +7,8 @@ import type { AutoImportContext } from "../../Parser/ParserService";
 import Builder from "./Builder";
 
 export default class CompletionItemBuilder extends Builder {
-  public static buildAutoImportItem(token: Declaration, includeName: string, document: TextDocument, context: AutoImportContext, serverConfig: ServerConfiguration): CompletionItem {
-    const item = this.buildItem(token);
+  public static buildAutoImportItem(declaration: Declaration, includeName: string, document: TextDocument, context: AutoImportContext, serverConfig: ServerConfiguration): CompletionItem {
+    const item = this.buildItem(declaration);
     const insertionText = this.buildResolvedItem(item, serverConfig).label;
     const { insertionPosition, replacementRange } = context;
     const eol = document.getText().includes("\r\n") ? "\r\n" : "\n";
@@ -17,8 +17,8 @@ export default class CompletionItemBuilder extends Builder {
 
     return {
       ...item,
-      detail: `${item.detail || token.identifier} — #include "${includeName}"`,
-      filterText: token.identifier,
+      detail: `${item.detail || declaration.identifier} — #include "${includeName}"`,
+      filterText: declaration.identifier,
       // At the start of a file the include and identifier share an edit position.
       // Combine them so additionalTextEdits never overlap the completion edit.
       textEdit: TextEdit.replace(replacementRange, `${samePosition ? includeText : ""}${insertionText}`),
@@ -41,19 +41,19 @@ export default class CompletionItemBuilder extends Builder {
     return item;
   }
 
-  public static buildItem(token: Declaration, implicitConstants = false): CompletionItem {
-    if (this.isConstantToken(token)) {
-      return token.isConst || implicitConstants ? this.buildConstantItem(token) : this.buildVariableItem({ ...token, tokenType: CompletionItemKind.Variable });
-    } else if (this.isVariableToken(token)) {
-      return this.buildVariableItem(token);
-    } else if (this.isFunctionParameterToken(token)) {
-      return this.buildFunctionParamItem(token);
-    } else if (this.isFunctionToken(token)) {
-      return this.buildFunctionItem(token);
-    } else if (this.isStructPropertyToken(token)) {
-      return this.buildStructPropertyItem(token);
-    } else if (this.isStructToken(token)) {
-      return this.buildStructItem(token);
+  public static buildItem(declaration: Declaration, implicitConstants = false): CompletionItem {
+    if (this.isConstantDeclaration(declaration)) {
+      return declaration.isConst || implicitConstants ? this.buildConstantItem(declaration) : this.buildVariableItem({ ...declaration, tokenType: CompletionItemKind.Variable });
+    } else if (this.isVariableDeclaration(declaration)) {
+      return this.buildVariableItem(declaration);
+    } else if (this.isParameterDeclaration(declaration)) {
+      return this.buildFunctionParamItem(declaration);
+    } else if (this.isFunctionDeclaration(declaration)) {
+      return this.buildFunctionItem(declaration);
+    } else if (this.isFieldDeclaration(declaration)) {
+      return this.buildStructPropertyItem(declaration);
+    } else if (this.isStructDeclaration(declaration)) {
+      return this.buildStructItem(declaration);
     } else {
       return {
         label: "",
@@ -61,38 +61,38 @@ export default class CompletionItemBuilder extends Builder {
     }
   }
 
-  private static buildConstantItem(token: ConstantDeclaration): CompletionItem {
+  private static buildConstantItem(declaration: ConstantDeclaration): CompletionItem {
     return {
-      label: token.identifier,
-      kind: token.tokenType,
-      detail: `(constant) ${token.value}: ${this.handleLanguageType(token.valueType)}`,
+      label: declaration.identifier,
+      kind: declaration.tokenType,
+      detail: `(constant) ${declaration.value}: ${this.handleLanguageType(declaration.valueType)}`,
     };
   }
 
-  private static buildVariableItem(token: VariableDeclaration): CompletionItem {
+  private static buildVariableItem(declaration: VariableDeclaration): CompletionItem {
     return {
-      label: token.identifier,
-      kind: token.tokenType,
-      detail: `(variable) ${token.identifier}: ${this.handleLanguageType(token.valueType)}`,
+      label: declaration.identifier,
+      kind: declaration.tokenType,
+      detail: `(variable) ${declaration.identifier}: ${this.handleLanguageType(declaration.valueType)}`,
     };
   }
 
-  private static buildFunctionParamItem(token: ParameterDeclaration): CompletionItem {
+  private static buildFunctionParamItem(declaration: ParameterDeclaration): CompletionItem {
     return {
-      label: token.identifier,
+      label: declaration.identifier,
       kind: CompletionItemKind.Variable,
-      detail: `(param) ${token.identifier}: ${this.handleLanguageType(token.valueType)}`,
+      detail: `(param) ${declaration.identifier}: ${this.handleLanguageType(declaration.valueType)}`,
     };
   }
 
-  private static buildFunctionItem(token: FunctionDeclaration): CompletionItem {
+  private static buildFunctionItem(declaration: FunctionDeclaration): CompletionItem {
     return {
-      label: token.identifier,
-      kind: token.tokenType,
-      detail: `(method) (${token.params.reduce((acc, param, index) => {
-        return `${acc}${param.identifier}: ${this.handleLanguageType(param.valueType)}${index === token.params.length - 1 ? "" : ", "}`;
-      }, "")}): ${this.handleLanguageType(token.returnType)}`,
-      data: token.params,
+      label: declaration.identifier,
+      kind: declaration.tokenType,
+      detail: `(method) (${declaration.params.reduce((acc, param, index) => {
+        return `${acc}${param.identifier}: ${this.handleLanguageType(param.valueType)}${index === declaration.params.length - 1 ? "" : ", "}`;
+      }, "")}): ${this.handleLanguageType(declaration.returnType)}`,
+      data: declaration.params,
     };
   }
 
@@ -104,11 +104,11 @@ export default class CompletionItemBuilder extends Builder {
     };
   }
 
-  private static buildStructItem(token: StructDeclaration): CompletionItem {
+  private static buildStructItem(declaration: StructDeclaration): CompletionItem {
     return {
-      label: token.identifier,
-      kind: token.tokenType,
-      detail: `(struct) ${token.identifier}`,
+      label: declaration.identifier,
+      kind: declaration.tokenType,
+      detail: `(struct) ${declaration.identifier}`,
     };
   }
 }

@@ -212,11 +212,11 @@ describe("Workspace standard library", function () {
     write(spec, source);
     const editor = editorServer();
     const document = TextDocument.create(uri(spec), "nwscript", 1, source);
-    const tokenize = parserService.parseContent.bind(parserService);
+    const parseContent = parserService.parseContent.bind(parserService);
     let parses = 0;
     parserService.parseContent = (...args: any[]) => {
       parses++;
-      return tokenize(...args);
+      return parseContent(...args);
     };
     try {
       editor.open(document);
@@ -230,7 +230,7 @@ describe("Workspace standard library", function () {
       expect(library.get(document.uri).globalDeclarations).to.equal(editor.server.documentsCollection.getFromUri(document.uri).globalDeclarations);
       expect(library.get(document.uri).globalDeclarations[0].identifier).to.equal("ChangedFn");
     } finally {
-      parserService.parseContent = tokenize;
+      parserService.parseContent = parseContent;
     }
   });
 
@@ -241,11 +241,11 @@ describe("Workspace standard library", function () {
     const document = TextDocument.create(uri(spec), "nwscript", 1, source);
     editor.open(document);
     const initial = library.get(document.uri);
-    const tokenize = parserService.parseContent.bind(parserService);
+    const parseContent = parserService.parseContent.bind(parserService);
     let parses = 0;
     parserService.parseContent = (...args: any[]) => {
       parses++;
-      return tokenize(...args);
+      return parseContent(...args);
     };
     try {
       TextDocument.update(document, [{ text: "int Broken(" }], 2);
@@ -265,7 +265,7 @@ describe("Workspace standard library", function () {
       expect(parses).to.equal(3);
       expect(library.get(document.uri).globalDeclarations[0].identifier).to.equal("Recovered");
     } finally {
-      parserService.parseContent = tokenize;
+      parserService.parseContent = parseContent;
     }
   });
 
@@ -275,7 +275,7 @@ describe("Workspace standard library", function () {
     const target = uri(join(root, "test.nss"));
     const initial = library.get(target);
     library.change(TextDocument.create(uri(spec), "nwscript", 1, "// Edited\nfloat ChangedFn();\n"));
-    expect(library.get(target).globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["ChangedFn"]);
+    expect(library.get(target).globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["ChangedFn"]);
     library.change(TextDocument.create(uri(spec), "nwscript", 2, "int Broken("));
     expect(library.get(target).globalDeclarations[0].identifier).to.equal("ChangedFn");
     library.get(target);
@@ -430,7 +430,7 @@ describe("Workspace standard library", function () {
     expect(refreshes).to.equal(3);
   });
 
-  it("caches tokenization until source content changes", () => {
+  it("caches parsing until source content changes", () => {
     write(join(root, "nwscript.nss"), source);
     const target = uri(join(root, "test.nss"));
     const snapshot = library.get(target);
