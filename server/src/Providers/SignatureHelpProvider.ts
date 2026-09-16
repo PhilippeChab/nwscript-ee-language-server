@@ -1,4 +1,5 @@
-import { CompletionItemKind, SignatureHelpParams } from "vscode-languageserver/node";
+import { DeclarationKind } from "../Parser/types";
+import { SignatureHelpParams } from "vscode-languageserver/node";
 
 import type { ServerManager } from "../ServerManager";
 import { SignatureHelpBuilder } from "./Builders";
@@ -20,13 +21,13 @@ export default class SignatureHelpProvider extends Provider {
 
       const context = this.getDocumentContext(uri, position);
       if (!context) return;
-      const { lines, rawTokenizedContent } = context;
-      const call = this.server.tokenizer.getCallContextFromRaw(lines, rawTokenizedContent, position);
+      const { syntax } = context.document;
+      const call = syntax.getCallContext(position);
       if (!call) return;
       const { identifier: rawContent, activeParameter } = call;
-      const functionComplexToken = this.resolveValue(context, rawContent)?.token;
-      if (functionComplexToken?.tokenType === CompletionItemKind.Function) {
-        return SignatureHelpBuilder.buildFunctionItem(functionComplexToken, activeParameter);
+      const functionDeclaration = this.resolveValue(context, rawContent)?.declaration;
+      if (functionDeclaration?.kind === DeclarationKind.Function) {
+        return SignatureHelpBuilder.buildFunctionItem(functionDeclaration, activeParameter);
       }
     };
   }

@@ -1,10 +1,10 @@
-import { CompletionItemKind } from "vscode-languageserver";
+import { DeclarationKind } from "../../Parser/types";
 
-import { LanguageTypes } from "../../Tokenizer/constants";
-import type { ComplexToken, ConstantComplexToken, VariableComplexToken, FunctionParamComplexToken, FunctionComplexToken, StructPropertyComplexToken, StructComplexToken } from "../../Tokenizer/types";
+import { LanguageTypes } from "../../Parser/constants";
+import type { Declaration, ConstantDeclaration, VariableDeclaration, ParameterDeclaration, FunctionDeclaration, FieldDeclaration, StructDeclaration } from "../../Parser/types";
 
 export default abstract class Builder {
-  protected static formatParameter(param: FunctionParamComplexToken) {
+  protected static formatParameter(param: ParameterDeclaration) {
     return `${this.handleLanguageType(param.valueType)} ${param.identifier}${param.defaultValue !== undefined ? ` = ${param.defaultValue}` : ""}`;
   }
 
@@ -16,27 +16,27 @@ export default abstract class Builder {
     return type;
   }
 
-  protected static isConstantToken(token: ComplexToken): token is ConstantComplexToken {
-    return token.tokenType === CompletionItemKind.Constant;
+  protected static isConstantDeclaration(declaration: Declaration): declaration is ConstantDeclaration {
+    return declaration.kind === DeclarationKind.Constant;
   }
 
-  protected static isVariableToken(token: ComplexToken): token is VariableComplexToken {
-    return token.tokenType === CompletionItemKind.Variable;
+  protected static isVariableDeclaration(declaration: Declaration): declaration is VariableDeclaration {
+    return declaration.kind === DeclarationKind.Variable;
   }
 
-  protected static isFunctionParameterToken(token: ComplexToken): token is FunctionParamComplexToken {
-    return token.tokenType === CompletionItemKind.TypeParameter;
+  protected static isParameterDeclaration(declaration: Declaration): declaration is ParameterDeclaration {
+    return declaration.kind === DeclarationKind.Parameter;
   }
 
-  protected static isFunctionToken(token: ComplexToken): token is FunctionComplexToken {
-    return token.tokenType === CompletionItemKind.Function;
+  protected static isFunctionDeclaration(declaration: Declaration): declaration is FunctionDeclaration {
+    return declaration.kind === DeclarationKind.Function;
   }
 
-  protected static isStructPropertyToken(token: ComplexToken): token is StructPropertyComplexToken {
-    return token.tokenType === CompletionItemKind.Property;
+  protected static isFieldDeclaration(declaration: Declaration): declaration is FieldDeclaration {
+    return declaration.kind === DeclarationKind.Field;
   }
 
-  protected static isStructToken(token: ComplexToken): token is StructComplexToken {
-    return token.tokenType === CompletionItemKind.Struct;
+  protected static isStructDeclaration(declaration: Declaration): declaration is StructDeclaration {
+    return declaration.kind === DeclarationKind.Struct;
   }
 }

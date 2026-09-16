@@ -1,11 +1,13 @@
+import { pathToFileURL } from "url";
+import { TextDocument } from "vscode-languageserver-textdocument";
 import { writeFileSync, readFileSync, readdirSync } from "fs";
 import { normalize, join } from "path";
 import { createHash } from "crypto";
 
 import { extractSources, SourceMetadata } from "./UpdateStandardLibrary";
 
-import { Tokenizer } from "../src/Tokenizer";
-import { TokenizationMode } from "../src/Tokenizer/Tokenizer";
+import { ParserService } from "../src/Parser";
+import { AnalysisMode } from "../src/Parser/ParserService";
 
 const generateDefinitions = async () => {
   const args = process.argv.slice(2);
@@ -15,10 +17,11 @@ const generateDefinitions = async () => {
     throw new Error("Usage: generate-lib-defs [--standard-only] [--check] [--archive path.zip]");
   }
   const check = args.includes("--check");
-  const tokenizer = await new Tokenizer(true).loadGrammar();
+  const parserService = await new ParserService(true).loadGrammar();
 
   console.log("Generating nwscript.nss definitions ...");
-  const source = readFileSync(join(__dirname, "nwscript.nss"));
+  const sourcePath = join(__dirname, "nwscript.nss");
+  const source = readFileSync(sourcePath);
   const metadata: SourceMetadata = JSON.parse(readFileSync(join(__dirname, "../resources/standardLibSource.json"), "utf8"));
   if (createHash("sha256").update(source).digest("hex") !== metadata.sourceSha256) {
     throw new Error("nwscript.nss does not match standardLibSource.json. Fetch the pinned source or update its provenance first.");
@@ -41,7 +44,7 @@ const generateDefinitions = async () => {
     const updates = targets.map(({ name, destination }) => {
       const text = sources.get(name);
       if (!text) throw new Error(`Missing bundled script: ${name}`);
-      return { destination, output: JSON.stringify(tokenizer.tokenizeContent(text.toString("utf8"), TokenizationMode.document), null, 4) };
+      return { destination, output: JSON.stringify(parserService.analyzeContent(text.toString("utf8"), AnalysisMode.document), null, 4) };
     });
     for (const { destination, output } of updates) {
       if (check) {
@@ -52,7 +55,7 @@ const generateDefinitions = async () => {
     return;
   }
 
-  const definitions = tokenizer.tokenizeContent(lib, TokenizationMode.document);
+  const definitions = parserService.analyzeContent(TextDocument.create(pathToFileURL(sourcePath).href, "nwscript", 0, lib), AnalysisMode.document);
   const destination = join(__dirname, "../resources/standardLibDefinitions.json");
   const output = JSON.stringify(definitions, null, 4);
   if (check) {
@@ -79,8 +82,8 @@ const generateDefinitions = async () => {
 
     // Skip main files
     if (!lib.includes("main")) {
-      const definitions = tokenizer.tokenizeContent(lib, TokenizationMode.document);
-      if (definitions.children.length === 0 && definitions.globalDeclarations.length === 0 && definitions.structDeclarations.length === 0) {
+      const definitions = parserService.analyzeContent(lib, AnalysisMode.document);
+      if (definitions.includes.length === 0 && definitions.globalDeclarations.length === 0 && definitions.structDeclarations.length === 0) {
         return;
       }
 
@@ -101,7 +104,7 @@ const generateDefinitions = async () => {
     const fileSource = join(normalize(join(__dirname, "ovr", filename)));
     const fileDestination = join(normalize(join(__dirname, "../resources/ovr", filename.replace(".nss", ".json"))));
     const lib = readFileSync(fileSource).toString();
-    const definitions = tokenizer.tokenizeContent(lib, TokenizationMode.document);
+    const definitions = parserService.analyzeContent(lib, AnalysisMode.document);
 
     console.log(`Generating ${filename} ...`);
     filesCount++;

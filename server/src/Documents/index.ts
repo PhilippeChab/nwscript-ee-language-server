@@ -1,5 +1,5 @@
-import Document from "./Document";
+import IndexedDocument from "./IndexedDocument";
 import DocumentsCollection from "./DocumentsCollection";
 import LiveDocumentsManager from "./LiveDocumentsManager";
 
-export { Document, DocumentsCollection, LiveDocumentsManager };
+export { IndexedDocument, DocumentsCollection, LiveDocumentsManager };

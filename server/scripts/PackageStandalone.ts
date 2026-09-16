@@ -30,7 +30,7 @@ export function packageStandalone(): string {
   // esbuild embeds runtime dependencies. Preserve their manifests and licenses,
   // including the WASM dependency whose binary is loaded as a resource.
   const dependencies = new Set<string>();
-  for (const input of [...Object.keys(build.metafile.inputs), "server/node_modules/vscode-oniguruma/release/onig.wasm"]) {
+  for (const input of [...Object.keys(build.metafile.inputs), "server/node_modules/web-tree-sitter/tree-sitter.wasm"]) {
     const normalized = input.replace(/\\/g, "/");
     const marker = normalized.lastIndexOf("node_modules/");
     if (marker < 0) continue;

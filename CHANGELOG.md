@@ -4,6 +4,13 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 
 ## [Unreleased]
 
+## [4.0.0]
+
+- Replace TextMate-based server parsing with an incremental Tree-sitter parser for completion, hover, navigation, signature help, and workspace indexing.
+- Recover editor context around unfinished declarations, including function signatures and struct fields.
+- Correct parsing of struct parameters after primitive parameters and declarations following comments ending in a backslash.
+- Bundle the parser runtime and NWScript grammar for Windows, macOS, and Linux; no additional parser installation is required.
+
 ## [3.0.1]
 
 - Preserve `const` in hover text and omit the assignment marker for declarations without an initializer.

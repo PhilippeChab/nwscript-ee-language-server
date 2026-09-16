@@ -10,13 +10,13 @@ import { CompletionItemKind, SymbolKind } from "vscode-languageserver";
 
 describe("Provider cross-feature review", () => {
   let api: any;
-  let tokenizer: any;
+  let parserService: any;
   let root: string;
   before(async () => {
     const bundle = join(__dirname, "../out/provider-review-test.js");
     buildSync({
       stdin: {
-        contents: `export { Tokenizer } from './Tokenizer';
+        contents: `export { ParserService } from './Parser';
       export { default as Collection } from './Documents/DocumentsCollection';
       export { default as Hover } from './Providers/HoverContentProvider';
       export { default as Definition } from './Providers/GotoDefinitionProvider';
@@ -32,7 +32,7 @@ describe("Provider cross-feature review", () => {
       platform: "node",
     });
     api = require(bundle);
-    tokenizer = await new api.Tokenizer().loadGrammar();
+    parserService = await new api.ParserService().loadGrammar();
   });
   beforeEach(() => {
     root = mkdtempSync(join(tmpdir(), "nw-provider-review-"));
@@ -44,7 +44,7 @@ describe("Provider cross-feature review", () => {
     const collection = new api.Collection();
     const handlers: any = {};
     const server = {
-      tokenizer,
+      parserService,
       documentsCollection: collection,
       liveDocumentsManager: { get: (uri: string) => live.get(uri) },
       standardLibrary: { get: () => ({ globalDeclarations: [], structDeclarations: [] }) },
@@ -69,13 +69,35 @@ describe("Provider cross-feature review", () => {
       const path = join(root, name);
       writeFileSync(path, source);
       const document = TextDocument.create(pathToFileURL(path).href, "nwscript", 1, source);
-      collection.createDocument(document.uri, tokenizer.tokenizeContent(source, "document"));
+      collection.createDocument(document.uri, parserService.analyzeContent(source, "document"));
       if (open) live.set(document.uri, document);
       return document;
     };
     return { handlers, add, live };
   }
   const request = (document: TextDocument, offset: number) => ({ textDocument: { uri: document.uri }, position: document.positionAt(offset) });
+
+  it("keeps all providers on the current syntax after unsaved edits and incomplete declarations", () => {
+    const { handlers, add } = editor(false, true);
+    const document = add("live.nss", "int Value;\nint Fn(int arg);\nvoid main() { Fn(Value); }");
+    const initial = request(document, document.getText().lastIndexOf("Value") + 2);
+    expect(handlers.hover(initial).contents.value).to.include("int Value");
+    expect(handlers.completion(initial).find((item: any) => item.label === "Value").detail).to.include("Value: int");
+
+    const source = "\nstring Value;\nstring Fn(string arg) { return arg; }\nvoid main() { Fn(Value); }\nstruct Unfinished { int ";
+    TextDocument.update(document, [{ text: source }], 2);
+    const params = request(document, source.lastIndexOf("Value") + 2);
+    expect(handlers.hover(params).contents.value).to.include("string Value");
+    expect(handlers.completion(params).find((item: any) => item.label === "Value").detail).to.include("Value: string");
+    expect(handlers.signature(params).signatures[0].label).to.equal("string Fn(string arg)");
+    expect(handlers.definition(params).range.start).to.deep.equal(document.positionAt(source.indexOf("Value")));
+    expect(handlers.symbols(params).find((symbol: any) => symbol.name === "Value").selectionRange.start).to.deep.equal(document.positionAt(source.indexOf("Value")));
+    expect(handlers.definition(request(document, source.lastIndexOf("Fn(") + 1)).range.start).to.deep.equal(document.positionAt(source.indexOf("Fn(")));
+
+    const quoted = 'void main() { string text = r"Value"; }';
+    TextDocument.update(document, [{ text: quoted }], 3);
+    expect(handlers.completion(request(document, quoted.indexOf("Value") + 2))).to.deep.equal([]);
+  });
 
   for (const [type, value] of [
     ["int", "0"],
