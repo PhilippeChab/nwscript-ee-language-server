@@ -4,11 +4,13 @@
   "version": "0.0.0",
   "license": "GPL-3.0-only",
   "scripts": {
-    "test": "node --import tsx --test test.ts",
+    "test": "node --import tsx --test test.ts bindings-poc.test.ts",
     "typecheck": "tsc --noEmit",
     "lint": "node ../../node_modules/eslint/bin/eslint.js --config .eslintrc.cjs . --ext .ts --max-warnings 0",
     "inspect": "tsx inspect.ts",
-    "grammar:record": "tsx record-grammar.ts"
+    "grammar:record": "tsx record-grammar.ts",
+    "demo:bindings": "tsx bindings-poc.ts",
+    "test:bindings": "node --import tsx --test bindings-poc.test.ts"
   },
   "devDependencies": {
     "@types/emscripten": "1.41.5",
