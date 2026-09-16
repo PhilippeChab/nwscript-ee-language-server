@@ -1,4 +1,3 @@
-import { DeclarationKind } from "../../Parser/types";
 import { CompletionItem, CompletionItemKind, TextEdit } from "vscode-languageserver";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
@@ -42,9 +41,9 @@ export default class CompletionItemBuilder extends Builder {
     return item;
   }
 
-  public static buildItem(declaration: Declaration, implicitConstants = false): CompletionItem {
+  public static buildItem(declaration: Declaration): CompletionItem {
     if (this.isConstantDeclaration(declaration)) {
-      return declaration.isConst || implicitConstants ? this.buildConstantItem(declaration) : this.buildVariableItem({ ...declaration, kind: DeclarationKind.Variable });
+      return this.buildConstantItem(declaration);
     } else if (this.isVariableDeclaration(declaration)) {
       return this.buildVariableItem(declaration);
     } else if (this.isParameterDeclaration(declaration)) {

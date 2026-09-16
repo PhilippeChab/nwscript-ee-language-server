@@ -1,3 +1,5 @@
+import { TextDocument } from "vscode-languageserver-textdocument";
+import { pathToFileURL } from "url";
 import { readFileSync } from "fs";
 import { ParserService } from "../Parser";
 import { AnalysisMode, DocumentIndex } from "../Parser/ParserService";
@@ -17,7 +19,7 @@ process.once("message", (paths: string[]) => {
     for (const filePath of paths) {
       let message: IndexerMessage;
       try {
-        const documentIndex = parserService.analyzeContent(readFileSync(filePath, "utf8"), AnalysisMode.document);
+        const documentIndex = parserService.analyzeContent(TextDocument.create(pathToFileURL(filePath).href, "nwscript", 0, readFileSync(filePath, "utf8")), AnalysisMode.document);
         message = { filePath, documentIndex };
       } catch (error) {
         message = { filePath, error: error instanceof Error ? error.message : String(error) };

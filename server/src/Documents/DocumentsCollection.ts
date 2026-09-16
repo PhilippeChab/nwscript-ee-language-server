@@ -118,9 +118,9 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       return left.length - right.length;
     };
     const isReference = (indexedName: IndexedName) => indexedName.kind === ReferenceKind.Member || indexedName.kind === ReferenceKind.Type;
-    const isScoped = (indexedName: IndexedName) => indexedName.kind === DeclarationKind.Variable || indexedName.kind === DeclarationKind.Parameter || indexedName.kind === DeclarationKind.Field;
-    const isReserved = (indexedName: IndexedName) =>
-      indexedName.kind === DeclarationKind.Function || (indexedName.kind === DeclarationKind.Constant && (indexedName.isConst || implicitNames.has(indexedName)));
+    const isScoped = (indexedName: IndexedName) =>
+      (indexedName.kind === DeclarationKind.Variable && indexedName.scope === "local") || indexedName.kind === DeclarationKind.Parameter || indexedName.kind === DeclarationKind.Field;
+    const isReserved = (indexedName: IndexedName) => indexedName.kind === DeclarationKind.Function || indexedName.kind === DeclarationKind.Constant;
     const namesConflict = (left: IndexedName, right: IndexedName, order: Map<IndexedName, number[] | undefined>) => {
       // Paths interleave declarations with their includes at the actual source
       // positions. Unknown legacy include positions retain conservative checks.
@@ -144,8 +144,8 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
       }
       if (
         (knownOrder || currentDeclarations.has(left)) &&
-        (later.kind === DeclarationKind.Function || (later.kind === DeclarationKind.Constant && later.isConst)) &&
-        (earlier.kind === DeclarationKind.Struct || (earlier.kind === DeclarationKind.Constant && !earlier.isConst))
+        (later.kind === DeclarationKind.Function || (later.kind === DeclarationKind.Constant && !implicitNames.has(later))) &&
+        (earlier.kind === DeclarationKind.Struct || (earlier.kind === DeclarationKind.Variable && earlier.scope === "global"))
       ) {
         return false;
       }
@@ -154,7 +154,7 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
         // Struct tags and ordinary variables are separate namespaces. Functions
         // and const names reserve lexer tokens that can invalidate struct uses.
         // API constants are reserved even when nwscript.nss omits const.
-        return other.kind !== DeclarationKind.Constant || other.isConst === true || implicitNames.has(other);
+        return other.kind !== DeclarationKind.Variable || other.scope !== "global";
       }
       if (left.kind !== DeclarationKind.Function || right.kind !== DeclarationKind.Function) return true;
       // Engine API declarations already have implementations, despite prototype syntax.
@@ -235,7 +235,7 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
   }
 
   public createDocuments(uri: string, content: string, parserService: ParserService, workespaceFilesSystem: WorkspaceFilesSystem) {
-    const documentIndex = parserService.analyzeContent(content, AnalysisMode.document);
+    const documentIndex = parserService.analyzeContent(TextDocument.create(uri, "nwscript", 0, content), AnalysisMode.document);
 
     this.addDocument(this.createIndexedDocument(uri, false, documentIndex));
     this.createChildrenDocument(documentIndex.includes, parserService, workespaceFilesSystem);

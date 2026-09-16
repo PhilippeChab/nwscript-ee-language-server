@@ -39,7 +39,7 @@ describe("IndexedDocument and signature resolution", () => {
     const fn = index.globalDeclarations.find((declaration: any) => declaration.identifier === "Fn");
     const cases = [
       [index.globalDeclarations[0], DeclarationKind.Constant, CompletionItemKind.Constant, SymbolKind.Constant],
-      [index.globalDeclarations[1], DeclarationKind.Constant, CompletionItemKind.Variable, SymbolKind.Variable],
+      [index.globalDeclarations[1], DeclarationKind.Variable, CompletionItemKind.Variable, SymbolKind.Variable],
       [fn, DeclarationKind.Function, CompletionItemKind.Function, SymbolKind.Function],
       [fn.params[0], DeclarationKind.Parameter, CompletionItemKind.Variable, SymbolKind.Variable],
       [index.localDeclarations.find((declaration: any) => declaration.identifier === "local"), DeclarationKind.Variable, CompletionItemKind.Variable, SymbolKind.Variable],
@@ -244,7 +244,7 @@ describe("IndexedDocument and signature resolution", () => {
   for (const filename of ["details.nss", "nwscript.nss"]) {
     it(`distinguishes mutable globals from constants, including implicit API constants in ${filename}`, () => {
       const source = "int Global; const int Constant = 1; void main() {}";
-      const library = parserService.analyzeContent("int TRUE = 1;", "document");
+      const library = parserService.analyzeContent(TextDocument.create(workspaceUri("nwscript.nss"), "nwscript", 0, "int TRUE = 1;"), "document");
       const { handlers, params } = editor(source, filename, library);
       const completions = handlers.completion(params(source.length));
       const global = completions.find((item: any) => item.label === "Global");

@@ -1,3 +1,4 @@
+import { TextDocument } from "vscode-languageserver-textdocument";
 import { DeclarationKind, ReferenceKind } from "../src/Parser/types";
 import { describe, before } from "mocha";
 import { expect } from "chai";
@@ -23,6 +24,29 @@ describe("ParserService", () => {
     staticDocumentIndex = readDocumentIndex(readFileSync(normalize(join(__dirname, "./static/globalScopeTokens.json")), "utf8"));
     staticLocalScopeWithContext = JSON.parse(readFileSync(normalize(join(__dirname, "./static/localScopeTokensWithContext.json"))).toString(), reviveDeclaration) as LocalScope;
     staticLocalScopeWithoutContext = JSON.parse(readFileSync(normalize(join(__dirname, "./static/localScopeTokensWithoutContext.json"))).toString(), reviveDeclaration) as LocalScope;
+  });
+
+  it("classifies global and local variables independently of constants", () => {
+    const index = parserService.analyzeContent("int Global = 1; const int Fixed = 2; void main() { int local; }", AnalysisMode.document);
+    expect(index.globalDeclarations[0]).to.include({ kind: DeclarationKind.Variable, scope: "global", value: "1" });
+    expect(index.globalDeclarations[1]).to.include({ kind: DeclarationKind.Constant, isConst: true });
+    expect(index.localDeclarations?.[0]).to.include({ kind: DeclarationKind.Variable, scope: "local" });
+  });
+
+  it("classifies implicit API constants in one-shot and cached live parses", () => {
+    const document = TextDocument.create("file:///NWScript.NSS", "nwscript", 1, "int TRUE = 1;");
+    const expected = { kind: DeclarationKind.Constant, identifier: "TRUE", value: "1" };
+    expect(parserService.analyzeContent(document, AnalysisMode.document).globalDeclarations[0]).to.include(expected);
+    const syntax = parserService.parse(document);
+    expect(syntax.getIndex().globalDeclarations[0]).to.include(expected);
+    TextDocument.update(document, [{ text: "int TRUE = 2;" }], 2);
+    expect(parserService.parse(document)).to.equal(syntax);
+    expect(syntax.getIndex().globalDeclarations[0]).to.include({ ...expected, value: "2" });
+  });
+
+  it("keeps unnamed documents parseable", () => {
+    const document = TextDocument.create("untitled:Untitled-1", "nwscript", 1, "int Value;");
+    expect(parserService.getDocumentIndex(document).globalDeclarations[0]).to.include({ kind: DeclarationKind.Variable, scope: "global" });
   });
 
   describe("Global Scope", () => {
@@ -79,6 +103,24 @@ describe("ParserService", () => {
 });
 
 describe("Serialized document indexes", () => {
+  it("distinguishes legacy mutable globals from explicit and implicit constants", () => {
+    for (const discriminator of [{ tokenType: 21 }, { kind: DeclarationKind.Constant }]) {
+      const content = JSON.stringify({
+        includes: [],
+        structDeclarations: [],
+        globalDeclarations: [
+          { identifier: "Global", ...discriminator, value: "1" },
+          { identifier: "Fixed", ...discriminator, value: "2", isConst: true },
+        ],
+      });
+      const index = readDocumentIndex(content);
+      expect(index.globalDeclarations[0]).to.include({ kind: DeclarationKind.Variable, scope: "global", value: "1" });
+      expect(index.globalDeclarations[1]).to.include({ kind: DeclarationKind.Constant, isConst: true });
+      expect(readDocumentIndex(content, true).globalDeclarations[0].kind).to.equal(DeclarationKind.Constant);
+      expect(readDocumentIndex(JSON.stringify(index))).to.deep.equal(index);
+    }
+  });
+
   it("reads legacy include arrays without retaining duplicate fields", () => {
     const declarations = { globalDeclarations: [], structDeclarations: [] };
     const position = { line: 3, character: 1 };
@@ -105,7 +147,7 @@ describe("Serialized document indexes", () => {
       includes: [],
       globalDeclarations: [{ identifier: "Fn", kind: DeclarationKind.Function, params: [{ identifier: "arg", kind: DeclarationKind.Parameter }], comments: legacy.globalDeclarations[0].comments }],
       structDeclarations: [{ identifier: "Data", kind: DeclarationKind.Struct, properties: [{ identifier: "field", kind: DeclarationKind.Field }] }],
-      localDeclarations: [{ identifier: "local", kind: DeclarationKind.Variable }],
+      localDeclarations: [{ identifier: "local", kind: DeclarationKind.Variable, scope: "local" }],
       memberReferences: [{ identifier: "field", kind: ReferenceKind.Member }],
       entryPointDeclarations: [{ identifier: "main", kind: DeclarationKind.Function }],
     };

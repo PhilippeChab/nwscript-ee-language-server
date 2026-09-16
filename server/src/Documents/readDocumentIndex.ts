@@ -6,8 +6,13 @@ type LegacyDocumentIndex = Omit<DocumentIndex, "includes"> & { children: string[
 
 // Bundled data can migrate separately from the parser. Normalize its old format
 // once at the JSON boundary; runtime documents use includes and kind.
-export default function readDocumentIndex(content: string): DocumentIndex {
+export default function readDocumentIndex(content: string, implicitConstants = false): DocumentIndex {
   const stored = JSON.parse(content, reviveDeclaration) as DocumentIndex | LegacyDocumentIndex;
+  // Legacy indexes encoded every global variable as a constant. API globals
+  // really are implicit constants; ordinary scripts need their variable scope.
+  stored.globalDeclarations = stored.globalDeclarations.map((declaration) =>
+    declaration.kind === DeclarationKind.Constant && !declaration.isConst && !implicitConstants ? { ...declaration, kind: DeclarationKind.Variable, scope: "global" } : declaration,
+  );
   if ("includes" in stored) return stored;
   const { children, includePositions, ...declarations } = stored;
   return { ...declarations, includes: children.map((name, i) => ({ name, ...(includePositions?.[i] ? { position: includePositions[i] } : {}) })) };
@@ -33,7 +38,8 @@ export function reviveDeclaration(_key: string, value: unknown): unknown {
     const legacyKind = tokenType ?? storedKind;
     const kind = legacyKind === 18 && targetKind === "struct" ? ReferenceKind.Type : typeof legacyKind === "number" ? legacyKinds[legacyKind] : undefined;
     if (!kind) throw new Error(`Unknown serialized declaration kind: ${String(legacyKind)}`);
-    return { ...declaration, kind };
+    return { ...declaration, kind, ...(kind === DeclarationKind.Variable ? { scope: "local" } : {}) };
   }
+  if (stored.kind === DeclarationKind.Variable && !("scope" in stored)) return { ...stored, scope: "local" };
   return value;
 }

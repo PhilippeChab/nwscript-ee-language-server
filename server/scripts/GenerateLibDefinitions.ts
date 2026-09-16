@@ -1,3 +1,4 @@
+import { TextDocument } from "vscode-languageserver-textdocument";
 import { writeFileSync, readFileSync, readdirSync } from "fs";
 import { normalize, join } from "path";
 import { createHash } from "crypto";
@@ -52,7 +53,7 @@ const generateDefinitions = async () => {
     return;
   }
 
-  const definitions = parserService.analyzeContent(lib, AnalysisMode.document);
+  const definitions = parserService.analyzeContent(TextDocument.create("file:///nwscript.nss", "nwscript", 0, lib), AnalysisMode.document);
   const destination = join(__dirname, "../resources/standardLibDefinitions.json");
   const output = JSON.stringify(definitions, null, 4);
   if (check) {

@@ -6,6 +6,7 @@ import type { Position } from "vscode-languageserver";
 import type { TextDocument } from "vscode-languageserver-textdocument";
 import type { DocumentIndex, LocalScope, AutoImportContext } from "./contracts";
 import type { FunctionDeclaration, ParameterDeclaration, VariableDeclaration } from "./types";
+import { isStandardLibrary } from "../Utils/Uri";
 import { LanguageTypes } from "./constants";
 import { recoverDeclarations } from "./recoverDeclarations";
 // Select the CJS runtime so bundled Node entry points retain their module filename.
@@ -152,7 +153,7 @@ export default class SyntaxDocument {
           kind: DeclarationKind.Struct,
           properties: (fields?.namedChildren.filter(isNode) || [])
             .filter((child) => child.type === "field_declaration")
-            .flatMap((field) => this.variables(field).map((variable) => ({ ...variable, kind: DeclarationKind.Field }))),
+            .flatMap((field) => this.variables(field).map(({ identifier, position, valueType }) => ({ identifier, position, valueType, kind: DeclarationKind.Field }))),
         });
       } else if (node.type === "declaration") {
         const variables = this.variables(node);
@@ -161,13 +162,17 @@ export default class SyntaxDocument {
           const declarators = node.childrenForFieldName("declarator").filter(isNode);
           for (const variable of variables) {
             const declarator = declarators.find((child) => (child.childForFieldName("declarator") || child).text === variable.identifier);
+            const isConst = node.namedChildren.filter(isNode).some((child) => child.type === "const_qualifier");
+            const classification =
+              isConst || isStandardLibrary(this.document.uri)
+                ? { kind: DeclarationKind.Constant as const, ...(isConst ? { isConst: true as const } : {}) }
+                : { kind: DeclarationKind.Variable as const, scope: "global" as const };
             index.globalDeclarations.push({
               position: variable.position,
               identifier: variable.identifier,
-              kind: DeclarationKind.Constant,
+              ...classification,
               valueType: variable.valueType,
               value: declarator?.childForFieldName("value")?.text || "",
-              ...(node.namedChildren.filter(isNode).some((child) => child.type === "const_qualifier") ? { isConst: true as const } : {}),
             });
           }
         }
@@ -367,7 +372,7 @@ export default class SyntaxDocument {
       .flatMap((declarator) => {
         const name = declarator.childForFieldName("declarator") || declarator;
         if (name.isMissing || !["identifier", "field_identifier"].includes(name.type)) return [];
-        return [{ identifier: name.text, position: this.position(name), valueType: this.valueType(node), kind: DeclarationKind.Variable }];
+        return [{ identifier: name.text, position: this.position(name), valueType: this.valueType(node), kind: DeclarationKind.Variable, scope: "local" }];
       });
   }
 

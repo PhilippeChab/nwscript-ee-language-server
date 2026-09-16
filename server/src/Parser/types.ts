@@ -22,11 +22,14 @@ type LanguageConstant = {
   kind: DeclarationKind.Constant;
   valueType: LanguageTypes;
   value: LanguageValueOrRef;
+  // Records the source qualifier; implicit nwscript.nss constants omit it.
   isConst?: true;
 };
 type LanguageVariable = {
   kind: DeclarationKind.Variable;
+  scope: "global" | "local";
   valueType: LanguageTypes;
+  value?: LanguageValueOrRef;
 };
 type LanguageFunction = {
   kind: DeclarationKind.Function;

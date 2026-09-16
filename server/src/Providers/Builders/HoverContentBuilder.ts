@@ -43,7 +43,9 @@ export default class HoverContentBuilder extends Builder {
   }
 
   private static buildVariableItem(declaration: VariableDeclaration) {
-    return this.buildMarkdown(`${this.handleLanguageType(declaration.valueType)} ${declaration.identifier}`);
+    return this.buildMarkdown(
+      `${this.handleLanguageType(declaration.valueType)} ${declaration.identifier}${declaration.value !== undefined && declaration.value !== "" ? ` = ${declaration.value}` : ""}`,
+    );
   }
 
   private static buildFunctionParamItem(declaration: ParameterDeclaration) {

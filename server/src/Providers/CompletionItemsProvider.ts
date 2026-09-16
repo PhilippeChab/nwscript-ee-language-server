@@ -4,7 +4,6 @@ import { TextDocument } from "vscode-languageserver-textdocument";
 import type { ServerManager } from "../ServerManager";
 import { CompletionItemBuilder } from "./Builders";
 import { AutoImportContext, LocalScope } from "../Parser/ParserService";
-import { isStandardLibrary } from "../Documents/StandardLibrary";
 import { IndexedDocument } from "../Documents";
 import Provider from "./Provider";
 
@@ -67,7 +66,7 @@ export default class CompletionItemsProvider extends Provider {
         [],
         localScope.functionDeclarations.map((declaration) => declaration.identifier),
       )
-      .map((declaration) => CompletionItemBuilder.buildItem(declaration, isStandardLibrary(document.uri)));
+      .map((declaration) => CompletionItemBuilder.buildItem(declaration));
   }
 
   private getLocalScopeCompletionItems(localScope: LocalScope, document: IndexedDocument) {
@@ -80,7 +79,7 @@ export default class CompletionItemsProvider extends Provider {
   }
 
   private getStandardLibCompletionItems(uri: string) {
-    return this.getStandardLibDeclarations(uri).map((declaration) => CompletionItemBuilder.buildItem(declaration, true));
+    return this.getStandardLibDeclarations(uri).map((declaration) => CompletionItemBuilder.buildItem(declaration));
   }
 
   private getAutoImportCompletionItems(document: IndexedDocument, liveDocument: TextDocument, context: AutoImportContext | undefined, visible: CompletionItem[]) {

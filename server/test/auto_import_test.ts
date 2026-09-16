@@ -217,7 +217,9 @@ describe("Auto-import completion", function () {
   for (const bundled of [true, false]) {
     for (const transitive of [true, false]) {
       it(`reserves API constants without a const modifier (bundled=${String(bundled)}, transitive=${String(transitive)})`, () => {
-        const library = bundled ? readDocumentIndex(readFileSync(join(__dirname, "../resources/standardLibDefinitions.json"), "utf8")) : parserService.analyzeContent("int TRUE = 1;", "document");
+        const library = bundled
+          ? readDocumentIndex(readFileSync(join(__dirname, "../resources/standardLibDefinitions.json"), "utf8"), true)
+          : parserService.analyzeContent(TextDocument.create(workspaceUri("nwscript.nss"), "nwscript", 0, "int TRUE = 1;"), "document");
         expect(library.globalDeclarations.find((declaration: any) => declaration.identifier === "TRUE").isConst).to.equal(undefined);
         const { items } = complete(
           "void main() {\n Imp|\n}",
@@ -317,7 +319,7 @@ describe("Auto-import completion", function () {
       for (const placement of ["earlierInclude", "laterDeclaration", "api"]) {
         for (const transitive of [false, true]) {
           it(`checks incoming scoped names against ${placement}: ${reserved}, ${scoped}, transitive=${String(transitive)}`, () => {
-            const library = parserService.analyzeContent(placement === "api" ? reserved.replace("const ", "") : "", "document");
+            const library = parserService.analyzeContent(TextDocument.create(workspaceUri("nwscript.nss"), "nwscript", 0, placement === "api" ? reserved.replace("const ", "") : ""), "document");
             const { items } = complete(
               `${placement === "earlierInclude" ? '#include "existing"' : placement === "laterDeclaration" ? reserved : ""}\nvoid main() { Imp| }`,
               { existing: reserved, helper: `${transitive ? '#include "dependency"' : scoped}\nvoid Imported() {}`, dependency: scoped },
