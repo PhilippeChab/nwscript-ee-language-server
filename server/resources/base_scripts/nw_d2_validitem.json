@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "NW_O0_ITEMMAKER"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 11,
-            "character": 0
+            "name": "NW_O0_ITEMMAKER",
+            "position": {
+                "line": 11,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

@@ -641,7 +641,7 @@
         }
     ],
     "structDeclarations": [],
-    "children": [],
+    "includes": [],
     "memberReferences": [
         {
             "identifier": "x",

@@ -1734,7 +1734,7 @@
         }
     ],
     "structDeclarations": [],
-    "children": [],
+    "includes": [],
     "localDeclarations": [
         {
             "identifier": "nCharmMod",

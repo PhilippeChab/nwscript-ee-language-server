@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "NW_J_RESCUE"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 1,
-            "character": 0
+            "name": "NW_J_RESCUE",
+            "position": {
+                "line": 1,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

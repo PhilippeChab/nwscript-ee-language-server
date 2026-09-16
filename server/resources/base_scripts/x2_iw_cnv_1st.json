@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "x2_inc_intweapon"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 0,
-            "character": 0
+            "name": "x2_inc_intweapon",
+            "position": {
+                "line": 0,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

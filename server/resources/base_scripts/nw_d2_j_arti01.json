@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "NW_I0_PLOT"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 13,
-            "character": 0
+            "name": "NW_I0_PLOT",
+            "position": {
+                "line": 13,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

@@ -353,13 +353,13 @@
             ]
         }
     ],
-    "children": [
-        "x0_i0_spells"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 15,
-            "character": 0
+            "name": "x0_i0_spells",
+            "position": {
+                "line": 15,
+                "character": 0
+            }
         }
     ],
     "localDeclarations": [

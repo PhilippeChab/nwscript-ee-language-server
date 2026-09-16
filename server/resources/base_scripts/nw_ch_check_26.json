@@ -1,18 +1,20 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "nw_i0_henchman",
-        "nw_i0_plot"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 1,
-            "character": 0
+            "name": "nw_i0_henchman",
+            "position": {
+                "line": 1,
+                "character": 0
+            }
         },
         {
-            "line": 2,
-            "character": 0
+            "name": "nw_i0_plot",
+            "position": {
+                "line": 2,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

@@ -912,13 +912,13 @@
         }
     ],
     "structDeclarations": [],
-    "children": [
-        "x2_inc_itemprop"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 13,
-            "character": 0
+            "name": "x2_inc_itemprop",
+            "position": {
+                "line": 13,
+                "character": 0
+            }
         }
     ],
     "localDeclarations": [

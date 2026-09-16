@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "x0_i0_henchman"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 10,
-            "character": 0
+            "name": "x0_i0_henchman",
+            "position": {
+                "line": 10,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

@@ -324,13 +324,13 @@
         }
     ],
     "structDeclarations": [],
-    "children": [
-        "x0_i0_talent"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 13,
-            "character": 0
+            "name": "x0_i0_talent",
+            "position": {
+                "line": 13,
+                "character": 0
+            }
         }
     ],
     "localDeclarations": [

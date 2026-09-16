@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "x0_inc_portal"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 12,
-            "character": 0
+            "name": "x0_inc_portal",
+            "position": {
+                "line": 12,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

@@ -1,18 +1,20 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "nw_i0_plot",
-        "NW_J_RESCUE"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 0,
-            "character": 0
+            "name": "nw_i0_plot",
+            "position": {
+                "line": 0,
+                "character": 0
+            }
         },
         {
-            "line": 1,
-            "character": 0
+            "name": "NW_J_RESCUE",
+            "position": {
+                "line": 1,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [

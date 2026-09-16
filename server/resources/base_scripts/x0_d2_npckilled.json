@@ -1,13 +1,13 @@
 {
     "globalDeclarations": [],
     "structDeclarations": [],
-    "children": [
-        "x0_i0_npckilled"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 2,
-            "character": 0
+            "name": "x0_i0_npckilled",
+            "position": {
+                "line": 2,
+                "character": 0
+            }
         }
     ],
     "entryPointDeclarations": [
