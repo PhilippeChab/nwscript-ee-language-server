@@ -1,3 +1,4 @@
+import { pathToFileURL } from "url";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { createHash } from "crypto";
 import { existsSync, readFileSync, writeFileSync, renameSync, rmSync } from "fs";
@@ -155,7 +156,7 @@ export async function updateStandardLibrary(options: { scripts?: string; pinned?
   if (metadata.version === current.version && sha256(source) !== current.sourceSha256) throw new Error("nwscript.nss SHA-256 mismatch for the recorded version");
   metadata.sourceSha256 = sha256(source);
   const parserService = await new ParserService(true).loadGrammar();
-  const definitions = parserService.analyzeContent(TextDocument.create("file:///nwscript.nss", "nwscript", 0, source.toString("utf8")), AnalysisMode.document);
+  const definitions = parserService.analyzeContent(TextDocument.create(pathToFileURL(sourcePath).href, "nwscript", 0, source.toString("utf8")), AnalysisMode.document);
   if (!definitions.globalDeclarations.length) throw new Error("No standard library declarations could be parsed");
   const updates: [string, Buffer][] = [
     [sourcePath, source],

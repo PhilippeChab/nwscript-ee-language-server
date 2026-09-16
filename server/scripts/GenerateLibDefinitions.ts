@@ -1,3 +1,4 @@
+import { pathToFileURL } from "url";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { writeFileSync, readFileSync, readdirSync } from "fs";
 import { normalize, join } from "path";
@@ -19,7 +20,8 @@ const generateDefinitions = async () => {
   const parserService = await new ParserService(true).loadGrammar();
 
   console.log("Generating nwscript.nss definitions ...");
-  const source = readFileSync(join(__dirname, "nwscript.nss"));
+  const sourcePath = join(__dirname, "nwscript.nss");
+  const source = readFileSync(sourcePath);
   const metadata: SourceMetadata = JSON.parse(readFileSync(join(__dirname, "../resources/standardLibSource.json"), "utf8"));
   if (createHash("sha256").update(source).digest("hex") !== metadata.sourceSha256) {
     throw new Error("nwscript.nss does not match standardLibSource.json. Fetch the pinned source or update its provenance first.");
@@ -53,7 +55,7 @@ const generateDefinitions = async () => {
     return;
   }
 
-  const definitions = parserService.analyzeContent(TextDocument.create("file:///nwscript.nss", "nwscript", 0, lib), AnalysisMode.document);
+  const definitions = parserService.analyzeContent(TextDocument.create(pathToFileURL(sourcePath).href, "nwscript", 0, lib), AnalysisMode.document);
   const destination = join(__dirname, "../resources/standardLibDefinitions.json");
   const output = JSON.stringify(definitions, null, 4);
   if (check) {

@@ -44,6 +44,17 @@ describe("ParserService", () => {
     expect(syntax.getIndex().globalDeclarations[0]).to.include({ ...expected, value: "2" });
   });
 
+  it("recognizes API resource names independently of the host platform", () => {
+    for (const uri of ["file:///nwscript.nss", "file:///C:/scripts/nwscript.nss", "file:///C%3A/scripts/NWScript.NSS", "file://server/share/nwscript.nss", "file:///scripts/nws%63ript.nss"]) {
+      const document = TextDocument.create(uri, "nwscript", 1, "int TRUE = 1;");
+      expect(parserService.getDocumentIndex(document).globalDeclarations[0].kind, uri).to.equal(DeclarationKind.Constant);
+    }
+    for (const uri of ["file:///syntax.nss", "file:///C:/scripts/helper.nss", "file://server/share/helper.nss", "untitled:nwscript.nss"]) {
+      const document = TextDocument.create(uri, "nwscript", 1, "int Value;");
+      expect(parserService.getDocumentIndex(document).globalDeclarations[0].kind, uri).to.equal(DeclarationKind.Variable);
+    }
+  });
+
   it("keeps unnamed documents parseable", () => {
     const document = TextDocument.create("untitled:Untitled-1", "nwscript", 1, "int Value;");
     expect(parserService.getDocumentIndex(document).globalDeclarations[0]).to.include({ kind: DeclarationKind.Variable, scope: "global" });
