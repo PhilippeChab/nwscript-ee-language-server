@@ -72,7 +72,8 @@
                 "character": 9
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nInspectorToken",
@@ -81,7 +82,8 @@
                 "character": 6
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nToken",
@@ -90,7 +92,8 @@
                 "character": 9
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sEvent",
@@ -99,7 +102,8 @@
                 "character": 9
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sElem",
@@ -108,7 +112,8 @@
                 "character": 9
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nIdx",
@@ -117,7 +122,8 @@
                 "character": 9
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sWndId",
@@ -126,7 +132,8 @@
                 "character": 9
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "jPayld",
@@ -135,7 +142,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "msg",
@@ -144,7 +152,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nTargetToken",
@@ -153,7 +162,8 @@
                 "character": 6
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "wndlst",
@@ -162,7 +172,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nth",
@@ -171,7 +182,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "itertoken",
@@ -180,7 +192,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "name",
@@ -189,7 +202,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "updateview",
@@ -198,7 +212,8 @@
                 "character": 6
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "labels",
@@ -207,7 +222,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "watchval",
@@ -216,7 +232,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "i",
@@ -225,7 +242,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bind",
@@ -234,7 +252,8 @@
                 "character": 13
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "ourval",
@@ -243,7 +262,8 @@
                 "character": 11
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "theirval",
@@ -252,7 +272,8 @@
                 "character": 11
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bindlabels_bool",
@@ -261,7 +282,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bindvalues_bool",
@@ -270,7 +292,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bindlabels_readonly",
@@ -279,7 +302,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bindvalues_readonly",
@@ -288,7 +312,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nth",
@@ -297,7 +322,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bind",
@@ -306,7 +332,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "prefix",
@@ -315,7 +342,8 @@
                 "character": 13
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bval",
@@ -324,7 +352,8 @@
                 "character": 13
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "val",
@@ -333,7 +362,8 @@
                 "character": 17
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "col",
@@ -342,7 +372,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "row",
@@ -351,7 +382,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "template",
@@ -360,7 +392,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "value",
@@ -369,7 +402,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "row",
@@ -378,7 +412,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "template",
@@ -387,7 +422,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "label",
@@ -396,7 +432,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "value",
@@ -405,7 +442,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "row",
@@ -414,7 +452,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "row",
@@ -423,7 +462,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "refreshBtn",
@@ -432,7 +472,8 @@
                 "character": 9
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "root",
@@ -441,7 +482,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nui",
@@ -450,7 +492,8 @@
                 "character": 7
             },
             "valueType": "json",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "token",
@@ -459,7 +502,8 @@
                 "character": 6
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

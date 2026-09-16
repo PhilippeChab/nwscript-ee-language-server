@@ -36,7 +36,8 @@
                 "character": 5
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

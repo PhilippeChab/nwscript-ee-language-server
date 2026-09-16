@@ -908,7 +908,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "n",
@@ -917,7 +918,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nFloatLength",
@@ -926,7 +928,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fCompare",
@@ -935,7 +938,8 @@
                 "character": 14
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fCoord",
@@ -944,7 +948,8 @@
                 "character": 14
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fCosDeltaAngle",
@@ -953,7 +958,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vOrthonormal",
@@ -962,7 +968,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fInterpolatedAngle",
@@ -971,7 +978,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fRelativeTimeOfYear",
@@ -980,7 +988,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fSunVerticalPeakAngle",
@@ -989,7 +998,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vSunrise",
@@ -998,7 +1008,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vSunset",
@@ -1007,7 +1018,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vNoon",
@@ -1016,7 +1028,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fRelativeTime",
@@ -1025,7 +1038,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fRelativeTimeOfYear",
@@ -1034,7 +1048,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fRelativeTimeOfMonth",
@@ -1043,7 +1058,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fMoonVerticalPeakAngle",
@@ -1052,7 +1068,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vMoonrise",
@@ -1061,7 +1078,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vMoonset",
@@ -1070,7 +1088,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vPeak",
@@ -1079,7 +1098,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fRelativeTime",
@@ -1088,7 +1108,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fBrightness",
@@ -1097,7 +1118,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fMax",
@@ -1106,7 +1128,8 @@
                 "character": 14
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fRedshift",
@@ -1115,7 +1138,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vColorFog",
@@ -1124,7 +1148,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vColorAmbient",
@@ -1133,7 +1158,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vColorDiffuse",
@@ -1142,7 +1168,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fFadeTime",
@@ -1151,7 +1178,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fGlobalLatitude",
@@ -1160,7 +1188,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vSunDirection",
@@ -1169,7 +1198,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vMoonDirection",
@@ -1178,7 +1208,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oArea",
@@ -1187,7 +1218,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oArea",
@@ -1196,7 +1228,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nFogColor",
@@ -1205,7 +1238,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nAmbientColor",
@@ -1214,7 +1248,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nDiffuseColor",
@@ -1223,7 +1258,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sEventScript",
@@ -1232,7 +1268,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oArea",
@@ -1241,7 +1278,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nFogColor",
@@ -1250,7 +1288,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nAmbientColor",
@@ -1259,7 +1298,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nDiffuseColor",
@@ -1268,7 +1308,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sEventScript",
@@ -1277,7 +1318,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

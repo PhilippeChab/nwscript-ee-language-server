@@ -6,9 +6,10 @@
                 "character": 4
             },
             "identifier": "PLOT_2Q4_ITEM_KURTH_BASE_KEY",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "scope": "global"
         },
         {
             "position": {
@@ -16,9 +17,10 @@
                 "character": 4
             },
             "identifier": "PLOT_2Q4_ITEM_BARAM_BASE_KEY",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "2"
+            "value": "2",
+            "scope": "global"
         },
         {
             "position": {
@@ -26,9 +28,10 @@
                 "character": 4
             },
             "identifier": "PLOT_2Q4_ITEM_ERBS_RING",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "3"
+            "value": "3",
+            "scope": "global"
         },
         {
             "position": {
@@ -446,9 +449,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_COLMARR_FIRE_LEVER",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x00000001"
+            "value": "0x00000001",
+            "scope": "global"
         },
         {
             "position": {
@@ -456,9 +460,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_COLMARR_AIR_LEVER",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x00000002"
+            "value": "0x00000002",
+            "scope": "global"
         },
         {
             "position": {
@@ -466,9 +471,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_COLMARR_WATER_LEVER",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x00000004"
+            "value": "0x00000004",
+            "scope": "global"
         },
         {
             "position": {
@@ -476,9 +482,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_COLMARR_STONE_LEVER",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x00000008"
+            "value": "0x00000008",
+            "scope": "global"
         },
         {
             "position": {
@@ -486,9 +493,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_ENGINE_STATE_OFF",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x00000000"
+            "value": "0x00000000",
+            "scope": "global"
         },
         {
             "position": {
@@ -496,9 +504,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_ENGINE_IDENTIFY",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x00000001"
+            "value": "0x00000001",
+            "scope": "global"
         },
         {
             "position": {
@@ -506,9 +515,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_ENGINE_AID",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x00000002"
+            "value": "0x00000002",
+            "scope": "global"
         },
         {
             "position": {
@@ -516,9 +526,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_ENGINE_CURE_LIGHT",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x00000004"
+            "value": "0x00000004",
+            "scope": "global"
         },
         {
             "position": {
@@ -526,9 +537,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_ENGINE_BARKSKIN",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x00000008"
+            "value": "0x00000008",
+            "scope": "global"
         },
         {
             "position": {
@@ -536,9 +548,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_FOXS_CUNNING",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x00000005"
+            "value": "0x00000005",
+            "scope": "global"
         },
         {
             "position": {
@@ -546,9 +559,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_INVISIBILITY",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x0000000A"
+            "value": "0x0000000A",
+            "scope": "global"
         },
         {
             "position": {
@@ -556,9 +570,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_ENDURANCE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x0000000C"
+            "value": "0x0000000C",
+            "scope": "global"
         },
         {
             "position": {
@@ -566,9 +581,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_BULLS_STRENGTH",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x00000009"
+            "value": "0x00000009",
+            "scope": "global"
         },
         {
             "position": {
@@ -576,9 +592,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_CATS_GRACE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x00000003"
+            "value": "0x00000003",
+            "scope": "global"
         },
         {
             "position": {
@@ -586,9 +603,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_CURE_MODERATE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x00000006"
+            "value": "0x00000006",
+            "scope": "global"
         },
         {
             "position": {
@@ -596,9 +614,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_SPEED",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x00000007"
+            "value": "0x00000007",
+            "scope": "global"
         },
         {
             "position": {
@@ -606,9 +625,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_CURE_SERIOUS",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x0000000B"
+            "value": "0x0000000B",
+            "scope": "global"
         },
         {
             "position": {
@@ -616,9 +636,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_CLARITY",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x0000000E"
+            "value": "0x0000000E",
+            "scope": "global"
         },
         {
             "position": {
@@ -626,9 +647,10 @@
                 "character": 4
             },
             "identifier": "NW_2Q4_ENGINE_STATE_ON",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "0x0000000F"
+            "value": "0x0000000F",
+            "scope": "global"
         }
     ],
     "structDeclarations": [],
@@ -677,7 +699,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oWay",
@@ -686,7 +709,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -713,7 +737,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -731,7 +756,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -768,7 +794,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oEngine",
@@ -777,7 +804,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oPotion",
@@ -786,7 +814,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oLocation",
@@ -795,7 +824,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "lSpawn",
@@ -804,7 +834,8 @@
                 "character": 13
             },
             "valueType": "location",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nPlot",
@@ -813,7 +844,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -840,7 +872,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nPlot",
@@ -849,7 +882,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -867,7 +901,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nPlot",
@@ -876,7 +911,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vFace",
@@ -885,7 +921,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -903,7 +940,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -949,7 +987,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

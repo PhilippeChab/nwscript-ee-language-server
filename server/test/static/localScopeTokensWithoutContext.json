@@ -37,7 +37,8 @@
                     },
                     "identifier": "skillFeat",
                     "kind": "variable",
-                    "valueType": "NWNX_SkillRanks_SkillFeat"
+                    "valueType": "NWNX_SkillRanks_SkillFeat",
+                    "scope": "local"
                 },
                 {
                     "position": {
@@ -46,7 +47,8 @@
                     },
                     "identifier": "sFunc",
                     "kind": "variable",
-                    "valueType": "string"
+                    "valueType": "string",
+                    "scope": "local"
                 }
             ]
         },
@@ -96,7 +98,8 @@
                     },
                     "identifier": "sFunc",
                     "kind": "variable",
-                    "valueType": "string"
+                    "valueType": "string",
+                    "scope": "local"
                 }
             ]
         },
@@ -137,7 +140,8 @@
                     },
                     "identifier": "sFunc",
                     "kind": "variable",
-                    "valueType": "string"
+                    "valueType": "string",
+                    "scope": "local"
                 }
             ]
         },
@@ -169,7 +173,8 @@
                     },
                     "identifier": "sFunc",
                     "kind": "variable",
-                    "valueType": "string"
+                    "valueType": "string",
+                    "scope": "local"
                 }
             ]
         },
@@ -191,7 +196,8 @@
                     },
                     "identifier": "sFunc",
                     "kind": "variable",
-                    "valueType": "string"
+                    "valueType": "string",
+                    "scope": "local"
                 }
             ]
         },
@@ -233,7 +239,8 @@
                     },
                     "identifier": "sFunc",
                     "kind": "variable",
-                    "valueType": "string"
+                    "valueType": "string",
+                    "scope": "local"
                 }
             ]
         },
@@ -274,7 +281,8 @@
                     },
                     "identifier": "sPad",
                     "kind": "variable",
-                    "valueType": "string"
+                    "valueType": "string",
+                    "scope": "local"
                 },
                 {
                     "position": {
@@ -283,7 +291,8 @@
                     },
                     "identifier": "i",
                     "kind": "variable",
-                    "valueType": "int"
+                    "valueType": "int",
+                    "scope": "local"
                 }
             ]
         },
@@ -325,7 +334,8 @@
                     },
                     "identifier": "sFunc",
                     "kind": "variable",
-                    "valueType": "string"
+                    "valueType": "string",
+                    "scope": "local"
                 }
             ]
         },
@@ -366,7 +376,8 @@
                     },
                     "identifier": "skillFeat",
                     "kind": "variable",
-                    "valueType": "NWNX_SkillRanks_SkillFeat"
+                    "valueType": "NWNX_SkillRanks_SkillFeat",
+                    "scope": "local"
                 },
                 {
                     "position": {
@@ -375,7 +386,8 @@
                     },
                     "identifier": "sFunc",
                     "kind": "variable",
-                    "valueType": "string"
+                    "valueType": "string",
+                    "scope": "local"
                 }
             ]
         },
@@ -407,7 +419,8 @@
                     },
                     "identifier": "sFunc",
                     "kind": "variable",
-                    "valueType": "string"
+                    "valueType": "string",
+                    "scope": "local"
                 }
             ]
         }
@@ -420,7 +433,8 @@
             },
             "identifier": "skillFeat",
             "kind": "variable",
-            "valueType": "NWNX_SkillRanks_SkillFeat"
+            "valueType": "NWNX_SkillRanks_SkillFeat",
+            "scope": "local"
         },
         {
             "position": {
@@ -429,7 +443,8 @@
             },
             "identifier": "sFunc",
             "kind": "variable",
-            "valueType": "string"
+            "valueType": "string",
+            "scope": "local"
         },
         {
             "position": {
@@ -456,7 +471,8 @@
             },
             "identifier": "sFunc",
             "kind": "variable",
-            "valueType": "string"
+            "valueType": "string",
+            "scope": "local"
         },
         {
             "position": {
@@ -492,7 +508,8 @@
             },
             "identifier": "sFunc",
             "kind": "variable",
-            "valueType": "string"
+            "valueType": "string",
+            "scope": "local"
         },
         {
             "position": {
@@ -519,7 +536,8 @@
             },
             "identifier": "sFunc",
             "kind": "variable",
-            "valueType": "string"
+            "valueType": "string",
+            "scope": "local"
         },
         {
             "position": {
@@ -537,7 +555,8 @@
             },
             "identifier": "sFunc",
             "kind": "variable",
-            "valueType": "string"
+            "valueType": "string",
+            "scope": "local"
         },
         {
             "position": {
@@ -546,7 +565,8 @@
             },
             "identifier": "sFunc",
             "kind": "variable",
-            "valueType": "string"
+            "valueType": "string",
+            "scope": "local"
         },
         {
             "position": {
@@ -574,7 +594,8 @@
             },
             "identifier": "sPad",
             "kind": "variable",
-            "valueType": "string"
+            "valueType": "string",
+            "scope": "local"
         },
         {
             "position": {
@@ -583,7 +604,8 @@
             },
             "identifier": "i",
             "kind": "variable",
-            "valueType": "int"
+            "valueType": "int",
+            "scope": "local"
         },
         {
             "position": {
@@ -610,7 +632,8 @@
             },
             "identifier": "sFunc",
             "kind": "variable",
-            "valueType": "string"
+            "valueType": "string",
+            "scope": "local"
         },
         {
             "position": {
@@ -638,7 +661,8 @@
             },
             "identifier": "skillFeat",
             "kind": "variable",
-            "valueType": "NWNX_SkillRanks_SkillFeat"
+            "valueType": "NWNX_SkillRanks_SkillFeat",
+            "scope": "local"
         },
         {
             "position": {
@@ -647,7 +671,8 @@
             },
             "identifier": "sFunc",
             "kind": "variable",
-            "valueType": "string"
+            "valueType": "string",
+            "scope": "local"
         },
         {
             "position": {
@@ -674,7 +699,8 @@
             },
             "identifier": "sFunc",
             "kind": "variable",
-            "valueType": "string"
+            "valueType": "string",
+            "scope": "local"
         },
         {
             "position": {

@@ -188,7 +188,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oLastObject",
@@ -197,7 +198,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "evOrder",
@@ -206,7 +208,8 @@
                 "character": 10
             },
             "valueType": "event",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oMaster",
@@ -215,7 +218,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "SOCIAL_RANGE",
@@ -224,7 +228,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -251,7 +256,8 @@
                 "character": 14
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fFacing",
@@ -260,7 +266,8 @@
                 "character": 11
             },
             "valueType": "float",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vPosition",
@@ -269,7 +276,8 @@
                 "character": 10
             },
             "valueType": "location",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vOldPosition",
@@ -278,7 +286,8 @@
                 "character": 13
             },
             "valueType": "location",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vPos",
@@ -287,7 +296,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ],
     "memberReferences": [

@@ -6,9 +6,10 @@
                 "character": 4
             },
             "identifier": "mySKILL_CRAFT_TRAP",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "22"
+            "value": "22",
+            "scope": "global"
         },
         {
             "position": {
@@ -16,9 +17,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_DCMINOR",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "2001"
+            "value": "2001",
+            "scope": "global"
         },
         {
             "position": {
@@ -26,9 +28,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_DCAVERAGE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "2002"
+            "value": "2002",
+            "scope": "global"
         },
         {
             "position": {
@@ -36,9 +39,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_DCSTRONG",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "2003"
+            "value": "2003",
+            "scope": "global"
         },
         {
             "position": {
@@ -46,9 +50,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_DCDEADLY",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "2004"
+            "value": "2004",
+            "scope": "global"
         },
         {
             "position": {
@@ -56,9 +61,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_FIRECOMPONENT",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_WMGRENADE002\""
+            "value": "\"X1_WMGRENADE002\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -66,9 +72,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_ELECTRICALCOMPONENT",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"NW_IT_MSMLMISC11\""
+            "value": "\"NW_IT_MSMLMISC11\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -76,9 +83,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_TANGLECOMPONENT",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_WMGRENADE006\""
+            "value": "\"X1_WMGRENADE006\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -86,9 +94,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_SPIKECOMPONENT",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_WMGRENADE003\""
+            "value": "\"X1_WMGRENADE003\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -96,9 +105,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_HOLYCOMPONENT",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_WMGRENADE005\""
+            "value": "\"X1_WMGRENADE005\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -106,9 +116,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_GASCOMPONENT",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_WMGRENADE004\""
+            "value": "\"X1_WMGRENADE004\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -116,9 +127,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_FROSTCOMPONENT",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_IT_MSMLMISC01\""
+            "value": "\"X1_IT_MSMLMISC01\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -126,9 +138,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_NEGATIVECOMPONENT",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"NW_IT_MSMLMISC13\""
+            "value": "\"NW_IT_MSMLMISC13\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -136,9 +149,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_SONICCOMPONENT",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_WMGRENADE007\""
+            "value": "\"X1_WMGRENADE007\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -146,9 +160,10 @@
                 "character": 7
             },
             "identifier": "SKILL_CTRAP_ACIDCOMPONENT",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "string",
-            "value": "\"X1_WMGRENADE001\""
+            "value": "\"X1_WMGRENADE001\"",
+            "scope": "global"
         },
         {
             "position": {
@@ -156,9 +171,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_MINOR",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "1"
+            "value": "1",
+            "scope": "global"
         },
         {
             "position": {
@@ -166,9 +182,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_AVERAGE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "3"
+            "value": "3",
+            "scope": "global"
         },
         {
             "position": {
@@ -176,9 +193,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_STRONG",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "scope": "global"
         },
         {
             "position": {
@@ -186,9 +204,10 @@
                 "character": 4
             },
             "identifier": "SKILL_TRAP_DEADLY",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "7"
+            "value": "7",
+            "scope": "global"
         },
         {
             "position": {
@@ -196,9 +215,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_SPIKE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "5"
+            "value": "5",
+            "scope": "global"
         },
         {
             "position": {
@@ -206,9 +226,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_SPIKE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -216,9 +237,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_SPIKE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -226,9 +248,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_SPIKE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "35"
+            "value": "35",
+            "scope": "global"
         },
         {
             "position": {
@@ -236,9 +259,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_HOLY",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "scope": "global"
         },
         {
             "position": {
@@ -246,9 +270,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_HOLY",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -256,9 +281,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_HOLY",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -266,9 +292,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_HOLY",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -276,9 +303,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_TANGLE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "scope": "global"
         },
         {
             "position": {
@@ -286,9 +314,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_TANGLE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -296,9 +325,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_TANGLE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -306,9 +336,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_TANGLE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -316,9 +347,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_ACID",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "scope": "global"
         },
         {
             "position": {
@@ -326,9 +358,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_ACID",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -336,9 +369,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_ACID",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -346,9 +380,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_ACID",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "35"
+            "value": "35",
+            "scope": "global"
         },
         {
             "position": {
@@ -356,9 +391,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_FIRE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -366,9 +402,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_FIRE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -376,9 +413,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_FIRE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -386,9 +424,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_FIRE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "35"
+            "value": "35",
+            "scope": "global"
         },
         {
             "position": {
@@ -396,9 +435,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_ELECTRICAL",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -406,9 +446,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_ELECTRICAL",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -416,9 +457,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_ELECTRICAL",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -426,9 +468,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_ELECTRICAL",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "35"
+            "value": "35",
+            "scope": "global"
         },
         {
             "position": {
@@ -436,9 +479,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_GAS",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -446,9 +490,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_GAS",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "35"
+            "value": "35",
+            "scope": "global"
         },
         {
             "position": {
@@ -456,9 +501,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_GAS",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "40"
+            "value": "40",
+            "scope": "global"
         },
         {
             "position": {
@@ -466,9 +512,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_GAS",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "45"
+            "value": "45",
+            "scope": "global"
         },
         {
             "position": {
@@ -476,9 +523,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_FROST",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "scope": "global"
         },
         {
             "position": {
@@ -486,9 +534,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_FROST",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -496,9 +545,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_FROST",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -506,9 +556,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_FROST",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -516,9 +567,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_NEGATIVE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "scope": "global"
         },
         {
             "position": {
@@ -526,9 +578,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_NEGATIVE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -536,9 +589,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_NEGATIVE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -546,9 +600,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_NEGATIVE",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -556,9 +611,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_SONIC",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "scope": "global"
         },
         {
             "position": {
@@ -566,9 +622,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_SONIC",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -576,9 +633,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_SONIC",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -586,9 +644,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_SONIC",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -596,9 +655,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_MINOR_ACID_SPLASH",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "15"
+            "value": "15",
+            "scope": "global"
         },
         {
             "position": {
@@ -606,9 +666,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_AVERAGE_ACID_SPLASH",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "20"
+            "value": "20",
+            "scope": "global"
         },
         {
             "position": {
@@ -616,9 +677,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_STRONG_ACID_SPLASH",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "25"
+            "value": "25",
+            "scope": "global"
         },
         {
             "position": {
@@ -626,9 +688,10 @@
                 "character": 4
             },
             "identifier": "SKILLDC_TRAP_BASE_TYPE_DEADLY_ACID_SPLASH",
-            "kind": "constant",
+            "kind": "variable",
             "valueType": "int",
-            "value": "30"
+            "value": "30",
+            "scope": "global"
         },
         {
             "position": {
@@ -943,7 +1006,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nFound",
@@ -952,7 +1016,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1015,7 +1080,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nDifficulty",
@@ -1024,7 +1090,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1078,7 +1145,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -1087,7 +1155,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nStackSize",
@@ -1096,7 +1165,8 @@
                 "character": 16
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

@@ -36,7 +36,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nNumber",
@@ -45,7 +46,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oPC",
@@ -54,7 +56,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nSkill",
@@ -63,7 +66,8 @@
                 "character": 14
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "s2DA",
@@ -72,7 +76,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRow",
@@ -81,7 +86,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "stItem",
@@ -90,7 +96,8 @@
                 "character": 24
             },
             "valueType": "craft_struct",
-            "kind": "variable"
+            "kind": "variable",
+            "scope": "local"
         }
     ],
     "memberReferences": [
