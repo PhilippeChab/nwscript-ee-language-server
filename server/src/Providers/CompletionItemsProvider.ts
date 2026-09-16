@@ -3,9 +3,9 @@ import { TextDocument } from "vscode-languageserver-textdocument";
 
 import type { ServerManager } from "../ServerManager";
 import { CompletionItemBuilder } from "./Builders";
-import { AutoImportContext, LocalScopeTokenizationResult } from "../Tokenizer/Tokenizer";
+import { AutoImportContext, LocalScope } from "../Parser/ParserService";
 import { isStandardLibrary } from "../Documents/StandardLibrary";
-import { Document } from "../Documents";
+import { IndexedDocument } from "../Documents";
 import Provider from "./Provider";
 
 const MAX_AUTO_IMPORT_ITEMS = 200;
@@ -39,8 +39,8 @@ export default class CompletionItemsProvider extends Provider {
 
       if (completionContext?.structsOnly) {
         const items = document
-          .getGlobalStructComplexTokens()
-          .concat(this.getStandardLibStructTokens(uri))
+          .getStructDeclarations()
+          .concat(this.getStandardLibStructDeclarations(uri))
           .map((token) => CompletionItemBuilder.buildItem(token));
         const completions = items.concat(this.getAutoImportCompletionItems(document, liveDocument, autoImportContext, items));
         return autoImportContext ? CompletionList.create(completions, true) : completions;
@@ -59,18 +59,18 @@ export default class CompletionItemsProvider extends Provider {
     };
   }
 
-  private getGlobalScopeCompletionItems(document: Document, localScope: LocalScopeTokenizationResult) {
+  private getGlobalScopeCompletionItems(document: IndexedDocument, localScope: LocalScope) {
     return document
-      .getGlobalComplexTokens(
+      .getGlobalDeclarations(
         [],
-        localScope.functionsComplexTokens.map((token) => token.identifier),
+        localScope.functionDeclarations.map((token) => token.identifier),
       )
       .map((token) => CompletionItemBuilder.buildItem(token, isStandardLibrary(document.uri)));
   }
 
-  private getLocalScopeCompletionItems(localScope: LocalScopeTokenizationResult, document: Document) {
-    const functionVariablesCompletionItems = localScope.functionVariablesComplexTokens.map((token) => CompletionItemBuilder.buildItem(token));
-    const functionsCompletionItems = localScope.functionsComplexTokens.map((token) =>
+  private getLocalScopeCompletionItems(localScope: LocalScope, document: IndexedDocument) {
+    const functionVariablesCompletionItems = localScope.variableDeclarations.map((token) => CompletionItemBuilder.buildItem(token));
+    const functionsCompletionItems = localScope.functionDeclarations.map((token) =>
       CompletionItemBuilder.buildItem(document.globalDeclarations.find((declaration) => declaration.identifier === token.identifier) || token),
     );
 
@@ -78,10 +78,10 @@ export default class CompletionItemsProvider extends Provider {
   }
 
   private getStandardLibCompletionItems(uri: string) {
-    return this.getStandardLibComplexTokens(uri).map((token) => CompletionItemBuilder.buildItem(token, true));
+    return this.getStandardLibDeclarations(uri).map((token) => CompletionItemBuilder.buildItem(token, true));
   }
 
-  private getAutoImportCompletionItems(document: Document, liveDocument: TextDocument, context: AutoImportContext | undefined, visible: CompletionItem[]) {
+  private getAutoImportCompletionItems(document: IndexedDocument, liveDocument: TextDocument, context: AutoImportContext | undefined, visible: CompletionItem[]) {
     if (!context) return [];
     const visibleNames = new Set(visible.map((item) => item.label));
     const prefix = context.prefix.toLowerCase();

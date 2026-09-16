@@ -2,11 +2,11 @@ import { describe, it } from "mocha";
 import { expect } from "chai";
 import { CompletionItemKind } from "vscode-languageserver";
 import SignatureHelpBuilder from "../src/Providers/Builders/SignatureHelpBuilder";
-import { LanguageTypes } from "../src/Tokenizer/constants";
-import type { FunctionComplexToken } from "../src/Tokenizer/types";
+import { LanguageTypes } from "../src/Parser/constants";
+import type { FunctionDeclaration } from "../src/Parser/types";
 
 describe("Signature help", () => {
-  const token: FunctionComplexToken = {
+  const token: FunctionDeclaration = {
     identifier: "Example",
     tokenType: CompletionItemKind.Function,
     returnType: LanguageTypes.void,

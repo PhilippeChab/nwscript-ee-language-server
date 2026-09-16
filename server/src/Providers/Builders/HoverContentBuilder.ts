@@ -1,11 +1,11 @@
 import { MarkupContent, MarkupKind } from "vscode-languageserver";
 
-import type { ComplexToken, ConstantComplexToken, FunctionComplexToken, FunctionParamComplexToken, StructComplexToken, StructPropertyComplexToken, VariableComplexToken } from "../../Tokenizer/types";
+import type { Declaration, ConstantDeclaration, FunctionDeclaration, ParameterDeclaration, StructDeclaration, FieldDeclaration, VariableDeclaration } from "../../Parser/types";
 import { ServerConfiguration } from "../../ServerManager/Config";
 import Builder from "./Builder";
 
 export default class HoverContentBuilder extends Builder {
-  public static buildItem(token: ComplexToken, serverConfig: ServerConfiguration, markdown = true): MarkupContent {
+  public static buildItem(token: Declaration, serverConfig: ServerConfiguration, markdown = true): MarkupContent {
     const content = this.buildRichItem(token, serverConfig);
     return markdown
       ? content
@@ -18,7 +18,7 @@ export default class HoverContentBuilder extends Builder {
         };
   }
 
-  private static buildRichItem(token: ComplexToken, serverConfig: ServerConfiguration): MarkupContent {
+  private static buildRichItem(token: Declaration, serverConfig: ServerConfiguration): MarkupContent {
     if (this.isConstantToken(token)) {
       return this.buildConstantItem(token);
     } else if (this.isVariableToken(token)) {
@@ -36,19 +36,19 @@ export default class HoverContentBuilder extends Builder {
     }
   }
 
-  private static buildConstantItem(token: ConstantComplexToken) {
+  private static buildConstantItem(token: ConstantDeclaration) {
     return this.buildMarkdown(`${token.isConst ? "const " : ""}${this.handleLanguageType(token.valueType)} ${token.identifier}${token.value !== "" ? ` = ${token.value}` : ""}`);
   }
 
-  private static buildVariableItem(token: VariableComplexToken) {
+  private static buildVariableItem(token: VariableDeclaration) {
     return this.buildMarkdown(`${this.handleLanguageType(token.valueType)} ${token.identifier}`);
   }
 
-  private static buildFunctionParamItem(token: FunctionParamComplexToken) {
+  private static buildFunctionParamItem(token: ParameterDeclaration) {
     return this.buildMarkdown(`${this.handleLanguageType(token.valueType)} ${token.identifier}`);
   }
 
-  private static buildFunctionItem(token: FunctionComplexToken, serverConfig: ServerConfiguration) {
+  private static buildFunctionItem(token: FunctionDeclaration, serverConfig: ServerConfiguration) {
     return this.buildMarkdown(
       [`${this.handleLanguageType(token.returnType)} ${token.identifier}(${token.params.map((param) => this.formatParameter(param)).join(", ")})`],
       serverConfig.hovering.addCommentsToFunctions ? ["```nwscript", ...token.comments, "```"] : [],
@@ -56,11 +56,11 @@ export default class HoverContentBuilder extends Builder {
     );
   }
 
-  private static buildStructPropertyItem(property: StructPropertyComplexToken) {
+  private static buildStructPropertyItem(property: FieldDeclaration) {
     return this.buildMarkdown(`${this.handleLanguageType(property.valueType)} ${property.identifier}`);
   }
 
-  private static buildStructItem(token: StructComplexToken) {
+  private static buildStructItem(token: StructDeclaration) {
     return this.buildMarkdown([`struct ${token.identifier}`, "{", ...token.properties.map((property) => `\t${property.valueType} ${property.identifier}`), "}"]);
   }
 

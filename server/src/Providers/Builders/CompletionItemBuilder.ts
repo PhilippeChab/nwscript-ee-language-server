@@ -1,13 +1,13 @@
 import { CompletionItem, CompletionItemKind, TextEdit } from "vscode-languageserver";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
-import type { ComplexToken, ConstantComplexToken, FunctionComplexToken, FunctionParamComplexToken, StructComplexToken, StructPropertyComplexToken, VariableComplexToken } from "../../Tokenizer/types";
+import type { Declaration, ConstantDeclaration, FunctionDeclaration, ParameterDeclaration, StructDeclaration, FieldDeclaration, VariableDeclaration } from "../../Parser/types";
 import { ServerConfiguration } from "../../ServerManager/Config";
-import type { AutoImportContext } from "../../Tokenizer/Tokenizer";
+import type { AutoImportContext } from "../../Parser/ParserService";
 import Builder from "./Builder";
 
 export default class CompletionItemBuilder extends Builder {
-  public static buildAutoImportItem(token: ComplexToken, includeName: string, document: TextDocument, context: AutoImportContext, serverConfig: ServerConfiguration): CompletionItem {
+  public static buildAutoImportItem(token: Declaration, includeName: string, document: TextDocument, context: AutoImportContext, serverConfig: ServerConfiguration): CompletionItem {
     const item = this.buildItem(token);
     const insertionText = this.buildResolvedItem(item, serverConfig).label;
     const { insertionPosition, replacementRange } = context;
@@ -28,7 +28,7 @@ export default class CompletionItemBuilder extends Builder {
 
   public static buildResolvedItem(item: CompletionItem, serverConfig: ServerConfiguration): CompletionItem {
     if (serverConfig.completion.addParamsToFunctions && item.kind === CompletionItemKind.Function && !item.label.includes("(")) {
-      const params = item.data as FunctionParamComplexToken[];
+      const params = item.data as ParameterDeclaration[];
 
       return {
         ...item,
@@ -41,7 +41,7 @@ export default class CompletionItemBuilder extends Builder {
     return item;
   }
 
-  public static buildItem(token: ComplexToken, implicitConstants = false): CompletionItem {
+  public static buildItem(token: Declaration, implicitConstants = false): CompletionItem {
     if (this.isConstantToken(token)) {
       return token.isConst || implicitConstants ? this.buildConstantItem(token) : this.buildVariableItem({ ...token, tokenType: CompletionItemKind.Variable });
     } else if (this.isVariableToken(token)) {
@@ -61,7 +61,7 @@ export default class CompletionItemBuilder extends Builder {
     }
   }
 
-  private static buildConstantItem(token: ConstantComplexToken): CompletionItem {
+  private static buildConstantItem(token: ConstantDeclaration): CompletionItem {
     return {
       label: token.identifier,
       kind: token.tokenType,
@@ -69,7 +69,7 @@ export default class CompletionItemBuilder extends Builder {
     };
   }
 
-  private static buildVariableItem(token: VariableComplexToken): CompletionItem {
+  private static buildVariableItem(token: VariableDeclaration): CompletionItem {
     return {
       label: token.identifier,
       kind: token.tokenType,
@@ -77,7 +77,7 @@ export default class CompletionItemBuilder extends Builder {
     };
   }
 
-  private static buildFunctionParamItem(token: FunctionParamComplexToken): CompletionItem {
+  private static buildFunctionParamItem(token: ParameterDeclaration): CompletionItem {
     return {
       label: token.identifier,
       kind: CompletionItemKind.Variable,
@@ -85,7 +85,7 @@ export default class CompletionItemBuilder extends Builder {
     };
   }
 
-  private static buildFunctionItem(token: FunctionComplexToken): CompletionItem {
+  private static buildFunctionItem(token: FunctionDeclaration): CompletionItem {
     return {
       label: token.identifier,
       kind: token.tokenType,
@@ -96,7 +96,7 @@ export default class CompletionItemBuilder extends Builder {
     };
   }
 
-  private static buildStructPropertyItem(property: StructPropertyComplexToken): CompletionItem {
+  private static buildStructPropertyItem(property: FieldDeclaration): CompletionItem {
     return {
       label: property.identifier,
       kind: property.tokenType,
@@ -104,7 +104,7 @@ export default class CompletionItemBuilder extends Builder {
     };
   }
 
-  private static buildStructItem(token: StructComplexToken): CompletionItem {
+  private static buildStructItem(token: StructDeclaration): CompletionItem {
     return {
       label: token.identifier,
       kind: token.tokenType,

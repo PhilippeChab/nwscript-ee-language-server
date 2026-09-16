@@ -3,8 +3,8 @@ import type { Language as SyntaxLanguage, Parser as SyntaxParser, Node, Tree } f
 import { CompletionItemKind, Range } from "vscode-languageserver";
 import type { Position } from "vscode-languageserver";
 import type { TextDocument } from "vscode-languageserver-textdocument";
-import type { DocumentTokenizationResult, LocalScopeTokenizationResult, AutoImportContext } from "./contracts";
-import type { FunctionComplexToken, FunctionParamComplexToken, VariableComplexToken } from "./types";
+import type { DocumentIndex, LocalScope, AutoImportContext } from "./contracts";
+import type { FunctionDeclaration, ParameterDeclaration, VariableDeclaration } from "./types";
 import { LanguageTypes } from "./constants";
 import { recoverDeclarations } from "./recoverDeclarations";
 // Select the CJS runtime so bundled Node entry points retain their module filename.
@@ -22,7 +22,7 @@ export default class SyntaxDocument {
   });
 
   private readonly resources: { tree: Tree; parser: SyntaxParser };
-  private index?: DocumentTokenizationResult;
+  private index?: DocumentIndex;
   private recovered = false;
 
   private source: string;
@@ -111,7 +111,7 @@ export default class SyntaxDocument {
     return name ? this.position(name) : undefined;
   }
 
-  public getIndex(strict = false): DocumentTokenizationResult {
+  public getIndex(strict = false): DocumentIndex {
     if (
       strict &&
       (this.recovered ||
@@ -121,7 +121,7 @@ export default class SyntaxDocument {
       throw new Error("Incomplete declaration");
     }
     if (this.index) return this.index;
-    const index: DocumentTokenizationResult = { globalDeclarations: [], structDeclarations: [], children: [] };
+    const index: DocumentIndex = { globalDeclarations: [], structDeclarations: [], children: [] };
     for (const node of this.walk(this.rootNode)) {
       if (node.type === "preproc_include") {
         const file = node.childForFieldName("file");
@@ -136,7 +136,7 @@ export default class SyntaxDocument {
           (index.entryPointDeclarations ||= []).push(fn);
           continue;
         }
-        const existing = index.globalDeclarations.find((token): token is FunctionComplexToken => token.tokenType === CompletionItemKind.Function && token.identifier === fn.identifier);
+        const existing = index.globalDeclarations.find((token): token is FunctionDeclaration => token.tokenType === CompletionItemKind.Function && token.identifier === fn.identifier);
         if (!existing) index.globalDeclarations.push(fn);
         else {
           if (fn.implementation) existing.implementation = true;
@@ -180,9 +180,9 @@ export default class SyntaxDocument {
     return index;
   }
 
-  public getVisibleLocals(position: Position): (VariableComplexToken | FunctionParamComplexToken)[] {
+  public getVisibleLocals(position: Position): (VariableDeclaration | ParameterDeclaration)[] {
     const offset = this.document.offsetAt(position);
-    const visible: (VariableComplexToken | FunctionParamComplexToken)[] = [];
+    const visible: (VariableDeclaration | ParameterDeclaration)[] = [];
     for (let node: Node | null = this.rootNode.descendantForIndex(offset); node; node = node.parent) {
       if (node.type === "compound_statement" || node.type === "for_statement") {
         for (const child of node.namedChildren
@@ -199,9 +199,9 @@ export default class SyntaxDocument {
     return visible;
   }
 
-  public getLocalScope(position?: Position, startLine = 0): LocalScopeTokenizationResult {
+  public getLocalScope(position?: Position, startLine = 0): LocalScope {
     const offset = position ? this.document.offsetAt(position) : this.source.length;
-    const functionsComplexTokens = [...this.walk(this.rootNode)]
+    const functionDeclarations = [...this.walk(this.rootNode)]
       .filter((node) => node.type === "function_definition" && node.childForFieldName("body") && node.startIndex < offset && this.position(node).line >= startLine)
       .flatMap((node) => {
         const fn = this.readFunction(node);
@@ -215,7 +215,7 @@ export default class SyntaxDocument {
         return [fn];
       })
       .reverse();
-    return { functionsComplexTokens, functionVariablesComplexTokens: position ? this.getVisibleLocals(position) : functionsComplexTokens.flatMap((fn) => [...(fn.variables || []), ...fn.params]) };
+    return { functionDeclarations, variableDeclarations: position ? this.getVisibleLocals(position) : functionDeclarations.flatMap((fn) => [...(fn.variables || []), ...fn.params]) };
   }
 
   public getCallContext(position: Position) {
@@ -360,7 +360,7 @@ export default class SyntaxDocument {
     return (type?.type === "struct_specifier" ? type.namedChildren.filter(isNode)[0]?.text : type?.text) as LanguageTypes;
   }
 
-  private variables(node: Node): VariableComplexToken[] {
+  private variables(node: Node): VariableDeclaration[] {
     return node
       .childrenForFieldName("declarator")
       .filter(isNode)
@@ -371,11 +371,11 @@ export default class SyntaxDocument {
       });
   }
 
-  private readFunction(node: Node): FunctionComplexToken | undefined {
+  private readFunction(node: Node): FunctionDeclaration | undefined {
     const name = node.childForFieldName("declarator");
     const args = node.namedChildren.filter(isNode).find((child) => child.type === "function_argument_list");
     if (!name || name.isMissing || !args) return;
-    const params: FunctionParamComplexToken[] = args.namedChildren
+    const params: ParameterDeclaration[] = args.namedChildren
       .filter(isNode)
       .filter((child) => child.type === "parameter_declaration")
       .flatMap((parameter) =>

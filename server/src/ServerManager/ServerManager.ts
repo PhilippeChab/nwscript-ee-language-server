@@ -20,7 +20,7 @@ import {
   WorkspaceProvider,
 } from "../Providers";
 import { DocumentsCollection, LiveDocumentsManager } from "../Documents";
-import { Tokenizer } from "../Tokenizer";
+import { ParserService } from "../Parser";
 import StandardLibrary, { isStandardLibrary } from "../Documents/StandardLibrary";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { Logger } from "../Logger";
@@ -37,7 +37,7 @@ export default class ServerManger {
   public liveDocumentsManager: LiveDocumentsManager;
   public documentsCollection: DocumentsCollection;
   public documentsWaitingForPublish: string[] = [];
-  public tokenizer: Tokenizer;
+  public parserService: ParserService;
   public standardLibrary: StandardLibrary;
 
   private stopping = false;
@@ -58,14 +58,14 @@ export default class ServerManger {
     this.workspaceFilesSystem = new WorkspaceFilesSystem(params.rootUri ? fileURLToPath(params.rootUri) : params.rootPath ?? null, params.workspaceFolders ?? null);
     this.liveDocumentsManager = new LiveDocumentsManager();
     this.documentsCollection = new DocumentsCollection();
-    this.tokenizer = new Tokenizer();
-    this.standardLibrary = new StandardLibrary(this.workspaceFilesSystem, this.tokenizer, (message) => this.logger.error(message));
+    this.parserService = new ParserService();
+    this.standardLibrary = new StandardLibrary(this.workspaceFilesSystem, this.parserService, (message) => this.logger.error(message));
 
     this.liveDocumentsManager.listen(this.connection);
   }
 
   public async initialize() {
-    await this.tokenizer.loadGrammar();
+    await this.parserService.loadGrammar();
     this.registerProviders();
     this.registerLiveDocumentsEvents();
 
@@ -248,7 +248,7 @@ export default class ServerManger {
       this.standardLibrary.get(document.uri);
     }
     try {
-      this.documentsCollection.updateDocument(document, this.tokenizer, this.workspaceFilesSystem);
+      this.documentsCollection.updateDocument(document, this.parserService, this.workspaceFilesSystem);
     } catch (error) {
       // Register unfinished new documents; retain existing usable scopes.
       if (!this.documentsCollection.getFromUri(document.uri)) {

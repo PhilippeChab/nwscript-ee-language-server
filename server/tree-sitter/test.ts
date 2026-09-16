@@ -7,8 +7,8 @@ import { tmpdir } from "node:os";
 import { spawnSync } from "node:child_process";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { CompletionItemKind } from "vscode-languageserver";
-import Tokenizer from "../src/Tokenizer/Tokenizer";
-import SyntaxDocument from "../src/Tokenizer/SyntaxDocument";
+import ParserService from "../src/Parser/ParserService";
+import SyntaxDocument from "../src/Parser/SyntaxDocument";
 import { CompletionItemBuilder } from "../src/Providers/Builders";
 
 before(async () => await SyntaxDocument.loadGrammar(join(__dirname, "../resources")));
@@ -227,21 +227,21 @@ void test("pins the generated WASM to the reviewed grammar sources", () => {
 });
 
 void test("shares syntax and indexes per live version while isolating different documents", async (t) => {
-  const tokenizer = await new Tokenizer(true).loadGrammar();
+  const parserService = await new ParserService(true).loadGrammar();
   const first = document("int FIRST;");
   const second = TextDocument.create("file:///second.nss", "nwscript", 1, "int SECOND;");
-  const parsed = tokenizer.parse(first);
-  const other = tokenizer.parse(second);
+  const parsed = parserService.parse(first);
+  const other = parserService.parse(second);
   t.after(() => {
     parsed.dispose();
     other.dispose();
   });
   assert.notEqual(parsed, other);
-  assert.equal(tokenizer.parse(first), parsed);
-  assert.equal(tokenizer.tokenizeDocument(first), parsed.getIndex());
+  assert.equal(parserService.parse(first), parsed);
+  assert.equal(parserService.getDocumentIndex(first), parsed.getIndex());
   const original = parsed.getIndex();
   TextDocument.update(first, [{ text: "int UPDATED;" }], 2);
-  assert.equal(tokenizer.parse(first), parsed);
+  assert.equal(parserService.parse(first), parsed);
   assert.equal(parsed.getIndex().globalDeclarations[0].identifier, "UPDATED");
   assert.equal(original.globalDeclarations[0].identifier, "FIRST");
   assert.equal(other.getIndex().globalDeclarations[0].identifier, "SECOND");

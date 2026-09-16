@@ -10,13 +10,13 @@ import { CompletionItemKind, SymbolKind } from "vscode-languageserver";
 
 describe("Provider cross-feature review", () => {
   let api: any;
-  let tokenizer: any;
+  let parserService: any;
   let root: string;
   before(async () => {
     const bundle = join(__dirname, "../out/provider-review-test.js");
     buildSync({
       stdin: {
-        contents: `export { Tokenizer } from './Tokenizer';
+        contents: `export { ParserService } from './Parser';
       export { default as Collection } from './Documents/DocumentsCollection';
       export { default as Hover } from './Providers/HoverContentProvider';
       export { default as Definition } from './Providers/GotoDefinitionProvider';
@@ -32,7 +32,7 @@ describe("Provider cross-feature review", () => {
       platform: "node",
     });
     api = require(bundle);
-    tokenizer = await new api.Tokenizer().loadGrammar();
+    parserService = await new api.ParserService().loadGrammar();
   });
   beforeEach(() => {
     root = mkdtempSync(join(tmpdir(), "nw-provider-review-"));
@@ -44,7 +44,7 @@ describe("Provider cross-feature review", () => {
     const collection = new api.Collection();
     const handlers: any = {};
     const server = {
-      tokenizer,
+      parserService,
       documentsCollection: collection,
       liveDocumentsManager: { get: (uri: string) => live.get(uri) },
       standardLibrary: { get: () => ({ globalDeclarations: [], structDeclarations: [] }) },
@@ -69,7 +69,7 @@ describe("Provider cross-feature review", () => {
       const path = join(root, name);
       writeFileSync(path, source);
       const document = TextDocument.create(pathToFileURL(path).href, "nwscript", 1, source);
-      collection.createDocument(document.uri, tokenizer.tokenizeContent(source, "document"));
+      collection.createDocument(document.uri, parserService.analyzeContent(source, "document"));
       if (open) live.set(document.uri, document);
       return document;
     };

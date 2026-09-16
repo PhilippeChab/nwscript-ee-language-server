@@ -6,10 +6,12 @@ The existing include graph, symbol/type resolution, declaration-order and namesp
 
 ## Architecture
 
-Providers share a syntax document for declaration indexes and scope/context queries:
+`ParserService` initializes the parser and caches syntax documents by live document version. `SyntaxDocument` wraps a syntax tree and exposes declarations and cursor context. `IndexedDocument` holds indexed declarations and includes for dependency lookup; `Declaration` describes a declaration without introducing symbol bindings.
+
+Providers query the syntax document through the parser service:
 
 ```ts
-const syntax = this.server.tokenizer.parse(liveDocument);
+const syntax = this.server.parserService.parse(liveDocument);
 const index = syntax.getIndex();
 const locals = syntax.getLocalScope(position);
 const call = syntax.getCallContext(position);

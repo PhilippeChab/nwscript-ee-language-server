@@ -1,10 +1,10 @@
 import { join } from "path";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import SyntaxDocument from "./SyntaxDocument";
-import { TokenizationMode, DocumentTokenizationResult, LocalScopeTokenizationResult } from "./contracts";
+import { AnalysisMode, DocumentIndex, LocalScope } from "./contracts";
 export * from "./contracts";
 
-export default class Tokenizer {
+export default class ParserService {
   private readonly documents = new WeakMap<TextDocument, { version: number; syntax: SyntaxDocument }>();
   constructor(private readonly localPath = false) {}
 
@@ -28,16 +28,16 @@ export default class Tokenizer {
     return previous;
   }
 
-  public tokenizeDocument(document: TextDocument): DocumentTokenizationResult {
+  public getDocumentIndex(document: TextDocument): DocumentIndex {
     return this.parse(document).getIndex(true);
   }
 
-  public tokenizeContent(content: string, mode: TokenizationMode.document, startIndex?: number, stopIndex?: number): DocumentTokenizationResult;
-  public tokenizeContent(content: string, mode: TokenizationMode.local, startIndex?: number, stopIndex?: number): LocalScopeTokenizationResult;
-  public tokenizeContent(content: string, mode: TokenizationMode, startIndex = 0, stopIndex = -1) {
+  public analyzeContent(content: string, mode: AnalysisMode.document, startIndex?: number, stopIndex?: number): DocumentIndex;
+  public analyzeContent(content: string, mode: AnalysisMode.local, startIndex?: number, stopIndex?: number): LocalScope;
+  public analyzeContent(content: string, mode: AnalysisMode, startIndex = 0, stopIndex = -1) {
     const syntax = this.parseContent(content);
     try {
-      return mode === TokenizationMode.document ? syntax.getIndex(true) : syntax.getLocalScope(stopIndex < 0 ? undefined : { line: stopIndex, character: Number.MAX_SAFE_INTEGER }, startIndex);
+      return mode === AnalysisMode.document ? syntax.getIndex(true) : syntax.getLocalScope(stopIndex < 0 ? undefined : { line: stopIndex, character: Number.MAX_SAFE_INTEGER }, startIndex);
     } finally {
       syntax.dispose();
     }

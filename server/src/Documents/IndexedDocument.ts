@@ -2,25 +2,25 @@ import { CompletionItemKind, type Position } from "vscode-languageserver";
 import type Logger from "../Logger/Logger";
 import { STATIC_PREFIX } from "./DocumentsCollection";
 
-import type { ComplexToken, FunctionComplexToken, StructComplexToken } from "../Tokenizer/types";
-import { LanguageTypes } from "../Tokenizer/constants";
+import type { Declaration, FunctionDeclaration, StructDeclaration } from "../Parser/types";
+import { LanguageTypes } from "../Parser/constants";
 import type DocumentsCollection from "./DocumentsCollection";
 
-export type OwnedComplexTokens = { owner?: string; tokens: ComplexToken[] };
-export type OwnedStructComplexTokens = { owner?: string; tokens: StructComplexToken[] };
+export type OwnedDeclarations = { owner?: string; tokens: Declaration[] };
+export type OwnedStructDeclarations = { owner?: string; tokens: StructDeclaration[] };
 
-export default class Document {
-  private readonly typeReferences: ComplexToken[];
+export default class IndexedDocument {
+  private readonly typeReferences: Declaration[];
   constructor(
     readonly uri: string,
     readonly base: boolean,
     readonly children: string[],
-    readonly globalDeclarations: ComplexToken[],
-    readonly structDeclarations: StructComplexToken[],
+    readonly globalDeclarations: Declaration[],
+    readonly structDeclarations: StructDeclaration[],
     readonly includePositions: (Position | undefined)[] = [],
-    readonly localDeclarations: ComplexToken[] = [],
-    readonly memberReferences: ComplexToken[] = [],
-    readonly entryPointDeclarations: FunctionComplexToken[] = [],
+    readonly localDeclarations: Declaration[] = [],
+    readonly memberReferences: Declaration[] = [],
+    readonly entryPointDeclarations: FunctionDeclaration[] = [],
     private readonly collection: DocumentsCollection,
   ) {
     // Type uses are already represented by parsed declaration types. Retain
@@ -49,8 +49,8 @@ export default class Document {
   // Each path follows include locations, then the declaration location. The
   // final component distinguishes an include from a declaration at that position.
   public getDeclarationOrder(computedChildren: string[] = []) {
-    const order = new Map<ComplexToken, number[] | undefined>();
-    const add = (document: Document, prefix?: number[]) => {
+    const order = new Map<Declaration, number[] | undefined>();
+    const add = (document: IndexedDocument, prefix?: number[]) => {
       for (const token of [...document.getDeclarations(), ...document.memberReferences, ...document.typeReferences]) {
         const position = token.tokenType === CompletionItemKind.Function ? token.signatureEnd || token.position : token.position;
         order.set(token, prefix ? [...prefix, position.line, position.character, 1] : undefined);
@@ -67,19 +67,19 @@ export default class Document {
     return [...this.dependencies(computedChildren)].map(({ name }) => name);
   }
 
-  public getGlobalComplexTokensWithRef(computedChildren: string[] = []): OwnedComplexTokens[] {
+  public getGlobalDeclarationsWithOwner(computedChildren: string[] = []): OwnedDeclarations[] {
     return this.getDocuments(computedChildren).map((document) => ({ owner: document.base ? undefined : document.uri, tokens: document.globalDeclarations }));
   }
 
-  public getGlobalComplexTokens(computedChildren: string[] = [], localFunctionIdentifiers: string[] = []): ComplexToken[] {
+  public getGlobalDeclarations(computedChildren: string[] = [], localFunctionIdentifiers: string[] = []): Declaration[] {
     return this.getDocuments(computedChildren).flatMap((document) => document.globalDeclarations.filter((token) => document !== this || !localFunctionIdentifiers.includes(token.identifier)));
   }
 
-  public getGlobalStructComplexTokensWithRef(computedChildren: string[] = []): OwnedStructComplexTokens[] {
+  public getStructDeclarationsWithOwner(computedChildren: string[] = []): OwnedStructDeclarations[] {
     return this.getDocuments(computedChildren).map((document) => ({ owner: document.base ? undefined : document.uri, tokens: document.structDeclarations }));
   }
 
-  public getGlobalStructComplexTokens(computedChildren: string[] = []): StructComplexToken[] {
+  public getStructDeclarations(computedChildren: string[] = []): StructDeclaration[] {
     return this.getDocuments(computedChildren).flatMap((document) => document.structDeclarations);
   }
 
@@ -89,14 +89,14 @@ export default class Document {
     logger.debug("--------------------");
     logger.debug("getChildren");
     logger.debug(JSON.stringify(this.getChildren(), null, 2));
-    logger.debug("getGlobalComplexTokensWithRef");
-    logger.debug(JSON.stringify(this.getGlobalComplexTokensWithRef(), null, 2));
-    logger.debug("getGlobalComplexTokens");
-    logger.debug(JSON.stringify(this.getGlobalComplexTokens(), null, 2));
-    logger.debug("getGlobalStructComplexTokensWithRef");
-    logger.debug(JSON.stringify(this.getGlobalStructComplexTokensWithRef(), null, 2));
-    logger.debug("getGlobalStructComplexTokens");
-    logger.debug(JSON.stringify(this.getGlobalStructComplexTokens(), null, 2));
+    logger.debug("getGlobalDeclarationsWithOwner");
+    logger.debug(JSON.stringify(this.getGlobalDeclarationsWithOwner(), null, 2));
+    logger.debug("getGlobalDeclarations");
+    logger.debug(JSON.stringify(this.getGlobalDeclarations(), null, 2));
+    logger.debug("getStructDeclarationsWithOwner");
+    logger.debug(JSON.stringify(this.getStructDeclarationsWithOwner(), null, 2));
+    logger.debug("getStructDeclarations");
+    logger.debug(JSON.stringify(this.getStructDeclarations(), null, 2));
     logger.debug("'''''''''''''''''''''");
     logger.debug("");
   }
@@ -112,9 +112,9 @@ export default class Document {
     ];
   }
 
-  private *dependencies(computedChildren: string[] = [], withOrder = false): Generator<{ name: string; document?: Document; order?: number[] }> {
+  private *dependencies(computedChildren: string[] = [], withOrder = false): Generator<{ name: string; document?: IndexedDocument; order?: number[] }> {
     const visited = new Set([this.getIncludeName(), ...computedChildren]);
-    const children = (document: Document, parentOrder?: number[]) =>
+    const children = (document: IndexedDocument, parentOrder?: number[]) =>
       document.children
         .map((name, index) => {
           const position = document.includePositions[index];
@@ -134,7 +134,7 @@ export default class Document {
     }
   }
 
-  private getDocuments(computedChildren: string[] = []): Document[] {
+  private getDocuments(computedChildren: string[] = []): IndexedDocument[] {
     return [this, ...[...this.dependencies(computedChildren)].flatMap(({ document }) => (document ? [document] : []))];
   }
 }

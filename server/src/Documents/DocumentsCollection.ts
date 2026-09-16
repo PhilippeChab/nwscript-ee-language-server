@@ -5,11 +5,11 @@ import { fileURLToPath, pathToFileURL } from "url";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
 import { CompletionItemKind, Position } from "vscode-languageserver";
-import type { ComplexToken } from "../Tokenizer/types";
-import type { Tokenizer } from "../Tokenizer";
-import { DocumentTokenizationResult, TokenizationMode } from "../Tokenizer/Tokenizer";
+import type { Declaration } from "../Parser/types";
+import type { ParserService } from "../Parser";
+import { DocumentIndex, AnalysisMode } from "../Parser/ParserService";
 import { Dictionnary, normalizeDocumentUri } from "../Utils";
-import Document from "./Document";
+import IndexedDocument from "./IndexedDocument";
 import WorkspaceFilesSystem, { FILES_EXTENSION, resourceName } from "../WorkspaceFilesSystem/WorkspaceFilesSystem";
 import { isStandardLibrary } from "./StandardLibrary";
 
@@ -17,10 +17,10 @@ const MAX_RESREF_BYTES = 16;
 const STATIC_RESOURCES_FOLDERS = ["base_scripts", "ovr"];
 export const STATIC_PREFIX = "static";
 
-export default class DocumentsCollection extends Dictionnary<string, Document> {
+export default class DocumentsCollection extends Dictionnary<string, IndexedDocument> {
   // Requests identify an exact document; basename lookup is only for includes.
-  private readonly documentsByUri = new Map<string, Document>();
-  private importChildren = new WeakMap<Document, Set<string>>();
+  private readonly documentsByUri = new Map<string, IndexedDocument>();
+  private importChildren = new WeakMap<IndexedDocument, Set<string>>();
 
   constructor() {
     super();
@@ -29,17 +29,17 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       const directoryPath = normalize(join(__dirname, "..", "resources", staticResourcesFolder));
       const files = readdirSync(directoryPath);
       files.forEach((filename) => {
-        const tokens = JSON.parse(readFileSync(join(__dirname, "..", "resources", staticResourcesFolder, filename)).toString()) as DocumentTokenizationResult;
-        this.addDocument(this.initializeDocument(`${STATIC_PREFIX}/${filename.replace(".json", FILES_EXTENSION)}`, true, tokens));
+        const tokens = JSON.parse(readFileSync(join(__dirname, "..", "resources", staticResourcesFolder, filename)).toString()) as DocumentIndex;
+        this.addDocument(this.createIndexedDocument(`${STATIC_PREFIX}/${filename.replace(".json", FILES_EXTENSION)}`, true, tokens));
       });
     });
   }
 
-  public initializeDocument(uri: string, base: boolean, documentTokens: DocumentTokenizationResult) {
+  public createIndexedDocument(uri: string, base: boolean, documentTokens: DocumentIndex) {
     // nwscript is implicit and selected per requesting workspace, even when an
     // include explicitly names it. Never resolve it through the basename index.
     const children = documentTokens.children.map((child, index) => ({ name: child.toLowerCase(), position: documentTokens.includePositions?.[index] })).filter((child) => child.name !== "nwscript");
-    return new Document(
+    return new IndexedDocument(
       base ? uri : normalizeDocumentUri(uri),
       base,
       children.map((child) => child.name),
@@ -87,9 +87,9 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
   }
 
   public getImportableDocuments(
-    document: Document,
-    getMatches: (candidate: Document) => ComplexToken[],
-    implicitTokens: ComplexToken[] = [],
+    document: IndexedDocument,
+    getMatches: (candidate: IndexedDocument) => Declaration[],
+    implicitTokens: Declaration[] = [],
     insertionPosition: Position = { line: 0, character: 0 },
     referencePosition: Position = insertionPosition,
   ) {
@@ -99,11 +99,11 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       const dependency = this.resolveInclude(child);
       dependency?.entryPoints.forEach((entryPoint) => entryPoints.add(entryPoint));
     }
-    const conflicts = (source: Document | undefined) => source?.entryPoints.some((entryPoint) => entryPoints.has(entryPoint));
+    const conflicts = (source: IndexedDocument | undefined) => source?.entryPoints.some((entryPoint) => entryPoints.has(entryPoint));
     const implicitDeclarations = new Set(implicitTokens);
     const currentDeclarations = new Set(document.globalDeclarations);
-    const visible = new Map<string, ComplexToken[]>();
-    const visibleTokens = new Set<ComplexToken>();
+    const visible = new Map<string, Declaration[]>();
+    const visibleTokens = new Set<Declaration>();
     const existingOrder = document.getDeclarationOrder();
     for (const token of [...existingOrder.keys(), ...implicitTokens]) {
       visibleTokens.add(token);
@@ -115,11 +115,10 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       }
       return left.length - right.length;
     };
-    const isScoped = (token: ComplexToken) =>
-      token.tokenType === CompletionItemKind.Variable || token.tokenType === CompletionItemKind.TypeParameter || token.tokenType === CompletionItemKind.Property;
-    const isReserved = (token: ComplexToken) =>
+    const isScoped = (token: Declaration) => token.tokenType === CompletionItemKind.Variable || token.tokenType === CompletionItemKind.TypeParameter || token.tokenType === CompletionItemKind.Property;
+    const isReserved = (token: Declaration) =>
       token.tokenType === CompletionItemKind.Function || (token.tokenType === CompletionItemKind.Constant && (token.isConst || implicitDeclarations.has(token)));
-    const declarationsConflict = (left: ComplexToken, right: ComplexToken, order: Map<ComplexToken, number[] | undefined>) => {
+    const declarationsConflict = (left: Declaration, right: Declaration, order: Map<Declaration, number[] | undefined>) => {
       // Paths interleave declarations with their includes at the actual source
       // positions. Unknown legacy include positions retain conservative checks.
       const leftOrder = order.get(left);
@@ -167,8 +166,8 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
         left.params.some((param, index) => param.valueType !== right.params[index].valueType)
       );
     };
-    const getSafeMatches = (candidate: Document, matches: ComplexToken[]) => {
-      const introduced = new Map<string, ComplexToken[]>();
+    const getSafeMatches = (candidate: IndexedDocument, matches: Declaration[]) => {
+      const introduced = new Map<string, Declaration[]>();
       const incomingOrder = candidate.getDeclarationOrder();
       const order = new Map(existingOrder);
       for (const [token, path] of incomingOrder) {
@@ -203,7 +202,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       return matches.filter((token) => token.tokenType !== CompletionItemKind.Struct || !reservedNames.has(token.identifier));
     };
     const currentName = document.getIncludeName();
-    const candidates: { document: Document; tokens: ComplexToken[] }[] = [];
+    const candidates: { document: IndexedDocument; tokens: Declaration[] }[] = [];
     this.forEach((candidate) => {
       const name = candidate.getIncludeName();
       if (name === currentName || name.toLowerCase() === "nwscript" || included.has(name)) return;
@@ -230,41 +229,41 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     return candidates.sort((left, right) => Number(left.document.base) - Number(right.document.base));
   }
 
-  public createDocument(uri: string, documentTokens: DocumentTokenizationResult) {
-    const document = this.initializeDocument(uri, false, documentTokens);
+  public createDocument(uri: string, documentTokens: DocumentIndex) {
+    const document = this.createIndexedDocument(uri, false, documentTokens);
     if (isStandardLibrary(uri)) this.overwriteDocument(document);
     else this.addDocument(document);
   }
 
-  public createDocuments(uri: string, content: string, tokenizer: Tokenizer, workespaceFilesSystem: WorkspaceFilesSystem) {
-    const documentTokens = tokenizer.tokenizeContent(content, TokenizationMode.document);
+  public createDocuments(uri: string, content: string, parserService: ParserService, workespaceFilesSystem: WorkspaceFilesSystem) {
+    const documentTokens = parserService.analyzeContent(content, AnalysisMode.document);
 
-    this.addDocument(this.initializeDocument(uri, false, documentTokens));
-    this.createChildrenDocument(documentTokens.children, tokenizer, workespaceFilesSystem);
+    this.addDocument(this.createIndexedDocument(uri, false, documentTokens));
+    this.createChildrenDocument(documentTokens.children, parserService, workespaceFilesSystem);
   }
 
-  public updateDocument(document: TextDocument, tokenizer: Tokenizer, workespaceFilesSystem: WorkspaceFilesSystem) {
+  public updateDocument(document: TextDocument, parserService: ParserService, workespaceFilesSystem: WorkspaceFilesSystem) {
     // willSave and didSave can describe the same document version. Reuse its
     // tokens, but still retry missing includes that may have appeared on disk.
-    const documentTokens = tokenizer.tokenizeDocument(document);
+    const documentTokens = parserService.getDocumentIndex(document);
 
-    this.overwriteDocument(this.initializeDocument(document.uri, false, documentTokens));
+    this.overwriteDocument(this.createIndexedDocument(document.uri, false, documentTokens));
     // Already-declared includes may have failed indexing and since been repaired.
     // createChildrenDocument skips includes that are already available.
-    this.createChildrenDocument(documentTokens.children, tokenizer, workespaceFilesSystem);
+    this.createChildrenDocument(documentTokens.children, parserService, workespaceFilesSystem);
   }
 
   public debug(logger: Logger) {
     this.forEach((document) => document.debug(logger));
   }
 
-  private addDocument(document: Document) {
+  private addDocument(document: IndexedDocument) {
     this.importChildren = new WeakMap();
     if (!document.base && !this.documentsByUri.has(document.uri)) this.documentsByUri.set(document.uri, document);
     this.add(document.getKey(), document);
   }
 
-  private overwriteDocument(document: Document) {
+  private overwriteDocument(document: IndexedDocument) {
     this.importChildren = new WeakMap();
     if (!document.base) this.documentsByUri.set(document.uri, document);
     // Updating a duplicate's own contents must not change include selection.
@@ -272,7 +271,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
     if (!selected || selected.uri === document.uri) this.overwrite(document.getKey(), document);
   }
 
-  private createChildrenDocument(children: string[], tokenizer: Tokenizer, workespaceFilesSystem: WorkspaceFilesSystem) {
+  private createChildrenDocument(children: string[], parserService: ParserService, workespaceFilesSystem: WorkspaceFilesSystem) {
     children.forEach((child) => {
       if (child.toLowerCase() === "nwscript" || this.get(child)) return;
       const filePath = workespaceFilesSystem.getFilePath(child);
@@ -282,7 +281,7 @@ export default class DocumentsCollection extends Dictionnary<string, Document> {
       if (this.get(this.getKey(uri, false))) return;
 
       const fileContent = readFileSync(filePath).toString();
-      this.createDocuments(uri, fileContent, tokenizer, workespaceFilesSystem);
+      this.createDocuments(uri, fileContent, parserService, workespaceFilesSystem);
     });
   }
 }

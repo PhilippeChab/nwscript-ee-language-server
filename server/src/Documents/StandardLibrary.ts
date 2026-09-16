@@ -3,12 +3,12 @@ import { readFileSync } from "fs";
 import { basename, join } from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 import type { TextDocument } from "vscode-languageserver-textdocument";
-import type { Tokenizer } from "../Tokenizer";
-import { DocumentTokenizationResult, TokenizationMode } from "../Tokenizer/Tokenizer";
+import type { ParserService } from "../Parser";
+import { DocumentIndex, AnalysisMode } from "../Parser/ParserService";
 import type WorkspaceFilesSystem from "../WorkspaceFilesSystem/WorkspaceFilesSystem";
 
 export const isStandardLibrary = (uri: string) => basename(fileURLToPath(uri)).toLowerCase() === "nwscript.nss";
-export type StandardLibraryDefinitions = DocumentTokenizationResult & { owner?: string };
+export type StandardLibraryDefinitions = DocumentIndex & { owner?: string };
 
 /** One selected source per workspace folder; never merge a custom API with the bundled API. */
 export default class StandardLibrary {
@@ -20,7 +20,7 @@ export default class StandardLibrary {
   private readonly disk = new Map<string, string>();
   private readonly attempted = new Map<string, string>();
 
-  constructor(private readonly files: WorkspaceFilesSystem, private readonly tokenizer: Tokenizer, private readonly report: (message: string) => void) {
+  constructor(private readonly files: WorkspaceFilesSystem, private readonly parserService: ParserService, private readonly report: (message: string) => void) {
     this.bundled = JSON.parse(readFileSync(join(__dirname, "..", "resources", "standardLibDefinitions.json"), "utf8"));
   }
 
@@ -72,7 +72,7 @@ export default class StandardLibrary {
       if (previous?.content === content) return previous.definitions;
       if (this.attempted.get(owner) === content) return previous?.definitions ?? this.bundled;
       this.attempted.set(owner, content);
-      const scope = liveDocument ? this.tokenizer.tokenizeDocument(liveDocument) : this.tokenizer.tokenizeContent(content, TokenizationMode.document);
+      const scope = liveDocument ? this.parserService.getDocumentIndex(liveDocument) : this.parserService.analyzeContent(content, AnalysisMode.document);
       if (!scope.globalDeclarations.length && !scope.structDeclarations.length) throw new Error("No declarations could be parsed");
       const definitions = { ...scope, owner };
       this.snapshots.set(owner, { content, definitions });

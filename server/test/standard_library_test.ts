@@ -14,7 +14,7 @@ describe("Workspace standard library", function () {
   let root: string;
   let files: any;
   let library: any;
-  let tokenizer: any;
+  let parserService: any;
   let errors: string[];
   const uri = (path: string) => pathToFileURL(path).href;
   const source = "// Custom API\nint CustomFn(string value, int count = 7);\nconst int CUSTOM_VALUE = 42;\n";
@@ -30,7 +30,7 @@ describe("Workspace standard library", function () {
         contents: `export { default as StandardLibrary } from './Documents/StandardLibrary';
           export { default as Files } from './WorkspaceFilesSystem/WorkspaceFilesSystem';
           export { default as Collection } from './Documents/DocumentsCollection';
-          export { Tokenizer } from './Tokenizer';
+          export { ParserService } from './Parser';
           export { default as Completion } from './Providers/CompletionItemsProvider';
           export { default as Hover } from './Providers/HoverContentProvider';
           export { default as Signature } from './Providers/SignatureHelpProvider';
@@ -47,14 +47,14 @@ describe("Workspace standard library", function () {
       format: "cjs",
     });
     api = require(bundle);
-    tokenizer = await new api.Tokenizer().loadGrammar();
+    parserService = await new api.ParserService().loadGrammar();
   });
 
   beforeEach(() => {
     root = mkdtempSync(join(tmpdir(), "nwscript workspace & spaces "));
     files = new api.Files(root, null);
     errors = [];
-    library = new api.StandardLibrary(files, tokenizer, (message: string) => errors.push(message));
+    library = new api.StandardLibrary(files, parserService, (message: string) => errors.push(message));
   });
   afterEach(() => rmSync(root, { recursive: true, force: true }));
 
@@ -64,13 +64,13 @@ describe("Workspace standard library", function () {
       write(spec, source);
       const script = TextDocument.create(uri(join(root, "test.nss")), "nwscript", 1, include + 'void main()\n{\n    CustomFn("x", 2);\n}\n');
       const collection = new api.Collection();
-      collection.createDocuments(script.uri, script.getText(), tokenizer, files);
+      collection.createDocuments(script.uri, script.getText(), parserService, files);
       const handlers: any = {};
       const server = {
         capabilitiesHandler: { getSupportsMarkdownHover: () => true },
         standardLibrary: library,
         documentsCollection: collection,
-        tokenizer,
+        parserService,
         config: { ...api.config, hovering: { addCommentsToFunctions: true } },
         liveDocumentsManager: { get: () => script },
         logger: { error: (message: string) => errors.push(message) },
@@ -106,7 +106,7 @@ describe("Workspace standard library", function () {
       capabilitiesHandler: { getSupportsMarkdownHover: () => true },
       standardLibrary: library,
       documentsCollection: new api.Collection(),
-      tokenizer,
+      parserService,
       workspaceFilesSystem: files,
       config: api.config,
       logger: { error: (message: string) => errors.push(message) },
@@ -212,9 +212,9 @@ describe("Workspace standard library", function () {
     write(spec, source);
     const editor = editorServer();
     const document = TextDocument.create(uri(spec), "nwscript", 1, source);
-    const tokenize = tokenizer.parseContent.bind(tokenizer);
+    const tokenize = parserService.parseContent.bind(parserService);
     let parses = 0;
-    tokenizer.parseContent = (...args: any[]) => {
+    parserService.parseContent = (...args: any[]) => {
       parses++;
       return tokenize(...args);
     };
@@ -230,7 +230,7 @@ describe("Workspace standard library", function () {
       expect(library.get(document.uri).globalDeclarations).to.equal(editor.server.documentsCollection.getFromUri(document.uri).globalDeclarations);
       expect(library.get(document.uri).globalDeclarations[0].identifier).to.equal("ChangedFn");
     } finally {
-      tokenizer.parseContent = tokenize;
+      parserService.parseContent = tokenize;
     }
   });
 
@@ -241,9 +241,9 @@ describe("Workspace standard library", function () {
     const document = TextDocument.create(uri(spec), "nwscript", 1, source);
     editor.open(document);
     const initial = library.get(document.uri);
-    const tokenize = tokenizer.parseContent.bind(tokenizer);
+    const tokenize = parserService.parseContent.bind(parserService);
     let parses = 0;
-    tokenizer.parseContent = (...args: any[]) => {
+    parserService.parseContent = (...args: any[]) => {
       parses++;
       return tokenize(...args);
     };
@@ -265,7 +265,7 @@ describe("Workspace standard library", function () {
       expect(parses).to.equal(3);
       expect(library.get(document.uri).globalDeclarations[0].identifier).to.equal("Recovered");
     } finally {
-      tokenizer.parseContent = tokenize;
+      parserService.parseContent = tokenize;
     }
   });
 
@@ -443,14 +443,14 @@ describe("Workspace standard library", function () {
     write(path, "int Helper(int n);\n");
     const document = TextDocument.create(uri(join(root, "sample.nss")), "nwscript", 1, '#include "helper"\nvoid main() {}\n');
     const collection = new api.Collection();
-    collection.createDocuments(document.uri, document.getText(), tokenizer, files);
+    collection.createDocuments(document.uri, document.getText(), parserService, files);
     let searches = 0;
     const getFilePath = files.getFilePath.bind(files);
     files.getFilePath = (name: string) => {
       searches++;
       return getFilePath(name);
     };
-    collection.updateDocument(document, tokenizer, files);
+    collection.updateDocument(document, parserService, files);
     expect(searches).to.equal(0);
     expect(collection.getFromUri(document.uri).getChildren()).to.include("helper");
   });
@@ -458,10 +458,10 @@ describe("Workspace standard library", function () {
   it("recovers an include created on disk even when the parent document version is unchanged", () => {
     const document = TextDocument.create(uri(join(root, "sample.nss")), "nwscript", 1, '#include "later"\nvoid main() {}\n');
     const collection = new api.Collection();
-    collection.updateDocument(document, tokenizer, files);
+    collection.updateDocument(document, parserService, files);
     expect(collection.get("later")).to.equal(undefined);
     write(join(root, "later.nss"), "int LaterFunction();\n");
-    collection.updateDocument(document, tokenizer, files);
+    collection.updateDocument(document, parserService, files);
     expect(collection.get("later").globalDeclarations[0].identifier).to.equal("LaterFunction");
   });
 });

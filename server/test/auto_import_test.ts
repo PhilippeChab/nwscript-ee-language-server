@@ -10,13 +10,13 @@ import { CompletionItem } from "vscode-languageserver";
 describe("Auto-import completion", function () {
   this.timeout(10000);
   let api: any;
-  let tokenizer: any;
+  let parserService: any;
   before(async () => {
     const bundle = join(__dirname, "../out/auto-import-test.js");
     buildSync({
       stdin: {
         contents: `export { default as Collection } from './Documents/DocumentsCollection';
-          export { Tokenizer } from './Tokenizer';
+          export { ParserService } from './Parser';
           export { default as Completion } from './Providers/CompletionItemsProvider';
           export { defaultServerConfiguration as config } from './ServerManager/Config';`,
         resolveDir: join(__dirname, "../src"),
@@ -28,7 +28,7 @@ describe("Auto-import completion", function () {
       format: "cjs",
     });
     api = require(bundle);
-    tokenizer = await new api.Tokenizer().loadGrammar();
+    parserService = await new api.ParserService().loadGrammar();
   });
 
   const complete = (
@@ -44,13 +44,13 @@ describe("Auto-import completion", function () {
     const live = TextDocument.create(workspaceUri("current.nss"), "nwscript", 1, text);
     const collection = new api.Collection();
     for (const [name, content] of Object.entries({ helper: "void Imported(int value);\nconst int IMPORTED_VALUE = 1;\nstruct ImportedStruct {\n int value;\n};\n", ...scripts })) {
-      collection.createDocument(workspaceUri(`${name}.nss`), tokenizer.tokenizeContent(content, "document"));
+      collection.createDocument(workspaceUri(`${name}.nss`), parserService.analyzeContent(content, "document"));
     }
-    collection.createDocument(live.uri, tokenizer.tokenizeContent(indexedSource === undefined ? text : indexedSource, "document"));
+    collection.createDocument(live.uri, parserService.analyzeContent(indexedSource === undefined ? text : indexedSource, "document"));
     const handlers: any = {};
     api.Completion.register({
       documentsCollection: collection,
-      tokenizer,
+      parserService,
       config: { ...api.config, completion: { autoImport: enabled, addParamsToFunctions } },
       standardLibrary: { get: () => library },
       liveDocumentsManager: { get: () => live },
@@ -127,7 +127,7 @@ describe("Auto-import completion", function () {
     const valid = '#include "helper"\nconst int VISIBLE = 1;\nvoid Existing();\nvoid main() {}\n';
     for (const declaration of ["struct Example {\n int field;\n float other;\n};", 'void Example(\n int value,\n string text = "value");', "const int EXAMPLE = 1;"]) {
       for (let length = 0; length <= declaration.length; length++) {
-        const scope = tokenizer.parseContent(valid + declaration.slice(0, length)).getIndex();
+        const scope = parserService.parseContent(valid + declaration.slice(0, length)).getIndex();
         expect(scope.children).to.deep.equal(["helper"]);
         expect(scope.entryPointDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["main"]);
         expect(scope.globalDeclarations.map((token: any) => token.identifier)).to.include.members(["VISIBLE", "Existing"]);
@@ -137,10 +137,10 @@ describe("Auto-import completion", function () {
 
   it("resumes after an incomplete struct field and keeps strict indexing unchanged", () => {
     const source = "struct Example {\n int first;\n int \n float last;\n};\nconst int AFTER = 1;\n";
-    const scope = tokenizer.parseContent(source).getIndex();
+    const scope = parserService.parseContent(source).getIndex();
     expect(scope.structDeclarations[0].properties.map((token: any) => token.identifier)).to.deep.equal(["first", "last"]);
     expect(scope.globalDeclarations.map((token: any) => token.identifier)).to.deep.equal(["AFTER"]);
-    expect(() => tokenizer.tokenizeContent(source, "document")).to.throw();
+    expect(() => parserService.analyzeContent(source, "document")).to.throw();
   });
 
   it("imports function implementations without requiring prototypes and deduplicates paired declarations", () => {
@@ -216,7 +216,7 @@ describe("Auto-import completion", function () {
   for (const bundled of [true, false]) {
     for (const transitive of [true, false]) {
       it(`reserves API constants without a const modifier (bundled=${String(bundled)}, transitive=${String(transitive)})`, () => {
-        const library = bundled ? JSON.parse(readFileSync(join(__dirname, "../resources/standardLibDefinitions.json"), "utf8")) : tokenizer.tokenizeContent("int TRUE = 1;", "document");
+        const library = bundled ? JSON.parse(readFileSync(join(__dirname, "../resources/standardLibDefinitions.json"), "utf8")) : parserService.analyzeContent("int TRUE = 1;", "document");
         expect(library.globalDeclarations.find((token: any) => token.identifier === "TRUE").isConst).to.equal(undefined);
         const { items } = complete(
           "void main() {\n Imp|\n}",
@@ -239,7 +239,7 @@ describe("Auto-import completion", function () {
   for (const transitive of [false, true]) {
     for (const implementation of [false, true]) {
       it(`treats implicit API functions as engine implementations (transitive=${String(transitive)}, body=${String(implementation)})`, () => {
-        const library = tokenizer.tokenizeContent("int IntFn(int n);", "document");
+        const library = parserService.analyzeContent("int IntFn(int n);", "document");
         const declaration = `int IntFn(int n)${implementation ? " { return n; }" : ";"}`;
         const { items } = complete(
           "void main() { Imp| }",
@@ -316,7 +316,7 @@ describe("Auto-import completion", function () {
       for (const placement of ["earlierInclude", "laterDeclaration", "api"]) {
         for (const transitive of [false, true]) {
           it(`checks incoming scoped names against ${placement}: ${reserved}, ${scoped}, transitive=${String(transitive)}`, () => {
-            const library = tokenizer.tokenizeContent(placement === "api" ? reserved.replace("const ", "") : "", "document");
+            const library = parserService.analyzeContent(placement === "api" ? reserved.replace("const ", "") : "", "document");
             const { items } = complete(
               `${placement === "earlierInclude" ? '#include "existing"' : placement === "laterDeclaration" ? reserved : ""}\nvoid main() { Imp| }`,
               { existing: reserved, helper: `${transitive ? '#include "dependency"' : scoped}\nvoid Imported() {}`, dependency: scoped },
@@ -684,8 +684,8 @@ describe("Auto-import completion", function () {
 
   it("recognizes include syntax in both indexing and live completion", () => {
     const source = '# include "helper" /* tail */\n// #include "fake"\n/*\n#include "also_fake"\n*/\n#include "unfinished\n';
-    expect(tokenizer.parseContent(source).getIndex().children).to.deep.equal(["helper"]);
-    expect(tokenizer.tokenizeContent(source, "document").children).to.deep.equal(["helper"]);
+    expect(parserService.parseContent(source).getIndex().children).to.deep.equal(["helper"]);
+    expect(parserService.analyzeContent(source, "document").children).to.deep.equal(["helper"]);
   });
 
   it("can be disabled", () => {
@@ -712,11 +712,11 @@ describe("Auto-import completion", function () {
     const fixture = complete("void main()\n{\n Imp|\n}\n", { helper: '#include "later"\nvoid Imported(int value);\n' });
     const imports = () => fixture.request().items.filter((item: CompletionItem) => item.label === "Imported");
     expect(imports()).to.have.length(1);
-    fixture.collection.createDocument(workspaceUri("later.nss"), tokenizer.tokenizeContent("void main() {}\n", "document"));
+    fixture.collection.createDocument(workspaceUri("later.nss"), parserService.analyzeContent("void main() {}\n", "document"));
     expect(imports()).to.have.length(0);
-    fixture.collection.updateDocument(TextDocument.create(workspaceUri("later.nss"), "nwscript", 2, "// Entry point removed\n"), tokenizer, { getFilePath: () => null });
+    fixture.collection.updateDocument(TextDocument.create(workspaceUri("later.nss"), "nwscript", 2, "// Entry point removed\n"), parserService, { getFilePath: () => null });
     expect(imports()).to.have.length(1);
-    fixture.collection.updateDocument(TextDocument.create(workspaceUri("later.nss"), "nwscript", 3, '#include "current"\n'), tokenizer, { getFilePath: () => null });
+    fixture.collection.updateDocument(TextDocument.create(workspaceUri("later.nss"), "nwscript", 3, '#include "current"\n'), parserService, { getFilePath: () => null });
     expect(imports()).to.have.length(0);
   });
 

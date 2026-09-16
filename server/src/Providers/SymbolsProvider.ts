@@ -24,9 +24,9 @@ export default class SymbolsProvider extends Provider {
       const constantSymbols = document.globalDeclarations.filter((token) => token.tokenType === CompletionItemKind.Constant).map((token) => SymbolBuilder.buildItem(token, isStandardLibrary(uri)));
       const structSymbols = document.structDeclarations.map((token) => SymbolBuilder.buildItem(token));
 
-      const implementations = new Set(localScope.functionsComplexTokens.map((token) => token.identifier));
+      const implementations = new Set(localScope.functionDeclarations.map((token) => token.identifier));
       const prototypes = document.globalDeclarations.filter((token) => token.tokenType === CompletionItemKind.Function && !implementations.has(token.identifier));
-      const functions = [...localScope.functionsComplexTokens, ...prototypes].map((token) => SymbolBuilder.buildItem(token));
+      const functions = [...localScope.functionDeclarations, ...prototypes].map((token) => SymbolBuilder.buildItem(token));
       const symbols = constantSymbols.concat(structSymbols, functions);
       if (this.server.capabilitiesHandler.getSupportsHierarchicalSymbols()) return symbols;
       const flatten = (items: DocumentSymbol[], containerName?: string): SymbolInformation[] =>

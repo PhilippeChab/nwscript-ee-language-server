@@ -3,8 +3,8 @@ import { existsSync, readFileSync, writeFileSync, renameSync, rmSync } from "fs"
 import { get } from "https";
 import { join } from "path";
 import AdmZip from "adm-zip";
-import { Tokenizer } from "../src/Tokenizer";
-import { TokenizationMode } from "../src/Tokenizer/Tokenizer";
+import { ParserService } from "../src/Parser";
+import { AnalysisMode } from "../src/Parser/ParserService";
 
 const downloadsUrl = "https://nwn.beamdog.net/downloads/";
 const releaseNotesUrl = "https://nwn.beamdog.net/docs/CHANGELOG.md";
@@ -153,8 +153,8 @@ export async function updateStandardLibrary(options: { scripts?: string; pinned?
   if (!source) throw new Error("Missing nwscript.nss");
   if (metadata.version === current.version && sha256(source) !== current.sourceSha256) throw new Error("nwscript.nss SHA-256 mismatch for the recorded version");
   metadata.sourceSha256 = sha256(source);
-  const tokenizer = await new Tokenizer(true).loadGrammar();
-  const definitions = tokenizer.tokenizeContent(source.toString("utf8"), TokenizationMode.document);
+  const parserService = await new ParserService(true).loadGrammar();
+  const definitions = parserService.analyzeContent(source.toString("utf8"), AnalysisMode.document);
   if (!definitions.globalDeclarations.length) throw new Error("No standard library declarations could be parsed");
   const updates: [string, Buffer][] = [
     [sourcePath, source],
