@@ -21,6 +21,12 @@ A syntax-clean tree does not establish that a program compiles. Name resolution,
 
 When changing the grammar, add fixtures for both accepted and rejected forms and verify their compiler outcomes. Keep syntax expectations separate from semantic validity.
 
+## Entry points and auto-import
+
+The bundled compiler selects the top-level script's entry point when an include implements the other entry point (`main` or `StartingConditional`). Its pinned source already includes the fix for [upstream issue #150](https://github.com/niv/neverwinter.nim/issues/150). These imports remain available; duplicate implementations of the same entry point remain conflicts.
+
+The server's auto-import tests apply actual completion edits, compile the result, and compare its executable bytecode with a version containing only the ordinary helper functions. Both entry points and direct/transitive includes are covered. The comparison uses the compiler's default optimization level (`-O 1`) and verifies unchanged executable code, rather than compiler acceptance alone; it does not launch the game.
+
 ## Recovery
 
 Tests compare incremental parsing with fresh parsing after damaged edits and restoration, including unfinished declarations, comments, raw strings, Unicode and CRLF. They check declaration positions and provider context as well as tree shape.

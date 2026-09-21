@@ -3,7 +3,9 @@ import { before, describe, it } from "mocha";
 import { expect } from "chai";
 import { buildServerBundle } from "../scripts/Build";
 import { join } from "path";
-import { readFileSync } from "fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "fs";
+import { tmpdir } from "os";
+import { spawnSync } from "child_process";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { CompletionItem } from "vscode-languageserver";
 
@@ -517,6 +519,52 @@ describe("Auto-import completion", function () {
       expect(items.some((item) => item.detail?.includes('#include "executable"'))).to.equal(false);
       expect(items.find((item) => item.label === "Imported")?.additionalTextEdits).to.have.length(1);
     });
+  }
+
+  for (const [entryPoint, source, includedEntryPoint] of [
+    ["main", "void main() { int result = Imp|orted(); }", "int StartingConditional() { return IntFn(99); }"],
+    ["StartingConditional", "int StartingConditional() { return Imp|orted(); }", "void main() { IntFn(99); }"],
+  ]) {
+    for (const transitive of [false, true]) {
+      it(`preserves ${entryPoint} bytecode after importing a ${transitive ? "transitive" : "direct"} different entry point`, () => {
+        const helper = "int Imported() { return 13; }\n";
+        const scripts: Record<string, string> = transitive ? { helper: '#include "entry"\n' + helper, entry: includedEntryPoint } : { helper: helper + includedEntryPoint };
+        const { items, live, resolve } = complete(source, scripts, true, undefined, false);
+        const suggestion = items.find((item) => item.label === "Imported");
+        expect(suggestion?.additionalTextEdits).to.have.length(1);
+        const resolved = resolve(suggestion);
+        const completed = TextDocument.applyEdits(live, [resolved.textEdit, ...resolved.additionalTextEdits]);
+        const workspace = mkdtempSync(join(tmpdir(), "nwscript entry imports "));
+        try {
+          mkdirSync(join(workspace, "lang", "en"), { recursive: true });
+          mkdirSync(join(workspace, "ovr"));
+          writeFileSync(join(workspace, "databuild.txt"), "test\n");
+          writeFileSync(join(workspace, "ovr", "nwscript.nss"), "int IntFn(int n);\n");
+          writeFileSync(join(workspace, "current.nss"), completed);
+          for (const [name, content] of Object.entries(scripts)) writeFileSync(join(workspace, name + ".nss"), content);
+          const platform = process.platform === "win32" ? "windows" : process.platform === "darwin" ? "mac" : "linux";
+          const executable = join(__dirname, "../resources/compiler", platform, `nwn_script_comp${process.platform === "win32" ? ".exe" : ""}`);
+          const compile = () => {
+            rmSync(join(workspace, "current.ncs"), { force: true });
+            const result = spawnSync(executable, ["-O", "1", "--userdirectory", workspace, "--root", workspace, join(workspace, "current.nss")], { encoding: "utf8", timeout: 20000 });
+            expect(result.error).to.equal(undefined);
+            expect(result.signal).to.equal(null);
+            expect(result.status, result.stderr).to.equal(0);
+            expect(result.stderr).to.include("1 successful");
+            const bytecode = readFileSync(join(workspace, "current.ncs"));
+            expect(bytecode.subarray(0, 8).toString()).to.equal("NCS V1.0");
+            return bytecode;
+          };
+          const importedBytecode = compile();
+          // Same completion, with only the unused include entry point removed.
+          // Identical executable code proves the import did not select another entry point.
+          writeFileSync(join(workspace, transitive ? "entry.nss" : "helper.nss"), transitive ? "// No entry point\n" : helper);
+          expect(importedBytecode).to.deep.equal(compile());
+        } finally {
+          rmSync(workspace, { recursive: true, force: true });
+        }
+      });
+    }
   }
 
   it("rejects an entry point after another function on the same line", () => {
