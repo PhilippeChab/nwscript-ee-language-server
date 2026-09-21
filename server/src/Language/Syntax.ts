@@ -1,36 +1,36 @@
-import { DeclarationKind, ReferenceKind } from "./types";
+import { DeclarationKind } from "./Declarations";
+import type { NamedLocation, FunctionDeclaration, ParameterDeclaration, VariableDeclaration } from "./Declarations";
+import { ReferenceKind } from "./References";
+import type { SyntaxIndex } from "./SyntaxIndex";
+import type { LocalScope, AutoImportContext, CallContext, SyntaxTarget } from "./SyntaxTypes";
+import type { TypeName } from "./TypeNames";
 import { join } from "path";
-import type { Language as SyntaxLanguage, Parser as SyntaxParser, Node, Tree } from "web-tree-sitter";
+import { Language, Parser } from "web-tree-sitter";
+import type { Node, Tree } from "web-tree-sitter";
 import { Range } from "vscode-languageserver";
 import type { Position } from "vscode-languageserver";
 import type { TextDocument } from "vscode-languageserver-textdocument";
-import type { DocumentIndex, LocalScope, AutoImportContext } from "./contracts";
-import type { FunctionDeclaration, ParameterDeclaration, VariableDeclaration } from "./types";
 import { isStandardLibrary } from "../Utils/Uri";
-import { LanguageTypes } from "./constants";
-// Select the CJS runtime so bundled Node entry points retain their module filename.
-import TreeSitter = require("web-tree-sitter");
-const { Language, Parser } = TreeSitter;
 
 const isNode = (node: Node | null): node is Node => node !== null;
 
-export default class SyntaxDocument {
-  private static language: SyntaxLanguage;
+export default class Syntax {
+  private static language: Language;
   private static initialization?: Promise<void>;
-  private static readonly cleanup = new FinalizationRegistry<{ tree: Tree; parser: SyntaxParser }>((resources) => {
+  private static readonly cleanup = new FinalizationRegistry<{ tree: Tree; parser: Parser }>((resources) => {
     resources.tree.delete();
     resources.parser.delete();
   });
 
-  private readonly resources: { tree: Tree; parser: SyntaxParser };
-  private index?: DocumentIndex;
+  private readonly resources: { tree: Tree; parser: Parser };
+  private index?: SyntaxIndex;
 
   private source: string;
 
-  private constructor(private document: TextDocument, private readonly parser: SyntaxParser, private tree: Tree) {
+  private constructor(private document: TextDocument, private readonly parser: Parser, private tree: Tree) {
     this.source = document.getText();
     this.resources = { tree, parser };
-    SyntaxDocument.cleanup.register(this, this.resources, this);
+    Syntax.cleanup.register(this, this.resources, this);
   }
 
   public static async loadGrammar(directory: string) {
@@ -45,7 +45,7 @@ export default class SyntaxDocument {
       parser.delete();
       throw new Error("Tree-sitter did not produce a syntax tree");
     }
-    return new SyntaxDocument(document, parser, tree);
+    return new Syntax(document, parser, tree);
   }
 
   public get hasSyntaxErrors() {
@@ -57,7 +57,7 @@ export default class SyntaxDocument {
   }
 
   public dispose() {
-    SyntaxDocument.cleanup.unregister(this);
+    Syntax.cleanup.unregister(this);
     this.tree.delete();
     this.parser.delete();
   }
@@ -95,22 +95,17 @@ export default class SyntaxDocument {
     this.document = document;
   }
 
-  public getFunctionNavigationTarget(identifier: string, position?: Position): Position | undefined {
-    const declarations = this.rootNode.namedChildren.filter(isNode).filter((node) => node.type === "function_definition" && node.childForFieldName("declarator")?.text === identifier);
-    const offset = position ? this.document.offsetAt(position) : undefined;
-    const current = declarations.find((node) => {
-      const name = node.childForFieldName("declarator");
-      return name && offset !== undefined && name.startIndex <= offset && offset <= name.endIndex;
-    });
-    // Calls and prototypes prefer a body; clicking the body's name toggles to a prototype.
-    const implementation = declarations.find((node) => node.childForFieldName("body"));
-    const prototype = declarations.find((node) => !node.childForFieldName("body"));
-    const target = current?.childForFieldName("body") ? prototype || implementation : implementation || prototype;
-    const name = target?.childForFieldName("declarator");
-    return name ? this.position(name) : undefined;
+  public getFunctionDeclarations(): FunctionDeclaration[] {
+    return this.rootNode.namedChildren
+      .filter(isNode)
+      .filter((node) => node.type === "function_definition")
+      .flatMap((node) => {
+        const declaration = this.readFunction(node);
+        return declaration ? [declaration] : [];
+      });
   }
 
-  public getIndex(strict = false): DocumentIndex {
+  public getIndex(strict = false): SyntaxIndex {
     if (
       strict &&
       (this.rootNode.namedChildren.some((node) => node?.type === "incomplete_function_definition") ||
@@ -120,7 +115,7 @@ export default class SyntaxDocument {
       throw new Error("Incomplete declaration");
     }
     if (this.index) return this.index;
-    const index: DocumentIndex = { globalDeclarations: [], structDeclarations: [], includes: [] };
+    const index: SyntaxIndex = { globalDeclarations: [], structDeclarations: [], includes: [] };
     for (const node of this.walk(this.rootNode)) {
       if (node.type === "preproc_include") {
         const file = node.childForFieldName("file");
@@ -150,14 +145,13 @@ export default class SyntaxDocument {
           kind: DeclarationKind.Struct,
           properties: (fields?.namedChildren.filter(isNode) || [])
             .filter((child) => child.type === "field_declaration")
-            .flatMap((field) => this.variables(field).map(({ identifier, position, valueType }) => ({ identifier, position, valueType, kind: DeclarationKind.Field }))),
+            .flatMap((field) => this.readDeclarators(field).map(({ identifier, position, valueType }) => ({ identifier, position, valueType, kind: DeclarationKind.Field }))),
         });
       } else if (node.type === "declaration") {
-        const variables = this.variables(node);
-        if (this.ancestor(node.parent, ["compound_statement", "for_statement"])) (index.localDeclarations ||= []).push(...variables);
+        if (this.ancestor(node.parent, ["compound_statement", "for_statement"])) (index.localDeclarations ||= []).push(...this.readLocalVariables(node));
         else {
           const declarators = node.childrenForFieldName("declarator").filter(isNode);
-          for (const variable of variables) {
+          for (const variable of this.readDeclarators(node)) {
             const declarator = declarators.find((child) => (child.childForFieldName("declarator") || child).text === variable.identifier);
             const isConst = node.namedChildren.filter(isNode).some((child) => child.type === "const_qualifier");
             const classification =
@@ -182,36 +176,17 @@ export default class SyntaxDocument {
     return index;
   }
 
-  public getVisibleLocals(position: Position): (VariableDeclaration | ParameterDeclaration)[] {
-    const offset = this.document.offsetAt(position);
-    const visible: (VariableDeclaration | ParameterDeclaration)[] = [];
-    for (let node: Node | null = this.rootNode.descendantForIndex(offset); node; node = node.parent) {
-      if (node.type === "compound_statement" || node.type === "for_statement") {
-        for (const child of node.namedChildren
-          .filter(isNode)
-          .filter((child) => child.type === "declaration")
-          .reverse()) {
-          visible.push(...this.variables(child).filter((variable) => this.document.offsetAt(variable.position) <= offset));
-        }
-      } else if (node.type === "function_definition") {
-        visible.push(...(this.readFunction(node)?.params || []).filter((param) => this.document.offsetAt(param.position) <= offset));
-        break;
-      }
-    }
-    return visible;
-  }
-
-  public getLocalScope(position?: Position, startLine = 0): LocalScope {
+  public getLocalScope(position?: Position): LocalScope {
     const offset = position ? this.document.offsetAt(position) : this.source.length;
     const functionDeclarations = [...this.walk(this.rootNode)]
-      .filter((node) => node.type === "function_definition" && node.childForFieldName("body") && node.startIndex < offset && this.position(node).line >= startLine)
+      .filter((node) => node.type === "function_definition" && node.childForFieldName("body") && node.startIndex < offset)
       .flatMap((node) => {
         const fn = this.readFunction(node);
         if (!fn) return [];
         delete fn.implementation;
         fn.variables = [...this.walk(node)]
           .filter((child) => child.type === "declaration")
-          .flatMap((child) => this.variables(child))
+          .flatMap((child) => this.readLocalVariables(child))
           .filter((variable) => this.document.offsetAt(variable.position) <= offset)
           .sort((a, b) => b.position.line - a.position.line || a.position.character - b.position.character);
         return [fn];
@@ -220,7 +195,7 @@ export default class SyntaxDocument {
     return { functionDeclarations, variableDeclarations: position ? this.getVisibleLocals(position) : functionDeclarations.flatMap((fn) => [...(fn.variables || []), ...fn.params]) };
   }
 
-  public getCallContext(position: Position) {
+  public getCallContext(position: Position): CallContext | undefined {
     if (this.isInCommentOrString(position)) return;
     const offset = this.document.offsetAt(position);
     const calls: { identifier?: string; activeParameter: number }[] = [];
@@ -238,7 +213,8 @@ export default class SyntaxDocument {
       else if (leaf.type === "," && calls.length) calls[calls.length - 1].activeParameter++;
       previous = leaf;
     }
-    return calls.reverse().find((call) => call.identifier !== undefined);
+    const call = calls.reverse().find((call) => call.identifier !== undefined);
+    return call?.identifier !== undefined ? { identifier: call.identifier, activeParameter: call.activeParameter } : undefined;
   }
 
   public getMemberPath(position: Position) {
@@ -263,18 +239,19 @@ export default class SyntaxDocument {
     return member ? (!expectName && names.length > 1 ? names.reverse() : []) : undefined;
   }
 
-  public getActionTarget(position: Position) {
-    if (this.isInCommentOrString(position)) return { rawContent: undefined, kind: undefined };
+  public getTargetAt(position: Position): SyntaxTarget | undefined {
+    if (this.isInCommentOrString(position)) return;
     const offset = this.document.offsetAt(position);
     const leaves = [...this.leaves()];
     const node = leaves.find((leaf) => leaf.startIndex === offset && leaf.isNamed) || leaves.find((leaf) => leaf.startIndex <= offset && leaf.endIndex >= offset);
+    if (!node || !node.text) return;
     const kind =
-      node?.type === "type_identifier" || ["struct_declarator", "struct_specifier"].includes(node?.parent?.type || "")
+      node.type === "type_identifier" || ["struct_declarator", "struct_specifier"].includes(node.parent?.type || "")
         ? ReferenceKind.Type
-        : node?.type === "field_identifier"
+        : node.type === "field_identifier"
         ? ReferenceKind.Member
         : undefined;
-    return { rawContent: node?.text, kind };
+    return { identifier: node.text, kind, range: Range.create(this.document.positionAt(node.startIndex), this.document.positionAt(node.endIndex)) };
   }
 
   public getAutoImportContext(position: Position): AutoImportContext | undefined {
@@ -311,6 +288,25 @@ export default class SyntaxDocument {
     // The runtime accepts module overrides; its declaration incorrectly requires a complete module.
     await Parser.init({ locateFile: () => join(directory, "web-tree-sitter.wasm") } as unknown as EmscriptenModule);
     this.language = await Language.load(join(directory, "tree-sitter-nwscript.wasm"));
+  }
+
+  private getVisibleLocals(position: Position): (VariableDeclaration | ParameterDeclaration)[] {
+    const offset = this.document.offsetAt(position);
+    const visible: (VariableDeclaration | ParameterDeclaration)[] = [];
+    for (let node: Node | null = this.rootNode.descendantForIndex(offset); node; node = node.parent) {
+      if (node.type === "compound_statement" || node.type === "for_statement") {
+        for (const child of node.namedChildren
+          .filter(isNode)
+          .filter((child) => child.type === "declaration")
+          .reverse()) {
+          visible.push(...this.readLocalVariables(child).filter((variable) => this.document.offsetAt(variable.position) <= offset));
+        }
+      } else if (node.type === "function_definition") {
+        visible.push(...(this.readFunction(node)?.params || []).filter((param) => this.document.offsetAt(param.position) <= offset));
+        break;
+      }
+    }
+    return visible;
   }
 
   private getIncludeInsertionPosition(): Position {
@@ -357,31 +353,38 @@ export default class SyntaxDocument {
     return this.document.positionAt(node.startIndex);
   }
 
-  private valueType(node: Node): LanguageTypes {
+  private getTypeName(node: Node): TypeName | undefined {
     const type = node.childForFieldName("type");
-    return (type?.type === "struct_specifier" ? type.namedChildren.filter(isNode)[0]?.text : type?.text) as LanguageTypes;
+    return type?.type === "struct_specifier" ? type.namedChildren.filter(isNode)[0]?.text : type?.text;
   }
 
-  private variables(node: Node): VariableDeclaration[] {
+  private readLocalVariables(node: Node): VariableDeclaration[] {
+    return this.readDeclarators(node).map((declaration) => ({ ...declaration, kind: DeclarationKind.Variable, scope: "local" }));
+  }
+
+  private readDeclarators(node: Node): (NamedLocation & { valueType: TypeName })[] {
+    const valueType = this.getTypeName(node);
+    if (!valueType) return [];
     return node
       .childrenForFieldName("declarator")
       .filter(isNode)
       .flatMap((declarator) => {
         const name = declarator.childForFieldName("declarator") || declarator;
         if (name.isMissing || !["identifier", "field_identifier"].includes(name.type)) return [];
-        return [{ identifier: name.text, position: this.position(name), valueType: this.valueType(node), kind: DeclarationKind.Variable, scope: "local" }];
+        return [{ identifier: name.text, position: this.position(name), valueType }];
       });
   }
 
   private readFunction(node: Node): FunctionDeclaration | undefined {
+    const returnType = this.getTypeName(node);
     const name = node.childForFieldName("declarator");
     const args = node.namedChildren.filter(isNode).find((child) => child.type === "function_argument_list");
-    if (!name || name.isMissing || !args) return;
+    if (!name || name.isMissing || !args || !returnType) return;
     const params: ParameterDeclaration[] = args.namedChildren
       .filter(isNode)
       .filter((child) => child.type === "parameter_declaration")
       .flatMap((parameter) =>
-        this.variables(parameter).map((variable) => ({
+        this.readDeclarators(parameter).map((variable) => ({
           position: variable.position,
           identifier: variable.identifier,
           kind: DeclarationKind.Parameter,
@@ -399,7 +402,7 @@ export default class SyntaxDocument {
       position: this.position(name),
       identifier: name.text,
       kind: DeclarationKind.Function,
-      returnType: this.valueType(node),
+      returnType,
       params,
       signatureEnd: this.document.positionAt(args.endIndex),
       comments,

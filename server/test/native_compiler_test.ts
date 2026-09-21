@@ -1,6 +1,6 @@
 import { before, beforeEach, afterEach, describe, it } from "mocha";
 import { expect } from "chai";
-import { buildSync } from "esbuild";
+import { buildServerBundle } from "../scripts/Build";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "fs";
 import { tmpdir } from "os";
 import { basename, join } from "path";
@@ -29,11 +29,9 @@ describe("Native compiler diagnostics", function () {
 
   before(async () => {
     const bundle = join(__dirname, "..", "out", "diagnostics-provider-test.js");
-    buildSync({
+    buildServerBundle({
       entryPoints: [join(__dirname, "..", "src", "Providers", "DiagnosticsProvider.ts")],
       outfile: bundle,
-      bundle: true,
-      platform: "node",
     });
     Provider = (await import(bundle)).default;
   });
@@ -62,8 +60,8 @@ describe("Native compiler diagnostics", function () {
       configLoaded: true,
       documentsWaitingForPublish: [],
       documentsCollection: {
-        getFromUri: (uri: string) => [...documents.values()].find((doc) => doc.uri === uri),
-        get: (name: string) => documents.get(name),
+        getWorkspaceDocument: (uri: string) => [...documents.values()].find((doc) => doc.uri === uri),
+        getWorkspaceInclude: (name: string) => documents.get(name),
       },
       standardLibrary: { getPath: () => join(workspace, "ovr", "nwscript.nss") },
       workspaceFilesSystem: {
@@ -89,7 +87,7 @@ describe("Native compiler diagnostics", function () {
     mkdirSync(join(path, ".."), { recursive: true });
     writeFileSync(path, source);
     const uri = pathToFileURL(path).href;
-    documents.set(basename(path, ".nss"), { uri, getChildren: () => children });
+    documents.set(basename(path, ".nss"), { uri, getDependencyNames: () => children });
     return { path, uri };
   }
 

@@ -1,6 +1,6 @@
 import { MarkupContent, MarkupKind } from "vscode-languageserver";
 
-import type { Declaration, ConstantDeclaration, FunctionDeclaration, ParameterDeclaration, StructDeclaration, FieldDeclaration, VariableDeclaration } from "../../Parser/types";
+import type { Declaration, ConstantDeclaration, FunctionDeclaration, ParameterDeclaration, StructDeclaration, FieldDeclaration, VariableDeclaration } from "../../Language";
 import { ServerConfiguration } from "../../ServerManager/Config";
 import Builder from "./Builder";
 

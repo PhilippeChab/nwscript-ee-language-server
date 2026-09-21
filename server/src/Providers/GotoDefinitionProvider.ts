@@ -1,8 +1,3 @@
-import { DeclarationKind } from "../Parser/types";
-import { readFileSync } from "fs";
-import { fileURLToPath } from "url";
-import { TextDocument } from "vscode-languageserver-textdocument";
-import { normalizeDocumentUri } from "../Utils";
 import type { ServerManager } from "../ServerManager";
 import Provider from "./Provider";
 
@@ -11,29 +6,9 @@ export default class GotoDefinitionProvider extends Provider {
     super(server);
     this.server.connection.onDefinition(({ textDocument: { uri }, position }) =>
       this.exceptionsWrapper(() => {
-        const resolved = this.resolveSymbol(uri, position);
-        if (!resolved?.owner) return;
-        let target = resolved.declaration.position;
-        if (resolved.declaration.kind === DeclarationKind.Function) {
-          const ownerDocument = this.getSourceDocument(resolved.owner);
-          if (ownerDocument) {
-            const cursor = normalizeDocumentUri(uri) === normalizeDocumentUri(resolved.owner) ? position : undefined;
-            target = this.server.documentsCollection.getParsedDocument(ownerDocument, this.server.parserService).syntax.getFunctionNavigationTarget(resolved.declaration.identifier, cursor) || target;
-          }
-        }
-        return { uri: resolved.owner, range: { start: target, end: target } };
+        const target = this.getDocument(uri)?.semantic.getDefinitionAt(position);
+        if (target) return { uri: target.uri, range: { start: target.position, end: target.position } };
       }),
     );
-  }
-
-  private getSourceDocument(uri: string) {
-    const live = this.server.liveDocumentsManager.get(uri);
-    if (live) return live;
-    try {
-      return TextDocument.create(uri, "nwscript", 0, readFileSync(fileURLToPath(uri), "utf8"));
-    } catch {
-      // A file may disappear between indexing and navigation. Keep the indexed target.
-      return undefined;
-    }
   }
 }

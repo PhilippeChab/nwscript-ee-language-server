@@ -1,6 +1,6 @@
 import { before, beforeEach, afterEach, describe, it } from "mocha";
 import { expect } from "chai";
-import { buildSync } from "esbuild";
+import { buildServerBundle } from "../scripts/Build";
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "fs";
 import { tmpdir } from "os";
 import { dirname, join } from "path";
@@ -14,7 +14,7 @@ describe("Workspace standard library", function () {
   let root: string;
   let files: any;
   let library: any;
-  let parserService: any;
+  let parser: any;
   let errors: string[];
   const uri = (path: string) => pathToFileURL(path).href;
   const source = "// Custom API\nint CustomFn(string value, int count = 7);\nconst int CUSTOM_VALUE = 42;\n";
@@ -25,12 +25,12 @@ describe("Workspace standard library", function () {
 
   before(async () => {
     const bundle = join(__dirname, "../out/standard-library-test.js");
-    buildSync({
+    buildServerBundle({
       stdin: {
         contents: `export { default as StandardLibrary } from './Documents/StandardLibrary';
           export { default as Files } from './WorkspaceFilesSystem/WorkspaceFilesSystem';
           export { default as Collection } from './Documents/DocumentsCollection';
-          export { ParserService } from './Parser';
+          export { default as Parser } from './Language/Parser';
           export { default as Completion } from './Providers/CompletionItemsProvider';
           export { default as Hover } from './Providers/HoverContentProvider';
           export { default as Signature } from './Providers/SignatureHelpProvider';
@@ -42,19 +42,16 @@ describe("Workspace standard library", function () {
         loader: "ts",
       },
       outfile: bundle,
-      bundle: true,
-      platform: "node",
-      format: "cjs",
     });
     api = require(bundle);
-    parserService = await new api.ParserService().loadGrammar();
+    parser = await new api.Parser().loadGrammar();
   });
 
   beforeEach(() => {
     root = mkdtempSync(join(tmpdir(), "nwscript workspace & spaces "));
     files = new api.Files(root, null);
     errors = [];
-    library = new api.StandardLibrary(files, parserService, (message: string) => errors.push(message));
+    library = new api.StandardLibrary(files, parser, (message: string) => errors.push(message));
   });
   afterEach(() => rmSync(root, { recursive: true, force: true }));
 
@@ -64,13 +61,13 @@ describe("Workspace standard library", function () {
       write(spec, source);
       const script = TextDocument.create(uri(join(root, "test.nss")), "nwscript", 1, include + 'void main()\n{\n    CustomFn("x", 2);\n}\n');
       const collection = new api.Collection();
-      collection.createDocuments(script.uri, script.getText(), parserService, files);
+      collection.updateDocument(script, parser, files);
       const handlers: any = {};
       const server = {
         capabilitiesHandler: { getSupportsMarkdownHover: () => true },
         standardLibrary: library,
         documentsCollection: collection,
-        parserService,
+        parser,
         config: { ...api.config, hovering: { addCommentsToFunctions: true } },
         liveDocumentsManager: { get: () => script },
         logger: { error: (message: string) => errors.push(message) },
@@ -106,7 +103,7 @@ describe("Workspace standard library", function () {
       capabilitiesHandler: { getSupportsMarkdownHover: () => true },
       standardLibrary: library,
       documentsCollection: new api.Collection(),
-      parserService,
+      parser,
       workspaceFilesSystem: files,
       config: api.config,
       logger: { error: (message: string) => errors.push(message) },
@@ -153,12 +150,12 @@ describe("Workspace standard library", function () {
     const second = TextDocument.create(uri(join(b, "test.nss")), "nwscript", 1, content);
     editor.open(first);
     editor.open(second);
-    expect(editor.server.documentsCollection.getFromUri(first.uri).uri).to.equal(first.uri);
-    expect(editor.server.documentsCollection.getFromUri(second.uri).uri).to.equal(second.uri);
+    expect(editor.server.documentsCollection.getWorkspaceDocument(first.uri).uri).to.equal(first.uri);
+    expect(editor.server.documentsCollection.getWorkspaceDocument(second.uri).uri).to.equal(second.uri);
     // Protect provider selection even if a basename-based reference belongs to
     // another document, independently of the collection's exact-URI lookup.
-    const wrongDocument = editor.server.documentsCollection.getFromUri(first.uri);
-    editor.server.documentsCollection.getFromUri = () => wrongDocument;
+    const wrongDocument = editor.server.documentsCollection.getWorkspaceDocument(first.uri);
+    editor.server.documentsCollection.getWorkspaceDocument = () => wrongDocument;
     const params = { textDocument: { uri: second.uri }, position: { line: 2, character: 8 } };
     expect(editor.handlers.hover(params).contents.value).to.include("float CustomFn(string text)");
     expect(editor.handlers.definition(params).uri).to.equal(uri(join(b, "nwscript.nss")));
@@ -178,7 +175,7 @@ describe("Workspace standard library", function () {
       return document;
     });
     opened.forEach((document, index) => {
-      expect(editor.server.documentsCollection.getFromUri(document.uri).uri).to.equal(document.uri);
+      expect(editor.server.documentsCollection.getWorkspaceDocument(document.uri).uri).to.equal(document.uri);
       const params = { textDocument: { uri: document.uri }, position: { line: 4, character: 8 } };
       const completion = editor.handlers.completion(params);
       expect((completion.items || completion).some((item: any) => item.label === `OwnFn${index}`)).to.equal(true);
@@ -189,8 +186,8 @@ describe("Workspace standard library", function () {
     expect(library.get(uri(join(workspace, "test.nss"))).owner).to.equal(uri(paths[0]));
     const changed = TextDocument.create(opened[1].uri, "nwscript", 2, "float EditedFn();\n");
     editor.handlers.change({ document: changed });
-    expect(editor.server.documentsCollection.getFromUri(changed.uri).globalDeclarations[0].identifier).to.equal("EditedFn");
-    expect(editor.server.documentsCollection.getFromUri(opened[0].uri).globalDeclarations[0].identifier).to.equal("OwnFn0");
+    expect(editor.server.documentsCollection.getWorkspaceDocument(changed.uri).index.globalDeclarations[0].identifier).to.equal("EditedFn");
+    expect(editor.server.documentsCollection.getWorkspaceDocument(opened[0].uri).index.globalDeclarations[0].identifier).to.equal("OwnFn0");
     expect(errors).to.deep.equal([]);
   });
 
@@ -201,9 +198,9 @@ describe("Workspace standard library", function () {
     const editor = editorServer();
     const document = TextDocument.create(uri(path), "nwscript", 1, "int Broken(");
     expect(() => editor.open(document)).not.to.throw();
-    expect(editor.server.documentsCollection.getFromUri(document.uri).uri).to.equal(document.uri);
+    expect(editor.server.documentsCollection.getWorkspaceDocument(document.uri).uri).to.equal(document.uri);
     editor.handlers.change({ document: TextDocument.create(document.uri, "nwscript", 2, "int Recovered();\n") });
-    expect(editor.server.documentsCollection.getFromUri(document.uri).globalDeclarations[0].identifier).to.equal("Recovered");
+    expect(editor.server.documentsCollection.getWorkspaceDocument(document.uri).index.globalDeclarations[0].identifier).to.equal("Recovered");
     expect(library.get(document.uri).owner).to.equal(uri(join(root, "nwscript.nss")));
   });
 
@@ -212,25 +209,25 @@ describe("Workspace standard library", function () {
     write(spec, source);
     const editor = editorServer();
     const document = TextDocument.create(uri(spec), "nwscript", 1, source);
-    const parseContent = parserService.parseContent.bind(parserService);
+    const parseContent = parser.parseContent.bind(parser);
     let parses = 0;
-    parserService.parseContent = (...args: any[]) => {
+    parser.parseContent = (...args: any[]) => {
       parses++;
       return parseContent(...args);
     };
     try {
       editor.open(document);
       expect(parses).to.equal(1);
-      expect(library.get(document.uri).globalDeclarations).to.equal(editor.server.documentsCollection.getFromUri(document.uri).globalDeclarations);
+      expect(library.get(document.uri).globalDeclarations).to.equal(editor.server.documentsCollection.getWorkspaceDocument(document.uri).index.globalDeclarations);
       editor.handlers.change({ document });
       expect(parses).to.equal(1);
       TextDocument.update(document, [{ text: "float ChangedFn();\n" }], 2);
       editor.handlers.change({ document });
       expect(parses).to.equal(2);
-      expect(library.get(document.uri).globalDeclarations).to.equal(editor.server.documentsCollection.getFromUri(document.uri).globalDeclarations);
+      expect(library.get(document.uri).globalDeclarations).to.equal(editor.server.documentsCollection.getWorkspaceDocument(document.uri).index.globalDeclarations);
       expect(library.get(document.uri).globalDeclarations[0].identifier).to.equal("ChangedFn");
     } finally {
-      parserService.parseContent = parseContent;
+      parser.parseContent = parseContent;
     }
   });
 
@@ -241,9 +238,9 @@ describe("Workspace standard library", function () {
     const document = TextDocument.create(uri(spec), "nwscript", 1, source);
     editor.open(document);
     const initial = library.get(document.uri);
-    const parseContent = parserService.parseContent.bind(parserService);
+    const parseContent = parser.parseContent.bind(parser);
     let parses = 0;
-    parserService.parseContent = (...args: any[]) => {
+    parser.parseContent = (...args: any[]) => {
       parses++;
       return parseContent(...args);
     };
@@ -252,20 +249,20 @@ describe("Workspace standard library", function () {
       editor.handlers.change({ document });
       expect(parses).to.equal(1);
       expect(library.get(document.uri)).to.equal(initial);
-      expect(editor.server.documentsCollection.getFromUri(document.uri).globalDeclarations).to.equal(initial.globalDeclarations);
+      expect(editor.server.documentsCollection.getWorkspaceDocument(document.uri).index.globalDeclarations).to.equal(initial.globalDeclarations);
       editor.handlers.change({ document });
       expect(parses).to.equal(1);
       TextDocument.update(document, [{ text: "" }], 3);
       editor.handlers.change({ document });
       expect(parses).to.equal(2);
       expect(library.get(document.uri)).to.equal(initial);
-      expect(editor.server.documentsCollection.getFromUri(document.uri).globalDeclarations).to.deep.equal([]);
+      expect(editor.server.documentsCollection.getWorkspaceDocument(document.uri).index.globalDeclarations).to.deep.equal([]);
       TextDocument.update(document, [{ text: "int Recovered();\n" }], 4);
       editor.handlers.change({ document });
       expect(parses).to.equal(3);
       expect(library.get(document.uri).globalDeclarations[0].identifier).to.equal("Recovered");
     } finally {
-      parserService.parseContent = parseContent;
+      parser.parseContent = parseContent;
     }
   });
 
@@ -443,25 +440,25 @@ describe("Workspace standard library", function () {
     write(path, "int Helper(int n);\n");
     const document = TextDocument.create(uri(join(root, "sample.nss")), "nwscript", 1, '#include "helper"\nvoid main() {}\n');
     const collection = new api.Collection();
-    collection.createDocuments(document.uri, document.getText(), parserService, files);
+    collection.updateDocument(document, parser, files);
     let searches = 0;
     const getFilePath = files.getFilePath.bind(files);
     files.getFilePath = (name: string) => {
       searches++;
       return getFilePath(name);
     };
-    collection.updateDocument(document, parserService, files);
+    collection.updateDocument(document, parser, files);
     expect(searches).to.equal(0);
-    expect(collection.getFromUri(document.uri).getChildren()).to.include("helper");
+    expect(collection.getWorkspaceDocument(document.uri).getDependencyNames()).to.include("helper");
   });
 
   it("recovers an include created on disk even when the parent document version is unchanged", () => {
     const document = TextDocument.create(uri(join(root, "sample.nss")), "nwscript", 1, '#include "later"\nvoid main() {}\n');
     const collection = new api.Collection();
-    collection.updateDocument(document, parserService, files);
-    expect(collection.get("later")).to.equal(undefined);
+    collection.updateDocument(document, parser, files);
+    expect(collection.getWorkspaceInclude("later")).to.equal(undefined);
     write(join(root, "later.nss"), "int LaterFunction();\n");
-    collection.updateDocument(document, parserService, files);
-    expect(collection.get("later").globalDeclarations[0].identifier).to.equal("LaterFunction");
+    collection.updateDocument(document, parser, files);
+    expect(collection.getWorkspaceInclude("later").index.globalDeclarations[0].identifier).to.equal("LaterFunction");
   });
 });

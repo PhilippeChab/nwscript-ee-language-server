@@ -398,7 +398,7 @@ describe("Installed standalone LSP server", function () {
     expect(code).to.equal(0);
     expect(messages[0].error).to.include("ENOENT");
     expect(messages[1].filePath).to.equal(filePath);
-    expect(messages[1].documentIndex?.globalDeclarations.some((declaration) => declaration.identifier === "Helper")).to.equal(true);
+    expect(messages[1].syntaxIndex?.globalDeclarations.some((declaration) => declaration.identifier === "Helper")).to.equal(true);
     const client = await start();
     await client.ready();
     expect(client.logs).to.include("Indexed 3 files.");
@@ -729,7 +729,7 @@ describe("Installed standalone LSP server", function () {
           const timer = setInterval(() => {
             if (!require("fs").existsSync(${JSON.stringify(release)})) return;
             clearInterval(timer);
-            for (const filePath of paths) process.send({ filePath, documentIndex: {
+            for (const filePath of paths) process.send({ filePath, syntaxIndex: {
               includes: [], structDeclarations: [], globalDeclarations: [{
                 identifier: "GhostFromRemovedFolder", kind: "function", returnType: "void",
                 params: [], comments: [], position: { line: 0, character: 5 }

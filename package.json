@@ -166,7 +166,7 @@
     "vscode:prepublish": "yarn build",
     "build": "yarn clean && yarn buildClient && yarn buildServer",
     "buildClient": "esbuild extension=./client/src/extension.ts --sourcemap --bundle --external:vscode --platform=node --outdir=./client/out/",
-    "buildServer": "esbuild server=./server/src/server.ts indexer=./server/src/Documents/DocumentsIndexer.ts --sourcemap --bundle --external:vscode --platform=node --outdir=./server/out/",
+    "buildServer": "yarn --cwd server build",
     "compile": "tsc -b && tsc -p server/tsconfig.eslint.json",
     "compile:client": "tsc -b ./client/tsconfig.json",
     "compile:server": "tsc -b ./server/tsconfig.json",

@@ -1,21 +1,22 @@
 import type DocumentsCollection from "../src/Documents/DocumentsCollection";
-import { DeclarationKind, ReferenceKind } from "../src/Parser/types";
+import { DeclarationKind, ReferenceKind } from "../src/Language";
 import { CompletionItemKind, SymbolKind } from "vscode-languageserver";
 import { workspaceUri } from "./support/fixtures";
 import { before, describe, it } from "mocha";
 import { expect } from "chai";
-import { buildSync } from "esbuild";
+import { buildServerBundle } from "../scripts/Build";
 import { join } from "path";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
 describe("IndexedDocument and signature resolution", () => {
   let api: any;
-  let parserService: any;
+  let parser: any;
+  const emptyLibrary = { globalDeclarations: [], structDeclarations: [], includes: [] };
   before(async () => {
     const bundle = join(__dirname, "../out/resolution-test.js");
-    buildSync({
+    buildServerBundle({
       stdin: {
-        contents: `export { ParserService } from './Parser';
+        contents: `export { default as Parser } from './Language/Parser';
         export { default as Collection } from './Documents/DocumentsCollection';
         export { default as Signature } from './Providers/SignatureHelpProvider';
         export { default as Definition } from './Providers/GotoDefinitionProvider';
@@ -28,15 +29,13 @@ describe("IndexedDocument and signature resolution", () => {
         loader: "ts",
       },
       outfile: bundle,
-      bundle: true,
-      platform: "node",
     });
     api = require(bundle);
-    parserService = await new api.ParserService().loadGrammar();
+    parser = await new api.Parser().loadGrammar();
   });
 
   it("maps internal declaration kinds to editor completion and symbol kinds", () => {
-    const index = parserService.analyzeContent("const int Fixed = 1; int Global; struct Data { int field; }; int Fn(int arg) { int local = arg; return local; }", "document");
+    const index = parser.indexContent("const int Fixed = 1; int Global; struct Data { int field; }; int Fn(int arg) { int local = arg; return local; }");
     const fn = index.globalDeclarations.find((declaration: any) => declaration.identifier === "Fn");
     const cases = [
       [index.globalDeclarations[0], DeclarationKind.Constant, CompletionItemKind.Constant, SymbolKind.Constant],
@@ -57,42 +56,42 @@ describe("IndexedDocument and signature resolution", () => {
   it("reuses a live indexed document and shares its syntax declarations across edits", () => {
     const collection: DocumentsCollection = new api.Collection();
     const live = TextDocument.create(workspaceUri("live.nss"), "nwscript", 1, "int Before;");
-    const document = collection.getParsedDocument(live, parserService);
-    expect(collection.getParsedDocument(live, parserService)).to.equal(document);
-    expect(document.syntax).to.equal(parserService.parse(live));
-    expect(document.globalDeclarations).to.equal(document.syntax.getIndex().globalDeclarations);
+    const document = collection.getDocument(live, parser, emptyLibrary);
+    expect(collection.getDocument(live, parser, emptyLibrary)).to.equal(document);
+    expect(document.syntax).to.equal(parser.parse(live));
+    expect(document.index.globalDeclarations).to.equal(parser.parse(live).getIndex().globalDeclarations);
 
     TextDocument.update(live, [{ text: "string After;" }], 2);
-    expect(collection.getParsedDocument(live, parserService)).to.equal(document);
-    expect(document.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["After"]);
-    expect(document.globalDeclarations).to.equal(document.syntax.getIndex().globalDeclarations);
+    expect(collection.getDocument(live, parser, emptyLibrary)).to.equal(document);
+    expect(document.index.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["After"]);
+    expect(document.index.globalDeclarations).to.equal(parser.parse(live).getIndex().globalDeclarations);
   });
 
   it("refreshes include locations, type uses and entry points with the live syntax", () => {
     const collection = new api.Collection();
     const live = TextDocument.create(workspaceUri("live.nss"), "nwscript", 1, '#include "NWSCRIPT"\n#include "FIRST"\nstruct Old value;\nvoid main() {}');
-    const document = collection.getParsedDocument(live, parserService);
-    expect(document.includes).to.equal(document.syntax.getIndex().includes);
-    expect(document.includes).to.deep.equal([
+    const document = collection.getDocument(live, parser, emptyLibrary);
+    expect(document.index.includes).to.equal(document.syntax.getIndex().includes);
+    expect(document.index.includes).to.deep.equal([
       { name: "NWSCRIPT", position: { line: 0, character: 0 } },
       { name: "FIRST", position: { line: 1, character: 0 } },
     ]);
-    expect(document.getChildren()).to.deep.equal(["first"]);
-    expect(document.entryPoints).to.deep.equal(["main"]);
+    expect(document.getDependencyNames()).to.deep.equal(["first"]);
+    expect(document.getEntryPointNames()).to.deep.equal(["main"]);
     const references = () => [...document.getNameOrder().keys()].filter((indexedName: any) => indexedName.kind === ReferenceKind.Type);
     const initial = references();
     expect(initial.map((reference: any) => reference.identifier)).to.deep.equal(["Old"]);
     expect(references()[0]).to.equal(initial[0]);
 
     TextDocument.update(live, [{ text: '\n#include "SECOND"\n#include "nwscript"\nstruct New value;\nint StartingConditional() { return 1; }' }], 2);
-    collection.getParsedDocument(live, parserService);
-    expect(document.includes).to.equal(document.syntax.getIndex().includes);
-    expect(document.includes).to.deep.equal([
+    collection.getDocument(live, parser, emptyLibrary);
+    expect(document.index.includes).to.equal(document.syntax.getIndex().includes);
+    expect(document.index.includes).to.deep.equal([
       { name: "SECOND", position: { line: 1, character: 0 } },
       { name: "nwscript", position: { line: 2, character: 0 } },
     ]);
-    expect(document.getChildren()).to.deep.equal(["second"]);
-    expect(document.entryPoints).to.deep.equal(["StartingConditional"]);
+    expect(document.getDependencyNames()).to.deep.equal(["second"]);
+    expect(document.getEntryPointNames()).to.deep.equal(["StartingConditional"]);
     expect(references().map((reference: any) => reference.identifier)).to.deep.equal(["New"]);
     expect(references()[0]).not.to.equal(initial[0]);
   });
@@ -102,55 +101,57 @@ describe("IndexedDocument and signature resolution", () => {
       const collection = new api.Collection();
       const files = { getFilePath: () => null };
       const live = TextDocument.create(workspaceUri("live.nss"), "nwscript", 1, "int Saved;");
-      collection.updateDocument(live, parserService, files);
-      const saved = collection.getFromUri(live.uri);
-      const document = collection.getParsedDocument(live, parserService);
-      expect(document.globalDeclarations).to.equal(saved.globalDeclarations);
+      collection.updateDocument(live, parser, files);
+      const saved = collection.getWorkspaceDocument(live.uri);
+      const document = collection.getDocument(live, parser, emptyLibrary);
+      expect(document.index.globalDeclarations).to.equal(saved.index.globalDeclarations);
 
       TextDocument.update(live, [{ text: `string Unsaved;\n${unfinished}` }], 2);
-      expect(() => collection.updateDocument(live, parserService, files)).to.throw("Incomplete declaration");
-      expect(collection.getParsedDocument(live, parserService)).to.equal(document);
-      expect(document.globalDeclarations.map((declaration: any) => declaration.identifier))
+      expect(() => collection.updateDocument(live, parser, files)).to.throw("Incomplete declaration");
+      expect(collection.getDocument(live, parser, emptyLibrary)).to.equal(document);
+      expect(document.index.globalDeclarations.map((declaration: any) => declaration.identifier))
         .to.include("Unsaved")
         .and.not.include("Saved");
-      expect(collection.getFromUri(live.uri)).to.equal(saved);
-      expect(collection.resolveInclude("live").globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Saved"]);
+      expect(collection.getWorkspaceDocument(live.uri)).to.equal(saved);
+      expect(collection.resolveInclude("live").index.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Saved"]);
 
       TextDocument.update(live, [{ text: "string Repaired;" }], 3);
-      collection.updateDocument(live, parserService, files);
-      expect(collection.getParsedDocument(live, parserService)).to.equal(document);
-      expect(collection.getFromUri(live.uri).globalDeclarations).to.equal(document.globalDeclarations);
-      expect(document.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Repaired"]);
+      collection.updateDocument(live, parser, files);
+      expect(collection.getDocument(live, parser, emptyLibrary)).to.equal(document);
+      expect(collection.getWorkspaceDocument(live.uri).index.globalDeclarations).to.equal(document.index.globalDeclarations);
+      expect(document.index.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Repaired"]);
     });
   }
 
   it("isolates reopened buffers and duplicate basenames without retaining unsaved content", () => {
     const collection = new api.Collection();
     const live = TextDocument.create(workspaceUri("live.nss"), "nwscript", 1, "int Unsaved;");
-    const original = collection.getParsedDocument(live, parserService);
+    const original = collection.getDocument(live, parser, emptyLibrary);
     const reopened = TextDocument.create(live.uri, "nwscript", 1, "int Disk;");
     const other = TextDocument.create(workspaceUri("other/live.nss"), "nwscript", 1, "int Other;");
-    const document = collection.getParsedDocument(reopened, parserService);
+    const document = collection.getDocument(reopened, parser, emptyLibrary);
     expect(document).not.to.equal(original);
-    expect(document.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Disk"]);
-    const duplicate = collection.getParsedDocument(other, parserService);
+    expect(document.index.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Disk"]);
+    const duplicate = collection.getDocument(other, parser, emptyLibrary);
     expect(duplicate).not.to.equal(document);
-    expect(duplicate.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Other"]);
-    expect(document.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Disk"]);
+    expect(duplicate.index.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Other"]);
+    expect(document.index.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Disk"]);
   });
 
   it("resolves bundled includes from their serialized index without requiring a syntax tree", () => {
     const collection = new api.Collection();
     const bundled = collection.resolveInclude("nw_i0_plot");
     expect(bundled.syntax).to.equal(undefined);
-    expect(bundled.globalDeclarations.some((declaration: any) => declaration.identifier === "plotCanRemoveXP")).to.equal(true);
+    expect(bundled.index.globalDeclarations.some((declaration: any) => declaration.identifier === "plotCanRemoveXP")).to.equal(true);
     const live = TextDocument.create(workspaceUri("live.nss"), "nwscript", 1, '#include "NW_I0_PLOT"');
-    const document = collection.getParsedDocument(live, parserService);
-    expect(document.getGlobalDeclarations().some((declaration: any) => declaration.identifier === "plotCanRemoveXP")).to.equal(true);
+    const document = collection.getDocument(live, parser, emptyLibrary);
+    expect(document.getDocumentsWithDependencies().some((dependency: any) => dependency.index.globalDeclarations.some((declaration: any) => declaration.identifier === "plotCanRemoveXP"))).to.equal(
+      true,
+    );
   });
 
   it("omits absent global initializers from hover while preserving zero and empty strings", () => {
-    const scope = parserService.analyzeContent('int Global; int Zero = 0; string Empty = ""; const int Constant = 1;', "document");
+    const scope = parser.indexContent('int Global; int Zero = 0; string Empty = ""; const int Constant = 1;');
     for (const markdown of [true, false]) {
       const expected = ["int Global", "int Zero = 0", 'string Empty = ""', "const int Constant = 1"];
       expect(scope.globalDeclarations.map((declaration: any) => api.HoverContentBuilder.buildItem(declaration, api.config, markdown).value)).to.deep.equal(
@@ -174,7 +175,7 @@ describe("IndexedDocument and signature resolution", () => {
         const prototype = document.getText().indexOf("Fn(int value);");
         let handler: any;
         api.Definition.register({
-          parserService,
+          parser,
           documentsCollection: new api.Collection(),
           liveDocumentsManager: { get: (uri: string) => (uri === document.uri ? document : undefined) },
           standardLibrary: { get: () => ({ globalDeclarations: [], structDeclarations: [] }) },
@@ -200,7 +201,7 @@ describe("IndexedDocument and signature resolution", () => {
     const document = TextDocument.create(workspaceUri(filename), "nwscript", 1, source);
     const handlers: any = {};
     const server = {
-      parserService,
+      parser,
       documentsCollection: new api.Collection(),
       liveDocumentsManager: { get: () => document },
       standardLibrary: { get: () => library },
@@ -245,7 +246,7 @@ describe("IndexedDocument and signature resolution", () => {
   for (const filename of ["details.nss", "nwscript.nss"]) {
     it(`distinguishes mutable globals from constants, including implicit API constants in ${filename}`, () => {
       const source = "int Global; const int Constant = 1; void main() {}";
-      const library = parserService.analyzeContent(TextDocument.create(workspaceUri("nwscript.nss"), "nwscript", 0, "int TRUE = 1;"), "document");
+      const library = parser.indexContent(TextDocument.create(workspaceUri("nwscript.nss"), "nwscript", 0, "int TRUE = 1;"));
       const { handlers, params } = editor(source, filename, library);
       const completions = handlers.completion(params(source.length));
       const global = completions.find((item: any) => item.label === "Global");
@@ -303,7 +304,7 @@ describe("IndexedDocument and signature resolution", () => {
 
   for (const declaration of ["int Fn();", "void Fn(int value);", "void Fn(struct Data data, int count = 0);"]) {
     it(`resolves function completion repeatedly without appending duplicate parameters: ${declaration}`, () => {
-      const fn = parserService.analyzeContent(declaration, "document").globalDeclarations[0];
+      const fn = parser.indexContent(declaration).globalDeclarations[0];
       const config = { ...api.config, completion: { ...api.config.completion, addParamsToFunctions: true } };
       const item = api.CompletionItemBuilder.buildItem(fn);
       const once = api.CompletionItemBuilder.buildResolvedItem(item, config);
@@ -314,7 +315,7 @@ describe("IndexedDocument and signature resolution", () => {
   }
 
   it("indexes every same-line declaration with its own signature and value", () => {
-    const scope = parserService.analyzeContent("void First(int a) {} int Second(string b); void main() {} const int ONE = 1; const int TWO = 2;", "document");
+    const scope = parser.indexContent("void First(int a) {} int Second(string b); void main() {} const int ONE = 1; const int TWO = 2;");
     expect(scope.entryPointDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["main"]);
     expect(scope.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["First", "Second", "ONE", "TWO"]);
     expect(scope.globalDeclarations[0].implementation).to.equal(true);
@@ -331,7 +332,7 @@ describe("IndexedDocument and signature resolution", () => {
     "struct Thing /* name */\n /* body */ { int\n first; float second; }; void main() {}",
   ]) {
     it(`indexes struct fields and subsequent declarations: ${source}`, () => {
-      const scope = parserService.analyzeContent(source, "document");
+      const scope = parser.indexContent(source);
       expect(scope.entryPointDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["main"]);
       expect(scope.structDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Thing"]);
       expect(scope.structDeclarations[0].properties.map((declaration: any) => [declaration.identifier, declaration.valueType])).to.deep.equal([
@@ -344,22 +345,22 @@ describe("IndexedDocument and signature resolution", () => {
   for (const expression of ["Make(1)", "Make(Other(1))", "Make(1) + Other(2)", "Make(\n 1\n)"]) {
     it(`keeps global initializer calls out of function declarations: ${expression}`, () => {
       const source = `int FIRST = ${expression};\nint SECOND = Make(2);\nvoid After() {}`;
-      const scope = parserService.analyzeContent(source, "document");
+      const scope = parser.indexContent(source);
       expect(scope.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["FIRST", "SECOND", "After"]);
       const document = TextDocument.create(workspaceUri("test.nss"), "nwscript", 1, source);
-      const local = parserService.parse(document).getLocalScope(document.positionAt(source.length));
+      const local = parser.parse(document).getLocalScope(document.positionAt(source.length));
       expect(local.functionDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["After"]);
     });
   }
 
   it("retains declared types across aligned whitespace", () => {
-    const scope = parserService.analyzeContent("const int   VALUE = 1;\nfloat\t\tOther();", "document");
+    const scope = parser.indexContent("const int   VALUE = 1;\nfloat\t\tOther();");
     expect(scope.globalDeclarations[0].valueType).to.equal("int");
     expect(scope.globalDeclarations[1].returnType).to.equal("float");
   });
 
   it("does not classify decimal literals as member accesses", () => {
-    const scope = parserService.analyzeContent("float PI = 3.141592; void Fn(float n = 2.0); void main() { float x = 0.5; }", "document");
+    const scope = parser.indexContent("float PI = 3.141592; void Fn(float n = 2.0); void main() { float x = 0.5; }");
     expect(scope.memberReferences).to.equal(undefined);
     expect(scope.globalDeclarations[0].value).to.equal("3.141592");
     expect(scope.globalDeclarations[1].params[0].defaultValue).to.equal("2.0");
@@ -372,7 +373,7 @@ describe("IndexedDocument and signature resolution", () => {
   ]) {
     for (const spacing of ["", " ", "\n"]) {
       it(`keeps default expressions out of the parameter list: ${type}, ${value}, spacing=${JSON.stringify(spacing)}`, () => {
-        const scope = parserService.analyzeContent(`const int fallback=1; void Fn(${type} value${spacing}=${spacing}${value}, int next=2);`, "document");
+        const scope = parser.indexContent(`const int fallback=1; void Fn(${type} value${spacing}=${spacing}${value}, int next=2);`);
         const fn = scope.globalDeclarations.find((declaration: any) => declaration.identifier === "Fn");
         expect(fn.params.map((param: any) => [param.identifier, param.valueType, param.defaultValue])).to.deep.equal([
           ["value", type, value],
@@ -385,7 +386,7 @@ describe("IndexedDocument and signature resolution", () => {
   for (const separator of ["\n", " /* type */ ", "\n /* type */\n"]) {
     for (const type of ["int", "struct Data", "struct constructor"]) {
       it(`reads return and parameter types across ${JSON.stringify(separator)}: ${type}`, () => {
-        const scope = parserService.analyzeContent(`struct Data { int field; }; struct constructor { int field; };\n${type}${separator}Fn(${type}${separator}value);`, "document");
+        const scope = parser.indexContent(`struct Data { int field; }; struct constructor { int field; };\n${type}${separator}Fn(${type}${separator}value);`);
         const fn = scope.globalDeclarations.find((declaration: any) => declaration.identifier === "Fn");
         expect(fn.returnType).to.equal(type.replace("struct ", ""));
         expect(fn.params.map((param: any) => [param.identifier, param.valueType])).to.deep.equal([["value", type.replace("struct ", "")]]);
@@ -395,7 +396,7 @@ describe("IndexedDocument and signature resolution", () => {
   }
 
   it("distinguishes struct definitions from struct field and return types", () => {
-    const scope = parserService.analyzeContent("struct Child { int value; };\nstruct Parent { struct Child child; };\nstruct Child GetChild();", "document");
+    const scope = parser.indexContent("struct Child { int value; };\nstruct Parent { struct Child child; };\nstruct Child GetChild();");
     expect(scope.structDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["Child", "Parent"]);
     expect(scope.structDeclarations[1].properties[0].valueType).to.equal("Child");
     expect(scope.globalDeclarations[0].identifier).to.equal("GetChild");
@@ -418,13 +419,13 @@ describe("IndexedDocument and signature resolution", () => {
     it(`tracks lexical scope and declaration lists: ${source}`, () => {
       const document = TextDocument.create(workspaceUri("test.nss"), "nwscript", 1, source.replace("|", ""));
       const position = document.positionAt(source.indexOf("|"));
-      const scope = parserService.parse(document).getLocalScope(position);
+      const scope = parser.parse(document).getLocalScope(position);
       expect(scope.variableDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(names);
     });
   }
 
   it("keeps comma-separated global values and struct fields distinct", () => {
-    const scope = parserService.analyzeContent("int first = 1, second = 2;\nstruct Thing { int FIRST, SECOND; string third, fourth; };", "document");
+    const scope = parser.indexContent("int first = 1, second = 2;\nstruct Thing { int FIRST, SECOND; string third, fourth; };");
     expect(scope.globalDeclarations.map((declaration: any) => [declaration.identifier, declaration.value])).to.deep.equal([
       ["first", "1"],
       ["second", "2"],
@@ -439,7 +440,7 @@ describe("IndexedDocument and signature resolution", () => {
 
   it("does not resolve identifiers inside comments or string literals", () => {
     for (const text of ['void main() { string value = "VALUE"; }', "void main() { /* VALUE */ }"]) {
-      expect(parserService.parseContent(text).getActionTarget({ line: 0, character: text.indexOf("VALUE") + 2 }).rawContent).to.equal(undefined);
+      expect(parser.parseContent(text).getTargetAt({ line: 0, character: text.indexOf("VALUE") + 2 })).to.equal(undefined);
     }
   });
 
@@ -455,7 +456,7 @@ describe("IndexedDocument and signature resolution", () => {
   ] as const) {
     it(`reads member access from syntax: ${source}`, () => {
       const document = TextDocument.create(workspaceUri("member.nss"), "nwscript", 1, source.replace("|", ""));
-      expect(parserService.parse(document).getMemberPath(document.positionAt(source.indexOf("|")))).to.deep.equal(expected);
+      expect(parser.parse(document).getMemberPath(document.positionAt(source.indexOf("|")))).to.deep.equal(expected);
     });
   }
 
@@ -473,10 +474,10 @@ describe("IndexedDocument and signature resolution", () => {
       const marked = `int First(int a);\nint Second(int a, int b);\nvoid main() {\n ${call}\n}\n`;
       const live = TextDocument.create(workspaceUri("current.nss"), "nwscript", 1, marked.replace("|", ""));
       const collection = new api.Collection();
-      collection.createDocument(live.uri, parserService.analyzeContent(live.getText(), "document"));
+      collection.addDocument(live.uri, parser.indexContent(live.getText()));
       let handler: any;
       api.Signature.register({
-        parserService,
+        parser,
         documentsCollection: collection,
         liveDocumentsManager: { get: () => live },
         standardLibrary: { get: () => ({ globalDeclarations: [], structDeclarations: [] }) },
@@ -488,9 +489,9 @@ describe("IndexedDocument and signature resolution", () => {
           },
         },
       });
-      const parseContent = parserService.parseContent.bind(parserService);
+      const parseContent = parser.parseContent.bind(parser);
       let parses = 0;
-      parserService.parseContent = (...args: any[]) => {
+      parser.parseContent = (...args: any[]) => {
         parses++;
         return parseContent(...args);
       };
@@ -500,7 +501,7 @@ describe("IndexedDocument and signature resolution", () => {
         expect(result.activeParameter).to.equal(activeParameter);
         expect(parses).to.equal(1);
       } finally {
-        parserService.parseContent = parseContent;
+        parser.parseContent = parseContent;
       }
     });
   }
@@ -512,30 +513,101 @@ describe("IndexedDocument and signature resolution", () => {
       const alternate = uri.replace("helper.nss", "%68elper.nss").replace(/\/([A-Za-z]):/, "/$1%3A");
       const first = encodedFirst ? alternate : uri;
       const second = encodedFirst ? uri : alternate;
-      collection.createDocument(first, parserService.analyzeContent("void Before() {}", "document"));
-      collection.updateDocument(TextDocument.create(second, "nwscript", 1, "void After() {}"), parserService, {});
+      collection.addDocument(first, parser.indexContent("void Before() {}"));
+      collection.updateDocument(TextDocument.create(second, "nwscript", 1, "void After() {}"), parser, {});
       expect(collection.getWorkspaceDocuments()).to.have.length(1);
-      expect(collection.getFromUri(first)).to.equal(collection.getFromUri(second));
-      expect(collection.resolveInclude("helper").globalDeclarations[0].identifier).to.equal("After");
+      expect(collection.getWorkspaceDocument(first)).to.equal(collection.getWorkspaceDocument(second));
+      expect(collection.resolveInclude("helper").index.globalDeclarations[0].identifier).to.equal("After");
       collection.removeDocument(first);
-      expect(collection.getFromUri(second)).to.equal(undefined);
+      expect(collection.getWorkspaceDocument(second)).to.equal(undefined);
       expect(collection.resolveInclude("helper")).to.equal(undefined);
     });
   }
 
+  it("keeps newer workspace indexes when background results arrive later", () => {
+    const collection: DocumentsCollection = new api.Collection();
+    const uri = workspaceUri("helper.nss");
+    const original = parser.indexContent("void Original() {}");
+    collection.addDocument(uri, original);
+    collection.updateDocument(TextDocument.create(uri, "nwscript", 1, "void Updated() {}"), parser, { getFilePath: () => null } as any);
+    const updated = collection.getWorkspaceDocument(uri);
+    collection.addDocument(uri, original);
+    expect(collection.getWorkspaceDocument(uri)).to.equal(updated);
+    expect(collection.resolveInclude("HELPER")).to.equal(updated);
+    expect(updated?.index.globalDeclarations[0].identifier).to.equal("Updated");
+  });
+
+  it("refreshes API snapshots without changing the selected duplicate", () => {
+    const collection: DocumentsCollection = new api.Collection();
+    const first = workspaceUri("nwscript.nss");
+    const second = workspaceUri("other/nwscript.nss");
+    collection.addDocument(first, parser.indexContent("void First();"));
+    collection.addDocument(second, parser.indexContent("void Second();"));
+    collection.addDocument(second, parser.indexContent("void Updated();"));
+    expect(collection.getWorkspaceDocument(second)?.index.globalDeclarations[0].identifier).to.equal("Updated");
+    expect(collection.getWorkspaceInclude("nwscript")?.uri).to.equal(first);
+    collection.addDocument(first, parser.indexContent("void Selected();"));
+    expect(collection.getWorkspaceInclude("nwscript")?.index.globalDeclarations[0].identifier).to.equal("Selected");
+  });
+
+  it("updates duplicate files independently without changing the selected include", () => {
+    const collection: DocumentsCollection = new api.Collection();
+    const first = workspaceUri("helper.nss");
+    const second = workspaceUri("other/helper.nss");
+    collection.addDocument(first, parser.indexContent("void First() {}"));
+    collection.addDocument(second, parser.indexContent("void Second() {}"));
+    collection.updateDocument(TextDocument.create(second, "nwscript", 1, "void Updated() {}"), parser, { getFilePath: () => null } as any);
+    expect(collection.resolveInclude("helper")?.uri).to.equal(first);
+    expect(collection.getWorkspaceDocument(second)?.index.globalDeclarations[0].identifier).to.equal("Updated");
+    collection.removeDocument(first);
+    expect(collection.resolveInclude("helper")).to.equal(collection.getWorkspaceDocument(second));
+    expect(collection.resolveInclude("helper")?.index.globalDeclarations[0].identifier).to.equal("Updated");
+  });
+
+  it("restores bundled include selection after deleting its workspace override", () => {
+    const collection: DocumentsCollection = new api.Collection();
+    const bundled = collection.resolveInclude("nw_i0_plot");
+    const uri = workspaceUri("nw_i0_plot.nss");
+    expect(bundled?.base).to.equal(true);
+    expect(collection.getWorkspaceInclude("nw_i0_plot")).to.equal(undefined);
+    collection.addDocument(uri, parser.indexContent("void Override() {}"));
+    expect(collection.resolveInclude("NW_I0_PLOT")).to.equal(collection.getWorkspaceInclude("NW_I0_PLOT"));
+    expect(collection.resolveInclude("NW_I0_PLOT")?.uri).to.equal(uri);
+    collection.removeDocument(uri);
+    expect(collection.getWorkspaceInclude("nw_i0_plot")).to.equal(undefined);
+    expect(collection.resolveInclude("NW_I0_PLOT")).to.equal(bundled);
+  });
+
+  it("distinguishes dependency names from resolved documents across cycles and missing includes", () => {
+    const collection: DocumentsCollection = new api.Collection();
+    const add = (name: string, source: string) => collection.addDocument(workspaceUri(`${name}.nss`), parser.indexContent(source));
+    add("root", '#include "BRANCH"\n#include "leaf"\n#include "missing"\nvoid main() {}');
+    add("branch", '#include "root"\n#include "LEAF"\nvoid Branch() {}');
+    add("leaf", "void Leaf() {}");
+    const document = collection.getWorkspaceDocument(workspaceUri("root.nss"));
+    if (!document) throw new Error("Root script was not indexed");
+    expect(document.getEntryPointNames()).to.deep.equal(["main"]);
+    expect(document.getDependencyNames()).to.deep.equal(["branch", "leaf", "missing"]);
+    expect(document.getDocumentsWithDependencies().map((dependency) => dependency.getIncludeName())).to.deep.equal(["root", "branch", "leaf"]);
+    add("missing", "void Recovered() {}");
+    expect(document.getDependencyNames()).to.deep.equal(["branch", "leaf", "missing"]);
+    expect(document.getDocumentsWithDependencies().map((dependency) => dependency.getIncludeName())).to.deep.equal(["root", "branch", "leaf", "missing"]);
+  });
+
   it("shares cycle-safe traversal, preserves owners, and selects a duplicate after deletion", () => {
     const collection = new api.Collection();
-    const add = (uri: string, text: string) => collection.createDocument(uri, parserService.analyzeContent(text, "document"));
+    const add = (uri: string, text: string) => collection.addDocument(uri, parser.indexContent(text));
     add(workspaceUri("constructor.nss"), '#include "CYCLE"\nvoid First() {}');
     add(workspaceUri("other/constructor.nss"), "void Replacement() {}");
     add(workspaceUri("cycle.nss"), '#include "CONSTRUCTOR"\nstruct Value {\n int member;\n};');
-    const document = collection.getFromUri(workspaceUri("constructor.nss"));
-    expect(document.getChildren()).to.deep.equal(["cycle"]);
-    expect(document.getGlobalDeclarationsWithOwner()[0].owner).to.equal(document.uri);
-    expect(document.getGlobalDeclarations().map((declaration: any) => declaration.identifier)).to.deep.equal(["First"]);
-    expect(document.getStructDeclarations().map((declaration: any) => declaration.identifier)).to.deep.equal(["Value"]);
+    const document = collection.getWorkspaceDocument(workspaceUri("constructor.nss"));
+    expect(document.getDependencyNames()).to.deep.equal(["cycle"]);
+    const documents = document.getDocumentsWithDependencies();
+    expect(documents.map((dependency: any) => dependency.uri)).to.deep.equal([document.uri, workspaceUri("cycle.nss")]);
+    expect(documents.flatMap((dependency: any) => dependency.index.globalDeclarations.map((declaration: any) => declaration.identifier))).to.deep.equal(["First"]);
+    expect(documents.flatMap((dependency: any) => dependency.index.structDeclarations.map((declaration: any) => declaration.identifier))).to.deep.equal(["Value"]);
     collection.removeDocument(document.uri);
-    expect(collection.get("CONSTRUCTOR").globalDeclarations[0].identifier).to.equal("Replacement");
-    expect(collection.getFromUri(document.uri)).to.equal(undefined);
+    expect(collection.getWorkspaceInclude("CONSTRUCTOR").index.globalDeclarations[0].identifier).to.equal("Replacement");
+    expect(collection.getWorkspaceDocument(document.uri)).to.equal(undefined);
   });
 });

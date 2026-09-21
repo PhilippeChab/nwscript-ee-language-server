@@ -2,16 +2,16 @@ import { readFileSync } from "fs";
 import { resolve } from "path";
 import { pathToFileURL } from "url";
 import { TextDocument } from "vscode-languageserver-textdocument";
-import ParserService from "../src/Parser/ParserService";
+import Parser from "../src/Language/Parser";
 
 async function main() {
   const paths = process.argv.slice(2).filter((argument) => !argument.startsWith("--"));
   if (!paths.length) throw new Error("Usage: yarn inspect [--tree] path/to/script.nss");
-  const parserService = await new ParserService(true).loadGrammar();
+  const parser = await new Parser(true).loadGrammar();
   for (const path of paths) {
     const file = resolve(path);
     const text = readFileSync(file, "utf8");
-    const parsed = parserService.parse(TextDocument.create(pathToFileURL(file).href, "nwscript", 1, text));
+    const parsed = parser.parse(TextDocument.create(pathToFileURL(file).href, "nwscript", 1, text));
     try {
       const index = parsed.getIndex();
       console.log(

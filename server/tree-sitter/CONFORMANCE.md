@@ -27,4 +27,4 @@ Tests compare incremental parsing with fresh parsing after damaged edits and res
 
 The grammar represents unfinished signatures as `incomplete_function_definition` nodes, leaving following declarations separate. Complete declarations take priority over unfinished parameter lists. These nodes preserve the original text and offsets, participate in incremental parsing, and never enter the declaration index.
 
-`SyntaxDocument.hasSyntaxErrors` includes both Tree-sitter errors and explicit incomplete nodes. Strict indexing rejects unfinished signatures so saved include snapshots retain their fallback behavior.
+`Syntax.hasSyntaxErrors` includes both Tree-sitter errors and explicit incomplete nodes. Strict indexing rejects unfinished signatures so saved include snapshots retain their fallback behavior.

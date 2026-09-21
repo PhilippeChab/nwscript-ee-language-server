@@ -1,10 +1,10 @@
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { pathToFileURL } from "url";
 import { readFileSync } from "fs";
-import { ParserService } from "../Parser";
-import { AnalysisMode, DocumentIndex } from "../Parser/ParserService";
+import Parser from "../Language/Parser";
+import type { SyntaxIndex } from "../Language";
 
-export type IndexerMessage = { filePath: string; documentIndex?: DocumentIndex; error?: string };
+export type IndexerMessage = { filePath: string; syntaxIndex?: SyntaxIndex; error?: string };
 
 const send = async (message: IndexerMessage) => {
   await new Promise<void>((resolve, reject) => {
@@ -15,12 +15,12 @@ const send = async (message: IndexerMessage) => {
 
 process.once("message", (paths: string[]) => {
   void (async () => {
-    const parserService = await new ParserService().loadGrammar();
+    const parser = await new Parser().loadGrammar();
     for (const filePath of paths) {
       let message: IndexerMessage;
       try {
-        const documentIndex = parserService.analyzeContent(TextDocument.create(pathToFileURL(filePath).href, "nwscript", 0, readFileSync(filePath, "utf8")), AnalysisMode.document);
-        message = { filePath, documentIndex };
+        const syntaxIndex = parser.indexContent(TextDocument.create(pathToFileURL(filePath).href, "nwscript", 0, readFileSync(filePath, "utf8")));
+        message = { filePath, syntaxIndex };
       } catch (error) {
         message = { filePath, error: error instanceof Error ? error.message : String(error) };
       }

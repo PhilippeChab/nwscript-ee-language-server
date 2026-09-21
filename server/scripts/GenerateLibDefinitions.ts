@@ -6,8 +6,7 @@ import { createHash } from "crypto";
 
 import { extractSources, SourceMetadata } from "./UpdateStandardLibrary";
 
-import { ParserService } from "../src/Parser";
-import { AnalysisMode } from "../src/Parser/ParserService";
+import Parser from "../src/Language/Parser";
 
 const generateDefinitions = async () => {
   const args = process.argv.slice(2);
@@ -17,7 +16,7 @@ const generateDefinitions = async () => {
     throw new Error("Usage: generate-lib-defs [--standard-only] [--check] [--archive path.zip]");
   }
   const check = args.includes("--check");
-  const parserService = await new ParserService(true).loadGrammar();
+  const parser = await new Parser(true).loadGrammar();
 
   console.log("Generating nwscript.nss definitions ...");
   const sourcePath = join(__dirname, "nwscript.nss");
@@ -44,7 +43,7 @@ const generateDefinitions = async () => {
     const updates = targets.map(({ name, destination }) => {
       const text = sources.get(name);
       if (!text) throw new Error(`Missing bundled script: ${name}`);
-      return { destination, output: JSON.stringify(parserService.analyzeContent(text.toString("utf8"), AnalysisMode.document), null, 4) };
+      return { destination, output: JSON.stringify(parser.indexContent(text.toString("utf8")), null, 4) };
     });
     for (const { destination, output } of updates) {
       if (check) {
@@ -55,7 +54,7 @@ const generateDefinitions = async () => {
     return;
   }
 
-  const definitions = parserService.analyzeContent(TextDocument.create(pathToFileURL(sourcePath).href, "nwscript", 0, lib), AnalysisMode.document);
+  const definitions = parser.indexContent(TextDocument.create(pathToFileURL(sourcePath).href, "nwscript", 0, lib));
   const destination = join(__dirname, "../resources/standardLibDefinitions.json");
   const output = JSON.stringify(definitions, null, 4);
   if (check) {
@@ -82,7 +81,7 @@ const generateDefinitions = async () => {
 
     // Skip main files
     if (!lib.includes("main")) {
-      const definitions = parserService.analyzeContent(lib, AnalysisMode.document);
+      const definitions = parser.indexContent(lib);
       if (definitions.includes.length === 0 && definitions.globalDeclarations.length === 0 && definitions.structDeclarations.length === 0) {
         return;
       }
@@ -104,7 +103,7 @@ const generateDefinitions = async () => {
     const fileSource = join(normalize(join(__dirname, "ovr", filename)));
     const fileDestination = join(normalize(join(__dirname, "../resources/ovr", filename.replace(".nss", ".json"))));
     const lib = readFileSync(fileSource).toString();
-    const definitions = parserService.analyzeContent(lib, AnalysisMode.document);
+    const definitions = parser.indexContent(lib);
 
     console.log(`Generating ${filename} ...`);
     filesCount++;

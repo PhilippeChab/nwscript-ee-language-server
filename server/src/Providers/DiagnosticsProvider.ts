@@ -50,7 +50,7 @@ export default class DiagnoticsProvider extends Provider {
         return resolve(false);
       }
 
-      const document = this.server.documentsCollection.getFromUri(uri);
+      const document = this.server.documentsCollection.getWorkspaceDocument(uri);
 
       if (!this.server.configLoaded || !document) {
         if (!this.server.documentsWaitingForPublish.includes(uri)) {
@@ -75,11 +75,11 @@ export default class DiagnoticsProvider extends Provider {
         return;
       }
 
-      const children = document.getChildren();
+      const children = document.getDependencyNames();
       const files: FilesDiagnostics = { [document.uri]: [] };
       const uris: string[] = [document.uri];
       children.forEach((child) => {
-        const fileUri = this.server.documentsCollection.get(child)?.uri;
+        const fileUri = this.server.documentsCollection.getWorkspaceInclude(child)?.uri;
         if (fileUri) {
           files[fileUri] = [];
           uris.push(fileUri);
