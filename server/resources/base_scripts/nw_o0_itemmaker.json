@@ -6,7 +6,7 @@
                 "character": 5
             },
             "identifier": "SetLocalArrayString",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 32
                     },
                     "identifier": "oidObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -24,7 +24,7 @@
                         "character": 50
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -33,7 +33,7 @@
                         "character": 64
                     },
                     "identifier": "nVarNum",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -42,7 +42,7 @@
                         "character": 80
                     },
                     "identifier": "nValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -59,7 +59,7 @@
                 "character": 7
             },
             "identifier": "GetLocalArrayString",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -68,7 +68,7 @@
                         "character": 34
                     },
                     "identifier": "oidObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -77,7 +77,7 @@
                         "character": 52
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -86,7 +86,7 @@
                         "character": 66
                     },
                     "identifier": "nVarNum",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -103,7 +103,7 @@
                 "character": 5
             },
             "identifier": "SetLocalArrayInt",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -112,7 +112,7 @@
                         "character": 29
                     },
                     "identifier": "oidObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -121,7 +121,7 @@
                         "character": 47
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -130,7 +130,7 @@
                         "character": 61
                     },
                     "identifier": "nVarNum",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -139,7 +139,7 @@
                         "character": 74
                     },
                     "identifier": "nValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -156,7 +156,7 @@
                 "character": 4
             },
             "identifier": "GetLocalArrayInt",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -165,7 +165,7 @@
                         "character": 28
                     },
                     "identifier": "oidObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -174,7 +174,7 @@
                         "character": 46
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -183,7 +183,7 @@
                         "character": 60
                     },
                     "identifier": "nVarNum",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -200,7 +200,7 @@
                 "character": 5
             },
             "identifier": "dbSpeak",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -209,7 +209,7 @@
                         "character": 20
                     },
                     "identifier": "s",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -228,7 +228,7 @@
                 "character": 5
             },
             "identifier": "CreateForgeItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -244,7 +244,7 @@
                 "character": 4
             },
             "identifier": "nNumberOfCombos",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -260,7 +260,7 @@
                 "character": 5
             },
             "identifier": "PlaySuccessVisual",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -269,7 +269,7 @@
                         "character": 30
                     },
                     "identifier": "oVisual",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -291,7 +291,7 @@
                 "character": 4
             },
             "identifier": "IsMisc",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -300,7 +300,7 @@
                         "character": 18
                     },
                     "identifier": "oItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -317,7 +317,7 @@
                 "character": 4
             },
             "identifier": "GetItemPosition",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -326,7 +326,7 @@
                         "character": 27
                     },
                     "identifier": "oMagicalItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -348,7 +348,7 @@
                 "character": 4
             },
             "identifier": "GetIsMagical",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -357,7 +357,7 @@
                         "character": 24
                     },
                     "identifier": "oItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -374,7 +374,7 @@
                 "character": 4
             },
             "identifier": "IsValidBaseItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -383,7 +383,7 @@
                         "character": 27
                     },
                     "identifier": "oItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -392,7 +392,7 @@
                         "character": 38
                     },
                     "identifier": "nIndex",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -414,7 +414,7 @@
                 "character": 5
             },
             "identifier": "SetValidItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -423,7 +423,7 @@
                         "character": 22
                     },
                     "identifier": "nPos",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -440,7 +440,7 @@
                 "character": 8
             },
             "identifier": "SetValidItemCost",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -449,7 +449,7 @@
                         "character": 29
                     },
                     "identifier": "nPos",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -466,7 +466,7 @@
                 "character": 6
             },
             "identifier": "SetValidItemCostToken",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -475,7 +475,7 @@
                         "character": 32
                     },
                     "identifier": "nPos",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -492,7 +492,7 @@
                 "character": 7
             },
             "identifier": "GetValidItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [],
             "signatureEnd": {
@@ -508,7 +508,7 @@
                 "character": 4
             },
             "identifier": "GetValidItemCost",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -524,7 +524,7 @@
                 "character": 4
             },
             "identifier": "CanAfford",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -533,7 +533,7 @@
                         "character": 21
                     },
                     "identifier": "oBuyer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -550,7 +550,7 @@
                 "character": 4
             },
             "identifier": "GetForgeMatch",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -559,7 +559,7 @@
                         "character": 22
                     },
                     "identifier": "nPos",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -576,7 +576,7 @@
                 "character": 4
             },
             "identifier": "HasAnyItemOfBaseType",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -585,7 +585,7 @@
                         "character": 29
                     },
                     "identifier": "nBaseType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -594,7 +594,7 @@
                         "character": 44
                     },
                     "identifier": "nAC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -603,7 +603,7 @@
                         "character": 55
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -625,7 +625,7 @@
                 "character": 4
             },
             "identifier": "GetBackpackMatch",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -634,7 +634,7 @@
                         "character": 25
                     },
                     "identifier": "nPos",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -643,7 +643,7 @@
                         "character": 38
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -660,7 +660,7 @@
                 "character": 4
             },
             "identifier": "GetIsValidCombination",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -669,7 +669,7 @@
                         "character": 30
                     },
                     "identifier": "bDeleteItem",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -678,7 +678,7 @@
                         "character": 50
                     },
                     "identifier": "oContainer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -692,13 +692,13 @@
         }
     ],
     "structDeclarations": [],
-    "children": [
-        "nw_i0_plot"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 15,
-            "character": 0
+            "name": "nw_i0_plot",
+            "position": {
+                "line": 15,
+                "character": 0
+            }
         }
     ],
     "localDeclarations": [
@@ -709,7 +709,8 @@
                 "character": 9
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nBaseType",
@@ -718,7 +719,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "i",
@@ -727,7 +729,8 @@
                 "character": 6
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMatch",
@@ -736,7 +739,8 @@
                 "character": 6
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -745,7 +749,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bReturnValue",
@@ -754,7 +759,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bValid",
@@ -763,7 +769,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sReagentTag",
@@ -772,7 +779,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nArmorValue",
@@ -781,7 +789,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nBaseType",
@@ -790,7 +799,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sReagent1",
@@ -799,7 +809,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sReagent2",
@@ -808,7 +819,8 @@
                 "character": 22
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -817,7 +829,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "bValid",
@@ -826,7 +839,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "i",
@@ -835,7 +849,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nArrayPosition",
@@ -844,7 +859,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oDeleteItem1",
@@ -853,7 +869,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oDeleteItem2",
@@ -862,7 +879,8 @@
                 "character": 25
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oMagicalItem",
@@ -871,7 +889,8 @@
                 "character": 12
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oReagent",
@@ -880,7 +899,8 @@
                 "character": 12
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sArrayReagent1",
@@ -889,7 +909,8 @@
                 "character": 19
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oContainer",
@@ -898,7 +919,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -906,7 +928,7 @@
                 "character": 38
             },
             "identifier": "oidObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -915,7 +937,7 @@
                 "character": 56
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -924,7 +946,7 @@
                 "character": 70
             },
             "identifier": "nVarNum",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -934,7 +956,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -942,7 +965,7 @@
                 "character": 36
             },
             "identifier": "oidObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -951,7 +974,7 @@
                 "character": 54
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -960,7 +983,7 @@
                 "character": 68
             },
             "identifier": "nVarNum",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -969,7 +992,7 @@
                 "character": 84
             },
             "identifier": "nValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -979,7 +1002,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -987,7 +1011,7 @@
                 "character": 32
             },
             "identifier": "oidObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -996,7 +1020,7 @@
                 "character": 50
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1005,7 +1029,7 @@
                 "character": 64
             },
             "identifier": "nVarNum",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1015,7 +1039,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -1023,7 +1048,7 @@
                 "character": 33
             },
             "identifier": "oidObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1032,7 +1057,7 @@
                 "character": 51
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1041,7 +1066,7 @@
                 "character": 65
             },
             "identifier": "nVarNum",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1050,7 +1075,7 @@
                 "character": 78
             },
             "identifier": "nValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -1060,7 +1085,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

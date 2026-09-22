@@ -6,7 +6,7 @@
                 "character": 13
             },
             "identifier": "STRING_COLOR_BLACK",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"000\"",
             "isConst": true
@@ -17,7 +17,7 @@
                 "character": 13
             },
             "identifier": "STRING_COLOR_BLUE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"007\"",
             "isConst": true
@@ -28,7 +28,7 @@
                 "character": 13
             },
             "identifier": "STRING_COLOR_GREEN",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"070\"",
             "isConst": true
@@ -39,7 +39,7 @@
                 "character": 13
             },
             "identifier": "STRING_COLOR_PINK",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"755\"",
             "isConst": true
@@ -50,7 +50,7 @@
                 "character": 13
             },
             "identifier": "STRING_COLOR_RED",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"700\"",
             "isConst": true
@@ -61,7 +61,7 @@
                 "character": 13
             },
             "identifier": "STRING_COLOR_ROSE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"744\"",
             "isConst": true
@@ -72,7 +72,7 @@
                 "character": 13
             },
             "identifier": "STRING_COLOR_WHITE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"777\"",
             "isConst": true
@@ -83,7 +83,7 @@
                 "character": 7
             },
             "identifier": "StringToRGBString",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -92,7 +92,7 @@
                         "character": 32
                     },
                     "identifier": "sString",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -101,7 +101,7 @@
                         "character": 48
                     },
                     "identifier": "sRGB",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -131,7 +131,7 @@
                 "character": 7
             },
             "identifier": "StringParse",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -140,7 +140,7 @@
                         "character": 26
                     },
                     "identifier": "sSource",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -149,7 +149,7 @@
                         "character": 42
                     },
                     "identifier": "sDelimiter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string",
                     "defaultValue": "\" \""
                 },
@@ -159,7 +159,7 @@
                         "character": 64
                     },
                     "identifier": "bRightToLeft",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -184,7 +184,7 @@
                 "character": 7
             },
             "identifier": "StringRemoveParsed",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -193,7 +193,7 @@
                         "character": 33
                     },
                     "identifier": "sSource",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -202,7 +202,7 @@
                         "character": 49
                     },
                     "identifier": "sParsed",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -211,7 +211,7 @@
                         "character": 65
                     },
                     "identifier": "sDelimiter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string",
                     "defaultValue": "\" \""
                 },
@@ -221,7 +221,7 @@
                         "character": 87
                     },
                     "identifier": "bRightToLeft",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "FALSE"
                 }
@@ -249,7 +249,7 @@
                 "character": 7
             },
             "identifier": "StringReplace",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -258,7 +258,7 @@
                         "character": 28
                     },
                     "identifier": "sSource",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -267,7 +267,7 @@
                         "character": 44
                     },
                     "identifier": "sFind",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -276,7 +276,7 @@
                         "character": 58
                     },
                     "identifier": "sReplace",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -293,7 +293,7 @@
         }
     ],
     "structDeclarations": [],
-    "children": [],
+    "includes": [],
     "localDeclarations": [
         {
             "position": {
@@ -301,7 +301,7 @@
                 "character": 32
             },
             "identifier": "sString",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -310,7 +310,7 @@
                 "character": 48
             },
             "identifier": "sRGB",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -320,7 +320,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -328,7 +329,7 @@
                 "character": 26
             },
             "identifier": "sSource",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -337,7 +338,7 @@
                 "character": 42
             },
             "identifier": "sDelimiter",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string",
             "defaultValue": "\" \""
         },
@@ -347,7 +348,7 @@
                 "character": 64
             },
             "identifier": "bRightToLeft",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -358,7 +359,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nLastDelim",
@@ -367,7 +369,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nRetLength",
@@ -376,7 +379,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -384,7 +388,7 @@
                 "character": 33
             },
             "identifier": "sSource",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -393,7 +397,7 @@
                 "character": 49
             },
             "identifier": "sParsed",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -402,7 +406,7 @@
                 "character": 65
             },
             "identifier": "sDelimiter",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string",
             "defaultValue": "\" \""
         },
@@ -412,7 +416,7 @@
                 "character": 87
             },
             "identifier": "bRightToLeft",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -423,7 +427,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nStart",
@@ -432,7 +437,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nEnd",
@@ -441,7 +447,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -449,7 +456,7 @@
                 "character": 28
             },
             "identifier": "sSource",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -458,7 +465,7 @@
                 "character": 44
             },
             "identifier": "sFind",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -467,7 +474,7 @@
                 "character": 58
             },
             "identifier": "sReplace",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -477,7 +484,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nPosition",
@@ -486,7 +494,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sRetVal",
@@ -495,7 +504,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nFound",
@@ -504,7 +514,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

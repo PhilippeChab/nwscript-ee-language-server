@@ -6,7 +6,7 @@
                 "character": 9
             },
             "identifier": "dbGetCampaignFloat",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "float",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 35
                     },
                     "identifier": "sCampaignName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -24,7 +24,7 @@
                         "character": 57
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -33,7 +33,7 @@
                         "character": 74
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -53,7 +53,7 @@
                 "character": 9
             },
             "identifier": "dbGetCampaignInt",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -62,7 +62,7 @@
                         "character": 33
                     },
                     "identifier": "sCampaignName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -71,7 +71,7 @@
                         "character": 55
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -80,7 +80,7 @@
                         "character": 72
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -98,7 +98,7 @@
                 "character": 9
             },
             "identifier": "dbGetCampaignLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "location",
             "params": [
                 {
@@ -107,7 +107,7 @@
                         "character": 38
                     },
                     "identifier": "sCampaignName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -116,7 +116,7 @@
                         "character": 60
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -125,7 +125,7 @@
                         "character": 77
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -143,7 +143,7 @@
                 "character": 9
             },
             "identifier": "dbGetCampaignString",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -152,7 +152,7 @@
                         "character": 36
                     },
                     "identifier": "sCampaignName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -161,7 +161,7 @@
                         "character": 58
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -170,7 +170,7 @@
                         "character": 75
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -188,7 +188,7 @@
                 "character": 9
             },
             "identifier": "dbGetCampaignVector",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "vector",
             "params": [
                 {
@@ -197,7 +197,7 @@
                         "character": 36
                     },
                     "identifier": "sCampaignName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -206,7 +206,7 @@
                         "character": 58
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -215,7 +215,7 @@
                         "character": 75
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -233,7 +233,7 @@
                 "character": 5
             },
             "identifier": "dbSetCampaignFloat",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -242,7 +242,7 @@
                         "character": 31
                     },
                     "identifier": "sCampaignName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -251,7 +251,7 @@
                         "character": 53
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -260,7 +260,7 @@
                         "character": 69
                     },
                     "identifier": "flFloat",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -269,7 +269,7 @@
                         "character": 88
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -295,7 +295,7 @@
                 "character": 5
             },
             "identifier": "dbSetCampaignInt",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -304,7 +304,7 @@
                         "character": 29
                     },
                     "identifier": "sCampaignName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -313,7 +313,7 @@
                         "character": 51
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -322,7 +322,7 @@
                         "character": 65
                     },
                     "identifier": "nInt",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -331,7 +331,7 @@
                         "character": 86
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -349,7 +349,7 @@
                 "character": 5
             },
             "identifier": "dbSetCampaignLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -358,7 +358,7 @@
                         "character": 34
                     },
                     "identifier": "sCampaignName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -367,7 +367,7 @@
                         "character": 56
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -376,7 +376,7 @@
                         "character": 75
                     },
                     "identifier": "locLocation",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 },
                 {
@@ -385,7 +385,7 @@
                         "character": 95
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -403,7 +403,7 @@
                 "character": 5
             },
             "identifier": "dbSetCampaignString",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -412,7 +412,7 @@
                         "character": 32
                     },
                     "identifier": "sCampaignName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -421,7 +421,7 @@
                         "character": 54
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -430,7 +430,7 @@
                         "character": 71
                     },
                     "identifier": "sString",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -439,7 +439,7 @@
                         "character": 89
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -457,7 +457,7 @@
                 "character": 5
             },
             "identifier": "dbSetCampaignVector",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -466,7 +466,7 @@
                         "character": 32
                     },
                     "identifier": "sCampaignName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -475,7 +475,7 @@
                         "character": 54
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -484,7 +484,7 @@
                         "character": 71
                     },
                     "identifier": "vVector",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "vector"
                 },
                 {
@@ -493,7 +493,7 @@
                         "character": 89
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -511,7 +511,7 @@
                 "character": 7
             },
             "identifier": "dbStoreCampaignObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -520,7 +520,7 @@
                         "character": 36
                     },
                     "identifier": "sCampaignName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -529,7 +529,7 @@
                         "character": 58
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -538,7 +538,7 @@
                         "character": 75
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -547,7 +547,7 @@
                         "character": 91
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -568,7 +568,7 @@
                 "character": 7
             },
             "identifier": "dbRetrieveCampaignObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -577,7 +577,7 @@
                         "character": 39
                     },
                     "identifier": "sCampaignName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -586,7 +586,7 @@
                         "character": 61
                     },
                     "identifier": "sVarName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -595,7 +595,7 @@
                         "character": 80
                     },
                     "identifier": "locLocation",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 },
                 {
@@ -604,7 +604,7 @@
                         "character": 100
                     },
                     "identifier": "oOwner",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 },
@@ -614,7 +614,7 @@
                         "character": 132
                     },
                     "identifier": "oPlayer",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_INVALID"
                 }
@@ -632,7 +632,7 @@
         }
     ],
     "structDeclarations": [],
-    "children": [],
+    "includes": [],
     "localDeclarations": [
         {
             "position": {
@@ -640,7 +640,7 @@
                 "character": 35
             },
             "identifier": "sCampaignName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -649,7 +649,7 @@
                 "character": 57
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -658,7 +658,7 @@
                 "character": 74
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         },
@@ -668,7 +668,7 @@
                 "character": 33
             },
             "identifier": "sCampaignName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -677,7 +677,7 @@
                 "character": 55
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -686,7 +686,7 @@
                 "character": 72
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         },
@@ -696,7 +696,7 @@
                 "character": 38
             },
             "identifier": "sCampaignName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -705,7 +705,7 @@
                 "character": 60
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -714,7 +714,7 @@
                 "character": 77
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         },
@@ -724,7 +724,7 @@
                 "character": 36
             },
             "identifier": "sCampaignName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -733,7 +733,7 @@
                 "character": 58
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -742,7 +742,7 @@
                 "character": 75
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         },
@@ -752,7 +752,7 @@
                 "character": 36
             },
             "identifier": "sCampaignName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -761,7 +761,7 @@
                 "character": 58
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -770,7 +770,7 @@
                 "character": 75
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         },
@@ -780,7 +780,7 @@
                 "character": 31
             },
             "identifier": "sCampaignName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -789,7 +789,7 @@
                 "character": 53
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -798,7 +798,7 @@
                 "character": 69
             },
             "identifier": "flFloat",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -807,7 +807,7 @@
                 "character": 88
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         },
@@ -817,7 +817,7 @@
                 "character": 29
             },
             "identifier": "sCampaignName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -826,7 +826,7 @@
                 "character": 51
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -835,7 +835,7 @@
                 "character": 65
             },
             "identifier": "nInt",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -844,7 +844,7 @@
                 "character": 86
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         },
@@ -854,7 +854,7 @@
                 "character": 34
             },
             "identifier": "sCampaignName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -863,7 +863,7 @@
                 "character": 56
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -872,7 +872,7 @@
                 "character": 75
             },
             "identifier": "locLocation",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "location"
         },
         {
@@ -881,7 +881,7 @@
                 "character": 95
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         },
@@ -891,7 +891,7 @@
                 "character": 32
             },
             "identifier": "sCampaignName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -900,7 +900,7 @@
                 "character": 54
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -909,7 +909,7 @@
                 "character": 71
             },
             "identifier": "sString",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -918,7 +918,7 @@
                 "character": 89
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         },
@@ -928,7 +928,7 @@
                 "character": 32
             },
             "identifier": "sCampaignName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -937,7 +937,7 @@
                 "character": 54
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -946,7 +946,7 @@
                 "character": 71
             },
             "identifier": "vVector",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "vector"
         },
         {
@@ -955,7 +955,7 @@
                 "character": 89
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         },
@@ -965,7 +965,7 @@
                 "character": 39
             },
             "identifier": "sCampaignName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -974,7 +974,7 @@
                 "character": 61
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -983,7 +983,7 @@
                 "character": 80
             },
             "identifier": "locLocation",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "location"
         },
         {
@@ -992,7 +992,7 @@
                 "character": 100
             },
             "identifier": "oOwner",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         },
@@ -1002,7 +1002,7 @@
                 "character": 132
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         },
@@ -1012,7 +1012,7 @@
                 "character": 36
             },
             "identifier": "sCampaignName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1021,7 +1021,7 @@
                 "character": 58
             },
             "identifier": "sVarName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -1030,7 +1030,7 @@
                 "character": 75
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -1039,7 +1039,7 @@
                 "character": 91
             },
             "identifier": "oPlayer",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object",
             "defaultValue": "OBJECT_INVALID"
         }

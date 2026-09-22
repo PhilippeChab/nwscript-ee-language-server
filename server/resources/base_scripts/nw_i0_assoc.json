@@ -6,7 +6,7 @@
                 "character": 5
             },
             "identifier": "SpeakQuickChat",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 27
                     },
                     "identifier": "sVoice",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -34,7 +34,7 @@
                 "character": 5
             },
             "identifier": "DebugSTR",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -43,7 +43,7 @@
                         "character": 21
                     },
                     "identifier": "s",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -60,7 +60,7 @@
                 "character": 4
             },
             "identifier": "IsBusy",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -76,7 +76,7 @@
                 "character": 5
             },
             "identifier": "SetIsBusy",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -85,7 +85,7 @@
                         "character": 19
                     },
                     "identifier": "bIsBusy",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -102,7 +102,7 @@
                 "character": 5
             },
             "identifier": "DetermineAssociateCombatRound",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -118,7 +118,7 @@
                 "character": 5
             },
             "identifier": "OpenNearestLock",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -134,7 +134,7 @@
                 "character": 5
             },
             "identifier": "DoFollowMaster",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -150,7 +150,7 @@
                 "character": 5
             },
             "identifier": "GetBehind",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -162,13 +162,13 @@
         }
     ],
     "structDeclarations": [],
-    "children": [
-        "nw_i0_generic"
-    ],
-    "includePositions": [
+    "includes": [
         {
-            "line": 15,
-            "character": 0
+            "name": "nw_i0_generic",
+            "position": {
+                "line": 15,
+                "character": 0
+            }
         }
     ],
     "localDeclarations": [
@@ -178,7 +178,7 @@
                 "character": 21
             },
             "identifier": "s",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -188,7 +188,8 @@
                 "character": 12
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oLastObject",
@@ -197,7 +198,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "evOrder",
@@ -206,7 +208,8 @@
                 "character": 10
             },
             "valueType": "event",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oMaster",
@@ -215,7 +218,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "SOCIAL_RANGE",
@@ -224,7 +228,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -232,7 +237,7 @@
                 "character": 19
             },
             "identifier": "bIsBusy",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -241,7 +246,7 @@
                 "character": 27
             },
             "identifier": "sVoice",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -251,7 +256,8 @@
                 "character": 14
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "fFacing",
@@ -260,7 +266,8 @@
                 "character": 11
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vPosition",
@@ -269,7 +276,8 @@
                 "character": 10
             },
             "valueType": "location",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vOldPosition",
@@ -278,7 +286,8 @@
                 "character": 13
             },
             "valueType": "location",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "vPos",
@@ -287,7 +296,8 @@
                 "character": 11
             },
             "valueType": "vector",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ],
     "memberReferences": [
@@ -297,7 +307,7 @@
                 "line": 208,
                 "character": 7
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "x",
@@ -305,7 +315,7 @@
                 "line": 208,
                 "character": 16
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "y",
@@ -313,7 +323,7 @@
                 "line": 209,
                 "character": 7
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "y",
@@ -321,7 +331,7 @@
                 "line": 209,
                 "character": 16
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "x",
@@ -329,7 +339,7 @@
                 "line": 214,
                 "character": 7
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "x",
@@ -337,7 +347,7 @@
                 "line": 214,
                 "character": 16
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "y",
@@ -345,7 +355,7 @@
                 "line": 215,
                 "character": 7
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "y",
@@ -353,7 +363,7 @@
                 "line": 215,
                 "character": 16
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "x",
@@ -361,7 +371,7 @@
                 "line": 220,
                 "character": 7
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "x",
@@ -369,7 +379,7 @@
                 "line": 220,
                 "character": 16
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "y",
@@ -377,7 +387,7 @@
                 "line": 221,
                 "character": 7
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "y",
@@ -385,7 +395,7 @@
                 "line": 221,
                 "character": 16
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "x",
@@ -393,7 +403,7 @@
                 "line": 226,
                 "character": 7
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "x",
@@ -401,7 +411,7 @@
                 "line": 226,
                 "character": 16
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "y",
@@ -409,7 +419,7 @@
                 "line": 227,
                 "character": 7
             },
-            "tokenType": 18
+            "kind": "memberReference"
         },
         {
             "identifier": "y",
@@ -417,7 +427,7 @@
                 "line": 227,
                 "character": 16
             },
-            "tokenType": 18
+            "kind": "memberReference"
         }
     ]
 }

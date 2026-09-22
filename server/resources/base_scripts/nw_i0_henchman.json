@@ -6,7 +6,7 @@
                 "character": 17
             },
             "identifier": "sDaelinTag",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"NW_HEN_DAE\"",
             "isConst": true
@@ -17,7 +17,7 @@
                 "character": 17
             },
             "identifier": "sSharwynTag",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"NW_HEN_SHA\"",
             "isConst": true
@@ -28,7 +28,7 @@
                 "character": 17
             },
             "identifier": "sLinuTag",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"NW_HEN_LIN\"",
             "isConst": true
@@ -39,7 +39,7 @@
                 "character": 17
             },
             "identifier": "sGallowTag",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"NW_HEN_GAL\"",
             "isConst": true
@@ -50,7 +50,7 @@
                 "character": 17
             },
             "identifier": "sGrimTag",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"NW_HEN_GRI\"",
             "isConst": true
@@ -61,7 +61,7 @@
                 "character": 17
             },
             "identifier": "sBoddyTag",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "string",
             "value": "\"NW_HEN_BOD\"",
             "isConst": true
@@ -72,7 +72,7 @@
                 "character": 14
             },
             "identifier": "INT_NUM_HENCHMEN",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "6",
             "isConst": true
@@ -83,7 +83,7 @@
                 "character": 14
             },
             "identifier": "INT_FUDGE",
-            "tokenType": 21,
+            "kind": "constant",
             "valueType": "int",
             "value": "3",
             "isConst": true
@@ -94,7 +94,7 @@
                 "character": 7
             },
             "identifier": "PC",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [],
             "signatureEnd": {
@@ -112,7 +112,7 @@
                 "character": 5
             },
             "identifier": "SetDidDie",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -121,7 +121,7 @@
                         "character": 19
                     },
                     "identifier": "bDie",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -145,7 +145,7 @@
                 "character": 4
             },
             "identifier": "GetDidDie",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -161,7 +161,7 @@
                 "character": 5
             },
             "identifier": "SetBeenHired",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -170,7 +170,7 @@
                         "character": 22
                     },
                     "identifier": "bHired",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 },
@@ -180,7 +180,7 @@
                         "character": 42
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -203,7 +203,7 @@
                 "character": 4
             },
             "identifier": "GetBeenHired",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -212,7 +212,7 @@
                         "character": 24
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -230,7 +230,7 @@
                 "character": 5
             },
             "identifier": "SetWorkingForPlayer",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -239,7 +239,7 @@
                         "character": 32
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -260,7 +260,7 @@
                 "character": 4
             },
             "identifier": "GetWorkingForPlayer",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -269,7 +269,7 @@
                         "character": 31
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -286,7 +286,7 @@
                 "character": 7
             },
             "identifier": "GetFormerMaster",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -295,7 +295,7 @@
                         "character": 30
                     },
                     "identifier": "oHench",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -313,7 +313,7 @@
                 "character": 5
             },
             "identifier": "SetFormerMaster",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -322,7 +322,7 @@
                         "character": 28
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -331,7 +331,7 @@
                         "character": 40
                     },
                     "identifier": "oHench",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -348,7 +348,7 @@
                 "character": 5
             },
             "identifier": "SetStoryVar",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -357,7 +357,7 @@
                         "character": 21
                     },
                     "identifier": "nChapter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -366,7 +366,7 @@
                         "character": 35
                     },
                     "identifier": "nVal",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -375,7 +375,7 @@
                         "character": 48
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -398,7 +398,7 @@
                 "character": 4
             },
             "identifier": "GetStoryVar",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -407,7 +407,7 @@
                         "character": 20
                     },
                     "identifier": "nChapter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -416,7 +416,7 @@
                         "character": 37
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -434,7 +434,7 @@
                 "character": 5
             },
             "identifier": "SetGreetingVar",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -443,7 +443,7 @@
                         "character": 24
                     },
                     "identifier": "nChapter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -452,7 +452,7 @@
                         "character": 41
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -474,7 +474,7 @@
                 "character": 4
             },
             "identifier": "GetGreetingVar",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -483,7 +483,7 @@
                         "character": 23
                     },
                     "identifier": "nChapter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -492,7 +492,7 @@
                         "character": 40
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -509,7 +509,7 @@
                 "character": 7
             },
             "identifier": "STR_PersonalItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -518,7 +518,7 @@
                         "character": 31
                     },
                     "identifier": "oThing",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -541,7 +541,7 @@
                 "character": 7
             },
             "identifier": "STR_QuestItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -550,7 +550,7 @@
                         "character": 25
                     },
                     "identifier": "nChapter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -559,7 +559,7 @@
                         "character": 42
                     },
                     "identifier": "oThing",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -577,7 +577,7 @@
                 "character": 7
             },
             "identifier": "STR_RewardItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -586,7 +586,7 @@
                         "character": 26
                     },
                     "identifier": "nChapter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -595,7 +595,7 @@
                         "character": 43
                     },
                     "identifier": "oThing",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -613,7 +613,7 @@
                 "character": 5
             },
             "identifier": "DestroyAllPersonalItems",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -622,7 +622,7 @@
                         "character": 36
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -644,7 +644,7 @@
                 "character": 5
             },
             "identifier": "GivePersonalItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -653,7 +653,7 @@
                         "character": 29
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -662,7 +662,7 @@
                         "character": 41
                     },
                     "identifier": "oHench",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -685,7 +685,7 @@
                 "character": 4
             },
             "identifier": "HasPersonalItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -694,7 +694,7 @@
                         "character": 27
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -711,7 +711,7 @@
                 "character": 5
             },
             "identifier": "StripAllPersonalItemsFromEveryone",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -732,7 +732,7 @@
                 "character": 4
             },
             "identifier": "GetCanLevelUp",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -741,7 +741,7 @@
                         "character": 25
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -750,7 +750,7 @@
                         "character": 37
                     },
                     "identifier": "meLevel",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -773,7 +773,7 @@
                 "character": 5
             },
             "identifier": "CopyLocals",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -782,7 +782,7 @@
                         "character": 23
                     },
                     "identifier": "oSource",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -791,7 +791,7 @@
                         "character": 39
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -813,7 +813,7 @@
                 "character": 7
             },
             "identifier": "DoLevelUp",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "object",
             "params": [
                 {
@@ -822,7 +822,7 @@
                         "character": 24
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -831,7 +831,7 @@
                         "character": 36
                     },
                     "identifier": "MeLevel",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -855,7 +855,7 @@
                 "character": 4
             },
             "identifier": "HasChapterQuestItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -864,7 +864,7 @@
                         "character": 28
                     },
                     "identifier": "nChapter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -873,7 +873,7 @@
                         "character": 45
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -895,7 +895,7 @@
                 "character": 5
             },
             "identifier": "DestroyChapterQuestItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -904,7 +904,7 @@
                         "character": 33
                     },
                     "identifier": "nChapter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -913,7 +913,7 @@
                         "character": 50
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -930,7 +930,7 @@
                 "character": 5
             },
             "identifier": "DestroyChapterRewardItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -939,7 +939,7 @@
                         "character": 34
                     },
                     "identifier": "nChapter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -948,7 +948,7 @@
                         "character": 51
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -965,7 +965,7 @@
                 "character": 5
             },
             "identifier": "GiveChapterRewardItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -974,7 +974,7 @@
                         "character": 31
                     },
                     "identifier": "nChapter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -983,7 +983,7 @@
                         "character": 48
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1004,7 +1004,7 @@
                 "character": 4
             },
             "identifier": "HasChapterRewardItem",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [
                 {
@@ -1013,7 +1013,7 @@
                         "character": 29
                     },
                     "identifier": "nChapter",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1022,7 +1022,7 @@
                         "character": 46
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -1039,7 +1039,7 @@
                 "character": 4
             },
             "identifier": "GetChapter",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -1060,7 +1060,7 @@
                 "character": 7
             },
             "identifier": "GetMyArea",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "string",
             "params": [
                 {
@@ -1069,7 +1069,7 @@
                         "character": 24
                     },
                     "identifier": "oThing",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object",
                     "defaultValue": "OBJECT_SELF"
                 }
@@ -1087,7 +1087,7 @@
                 "character": 4
             },
             "identifier": "EndModule",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "int",
             "params": [],
             "signatureEnd": {
@@ -1105,7 +1105,7 @@
                 "character": 5
             },
             "identifier": "SpawnHenchman",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [],
             "signatureEnd": {
@@ -1119,7 +1119,7 @@
         }
     ],
     "structDeclarations": [],
-    "children": [],
+    "includes": [],
     "localDeclarations": [
         {
             "identifier": "oDied",
@@ -1128,7 +1128,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sItem",
@@ -1137,7 +1138,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "i",
@@ -1146,7 +1148,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -1155,7 +1158,8 @@
                 "character": 15
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -1164,7 +1168,8 @@
                 "character": 9
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oChapter1Reward",
@@ -1173,7 +1178,8 @@
                 "character": 9
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oChapter2Reward",
@@ -1182,7 +1188,8 @@
                 "character": 9
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "iResult",
@@ -1191,7 +1198,8 @@
                 "character": 6
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oPC",
@@ -1200,7 +1208,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oHench",
@@ -1209,7 +1218,8 @@
                 "character": 15
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMasterLevel",
@@ -1218,7 +1228,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMyLevel",
@@ -1227,7 +1238,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nMasterLevel",
@@ -1236,7 +1248,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nLevel",
@@ -1245,7 +1258,8 @@
                 "character": 7
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sLevel",
@@ -1254,7 +1268,8 @@
                 "character": 10
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oMaster",
@@ -1263,7 +1278,8 @@
                 "character": 10
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sNewFile",
@@ -1272,7 +1288,8 @@
                 "character": 10
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oNew",
@@ -1281,7 +1298,8 @@
                 "character": 10
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -1290,7 +1308,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -1299,7 +1318,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -1308,7 +1328,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nReward",
@@ -1317,7 +1338,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nOldChapter",
@@ -1326,7 +1348,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -1335,7 +1358,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sChapter",
@@ -1344,7 +1368,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "nChapter",
@@ -1353,7 +1378,8 @@
                 "character": 8
             },
             "valueType": "int",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sTag",
@@ -1362,7 +1388,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oPC",
@@ -1371,7 +1398,8 @@
                 "character": 11
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sLevel",
@@ -1380,7 +1408,8 @@
                 "character": 11
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "sTestHench",
@@ -1389,7 +1418,8 @@
                 "character": 15
             },
             "valueType": "string",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oItem",
@@ -1398,7 +1428,8 @@
                 "character": 15
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "oHen",
@@ -1407,7 +1438,8 @@
                 "character": 15
             },
             "valueType": "object",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         }
     ]
 }

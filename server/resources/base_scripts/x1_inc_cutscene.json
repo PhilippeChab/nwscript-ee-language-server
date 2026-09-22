@@ -6,7 +6,7 @@
                 "character": 6
             },
             "identifier": "GetShift",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "float",
             "params": [
                 {
@@ -15,7 +15,7 @@
                         "character": 22
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -24,7 +24,7 @@
                         "character": 35
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -47,7 +47,7 @@
                 "character": 5
             },
             "identifier": "RemoveCommandable",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -56,7 +56,7 @@
                         "character": 30
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -76,7 +76,7 @@
                 "character": 5
             },
             "identifier": "CutRemoveEffects",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -85,7 +85,7 @@
                         "character": 26
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -94,7 +94,7 @@
                         "character": 43
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -103,7 +103,7 @@
                         "character": 58
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -112,7 +112,7 @@
                         "character": 71
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -135,7 +135,7 @@
                 "character": 5
             },
             "identifier": "CutActionStartConversation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -144,7 +144,7 @@
                         "character": 36
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -153,7 +153,7 @@
                         "character": 53
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -162,7 +162,7 @@
                         "character": 68
                     },
                     "identifier": "oNPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -171,7 +171,7 @@
                         "character": 81
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -180,7 +180,7 @@
                         "character": 93
                     },
                     "identifier": "szConversationFile",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -189,7 +189,7 @@
                         "character": 117
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -216,7 +216,7 @@
                 "character": 5
             },
             "identifier": "CutSpeakString",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -225,7 +225,7 @@
                         "character": 24
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -234,7 +234,7 @@
                         "character": 41
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -243,7 +243,7 @@
                         "character": 56
                     },
                     "identifier": "oSpeaker",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -252,7 +252,7 @@
                         "character": 73
                     },
                     "identifier": "szString",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -261,7 +261,7 @@
                         "character": 87
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -285,7 +285,7 @@
                 "character": 5
             },
             "identifier": "CutPlayAnimation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -294,7 +294,7 @@
                         "character": 26
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -303,7 +303,7 @@
                         "character": 43
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -312,7 +312,7 @@
                         "character": 58
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -321,7 +321,7 @@
                         "character": 71
                     },
                     "identifier": "nAnimation",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -330,7 +330,7 @@
                         "character": 89
                     },
                     "identifier": "fLength",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -339,7 +339,7 @@
                         "character": 102
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -362,7 +362,7 @@
                 "character": 5
             },
             "identifier": "CutJumpToLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -371,7 +371,7 @@
                         "character": 27
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -380,7 +380,7 @@
                         "character": 44
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -389,7 +389,7 @@
                         "character": 59
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -398,7 +398,7 @@
                         "character": 73
                     },
                     "identifier": "lLoc",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 },
                 {
@@ -407,7 +407,7 @@
                         "character": 83
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -431,7 +431,7 @@
                 "character": 5
             },
             "identifier": "CutJumpToObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -440,7 +440,7 @@
                         "character": 25
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -449,7 +449,7 @@
                         "character": 42
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -458,7 +458,7 @@
                         "character": 57
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -467,7 +467,7 @@
                         "character": 69
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -476,7 +476,7 @@
                         "character": 82
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -500,7 +500,7 @@
                 "character": 5
             },
             "identifier": "CutActionMoveToObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -509,7 +509,7 @@
                         "character": 31
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -518,7 +518,7 @@
                         "character": 48
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -527,7 +527,7 @@
                         "character": 63
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -536,7 +536,7 @@
                         "character": 75
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -545,7 +545,7 @@
                         "character": 88
                     },
                     "identifier": "iRun",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -554,7 +554,7 @@
                         "character": 98
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -577,7 +577,7 @@
                 "character": 5
             },
             "identifier": "CutActionMoveToLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -586,7 +586,7 @@
                         "character": 33
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -595,7 +595,7 @@
                         "character": 50
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -604,7 +604,7 @@
                         "character": 65
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -613,7 +613,7 @@
                         "character": 79
                     },
                     "identifier": "lLoc",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 },
                 {
@@ -622,7 +622,7 @@
                         "character": 89
                     },
                     "identifier": "iRun",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -631,7 +631,7 @@
                         "character": 99
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -654,7 +654,7 @@
                 "character": 5
             },
             "identifier": "CutCreateObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -663,7 +663,7 @@
                         "character": 25
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -672,7 +672,7 @@
                         "character": 42
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -681,7 +681,7 @@
                         "character": 57
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -690,7 +690,7 @@
                         "character": 66
                     },
                     "identifier": "iType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -699,7 +699,7 @@
                         "character": 80
                     },
                     "identifier": "sName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -708,7 +708,7 @@
                         "character": 96
                     },
                     "identifier": "lLoc",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 },
                 {
@@ -717,7 +717,7 @@
                         "character": 106
                     },
                     "identifier": "iEffect",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -726,7 +726,7 @@
                         "character": 119
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -752,7 +752,7 @@
                 "character": 5
             },
             "identifier": "CutSetFacingPoint",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -761,7 +761,7 @@
                         "character": 27
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -770,7 +770,7 @@
                         "character": 44
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -779,7 +779,7 @@
                         "character": 59
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -788,7 +788,7 @@
                         "character": 71
                     },
                     "identifier": "szTag",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -797,7 +797,7 @@
                         "character": 82
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -820,7 +820,7 @@
                 "character": 5
             },
             "identifier": "CutFadeOutAndIn",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -829,7 +829,7 @@
                         "character": 25
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -838,7 +838,7 @@
                         "character": 42
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -847,7 +847,7 @@
                         "character": 57
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -856,7 +856,7 @@
                         "character": 70
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -880,7 +880,7 @@
                 "character": 5
             },
             "identifier": "CutFadeToBlack",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -889,7 +889,7 @@
                         "character": 24
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -898,7 +898,7 @@
                         "character": 41
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -907,7 +907,7 @@
                         "character": 56
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -916,7 +916,7 @@
                         "character": 69
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -939,7 +939,7 @@
                 "character": 5
             },
             "identifier": "CutFadeFromBlack",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -948,7 +948,7 @@
                         "character": 26
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -957,7 +957,7 @@
                         "character": 43
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -966,7 +966,7 @@
                         "character": 58
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -975,7 +975,7 @@
                         "character": 71
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -998,7 +998,7 @@
                 "character": 5
             },
             "identifier": "CutSetCamera",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1007,7 +1007,7 @@
                         "character": 22
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1016,7 +1016,7 @@
                         "character": 39
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1025,7 +1025,7 @@
                         "character": 54
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1034,7 +1034,7 @@
                         "character": 67
                     },
                     "identifier": "iCameraType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1043,7 +1043,7 @@
                         "character": 86
                     },
                     "identifier": "fFacing",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1052,7 +1052,7 @@
                         "character": 101
                     },
                     "identifier": "fZoom",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1061,7 +1061,7 @@
                         "character": 114
                     },
                     "identifier": "fPitch",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1070,7 +1070,7 @@
                         "character": 126
                     },
                     "identifier": "nSpeed",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1079,7 +1079,7 @@
                         "character": 138
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -1110,7 +1110,7 @@
                 "character": 5
             },
             "identifier": "CutClearAllActions",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1119,7 +1119,7 @@
                         "character": 28
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1128,7 +1128,7 @@
                         "character": 45
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1137,7 +1137,7 @@
                         "character": 60
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1146,7 +1146,7 @@
                         "character": 73
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -1169,7 +1169,7 @@
                 "character": 5
             },
             "identifier": "CutApplyEffectAtLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1178,7 +1178,7 @@
                         "character": 34
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1187,7 +1187,7 @@
                         "character": 51
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1196,7 +1196,7 @@
                         "character": 66
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1205,7 +1205,7 @@
                         "character": 79
                     },
                     "identifier": "iDur",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1214,7 +1214,7 @@
                         "character": 89
                     },
                     "identifier": "iEffect",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1223,7 +1223,7 @@
                         "character": 107
                     },
                     "identifier": "lLoc",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 },
                 {
@@ -1232,7 +1232,7 @@
                         "character": 119
                     },
                     "identifier": "fDur",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1241,7 +1241,7 @@
                         "character": 129
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -1267,7 +1267,7 @@
                 "character": 5
             },
             "identifier": "CutApplyEffectToObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1276,7 +1276,7 @@
                         "character": 32
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1285,7 +1285,7 @@
                         "character": 49
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1294,7 +1294,7 @@
                         "character": 61
                     },
                     "identifier": "iDur",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1303,7 +1303,7 @@
                         "character": 71
                     },
                     "identifier": "iEffect",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1312,7 +1312,7 @@
                         "character": 87
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1321,7 +1321,7 @@
                         "character": 102
                     },
                     "identifier": "fDur",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1330,7 +1330,7 @@
                         "character": 112
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -1355,7 +1355,7 @@
                 "character": 5
             },
             "identifier": "CutApplyEffectToObject2",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1364,7 +1364,7 @@
                         "character": 33
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1373,7 +1373,7 @@
                         "character": 50
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1382,7 +1382,7 @@
                         "character": 62
                     },
                     "identifier": "iDur",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1391,7 +1391,7 @@
                         "character": 75
                     },
                     "identifier": "eEffect",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "effect"
                 },
                 {
@@ -1400,7 +1400,7 @@
                         "character": 91
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1409,7 +1409,7 @@
                         "character": 106
                     },
                     "identifier": "fDur",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1418,7 +1418,7 @@
                         "character": 116
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -1439,7 +1439,7 @@
                 "character": 5
             },
             "identifier": "CutKnockdown",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1448,7 +1448,7 @@
                         "character": 22
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1457,7 +1457,7 @@
                         "character": 39
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1466,7 +1466,7 @@
                         "character": 54
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1475,7 +1475,7 @@
                         "character": 69
                     },
                     "identifier": "fDur",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1484,7 +1484,7 @@
                         "character": 79
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -1508,7 +1508,7 @@
                 "character": 5
             },
             "identifier": "CutDeath",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1517,7 +1517,7 @@
                         "character": 18
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1526,7 +1526,7 @@
                         "character": 35
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1535,7 +1535,7 @@
                         "character": 50
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1544,7 +1544,7 @@
                         "character": 63
                     },
                     "identifier": "iSpec",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1553,7 +1553,7 @@
                         "character": 74
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -1578,7 +1578,7 @@
                 "character": 5
             },
             "identifier": "CutActionCastFakeSpellAtObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1587,7 +1587,7 @@
                         "character": 40
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1596,7 +1596,7 @@
                         "character": 57
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1605,7 +1605,7 @@
                         "character": 69
                     },
                     "identifier": "iSpell",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1614,7 +1614,7 @@
                         "character": 84
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1623,7 +1623,7 @@
                         "character": 100
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1632,7 +1632,7 @@
                         "character": 113
                     },
                     "identifier": "iPath",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1641,7 +1641,7 @@
                         "character": 124
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -1667,7 +1667,7 @@
                 "character": 5
             },
             "identifier": "CutActionCastFakeSpellAtLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1676,7 +1676,7 @@
                         "character": 42
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1685,7 +1685,7 @@
                         "character": 59
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1694,7 +1694,7 @@
                         "character": 71
                     },
                     "identifier": "iSpell",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1703,7 +1703,7 @@
                         "character": 86
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1712,7 +1712,7 @@
                         "character": 104
                     },
                     "identifier": "lLoc",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 },
                 {
@@ -1721,7 +1721,7 @@
                         "character": 114
                     },
                     "identifier": "iPath",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1730,7 +1730,7 @@
                         "character": 125
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -1756,7 +1756,7 @@
                 "character": 5
             },
             "identifier": "CutSetLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1765,7 +1765,7 @@
                         "character": 24
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1774,7 +1774,7 @@
                         "character": 41
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1783,7 +1783,7 @@
                         "character": 56
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1792,7 +1792,7 @@
                         "character": 65
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -1817,7 +1817,7 @@
                 "character": 5
             },
             "identifier": "CutRestoreLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1826,7 +1826,7 @@
                         "character": 28
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1835,7 +1835,7 @@
                         "character": 45
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1844,7 +1844,7 @@
                         "character": 60
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1853,7 +1853,7 @@
                         "character": 69
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -1877,7 +1877,7 @@
                 "character": 5
             },
             "identifier": "CutSetCutsceneMode",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1886,7 +1886,7 @@
                         "character": 28
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1895,7 +1895,7 @@
                         "character": 45
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1904,7 +1904,7 @@
                         "character": 60
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1913,7 +1913,7 @@
                         "character": 69
                     },
                     "identifier": "iValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1922,7 +1922,7 @@
                         "character": 81
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -1945,7 +1945,7 @@
                 "character": 5
             },
             "identifier": "CutSetPlotFlag",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -1954,7 +1954,7 @@
                         "character": 24
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1963,7 +1963,7 @@
                         "character": 41
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -1972,7 +1972,7 @@
                         "character": 56
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -1981,7 +1981,7 @@
                         "character": 69
                     },
                     "identifier": "iValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -1990,7 +1990,7 @@
                         "character": 81
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -2013,7 +2013,7 @@
                 "character": 5
             },
             "identifier": "CutDestroyObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2022,7 +2022,7 @@
                         "character": 26
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2031,7 +2031,7 @@
                         "character": 43
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -2040,7 +2040,7 @@
                         "character": 58
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2049,7 +2049,7 @@
                         "character": 71
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -2073,7 +2073,7 @@
                 "character": 5
             },
             "identifier": "CutStoreCameraFacing",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2082,7 +2082,7 @@
                         "character": 30
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2091,7 +2091,7 @@
                         "character": 47
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -2100,7 +2100,7 @@
                         "character": 62
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2109,7 +2109,7 @@
                         "character": 71
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -2132,7 +2132,7 @@
                 "character": 5
             },
             "identifier": "CutRestoreCameraFacing",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2141,7 +2141,7 @@
                         "character": 32
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2150,7 +2150,7 @@
                         "character": 49
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -2159,7 +2159,7 @@
                         "character": 64
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2168,7 +2168,7 @@
                         "character": 73
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -2191,7 +2191,7 @@
                 "character": 5
             },
             "identifier": "CutBlackScreen",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2200,7 +2200,7 @@
                         "character": 24
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2209,7 +2209,7 @@
                         "character": 41
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -2218,7 +2218,7 @@
                         "character": 56
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2227,7 +2227,7 @@
                         "character": 65
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -2251,7 +2251,7 @@
                 "character": 5
             },
             "identifier": "CutStopFade",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2260,7 +2260,7 @@
                         "character": 21
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2269,7 +2269,7 @@
                         "character": 38
                     },
                     "identifier": "fDelay",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -2278,7 +2278,7 @@
                         "character": 53
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2287,7 +2287,7 @@
                         "character": 62
                     },
                     "identifier": "iShift",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int",
                     "defaultValue": "TRUE"
                 }
@@ -2310,7 +2310,7 @@
                 "character": 5
             },
             "identifier": "CallRemoveEffects",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2319,7 +2319,7 @@
                         "character": 27
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2328,7 +2328,7 @@
                         "character": 45
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -2348,7 +2348,7 @@
                 "character": 5
             },
             "identifier": "CallActionStartConversation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2357,7 +2357,7 @@
                         "character": 37
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2366,7 +2366,7 @@
                         "character": 55
                     },
                     "identifier": "oNPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2375,7 +2375,7 @@
                         "character": 68
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2384,7 +2384,7 @@
                         "character": 80
                     },
                     "identifier": "szConversationFile",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -2404,7 +2404,7 @@
                 "character": 5
             },
             "identifier": "CallSpeakString",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2413,7 +2413,7 @@
                         "character": 25
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2422,7 +2422,7 @@
                         "character": 43
                     },
                     "identifier": "oSpeaker",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2431,7 +2431,7 @@
                         "character": 60
                     },
                     "identifier": "szString",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -2450,7 +2450,7 @@
                 "character": 5
             },
             "identifier": "CallPlayAnimation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2459,7 +2459,7 @@
                         "character": 27
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2468,7 +2468,7 @@
                         "character": 45
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2477,7 +2477,7 @@
                         "character": 58
                     },
                     "identifier": "nAnimation",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2486,7 +2486,7 @@
                         "character": 76
                     },
                     "identifier": "fLength",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 }
             ],
@@ -2505,7 +2505,7 @@
                 "character": 5
             },
             "identifier": "CallJumpToLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2514,7 +2514,7 @@
                         "character": 28
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2523,7 +2523,7 @@
                         "character": 46
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2532,7 +2532,7 @@
                         "character": 60
                     },
                     "identifier": "lLoc",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 }
             ],
@@ -2551,7 +2551,7 @@
                 "character": 5
             },
             "identifier": "CallJumpToObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2560,7 +2560,7 @@
                         "character": 26
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2569,7 +2569,7 @@
                         "character": 44
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2578,7 +2578,7 @@
                         "character": 56
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -2597,7 +2597,7 @@
                 "character": 5
             },
             "identifier": "CallActionMoveToObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2606,7 +2606,7 @@
                         "character": 32
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2615,7 +2615,7 @@
                         "character": 50
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2624,7 +2624,7 @@
                         "character": 62
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2633,7 +2633,7 @@
                         "character": 75
                     },
                     "identifier": "iRun",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -2653,7 +2653,7 @@
                 "character": 5
             },
             "identifier": "CallActionMoveToLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2662,7 +2662,7 @@
                         "character": 34
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2671,7 +2671,7 @@
                         "character": 52
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2680,7 +2680,7 @@
                         "character": 66
                     },
                     "identifier": "lLoc",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 },
                 {
@@ -2689,7 +2689,7 @@
                         "character": 76
                     },
                     "identifier": "iRun",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -2709,7 +2709,7 @@
                 "character": 5
             },
             "identifier": "CallCreateObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2718,7 +2718,7 @@
                         "character": 26
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2727,7 +2727,7 @@
                         "character": 41
                     },
                     "identifier": "iType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2736,7 +2736,7 @@
                         "character": 55
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2745,7 +2745,7 @@
                         "character": 67
                     },
                     "identifier": "sName",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 },
                 {
@@ -2754,7 +2754,7 @@
                         "character": 83
                     },
                     "identifier": "lLoc",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 },
                 {
@@ -2763,7 +2763,7 @@
                         "character": 93
                     },
                     "identifier": "iEffect",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -2783,7 +2783,7 @@
                 "character": 5
             },
             "identifier": "CallSetFacingPoint",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2792,7 +2792,7 @@
                         "character": 28
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2801,7 +2801,7 @@
                         "character": 46
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2810,7 +2810,7 @@
                         "character": 58
                     },
                     "identifier": "szTag",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "string"
                 }
             ],
@@ -2830,7 +2830,7 @@
                 "character": 5
             },
             "identifier": "CallFadeOutAndIn",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2839,7 +2839,7 @@
                         "character": 26
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2848,7 +2848,7 @@
                         "character": 44
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -2868,7 +2868,7 @@
                 "character": 5
             },
             "identifier": "CallFadeToBlack",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2877,7 +2877,7 @@
                         "character": 25
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2886,7 +2886,7 @@
                         "character": 43
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -2906,7 +2906,7 @@
                 "character": 5
             },
             "identifier": "CallFadeFromBlack",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2915,7 +2915,7 @@
                         "character": 27
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2924,7 +2924,7 @@
                         "character": 45
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -2944,7 +2944,7 @@
                 "character": 5
             },
             "identifier": "CallSetCamera",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -2953,7 +2953,7 @@
                         "character": 23
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2962,7 +2962,7 @@
                         "character": 41
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -2971,7 +2971,7 @@
                         "character": 54
                     },
                     "identifier": "iCameraType",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -2980,7 +2980,7 @@
                         "character": 73
                     },
                     "identifier": "fFacing",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -2989,7 +2989,7 @@
                         "character": 88
                     },
                     "identifier": "fZoom",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -2998,7 +2998,7 @@
                         "character": 101
                     },
                     "identifier": "fPitch",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 },
                 {
@@ -3007,7 +3007,7 @@
                         "character": 113
                     },
                     "identifier": "nSpeed",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -3027,7 +3027,7 @@
                 "character": 5
             },
             "identifier": "CallClearAllActions",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3036,7 +3036,7 @@
                         "character": 29
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3045,7 +3045,7 @@
                         "character": 47
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -3065,7 +3065,7 @@
                 "character": 5
             },
             "identifier": "CallApplyEffectAtLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3074,7 +3074,7 @@
                         "character": 35
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3083,7 +3083,7 @@
                         "character": 53
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -3092,7 +3092,7 @@
                         "character": 66
                     },
                     "identifier": "iDur",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3101,7 +3101,7 @@
                         "character": 76
                     },
                     "identifier": "iEffect",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3110,7 +3110,7 @@
                         "character": 94
                     },
                     "identifier": "lLoc",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 },
                 {
@@ -3119,7 +3119,7 @@
                         "character": 106
                     },
                     "identifier": "fDur",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 }
             ],
@@ -3139,7 +3139,7 @@
                 "character": 5
             },
             "identifier": "CallApplyEffectToObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3148,7 +3148,7 @@
                         "character": 33
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3157,7 +3157,7 @@
                         "character": 48
                     },
                     "identifier": "iDur",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3166,7 +3166,7 @@
                         "character": 58
                     },
                     "identifier": "iEffect",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3175,7 +3175,7 @@
                         "character": 74
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -3184,7 +3184,7 @@
                         "character": 89
                     },
                     "identifier": "fDur",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 }
             ],
@@ -3204,7 +3204,7 @@
                 "character": 5
             },
             "identifier": "CallApplyEffectToObject2",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3213,7 +3213,7 @@
                         "character": 34
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3222,7 +3222,7 @@
                         "character": 49
                     },
                     "identifier": "iDur",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3231,7 +3231,7 @@
                         "character": 62
                     },
                     "identifier": "eEffect",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "effect"
                 },
                 {
@@ -3240,7 +3240,7 @@
                         "character": 78
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -3249,7 +3249,7 @@
                         "character": 93
                     },
                     "identifier": "fDur",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 }
             ],
@@ -3269,7 +3269,7 @@
                 "character": 5
             },
             "identifier": "CallKnockdown",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3278,7 +3278,7 @@
                         "character": 23
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3287,7 +3287,7 @@
                         "character": 41
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -3296,7 +3296,7 @@
                         "character": 56
                     },
                     "identifier": "fDur",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "float"
                 }
             ],
@@ -3316,7 +3316,7 @@
                 "character": 5
             },
             "identifier": "CallDeath",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3325,7 +3325,7 @@
                         "character": 19
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3334,7 +3334,7 @@
                         "character": 37
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -3343,7 +3343,7 @@
                         "character": 50
                     },
                     "identifier": "iSpec",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -3363,7 +3363,7 @@
                 "character": 5
             },
             "identifier": "CallActionCastFakeSpellAtObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3372,7 +3372,7 @@
                         "character": 41
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3381,7 +3381,7 @@
                         "character": 56
                     },
                     "identifier": "iSpell",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3390,7 +3390,7 @@
                         "character": 71
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -3399,7 +3399,7 @@
                         "character": 87
                     },
                     "identifier": "oTarget",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -3408,7 +3408,7 @@
                         "character": 100
                     },
                     "identifier": "iPath",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -3428,7 +3428,7 @@
                 "character": 5
             },
             "identifier": "CallActionCastFakeSpellAtLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3437,7 +3437,7 @@
                         "character": 43
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3446,7 +3446,7 @@
                         "character": 58
                     },
                     "identifier": "iSpell",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3455,7 +3455,7 @@
                         "character": 73
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -3464,7 +3464,7 @@
                         "character": 91
                     },
                     "identifier": "lLoc",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "location"
                 },
                 {
@@ -3473,7 +3473,7 @@
                         "character": 101
                     },
                     "identifier": "iPath",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -3493,7 +3493,7 @@
                 "character": 5
             },
             "identifier": "CallSetLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3502,7 +3502,7 @@
                         "character": 25
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3511,7 +3511,7 @@
                         "character": 43
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -3531,7 +3531,7 @@
                 "character": 5
             },
             "identifier": "CallRestoreLocation",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3540,7 +3540,7 @@
                         "character": 29
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3549,7 +3549,7 @@
                         "character": 47
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -3569,7 +3569,7 @@
                 "character": 5
             },
             "identifier": "CallSetCutsceneMode",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3578,7 +3578,7 @@
                         "character": 29
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3587,7 +3587,7 @@
                         "character": 47
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -3596,7 +3596,7 @@
                         "character": 56
                     },
                     "identifier": "iValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -3616,7 +3616,7 @@
                 "character": 5
             },
             "identifier": "CallSetPlotFlag",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3625,7 +3625,7 @@
                         "character": 25
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3634,7 +3634,7 @@
                         "character": 43
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 },
                 {
@@ -3643,7 +3643,7 @@
                         "character": 56
                     },
                     "identifier": "iValue",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 }
             ],
@@ -3663,7 +3663,7 @@
                 "character": 5
             },
             "identifier": "CallDestroyObject",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3672,7 +3672,7 @@
                         "character": 27
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3681,7 +3681,7 @@
                         "character": 45
                     },
                     "identifier": "oObject",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -3701,7 +3701,7 @@
                 "character": 5
             },
             "identifier": "CallStoreCameraFacing",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3710,7 +3710,7 @@
                         "character": 31
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3719,7 +3719,7 @@
                         "character": 49
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -3739,7 +3739,7 @@
                 "character": 5
             },
             "identifier": "CallRestoreCameraFacing",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3748,7 +3748,7 @@
                         "character": 33
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3757,7 +3757,7 @@
                         "character": 51
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -3777,7 +3777,7 @@
                 "character": 5
             },
             "identifier": "CallBlackScreen",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3786,7 +3786,7 @@
                         "character": 25
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3795,7 +3795,7 @@
                         "character": 43
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -3815,7 +3815,7 @@
                 "character": 5
             },
             "identifier": "CallStopFade",
-            "tokenType": 3,
+            "kind": "function",
             "returnType": "void",
             "params": [
                 {
@@ -3824,7 +3824,7 @@
                         "character": 22
                     },
                     "identifier": "nCutscene",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "int"
                 },
                 {
@@ -3833,7 +3833,7 @@
                         "character": 40
                     },
                     "identifier": "oPC",
-                    "tokenType": 25,
+                    "kind": "parameter",
                     "valueType": "object"
                 }
             ],
@@ -3849,7 +3849,7 @@
         }
     ],
     "structDeclarations": [],
-    "children": [],
+    "includes": [],
     "localDeclarations": [
         {
             "position": {
@@ -3857,7 +3857,7 @@
                 "character": 26
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -3866,7 +3866,7 @@
                 "character": 43
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -3875,7 +3875,7 @@
                 "character": 58
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -3884,7 +3884,7 @@
                 "character": 71
             },
             "identifier": "nAnimation",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -3893,7 +3893,7 @@
                 "character": 89
             },
             "identifier": "fLength",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -3902,7 +3902,7 @@
                 "character": 102
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -3912,7 +3912,7 @@
                 "character": 22
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -3921,7 +3921,7 @@
                 "character": 35
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -3931,7 +3931,8 @@
                 "character": 10
             },
             "valueType": "float",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -3939,7 +3940,7 @@
                 "character": 30
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -3949,7 +3950,8 @@
                 "character": 19
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eEff1",
@@ -3958,7 +3960,8 @@
                 "character": 15
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -3966,7 +3969,7 @@
                 "character": 26
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -3975,7 +3978,7 @@
                 "character": 43
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -3984,7 +3987,7 @@
                 "character": 58
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -3993,7 +3996,7 @@
                 "character": 71
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4003,7 +4006,7 @@
                 "character": 36
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4012,7 +4015,7 @@
                 "character": 53
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4021,7 +4024,7 @@
                 "character": 68
             },
             "identifier": "oNPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4030,7 +4033,7 @@
                 "character": 81
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4039,7 +4042,7 @@
                 "character": 93
             },
             "identifier": "szConversationFile",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -4048,7 +4051,7 @@
                 "character": 117
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4058,7 +4061,7 @@
                 "character": 24
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4067,7 +4070,7 @@
                 "character": 41
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4076,7 +4079,7 @@
                 "character": 56
             },
             "identifier": "oSpeaker",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4085,7 +4088,7 @@
                 "character": 73
             },
             "identifier": "szString",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -4094,7 +4097,7 @@
                 "character": 87
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4104,7 +4107,7 @@
                 "character": 26
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4113,7 +4116,7 @@
                 "character": 43
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4122,7 +4125,7 @@
                 "character": 58
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4131,7 +4134,7 @@
                 "character": 71
             },
             "identifier": "nAnimation",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4140,7 +4143,7 @@
                 "character": 89
             },
             "identifier": "fLength",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4149,7 +4152,7 @@
                 "character": 102
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4159,7 +4162,7 @@
                 "character": 27
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4168,7 +4171,7 @@
                 "character": 44
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4177,7 +4180,7 @@
                 "character": 59
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4186,7 +4189,7 @@
                 "character": 73
             },
             "identifier": "lLoc",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "location"
         },
         {
@@ -4195,7 +4198,7 @@
                 "character": 83
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4205,7 +4208,7 @@
                 "character": 25
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4214,7 +4217,7 @@
                 "character": 42
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4223,7 +4226,7 @@
                 "character": 57
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4232,7 +4235,7 @@
                 "character": 69
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4241,7 +4244,7 @@
                 "character": 82
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4251,7 +4254,7 @@
                 "character": 31
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4260,7 +4263,7 @@
                 "character": 48
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4269,7 +4272,7 @@
                 "character": 63
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4278,7 +4281,7 @@
                 "character": 75
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4287,7 +4290,7 @@
                 "character": 88
             },
             "identifier": "iRun",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4296,7 +4299,7 @@
                 "character": 98
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4306,7 +4309,7 @@
                 "character": 33
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4315,7 +4318,7 @@
                 "character": 50
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4324,7 +4327,7 @@
                 "character": 65
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4333,7 +4336,7 @@
                 "character": 79
             },
             "identifier": "lLoc",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "location"
         },
         {
@@ -4342,7 +4345,7 @@
                 "character": 89
             },
             "identifier": "iRun",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4351,7 +4354,7 @@
                 "character": 99
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4361,7 +4364,7 @@
                 "character": 25
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4370,7 +4373,7 @@
                 "character": 42
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4379,7 +4382,7 @@
                 "character": 57
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4388,7 +4391,7 @@
                 "character": 66
             },
             "identifier": "iType",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4397,7 +4400,7 @@
                 "character": 80
             },
             "identifier": "sName",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -4406,7 +4409,7 @@
                 "character": 96
             },
             "identifier": "lLoc",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "location"
         },
         {
@@ -4415,7 +4418,7 @@
                 "character": 106
             },
             "identifier": "iEffect",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4424,7 +4427,7 @@
                 "character": 119
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4434,7 +4437,7 @@
                 "character": 27
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4443,7 +4446,7 @@
                 "character": 44
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4452,7 +4455,7 @@
                 "character": 59
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4461,7 +4464,7 @@
                 "character": 71
             },
             "identifier": "szTag",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "string"
         },
         {
@@ -4470,7 +4473,7 @@
                 "character": 82
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4480,7 +4483,7 @@
                 "character": 25
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4489,7 +4492,7 @@
                 "character": 42
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4498,7 +4501,7 @@
                 "character": 57
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4507,7 +4510,7 @@
                 "character": 70
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4517,7 +4520,7 @@
                 "character": 24
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4526,7 +4529,7 @@
                 "character": 41
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4535,7 +4538,7 @@
                 "character": 56
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4544,7 +4547,7 @@
                 "character": 69
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4554,7 +4557,7 @@
                 "character": 26
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4563,7 +4566,7 @@
                 "character": 43
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4572,7 +4575,7 @@
                 "character": 58
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4581,7 +4584,7 @@
                 "character": 71
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4591,7 +4594,7 @@
                 "character": 22
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4600,7 +4603,7 @@
                 "character": 39
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4609,7 +4612,7 @@
                 "character": 54
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4618,7 +4621,7 @@
                 "character": 67
             },
             "identifier": "iCameraType",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4627,7 +4630,7 @@
                 "character": 86
             },
             "identifier": "fFacing",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4636,7 +4639,7 @@
                 "character": 101
             },
             "identifier": "fZoom",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4645,7 +4648,7 @@
                 "character": 114
             },
             "identifier": "fPitch",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4654,7 +4657,7 @@
                 "character": 126
             },
             "identifier": "nSpeed",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4663,7 +4666,7 @@
                 "character": 138
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4673,7 +4676,7 @@
                 "character": 28
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4682,7 +4685,7 @@
                 "character": 45
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4691,7 +4694,7 @@
                 "character": 60
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4700,7 +4703,7 @@
                 "character": 73
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4711,7 +4714,8 @@
                 "character": 19
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eEffect1",
@@ -4720,7 +4724,8 @@
                 "character": 15
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4728,7 +4733,7 @@
                 "character": 34
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4737,7 +4742,7 @@
                 "character": 51
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4746,7 +4751,7 @@
                 "character": 66
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4755,7 +4760,7 @@
                 "character": 79
             },
             "identifier": "iDur",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4764,7 +4769,7 @@
                 "character": 89
             },
             "identifier": "iEffect",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4773,7 +4778,7 @@
                 "character": 107
             },
             "identifier": "lLoc",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "location"
         },
         {
@@ -4782,7 +4787,7 @@
                 "character": 119
             },
             "identifier": "fDur",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float",
             "defaultValue": "0.0"
         },
@@ -4792,7 +4797,7 @@
                 "character": 135
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4803,7 +4808,8 @@
                 "character": 19
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eEffect1",
@@ -4812,7 +4818,8 @@
                 "character": 15
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4820,7 +4827,7 @@
                 "character": 32
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4829,7 +4836,7 @@
                 "character": 49
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4838,7 +4845,7 @@
                 "character": 61
             },
             "identifier": "iDur",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4847,7 +4854,7 @@
                 "character": 71
             },
             "identifier": "iEffect",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4856,7 +4863,7 @@
                 "character": 87
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4865,7 +4872,7 @@
                 "character": 102
             },
             "identifier": "fDur",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float",
             "defaultValue": "0.0"
         },
@@ -4875,7 +4882,7 @@
                 "character": 118
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4885,7 +4892,7 @@
                 "character": 33
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4894,7 +4901,7 @@
                 "character": 50
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4903,7 +4910,7 @@
                 "character": 62
             },
             "identifier": "iDur",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4912,7 +4919,7 @@
                 "character": 75
             },
             "identifier": "eEffect",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "effect"
         },
         {
@@ -4921,7 +4928,7 @@
                 "character": 91
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4930,7 +4937,7 @@
                 "character": 106
             },
             "identifier": "fDur",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float",
             "defaultValue": "0.0"
         },
@@ -4940,7 +4947,7 @@
                 "character": 122
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -4951,7 +4958,8 @@
                 "character": 19
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eEffect",
@@ -4960,7 +4968,8 @@
                 "character": 15
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -4968,7 +4977,7 @@
                 "character": 22
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -4977,7 +4986,7 @@
                 "character": 39
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -4986,7 +4995,7 @@
                 "character": 54
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -4995,7 +5004,7 @@
                 "character": 69
             },
             "identifier": "fDur",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float",
             "defaultValue": "3.0"
         },
@@ -5005,7 +5014,7 @@
                 "character": 85
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -5016,7 +5025,8 @@
                 "character": 19
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "eEffect1",
@@ -5025,7 +5035,8 @@
                 "character": 15
             },
             "valueType": "effect",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -5033,7 +5044,7 @@
                 "character": 18
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5042,7 +5053,7 @@
                 "character": 35
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -5051,7 +5062,7 @@
                 "character": 50
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -5060,7 +5071,7 @@
                 "character": 63
             },
             "identifier": "iSpec",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "FALSE"
         },
@@ -5070,7 +5081,7 @@
                 "character": 82
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -5080,7 +5091,7 @@
                 "character": 40
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5089,7 +5100,7 @@
                 "character": 57
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -5098,7 +5109,7 @@
                 "character": 69
             },
             "identifier": "iSpell",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5107,7 +5118,7 @@
                 "character": 84
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -5116,7 +5127,7 @@
                 "character": 100
             },
             "identifier": "oTarget",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -5125,7 +5136,7 @@
                 "character": 113
             },
             "identifier": "iPath",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5134,7 +5145,7 @@
                 "character": 124
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -5144,7 +5155,7 @@
                 "character": 42
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5153,7 +5164,7 @@
                 "character": 59
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -5162,7 +5173,7 @@
                 "character": 71
             },
             "identifier": "iSpell",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5171,7 +5182,7 @@
                 "character": 86
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -5180,7 +5191,7 @@
                 "character": 104
             },
             "identifier": "lLoc",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "location"
         },
         {
@@ -5189,7 +5200,7 @@
                 "character": 114
             },
             "identifier": "iPath",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5198,7 +5209,7 @@
                 "character": 125
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -5208,7 +5219,7 @@
                 "character": 24
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5217,7 +5228,7 @@
                 "character": 41
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -5226,7 +5237,7 @@
                 "character": 56
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -5235,7 +5246,7 @@
                 "character": 65
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -5246,7 +5257,8 @@
                 "character": 21
             },
             "valueType": "location",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "identifier": "lLoc1",
@@ -5255,7 +5267,8 @@
                 "character": 17
             },
             "valueType": "location",
-            "tokenType": 6
+            "kind": "variable",
+            "scope": "local"
         },
         {
             "position": {
@@ -5263,7 +5276,7 @@
                 "character": 28
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5272,7 +5285,7 @@
                 "character": 45
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -5281,7 +5294,7 @@
                 "character": 60
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -5290,7 +5303,7 @@
                 "character": 69
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -5300,7 +5313,7 @@
                 "character": 28
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5309,7 +5322,7 @@
                 "character": 45
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -5318,7 +5331,7 @@
                 "character": 60
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -5327,7 +5340,7 @@
                 "character": 69
             },
             "identifier": "iValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5336,7 +5349,7 @@
                 "character": 81
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -5346,7 +5359,7 @@
                 "character": 24
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5355,7 +5368,7 @@
                 "character": 41
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -5364,7 +5377,7 @@
                 "character": 56
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -5373,7 +5386,7 @@
                 "character": 69
             },
             "identifier": "iValue",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5382,7 +5395,7 @@
                 "character": 81
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -5392,7 +5405,7 @@
                 "character": 26
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5401,7 +5414,7 @@
                 "character": 43
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -5410,7 +5423,7 @@
                 "character": 58
             },
             "identifier": "oObject",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -5419,7 +5432,7 @@
                 "character": 71
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -5429,7 +5442,7 @@
                 "character": 30
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5438,7 +5451,7 @@
                 "character": 47
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -5447,7 +5460,7 @@
                 "character": 62
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -5456,7 +5469,7 @@
                 "character": 71
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -5466,7 +5479,7 @@
                 "character": 32
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5475,7 +5488,7 @@
                 "character": 49
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -5484,7 +5497,7 @@
                 "character": 64
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -5493,7 +5506,7 @@
                 "character": 73
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -5503,7 +5516,7 @@
                 "character": 24
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5512,7 +5525,7 @@
                 "character": 41
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -5521,7 +5534,7 @@
                 "character": 56
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -5530,7 +5543,7 @@
                 "character": 65
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         },
@@ -5540,7 +5553,7 @@
                 "character": 21
             },
             "identifier": "nCutscene",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int"
         },
         {
@@ -5549,7 +5562,7 @@
                 "character": 38
             },
             "identifier": "fDelay",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "float"
         },
         {
@@ -5558,7 +5571,7 @@
                 "character": 53
             },
             "identifier": "oPC",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "object"
         },
         {
@@ -5567,7 +5580,7 @@
                 "character": 62
             },
             "identifier": "iShift",
-            "tokenType": 25,
+            "kind": "parameter",
             "valueType": "int",
             "defaultValue": "TRUE"
         }
