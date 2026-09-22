@@ -14,7 +14,7 @@
   },
   "publisher": "PhilippeChab",
   "engines": {
-    "vscode": "^1.86.0"
+    "vscode": "^1.138.0"
   },
   "categories": [
     "Programming Languages"
@@ -180,7 +180,7 @@
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^5.10.0",
-    "@types/node": "^18.19.130",
+    "@types/node": "^24.13.6",
     "esbuild": "^0.28.2",
     "eslint": "^10.11.0",
     "eslint-config-love": "^157.0.0",

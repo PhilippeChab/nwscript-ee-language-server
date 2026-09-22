@@ -1,15 +1,16 @@
 import { before, describe, it } from "mocha";
 import { expect } from "chai";
+import { createRequire } from "module";
 import { buildServerBundle } from "../scripts/Build";
 import { join } from "path";
 import type ServerManager from "../src/ServerManager/ServerManager";
 
 describe("Server request lifecycle", () => {
   let Manager: typeof ServerManager;
-  before(async () => {
+  before(() => {
     const bundle = join(__dirname, "../out/server-manager-test.js");
     buildServerBundle({ entryPoints: [join(__dirname, "../src/ServerManager/ServerManager.ts")], outfile: bundle });
-    Manager = (await import(bundle)).default;
+    Manager = (createRequire(__filename)(bundle) as { default: typeof ServerManager }).default;
   });
 
   function manager() {

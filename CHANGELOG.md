@@ -6,7 +6,8 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 
 ## [4.0.1]
 
-- Update the Tree-sitter runtime, workspace file discovery, and VS Code language client while retaining VS Code 1.86 compatibility.
+- Require VS Code 1.138 or newer and update the language client/server libraries to the current stable release.
+- Update the Tree-sitter runtime and workspace file discovery.
 - Refresh development dependencies and lockfiles to address dependency security advisories.
 
 ## [4.0.0]

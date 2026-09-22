@@ -1,5 +1,6 @@
 import { before, beforeEach, afterEach, describe, it } from "mocha";
 import { expect } from "chai";
+import { createRequire } from "module";
 import { buildServerBundle } from "../scripts/Build";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "fs";
 import { tmpdir } from "os";
@@ -27,13 +28,13 @@ describe("Native compiler diagnostics", function () {
     return diagnostics;
   };
 
-  before(async () => {
+  before(() => {
     const bundle = join(__dirname, "..", "out", "diagnostics-provider-test.js");
     buildServerBundle({
       entryPoints: [join(__dirname, "..", "src", "Providers", "DiagnosticsProvider.ts")],
       outfile: bundle,
     });
-    Provider = (await import(bundle)).default;
+    Provider = (createRequire(__filename)(bundle) as { default: typeof DiagnosticsProvider }).default;
   });
 
   beforeEach(() => {
@@ -97,7 +98,7 @@ describe("Native compiler diagnostics", function () {
     expect(requireDiagnostics(mutable.uri)).to.deep.equal([]);
     const constant = script("constant.nss", "const int VALUE = 1; void main() { VALUE = 2; }");
     await publish(constant.uri);
-    expect(requireDiagnostics(constant.uri).some((diagnostic) => diagnostic.message.includes("BAD LVALUE"))).to.equal(true);
+    expect(requireDiagnostics(constant.uri).some((diagnostic) => typeof diagnostic.message === "string" && diagnostic.message.includes("BAD LVALUE"))).to.equal(true);
   });
 
   it("permits repeated and nested factory calls in global struct initializers", async () => {

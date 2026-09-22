@@ -378,7 +378,12 @@ describe("Installed standalone LSP server", function () {
     release?.({ compiler: { nwnHome: workspace, nwnInstallation: workspace } });
     // No edit, save, or reopen: applying the late settings must trigger validation.
     await client.waitFor(
-      () => client.diagnostics.some((item) => item.uri === params().textDocument.uri && item.diagnostics.some((diagnostic) => diagnostic.message.includes("DECLARATION DOES NOT MATCH PARAMETERS"))),
+      () =>
+        client.diagnostics.some(
+          (item) =>
+            item.uri === params().textDocument.uri &&
+            item.diagnostics.some((diagnostic) => typeof diagnostic.message === "string" && diagnostic.message.includes("DECLARATION DOES NOT MATCH PARAMETERS")),
+        ),
       3000,
     );
     await client.shutdown();

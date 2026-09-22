@@ -26,7 +26,7 @@
   "dependencies": {
     "glob": "^13.0.6",
     "sax": "^1.6.1",
-    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver": "^10.1.1",
     "vscode-languageserver-textdocument": "^1.0.14",
     "web-tree-sitter": "0.27.0"
   },
@@ -34,7 +34,7 @@
     "@types/adm-zip": "^0.5.8",
     "@types/chai": "^4.3.20",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^18.19.130",
+    "@types/node": "^24.13.6",
     "@types/sax": "^1.2.7",
     "adm-zip": "^0.6.1",
     "chai": "^4.5.0",
