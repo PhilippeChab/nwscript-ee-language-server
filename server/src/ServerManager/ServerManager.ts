@@ -55,7 +55,7 @@ export default class ServerManger {
     this.connection = connection;
     this.logger = new Logger(connection.console);
     this.capabilitiesHandler = new CapabilitiesHandler(params.capabilities);
-    this.workspaceFilesSystem = new WorkspaceFilesSystem(params.rootUri ? fileURLToPath(params.rootUri) : params.rootPath ?? null, params.workspaceFolders ?? null);
+    this.workspaceFilesSystem = new WorkspaceFilesSystem(params.rootUri ? fileURLToPath(params.rootUri) : (params.rootPath ?? null), params.workspaceFolders ?? null);
     this.liveDocumentsManager = new LiveDocumentsManager();
     this.documentsCollection = new DocumentsCollection();
     this.parser = new Parser();
@@ -95,7 +95,7 @@ export default class ServerManger {
       }, 3000);
       this.pendingClientRequests.add(cancel);
       void Promise.resolve()
-        .then(() => (this.stopping ? undefined : request()))
+        .then(async () => (this.stopping ? undefined : await request()))
         .then(finish, (error: unknown) => {
           if (this.pendingClientRequests.has(cancel) && !this.stopping) {
             this.logger.error(`Client request ${name} failed: ${error instanceof Error ? error.message : String(error)}`);

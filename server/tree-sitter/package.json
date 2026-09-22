@@ -6,15 +6,15 @@
   "scripts": {
     "test": "node --import tsx --test test.ts",
     "typecheck": "tsc --noEmit",
-    "lint": "node ../../node_modules/eslint/bin/eslint.js --config .eslintrc.cjs . --ext .ts --max-warnings 0",
+    "lint": "node ../../node_modules/eslint/bin/eslint.js . --max-warnings 0",
     "inspect": "tsx inspect.ts",
     "grammar:record": "tsx record-grammar.ts"
   },
   "devDependencies": {
-    "@types/emscripten": "1.41.5",
-    "@types/node": "18.19.0",
-    "tsx": "4.20.5",
-    "typescript": "4.7.4"
+    "@types/node": "^24.13.6",
+    "tsx": "4.23.15",
+    "typescript": "~5.9.3",
+    "@types/emscripten": "1.41.6"
   },
   "packageManager": "yarn@1.22.22"
 }

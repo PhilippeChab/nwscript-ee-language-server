@@ -1,6 +1,6 @@
 import { basename, join, normalize, relative, isAbsolute, sep } from "path";
 import { fileURLToPath, pathToFileURL } from "url";
-import { GlobSync } from "glob";
+import { globSync } from "glob";
 import { WorkspaceFolder } from "vscode-languageserver";
 
 export const FILES_EXTENSION = ".nss";
@@ -10,7 +10,10 @@ export const resourceName = (path: string) =>
     .toLowerCase();
 
 export default class WorkspaceFilesSystem {
-  constructor(private readonly rootPath: string | null, private workspaceFolders: WorkspaceFolder[] | null) {}
+  constructor(
+    private readonly rootPath: string | null,
+    private workspaceFolders: WorkspaceFolder[] | null,
+  ) {}
 
   public setWorkspaceFolders(folders: WorkspaceFolder[]) {
     this.workspaceFolders = folders;
@@ -37,13 +40,17 @@ export default class WorkspaceFilesSystem {
   public getStandardLibraryPath(uri: string) {
     const root = this.getRootForUri(uri);
     if (!root) return null;
-    const files = new GlobSync("**/nwscript.nss", { cwd: root, nocase: true, nodir: true }).found.filter((file) => this.getRootForUri(pathToFileURL(join(root, file)).href) === root);
+    const files = globSync("**/nwscript.nss", { cwd: root, nocase: true, nodir: true }).filter((file) => this.getRootForUri(pathToFileURL(join(root, file)).href) === root);
     files.sort((a, b) => a.split(/[\\/]/).length - b.split(/[\\/]/).length || (a < b ? -1 : a > b ? 1 : 0));
     return files.length ? join(root, files[0]) : null;
   }
 
   public getFilesPath() {
-    return this.getRoots().flatMap((root) => new GlobSync(`**/*${FILES_EXTENSION}`, { cwd: root, nodir: true, nocase: true }).found.map((filename) => join(root, filename)));
+    return this.getRoots().flatMap((root) =>
+      globSync(`**/*${FILES_EXTENSION}`, { cwd: root, nodir: true, nocase: true })
+        .sort((a, b) => a.localeCompare(b, "en"))
+        .map((filename) => join(root, filename)),
+    );
   }
 
   public getFilePath(filename: string) {
@@ -52,7 +59,9 @@ export default class WorkspaceFilesSystem {
   }
 
   public getGlobPaths(glob: string) {
-    return new GlobSync(glob, { cwd: this.getWorkspaceRootPath() }).found.map((filename) => this.normalizedAbsolutePath(filename));
+    return globSync(glob, { cwd: this.getWorkspaceRootPath() })
+      .sort((a, b) => a.localeCompare(b, "en"))
+      .map((filename) => this.normalizedAbsolutePath(filename));
   }
 
   public getWorkspaceRootPath() {

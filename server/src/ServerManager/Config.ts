@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 const defaultServerConfiguration = {
   completion: {
     autoImport: true,
@@ -35,7 +34,6 @@ const defaultServerConfiguration = {
     nwnInstallation: "",
   },
 };
-/* eslint-enable @typescript-eslint/naming-convention */
 
 export type ServerConfiguration = typeof defaultServerConfiguration;
 export { defaultServerConfiguration };

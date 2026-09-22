@@ -40,7 +40,11 @@ export class LspClient {
   public stderr = "";
   private readonly closed: Promise<unknown[]>;
 
-  constructor(cli: string, cwd: string, private readonly options: ClientOptions = {}) {
+  constructor(
+    cli: string,
+    cwd: string,
+    private readonly options: ClientOptions = {},
+  ) {
     this.child = spawn(process.execPath, [cli, ...(options.ipc ? ["--node-ipc"] : options.defaultTransport ? [] : ["--stdio"])], {
       cwd,
       stdio: options.ipc ? ["pipe", "pipe", "pipe", "ipc"] : ["pipe", "pipe", "pipe"],
@@ -51,8 +55,12 @@ export class LspClient {
     });
     this.rpc = options.ipc ? createMessageConnection(new IPCMessageReader(this.child), new IPCMessageWriter(this.child)) : createMessageConnection(this.child.stdout, this.child.stdin);
     this.rpc.onError(([error]) => this.protocolErrors.push(error.message));
-    this.rpc.onNotification(LogMessageNotification.type, ({ message }) => this.logs.push(message));
-    this.rpc.onNotification(PublishDiagnosticsNotification.type, (params) => this.diagnostics.push(params));
+    this.rpc.onNotification(LogMessageNotification.type, ({ message }) => {
+      this.logs.push(message);
+    });
+    this.rpc.onNotification(PublishDiagnosticsNotification.type, (params) => {
+      this.diagnostics.push(params);
+    });
     this.rpc.onRequest(async (method: string) => {
       this.requests.push(method);
       switch (method) {

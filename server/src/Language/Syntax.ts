@@ -5,7 +5,7 @@ import type { SyntaxIndex } from "./SyntaxIndex";
 import type { LocalScope, AutoImportContext, CallContext, SyntaxTarget } from "./SyntaxTypes";
 import type { TypeName } from "./TypeNames";
 import { join } from "path";
-import { Language, Parser } from "web-tree-sitter";
+import { Edit, Language, Parser } from "web-tree-sitter";
 import type { Node, Tree } from "web-tree-sitter";
 import { Range } from "vscode-languageserver";
 import type { Position } from "vscode-languageserver";
@@ -27,7 +27,11 @@ export default class Syntax {
 
   private source: string;
 
-  private constructor(private document: TextDocument, private readonly parser: Parser, private tree: Tree) {
+  private constructor(
+    private document: TextDocument,
+    private readonly parser: Parser,
+    private tree: Tree,
+  ) {
     this.source = document.getText();
     this.resources = { tree, parser };
     Syntax.cleanup.register(this, this.resources, this);
@@ -77,14 +81,16 @@ export default class Syntax {
       oldEnd--;
       newEnd--;
     }
-    this.tree.edit({
-      startIndex: start,
-      oldEndIndex: oldEnd,
-      newEndIndex: newEnd,
-      startPosition: this.point(before, start),
-      oldEndPosition: this.point(before, oldEnd),
-      newEndPosition: this.point(after, newEnd),
-    });
+    this.tree.edit(
+      new Edit({
+        startIndex: start,
+        oldEndIndex: oldEnd,
+        newEndIndex: newEnd,
+        startPosition: this.point(before, start),
+        oldEndPosition: this.point(before, oldEnd),
+        newEndPosition: this.point(after, newEnd),
+      }),
+    );
     const next = this.parser.parse(after, this.tree);
     if (!next) throw new Error("Tree-sitter did not produce an updated syntax tree");
     this.tree.delete();
@@ -244,13 +250,13 @@ export default class Syntax {
     const offset = this.document.offsetAt(position);
     const leaves = [...this.leaves()];
     const node = leaves.find((leaf) => leaf.startIndex === offset && leaf.isNamed) || leaves.find((leaf) => leaf.startIndex <= offset && leaf.endIndex >= offset);
-    if (!node || !node.text) return;
+    if (!node?.text) return;
     const kind =
       node.type === "type_identifier" || ["struct_declarator", "struct_specifier"].includes(node.parent?.type || "")
         ? ReferenceKind.Type
         : node.type === "field_identifier"
-        ? ReferenceKind.Member
-        : undefined;
+          ? ReferenceKind.Member
+          : undefined;
     return { identifier: node.text, kind, range: Range.create(this.document.positionAt(node.startIndex), this.document.positionAt(node.endIndex)) };
   }
 
@@ -285,8 +291,7 @@ export default class Syntax {
   }
 
   private static async initialize(directory: string) {
-    // The runtime accepts module overrides; its declaration incorrectly requires a complete module.
-    await Parser.init({ locateFile: () => join(directory, "web-tree-sitter.wasm") } as unknown as EmscriptenModule);
+    await Parser.init({ locateFile: () => join(directory, "web-tree-sitter.wasm") });
     this.language = await Language.load(join(directory, "tree-sitter-nwscript.wasm"));
   }
 

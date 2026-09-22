@@ -124,7 +124,9 @@ describe("Parser", () => {
 });
 
 describe("Serialized syntax indexes", () => {
-  it("ships current include entries, declaration kinds and variable scopes without conversion", () => {
+  it("ships current include entries, declaration kinds and variable scopes without conversion", function () {
+    // Validate every bundled index; disk and assertion throughput vary across CI runners.
+    this.timeout(10000);
     const paths = [
       ...["base_scripts", "ovr"].flatMap((folder) => {
         const directory = join(__dirname, "../resources", folder);

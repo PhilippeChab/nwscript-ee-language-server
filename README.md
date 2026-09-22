@@ -20,6 +20,8 @@ NWScript: EE Language Server provides language features for NWScript through a V
 
 ## Dependencies
 
+The extension requires VS Code 1.138 or newer. Other editors can use the standalone server with Node.js 24 or newer.
+
 ### Formatting
 
 [clang-format](https://clang.llvm.org/docs/ClangFormat.html).
