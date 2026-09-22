@@ -4,7 +4,7 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 
 ## [Unreleased]
 
-## [4.0.1]
+## [4.1.0]
 
 - Require VS Code 1.138 or newer and update the language client/server libraries to the current stable release.
 - Update the Tree-sitter runtime and workspace file discovery.
