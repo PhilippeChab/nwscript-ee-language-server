@@ -1,10 +1,15 @@
-
 {
   "compilerOptions": {
     "module": "commonjs",
     "target": "ES2020",
-    "lib": ["ES2022", "DOM"],
-    "types": ["@types/node", "emscripten"],
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "types": [
+      "node",
+      "emscripten"
+    ],
     "noEmit": true,
     "allowJs": true,
     "checkJs": true,
@@ -14,7 +19,6 @@
   },
   "include": [
     "scripts",
-    "test",
-    "../.eslintrc.cjs"
+    "test"
   ]
 }

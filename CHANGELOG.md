@@ -4,6 +4,11 @@ All notable changes to the "nwscript-ee-language-server" extension will be docum
 
 ## [Unreleased]
 
+## [4.0.1]
+
+- Update the Tree-sitter runtime, workspace file discovery, and VS Code language client while retaining VS Code 1.86 compatibility.
+- Refresh development dependencies and lockfiles to address dependency security advisories.
+
 ## [4.0.0]
 
 - Replace TextMate-based server parsing with an incremental Tree-sitter parser for completion, hover, navigation, signature help, and workspace indexing.

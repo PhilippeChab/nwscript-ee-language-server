@@ -20,7 +20,11 @@ export default class SemanticModel {
   private readonly globals: SourcedDeclaration[];
   private readonly structs: SourcedDeclaration[];
 
-  constructor(private readonly syntax: Syntax, readonly inputs: readonly SemanticInput[], private readonly workspace: SemanticWorkspace) {
+  constructor(
+    private readonly syntax: Syntax,
+    readonly inputs: readonly SemanticInput[],
+    private readonly workspace: SemanticWorkspace,
+  ) {
     this.globals = inputs.flatMap((source) => source.index.globalDeclarations.map((declaration) => ({ declaration, source })));
     this.structs = inputs.flatMap((source) => source.index.structDeclarations.map((declaration) => ({ declaration, source })));
     // The index combines prototype/body metadata for presentation. Syntax keeps

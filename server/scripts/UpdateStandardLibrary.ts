@@ -44,7 +44,7 @@ export function publishedChecksum(text: string, archiveUrl: string) {
   const filename = new URL(archiveUrl).pathname.split("/").at(-1);
   if (!filename) throw new Error(`Archive URL has no filename: ${archiveUrl}`);
   const entry = text.trim().match(/^([a-fA-F0-9]{64})\s+\*?(\S+)$/);
-  if (!entry || entry[2] !== filename) throw new Error(`Invalid published checksum for ${filename}`);
+  if (entry?.[2] !== filename) throw new Error(`Invalid published checksum for ${filename}`);
   return entry[1].toLowerCase();
 }
 
@@ -146,7 +146,7 @@ export async function updateStandardLibrary(options: { scripts?: string; pinned?
     metadata = { ...metadata, ...latest, releaseNotesUrl, archiveSha256: checksum };
   }
   const sourcePath = join(scripts, "nwscript.nss");
-  let source = existsSync(sourcePath) ? readFileSync(sourcePath) : undefined;
+  let source: Buffer | undefined = existsSync(sourcePath) ? readFileSync(sourcePath) : undefined;
   if (options.archive || metadata.version !== current.version || !source || sha256(source) !== current.sourceSha256) {
     const archive = options.archive ? readFileSync(options.archive) : await fetch(metadata.archiveUrl);
     source = extractSource(archive, metadata);

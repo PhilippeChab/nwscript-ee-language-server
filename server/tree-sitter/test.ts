@@ -311,7 +311,7 @@ void test("shares syntax and indexes per live version while isolating different 
 });
 
 void test("ships the WASM runtime from the pinned runtime dependency", () => {
-  assert.deepEqual(readFileSync(join(__dirname, "../resources/web-tree-sitter.wasm")), readFileSync(join(__dirname, "../node_modules/web-tree-sitter/tree-sitter.wasm")));
+  assert.deepEqual(readFileSync(join(__dirname, "../resources/web-tree-sitter.wasm")), readFileSync(join(__dirname, "../node_modules/web-tree-sitter/web-tree-sitter.wasm")));
 });
 
 const conformance = JSON.parse(readFileSync(join(__dirname, "conformance.json"), "utf8")) as {

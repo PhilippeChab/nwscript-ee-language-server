@@ -410,13 +410,13 @@ describe("Auto-import completion", function () {
               layout === "header"
                 ? { helper: `#include "first"\n${second}`, first }
                 : layout === "middle"
-                ? { helper: `${first}\n#include "second"`, second }
-                : {
-                    helper: '#include "first"\n#include "second"',
-                    first: layout === "diamond" ? '#include "shared"' : first,
-                    second: layout === "diamond" ? `#include "shared"\n${second}` : second,
-                    shared: first,
-                  };
+                  ? { helper: `${first}\n#include "second"`, second }
+                  : {
+                      helper: '#include "first"\n#include "second"',
+                      first: layout === "diamond" ? '#include "shared"' : first,
+                      second: layout === "diamond" ? `#include "shared"\n${second}` : second,
+                      shared: first,
+                    };
             scripts.helper += "\nvoid Imported() {}";
             const { items } = complete("void main() { Imp| }", scripts);
             expect(items.some((item) => item.label === "Imported")).to.equal(!reversed);

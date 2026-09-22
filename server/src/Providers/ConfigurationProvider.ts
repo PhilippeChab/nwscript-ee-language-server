@@ -4,7 +4,10 @@ import { ServerManager } from "../ServerManager";
 type ConfigCallback = (settings: unknown) => void;
 
 export default class ConfigurationProvider {
-  constructor(private readonly server: ServerManager, private readonly configChangeCallback: ConfigCallback) {
+  constructor(
+    private readonly server: ServerManager,
+    private readonly configChangeCallback: ConfigCallback,
+  ) {
     this.server.connection.onDidChangeConfiguration(this.handleDidChangeConfiguration);
   }
 

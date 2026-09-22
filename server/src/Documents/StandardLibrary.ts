@@ -19,7 +19,11 @@ export default class StandardLibrary {
   private readonly disk = new Map<string, string>();
   private readonly attempted = new Map<string, string>();
 
-  constructor(private readonly files: WorkspaceFilesSystem, private readonly parser: Parser, private readonly report: (message: string) => void) {
+  constructor(
+    private readonly files: WorkspaceFilesSystem,
+    private readonly parser: Parser,
+    private readonly report: (message: string) => void,
+  ) {
     this.bundled = JSON.parse(readFileSync(join(__dirname, "..", "resources", "standardLibDefinitions.json"), "utf8")) as SyntaxIndex;
   }
 

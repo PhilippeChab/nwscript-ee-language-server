@@ -9,7 +9,7 @@ const serverConfig = (serverPath: string) => {
   return { module: serverPath, transport: TransportKind.ipc };
 };
 
-export function activate(context: ExtensionContext) {
+export async function activate(context: ExtensionContext) {
   const serverPath = context.asAbsolutePath(join("server", "out", "server.js"));
   const serverOptions: ServerOptions = {
     run: { ...serverConfig(serverPath) },
@@ -27,7 +27,7 @@ export function activate(context: ExtensionContext) {
 
   client = new LanguageClient("nwscript", "NWscript Language Server", serverOptions, clientOptions);
   client.registerProposedFeatures();
-  client.start();
+  await client.start();
 }
 
 export async function deactivate() {

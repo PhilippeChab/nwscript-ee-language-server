@@ -14,7 +14,12 @@ export default class IndexedDocument {
   private cachedTypeReferences?: { index: SyntaxIndex; references: TypeReference[] };
   private cachedSemantic?: SemanticModel;
 
-  constructor(readonly uri: string, readonly base: boolean, private readonly source: SyntaxIndex | Syntax, private readonly collection: DocumentsCollection) {}
+  constructor(
+    readonly uri: string,
+    readonly base: boolean,
+    private readonly source: SyntaxIndex | Syntax,
+    private readonly collection: DocumentsCollection,
+  ) {}
 
   public get syntax(): Syntax | undefined {
     return this.source instanceof Syntax ? this.source : undefined;

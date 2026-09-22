@@ -55,6 +55,19 @@ describe("Workspace standard library", function () {
   });
   afterEach(() => rmSync(root, { recursive: true, force: true }));
 
+  it("preserves case-insensitive discovery and alphabetical file ordering", () => {
+    for (const name of ["z.nss", "Beta.nss", "alpha.NSS"]) write(join(root, name), "void Helper() {}");
+    const expected = ["alpha.NSS", "Beta.nss", "z.nss"].map((name) => join(root, name));
+    expect(files.getFilesPath()).to.deep.equal(expected);
+    expect(files.getGlobPaths("**/*.[nN][sS][sS]")).to.deep.equal(expected);
+  });
+
+  it("keeps alphabetical precedence when resolving duplicate include names", () => {
+    write(join(root, "B", "helper.nss"), "void Other() {}");
+    write(join(root, "a", "helper.nss"), "void Preferred() {}");
+    expect(files.getFilePath("HELPER")).to.equal(join(root, "a", "helper.nss"));
+  });
+
   for (const include of ["", '#include "nwscript"\n']) {
     it(`replaces the bundle ${include ? "with" : "without"} an explicit include across editor features`, () => {
       const spec = join(root, "nwscript.nss");

@@ -40,7 +40,11 @@ export class LspClient {
   public stderr = "";
   private readonly closed: Promise<unknown[]>;
 
-  constructor(cli: string, cwd: string, private readonly options: ClientOptions = {}) {
+  constructor(
+    cli: string,
+    cwd: string,
+    private readonly options: ClientOptions = {},
+  ) {
     this.child = spawn(process.execPath, [cli, ...(options.ipc ? ["--node-ipc"] : options.defaultTransport ? [] : ["--stdio"])], {
       cwd,
       stdio: options.ipc ? ["pipe", "pipe", "pipe", "ipc"] : ["pipe", "pipe", "pipe"],
