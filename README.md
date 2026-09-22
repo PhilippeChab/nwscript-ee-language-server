@@ -24,12 +24,6 @@ NWScript: EE Language Server provides language features for NWScript through a V
 
 [clang-format](https://clang.llvm.org/docs/ClangFormat.html).
 
-### Diagnostics
-
-Neverwinter Nights home and installation folders.
-
-### Formatting
-
 ```
 {
   "editor.formatOnSave": true,
@@ -66,6 +60,8 @@ Notes:
 - The style object must respect clang-format [rules](https://clang.llvm.org/docs/ClangFormatStyleOptions.html).
 
 ### Diagnostics
+
+Neverwinter Nights home and installation folders.
 
 ```
 {
