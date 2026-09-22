@@ -43,7 +43,7 @@ yarn --cwd server generate-lib-defs --archive /absolute/path/to/recorded-release
 yarn --cwd server generate-lib-defs --archive /absolute/path/to/recorded-release.zip --check
 ```
 
-This extracts the currently bundled resource names directly from KEY/BIF data and parses all sources before writing. It retains constant modifiers, function implementations, entry-point declarations, include positions, local declarations, and member accesses needed for import conflict checks. Function parameters and default values use the same declaration reader as variables and struct fields. It does not require extracted source directories. The original command without flags still supports separately extracted `server/scripts/base_scripts` and `server/scripts/ovr` directories.
+This extracts the currently bundled resource names directly from KEY/BIF data and parses all sources before writing. It retains constant modifiers, function implementations, entry-point declarations, include names and positions together in `includes` entries, local declarations, and member accesses needed for import conflict checks. Function parameters and default values use the same declaration reader as variables and struct fields. It does not require extracted source directories. The original command without flags still supports separately extracted `server/scripts/base_scripts` and `server/scripts/ovr` directories.
 
 ## Workspace and custom versions
 

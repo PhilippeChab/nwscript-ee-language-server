@@ -20,7 +20,7 @@ import {
   WorkspaceProvider,
 } from "../Providers";
 import { DocumentsCollection, LiveDocumentsManager } from "../Documents";
-import { Tokenizer } from "../Tokenizer";
+import { ParserService } from "../Parser";
 import StandardLibrary, { isStandardLibrary } from "../Documents/StandardLibrary";
 import { WorkspaceFilesSystem } from "../WorkspaceFilesSystem";
 import { Logger } from "../Logger";
@@ -37,7 +37,7 @@ export default class ServerManger {
   public liveDocumentsManager: LiveDocumentsManager;
   public documentsCollection: DocumentsCollection;
   public documentsWaitingForPublish: string[] = [];
-  public tokenizer: Tokenizer;
+  public parserService: ParserService;
   public standardLibrary: StandardLibrary;
 
   private stopping = false;
@@ -58,14 +58,14 @@ export default class ServerManger {
     this.workspaceFilesSystem = new WorkspaceFilesSystem(params.rootUri ? fileURLToPath(params.rootUri) : params.rootPath ?? null, params.workspaceFolders ?? null);
     this.liveDocumentsManager = new LiveDocumentsManager();
     this.documentsCollection = new DocumentsCollection();
-    this.tokenizer = new Tokenizer();
-    this.standardLibrary = new StandardLibrary(this.workspaceFilesSystem, this.tokenizer, (message) => this.logger.error(message));
+    this.parserService = new ParserService();
+    this.standardLibrary = new StandardLibrary(this.workspaceFilesSystem, this.parserService, (message) => this.logger.error(message));
 
     this.liveDocumentsManager.listen(this.connection);
   }
 
   public async initialize() {
-    await this.tokenizer.loadGrammar();
+    await this.parserService.loadGrammar();
     this.registerProviders();
     this.registerLiveDocumentsEvents();
 
@@ -133,11 +133,11 @@ export default class ServerManger {
         Array.from({ length: count }, async (_, index) => {
           await this.indexFiles(paths.slice(index * size, (index + 1) * size), (message) => {
             if (message.error) this.logger.error(`Cannot index ${message.filePath}: ${message.error}`);
-            if (message.documentTokens) {
+            if (message.documentIndex) {
               const uri = pathToFileURL(message.filePath).href;
               // An opened document may have newer, unsaved contents.
               if (this.workspaceFilesSystem.getRootForUri(uri) && !this.liveDocumentsManager.get(uri) && existsSync(message.filePath)) {
-                this.documentsCollection.createDocument(uri, message.documentTokens);
+                this.documentsCollection.createDocument(uri, message.documentIndex);
               }
               indexed++;
               progress?.report(Math.round((100 * indexed) / paths.length));
@@ -248,11 +248,11 @@ export default class ServerManger {
       this.standardLibrary.get(document.uri);
     }
     try {
-      this.documentsCollection.updateDocument(document, this.tokenizer, this.workspaceFilesSystem);
+      this.documentsCollection.updateDocument(document, this.parserService, this.workspaceFilesSystem);
     } catch (error) {
       // Register unfinished new documents; retain existing usable scopes.
       if (!this.documentsCollection.getFromUri(document.uri)) {
-        this.documentsCollection.createDocument(document.uri, { children: [], globalDeclarations: [], structDeclarations: [] });
+        this.documentsCollection.createDocument(document.uri, { includes: [], globalDeclarations: [], structDeclarations: [] });
       }
       this.logger.error(`Cannot index ${document.uri}: ${error instanceof Error ? error.message : String(error)}`);
     }

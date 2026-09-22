@@ -93,6 +93,15 @@ describe("Native compiler diagnostics", function () {
     return { path, uri };
   }
 
+  it("allows assignment to script globals but rejects assignment to constants", async () => {
+    const mutable = script("mutable.nss", "int VALUE = 1; void main() { VALUE = 2; VALUE++; }");
+    await publish(mutable.uri);
+    expect(requireDiagnostics(mutable.uri)).to.deep.equal([]);
+    const constant = script("constant.nss", "const int VALUE = 1; void main() { VALUE = 2; }");
+    await publish(constant.uri);
+    expect(requireDiagnostics(constant.uri).some((diagnostic) => diagnostic.message.includes("BAD LVALUE"))).to.equal(true);
+  });
+
   it("permits repeated and nested factory calls in global struct initializers", async () => {
     script(
       "factory.nss",

@@ -23,8 +23,8 @@ shim automatically. Ensure npm's global executable directory is on your PATH.
 
 Alternatively, extract the archive and launch
 `node /absolute/path/to/package/bin/nwscript-ee-language-server.cjs --stdio`.
-The package includes its JavaScript dependencies, indexing worker, TextMate
-grammar, Oniguruma WASM, symbol definitions, and native compiler resources.
+The package includes its JavaScript dependencies, indexing worker, Tree-sitter
+runtime and grammar WASM, symbol definitions, and native compiler resources.
 Resources resolve relative to the package, independently of the launch directory.
 
 ## Generic LSP configuration

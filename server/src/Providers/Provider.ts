@@ -1,14 +1,15 @@
-import { CompletionItemKind, Position } from "vscode-languageserver";
-import type { ComplexToken, StructComplexToken } from "../Tokenizer/types";
-import { LanguageTypes } from "../Tokenizer/constants";
+import { DeclarationKind, ReferenceKind } from "../Parser/types";
+import { Position } from "vscode-languageserver";
+import type { Declaration, StructDeclaration } from "../Parser/types";
+import { LanguageTypes } from "../Parser/constants";
 import type { ServerManager } from "../ServerManager";
 
 // Vector fields are built into NWScript and have no source document.
-const vectorType: StructComplexToken = {
+const vectorType: StructDeclaration = {
   identifier: LanguageTypes.vector,
-  tokenType: CompletionItemKind.Struct,
+  kind: DeclarationKind.Struct,
   position: Position.create(0, 0),
-  properties: ["x", "y", "z"].map((identifier) => ({ identifier, valueType: LanguageTypes.float, tokenType: CompletionItemKind.Property, position: Position.create(0, 0) })),
+  properties: ["x", "y", "z"].map((identifier) => ({ identifier, valueType: LanguageTypes.float, kind: DeclarationKind.Field, position: Position.create(0, 0) })),
 };
 
 export default class Provider {
@@ -21,54 +22,53 @@ export default class Provider {
   protected getDocumentContext(uri: string, position?: Position) {
     const liveDocument = this.server.liveDocumentsManager.get(uri);
     if (!liveDocument) return;
-    const [lines, rawTokenizedContent] = this.server.tokenizer.tokenizeContentToRaw(liveDocument.getText());
+    const document = this.server.documentsCollection.getParsedDocument(liveDocument, this.server.parserService);
+    const { syntax } = document;
     return {
       liveDocument,
-      lines,
-      rawTokenizedContent,
-      document: this.server.documentsCollection.initializeDocument(uri, false, this.server.tokenizer.tokenizeDocumentFromRaw(lines, rawTokenizedContent)),
-      localScope: this.server.tokenizer.tokenizeContentFromRaw(lines, rawTokenizedContent, 0, position?.line, position?.character),
+      document,
+      localScope: syntax.getLocalScope(position),
     };
   }
 
-  protected resolveValue(context: NonNullable<ReturnType<Provider["getDocumentContext"]>>, name: string | undefined): { token: ComplexToken; owner?: string } | undefined {
+  protected resolveValue(context: NonNullable<ReturnType<Provider["getDocumentContext"]>>, name: string | undefined): { declaration: Declaration; owner?: string } | undefined {
     const { document, localScope, liveDocument } = context;
-    const local = localScope.functionVariablesComplexTokens.find((token) => token.identifier === name);
-    if (local) return { token: local, owner: liveDocument.uri };
+    const local = localScope.variableDeclarations.find((declaration) => declaration.identifier === name);
+    if (local) return { declaration: local, owner: liveDocument.uri };
     const library = this.server.standardLibrary.get(liveDocument.uri);
-    for (const { owner, tokens } of [...document.getGlobalComplexTokensWithRef(), { owner: library.owner, tokens: library.globalDeclarations }]) {
-      const token = tokens.find((candidate) => candidate.identifier === name);
-      if (token) return { token, owner };
+    for (const { owner, declarations } of [...document.getGlobalDeclarationsWithOwner(), { owner: library.owner, declarations: library.globalDeclarations }]) {
+      const declaration = declarations.find((candidate) => candidate.identifier === name);
+      if (declaration) return { declaration, owner };
     }
-    const fn = localScope.functionsComplexTokens.find((token) => token.identifier === name);
-    if (fn) return { token: fn, owner: liveDocument.uri };
+    const fn = localScope.functionDeclarations.find((declaration) => declaration.identifier === name);
+    if (fn) return { declaration: fn, owner: liveDocument.uri };
   }
 
   protected resolveMemberStruct(context: NonNullable<ReturnType<Provider["getDocumentContext"]>>, path: string[]) {
-    const root = this.resolveValue(context, path[0])?.token;
+    const root = this.resolveValue(context, path[0])?.declaration;
     if (!root || !("valueType" in root)) return;
     let type = root.valueType;
     for (let index = 1; index <= path.length; index++) {
       const resolved = this.resolveStructType(context, type);
       if (!resolved) return;
       if (index === path.length) return resolved;
-      const property = resolved.token.properties.find((token) => token.identifier === path[index]);
+      const property = resolved.declaration.properties.find((declaration) => declaration.identifier === path[index]);
       if (!property) return;
       type = property.valueType;
     }
   }
 
-  protected resolveSymbol(uri: string, position: Position): { token: ComplexToken; owner?: string } | undefined {
+  protected resolveSymbol(uri: string, position: Position): { declaration: Declaration; owner?: string } | undefined {
     const context = this.getDocumentContext(uri, position);
     if (!context) return;
-    const { lines, rawTokenizedContent } = context;
-    const memberPath = this.server.tokenizer.getMemberAccessFromRaw(lines, rawTokenizedContent, position);
+    const { syntax } = context.document;
+    const memberPath = syntax.getMemberPath(position);
     if (memberPath) {
       const struct = this.resolveMemberStruct(context, memberPath.slice(0, -1));
-      const token = struct?.token.properties.find((property) => property.identifier === memberPath[memberPath.length - 1]);
-      return token ? { token, owner: struct?.owner } : undefined;
+      const declaration = struct?.declaration.properties.find((property) => property.identifier === memberPath[memberPath.length - 1]);
+      return declaration ? { declaration, owner: struct?.owner } : undefined;
     }
-    const { tokenType, rawContent } = this.server.tokenizer.getActionTargetAtPosition(lines, rawTokenizedContent, position);
+    const { kind, rawContent } = syntax.getActionTarget(position);
     const fieldDeclaration = context.document.structDeclarations
       .flatMap((struct) => struct.properties)
       .find(
@@ -78,18 +78,18 @@ export default class Provider {
           position.character >= field.position.character &&
           position.character <= field.position.character + field.identifier.length,
       );
-    if (fieldDeclaration) return { token: fieldDeclaration, owner: context.liveDocument.uri };
+    if (fieldDeclaration) return { declaration: fieldDeclaration, owner: context.liveDocument.uri };
     // An unrecognized receiver must not turn a member into an ordinary name.
-    if (tokenType === CompletionItemKind.Property) return;
-    if (tokenType === CompletionItemKind.Struct && rawContent) return this.resolveStructType(context, rawContent);
+    if (kind === ReferenceKind.Member) return;
+    if (kind === ReferenceKind.Type && rawContent) return this.resolveStructType(context, rawContent);
     return this.resolveValue(context, rawContent);
   }
 
-  protected getStandardLibComplexTokens(uri: string) {
+  protected getStandardLibDeclarations(uri: string) {
     return this.server.standardLibrary.get(uri).globalDeclarations;
   }
 
-  protected getStandardLibStructTokens(uri: string) {
+  protected getStandardLibStructDeclarations(uri: string) {
     return this.server.standardLibrary.get(uri).structDeclarations;
   }
 
@@ -117,12 +117,12 @@ export default class Provider {
     return result || defaultResult;
   }
 
-  private resolveStructType(context: NonNullable<ReturnType<Provider["getDocumentContext"]>>, name: string): { token: StructComplexToken; owner?: string } | undefined {
-    if (name === LanguageTypes.vector) return { token: vectorType };
+  private resolveStructType(context: NonNullable<ReturnType<Provider["getDocumentContext"]>>, name: string): { declaration: StructDeclaration; owner?: string } | undefined {
+    if (name === LanguageTypes.vector) return { declaration: vectorType };
     const library = this.server.standardLibrary.get(context.liveDocument.uri);
-    for (const { owner, tokens } of [...context.document.getGlobalStructComplexTokensWithRef(), { owner: library.owner, tokens: library.structDeclarations }]) {
-      const token = tokens.find((candidate) => candidate.identifier === name);
-      if (token) return { token, owner };
+    for (const { owner, declarations } of [...context.document.getStructDeclarationsWithOwner(), { owner: library.owner, declarations: library.structDeclarations }]) {
+      const declaration = declarations.find((candidate) => candidate.identifier === name);
+      if (declaration) return { declaration, owner };
     }
   }
 

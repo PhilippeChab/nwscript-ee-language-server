@@ -17,13 +17,13 @@ describe("neverwinter.nim compiler corpus", function () {
     .sort();
   let workspace: string;
   let api: any;
-  let tokenizer: any;
+  let parserService: any;
 
   before(async () => {
     const bundle = join(__dirname, "../out/upstream-corpus-test.js");
     buildSync({
       stdin: {
-        contents: `export { Tokenizer } from './Tokenizer';
+        contents: `export { ParserService } from './Parser';
           export { default as Collection } from './Documents/DocumentsCollection';
           export { default as Hover } from './Providers/HoverContentProvider';
           export { default as Definition } from './Providers/GotoDefinitionProvider';
@@ -36,7 +36,7 @@ describe("neverwinter.nim compiler corpus", function () {
       platform: "node",
     });
     api = require(bundle);
-    tokenizer = await new api.Tokenizer().loadGrammar();
+    parserService = await new api.ParserService().loadGrammar();
     workspace = mkdtempSync(join(tmpdir(), "nwscript upstream "));
     mkdirSync(join(workspace, "ovr"));
     mkdirSync(join(workspace, "lang/en"), { recursive: true });
@@ -64,7 +64,7 @@ describe("neverwinter.nim compiler corpus", function () {
 
   for (const file of files) {
     it(`indexes without throwing: ${file}`, () => {
-      expect(() => tokenizer.tokenizeContent(readFileSync(join(fixtures, "corpus", file), "utf8"), "document")).not.to.throw();
+      expect(() => parserService.analyzeContent(readFileSync(join(fixtures, "corpus", file), "utf8"), "document")).not.to.throw();
     });
     it(`preserves upstream compiler acceptance/rejection: ${file}`, () => {
       const source = readFileSync(join(fixtures, "corpus", file), "utf8");
@@ -100,14 +100,14 @@ describe("neverwinter.nim compiler corpus", function () {
       const source = readFileSync(join(fixtures, "corpus", file), "utf8");
       const live = TextDocument.create(workspaceUri(file), "nwscript", 1, source);
       const collection = new api.Collection();
-      collection.createDocument(live.uri, tokenizer.tokenizeContent(source, "document"));
+      collection.createDocument(live.uri, parserService.analyzeContent(source, "document"));
       const handlers: any = {};
       const server = {
         documentsCollection: collection,
-        tokenizer,
+        parserService,
         config: api.config,
         liveDocumentsManager: { get: () => live },
-        standardLibrary: { get: () => tokenizer.tokenizeContent(readFileSync(join(fixtures, "nwtestvmscript.nss"), "utf8"), "document") },
+        standardLibrary: { get: () => parserService.analyzeContent(readFileSync(join(fixtures, "nwtestvmscript.nss"), "utf8"), "document") },
         capabilitiesHandler: { getSupportsMarkdownHover: () => true },
         logger: {
           error: (message: string) => {

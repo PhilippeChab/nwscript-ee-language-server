@@ -3,10 +3,8 @@ import { TextDocument } from "vscode-languageserver-textdocument";
 
 import type { ServerManager } from "../ServerManager";
 import { CompletionItemBuilder } from "./Builders";
-import { AutoImportContext, LocalScopeTokenizationResult } from "../Tokenizer/Tokenizer";
-import { isStandardLibrary } from "../Documents/StandardLibrary";
-import { Document } from "../Documents";
-import { LanguageTypes } from "../Tokenizer/constants";
+import { AutoImportContext, LocalScope } from "../Parser/ParserService";
+import { IndexedDocument } from "../Documents";
 import Provider from "./Provider";
 
 const MAX_AUTO_IMPORT_ITEMS = 200;
@@ -28,20 +26,22 @@ export default class CompletionItemsProvider extends Provider {
 
       const context = this.getDocumentContext(uri, position);
       if (!context) return;
-      const { liveDocument, document, lines, rawTokenizedContent, localScope } = context;
-      if (this.server.tokenizer.isInCommentOrStringFromRaw(rawTokenizedContent, position)) return [];
-      const autoImportContext = this.server.config.completion.autoImport ? this.server.tokenizer.getAutoImportContextFromRaw(lines, rawTokenizedContent, position) : undefined;
+      const { liveDocument, document, localScope } = context;
+      const { syntax } = document;
+      if (syntax.isInCommentOrString(position)) return [];
+      const completionContext = syntax.getAutoImportContext(position);
+      const autoImportContext = this.server.config.completion.autoImport ? completionContext : undefined;
 
-      const memberPath = this.server.tokenizer.getMemberAccessFromRaw(lines, rawTokenizedContent, position);
+      const memberPath = syntax.getMemberPath(position);
       if (memberPath) {
-        return this.resolveMemberStruct(context, memberPath.slice(0, -1))?.token.properties.map((property) => CompletionItemBuilder.buildItem(property)) || [];
+        return this.resolveMemberStruct(context, memberPath.slice(0, -1))?.declaration.properties.map((property) => CompletionItemBuilder.buildItem(property)) || [];
       }
 
-      if (autoImportContext?.structsOnly || this.server.tokenizer.getActionTargetAtPosition(lines, rawTokenizedContent, position, -2).rawContent === LanguageTypes.struct) {
+      if (completionContext?.structsOnly) {
         const items = document
-          .getGlobalStructComplexTokens()
-          .concat(this.getStandardLibStructTokens(uri))
-          .map((token) => CompletionItemBuilder.buildItem(token));
+          .getStructDeclarations()
+          .concat(this.getStandardLibStructDeclarations(uri))
+          .map((declaration) => CompletionItemBuilder.buildItem(declaration));
         const completions = items.concat(this.getAutoImportCompletionItems(document, liveDocument, autoImportContext, items));
         return autoImportContext ? CompletionList.create(completions, true) : completions;
       }
@@ -59,29 +59,29 @@ export default class CompletionItemsProvider extends Provider {
     };
   }
 
-  private getGlobalScopeCompletionItems(document: Document, localScope: LocalScopeTokenizationResult) {
+  private getGlobalScopeCompletionItems(document: IndexedDocument, localScope: LocalScope) {
     return document
-      .getGlobalComplexTokens(
+      .getGlobalDeclarations(
         [],
-        localScope.functionsComplexTokens.map((token) => token.identifier),
+        localScope.functionDeclarations.map((declaration) => declaration.identifier),
       )
-      .map((token) => CompletionItemBuilder.buildItem(token, isStandardLibrary(document.uri)));
+      .map((declaration) => CompletionItemBuilder.buildItem(declaration));
   }
 
-  private getLocalScopeCompletionItems(localScope: LocalScopeTokenizationResult, document: Document) {
-    const functionVariablesCompletionItems = localScope.functionVariablesComplexTokens.map((token) => CompletionItemBuilder.buildItem(token));
-    const functionsCompletionItems = localScope.functionsComplexTokens.map((token) =>
-      CompletionItemBuilder.buildItem(document.globalDeclarations.find((declaration) => declaration.identifier === token.identifier) || token),
+  private getLocalScopeCompletionItems(localScope: LocalScope, document: IndexedDocument) {
+    const functionVariablesCompletionItems = localScope.variableDeclarations.map((declaration) => CompletionItemBuilder.buildItem(declaration));
+    const functionsCompletionItems = localScope.functionDeclarations.map((declaration) =>
+      CompletionItemBuilder.buildItem(document.globalDeclarations.find((candidate) => candidate.identifier === declaration.identifier) || declaration),
     );
 
     return functionVariablesCompletionItems.concat(functionsCompletionItems);
   }
 
   private getStandardLibCompletionItems(uri: string) {
-    return this.getStandardLibComplexTokens(uri).map((token) => CompletionItemBuilder.buildItem(token, true));
+    return this.getStandardLibDeclarations(uri).map((declaration) => CompletionItemBuilder.buildItem(declaration));
   }
 
-  private getAutoImportCompletionItems(document: Document, liveDocument: TextDocument, context: AutoImportContext | undefined, visible: CompletionItem[]) {
+  private getAutoImportCompletionItems(document: IndexedDocument, liveDocument: TextDocument, context: AutoImportContext | undefined, visible: CompletionItem[]) {
     if (!context) return [];
     const visibleNames = new Set(visible.map((item) => item.label));
     const prefix = context.prefix.toLowerCase();
@@ -89,19 +89,19 @@ export default class CompletionItemsProvider extends Provider {
     const candidates = this.server.documentsCollection.getImportableDocuments(
       document,
       (candidate) => {
-        const tokens = context.structsOnly ? candidate.structDeclarations : candidate.globalDeclarations;
+        const declarations = context.structsOnly ? candidate.structDeclarations : candidate.globalDeclarations;
         const seen = new Set<string>();
-        return tokens.filter((token) => {
+        return declarations.filter((declaration) => {
           if (
-            !token.identifier.toLowerCase().startsWith(prefix) ||
-            visibleNames.has(token.identifier) ||
-            seen.has(token.identifier) ||
-            token.identifier === "main" ||
-            token.identifier === "StartingConditional"
+            !declaration.identifier.toLowerCase().startsWith(prefix) ||
+            visibleNames.has(declaration.identifier) ||
+            seen.has(declaration.identifier) ||
+            declaration.identifier === "main" ||
+            declaration.identifier === "StartingConditional"
           ) {
             return false;
           }
-          seen.add(token.identifier);
+          seen.add(declaration.identifier);
           return true;
         });
       },
@@ -110,9 +110,9 @@ export default class CompletionItemsProvider extends Provider {
       context.replacementRange.start,
     );
     const items: CompletionItem[] = [];
-    for (const { document: candidate, tokens } of candidates) {
-      for (const token of tokens) {
-        items.push(CompletionItemBuilder.buildAutoImportItem(token, candidate.getIncludeName(), liveDocument, context, this.server.config));
+    for (const { document: candidate, declarations } of candidates) {
+      for (const declaration of declarations) {
+        items.push(CompletionItemBuilder.buildAutoImportItem(declaration, candidate.getIncludeName(), liveDocument, context, this.server.config));
         if (items.length === MAX_AUTO_IMPORT_ITEMS) return items;
       }
     }

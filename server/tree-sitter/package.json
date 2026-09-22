@@ -1,0 +1,20 @@
+{
+  "name": "nwscript-tree-sitter",
+  "private": true,
+  "version": "0.0.0",
+  "license": "GPL-3.0-only",
+  "scripts": {
+    "test": "node --import tsx --test test.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "node ../../node_modules/eslint/bin/eslint.js --config .eslintrc.cjs . --ext .ts --max-warnings 0",
+    "inspect": "tsx inspect.ts",
+    "grammar:record": "tsx record-grammar.ts"
+  },
+  "devDependencies": {
+    "@types/emscripten": "1.41.5",
+    "@types/node": "18.19.0",
+    "tsx": "4.20.5",
+    "typescript": "4.7.4"
+  },
+  "packageManager": "yarn@1.22.22"
+}

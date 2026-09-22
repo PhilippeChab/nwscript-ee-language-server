@@ -1,12 +1,12 @@
 import { MarkupContent, MarkupKind } from "vscode-languageserver";
 
-import type { ComplexToken, ConstantComplexToken, FunctionComplexToken, FunctionParamComplexToken, StructComplexToken, StructPropertyComplexToken, VariableComplexToken } from "../../Tokenizer/types";
+import type { Declaration, ConstantDeclaration, FunctionDeclaration, ParameterDeclaration, StructDeclaration, FieldDeclaration, VariableDeclaration } from "../../Parser/types";
 import { ServerConfiguration } from "../../ServerManager/Config";
 import Builder from "./Builder";
 
 export default class HoverContentBuilder extends Builder {
-  public static buildItem(token: ComplexToken, serverConfig: ServerConfiguration, markdown = true): MarkupContent {
-    const content = this.buildRichItem(token, serverConfig);
+  public static buildItem(declaration: Declaration, serverConfig: ServerConfiguration, markdown = true): MarkupContent {
+    const content = this.buildRichItem(declaration, serverConfig);
     return markdown
       ? content
       : {
@@ -18,50 +18,54 @@ export default class HoverContentBuilder extends Builder {
         };
   }
 
-  private static buildRichItem(token: ComplexToken, serverConfig: ServerConfiguration): MarkupContent {
-    if (this.isConstantToken(token)) {
-      return this.buildConstantItem(token);
-    } else if (this.isVariableToken(token)) {
-      return this.buildVariableItem(token);
-    } else if (this.isFunctionParameterToken(token)) {
-      return this.buildFunctionParamItem(token);
-    } else if (this.isFunctionToken(token)) {
-      return this.buildFunctionItem(token, serverConfig);
-    } else if (this.isStructPropertyToken(token)) {
-      return this.buildStructPropertyItem(token);
-    } else if (this.isStructToken(token)) {
-      return this.buildStructItem(token);
+  private static buildRichItem(declaration: Declaration, serverConfig: ServerConfiguration): MarkupContent {
+    if (this.isConstantDeclaration(declaration)) {
+      return this.buildConstantItem(declaration);
+    } else if (this.isVariableDeclaration(declaration)) {
+      return this.buildVariableItem(declaration);
+    } else if (this.isParameterDeclaration(declaration)) {
+      return this.buildFunctionParamItem(declaration);
+    } else if (this.isFunctionDeclaration(declaration)) {
+      return this.buildFunctionItem(declaration, serverConfig);
+    } else if (this.isFieldDeclaration(declaration)) {
+      return this.buildStructPropertyItem(declaration);
+    } else if (this.isStructDeclaration(declaration)) {
+      return this.buildStructItem(declaration);
     } else {
       return this.buildMarkdown("");
     }
   }
 
-  private static buildConstantItem(token: ConstantComplexToken) {
-    return this.buildMarkdown(`${token.isConst ? "const " : ""}${this.handleLanguageType(token.valueType)} ${token.identifier}${token.value !== "" ? ` = ${token.value}` : ""}`);
-  }
-
-  private static buildVariableItem(token: VariableComplexToken) {
-    return this.buildMarkdown(`${this.handleLanguageType(token.valueType)} ${token.identifier}`);
-  }
-
-  private static buildFunctionParamItem(token: FunctionParamComplexToken) {
-    return this.buildMarkdown(`${this.handleLanguageType(token.valueType)} ${token.identifier}`);
-  }
-
-  private static buildFunctionItem(token: FunctionComplexToken, serverConfig: ServerConfiguration) {
+  private static buildConstantItem(declaration: ConstantDeclaration) {
     return this.buildMarkdown(
-      [`${this.handleLanguageType(token.returnType)} ${token.identifier}(${token.params.map((param) => this.formatParameter(param)).join(", ")})`],
-      serverConfig.hovering.addCommentsToFunctions ? ["```nwscript", ...token.comments, "```"] : [],
+      `${declaration.isConst ? "const " : ""}${this.handleLanguageType(declaration.valueType)} ${declaration.identifier}${declaration.value !== "" ? ` = ${declaration.value}` : ""}`,
+    );
+  }
+
+  private static buildVariableItem(declaration: VariableDeclaration) {
+    return this.buildMarkdown(
+      `${this.handleLanguageType(declaration.valueType)} ${declaration.identifier}${declaration.value !== undefined && declaration.value !== "" ? ` = ${declaration.value}` : ""}`,
+    );
+  }
+
+  private static buildFunctionParamItem(declaration: ParameterDeclaration) {
+    return this.buildMarkdown(`${this.handleLanguageType(declaration.valueType)} ${declaration.identifier}`);
+  }
+
+  private static buildFunctionItem(declaration: FunctionDeclaration, serverConfig: ServerConfiguration) {
+    return this.buildMarkdown(
+      [`${this.handleLanguageType(declaration.returnType)} ${declaration.identifier}(${declaration.params.map((param) => this.formatParameter(param)).join(", ")})`],
+      serverConfig.hovering.addCommentsToFunctions ? ["```nwscript", ...declaration.comments, "```"] : [],
       [],
     );
   }
 
-  private static buildStructPropertyItem(property: StructPropertyComplexToken) {
+  private static buildStructPropertyItem(property: FieldDeclaration) {
     return this.buildMarkdown(`${this.handleLanguageType(property.valueType)} ${property.identifier}`);
   }
 
-  private static buildStructItem(token: StructComplexToken) {
-    return this.buildMarkdown([`struct ${token.identifier}`, "{", ...token.properties.map((property) => `\t${property.valueType} ${property.identifier}`), "}"]);
+  private static buildStructItem(declaration: StructDeclaration) {
+    return this.buildMarkdown([`struct ${declaration.identifier}`, "{", ...declaration.properties.map((property) => `\t${property.valueType} ${property.identifier}`), "}"]);
   }
 
   private static buildMarkdown(content: string[] | string, prepend: string[] = [], postpend: string[] = []) {

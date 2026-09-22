@@ -1,5 +1,5 @@
 {
-    "functionsComplexTokens": [
+    "functionDeclarations": [
         {
             "position": {
                 "line": 270,
@@ -412,7 +412,7 @@
             ]
         }
     ],
-    "functionVariablesComplexTokens": [
+    "variableDeclarations": [
         {
             "position": {
                 "line": 278,

@@ -1,0 +1,3 @@
+# These files are hashed in build.json; checkouts must preserve the build bytes.
+grammar.js text eol=lf
+tree-sitter.json text eol=lf

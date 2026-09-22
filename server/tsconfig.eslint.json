@@ -3,8 +3,8 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "ES2020",
-    "lib": ["ES2020"],
-    "types": ["@types/node"],
+    "lib": ["ES2022", "DOM"],
+    "types": ["@types/node", "emscripten"],
     "noEmit": true,
     "allowJs": true,
     "checkJs": true,
