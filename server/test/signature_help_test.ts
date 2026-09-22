@@ -1,21 +1,20 @@
 import { describe, it } from "mocha";
 import { expect } from "chai";
-import { DeclarationKind } from "../src/Parser/types";
+import { DeclarationKind, BuiltinType } from "../src/Language";
+import type { FunctionDeclaration } from "../src/Language";
 import SignatureHelpBuilder from "../src/Providers/Builders/SignatureHelpBuilder";
-import { LanguageTypes } from "../src/Parser/constants";
-import type { FunctionDeclaration } from "../src/Parser/types";
 
 describe("Signature help", () => {
   const declaration: FunctionDeclaration = {
     identifier: "Example",
     kind: DeclarationKind.Function,
-    returnType: LanguageTypes.void,
+    returnType: BuiltinType.void,
     position: { line: 0, character: 0 },
     comments: [],
     params: ["first", "second"].map((identifier) => ({
       identifier,
       kind: DeclarationKind.Parameter,
-      valueType: LanguageTypes.int,
+      valueType: BuiltinType.int,
       position: { line: 0, character: 0 },
     })),
   };

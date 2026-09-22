@@ -1,9 +1,8 @@
 import { CompletionItem, CompletionItemKind, TextEdit } from "vscode-languageserver";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
-import type { Declaration, ConstantDeclaration, FunctionDeclaration, ParameterDeclaration, StructDeclaration, FieldDeclaration, VariableDeclaration } from "../../Parser/types";
+import type { Declaration, ConstantDeclaration, FunctionDeclaration, ParameterDeclaration, StructDeclaration, FieldDeclaration, VariableDeclaration, AutoImportContext } from "../../Language";
 import { ServerConfiguration } from "../../ServerManager/Config";
-import type { AutoImportContext } from "../../Parser/ParserService";
 import Builder from "./Builder";
 
 export default class CompletionItemBuilder extends Builder {

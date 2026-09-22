@@ -1,18 +1,15 @@
-import { DeclarationKind, ReferenceKind } from "../Parser/types";
-import type Logger from "../Logger/Logger";
-import { join, normalize } from "path";
+import { DeclarationKind, ReferenceKind } from "../Language";
+import type { Declaration, IndexedName, SyntaxIndex, ImportCandidate, AutoImportContext, StandardLibraryDefinitions } from "../Language";
+import { join } from "path";
 import { readFileSync, readdirSync } from "fs";
 import { fileURLToPath, pathToFileURL } from "url";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
 import { Position } from "vscode-languageserver";
-import type { Declaration, IndexedName } from "../Parser/types";
-import type { ParserService } from "../Parser";
-import { DocumentIndex, AnalysisMode } from "../Parser/ParserService";
-import { Dictionnary, normalizeDocumentUri } from "../Utils";
+import type Parser from "../Language/Parser";
+import { normalizeDocumentUri } from "../Utils";
 import IndexedDocument from "./IndexedDocument";
-import readDocumentIndex from "./readDocumentIndex";
-import type SyntaxDocument from "../Parser/SyntaxDocument";
+import type Syntax from "../Language/Syntax";
 import WorkspaceFilesSystem, { FILES_EXTENSION, resourceName } from "../WorkspaceFilesSystem/WorkspaceFilesSystem";
 import { isStandardLibrary } from "./StandardLibrary";
 
@@ -20,55 +17,69 @@ const MAX_RESREF_BYTES = 16;
 const STATIC_RESOURCES_FOLDERS = ["base_scripts", "ovr"];
 export const STATIC_PREFIX = "static";
 
-export default class DocumentsCollection extends Dictionnary<string, IndexedDocument> {
+export default class DocumentsCollection {
+  private readonly documentsByInclude = new Map<string, IndexedDocument>();
   // Requests identify an exact document; basename lookup is only for includes.
   private readonly documentsByUri = new Map<string, IndexedDocument>();
-  // Live syntax is separate from the last usable include-index snapshot. A
-  // document's mutable parse must not change that fallback after a failed save.
-  private readonly parsedDocuments = new WeakMap<TextDocument, IndexedDocument<SyntaxDocument>>();
+  // Live file objects own their analysis independently of saved include indexes.
+  private readonly indexedDocuments = new WeakMap<TextDocument, IndexedDocument>();
   private importChildren = new WeakMap<IndexedDocument, Set<string>>();
 
   constructor() {
-    super();
-
     STATIC_RESOURCES_FOLDERS.forEach((staticResourcesFolder) => {
-      const directoryPath = normalize(join(__dirname, "..", "resources", staticResourcesFolder));
+      const directoryPath = join(__dirname, "..", "resources", staticResourcesFolder);
       const files = readdirSync(directoryPath);
       files.forEach((filename) => {
-        const documentIndex = readDocumentIndex(readFileSync(join(__dirname, "..", "resources", staticResourcesFolder, filename), "utf8"));
-        this.addDocument(this.createIndexedDocument(`${STATIC_PREFIX}/${filename.replace(".json", FILES_EXTENSION)}`, true, documentIndex));
+        const syntaxIndex = JSON.parse(readFileSync(join(directoryPath, filename), "utf8")) as SyntaxIndex;
+        this.storeDocument(this.createDocument(`${STATIC_PREFIX}/${filename.replace(".json", FILES_EXTENSION)}`, true, syntaxIndex));
       });
     });
   }
 
-  public createIndexedDocument<Source extends DocumentIndex | SyntaxDocument>(uri: string, base: boolean, source: Source) {
-    return new IndexedDocument(base ? uri : normalizeDocumentUri(uri), base, source, this);
-  }
-
-  public getParsedDocument(document: TextDocument, parserService: ParserService): IndexedDocument<SyntaxDocument> {
-    const syntax = parserService.parse(document);
-    let indexed = this.parsedDocuments.get(document);
-    if (!indexed || indexed.syntax !== syntax) {
-      indexed = this.createIndexedDocument(document.uri, false, syntax);
-      this.parsedDocuments.set(document, indexed);
+  public getDocument(document: TextDocument, parser: Parser, library: StandardLibraryDefinitions, getLiveDocument: (uri: string) => TextDocument | undefined = () => undefined): IndexedDocument {
+    const syntax = parser.parse(document);
+    const cached = this.indexedDocuments.get(document);
+    const indexed = cached?.syntax === syntax ? cached : this.createDocument(document.uri, false, syntax);
+    if (indexed !== cached) {
+      this.indexedDocuments.set(document, indexed);
     }
-    return indexed;
+    return indexed.analyze(library, {
+      getImportCandidates: (context, visible, limit) => this.getAutoImportCandidates(indexed, library, context, visible, limit),
+      getFunctionDeclarations: (uri) => this.readFunctionDeclarations(uri, parser, getLiveDocument),
+    });
   }
 
-  public getKey(uri: string, base: boolean) {
-    return base ? `${STATIC_PREFIX}/${resourceName(uri)}` : resourceName(fileURLToPath(uri));
-  }
-
-  public get(key: string) {
-    return super.get(key.toLowerCase());
-  }
-
-  public resolveInclude(name: string) {
-    return this.get(name) || this.get(`${STATIC_PREFIX}/${name}`);
+  public getWorkspaceDocument(uri: string) {
+    return this.documentsByUri.get(normalizeDocumentUri(uri));
   }
 
   public getWorkspaceDocuments() {
     return [...this.documentsByUri.values()];
+  }
+
+  public getWorkspaceInclude(name: string) {
+    return this.documentsByInclude.get(name.toLowerCase());
+  }
+
+  public resolveInclude(name: string) {
+    return this.getWorkspaceInclude(name) || this.documentsByInclude.get(`${STATIC_PREFIX}/${name.toLowerCase()}`);
+  }
+
+  public addDocument(uri: string, syntaxIndex: SyntaxIndex) {
+    // Background indexes must not replace a newer editor snapshot. The API is
+    // refreshed independently and can replace its previous usable index.
+    this.storeDocument(this.createDocument(uri, false, syntaxIndex), isStandardLibrary(uri));
+  }
+
+  public updateDocument(document: TextDocument, parser: Parser, workspaceFilesSystem: WorkspaceFilesSystem) {
+    // willSave and didSave can describe the same document version. Reuse its
+    // index, but still retry missing includes that may have appeared on disk.
+    const syntaxIndex = parser.parse(document).getIndex(true);
+
+    this.storeDocument(this.createDocument(document.uri, false, syntaxIndex), true);
+    // Already-declared includes may have failed indexing and since been repaired.
+    // indexIncludes skips includes that are already available.
+    this.indexIncludes(syntaxIndex.includes, parser, workspaceFilesSystem);
   }
 
   public removeDocument(uri: string) {
@@ -77,33 +88,112 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
     if (!document) return;
     this.documentsByUri.delete(uri);
     this.importChildren = new WeakMap();
-    const key = document.getKey();
-    if (this.get(key)?.uri !== uri) return;
-    this.delete(key);
-    const replacement = this.getWorkspaceDocuments().find((candidate) => candidate.getKey() === key);
-    if (replacement) this.add(key, replacement);
+    const name = document.getIncludeName();
+    if (this.getWorkspaceInclude(name)?.uri !== uri) return;
+    this.documentsByInclude.delete(name);
+    const replacement = this.getWorkspaceDocuments().find((candidate) => candidate.getIncludeName() === name);
+    if (replacement) this.documentsByInclude.set(name, replacement);
   }
 
-  public getFromUri(uri: string) {
-    return this.documentsByUri.get(normalizeDocumentUri(uri));
+  private createDocument(uri: string, base: boolean, source: SyntaxIndex | Syntax) {
+    return new IndexedDocument(base ? uri : normalizeDocumentUri(uri), base, source, this);
   }
 
-  public getImportableDocuments(
+  private storeDocument(document: IndexedDocument, replaceExisting = false) {
+    this.importChildren = new WeakMap();
+    if (!document.base && (replaceExisting || !this.documentsByUri.has(document.uri))) this.documentsByUri.set(document.uri, document);
+    // Updating a duplicate's own contents must not change include selection.
+    const name = document.getIncludeName();
+    const key = document.base ? `${STATIC_PREFIX}/${name}` : name;
+    const selected = this.documentsByInclude.get(key);
+    if (!selected || (replaceExisting && selected.uri === document.uri)) this.documentsByInclude.set(key, document);
+  }
+
+  private readFunctionDeclarations(uri: string, parser: Parser, getLiveDocument: (uri: string) => TextDocument | undefined) {
+    const live = getLiveDocument(uri);
+    if (live) return parser.parse(live).getFunctionDeclarations();
+    let source: TextDocument;
+    try {
+      source = TextDocument.create(uri, "nwscript", 0, readFileSync(fileURLToPath(uri), "utf8"));
+    } catch {
+      // A dependency can disappear between indexing and navigation.
+      return [];
+    }
+    const syntax = parser.parseContent(source);
+    try {
+      return syntax.getFunctionDeclarations();
+    } finally {
+      syntax.dispose();
+    }
+  }
+
+  private indexIncludes(includes: SyntaxIndex["includes"], parser: Parser, workspaceFilesSystem: WorkspaceFilesSystem) {
+    includes.forEach(({ name: child }) => {
+      if (child.toLowerCase() === "nwscript" || this.getWorkspaceInclude(child)) return;
+      const filePath = workspaceFilesSystem.getFilePath(child);
+      if (!filePath) return;
+
+      const uri = pathToFileURL(filePath).href;
+      if (this.getWorkspaceInclude(resourceName(filePath))) return;
+
+      const source = TextDocument.create(uri, "nwscript", 0, readFileSync(filePath, "utf8"));
+      const syntaxIndex = parser.indexContent(source);
+      this.addDocument(uri, syntaxIndex);
+      this.indexIncludes(syntaxIndex.includes, parser, workspaceFilesSystem);
+    });
+  }
+
+  private getAutoImportCandidates(document: IndexedDocument, library: StandardLibraryDefinitions, context: AutoImportContext, visibleNames: Set<string>, limit: number): ImportCandidate[] {
+    const prefix = context.prefix.toLowerCase();
+    const candidates = this.findImportableDocuments(
+      document,
+      (candidate) => {
+        const declarations: Declaration[] = context.structsOnly ? candidate.index.structDeclarations : candidate.index.globalDeclarations;
+        const seen = new Set<string>();
+        return declarations.filter((declaration) => {
+          if (
+            !declaration.identifier.toLowerCase().startsWith(prefix) ||
+            visibleNames.has(declaration.identifier) ||
+            seen.has(declaration.identifier) ||
+            declaration.identifier === "main" ||
+            declaration.identifier === "StartingConditional"
+          ) {
+            return false;
+          }
+          seen.add(declaration.identifier);
+          return true;
+        });
+      },
+      [...library.globalDeclarations, ...library.structDeclarations],
+      context.insertionPosition,
+      context.replacementRange.start,
+    );
+    const imports: ImportCandidate[] = [];
+    for (const { document: candidate, declarations } of candidates) {
+      for (const declaration of declarations) {
+        imports.push({ declaration, includeName: candidate.getIncludeName() });
+        if (imports.length === limit) return imports;
+      }
+    }
+    return imports;
+  }
+
+  private findImportableDocuments(
     document: IndexedDocument,
     getMatches: (candidate: IndexedDocument) => Declaration[],
-    implicitDeclarations: Declaration[] = [],
-    insertionPosition: Position = { line: 0, character: 0 },
-    referencePosition: Position = insertionPosition,
+    implicitDeclarations: Declaration[],
+    insertionPosition: Position,
+    referencePosition: Position,
   ) {
-    const included = new Set(document.getChildren());
-    const entryPoints = new Set(document.entryPoints);
+    const included = new Set(document.getDependencyNames());
+    const entryPoints = new Set(document.getEntryPointNames());
     for (const child of included) {
       const dependency = this.resolveInclude(child);
-      dependency?.entryPoints.forEach((entryPoint) => entryPoints.add(entryPoint));
+      dependency?.getEntryPointNames().forEach((entryPoint) => entryPoints.add(entryPoint));
     }
-    const conflicts = (source: IndexedDocument | undefined) => source?.entryPoints.some((entryPoint) => entryPoints.has(entryPoint));
+    const conflicts = (source: IndexedDocument | undefined) => source?.getEntryPointNames().some((entryPoint) => entryPoints.has(entryPoint));
     const implicitNames = new Set<IndexedName>(implicitDeclarations);
-    const currentDeclarations = new Set<IndexedName>(document.globalDeclarations);
+    const currentDeclarations = new Set<IndexedName>(document.index.globalDeclarations);
     const visible = new Map<string, IndexedName[]>();
     const visibleNames = new Set<IndexedName>();
     const existingOrder = document.getNameOrder();
@@ -202,18 +292,18 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
     };
     const currentName = document.getIncludeName();
     const candidates: { document: IndexedDocument; declarations: Declaration[] }[] = [];
-    this.forEach((candidate) => {
+    this.documentsByInclude.forEach((candidate) => {
       const name = candidate.getIncludeName();
       if (name === currentName || name.toLowerCase() === "nwscript" || included.has(name)) return;
       if (Buffer.byteLength(name, "utf8") > MAX_RESREF_BYTES || ['"', "\r", "\n", "\\"].some((character) => name.includes(character))) return;
       // Use the same workspace-over-bundled selection as include resolution.
-      if (candidate.base && this.get(name)) return;
+      if (candidate.base && this.getWorkspaceInclude(name)) return;
       // Match symbols before walking dependencies or constructing completion edits.
       const matches = getMatches(candidate);
       if (!matches.length) return;
       let children = this.importChildren.get(candidate);
       if (!children) {
-        children = new Set(candidate.getChildren());
+        children = new Set(candidate.getDependencyNames());
         this.importChildren.set(candidate, children);
       }
       if (children.has(currentName) || conflicts(candidate)) return;
@@ -226,61 +316,5 @@ export default class DocumentsCollection extends Dictionnary<string, IndexedDocu
     });
     // Keep workspace symbols ahead of bundled symbols in bounded completion lists.
     return candidates.sort((left, right) => Number(left.document.base) - Number(right.document.base));
-  }
-
-  public createDocument(uri: string, documentIndex: DocumentIndex) {
-    const document = this.createIndexedDocument(uri, false, documentIndex);
-    if (isStandardLibrary(uri)) this.overwriteDocument(document);
-    else this.addDocument(document);
-  }
-
-  public createDocuments(uri: string, content: string, parserService: ParserService, workespaceFilesSystem: WorkspaceFilesSystem) {
-    const documentIndex = parserService.analyzeContent(TextDocument.create(uri, "nwscript", 0, content), AnalysisMode.document);
-
-    this.addDocument(this.createIndexedDocument(uri, false, documentIndex));
-    this.createChildrenDocument(documentIndex.includes, parserService, workespaceFilesSystem);
-  }
-
-  public updateDocument(document: TextDocument, parserService: ParserService, workespaceFilesSystem: WorkspaceFilesSystem) {
-    // willSave and didSave can describe the same document version. Reuse its
-    // index, but still retry missing includes that may have appeared on disk.
-    const documentIndex = parserService.getDocumentIndex(document);
-
-    this.overwriteDocument(this.createIndexedDocument(document.uri, false, documentIndex));
-    // Already-declared includes may have failed indexing and since been repaired.
-    // createChildrenDocument skips includes that are already available.
-    this.createChildrenDocument(documentIndex.includes, parserService, workespaceFilesSystem);
-  }
-
-  public debug(logger: Logger) {
-    this.forEach((document) => document.debug(logger));
-  }
-
-  private addDocument(document: IndexedDocument) {
-    this.importChildren = new WeakMap();
-    if (!document.base && !this.documentsByUri.has(document.uri)) this.documentsByUri.set(document.uri, document);
-    this.add(document.getKey(), document);
-  }
-
-  private overwriteDocument(document: IndexedDocument) {
-    this.importChildren = new WeakMap();
-    if (!document.base) this.documentsByUri.set(document.uri, document);
-    // Updating a duplicate's own contents must not change include selection.
-    const selected = this.get(document.getKey());
-    if (!selected || selected.uri === document.uri) this.overwrite(document.getKey(), document);
-  }
-
-  private createChildrenDocument(includes: DocumentIndex["includes"], parserService: ParserService, workespaceFilesSystem: WorkspaceFilesSystem) {
-    includes.forEach(({ name: child }) => {
-      if (child.toLowerCase() === "nwscript" || this.get(child)) return;
-      const filePath = workespaceFilesSystem.getFilePath(child);
-      if (!filePath) return;
-
-      const uri = pathToFileURL(filePath).href;
-      if (this.get(this.getKey(uri, false))) return;
-
-      const fileContent = readFileSync(filePath).toString();
-      this.createDocuments(uri, fileContent, parserService, workespaceFilesSystem);
-    });
   }
 }

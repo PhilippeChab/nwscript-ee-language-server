@@ -1,6 +1,6 @@
 import { before, describe, it } from "mocha";
 import { expect } from "chai";
-import { buildSync } from "esbuild";
+import { buildServerBundle } from "../scripts/Build";
 import { join } from "path";
 import type ServerManager from "../src/ServerManager/ServerManager";
 
@@ -8,7 +8,7 @@ describe("Server request lifecycle", () => {
   let Manager: typeof ServerManager;
   before(async () => {
     const bundle = join(__dirname, "../out/server-manager-test.js");
-    buildSync({ entryPoints: [join(__dirname, "../src/ServerManager/ServerManager.ts")], outfile: bundle, bundle: true, platform: "node" });
+    buildServerBundle({ entryPoints: [join(__dirname, "../src/ServerManager/ServerManager.ts")], outfile: bundle });
     Manager = (await import(bundle)).default;
   });
 

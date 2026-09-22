@@ -15,6 +15,7 @@
     "node": "*"
   },
   "scripts": {
+    "build": "ts-node scripts/Build.ts",
     "check-standard-lib": "ts-node scripts/GenerateLibDefinitions.ts --check",
     "generate-lib-defs": "ts-node scripts/GenerateLibDefinitions.ts",
     "test": "node --no-experimental-strip-types ./node_modules/mocha/bin/mocha.js -r ts-node/register \"test/**/*.ts\"",

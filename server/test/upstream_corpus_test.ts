@@ -1,6 +1,6 @@
 import { after, before, describe, it } from "mocha";
 import { expect } from "chai";
-import { buildSync } from "esbuild";
+import { buildServerBundle } from "../scripts/Build";
 import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "fs";
 import { tmpdir } from "os";
 import { join } from "path";
@@ -17,13 +17,13 @@ describe("neverwinter.nim compiler corpus", function () {
     .sort();
   let workspace: string;
   let api: any;
-  let parserService: any;
+  let parser: any;
 
   before(async () => {
     const bundle = join(__dirname, "../out/upstream-corpus-test.js");
-    buildSync({
+    buildServerBundle({
       stdin: {
-        contents: `export { ParserService } from './Parser';
+        contents: `export { default as Parser } from './Language/Parser';
           export { default as Collection } from './Documents/DocumentsCollection';
           export { default as Hover } from './Providers/HoverContentProvider';
           export { default as Definition } from './Providers/GotoDefinitionProvider';
@@ -32,11 +32,9 @@ describe("neverwinter.nim compiler corpus", function () {
         loader: "ts",
       },
       outfile: bundle,
-      bundle: true,
-      platform: "node",
     });
     api = require(bundle);
-    parserService = await new api.ParserService().loadGrammar();
+    parser = await new api.Parser().loadGrammar();
     workspace = mkdtempSync(join(tmpdir(), "nwscript upstream "));
     mkdirSync(join(workspace, "ovr"));
     mkdirSync(join(workspace, "lang/en"), { recursive: true });
@@ -64,7 +62,7 @@ describe("neverwinter.nim compiler corpus", function () {
 
   for (const file of files) {
     it(`indexes without throwing: ${file}`, () => {
-      expect(() => parserService.analyzeContent(readFileSync(join(fixtures, "corpus", file), "utf8"), "document")).not.to.throw();
+      expect(() => parser.indexContent(readFileSync(join(fixtures, "corpus", file), "utf8"))).not.to.throw();
     });
     it(`preserves upstream compiler acceptance/rejection: ${file}`, () => {
       const source = readFileSync(join(fixtures, "corpus", file), "utf8");
@@ -100,14 +98,14 @@ describe("neverwinter.nim compiler corpus", function () {
       const source = readFileSync(join(fixtures, "corpus", file), "utf8");
       const live = TextDocument.create(workspaceUri(file), "nwscript", 1, source);
       const collection = new api.Collection();
-      collection.createDocument(live.uri, parserService.analyzeContent(source, "document"));
+      collection.addDocument(live.uri, parser.indexContent(source));
       const handlers: any = {};
       const server = {
         documentsCollection: collection,
-        parserService,
+        parser,
         config: api.config,
         liveDocumentsManager: { get: () => live },
-        standardLibrary: { get: () => parserService.analyzeContent(readFileSync(join(fixtures, "nwtestvmscript.nss"), "utf8"), "document") },
+        standardLibrary: { get: () => parser.indexContent(readFileSync(join(fixtures, "nwtestvmscript.nss"), "utf8")) },
         capabilitiesHandler: { getSupportsMarkdownHover: () => true },
         logger: {
           error: (message: string) => {

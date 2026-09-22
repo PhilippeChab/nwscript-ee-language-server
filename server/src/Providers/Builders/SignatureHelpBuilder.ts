@@ -1,7 +1,7 @@
 import { ParameterInformation, SignatureInformation } from "vscode-languageserver";
 import type { SignatureHelp } from "vscode-languageserver";
 
-import type { FunctionDeclaration } from "../../Parser/types";
+import type { FunctionDeclaration } from "../../Language";
 import Builder from "./Builder";
 
 export default class SignatureHelpBuilder extends Builder {

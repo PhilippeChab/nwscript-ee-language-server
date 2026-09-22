@@ -1,155 +1,113 @@
-import { DeclarationKind, ReferenceKind } from "../Parser/types";
-import type Logger from "../Logger/Logger";
+import { DeclarationKind, ReferenceKind, isBuiltinType } from "../Language";
+import type { Declaration, TypeReference, IndexedName, SyntaxIndex, SemanticWorkspace, StandardLibraryDefinitions } from "../Language";
 import { STATIC_PREFIX } from "./DocumentsCollection";
+import { fileURLToPath } from "url";
+import { resourceName } from "../WorkspaceFilesSystem/WorkspaceFilesSystem";
 
-import type { Declaration, StructDeclaration, TypeReference, IndexedName } from "../Parser/types";
-import { LanguageTypes } from "../Parser/constants";
 import type DocumentsCollection from "./DocumentsCollection";
-import SyntaxDocument from "../Parser/SyntaxDocument";
-import type { DocumentIndex } from "../Parser/contracts";
+import Syntax from "../Language/Syntax";
+import SemanticModel from "../Language/SemanticModel";
 
-export type OwnedDeclarations = { owner?: string; declarations: Declaration[] };
-export type OwnedStructDeclarations = { owner?: string; declarations: StructDeclaration[] };
+// Per-file owner of parsed syntax and its derived semantic model. Background
+// and bundled documents can hold an index without loading a syntax tree.
+export default class IndexedDocument {
+  private cachedTypeReferences?: { index: SyntaxIndex; references: TypeReference[] };
+  private cachedSemantic?: SemanticModel;
 
-export default class IndexedDocument<Source extends DocumentIndex | SyntaxDocument = DocumentIndex | SyntaxDocument> {
-  private cachedTypeReferences?: { index: DocumentIndex; references: TypeReference[] };
+  constructor(readonly uri: string, readonly base: boolean, private readonly source: SyntaxIndex | Syntax, private readonly collection: DocumentsCollection) {}
 
-  constructor(readonly uri: string, readonly base: boolean, private readonly source: Source, private readonly collection: DocumentsCollection) {}
-
-  public get syntax(): Source extends SyntaxDocument ? SyntaxDocument : undefined {
-    // The constructor fixes the source type; TypeScript cannot narrow a generic
-    // conditional return type through the instanceof check.
-    return (this.source instanceof SyntaxDocument ? this.source : undefined) as Source extends SyntaxDocument ? SyntaxDocument : undefined;
+  public get syntax(): Syntax | undefined {
+    return this.source instanceof Syntax ? this.source : undefined;
   }
 
-  public get includes() {
-    return this.index.includes;
+  public get index(): SyntaxIndex {
+    return this.source instanceof Syntax ? this.source.getIndex() : this.source;
   }
 
-  public get globalDeclarations() {
-    return this.index.globalDeclarations;
+  public get semantic(): SemanticModel {
+    if (!this.cachedSemantic) throw new Error("Request the analyzed document from DocumentsCollection before using its semantic model");
+    return this.cachedSemantic;
   }
 
-  public get structDeclarations() {
-    return this.index.structDeclarations;
-  }
-
-  public get localDeclarations() {
-    return this.index.localDeclarations || [];
-  }
-
-  public get memberReferences() {
-    return this.index.memberReferences || [];
-  }
-
-  public get entryPointDeclarations() {
-    return this.index.entryPointDeclarations || [];
-  }
-
-  public get entryPoints(): string[] {
-    return this.entryPointDeclarations.map((declaration) => declaration.identifier);
-  }
-
-  public getKey() {
-    return this.collection.getKey(this.uri, this.base);
+  public analyze(library: StandardLibraryDefinitions, workspace: SemanticWorkspace): this {
+    const syntax = this.syntax;
+    if (!syntax) throw new Error("Parse the source before requesting its semantic model");
+    const inputs = [
+      ...this.getDocumentsWithDependencies().map((document) => ({ uri: document.uri, owner: document.base ? undefined : document.uri, index: document.index })),
+      { uri: library.owner || `${STATIC_PREFIX}/nwscript`, owner: library.owner, index: library },
+    ];
+    if (!this.cachedSemantic?.matches(inputs)) this.cachedSemantic = new SemanticModel(syntax, inputs, workspace);
+    return this;
   }
 
   public getIncludeName() {
-    const key = this.getKey();
-    return this.base ? key.slice(STATIC_PREFIX.length + 1) : key;
+    return resourceName(this.base ? this.uri : fileURLToPath(this.uri));
+  }
+
+  public getEntryPointNames(): string[] {
+    return (this.index.entryPointDeclarations || []).map((declaration) => declaration.identifier);
+  }
+
+  // Transitive include names retain unresolved dependencies and exclude this file.
+  public getDependencyNames(): string[] {
+    return [...this.walkDependencies()].map(({ name }) => name);
+  }
+
+  // The requesting file comes first, followed by resolved dependencies in include order.
+  public getDocumentsWithDependencies(): IndexedDocument[] {
+    return [this, ...[...this.walkDependencies()].flatMap(({ document }) => (document ? [document] : []))];
   }
 
   // Each path follows include locations, then the declaration or reference.
   // The final component places an include before a name at the same position.
-  public getNameOrder(computedChildren: string[] = []) {
+  public getNameOrder() {
     const order = new Map<IndexedName, number[] | undefined>();
     const add = (document: IndexedDocument, prefix?: number[]) => {
-      for (const indexedName of [...document.getDeclarations(), ...document.memberReferences, ...document.typeReferences]) {
+      const index = document.index;
+      const declarations = document.getDeclarations(index);
+      for (const indexedName of [...declarations, ...(index.memberReferences || []), ...document.getTypeReferences(index, declarations)]) {
         const position = indexedName.kind === DeclarationKind.Function ? indexedName.signatureEnd || indexedName.position : indexedName.position;
         order.set(indexedName, prefix ? [...prefix, position.line, position.character, 1] : undefined);
       }
     };
     add(this, []);
-    for (const dependency of this.dependencies(computedChildren, true)) {
+    for (const dependency of this.walkDependencies(true)) {
       if (dependency.document) add(dependency.document, dependency.order);
     }
     return order;
   }
 
-  public getChildren(computedChildren: string[] = []): string[] {
-    return [...this.dependencies(computedChildren)].map(({ name }) => name);
+  private getDeclarations(index: SyntaxIndex): Declaration[] {
+    const { globalDeclarations, structDeclarations, localDeclarations = [], entryPointDeclarations = [] } = index;
+    return [
+      ...globalDeclarations,
+      ...structDeclarations,
+      ...localDeclarations,
+      ...entryPointDeclarations,
+      ...[...globalDeclarations, ...entryPointDeclarations].flatMap((declaration) => (declaration.kind === DeclarationKind.Function ? declaration.params : [])),
+      ...structDeclarations.flatMap((struct) => struct.properties),
+    ];
   }
 
-  public getGlobalDeclarationsWithOwner(computedChildren: string[] = []): OwnedDeclarations[] {
-    return this.getDocuments(computedChildren).map((document) => ({ owner: document.base ? undefined : document.uri, declarations: document.globalDeclarations }));
-  }
-
-  public getGlobalDeclarations(computedChildren: string[] = [], localFunctionIdentifiers: string[] = []): Declaration[] {
-    return this.getDocuments(computedChildren).flatMap((document) =>
-      document.globalDeclarations.filter((declaration) => document !== this || !localFunctionIdentifiers.includes(declaration.identifier)),
-    );
-  }
-
-  public getStructDeclarationsWithOwner(computedChildren: string[] = []): OwnedStructDeclarations[] {
-    return this.getDocuments(computedChildren).map((document) => ({ owner: document.base ? undefined : document.uri, declarations: document.structDeclarations }));
-  }
-
-  public getStructDeclarations(computedChildren: string[] = []): StructDeclaration[] {
-    return this.getDocuments(computedChildren).flatMap((document) => document.structDeclarations);
-  }
-
-  public debug(logger: Logger) {
-    logger.debug("'''''''''''''''''''''");
-    logger.debug(this.getKey());
-    logger.debug("--------------------");
-    logger.debug("getChildren");
-    logger.debug(JSON.stringify(this.getChildren(), null, 2));
-    logger.debug("getGlobalDeclarationsWithOwner");
-    logger.debug(JSON.stringify(this.getGlobalDeclarationsWithOwner(), null, 2));
-    logger.debug("getGlobalDeclarations");
-    logger.debug(JSON.stringify(this.getGlobalDeclarations(), null, 2));
-    logger.debug("getStructDeclarationsWithOwner");
-    logger.debug(JSON.stringify(this.getStructDeclarationsWithOwner(), null, 2));
-    logger.debug("getStructDeclarations");
-    logger.debug(JSON.stringify(this.getStructDeclarations(), null, 2));
-    logger.debug("'''''''''''''''''''''");
-    logger.debug("");
-  }
-
-  private get index(): DocumentIndex {
-    const source: DocumentIndex | SyntaxDocument = this.source;
-    return source instanceof SyntaxDocument ? source.getIndex() : source;
-  }
-
-  private get typeReferences(): TypeReference[] {
-    const index = this.index;
+  private getTypeReferences(index: SyntaxIndex, declarations: Declaration[]): TypeReference[] {
     if (this.cachedTypeReferences?.index !== index) {
       // Preserve reference identity within an index for include-once ordering.
-      const references: TypeReference[] = this.getDeclarations().flatMap((declaration) => {
+      const references: TypeReference[] = declarations.flatMap((declaration) => {
         const type = "valueType" in declaration ? declaration.valueType : "returnType" in declaration ? declaration.returnType : undefined;
-        return type && !Object.prototype.hasOwnProperty.call(LanguageTypes, type) ? [{ identifier: type, position: declaration.position, kind: ReferenceKind.Type }] : [];
+        return type && !isBuiltinType(type) ? [{ identifier: type, position: declaration.position, kind: ReferenceKind.Type }] : [];
       });
       this.cachedTypeReferences = { index, references };
     }
     return this.cachedTypeReferences.references;
   }
 
-  private getDeclarations() {
-    return [
-      ...this.globalDeclarations,
-      ...this.structDeclarations,
-      ...this.localDeclarations,
-      ...this.entryPointDeclarations,
-      ...[...this.globalDeclarations, ...this.entryPointDeclarations].flatMap((declaration) => (declaration.kind === DeclarationKind.Function ? declaration.params : [])),
-      ...this.structDeclarations.flatMap((struct) => struct.properties),
-    ];
-  }
-
-  private *dependencies(computedChildren: string[] = [], withOrder = false): Generator<{ name: string; document?: IndexedDocument; order?: number[] }> {
+  private *walkDependencies(withOrder = false): Generator<{ name: string; document?: IndexedDocument; order?: number[] }> {
     // nwscript is implicit and selected per requesting workspace.
-    const visited = new Set(["nwscript", this.getIncludeName(), ...computedChildren]);
+    const visited = new Set(["nwscript", this.getIncludeName()]);
     const children = (document: IndexedDocument, parentOrder?: number[]) =>
-      document.includes.map(({ name, position }) => ({ name: name.toLowerCase(), order: parentOrder && position ? [...parentOrder, position.line, position.character, 0] : undefined })).reverse();
+      document.index.includes
+        .map(({ name, position }) => ({ name: name.toLowerCase(), order: parentOrder && position ? [...parentOrder, position.line, position.character, 0] : undefined }))
+        .reverse();
     const pending = children(this, withOrder ? [] : undefined);
     while (pending.length) {
       const next = pending.pop();
@@ -161,9 +119,5 @@ export default class IndexedDocument<Source extends DocumentIndex | SyntaxDocume
       yield { name, document, order };
       if (document) pending.push(...children(document, order));
     }
-  }
-
-  private getDocuments(computedChildren: string[] = []): IndexedDocument[] {
-    return [this, ...[...this.dependencies(computedChildren)].flatMap(({ document }) => (document ? [document] : []))];
   }
 }

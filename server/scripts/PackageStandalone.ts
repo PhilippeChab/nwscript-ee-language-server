@@ -1,4 +1,4 @@
-import { buildSync } from "esbuild";
+import { buildServerBundle } from "./Build";
 import { cpSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync, chmodSync } from "fs";
 import { join, resolve } from "path";
 import { runNpm } from "./Npm";
@@ -11,19 +11,17 @@ export function packageStandalone(): string {
   const manifest = JSON.parse(readFileSync(join(root, "package.json"), "utf8")) as Manifest;
   rmSync(output, { recursive: true, force: true });
   mkdirSync(output, { recursive: true });
-  const build = buildSync({
+  const build = buildServerBundle({
     absWorkingDir: root,
     entryPoints: { server: "server/src/server.ts", indexer: "server/src/Documents/DocumentsIndexer.ts" },
     outdir: join(output, "server", "out"),
-    bundle: true,
-    platform: "node",
     target: "node24",
     metafile: true,
   });
   for (const relative of ["server/resources", "syntaxes", "LICENSE"]) cpSync(join(root, relative), join(output, relative), { recursive: true });
   cpSync(join(root, "server", "README.md"), join(output, "README.md"));
   mkdirSync(join(output, "bin"));
-  buildSync({ entryPoints: [join(root, "server/src/cli.ts")], outfile: join(output, "bin/nwscript-ee-language-server.cjs"), platform: "node", target: "node24", bundle: true });
+  buildServerBundle({ entryPoints: [join(root, "server/src/cli.ts")], outfile: join(output, "bin/nwscript-ee-language-server.cjs"), target: "node24" });
   chmodSync(join(output, "bin", "nwscript-ee-language-server.cjs"), 0o755);
   for (const platform of ["linux", "mac"]) chmodSync(join(output, "server", "resources", "compiler", platform, "nwn_script_comp"), 0o755);
 

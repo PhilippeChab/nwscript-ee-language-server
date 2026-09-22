@@ -1,35 +1,33 @@
-import readDocumentIndex from "../src/Documents/readDocumentIndex";
 import { workspaceUri } from "./support/fixtures";
 import { before, describe, it } from "mocha";
 import { expect } from "chai";
-import { buildSync } from "esbuild";
+import { buildServerBundle } from "../scripts/Build";
 import { join } from "path";
-import { readFileSync } from "fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "fs";
+import { tmpdir } from "os";
+import { spawnSync } from "child_process";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { CompletionItem } from "vscode-languageserver";
 
 describe("Auto-import completion", function () {
   this.timeout(10000);
   let api: any;
-  let parserService: any;
+  let parser: any;
   before(async () => {
     const bundle = join(__dirname, "../out/auto-import-test.js");
-    buildSync({
+    buildServerBundle({
       stdin: {
         contents: `export { default as Collection } from './Documents/DocumentsCollection';
-          export { ParserService } from './Parser';
+          export { default as Parser } from './Language/Parser';
           export { default as Completion } from './Providers/CompletionItemsProvider';
           export { defaultServerConfiguration as config } from './ServerManager/Config';`,
         resolveDir: join(__dirname, "../src"),
         loader: "ts",
       },
       outfile: bundle,
-      bundle: true,
-      platform: "node",
-      format: "cjs",
     });
     api = require(bundle);
-    parserService = await new api.ParserService().loadGrammar();
+    parser = await new api.Parser().loadGrammar();
   });
 
   const complete = (
@@ -45,13 +43,13 @@ describe("Auto-import completion", function () {
     const live = TextDocument.create(workspaceUri("current.nss"), "nwscript", 1, text);
     const collection = new api.Collection();
     for (const [name, content] of Object.entries({ helper: "void Imported(int value);\nconst int IMPORTED_VALUE = 1;\nstruct ImportedStruct {\n int value;\n};\n", ...scripts })) {
-      collection.createDocument(workspaceUri(`${name}.nss`), parserService.analyzeContent(content, "document"));
+      collection.addDocument(workspaceUri(`${name}.nss`), parser.indexContent(content));
     }
-    collection.createDocument(live.uri, parserService.analyzeContent(indexedSource === undefined ? text : indexedSource, "document"));
+    collection.addDocument(live.uri, parser.indexContent(indexedSource === undefined ? text : indexedSource));
     const handlers: any = {};
     api.Completion.register({
       documentsCollection: collection,
-      parserService,
+      parser,
       config: { ...api.config, completion: { autoImport: enabled, addParamsToFunctions } },
       standardLibrary: { get: () => library },
       liveDocumentsManager: { get: () => live },
@@ -128,7 +126,7 @@ describe("Auto-import completion", function () {
     const valid = '#include "helper"\nconst int VISIBLE = 1;\nvoid Existing();\nvoid main() {}\n';
     for (const declaration of ["struct Example {\n int field;\n float other;\n};", 'void Example(\n int value,\n string text = "value");', "const int EXAMPLE = 1;"]) {
       for (let length = 0; length <= declaration.length; length++) {
-        const scope = parserService.parseContent(valid + declaration.slice(0, length)).getIndex();
+        const scope = parser.parseContent(valid + declaration.slice(0, length)).getIndex();
         expect(scope.includes).to.deep.equal([{ name: "helper", position: { line: 0, character: 0 } }]);
         expect(scope.entryPointDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["main"]);
         expect(scope.globalDeclarations.map((declaration: any) => declaration.identifier)).to.include.members(["VISIBLE", "Existing"]);
@@ -138,10 +136,10 @@ describe("Auto-import completion", function () {
 
   it("resumes after an incomplete struct field and keeps strict indexing unchanged", () => {
     const source = "struct Example {\n int first;\n int \n float last;\n};\nconst int AFTER = 1;\n";
-    const scope = parserService.parseContent(source).getIndex();
+    const scope = parser.parseContent(source).getIndex();
     expect(scope.structDeclarations[0].properties.map((declaration: any) => declaration.identifier)).to.deep.equal(["first", "last"]);
     expect(scope.globalDeclarations.map((declaration: any) => declaration.identifier)).to.deep.equal(["AFTER"]);
-    expect(() => parserService.analyzeContent(source, "document")).to.throw();
+    expect(() => parser.indexContent(source)).to.throw();
   });
 
   it("imports function implementations without requiring prototypes and deduplicates paired declarations", () => {
@@ -218,8 +216,8 @@ describe("Auto-import completion", function () {
     for (const transitive of [true, false]) {
       it(`reserves API constants without a const modifier (bundled=${String(bundled)}, transitive=${String(transitive)})`, () => {
         const library = bundled
-          ? readDocumentIndex(readFileSync(join(__dirname, "../resources/standardLibDefinitions.json"), "utf8"), true)
-          : parserService.analyzeContent(TextDocument.create(workspaceUri("nwscript.nss"), "nwscript", 0, "int TRUE = 1;"), "document");
+          ? JSON.parse(readFileSync(join(__dirname, "../resources/standardLibDefinitions.json"), "utf8"))
+          : parser.indexContent(TextDocument.create(workspaceUri("nwscript.nss"), "nwscript", 0, "int TRUE = 1;"));
         expect(library.globalDeclarations.find((declaration: any) => declaration.identifier === "TRUE").isConst).to.equal(undefined);
         const { items } = complete(
           "void main() {\n Imp|\n}",
@@ -242,7 +240,7 @@ describe("Auto-import completion", function () {
   for (const transitive of [false, true]) {
     for (const implementation of [false, true]) {
       it(`treats implicit API functions as engine implementations (transitive=${String(transitive)}, body=${String(implementation)})`, () => {
-        const library = parserService.analyzeContent("int IntFn(int n);", "document");
+        const library = parser.indexContent("int IntFn(int n);");
         const declaration = `int IntFn(int n)${implementation ? " { return n; }" : ";"}`;
         const { items } = complete(
           "void main() { Imp| }",
@@ -319,7 +317,7 @@ describe("Auto-import completion", function () {
       for (const placement of ["earlierInclude", "laterDeclaration", "api"]) {
         for (const transitive of [false, true]) {
           it(`checks incoming scoped names against ${placement}: ${reserved}, ${scoped}, transitive=${String(transitive)}`, () => {
-            const library = parserService.analyzeContent(TextDocument.create(workspaceUri("nwscript.nss"), "nwscript", 0, placement === "api" ? reserved.replace("const ", "") : ""), "document");
+            const library = parser.indexContent(TextDocument.create(workspaceUri("nwscript.nss"), "nwscript", 0, placement === "api" ? reserved.replace("const ", "") : ""));
             const { items } = complete(
               `${placement === "earlierInclude" ? '#include "existing"' : placement === "laterDeclaration" ? reserved : ""}\nvoid main() { Imp| }`,
               { existing: reserved, helper: `${transitive ? '#include "dependency"' : scoped}\nvoid Imported() {}`, dependency: scoped },
@@ -523,6 +521,52 @@ describe("Auto-import completion", function () {
     });
   }
 
+  for (const [entryPoint, source, includedEntryPoint] of [
+    ["main", "void main() { int result = Imp|orted(); }", "int StartingConditional() { return IntFn(99); }"],
+    ["StartingConditional", "int StartingConditional() { return Imp|orted(); }", "void main() { IntFn(99); }"],
+  ]) {
+    for (const transitive of [false, true]) {
+      it(`preserves ${entryPoint} bytecode after importing a ${transitive ? "transitive" : "direct"} different entry point`, () => {
+        const helper = "int Imported() { return 13; }\n";
+        const scripts: Record<string, string> = transitive ? { helper: '#include "entry"\n' + helper, entry: includedEntryPoint } : { helper: helper + includedEntryPoint };
+        const { items, live, resolve } = complete(source, scripts, true, undefined, false);
+        const suggestion = items.find((item) => item.label === "Imported");
+        expect(suggestion?.additionalTextEdits).to.have.length(1);
+        const resolved = resolve(suggestion);
+        const completed = TextDocument.applyEdits(live, [resolved.textEdit, ...resolved.additionalTextEdits]);
+        const workspace = mkdtempSync(join(tmpdir(), "nwscript entry imports "));
+        try {
+          mkdirSync(join(workspace, "lang", "en"), { recursive: true });
+          mkdirSync(join(workspace, "ovr"));
+          writeFileSync(join(workspace, "databuild.txt"), "test\n");
+          writeFileSync(join(workspace, "ovr", "nwscript.nss"), "int IntFn(int n);\n");
+          writeFileSync(join(workspace, "current.nss"), completed);
+          for (const [name, content] of Object.entries(scripts)) writeFileSync(join(workspace, name + ".nss"), content);
+          const platform = process.platform === "win32" ? "windows" : process.platform === "darwin" ? "mac" : "linux";
+          const executable = join(__dirname, "../resources/compiler", platform, `nwn_script_comp${process.platform === "win32" ? ".exe" : ""}`);
+          const compile = () => {
+            rmSync(join(workspace, "current.ncs"), { force: true });
+            const result = spawnSync(executable, ["-O", "1", "--userdirectory", workspace, "--root", workspace, join(workspace, "current.nss")], { encoding: "utf8", timeout: 20000 });
+            expect(result.error).to.equal(undefined);
+            expect(result.signal).to.equal(null);
+            expect(result.status, result.stderr).to.equal(0);
+            expect(result.stderr).to.include("1 successful");
+            const bytecode = readFileSync(join(workspace, "current.ncs"));
+            expect(bytecode.subarray(0, 8).toString()).to.equal("NCS V1.0");
+            return bytecode;
+          };
+          const importedBytecode = compile();
+          // Same completion, with only the unused include entry point removed.
+          // Identical executable code proves the import did not select another entry point.
+          writeFileSync(join(workspace, transitive ? "entry.nss" : "helper.nss"), transitive ? "// No entry point\n" : helper);
+          expect(importedBytecode).to.deep.equal(compile());
+        } finally {
+          rmSync(workspace, { recursive: true, force: true });
+        }
+      });
+    }
+  }
+
   it("rejects an entry point after another function on the same line", () => {
     const { items } = complete("void main() {\n Imp|\n}\n", { helper: "void Imported() {} void main() {}" });
     expect(items.some((item: any) => item.label === "Imported")).to.equal(false);
@@ -687,8 +731,8 @@ describe("Auto-import completion", function () {
 
   it("recognizes include syntax in both indexing and live completion", () => {
     const source = '# include "helper" /* tail */\n// #include "fake"\n/*\n#include "also_fake"\n*/\n#include "unfinished\n';
-    expect(parserService.parseContent(source).getIndex().includes).to.deep.equal([{ name: "helper", position: { line: 0, character: 0 } }]);
-    expect(parserService.analyzeContent(source, "document").includes).to.deep.equal([{ name: "helper", position: { line: 0, character: 0 } }]);
+    expect(parser.parseContent(source).getIndex().includes).to.deep.equal([{ name: "helper", position: { line: 0, character: 0 } }]);
+    expect(parser.indexContent(source).includes).to.deep.equal([{ name: "helper", position: { line: 0, character: 0 } }]);
   });
 
   it("can be disabled", () => {
@@ -715,22 +759,22 @@ describe("Auto-import completion", function () {
     const fixture = complete("void main()\n{\n Imp|\n}\n", { helper: '#include "later"\nvoid Imported(int value);\n' });
     const imports = () => fixture.request().items.filter((item: CompletionItem) => item.label === "Imported");
     expect(imports()).to.have.length(1);
-    fixture.collection.createDocument(workspaceUri("later.nss"), parserService.analyzeContent("void main() {}\n", "document"));
+    fixture.collection.addDocument(workspaceUri("later.nss"), parser.indexContent("void main() {}\n"));
     expect(imports()).to.have.length(0);
-    fixture.collection.updateDocument(TextDocument.create(workspaceUri("later.nss"), "nwscript", 2, "// Entry point removed\n"), parserService, { getFilePath: () => null });
+    fixture.collection.updateDocument(TextDocument.create(workspaceUri("later.nss"), "nwscript", 2, "// Entry point removed\n"), parser, { getFilePath: () => null });
     expect(imports()).to.have.length(1);
-    fixture.collection.updateDocument(TextDocument.create(workspaceUri("later.nss"), "nwscript", 3, '#include "current"\n'), parserService, { getFilePath: () => null });
+    fixture.collection.updateDocument(TextDocument.create(workspaceUri("later.nss"), "nwscript", 3, '#include "current"\n'), parser, { getFilePath: () => null });
     expect(imports()).to.have.length(0);
   });
 
-  it("reuses the existing child traversal on repeated completion requests", () => {
+  it("reuses the existing dependency traversal on repeated completion requests", () => {
     const fixture = complete("void main()\n{\n Imp|\n}\n", { helper: '#include "dependency"\nvoid Imported(int value);\n', dependency: "void Dependency();\n" });
-    const candidate = fixture.collection.get("helper");
-    const getChildren = candidate.getChildren.bind(candidate);
+    const candidate = fixture.collection.getWorkspaceInclude("helper");
+    const getDependencyNames = candidate.getDependencyNames.bind(candidate);
     let traversals = 0;
-    candidate.getChildren = () => {
+    candidate.getDependencyNames = () => {
       traversals++;
-      return getChildren();
+      return getDependencyNames();
     };
     fixture.request();
     fixture.request();

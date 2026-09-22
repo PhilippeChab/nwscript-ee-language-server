@@ -6,16 +6,16 @@ import { after, before, test } from "node:test";
 import { tmpdir } from "node:os";
 import { spawnSync } from "node:child_process";
 import { TextDocument } from "vscode-languageserver-textdocument";
-import { DeclarationKind } from "../src/Parser/types";
-import ParserService from "../src/Parser/ParserService";
-import SyntaxDocument from "../src/Parser/SyntaxDocument";
+import { DeclarationKind } from "../src/Language";
+import Parser from "../src/Language/Parser";
+import Syntax from "../src/Language/Syntax";
 import { CompletionItemBuilder } from "../src/Providers/Builders";
 
-before(async () => await SyntaxDocument.loadGrammar(join(__dirname, "../resources")));
+before(async () => await Syntax.loadGrammar(join(__dirname, "../resources")));
 
 const document = (text: string, version = 1) => TextDocument.create("file:///parser-test.nss", "nwscript", version, text);
 async function parse(t: { after: (cleanup: () => void) => void }, source: string) {
-  const parsed = await SyntaxDocument.create(document(source));
+  const parsed = await Syntax.create(document(source));
   t.after(() => parsed.dispose());
   return parsed;
 }
@@ -84,14 +84,14 @@ for (const suffix of ["void Unfinished(", "struct Unfinished { int "]) {
 void test("keeps parameter scope inside multiline prototypes", async (t) => {
   const source = "string value;\nint Fn(\n int value\n);";
   const parsed = await parse(t, source);
-  assert.equal(parsed.getVisibleLocals(document(source).positionAt(source.lastIndexOf("value") + 2))[0].valueType, "int");
+  assert.equal(parsed.getLocalScope(document(source).positionAt(source.lastIndexOf("value") + 2)).variableDeclarations[0].valueType, "int");
 });
 
 void test("restores parameter visibility after an inner block", async (t) => {
   const source = "string value;void Fn(int value){{string value;string copy=value;}int after=value;}";
   const parsed = await parse(t, source);
-  assert.equal(parsed.getVisibleLocals(document(source).positionAt(source.indexOf("copy=value") + 7)).find((declaration) => declaration.identifier === "value")?.valueType, "string");
-  assert.equal(parsed.getVisibleLocals(document(source).positionAt(source.indexOf("after=value") + 8)).find((declaration) => declaration.identifier === "value")?.valueType, "int");
+  assert.equal(parsed.getLocalScope(document(source).positionAt(source.indexOf("copy=value") + 7)).variableDeclarations.find((declaration) => declaration.identifier === "value")?.valueType, "string");
+  assert.equal(parsed.getLocalScope(document(source).positionAt(source.indexOf("after=value") + 8)).variableDeclarations.find((declaration) => declaration.identifier === "value")?.valueType, "int");
 });
 
 void test("indexes field declarations independently of same-named globals", async (t) => {
@@ -146,13 +146,13 @@ void test("retains exact UTF-16 declaration positions after Unicode and CRLF", a
 
 void test("updates incrementally through unfinished and repaired edits, including in-place TextDocument updates", async (t) => {
   const live = document("");
-  const parsed = await SyntaxDocument.create(live);
+  const parsed = await Syntax.create(live);
   t.after(() => parsed.dispose());
   const source = 'struct Data { int field; };\r\nvoid Fn(int value){string s="é😀";int n=value;}';
   for (let length = 1; length <= source.length; length++) {
     TextDocument.update(live, [{ text: source.slice(0, length) }], length + 1);
     parsed.update(live);
-    const fresh = await SyntaxDocument.create(document(source.slice(0, length)));
+    const fresh = await Syntax.create(document(source.slice(0, length)));
     try {
       assert.equal(parsed.rootNode.toString(), fresh.rootNode.toString());
       assert.deepEqual(parsed.getIndex(), fresh.getIndex());
@@ -214,7 +214,7 @@ void test("recovers declarations with explicit incomplete nodes and unmodified s
     for (const [declaration, name] of declarations) {
       for (const separator of [" ", "\n", "\r\n"]) {
         const source = `struct Data { int field; };\n${prefix}${separator}${declaration}\nvoid main() {}`;
-        const parsed = SyntaxDocument.create(document(source));
+        const parsed = Syntax.create(document(source));
         try {
           assert.equal(parsed.rootNode.text, source, source);
           assert.ok(
@@ -242,7 +242,7 @@ void test("recovers declarations with explicit incomplete nodes and unmodified s
 });
 
 void test("marks an unfinished grammar node as incomplete even without built-in error nodes", () => {
-  const parsed = SyntaxDocument.create(document("void Broken("));
+  const parsed = Syntax.create(document("void Broken("));
   try {
     assert.equal(parsed.rootNode.hasError, false);
     assert.equal(parsed.hasSyntaxErrors, true);
@@ -290,21 +290,21 @@ void test("pins the generated WASM to the reviewed grammar sources", () => {
 });
 
 void test("shares syntax and indexes per live version while isolating different documents", async (t) => {
-  const parserService = await new ParserService(true).loadGrammar();
+  const parser = await new Parser(true).loadGrammar();
   const first = document("int FIRST;");
   const second = TextDocument.create("file:///second.nss", "nwscript", 1, "int SECOND;");
-  const parsed = parserService.parse(first);
-  const other = parserService.parse(second);
+  const parsed = parser.parse(first);
+  const other = parser.parse(second);
   t.after(() => {
     parsed.dispose();
     other.dispose();
   });
   assert.notEqual(parsed, other);
-  assert.equal(parserService.parse(first), parsed);
-  assert.equal(parserService.getDocumentIndex(first), parsed.getIndex());
+  assert.equal(parser.parse(first), parsed);
+  assert.equal(parser.parse(first).getIndex(true), parsed.getIndex());
   const original = parsed.getIndex();
   TextDocument.update(first, [{ text: "int UPDATED;" }], 2);
-  assert.equal(parserService.parse(first), parsed);
+  assert.equal(parser.parse(first), parsed);
   assert.equal(parsed.getIndex().globalDeclarations[0].identifier, "UPDATED");
   assert.equal(original.globalDeclarations[0].identifier, "FIRST");
   assert.equal(other.getIndex().globalDeclarations[0].identifier, "SECOND");
@@ -405,14 +405,14 @@ void test("matches fresh parsing through 805 damaged edit and restore sequences"
   ];
   let count = 0;
   for (const seed of seeds) {
-    const parsed = SyntaxDocument.create(document(seed));
+    const parsed = Syntax.create(document(seed));
     try {
       for (let start = 0; start < seed.length; start += 2) {
         for (const replacement of ["", "\n", "/*", "int ", '"']) {
           const modified = seed.slice(0, start) + replacement + seed.slice(Math.min(start + 3, seed.length));
           const live = document(modified, count + 2);
           parsed.update(live);
-          const fresh = SyntaxDocument.create(live);
+          const fresh = Syntax.create(live);
           try {
             assert.equal(parsed.rootNode.toString(), fresh.rootNode.toString());
             assert.deepEqual(parsed.getIndex(), fresh.getIndex());
@@ -421,7 +421,7 @@ void test("matches fresh parsing through 805 damaged edit and restore sequences"
               assert.deepEqual(parsed.getLocalScope(position), fresh.getLocalScope(position));
               assert.deepEqual(parsed.getCallContext(position), fresh.getCallContext(position));
               assert.deepEqual(parsed.getMemberPath(position), fresh.getMemberPath(position));
-              assert.deepEqual(parsed.getActionTarget(position), fresh.getActionTarget(position));
+              assert.deepEqual(parsed.getTargetAt(position), fresh.getTargetAt(position));
             }
           } finally {
             fresh.dispose();

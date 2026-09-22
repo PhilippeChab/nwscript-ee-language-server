@@ -1,4 +1,3 @@
-import { DeclarationKind } from "../Parser/types";
 import { DocumentSymbolParams, DocumentSymbol, SymbolInformation } from "vscode-languageserver";
 
 import type { ServerManager } from "../ServerManager";
@@ -18,18 +17,9 @@ export default class SymbolsProvider extends Provider {
         textDocument: { uri },
       } = params;
 
-      const context = this.getDocumentContext(uri);
-      if (!context) return;
-      const { document, localScope } = context;
-      const globalSymbols = document.globalDeclarations
-        .filter((declaration) => declaration.kind === DeclarationKind.Constant || declaration.kind === DeclarationKind.Variable)
-        .map((declaration) => SymbolBuilder.buildItem(declaration));
-      const structSymbols = document.structDeclarations.map((declaration) => SymbolBuilder.buildItem(declaration));
-
-      const implementations = new Set(localScope.functionDeclarations.map((declaration) => declaration.identifier));
-      const prototypes = document.globalDeclarations.filter((declaration) => declaration.kind === DeclarationKind.Function && !implementations.has(declaration.identifier));
-      const functions = [...localScope.functionDeclarations, ...prototypes].map((declaration) => SymbolBuilder.buildItem(declaration));
-      const symbols = globalSymbols.concat(structSymbols, functions);
+      const document = this.getDocument(uri);
+      if (!document) return;
+      const symbols = document.semantic.getDocumentDeclarations().map((declaration) => SymbolBuilder.buildItem(declaration));
       if (this.server.capabilitiesHandler.getSupportsHierarchicalSymbols()) return symbols;
       const flatten = (items: DocumentSymbol[], containerName?: string): SymbolInformation[] =>
         items.flatMap((item) => [{ name: item.name, kind: item.kind, location: { uri, range: item.selectionRange }, containerName }, ...flatten(item.children || [], item.name)]);

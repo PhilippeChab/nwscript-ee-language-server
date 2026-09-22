@@ -1,7 +1,5 @@
-import { DeclarationKind } from "../../Parser/types";
-
-import { LanguageTypes } from "../../Parser/constants";
-import type { Declaration, ConstantDeclaration, VariableDeclaration, ParameterDeclaration, FunctionDeclaration, FieldDeclaration, StructDeclaration } from "../../Parser/types";
+import { DeclarationKind, isBuiltinType } from "../../Language";
+import type { Declaration, ConstantDeclaration, VariableDeclaration, ParameterDeclaration, FunctionDeclaration, FieldDeclaration, StructDeclaration } from "../../Language";
 
 export default abstract class Builder {
   protected static formatParameter(param: ParameterDeclaration) {
@@ -9,7 +7,7 @@ export default abstract class Builder {
   }
 
   protected static handleLanguageType(type: string) {
-    if (!Object.prototype.hasOwnProperty.call(LanguageTypes, type)) {
+    if (!isBuiltinType(type)) {
       return `struct ${type}`;
     }
 
