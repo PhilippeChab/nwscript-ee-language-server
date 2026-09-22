@@ -84,7 +84,7 @@ Notes:
 ## Building and running
 
 - Install Node.js 24 (the version in `.nvmrc`). With nvm, run `nvm install` and `nvm use` in the project root.
-- Invoke `npm install -g yarn@1.22.22 @vscode/vsce` to install Yarn Classic and the VS Code packaging tool.
+- Invoke `npm install -g yarn@1.22.22 @vscode/vsce` to install yarn and the vscode packaging tool.
 - In the project root directory, invoke `yarn install --frozen-lockfile`. The postinstall script also installs the client and server dependencies using their committed lockfiles.
 - Install `clang-format` and make it available on PATH (or set `CLANG_FORMAT` to its absolute path) for the packaged-server integration tests.
 - Run `yarn compile`, `yarn lint`, `yarn test`, and `yarn build` to type-check, test, and bundle the extension. CI uses the same Node and Yarn versions.
